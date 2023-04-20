@@ -74,11 +74,10 @@ class Level():
         Every time step() is called, (at least) the following must happen:
         1. Zombies assign damage and move
         2. Plants assign damage
-        3. Everything that should have died, dies (this could be merged with 1 and 2, or left as a seperate func)
         4. New zombs are generated (as needed)
         5. Suns are generated (as objects? straight into bank? Maybe leave this as a setting of the Level __init__)
         6. Player can use oprerators to interact with env
-        Note: one step corresponds to one frame (in a 60 fps game). As such, actions wont happen every step.
+        Note: one step corresponds to one frame (in a 60 fps game). As such, things wont acutally happen at every step.
         For example, plants will attack every ~60-120 frames (depending on plant), suns are auto-generated every ~600 frames 
         """
         self.frame += 1
@@ -88,19 +87,4 @@ class Level():
         self.spawn_zombies()
         self.spawn_suns()
         self.do_player_action(action)
-
-        # zombie_damage_grid = np.zeros((self.height, self.length), dtype=np.uint8)
-        # for zombie in self.zombies:
-        #     x, y = zombie.update_pos(self.frame)
-        #     zombie_damage_grid[x][y] += zombie.damage
-
-        # plant_damage_grid = np.zeros((self.height, self.length), dtype=np.uint8)
-        # for plant in self.plants:
-        #     # this needs numpy to work
-        #     # plant_damage_grid = np.add(plant_damage_grid, plant.attack(self.frame))
-        #     plant.attack(self.frame, self.zombie_grid)
-
-        # for row, col in list(itertools.product(range(self.height), range(self.length))):
-        #     self.plant_grid[row][col] -= zombie_damage_grid[row, col]
-
-        
+        # TODO: return state

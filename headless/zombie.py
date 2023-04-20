@@ -14,6 +14,9 @@ class zombie_type_to_filename(Enum):
 
 
 class Zombie():
+    """
+    TODO: Check if Subclassing is needed or if can get away with stats (newspaper zombie probably fucks this up)
+    """
     def __init__(self, zombie_type):
         self.pos = consts.OUT_OF_FIELD
         self.move_interval = None
@@ -59,8 +62,3 @@ class Zombie():
         stats_file = open(stats_path, "r")
         stats_json = json.load(stats_file)
         self.__dict__.update(stats_json)
-
-# class NormalZombie(Zombie):
-#     def __init__(self):
-#         super(self, Zombie).__init__()
-#         self.load_stats("normal_zombie.json")

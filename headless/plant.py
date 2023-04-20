@@ -53,6 +53,7 @@ class Plant():
         self.last_attack = 0
 
     def plant(self, level: Level, x, y):
+        # TODO: Nasty
         global suns
         if self.cost < suns:
             suns -= self.cost
@@ -79,12 +80,12 @@ class Plant():
         self.__dict__.update(stats_json)
         
 
-class Sun(Plant):
+class Sunflower(Plant):
     def __init__(self, x, y):
         super(self, Plant).__init__(x, y)
         self.cost = 100
 
-class PeaShooter(Plant):
+class Peashooter(Plant):
     def __init__(self):
         super(self, Plant).__init__()
         self.load_stats()
