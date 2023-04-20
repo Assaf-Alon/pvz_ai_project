@@ -4,21 +4,41 @@ import json
 
 import consts
 
+
 class Level():
+    """
+    This is the Env, generated each episode.
+    A Level starts from scratch (as in the regular game).
+    A Level gets it's zomble spawn times at __init__, from json or at random (this will be a flag for Level.__init__())
+
+    TODO: Carefully consider the right Data structures to use for efficient management of objects in the environment.
+    """
     def __init__(self, length, height):
-        self.step_num = 0
+        self.frame = 0
         self.height = height
         self.length = length
         self.zombies = []
         self.plants = []
         self.suns = []
         # self.grid = [[{"plant": None, "zombies": [], "suns": []} for _ in length] for _ in height]
-        self.zombie_grid = [[[] for _ in length] for _ in height]
-        self.plant_grid = [[None for _ in length] for _ in height]
-        # self.sun_grid = []
+        self.zombie_grid = [[[] for _ in length] for _ in height] # a square may contain multiple zombs
+        self.plant_grid = [[None for _ in length] for _ in height] # a square may contain a single plant
+        # self.sun_grid = [] # Implement later, less critical
 
     def step(self, action):
-        self.step_num += 1
+        """
+        The main function of the environment ("Level")
+        Every time step() is called, (at least) the following must happen:
+        1. Zombies assign damage and move
+        2. Plants assign damage
+        3. Everything that should have died, dies (this could be merged with 1 and 2, or left as a seperate func)
+        4. New zombs are generated (as needed)
+        5. Suns are generated (as objects? straight into bank? Maybe leave this as a setting of the Level __init__)
+        6. Player can use oprerators to interact with env
+        Note: one step corresponds to one frame (in a 60 fps game). As such, actions wont happen every step.
+        For example, plants will attack every ~60-120 frames (depending on plant), suns are auto-generated every ~600 frames 
+        """
+        self.frame += 1
 
         zombie_damage_grid = np.zeros((self.height, self.length), dtype=np.uint8)
         for zombie in self.zombies:
