@@ -60,6 +60,7 @@ class Level():
             for zombie_type, x in self.level_data[self.frame]:
                 new_zombie = Zombie(zombie_type)
                 new_zombie.pos = [x, self.length]
+                # TODO - Add Zombie to zombies and/or zombies_grid?
 
     def spawn_suns(self):
         pass

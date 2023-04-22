@@ -86,8 +86,9 @@ class Sunflower(Plant):
         self.cost = 100
 
 class Peashooter(Plant):
-    def __init__(self):
+    def __init__(self):  # TODO - (x, y) as well?
         super(self, Plant).__init__()
+        # TODO load_stats instead of cost?
         self.load_stats()
     
     def attack(self, level: Level):
