@@ -33,12 +33,11 @@ class Level():
         self.length = length # type: int
         self.done = False
         self.win = False
-        self.suns = 0 # Bank value
+        self.suns = 50 # Bank value
         # Object data
         self.replant_queue = {plant_name: 0 for plant_name in utils.get_plant_names()}
         self.plant_costs = utils.get_plant_costs()
         self.zombies = [] # type: list[zombie.Zombie]
-        # self.zombies = {} # type: Dict[zombie.Zombie, List[int]]
         self.plants = [] # type: list[plant.Plant]
         self.active_suns = []
         self.bullets = [] # type: list[plant.Bullet]
@@ -46,6 +45,7 @@ class Level():
         self.zombie_grid = [[[] for _ in range(length)] for _ in range(height)] # type: list[list[list[zombie.Zombie]]]
         self.plant_grid = [[None for _ in range(length)] for _ in range(height)] # type: list[list[plant.Plant]]
         # Internal data
+        self.sun_value = 25
         self.last_sun_generated_frame = 0
         self.sun_interval = 10
         if random:
@@ -94,40 +94,58 @@ class Level():
         for plant in self.plants:
             plant.generate_sun(self)
 
-    def is_plant_legal(self, x, y, plant_type):
-        # TODO
-        # Plant was chosen for this run?
+    def _is_plant_legal(self, plant_name: str, x, y):
+        # Are the provided coords within the map?
+        if x < 0 or x >= self.height or y < 0 or y >= self.length:
+            return False
+        
+        # TODO:
+        # was this plant chosen for this run?
         
         # Location is free
         if self.plant_grid[x][y]:
             return False
         
         # There's no need to recharge
-        if self.replant_queue[plant_type] > 0:
+        if self.replant_queue[plant_name] > 0:
             return False
         
         # There's enough suns
-        if self.suns < self.plant_costs[plant_type]:
+        if self.suns < self.plant_costs[plant_name]:
             return False
         
         return True
         
-    def plant(self, x, y, plant_type):
-        if not self.is_plant_legal(x, y, plant_type):
+        
+    def action_is_legal(self, action):
+        if not action:
+            return True
+        
+        if action[0] == "plant":
+            _, plant_name, x, y = action
+            return self._is_plant_legal(plant_name, x, y)
+
+        return False
+        
+    def plant(self, plant_name: str, x, y):
+        if not self._is_plant_legal(plant_name, x, y):
             return
-        new_plant = plant.name_to_class[plant_type](x, y) # type: plant.Plant
+        # new_plant = plant.name_to_class[plant_name](x, y) # type: plant.Plant
+        new_plant = plant.create_plant_instance(plant_name, x, y)
         self.plants.append(new_plant)
         self.plant_grid[x][y] = new_plant
+        self.suns -= new_plant.cost
         
-    def do_player_action(self, action: str):
-        if action == "":
+    def do_player_action(self, action: list):
+        if not action:
             return
         # to plant a new plant, action must be of the form:
         # plant <plantname> <x coord> <y coord>
-        # Example: plant peashooter 2 5
-        if action.startswith("plant"):
-            _, plant_name, x, y = action.split(" ")
-            self.plant(x, y, plant_name)
+        # Example: ["plant", "peashooter", 2, 5]
+        # Note! x, y coords must be integers
+        if action[0] == "plant":
+            _, plant_name, x, y = action
+            self.plant(plant_name, x, y)
 
     def construct_state(self):
         # grid = 

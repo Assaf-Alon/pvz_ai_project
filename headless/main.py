@@ -11,17 +11,24 @@ if __name__ == "__main__":
     with open("resources/level0.json", "r") as level_data_file:
         level_data = json.load(level_data_file)
     env = level.Level(10, 5, level_data, False, fps=10)
+    action_list = [
+        ["plant", "sunflower", 0, 0],
+        ["plant", "sunflower", 1, 0],
+        ["plant", "peashooter", 1, 1],
+        ["plant", "peashooter", 2, 1]
+    ]
     while not env.done:
-        env.step("")
-        # env.print_grid()
-        printable_zombie_grid = printable_grid(env)
-        pprint(printable_zombie_grid)
+        action = []
+        if action_list and env.action_is_legal(action_list[0]):
+            action = action_list[0]
+            action_list = action_list[1:]
+        print(action)
+        env.step(action)
+        grid = printable_grid(env)
+        pprint(grid)
         print(f"frame num: {env.frame}")
+        print(f"suns: {env.suns}")
         for zombie in env.zombies:
             print(zombie.pos)
-        
         time.sleep(0.1)
-        os.system('clear')
-        if (env.frame >= 20):
-            x = 0
-            # breakpoint?
+        # os.system('clear')

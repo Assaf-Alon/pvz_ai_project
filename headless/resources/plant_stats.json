@@ -1,16 +1,18 @@
 {
     "sunflower": {
         "attack_interval": 24.25,
-        "attack": 0,
+        "damage": 0,
         "hp": 300,
         "cost": 50,
         "refund": 25,
-        "recharge": 7.5
+        "recharge": 7.5,
+        "sun_interval": 5,
+        "sun_value": 25
     },
 
     "peashooter": {
         "attack_interval": 1.425,
-        "damage": 20,
+        "damage": 182,
         "hp": 300,
         "cost": 100,
         "refund": 50

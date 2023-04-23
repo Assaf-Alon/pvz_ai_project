@@ -2,7 +2,7 @@
 OUT_OF_FIELD = (None, None)
 
 # Automatically collect suns
-AUTO_COLLECT = False
+AUTO_COLLECT = True
 
 # Number of selected plants
 NUM_OF_PLANTS = 10

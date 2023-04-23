@@ -27,11 +27,11 @@ class Bullet():
 
 class Pea(Bullet):
     def __init__(self, position: list, damage, move_interval = 20, pierce = 0):
-        super(self, Bullet).__init__(position, damage)
+        super().__init__(position, damage)
     
     def attack_or_move(self, level: "Level"):
         x, y = self.position
-        if level.zombie_grid[x][y]:
+        if level.zombie_grid[x][y]: # attack
             target_zombie = level.zombie_grid[x][y][0] # type: Zombie
             target_zombie.hp -= self.damage
             if target_zombie.hp <= 0: # delete zomble from existence
@@ -39,7 +39,7 @@ class Pea(Bullet):
                 level.zombie_grid[x][y].remove(target_zombie)
             # TODO: Piercing???
             level.bullets.remove(self) # remove self from bullet list after hitting zomble
-        else:
+        else: # move
             if (level.frame - self.last_moved) >= self.move_interval * level.fps:
                 self.last_moved = level.frame
                 self.position[1] += 1 # TODO: Make sure we need the y coord, and not the x coord
@@ -79,7 +79,7 @@ class Plant():
 
 class Sunflower(Plant):
     def __init__(self, x, y):
-        super(self, Plant).__init__(x, y)
+        super().__init__(x, y)
         self.last_sun_generated = 0
         self.sun_interval = None
         self.sun_value = None
@@ -96,7 +96,7 @@ class Sunflower(Plant):
 
 class Peashooter(Plant):
     def __init__(self, x, y):
-        super(self, Plant).__init__(x, y)
+        super().__init__(x, y)
         self.load_stats("peashooter")
     
     def attack(self, level: "Level"):
@@ -161,6 +161,10 @@ class name_to_class(Enum):
     potatomine = PotatoMine
     
     
-    
+def create_plant_instance(plant_name, x, y):
+    if plant_name == "sunflower":
+        return Sunflower(x, y)
+    elif plant_name == "peashooter":
+        return Peashooter(x, y)
     
     
