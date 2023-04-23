@@ -15,3 +15,4 @@
 6. Implement state output
 7. Implement user action (be careful with illegal operators)
 8. (?) Add GUI mode
+9. Make JSON reading happen once on import instead of each time an object is created (I/O overhead)

@@ -21,14 +21,21 @@ class Level():
 
     TODO: Carefully consider the right Data structures to use for efficient management of objects in the environment. Check out dicts - O(1) removal
     """
-    def __init__(self, length, height, level_data: dict, random = False):
+    def __init__(self, length, height, level_data: dict, random = False, fps = 30):
+        # Technical data:
+        self.fps = fps
         self.frame = 0
         self.height = height # type: int
         self.length = length # type: int
+        self.done = False
+        self.win = False
+        self.suns = 0 # Bank value
+        # Object data
         self.zombies = [] # type: list[Zombie]
         self.plants = [] # type: list[Plant]
-        self.suns = []
+        self.active_suns = []
         self.bullets = [] # type: list[Bullet]
+        self.lawnmowers = [True] * height
         self.zombie_grid = [[[] for _ in length] for _ in height] # type: list[list[list[Zombie]]]
         self.plant_grid = [[None for _ in length] for _ in height] # type: list[list[Plant]]
         if random:
@@ -69,6 +76,10 @@ class Level():
         # Need a way to check if the action is legal BEFORE it's attempted!
         pass
 
+    def construct_state(self):
+        # grid = 
+        pass
+
     def step(self, action):
         """
         The main function of the environment ("Level")
@@ -88,4 +99,5 @@ class Level():
         self.spawn_zombies()
         self.spawn_suns()
         self.do_player_action(action)
+        return self.suns, self.done, self.win
         # TODO: return state

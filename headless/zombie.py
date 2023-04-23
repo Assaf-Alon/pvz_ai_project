@@ -1,9 +1,14 @@
 import json
 from enum import Enum
+from typing import List
 
 import consts
 from plant import Plant
 from level import Level
+
+
+with open("zombie_stats.json", "r") as zombie_stats_file:
+    zombie_stats = json.load(zombie_stats_file)
 
 
 class zombie_type_to_filename(Enum):
@@ -26,39 +31,43 @@ class Zombie():
         self.damage = None
         self.hp = None
         self.type = zombie_type
-        self.load_stats(zombie_type_to_filename[zombie_type].value)
+        self.__dict__.update(zombie_stats[zombie_type])
 
-    def attack(self, frame, plant_grid: list[list[Plant]]):
-        if (frame - self.last_attack) < self.attack_interval:
+
+    def attack(self, level: Level):
+        if (level.frame - self.last_attack) < self.attack_interval * level.fps:
             return
-        self.last_attack = frame
+        self.last_attack = level.frame
         x, y = self.pos
-        target_plant = plant_grid[x][y] # type: Plant
+        target_plant = level.plant_grid[x][y] # type: Plant
         if not target_plant: # Might be None if there's no plant there
             return
         target_plant.hp -= self.damage
 
     def move(self, level: Level):
-        if (level.frame - self.last_moved) < self.move_interval:
+        if (level.frame - self.last_moved) < self.move_interval * level.fps:
             return
         self.last_moved = level.frame
         x, y = self.pos
         level.zombie_grid[x][y].remove(self)
         self.pos[1] -= 1
         if self.pos[1] < 0:
-            #TODO: Damage player or trigger lawnmower
-            pass
+            if level.lawnmowers[x] == True:
+                level.lawnmowers[x] = False
+            else:
+                level.done = True
+                level.win = False
         else:
             level.zombie_grid[x][y - 1].append(self)
     
-    def load_stats(self, stats_path):
-        """
-        Zombie stats json should be a dict with the following fields:
-        "move_interval": number of frames to move a single square (secs to move a square * 60)
-        "attack_interval": number of frames to attack
-        "attack": How much damage does the zombe do
-        "hp": health points of the zomb
-        """
-        stats_file = open(stats_path, "r")
-        stats_json = json.load(stats_file)
-        self.__dict__.update(stats_json)
+    # def load_stats(self, stats_path):
+    #     """
+    #     Zombie stats json should be a dict with the following fields:
+    #     "move_interval": number of frames to move a single square (secs to move a square * 60)
+    #     "attack_interval": number of frames to attack
+    #     "attack": How much damage does the zombe do
+    #     "hp": health points of the zomb
+    #     """
+    #     stats_file = open(stats_path, "r")
+    #     stats_json = json.load(stats_file)
+    #     self.__dict__.update(stats_json)
