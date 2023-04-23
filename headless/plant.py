@@ -103,7 +103,7 @@ class Peashooter(Plant):
         if (level.frame - self.last_attack) < self.attack_interval * level.fps:
             return
         self.last_attack = level.frame
-        pea = Pea(self.position, self.damage)
+        pea = Pea(self.position, self.damage)  # TODO - this passes the position by reference, thus somehow moves the plant or something? It probably causes some of the issues regarding Peas locations
         level.bullets.append(pea)
 
 class PotatoMine(Plant):

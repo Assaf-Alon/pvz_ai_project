@@ -29,6 +29,7 @@ if __name__ == "__main__":
         print(f"frame num: {env.frame}")
         print(f"suns: {env.suns}")
         for zombie in env.zombies:
-            print(zombie.pos)
+            print(f"Zombie: {zombie.pos} , HP={zombie.hp}")
         time.sleep(0.1)
         # os.system('clear')
+        # os.system('cls')

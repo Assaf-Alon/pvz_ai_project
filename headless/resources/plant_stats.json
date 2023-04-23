@@ -12,7 +12,7 @@
 
     "peashooter": {
         "attack_interval": 1.425,
-        "damage": 182,
+        "damage": 20,
         "hp": 300,
         "cost": 100,
         "refund": 50
