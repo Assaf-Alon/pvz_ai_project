@@ -3,11 +3,11 @@ from enum import Enum
 from typing import List
 
 import consts
-from plant import Plant
-from level import Level
+# from plant import Plant
+# from level import Level
 
 
-with open("zombie_stats.json", "r") as zombie_stats_file:
+with open(consts.ZOMBIE_STATS_FILE_PATH, "r") as zombie_stats_file:
     zombie_stats = json.load(zombie_stats_file)
 
 
@@ -34,24 +34,31 @@ class Zombie():
         self.__dict__.update(zombie_stats[zombie_type])
 
 
-    def attack(self, level: Level):
+    def attack(self, level: "Level"):
         if (level.frame - self.last_attack) < self.attack_interval * level.fps:
             return
-        self.last_attack = level.frame
         x, y = self.pos
         target_plant = level.plant_grid[x][y] # type: Plant
         if not target_plant: # Might be None if there's no plant there
+            self.last_attack = level.frame
             return
         target_plant.hp -= self.damage
+        if target_plant.hp <= 0:
+            level.plants.remove(target_plant)
+            level.plant_grid[x][y] = None
 
-    def move(self, level: Level):
+    def move(self, level: "Level"):
         if (level.frame - self.last_moved) < self.move_interval * level.fps:
             return
+        # if self.last_attack == level.frame: # if attacked this frame, reset move countdown and stay in place
+        #     self.last_moved = level.frame
+        #     return
         self.last_moved = level.frame
         x, y = self.pos
         level.zombie_grid[x][y].remove(self)
         self.pos[1] -= 1
         if self.pos[1] < 0:
+            level.zombies.remove(self)
             if level.lawnmowers[x] == True:
                 level.lawnmowers[x] = False
             else:

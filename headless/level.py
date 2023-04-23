@@ -1,10 +1,14 @@
 import numpy as np
+import os
 import itertools
 import json
+from typing import Dict, List
+import time
 
 import consts
-from zombie import Zombie
-from plant import Plant, Bullet
+import utils
+import zombie
+import plant
 
 class Level():
     """
@@ -31,13 +35,19 @@ class Level():
         self.win = False
         self.suns = 0 # Bank value
         # Object data
-        self.zombies = [] # type: list[Zombie]
-        self.plants = [] # type: list[Plant]
+        self.replant_queue = {plant_name: 0 for plant_name in utils.get_plant_names()}
+        self.plant_costs = utils.get_plant_costs()
+        self.zombies = [] # type: list[zombie.Zombie]
+        # self.zombies = {} # type: Dict[zombie.Zombie, List[int]]
+        self.plants = [] # type: list[plant.Plant]
         self.active_suns = []
-        self.bullets = [] # type: list[Bullet]
+        self.bullets = [] # type: list[plant.Bullet]
         self.lawnmowers = [True] * height
-        self.zombie_grid = [[[] for _ in length] for _ in height] # type: list[list[list[Zombie]]]
-        self.plant_grid = [[None for _ in length] for _ in height] # type: list[list[Plant]]
+        self.zombie_grid = [[[] for _ in range(length)] for _ in range(height)] # type: list[list[list[zombie.Zombie]]]
+        self.plant_grid = [[None for _ in range(length)] for _ in range(height)] # type: list[list[plant.Plant]]
+        # Internal data
+        self.last_sun_generated_frame = 0
+        self.sun_interval = 10
         if random:
             #TODO: Randomize level
             pass
@@ -49,8 +59,10 @@ class Level():
             zombie.attack(self)
 
     def assign_plant_damage(self):
-        for plant in self.plants:
+        for plant in self.plants: # All plants try to shoot or attack
             plant.attack(self)
+        for bullet in self.bullets: # All bullets either hit a target or move. New bullet can hit target on same frame as it's created
+            bullet.attack_or_move(self)
 
     def move_zombies(self):
         for zombie in self.zombies:
@@ -63,24 +75,65 @@ class Level():
         for example:
         600: [[normal, 0], [conehead, 3], [buckethead, 5]]
         """
-        if self.frame in self.level_data.keys():
-            for zombie_type, x in self.level_data[self.frame]:
-                new_zombie = Zombie(zombie_type)
-                new_zombie.pos = [x, self.length]
-                # TODO - Add Zombie to zombies and/or zombies_grid?
+        curr_sec = str(self.frame // self.fps)
+        if self.frame % self.fps == 0 and curr_sec in self.level_data.keys():
+            for zombie_type, x in self.level_data[curr_sec]:
+                new_zombie = zombie.Zombie(zombie_type)
+                new_zombie.pos = [x, self.length - 1]
+                # self.zombies[new_zombie] = new_zombie.pos
+                self.zombies.append(new_zombie)
+                self.zombie_grid[x][self.length - 1].append(new_zombie)
 
     def spawn_suns(self):
-        pass
+        if (self.frame - self.last_sun_generated_frame) > self.sun_interval * self.fps:
+            self.last_sun_generated_frame = self.frame
+            if consts.AUTO_COLLECT:
+                self.suns += 25
+            else:
+                self.active_suns.append([0, 0]) # TODO: Randomize sun location
+        for plant in self.plants:
+            plant.generate_sun(self)
 
-    def do_player_action(self, action):
-        # Need a way to check if the action is legal BEFORE it's attempted!
-        pass
+    def is_plant_legal(self, x, y, plant_type):
+        # TODO
+        # Plant was chosen for this run?
+        
+        # Location is free
+        if self.plant_grid[x][y]:
+            return False
+        
+        # There's no need to recharge
+        if self.replant_queue[plant_type] > 0:
+            return False
+        
+        # There's enough suns
+        if self.suns < self.plant_costs[plant_type]:
+            return False
+        
+        return True
+        
+    def plant(self, x, y, plant_type):
+        if not self.is_plant_legal(x, y, plant_type):
+            return
+        new_plant = plant.name_to_class[plant_type](x, y) # type: plant.Plant
+        self.plants.append(new_plant)
+        self.plant_grid[x][y] = new_plant
+        
+    def do_player_action(self, action: str):
+        if action == "":
+            return
+        # to plant a new plant, action must be of the form:
+        # plant <plantname> <x coord> <y coord>
+        # Example: plant peashooter 2 5
+        if action.startswith("plant"):
+            _, plant_name, x, y = action.split(" ")
+            self.plant(x, y, plant_name)
 
     def construct_state(self):
         # grid = 
-        pass
+        return None
 
-    def step(self, action):
+    def step(self, action: str):
         """
         The main function of the environment ("Level")
         Every time step() is called, (at least) the following must happen:
@@ -99,5 +152,35 @@ class Level():
         self.spawn_zombies()
         self.spawn_suns()
         self.do_player_action(action)
-        return self.suns, self.done, self.win
+        return self.construct_state()
         # TODO: return state
+
+    def print_grid(self):
+        os.system('clear')
+        for row in range(self.height):
+            print("-" * (4 * self.height))
+            for col in range(self.length):
+                cell_content = ["0", "0", "0"]  # Plants, Bullets, Zombies
+                if self.plant_grid[row][col]:
+                    if type(self.plant_grid[row][col]) == plant.Peashooter:
+                        cell_content[0] = "P"
+                    if type(self.plant_grid[row][col]) == plant.Sunflower:
+                        cell_content[0] = "S"
+                if self.zombie_grid[row][col]:
+                    cell_content[2] = len(self.zombie_grid[row][col])
+                for bullet in self.bullets:
+                    if bullet.position == (row, col):
+                        cell_content[1] += 1
+                print(f"| {cell_content[0]}{cell_content[1]}{cell_content[2]} ", end='')
+            print("|")
+        print("-" * (4 * self.length))
+                
+                
+                
+    # def print_board(matrix):
+    # for row in matrix:
+    #     print("-" * (4 * len(row) + 1))  # Print horizontal line
+    #     for element in row:
+    #         print("|", f" {element} ", end='')  # Print element with vertical lines
+    #     print("|")  # Print closing vertical line
+    # print("-" * (4 * len(matrix[0]) + 1))  # Print bottom horizontal line

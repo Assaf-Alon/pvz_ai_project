@@ -1,0 +1,8 @@
+{
+    "normal": {
+        "hp": 181,
+        "damage": 100,
+        "attack_interval": 1,
+        "move_interval": 1
+    }
+}

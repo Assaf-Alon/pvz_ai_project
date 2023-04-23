@@ -1,10 +1,14 @@
 import json
+from enum import Enum
 
 import consts
-from zombie import Zombie
-from level import Level
+# from zombie import Zombie
+# from level import Level
 
-            
+with open(consts.PLANT_STATS_FILE_PATH, "r") as plant_stats_file:
+    plant_stats = json.load(plant_stats_file)
+         
+
 class Bullet():
     """
     This class represents a bullet fired by a plant.
@@ -18,14 +22,14 @@ class Bullet():
         self.damage = damage
         self.pierce = pierce
     
-    def attack_or_move(self, level: Level):
+    def attack_or_move(self, level: "Level"):
         pass
 
 class Pea(Bullet):
     def __init__(self, position: list, damage, move_interval = 20, pierce = 0):
         super(self, Bullet).__init__(position, damage)
     
-    def attack_or_move(self, level: Level):
+    def attack_or_move(self, level: "Level"):
         x, y = self.position
         if level.zombie_grid[x][y]:
             target_zombie = level.zombie_grid[x][y][0] # type: Zombie
@@ -36,7 +40,7 @@ class Pea(Bullet):
             # TODO: Piercing???
             level.bullets.remove(self) # remove self from bullet list after hitting zomble
         else:
-            if (level.frame - self.last_moved) >= self.move_interval:
+            if (level.frame - self.last_moved) >= self.move_interval * level.fps:
                 self.last_moved = level.frame
                 self.position[1] += 1 # TODO: Make sure we need the y coord, and not the x coord
                 if self.position[1] >= level.length: # bullet flew off the map
@@ -52,21 +56,15 @@ class Plant():
         self.attack_interval = None
         self.last_attack = 0
 
-    def plant(self, level: Level, x, y):
-        # TODO: Nasty
-        global suns
-        if self.cost < suns:
-            suns -= self.cost
-            self.position = (x, y)
-            return True
-        else:
-            return False
-
-    def attack(self, level: Level):
+    def attack(self, level: "Level"):
         # Virtual function
         pass
 
-    def load_stats(self, stats_path):
+    def generate_sun(self, level: "Level"):
+        # Virtual func
+        pass
+
+    def load_stats(self, plant_type):
         """
         Plant stats json should be a dict with the following fields:
         "attack_interval": number of frames to attack
@@ -75,25 +73,94 @@ class Plant():
         "cost": how many suns does this plant cost
         # TODO: "refund": how many suns when selling plant
         """
-        stats_file = open(stats_path, "r")
-        stats_json = json.load(stats_file)
-        self.__dict__.update(stats_json)
+        self.__dict__.update(plant_stats[plant_type])
         
+
 
 class Sunflower(Plant):
     def __init__(self, x, y):
         super(self, Plant).__init__(x, y)
-        self.cost = 100
+        self.last_sun_generated = 0
+        self.sun_interval = None
+        self.sun_value = None
+        self.load_stats("sunflower")
+    
+    def generate_sun(self, level: "Level"):
+        if (level.frame - self.last_sun_generated) < self.sun_interval * level.fps:
+            return
+        self.last_sun_generated = level.frame
+        if consts.AUTO_COLLECT:
+            level.suns += self.sun_value # add sun straight to bank
+        else:
+            level.active_suns.append([self.position]) # place sun object on field
 
 class Peashooter(Plant):
-    def __init__(self):  # TODO - (x, y) as well?
-        super(self, Plant).__init__()
-        # TODO load_stats instead of cost?
-        self.load_stats()
+    def __init__(self, x, y):
+        super(self, Plant).__init__(x, y)
+        self.load_stats("peashooter")
     
-    def attack(self, level: Level):
-        if (level.frame - self.last_attack) < self.attack_interval:
+    def attack(self, level: "Level"):
+        if (level.frame - self.last_attack) < self.attack_interval * level.fps:
             return
         self.last_attack = level.frame
         pea = Pea(self.position, self.damage)
         level.bullets.append(pea)
+
+class PotatoMine(Plant):
+    def __init__(self):
+        super(self, Plant).__init__()
+        self.load_stats()
+        # Stats
+    
+class CherryBomb(Plant):
+    pass
+
+class Chomper(Plant):
+    pass
+
+class HypnoShroom(Plant):
+    pass
+
+class IceShroom(Plant):
+    pass
+
+class Japalapeno(Plant):
+    pass
+
+class PuffShroom(Plant):
+    pass
+
+class RepeaterPea(Plant):
+    pass
+
+class ScaredyShroom(Plant):
+    pass
+
+class SnowPea(Plant):
+    pass
+
+class Spikeweed(Plant):
+    pass
+
+class Squash(Plant):
+    pass
+
+
+class SunShroom(Plant):
+    pass
+
+class ThreePeater(Plant):
+    pass
+
+class WallNut(Plant):
+    pass
+
+class name_to_class(Enum):
+    peashooter = Peashooter
+    sunflower = Sunflower
+    potatomine = PotatoMine
+    
+    
+    
+    
+    
