@@ -38,7 +38,7 @@ def printable_grid(level: "Level"):
                 to_write_in_grid = 'P'
             else:
                 to_write_in_grid = '_'
-            if (num_in_grid // 10) % 10 == 1:
+            if (num_in_grid // 10) % 10 >= 1:
                 to_write_in_grid += 'B'
             else:
                 to_write_in_grid += '_'

@@ -15,3 +15,8 @@ VERY_SLOW_RECHARGE = 50
 # JSON filepaths:
 PLANT_STATS_FILE_PATH = "resources/plant_stats.json"
 ZOMBIE_STATS_FILE_PATH = "resources/zombie_stats.json"
+
+LOGS_TO_STDERR = False
+LOG_FILE_NAME = "pvz.log"
+# LOG_FORMAT = "[%(asctime)s] %(message)s"
+LOG_FORMAT = "%(message)s"

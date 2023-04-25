@@ -4,11 +4,18 @@ import itertools
 import json
 from typing import Dict, List
 import time
+import logging, sys
 
 import consts
 import utils
 import zombie
 import plant
+
+if consts.LOGS_TO_STDERR:
+    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG, format=consts.LOG_FILE_NAME)
+else:
+    logging.basicConfig(level=logging.DEBUG, filename=consts.LOG_FILE_NAME, format=consts.LOG_FORMAT)
+
 
 class Level():
     """
@@ -80,6 +87,7 @@ class Level():
             for zombie_type, x in self.level_data[curr_sec]:
                 new_zombie = zombie.Zombie(zombie_type)
                 new_zombie.pos = [x, self.length - 1]
+                new_zombie.last_moved = self.frame
                 # self.zombies[new_zombie] = new_zombie.pos
                 self.zombies.append(new_zombie)
                 self.zombie_grid[x][self.length - 1].append(new_zombie)
@@ -91,6 +99,7 @@ class Level():
                 self.suns += 25
             else:
                 self.active_suns.append([0, 0]) # TODO: Randomize sun location
+            logging.debug(f"[{self.frame}] Sun autospawned. Total: {self.suns}.")
         for plant in self.plants:
             plant.generate_sun(self)
 
@@ -135,6 +144,8 @@ class Level():
         self.plants.append(new_plant)
         self.plant_grid[x][y] = new_plant
         self.suns -= new_plant.cost
+        logging.debug(f"[{self.frame}] Planted {plant_name} in {x, y}. Total: {self.suns}.")
+        
         
     def do_player_action(self, action: list):
         if not action:
