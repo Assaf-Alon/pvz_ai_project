@@ -28,7 +28,7 @@ def printable_grid(level: "Level"):
             if level.zombie_grid[x][y]:
                 grid[x][y] += 100
     for bullet in level.bullets:
-        x, y = bullet.position
+        x, y = bullet.lane, bullet.column
         grid[x][y] += 10
     for x in range(height):
         for y in range(length):
@@ -38,7 +38,7 @@ def printable_grid(level: "Level"):
                 to_write_in_grid = 'P'
             else:
                 to_write_in_grid = '_'
-            if (num_in_grid // 10) % 10 == 1:
+            if (num_in_grid // 10) % 10 >= 1:
                 to_write_in_grid += 'B'
             else:
                 to_write_in_grid += '_'

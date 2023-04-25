@@ -16,3 +16,5 @@
 7. Implement user action (be careful with illegal operators)
 8. (?) Add GUI mode
 9. Make JSON reading happen once on import instead of each time an object is created (I/O overhead)
+10. Change zombie spawning mechanism (List instead of dict)
+10.1. Implement victory (no more zombies to spawn, no more zombies on the map)
