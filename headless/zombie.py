@@ -3,8 +3,9 @@ from enum import Enum
 from typing import List
 
 import consts
-# from plant import Plant
-# from level import Level
+if consts.TYPECHECK:
+    from level import Level
+    from plant import Plant
 
 
 with open(consts.ZOMBIE_STATS_FILE_PATH, "r") as zombie_stats_file:
@@ -31,6 +32,7 @@ class Zombie():
         self.damage = None
         self.hp = None
         self.type = zombie_type
+        self.status = None
         self.__dict__.update(zombie_stats[zombie_type])
 
 
@@ -66,6 +68,25 @@ class Zombie():
                 level.win = False
         else:
             level.zombie_grid[x][y - 1].append(self)
+        
+    def __repr__(self):
+        """
+        Return a dict (?) describing this zomble.
+        format:
+        {
+            "type": "zombie",
+            "subtype": <specific type of zombie>,
+            "hp": reminaing hp (int),
+            "status": one of: [None, frozen, <other statuses?>]
+        }
+        """
+        repr_dict = {
+            "type": "zombie",
+            "subtype": self.type,
+            "hp": self.hp,
+            "status": self.status
+        }
+        return repr_dict
     
     # def load_stats(self, stats_path):
     #     """

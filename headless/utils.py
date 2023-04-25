@@ -1,7 +1,8 @@
 import json
 
 import consts
-# from level import Level
+if consts.TYPECHECK:
+    from level import Level
 
 def get_plant_costs():
     cost_dict = {}
@@ -16,10 +17,9 @@ def get_plant_names():
         plant_stats_dict = json.load(plant_stats_file)
     return plant_stats_dict.keys()
 
-
 def printable_grid(level: "Level"):
-    height = level.height
-    length = level.length
+    height = level.lanes
+    length = level.columns
     grid = [[0 for _ in range(length)] for _ in range(height)]
     for x in range(height):
         for y in range(length):
@@ -47,4 +47,9 @@ def printable_grid(level: "Level"):
             else:
                 to_write_in_grid += '_'
             grid[x][y] = to_write_in_grid
+    for x in range(height):
+        if level.lawnmowers[x]:
+            grid[x] = ["M"] + grid[x]
+        else:
+            grid[x] = ["_"] + grid[x]
     return grid

@@ -20,3 +20,5 @@ LOGS_TO_STDERR = False
 LOG_FILE_NAME = "pvz.log"
 # LOG_FORMAT = "[%(asctime)s] %(message)s"
 LOG_FORMAT = "%(message)s"
+
+TYPECHECK = False # avoid circular imports while allowing typechecks and autocompletes

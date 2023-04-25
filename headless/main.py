@@ -30,6 +30,11 @@ if __name__ == "__main__":
         print(f"suns: {env.suns}")
         for zombie in env.zombies:
             print(f"Zombie: {zombie.pos} , HP={zombie.hp}")
+        state = env.construct_state()
+        for lane in state[2]:
+            for square in lane:
+                print(square, end='')
+            print()
         # print("---------------")
         # for plant in env.plants:
         #     print(f"Plant: {plant.position} , HP={plant.hp}")
