@@ -28,7 +28,7 @@ def printable_grid(level: "Level"):
             if level.zombie_grid[x][y]:
                 grid[x][y] += 100
     for bullet in level.bullets:
-        x, y = bullet.position
+        x, y = bullet.lane, bullet.column
         grid[x][y] += 10
     for x in range(height):
         for y in range(length):

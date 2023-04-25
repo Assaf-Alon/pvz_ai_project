@@ -30,6 +30,12 @@ if __name__ == "__main__":
         print(f"suns: {env.suns}")
         for zombie in env.zombies:
             print(f"Zombie: {zombie.pos} , HP={zombie.hp}")
+        # print("---------------")
+        # for plant in env.plants:
+        #     print(f"Plant: {plant.position} , HP={plant.hp}")
+        # for bullet in env.bullets:
+        #     print(f"Bullet [{bullet.lane}, {bullet.column}]")
         time.sleep(0.1)
+        # input()
         # os.system('clear')
         # os.system('cls')

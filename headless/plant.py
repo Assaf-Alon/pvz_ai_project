@@ -14,9 +14,10 @@ class Bullet():
     This class represents a bullet fired by a plant.
     It has a single action: attack_or_move, which tries to hit a zombie if it's in the same square, or moves otherwise.
     """
-    def __init__(self, position: list, damage, move_interval = 20, pierce = 0):
+    def __init__(self, lane: int, column: int, damage, move_interval = 20, pierce = 0):
         # TODO: Set a default move_interval, I think theyre all the same?
-        self.position = position
+        self.lane = lane
+        self.column = column
         self.move_interval = move_interval # how many frames to move a grid square
         self.last_moved = 0
         self.damage = damage
@@ -26,11 +27,11 @@ class Bullet():
         pass
 
 class Pea(Bullet):
-    def __init__(self, position: list, damage, move_interval = 20, pierce = 0):
-        super().__init__(position, damage)
+    def __init__(self, lane: int, column: int, damage, move_interval = 20, pierce = 0):
+        super().__init__(lane, column, damage)
     
     def attack_or_move(self, level: "Level"):
-        x, y = self.position
+        x, y = self.lane, self.column
         if level.zombie_grid[x][y]: # attack
             target_zombie = level.zombie_grid[x][y][0] # type: Zombie
             target_zombie.hp -= self.damage
@@ -42,8 +43,8 @@ class Pea(Bullet):
         else: # move
             if (level.frame - self.last_moved) >= self.move_interval * level.fps:
                 self.last_moved = level.frame
-                self.position[1] += 1 # TODO: Make sure we need the y coord, and not the x coord
-                if self.position[1] >= level.length: # bullet flew off the map
+                self.column += 1 # TODO: Make sure we need the y coord, and not the x coord
+                if self.column >= level.length: # bullet flew off the map
                     level.bullets.remove(self)
 
 
@@ -103,7 +104,7 @@ class Peashooter(Plant):
         if (level.frame - self.last_attack) < self.attack_interval * level.fps:
             return
         self.last_attack = level.frame
-        pea = Pea(self.position, self.damage)  # TODO - this passes the position by reference, thus somehow moves the plant or something? It probably causes some of the issues regarding Peas locations
+        pea = Pea(self.position[0], self.position[1] , self.damage)
         level.bullets.append(pea)
 
 class PotatoMine(Plant):
