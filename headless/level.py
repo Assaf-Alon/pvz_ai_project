@@ -11,10 +11,6 @@ import utils
 import zombie
 import plant
 
-if consts.LOGS_TO_STDERR:
-    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG, format=consts.LOG_FILE_NAME)
-else:
-    logging.basicConfig(level=logging.DEBUG, filename=consts.LOG_FILE_NAME, format=consts.LOG_FORMAT)
 
 
 class Level():
@@ -32,7 +28,7 @@ class Level():
 
     TODO: Carefully consider the right Data structures to use for efficient management of objects in the environment. Check out dicts - O(1) removal
     """
-    def __init__(self, columns, lanes, level_data: dict, random = False, fps = 30):
+    def __init__(self, columns, lanes, level_data: dict, random = False, fps = 30, logfile=consts.LOG_FILE_NAME):
         # Technical data:
         self.fps = fps
         self.frame = 0
@@ -64,6 +60,14 @@ class Level():
             self.level_data = level_data # type: dict
             self.zombies_to_be_spawned = utils.get_zombies_to_be_spawned(level_data)
 
+        if consts.LOGS_TO_STDERR:
+            logging.basicConfig(stream=sys.stderr, level=consts.LOG_LEVEL, format=consts.LOG_FORMAT)
+        else:
+            logging.basicConfig(level=consts.LOG_LEVEL, format=consts.LOG_FORMAT)
+            logger = logging.getLogger()
+            file_handler = logging.FileHandler(logfile)
+            logger.addHandler(file_handler)
+        
     def assign_zombie_damage(self):
         for zombie in self.zombies:
             zombie.attack(self)

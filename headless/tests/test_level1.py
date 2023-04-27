@@ -20,17 +20,19 @@ COLUMNS = 10
 FPS = 10
 MAX_FRAME = 578
 
-EXPECTED_FILE = "output/level1.txt"
-ACTUAL_FILE = consts.LOG_FILE_NAME
-LEVEL_JSON  = "levels/level1.json"
+EXPECTED_FILE = "tests/output/level1.txt"
+ACTUAL_FILE = "tests/output/actual1.txt"
+LEVEL_JSON  = "tests/levels/level1.json"
 
+if os.path.exists(ACTUAL_FILE):
+    os.remove(ACTUAL_FILE)
 
 
 class TestLevel1(unittest.TestCase):
     def test_level1(self):
         with open(LEVEL_JSON, "r") as level_data_file:
             level_data = json.load(level_data_file)
-        env = level.Level(COLUMNS, LANES, level_data, False, fps=FPS)
+        env = level.Level(COLUMNS, LANES, level_data, False, fps=FPS, logfile=ACTUAL_FILE)
         
         action_list = [
             ["plant", "sunflower", 0, 0],
