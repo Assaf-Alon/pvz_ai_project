@@ -1,4 +1,5 @@
 import json
+import logging
 from collections import deque
 import consts
 if consts.TYPECHECK:
@@ -25,6 +26,17 @@ def get_zombies_to_be_spawned(level_data: dict) -> deque:
             # assert key < prev_key
             zombies_to_be_spawned.append((key, value))
     return zombies_to_be_spawned
+
+def configure_logging(logfile: str):
+    if consts.LOGS_TO_STDERR:
+        logging.basicConfig(stream=sys.stderr, level=consts.LOG_LEVEL, format=consts.LOG_FORMAT)
+    else:
+        logging.basicConfig(level=consts.LOG_LEVEL, format=consts.LOG_FORMAT)
+        logger = logging.getLogger()
+        new_file_handler = logging.FileHandler(logfile)
+        for handler in logger.handlers:
+            logger.removeHandler(handler)
+        logger.addHandler(new_file_handler)
 
 def printable_grid(level: "Level"):
     height = level.lanes

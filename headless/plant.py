@@ -25,15 +25,9 @@ class Bullet():
         self.damage = damage
         self.pierce = pierce
     
-    def attack_or_move(self, level: "Level"):
-        pass
-
-class Pea(Bullet):
-    def __init__(self, lane: int, column: int, damage, move_interval = 20, pierce = 0):
-        super().__init__(lane, column, damage)
-    
-    def attack(self, level: "Level"): # TODO - consider merging this back to attack_or_move for better performance
-        logging.debug(f"[{level.frame}] Pea in {self.lane, self.column} attacked.")
+    def attack(self, level: "Level"):
+        bullet_type = type(self).__name__
+        logging.debug(f"[{level.frame}] {bullet_type} in {self.lane, self.column} attacked.")
         target_zombie = level.zombie_grid[self.lane][self.column][0] # type: Zombie
         target_zombie.hp -= self.damage
         logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was damaged. HP: {target_zombie.hp}.")
@@ -41,23 +35,51 @@ class Pea(Bullet):
             logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was killed.")
             level.zombies.remove(target_zombie)
             level.zombie_grid[self.lane][self.column].remove(target_zombie)
+            if not level.zombies_to_be_spawned and not level.zombies:
+                level.done = True
+                level.win = True
+                logging.debug(f"[{level.frame}] You've won!")
         # TODO: Piercing???
-        level.bullets.remove(self) # remove self from bullet list after hitting zomble
+        if not self.pierce:
+            level.bullets.remove(self) # remove self from bullet list after hitting zomble
+            logging.debug(f"[{level.frame}] {bullet_type} in {self.lane, self.column} removed.")
+            
+    
+    def move(self, level: "Level"):
+        if (level.frame - self.last_moved) < self.move_interval * level.fps:
+            return
+        bullet_type = type(self).__name__
+        logging.debug(f"[{level.frame}] {bullet_type} in {self.lane, self.column} moved to {self.lane, self.column + 1}.")
+        self.last_moved = level.frame
+        self.column += 1 # TODO: Make sure we need the y coord, and not the x coord
+        if self.column >= level.columns: # bullet flew off the map
+            level.bullets.remove(self)
+            logging.debug(f"[{level.frame}] {bullet_type} in {self.lane, self.column} removed.")
+        elif level.zombie_grid[self.lane][self.column]:
+            self.attack(level)
     
     def attack_or_move(self, level: "Level"):
         if level.zombie_grid[self.lane][self.column]: # attack
             self.attack(level)
-        else: # move
-            if (level.frame - self.last_moved) < self.move_interval * level.fps:
-                return
-            logging.debug(f"[{level.frame}] Pea in {self.lane, self.column} moved to {self.lane, self.column + 1}.")
-            self.last_moved = level.frame
-            self.column += 1 # TODO: Make sure we need the y coord, and not the x coord
-            if self.column >= level.columns: # bullet flew off the map
-                level.bullets.remove(self)
-                logging.debug(f"[{level.frame}] Pea in {self.lane, self.column} removed.")
-            elif level.zombie_grid[self.lane][self.column]:
-                self.attack(level)
+            if self.pierce:
+                self.move(level)
+        else:
+            self.move(level)
+            
+
+class LawnMower(Bullet):
+    def __init__(self, lane: int, column = -1, damage=10000, move_interval = 20, pierce = 1):
+        super().__init__(lane, column, damage, pierce=pierce)
+
+class Pea(Bullet):
+    def __init__(self, lane: int, column: int, damage, move_interval = 20, pierce = 0):
+        super().__init__(lane, column, damage)
+    
+    # def attack(self, level: "Level"): # TODO - consider merging this back to attack_or_move for better performance
+    #     super().attack(level)
+            
+    # def attack_or_move(self, level: "Level"):
+    #     super().attack_or_move(level)
 
 
 class Plant():

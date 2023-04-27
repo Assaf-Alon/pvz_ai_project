@@ -60,13 +60,7 @@ class Level():
             self.level_data = level_data # type: dict
             self.zombies_to_be_spawned = utils.get_zombies_to_be_spawned(level_data)
 
-        if consts.LOGS_TO_STDERR:
-            logging.basicConfig(stream=sys.stderr, level=consts.LOG_LEVEL, format=consts.LOG_FORMAT)
-        else:
-            logging.basicConfig(level=consts.LOG_LEVEL, format=consts.LOG_FORMAT)
-            logger = logging.getLogger()
-            file_handler = logging.FileHandler(logfile)
-            logger.addHandler(file_handler)
+        utils.configure_logging(logfile)
         
     def assign_zombie_damage(self):
         for zombie in self.zombies:
@@ -75,7 +69,9 @@ class Level():
     def assign_plant_damage(self):
         for plant in self.plants: # All plants try to shoot or attack
             plant.attack(self)
-        for bullet in self.bullets: # All bullets either hit a target or move. New bullet can hit target on same frame as it's created
+        
+        # TODO - [note] We're copying the bullets array here because we're removing objects from it while iterating
+        for bullet in self.bullets[:]: # All bullets either hit a target or move. New bullet can hit target on same frame as it's created
             bullet.attack_or_move(self)
 
     def move_zombies(self):
@@ -117,6 +113,9 @@ class Level():
         for plant in self.plants:
             plant.generate_sun(self)
 
+    def activate_lawnmower(self, lane: int):
+        self.bullets.append(plant.LawnMower(lane))
+    
     def _is_plant_legal(self, plant_name: str, x, y):
         # Are the provided coords within the map?
         if x < 0 or x >= self.lanes or y < 0 or y >= self.columns:

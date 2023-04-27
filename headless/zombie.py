@@ -71,10 +71,15 @@ class Zombie():
             if level.lawnmowers[self.lane] == True:
                 logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} triggered a lawnmower.")
                 level.lawnmowers[self.lane] = False
+                level.activate_lawnmower(self.lane)
+                if not level.zombies_to_be_spawned and not level.zombies:
+                    level.done = True
+                    level.win = True
+                    logging.debug(f"[{level.frame}] You've won!")
             else:
-                logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} has killed you!")
                 level.done = True
                 level.win = False
+                logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} has killed you!")
         else:
             level.zombie_grid[self.lane][self.column].append(self)
         
