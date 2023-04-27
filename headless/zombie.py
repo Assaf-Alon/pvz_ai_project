@@ -51,6 +51,8 @@ class Zombie():
         if target_plant.hp <= 0:
             level.plants.remove(target_plant)
             level.plant_grid[self.lane][self.column] = None
+            logging.debug(f"[{level.frame}] Plant in {self.lane, self.column} was killed.")
+            
 
     def move(self, level: "Level"):
         if (level.frame - self.last_moved) < self.move_interval * level.fps:

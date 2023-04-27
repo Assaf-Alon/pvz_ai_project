@@ -1,5 +1,5 @@
 import json
-
+from collections import deque
 import consts
 if consts.TYPECHECK:
     from level import Level
@@ -16,6 +16,15 @@ def get_plant_names():
     with open(consts.PLANT_STATS_FILE_PATH, "r") as plant_stats_file:
         plant_stats_dict = json.load(plant_stats_file)
     return plant_stats_dict.keys()
+
+def get_zombies_to_be_spawned(level_data: dict) -> deque:
+    zombies_to_be_spawned = deque()
+    for key, value in level_data.items():
+            if not key.isnumeric():
+                continue
+            # assert key < prev_key
+            zombies_to_be_spawned.append((key, value))
+    return zombies_to_be_spawned
 
 def printable_grid(level: "Level"):
     height = level.lanes

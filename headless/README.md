@@ -18,3 +18,5 @@
 9. Make JSON reading happen once on import instead of each time an object is created (I/O overhead)
 10. Change zombie spawning mechanism (List instead of dict)
 10.1. Implement victory (no more zombies to spawn, no more zombies on the map)
+11. Let plants shoot only if there's a zombie in the lane (or in range..?)
+12. Add lawnmower to bullets

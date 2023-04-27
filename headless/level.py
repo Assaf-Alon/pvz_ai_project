@@ -41,6 +41,7 @@ class Level():
         self.done = False
         self.win = False
         self.suns = 50 # Bank value
+        
         # Object data
         self.replant_queue = {plant_name: 0 for plant_name in utils.get_plant_names()}
         self.plant_costs = utils.get_plant_costs()
@@ -51,6 +52,7 @@ class Level():
         self.lawnmowers = [True] * lanes
         self.zombie_grid = [[[] for _ in range(columns)] for _ in range(lanes)] # type: list[list[list[zombie.Zombie]]]
         self.plant_grid = [[None for _ in range(columns)] for _ in range(lanes)] # type: list[list[plant.Plant]]
+        
         # Internal data
         self.sun_value = 25
         self.last_sun_generated_frame = 0
@@ -60,6 +62,7 @@ class Level():
             pass
         else:
             self.level_data = level_data # type: dict
+            self.zombies_to_be_spawned = utils.get_zombies_to_be_spawned(level_data)
 
     def assign_zombie_damage(self):
         for zombie in self.zombies:
@@ -82,9 +85,14 @@ class Level():
         for example:
         600: [[normal, 0], [conehead, 3], [buckethead, 5]]
         """
+        if not self.zombies_to_be_spawned:
+            return
+        
         curr_sec = str(self.frame // self.fps)
-        if self.frame % self.fps == 0 and curr_sec in self.level_data.keys():
-            for zombie_type, lane in self.level_data[curr_sec]:
+        next_spawn = self.zombies_to_be_spawned[0][0]
+        if self.frame % self.fps == 0 and next_spawn == curr_sec:
+            print(self.zombies_to_be_spawned)
+            for zombie_type, lane in self.zombies_to_be_spawned[0][1]:
                 new_zombie = zombie.Zombie(zombie_type)
                 new_zombie.lane = lane
                 new_zombie.column = self.columns - 1
@@ -92,6 +100,7 @@ class Level():
                 # self.zombies[new_zombie] = new_zombie.pos
                 self.zombies.append(new_zombie)
                 self.zombie_grid[lane][self.columns - 1].append(new_zombie)
+            self.zombies_to_be_spawned.popleft()
 
     def spawn_suns(self):
         if (self.frame - self.last_sun_generated_frame) > self.sun_interval * self.fps:
