@@ -29,7 +29,7 @@ if __name__ == "__main__":
         print(f"frame num: {env.frame}")
         print(f"suns: {env.suns}")
         for zombie in env.zombies:
-            print(f"Zombie: {zombie.pos} , HP={zombie.hp}")
+            print(f"Zombie: {zombie.lane, zombie.column} , HP={zombie.hp}")
         state = env.construct_state()
         for lane in state[2]:
             for square in lane:

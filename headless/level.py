@@ -84,13 +84,14 @@ class Level():
         """
         curr_sec = str(self.frame // self.fps)
         if self.frame % self.fps == 0 and curr_sec in self.level_data.keys():
-            for zombie_type, x in self.level_data[curr_sec]:
+            for zombie_type, lane in self.level_data[curr_sec]:
                 new_zombie = zombie.Zombie(zombie_type)
-                new_zombie.pos = [x, self.columns - 1]
+                new_zombie.lane = lane
+                new_zombie.column = self.columns - 1
                 new_zombie.last_moved = self.frame
                 # self.zombies[new_zombie] = new_zombie.pos
                 self.zombies.append(new_zombie)
-                self.zombie_grid[x][self.columns - 1].append(new_zombie)
+                self.zombie_grid[lane][self.columns - 1].append(new_zombie)
 
     def spawn_suns(self):
         if (self.frame - self.last_sun_generated_frame) > self.sun_interval * self.fps:
@@ -158,8 +159,7 @@ class Level():
             lane, column = plant.lane, plant.column
             grid[lane][column].append(plant.__repr__())
         for zombie in self.zombies:
-            lane, column = zombie.pos
-            grid[lane][column].append(zombie.__repr__())
+            grid[zombie.lane][zombie.column].append(zombie.__repr__())
         state_tuple = (self.suns, self.lawnmowers, grid)
         return state_tuple
 
