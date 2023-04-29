@@ -19,7 +19,7 @@ LANES = 5
 COLUMNS = 10
 FPS = 10
 MAX_FRAME = 700
-
+TEST_SLOW = False
 
 
 
@@ -49,6 +49,8 @@ def play_game(env: level.Level, action_list):
         env.step(action)
         grid = printable_grid(env)
         pprint(grid)
+        if TEST_SLOW:
+            time.sleep(0.03)
 
 def compare_results(expected_file, actual_file):
     with open(expected_file) as file:
@@ -79,7 +81,6 @@ class TestLevel1(unittest.TestCase):
         ]
         
         play_game(env, action_list)
-        
             
         passed = compare_results(EXPECTED_FILE, ACTUAL_FILE)
         self.assertTrue(passed)
@@ -95,7 +96,6 @@ class TestLevel1(unittest.TestCase):
         ]
         
         play_game(env, action_list)
-        
             
         passed = compare_results(EXPECTED_FILE, ACTUAL_FILE)
         self.assertTrue(passed)

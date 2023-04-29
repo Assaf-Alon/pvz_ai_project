@@ -16,7 +16,7 @@ class Bullet():
     This class represents a bullet fired by a plant.
     It has a single action: attack_or_move, which tries to hit a zombie if it's in the same square, or moves otherwise.
     """
-    def __init__(self, lane: int, column: int, damage, move_interval = 0.2, pierce = 0):
+    def __init__(self, lane: int, column: int, damage, move_interval = 0.2, pierce = False):
         # TODO: Set a default move_interval, I think they're all the same?
         self.lane = lane
         self.column = column
@@ -35,10 +35,6 @@ class Bullet():
             logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was killed.")
             level.zombies.remove(target_zombie)
             level.zombie_grid[self.lane][self.column].remove(target_zombie)
-            if not level.zombies_to_be_spawned and not level.zombies:
-                level.done = True
-                level.win = True
-                logging.debug(f"[{level.frame}] You've won!")
         # TODO: Piercing???
         if not self.pierce:
             level.bullets.remove(self) # remove self from bullet list after hitting zomble
@@ -68,11 +64,11 @@ class Bullet():
             
 
 class LawnMower(Bullet):
-    def __init__(self, lane: int, column = -1, damage=10000, move_interval = 20, pierce = 1):
+    def __init__(self, lane: int, column = -1, damage=10000, move_interval = 20, pierce = True):
         super().__init__(lane, column, damage, pierce=pierce)
 
 class Pea(Bullet):
-    def __init__(self, lane: int, column: int, damage, move_interval = 20, pierce = 0):
+    def __init__(self, lane: int, column: int, damage, move_interval = 20, pierce = False):
         super().__init__(lane, column, damage)
     
     # def attack(self, level: "Level"): # TODO - consider merging this back to attack_or_move for better performance

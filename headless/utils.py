@@ -1,4 +1,5 @@
 import json
+import sys
 import logging
 from collections import deque
 import consts
@@ -18,13 +19,12 @@ def get_plant_names():
         plant_stats_dict = json.load(plant_stats_file)
     return plant_stats_dict.keys()
 
-def get_zombies_to_be_spawned(level_data: dict) -> deque:
-    zombies_to_be_spawned = deque()
+def get_zombies_to_be_spawned(level_data: dict) -> dict:
+    zombies_to_be_spawned = dict()
     for key, value in level_data.items():
-            if not key.isnumeric():
-                continue
-            # assert key < prev_key
-            zombies_to_be_spawned.append((key, value))
+        if not key.isnumeric():
+            continue
+        zombies_to_be_spawned[key] = value
     return zombies_to_be_spawned
 
 def configure_logging(logfile: str):

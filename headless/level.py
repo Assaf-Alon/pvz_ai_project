@@ -89,10 +89,9 @@ class Level():
             return
         
         curr_sec = str(self.frame // self.fps)
-        next_spawn = self.zombies_to_be_spawned[0][0]
-        if self.frame % self.fps == 0 and next_spawn == curr_sec:
-            print(self.zombies_to_be_spawned)
-            for zombie_type, lane in self.zombies_to_be_spawned[0][1]:
+        if self.frame % self.fps == 0 and self.zombies_to_be_spawned.get(curr_sec):
+            for zombie_type, lane in self.zombies_to_be_spawned[curr_sec]:
+                logging.debug(f"[{self.frame}] Zombie being spawned at lane {lane}")
                 new_zombie = zombie.Zombie(zombie_type)
                 new_zombie.lane = lane
                 new_zombie.column = self.columns - 1
@@ -100,7 +99,7 @@ class Level():
                 # self.zombies[new_zombie] = new_zombie.pos
                 self.zombies.append(new_zombie)
                 self.zombie_grid[lane][self.columns - 1].append(new_zombie)
-            self.zombies_to_be_spawned.popleft()
+            del self.zombies_to_be_spawned[curr_sec]
 
     def spawn_suns(self):
         if (self.frame - self.last_sun_generated_frame) > self.sun_interval * self.fps:
@@ -148,6 +147,8 @@ class Level():
             return
         # new_plant = plant.name_to_class[plant_name](x, y) # type: plant.Plant
         new_plant = plant.create_plant_instance(plant_name, x, y) # selector for correct type of subclass, check if this can be done more cleanly
+        new_plant.last_attack = self.frame
+        new_plant.last_sun_generated = self.frame
         self.plants.append(new_plant)
         self.plant_grid[x][y] = new_plant
         self.suns -= new_plant.cost
@@ -164,7 +165,14 @@ class Level():
         if action[0] == "plant":
             _, plant_name, x, y = action
             self.plant(plant_name, x, y)
-
+    
+    def check_victory(self):
+        if not self.zombies_to_be_spawned and not self.zombies:
+            self.done = True
+            self.win = True
+            logging.debug(f"[{self.frame}] You've won!")
+            
+        
     def construct_state(self):
         grid = [[[] for _ in range(self.columns)] for _ in range(self.lanes)]
         for plant in self.plants:
@@ -194,6 +202,7 @@ class Level():
         self.spawn_zombies()
         self.spawn_suns()
         self.do_player_action(action)
+        self.check_victory()
         return self.construct_state()
         # TODO: return state
 
