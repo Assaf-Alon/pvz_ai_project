@@ -37,6 +37,7 @@ class Zombie():
         self.type = zombie_type
         self.status = None
         self.__dict__.update(zombie_stats[zombie_type])
+        self.reached_house = False # flag that marks zombie as having reached the lawnmower column
 
 
     def attack(self, level: "Level"):
@@ -68,15 +69,16 @@ class Zombie():
         logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column + 1} moved to {self.lane, self.column}.")
         
         if self.column < 0:
-            level.zombies.remove(self)
-            if level.lawnmowers[self.lane] == True:
-                logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} triggered a lawnmower.")
-                level.lawnmowers[self.lane] = False
-                level.activate_lawnmower(self.lane)
-            else:
-                level.done = True
-                level.win = False
-                logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} has killed you!")
+            self.reached_house = True
+            # level.zombies.remove(self)
+            # if level.lawnmower_column[self.lane] == True:
+            #     logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} triggered a lawnmower.")
+            #     level.lawnmower_column[self.lane] = False
+            #     level.activate_lawnmower(self.lane)
+            # else:
+            #     level.done = True
+            #     level.win = False
+            #     logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} has killed you!")
         else:
             level.zombie_grid[self.lane][self.column].append(self)
         

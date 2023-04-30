@@ -1,5 +1,6 @@
 import json
 from enum import Enum
+from itertools import product
 
 import logging
 import consts
@@ -28,26 +29,33 @@ class Bullet():
     def attack(self, level: "Level"):
         bullet_type = type(self).__name__
         logging.debug(f"[{level.frame}] {bullet_type} in {self.lane, self.column} attacked.")
-        target_zombie = level.zombie_grid[self.lane][self.column][0] # type: Zombie
-        target_zombie.hp -= self.damage
-        logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was damaged. HP: {target_zombie.hp}.")
-        if target_zombie.hp <= 0: # delete zomble from existence
-            logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was killed.")
-            level.zombies.remove(target_zombie)
-            level.zombie_grid[self.lane][self.column].remove(target_zombie)
-        # TODO: Piercing???
-        if not self.pierce:
+        if self.pierce: # Attack all zombies in the grid square
+            for target_zombie in level.zombie_grid[self.lane][self.column][:]: # Shallow copy to remove items while iterating
+                target_zombie.hp -= self.damage
+                logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was damaged. HP: {target_zombie.hp}.")
+                if target_zombie.hp <= 0:
+                    logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was killed.")
+                    level.zombies.remove(target_zombie)
+                    level.zombie_grid[self.lane][self.column].remove(target_zombie)
+        else: # Attack first zombie in grid square, then delete self
+            target_zombie = level.zombie_grid[self.lane][self.column][0] # type: Zombie
+            target_zombie.hp -= self.damage
+            logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was damaged. HP: {target_zombie.hp}.")
+            if target_zombie.hp <= 0: # delete zomble from existence
+                logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was killed.")
+                level.zombies.remove(target_zombie)
+                level.zombie_grid[self.lane][self.column].remove(target_zombie)
             level.bullets.remove(self) # remove self from bullet list after hitting zomble
             logging.debug(f"[{level.frame}] {bullet_type} in {self.lane, self.column} removed.")
-            
-    
+
+
     def move(self, level: "Level"):
         if (level.frame - self.last_moved) < self.move_interval * level.fps:
             return
         bullet_type = type(self).__name__
         logging.debug(f"[{level.frame}] {bullet_type} in {self.lane, self.column} moved to {self.lane, self.column + 1}.")
         self.last_moved = level.frame
-        self.column += 1 # TODO: Make sure we need the y coord, and not the x coord
+        self.column += 1
         if self.column >= level.columns: # bullet flew off the map
             level.bullets.remove(self)
             logging.debug(f"[{level.frame}] {bullet_type} in {self.lane, self.column} removed.")
@@ -63,8 +71,8 @@ class Bullet():
             self.move(level)
             
 
-class LawnMower(Bullet):
-    def __init__(self, lane: int, column = -1, damage=10000, move_interval = 20, pierce = True):
+class Lawnmower(Bullet):
+    def __init__(self, lane: int, column = 0, damage=9999, move_interval = 20, pierce = True):
         super().__init__(lane, column, damage, pierce=pierce)
 
 class Pea(Bullet):
@@ -79,23 +87,21 @@ class Pea(Bullet):
 
 
 class Plant():
-    def __init__(self, plant_type, lane, column, frame):
+    def __init__(self, lane, column):
+        """
+        The following stats are shared between all plant types:
+        lane, column, cost, hp, type (TODO: remove type and use self.__name__)
+        """
         self.lane = lane
         self.column = column
         self.cost = None
         self.hp = None
-        self.damage = None
-        self.attack_interval = None
-        self.last_attack = frame
-        self.type = plant_type
-        self.status = None
+        self.recharge = 0
+        # self.type = plant_type
 
-    def attack(self, level: "Level"):
-        # Virtual function
-        pass
-
-    def generate_sun(self, level: "Level"):
+    def do_action(self, level: "Level"):
         # Virtual func
+        # Represents attacking, generating a sun, exploding, doing nothing, etc.
         pass
 
     def __repr__(self):
@@ -111,13 +117,12 @@ class Plant():
         """
         repr_dict = {
             "type": "plant",
-            "subtype": self.type,
+            "subtype": type(self).__name__,
             "hp": self.hp,
-            "status": self.status
         }
         return repr_dict    
 
-    def load_stats(self, plant_type):
+    def load_stats(self):
         """
         Plant stats json should be a dict with the following fields:
         "attack_interval": number of frames to attack
@@ -126,18 +131,109 @@ class Plant():
         "cost": how many suns does this plant cost
         # TODO: "refund": how many suns when selling plant
         """
-        self.__dict__.update(plant_stats[plant_type])
+        self.__dict__.update(plant_stats[type(self).__name__]) # lmao this is evil
         
+class ShooterPlant(Plant):
+    """
+    Virtual class representing a plant that attacks by shooting
+    Do not create instances of this class!
+    """
+    def __init__(self, lane, column, frame):
+        super().__init__(lane, column)
+        self.damage = 0
+        self.attack_interval = 0
+        self.last_attack = frame
+        self.bullet_type = None # Class of bullet
+
+    def shoot(self, level: "Level"):
+        """
+        Basic shooter type, some plants will need to override this
+        """
+        if (level.frame - self.last_attack) < self.attack_interval * level.fps:
+            return
+
+        self.last_attack = level.frame
+        bullet = self.bullet_type(self.lane, self.column, self.damage, level.frame)
+        level.bullets.append(bullet)
+        logging.debug(f"[{level.frame}] {self.bullet_type.__name__} generated by {type(self).__name__} in {self.lane, self.column}.")
+
+    def do_action(self, level: "Level"):
+        self.shoot(level)
 
 
-class Sunflower(Plant):
-    def __init__(self, plant_type, lane, column, frame):
-        super().__init__(plant_type, lane, column, frame)
-        self.last_sun_generated = frame
-        self.sun_interval = None
-        self.sun_value = None
-        self.load_stats("sunflower")
+class MinePlant(Plant):
+    def __init__(self, lane, column, frame):
+        super().__init__(lane, column)
+        self.attack = 0
+        self.frame_planted = frame
+        self.arming_interval = 0
+        self.armed = False # Ready to boom?
+        self.trigger_type = "zombie" # either zombie (when zombie gets close enough) or timer type triggers
+        self.trigger_pos = [[0, 0], [0, 1]] # adds to position define which squares trigger explosion
+        self.aoe = {
+            "up": 0,
+            "down": 0,
+            "left": 0,
+            "right": 0
+        } # how many squares in each direction to damage
     
+    def explode(self, level: "Level"):
+        # fuck this dont make it generic
+        if not self.armed:
+            return
+        
+        if self.trigger_type == "zombie":
+            if not any([level.zombie_grid[self.lane + pos[0][self.column + pos[1]]] for pos in self.trigger_pos]):
+                return
+
+        attacked_squares = []
+        squares = list(product(range(level.lanes), range(level.columns)))
+        for square in squares: # TODO: figure out if there's a more efficient way to do this.
+            # remove square if lane is out of range
+            if square[0] > self.lane + self.aoe['down'] or square[0] < self.lane - self.aoe['up']:
+                return
+            # remove square if column is out of range
+            if square[1] > self.column + self.aoe['right'] or square[1] < self.column - self.aoe['left']:
+                return
+            attacked_squares += square
+        for square in attacked_squares:
+            lane, column = square
+            for target_zombie in level.zombie_grid[lane][column][:]: # shallow copy to remove items while iterating
+                target_zombie.hp -= self.attack
+                if target_zombie.hp <= 0:
+                    level.zombies.remove(target_zombie)
+                    level.zombie_grid[lane][column].remove(target_zombie)
+        
+        level.plants.remove(self)
+        level.plant_grid[self.lane][self.column] = None
+
+    def arm(self, level: "Level"):
+        if (level.frame - self.frame_planted) < self.arming_interval * level.fps:
+            return
+        
+        self.armed = True
+
+    def do_action(self, level: "Level"):
+        self.arm(level)
+        self.explode(level)
+
+
+class WallPlant(Plant):
+    def __init__(self, lane, column, frame):
+        super().__init__(lane, column)
+        # No additional stats for you
+    
+    def do_action(self, level: "Level"):
+        # Doesn't actually do anything
+        pass
+
+class SunPlant(Plant):
+    def __init__(self, lane, column, frame):
+        super().__init__(lane, column)
+        self.last_sun_generated = frame
+        self.sun_interval = 0
+        self.sun_value = 0
+
     def generate_sun(self, level: "Level"):
         if (level.frame - self.last_sun_generated) < self.sun_interval * level.fps:
             return
@@ -148,26 +244,30 @@ class Sunflower(Plant):
             level.active_suns.append([self.lane, self.column]) # place sun object on field
         logging.debug(f"[{level.frame}] Sun generated by Sunflower in {self.lane, self.column}. Total: {level.suns}.")
 
-class Peashooter(Plant):
+    def do_action(self, level: "Level"):
+        self.generate_sun(level)
+
+
+class Sunflower(SunPlant):
+    def __init__(self, lane, column, frame):
+        super().__init__(lane, column, frame)
+        self.load_stats("sunflower")
+
+
+class Peashooter(ShooterPlant):
     def __init__(self, plant_type, lane, column, frame):
         super().__init__(plant_type, lane, column, frame)
         self.load_stats("peashooter")
-    
-    def attack(self, level: "Level"):
-        if (level.frame - self.last_attack) < self.attack_interval * level.fps:
-            return
-        self.last_attack = level.frame
-        pea = Pea(self.lane, self.column, self.damage)
-        pea.last_moved = level.frame
-        level.bullets.append(pea)
-        logging.debug(f"[{level.frame}] Pea generated by Peashooter in {self.lane, self.column}.")
+        self.bullet_type = Pea
+
 
 class PotatoMine(Plant):
     def __init__(self):
         super(self, Plant).__init__()
         self.load_stats()
         # Stats
-    
+
+
 class CherryBomb(Plant):
     pass
 
@@ -200,7 +300,6 @@ class Spikeweed(Plant):
 
 class Squash(Plant):
     pass
-
 
 class SunShroom(Plant):
     pass
