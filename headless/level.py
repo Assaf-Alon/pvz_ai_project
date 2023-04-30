@@ -11,10 +11,6 @@ import utils
 import zombie
 import plant
 
-if consts.LOGS_TO_STDERR:
-    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG, format=consts.LOG_FILE_NAME)
-else:
-    logging.basicConfig(level=logging.DEBUG, filename=consts.LOG_FILE_NAME, format=consts.LOG_FORMAT)
 
 
 class Level():
@@ -32,7 +28,7 @@ class Level():
 
     TODO: Carefully consider the right Data structures to use for efficient management of objects in the environment. Check out dicts - O(1) removal
     """
-    def __init__(self, columns, lanes, level_data: dict, random = False, fps = 30):
+    def __init__(self, columns, lanes, level_data: dict, random = False, fps = 30, logfile=consts.LOG_FILE_NAME):
         # Technical data:
         self.fps = fps
         self.frame = 0
@@ -41,6 +37,7 @@ class Level():
         self.done = False
         self.win = False
         self.suns = 50 # Bank value
+        
         # Object data
         self.replant_queue = {plant_name: 0 for plant_name in utils.get_plant_names()}
         self.plant_costs = utils.get_plant_costs()
@@ -51,6 +48,7 @@ class Level():
         self.lawnmowers = [True] * lanes
         self.zombie_grid = [[[] for _ in range(columns)] for _ in range(lanes)] # type: list[list[list[zombie.Zombie]]]
         self.plant_grid = [[None for _ in range(columns)] for _ in range(lanes)] # type: list[list[plant.Plant]]
+        
         # Internal data
         self.sun_value = 25
         self.last_sun_generated_frame = 0
@@ -60,7 +58,10 @@ class Level():
             pass
         else:
             self.level_data = level_data # type: dict
+            self.zombies_to_be_spawned = utils.get_zombies_to_be_spawned(level_data)
 
+        utils.configure_logging(logfile)
+        
     def assign_zombie_damage(self):
         for zombie in self.zombies:
             zombie.attack(self)
@@ -68,7 +69,9 @@ class Level():
     def assign_plant_damage(self):
         for plant in self.plants: # All plants try to shoot or attack
             plant.attack(self)
-        for bullet in self.bullets: # All bullets either hit a target or move. New bullet can hit target on same frame as it's created
+        
+        # TODO - [note] We're copying the bullets array here because we're removing objects from it while iterating
+        for bullet in self.bullets[:]: # All bullets either hit a target or move. New bullet can hit target on same frame as it's created
             bullet.attack_or_move(self)
 
     def move_zombies(self):
@@ -78,19 +81,25 @@ class Level():
     def spawn_zombies(self):
         """
         level_data should be a dict of the following format:
-        "frame number": [[zombie_type, zombie_x], [zombie_type, zombie_x]]
+        "frame number": [[zombie_type, zombie_lane], [zombie_type, zombie_lane]]
         for example:
         600: [[normal, 0], [conehead, 3], [buckethead, 5]]
         """
+        if not self.zombies_to_be_spawned:
+            return
+        
         curr_sec = str(self.frame // self.fps)
-        if self.frame % self.fps == 0 and curr_sec in self.level_data.keys():
-            for zombie_type, x in self.level_data[curr_sec]:
+        if self.frame % self.fps == 0 and self.zombies_to_be_spawned.get(curr_sec):
+            for zombie_type, lane in self.zombies_to_be_spawned[curr_sec]:
+                logging.debug(f"[{self.frame}] Zombie being spawned at lane {lane}")
                 new_zombie = zombie.Zombie(zombie_type)
-                new_zombie.pos = [x, self.columns - 1]
+                new_zombie.lane = lane
+                new_zombie.column = self.columns - 1
                 new_zombie.last_moved = self.frame
                 # self.zombies[new_zombie] = new_zombie.pos
                 self.zombies.append(new_zombie)
-                self.zombie_grid[x][self.columns - 1].append(new_zombie)
+                self.zombie_grid[lane][self.columns - 1].append(new_zombie)
+            self.zombies_to_be_spawned.pop(curr_sec)
 
     def spawn_suns(self):
         if (self.frame - self.last_sun_generated_frame) > self.sun_interval * self.fps:
@@ -103,14 +112,17 @@ class Level():
         for plant in self.plants:
             plant.generate_sun(self)
 
-    def _is_plant_legal(self, plant_name: str, x, y):
+    def activate_lawnmower(self, lane: int):
+        self.bullets.append(plant.LawnMower(lane))
+    
+    def _is_plant_legal(self, plant_name: str, lane, column):
         # Are the provided coords within the map?
-        if x < 0 or x >= self.lanes or y < 0 or y >= self.columns:
+        if lane < 0 or lane >= self.lanes or column < 0 or column >= self.columns:
             return False
         # TODO:
         # was this plant chosen for this run?
         # Location is free
-        if self.plant_grid[x][y]:
+        if self.plant_grid[lane][column]:
             return False
         # There's no need to recharge
         if self.replant_queue[plant_name] > 0:
@@ -125,41 +137,47 @@ class Level():
             return True
         
         if action[0] == "plant":
-            _, plant_name, x, y = action
-            return self._is_plant_legal(plant_name, x, y)
+            _, plant_name, lane, column = action
+            return self._is_plant_legal(plant_name, lane, column)
 
         return False
         
-    def plant(self, plant_name: str, x, y):
-        if not self._is_plant_legal(plant_name, x, y):
+    def plant(self, plant_name: str, lane, column):
+        if not self._is_plant_legal(plant_name, lane, column):
             return
-        # new_plant = plant.name_to_class[plant_name](x, y) # type: plant.Plant
-        new_plant = plant.create_plant_instance(plant_name, x, y) # selector for correct type of subclass, check if this can be done more cleanly
+        # new_plant = plant.name_to_class[plant_name](lane, column) # type: plant.Plant
+        new_plant = plant.create_plant_instance(plant_name, lane, column, self.frame) # selector for correct type of subclass, check if this can be done more cleanly
         self.plants.append(new_plant)
-        self.plant_grid[x][y] = new_plant
+        self.plant_grid[lane][column] = new_plant
         self.suns -= new_plant.cost
-        logging.debug(f"[{self.frame}] Planted {plant_name} in {x, y}. Total: {self.suns}.")
+        logging.debug(f"[{self.frame}] Planted {plant_name} in {lane, column}. Total: {self.suns}.")
         
         
     def do_player_action(self, action: list):
         if not action:
             return
         # to plant a new plant, action must be of the form:
-        # plant <plantname> <x coord> <y coord>
+        # plant <plantname> <lane coord> <column coord>
         # Example: ["plant", "peashooter", 2, 5]
-        # Note! x, y coords must be integers
+        # Note! lane, column coords must be integers
         if action[0] == "plant":
-            _, plant_name, x, y = action
-            self.plant(plant_name, x, y)
-
+            _, plant_name, lane, column = action
+            self.plant(plant_name, lane, column)
+    
+    def check_victory(self):
+        if not self.done and not self.zombies_to_be_spawned and not self.zombies:
+            self.done = True
+            self.win = True
+            logging.debug(f"[{self.frame}] You've won!")
+            
+        
     def construct_state(self):
         grid = [[[] for _ in range(self.columns)] for _ in range(self.lanes)]
         for plant in self.plants:
             lane, column = plant.lane, plant.column
             grid[lane][column].append(plant.__repr__())
         for zombie in self.zombies:
-            lane, column = zombie.pos
-            grid[lane][column].append(zombie.__repr__())
+            grid[zombie.lane][zombie.column].append(zombie.__repr__())
         state_tuple = (self.suns, self.lawnmowers, grid)
         return state_tuple
 
@@ -182,6 +200,7 @@ class Level():
         self.spawn_zombies()
         self.spawn_suns()
         self.do_player_action(action)
+        self.check_victory()
         return self.construct_state()
         # TODO: return state
 

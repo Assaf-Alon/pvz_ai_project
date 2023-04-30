@@ -1,6 +1,7 @@
 import json
 from enum import Enum
 from typing import List
+import logging
 
 import consts
 if consts.TYPECHECK:
@@ -24,7 +25,9 @@ class Zombie():
     TODO: Check if Subclassing is needed or if can get away with stats (newspaper zombie probably fucks this up)
     """
     def __init__(self, zombie_type):
-        self.pos = consts.OUT_OF_FIELD
+        # self.pos = consts.OUT_OF_FIELD
+        self.lane = None
+        self.column = None
         self.move_interval = None
         self.last_moved = 0
         self.attack_interval = None
@@ -39,15 +42,18 @@ class Zombie():
     def attack(self, level: "Level"):
         if (level.frame - self.last_attack) < self.attack_interval * level.fps:
             return
-        x, y = self.pos
-        target_plant = level.plant_grid[x][y] # type: Plant
+        target_plant = level.plant_grid[self.lane][self.column] # type: Plant
         if not target_plant: # Might be None if there's no plant there
             self.last_attack = level.frame
             return
         target_plant.hp -= self.damage
+        logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} Attacked.")
+        logging.debug(f"[{level.frame}] {type(target_plant).__name__} in {self.lane, self.column} was damaged. HP: {target_plant.hp}.")
         if target_plant.hp <= 0:
             level.plants.remove(target_plant)
-            level.plant_grid[x][y] = None
+            level.plant_grid[self.lane][self.column] = None
+            logging.debug(f"[{level.frame}] {type(target_plant).__name__} in {self.lane, self.column} was killed.")
+            
 
     def move(self, level: "Level"):
         if (level.frame - self.last_moved) < self.move_interval * level.fps:
@@ -56,18 +62,23 @@ class Zombie():
         #     self.last_moved = level.frame
         #     return
         self.last_moved = level.frame
-        x, y = self.pos
-        level.zombie_grid[x][y].remove(self)
-        self.pos[1] -= 1
-        if self.pos[1] < 0:
+        # self.last_attack = level.frame # TODO - consider this, to let the zombie prepare for the first attack 
+        level.zombie_grid[self.lane][self.column].remove(self)
+        self.column -= 1
+        logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column + 1} moved to {self.lane, self.column}.")
+        
+        if self.column < 0:
             level.zombies.remove(self)
-            if level.lawnmowers[x] == True:
-                level.lawnmowers[x] = False
+            if level.lawnmowers[self.lane] == True:
+                logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} triggered a lawnmower.")
+                level.lawnmowers[self.lane] = False
+                level.activate_lawnmower(self.lane)
             else:
                 level.done = True
                 level.win = False
+                logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} has killed you!")
         else:
-            level.zombie_grid[x][y - 1].append(self)
+            level.zombie_grid[self.lane][self.column].append(self)
         
     def __repr__(self):
         """
