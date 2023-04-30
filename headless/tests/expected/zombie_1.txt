@@ -1,0 +1,18 @@
+[100] Zombie being spawned at lane 1
+[101] Sun autospawned. Total: 75.
+[147] Zombie in (1, 9) moved to (1, 8).
+[194] Zombie in (1, 8) moved to (1, 7).
+[202] Sun autospawned. Total: 100.
+[241] Zombie in (1, 7) moved to (1, 6).
+[288] Zombie in (1, 6) moved to (1, 5).
+[303] Sun autospawned. Total: 125.
+[335] Zombie in (1, 5) moved to (1, 4).
+[382] Zombie in (1, 4) moved to (1, 3).
+[404] Sun autospawned. Total: 150.
+[429] Zombie in (1, 3) moved to (1, 2).
+[476] Zombie in (1, 2) moved to (1, 1).
+[505] Sun autospawned. Total: 175.
+[523] Zombie in (1, 1) moved to (1, 0).
+[570] Zombie in (1, 0) moved to (1, -1).
+[570] Zombie in (1, -1) triggered a lawnmower.
+[570] You've won!

@@ -48,10 +48,11 @@ class Zombie():
             return
         target_plant.hp -= self.damage
         logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} Attacked.")
+        logging.debug(f"[{level.frame}] {type(target_plant).__name__} in {self.lane, self.column} was damaged. HP: {target_plant.hp}.")
         if target_plant.hp <= 0:
             level.plants.remove(target_plant)
             level.plant_grid[self.lane][self.column] = None
-            logging.debug(f"[{level.frame}] Plant in {self.lane, self.column} was killed.")
+            logging.debug(f"[{level.frame}] {type(target_plant).__name__} in {self.lane, self.column} was killed.")
             
 
     def move(self, level: "Level"):
