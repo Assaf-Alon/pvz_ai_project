@@ -18,7 +18,7 @@ from utils import printable_grid
 LANES = 5
 COLUMNS = 10
 FPS = 10
-MAX_FRAME = 700
+MAX_FRAME = 1200
 TEST_SLOW = False
 
 
@@ -100,6 +100,20 @@ class TestLevel1(unittest.TestCase):
         passed = compare_results(EXPECTED_FILE, ACTUAL_FILE)
         self.assertTrue(passed)
     
+    def test_level3(self):
+        env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON = setup_test("3")
+        
+        action_list = [
+            ["plant", "sunflower", 0, 0],
+            ["plant", "sunflower", 1, 0],
+            ["plant", "peashooter", 1, 1],
+            ["plant", "peashooter", 2, 1]
+        ]
+        
+        play_game(env, action_list)
+            
+        passed = compare_results(EXPECTED_FILE, ACTUAL_FILE)
+        self.assertTrue(passed)
 
     
 # if __name__ == "__main__":

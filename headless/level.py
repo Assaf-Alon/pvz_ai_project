@@ -81,7 +81,7 @@ class Level():
     def spawn_zombies(self):
         """
         level_data should be a dict of the following format:
-        "frame number": [[zombie_type, zombie_x], [zombie_type, zombie_x]]
+        "frame number": [[zombie_type, zombie_lane], [zombie_type, zombie_lane]]
         for example:
         600: [[normal, 0], [conehead, 3], [buckethead, 5]]
         """
@@ -99,7 +99,7 @@ class Level():
                 # self.zombies[new_zombie] = new_zombie.pos
                 self.zombies.append(new_zombie)
                 self.zombie_grid[lane][self.columns - 1].append(new_zombie)
-            del self.zombies_to_be_spawned[curr_sec]
+            self.zombies_to_be_spawned.pop(curr_sec)
 
     def spawn_suns(self):
         if (self.frame - self.last_sun_generated_frame) > self.sun_interval * self.fps:
@@ -115,14 +115,14 @@ class Level():
     def activate_lawnmower(self, lane: int):
         self.bullets.append(plant.LawnMower(lane))
     
-    def _is_plant_legal(self, plant_name: str, x, y):
+    def _is_plant_legal(self, plant_name: str, lane, column):
         # Are the provided coords within the map?
-        if x < 0 or x >= self.lanes or y < 0 or y >= self.columns:
+        if lane < 0 or lane >= self.lanes or column < 0 or column >= self.columns:
             return False
         # TODO:
         # was this plant chosen for this run?
         # Location is free
-        if self.plant_grid[x][y]:
+        if self.plant_grid[lane][column]:
             return False
         # There's no need to recharge
         if self.replant_queue[plant_name] > 0:
@@ -137,37 +137,35 @@ class Level():
             return True
         
         if action[0] == "plant":
-            _, plant_name, x, y = action
-            return self._is_plant_legal(plant_name, x, y)
+            _, plant_name, lane, column = action
+            return self._is_plant_legal(plant_name, lane, column)
 
         return False
         
-    def plant(self, plant_name: str, x, y):
-        if not self._is_plant_legal(plant_name, x, y):
+    def plant(self, plant_name: str, lane, column):
+        if not self._is_plant_legal(plant_name, lane, column):
             return
-        # new_plant = plant.name_to_class[plant_name](x, y) # type: plant.Plant
-        new_plant = plant.create_plant_instance(plant_name, x, y) # selector for correct type of subclass, check if this can be done more cleanly
-        new_plant.last_attack = self.frame
-        new_plant.last_sun_generated = self.frame
+        # new_plant = plant.name_to_class[plant_name](lane, column) # type: plant.Plant
+        new_plant = plant.create_plant_instance(plant_name, lane, column, self.frame) # selector for correct type of subclass, check if this can be done more cleanly
         self.plants.append(new_plant)
-        self.plant_grid[x][y] = new_plant
+        self.plant_grid[lane][column] = new_plant
         self.suns -= new_plant.cost
-        logging.debug(f"[{self.frame}] Planted {plant_name} in {x, y}. Total: {self.suns}.")
+        logging.debug(f"[{self.frame}] Planted {plant_name} in {lane, column}. Total: {self.suns}.")
         
         
     def do_player_action(self, action: list):
         if not action:
             return
         # to plant a new plant, action must be of the form:
-        # plant <plantname> <x coord> <y coord>
+        # plant <plantname> <lane coord> <column coord>
         # Example: ["plant", "peashooter", 2, 5]
-        # Note! x, y coords must be integers
+        # Note! lane, column coords must be integers
         if action[0] == "plant":
-            _, plant_name, x, y = action
-            self.plant(plant_name, x, y)
+            _, plant_name, lane, column = action
+            self.plant(plant_name, lane, column)
     
     def check_victory(self):
-        if not self.zombies_to_be_spawned and not self.zombies:
+        if not self.done and not self.zombies_to_be_spawned and not self.zombies:
             self.done = True
             self.win = True
             logging.debug(f"[{self.frame}] You've won!")

@@ -1,7 +1,6 @@
 import json
 import sys
 import logging
-from collections import deque
 import consts
 if consts.TYPECHECK:
     from level import Level
