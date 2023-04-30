@@ -1,6 +1,8 @@
 import json
 import sys
 import logging
+import random
+
 import consts
 if consts.TYPECHECK:
     from level import Level
@@ -73,3 +75,22 @@ def printable_grid(level: "Level"):
         else:
             grid[x] = ["_"] + grid[x]
     return grid
+
+def generate_random_level_dict(lanes, difficulty="low"):
+    diff_mod = 0
+    if difficulty == "medium":
+        diff_mod = 2
+    if diff_mod == "hard":
+        diff_mod = 3
+    level_dict = {}
+    time = random.randrange(0, 5)
+    waves = 5
+    # while random.randrange(0, 15) > 5:
+    for _ in range(waves):
+        num_of_zombies = random.randrange(consts.num_of_zombies_low + diff_mod, consts.num_of_zombies_high + diff_mod)
+        level_dict[str(time)] = []
+        for _ in range(num_of_zombies):
+            zombie_spawn = [random.choices(consts.zombie_types, weights=consts.zombie_weights, k=1)[0], random.randrange(0, lanes)]
+            level_dict[str(time)].append(zombie_spawn)
+        time += random.randrange(consts.spawn_interval_low, consts.spawn_interval_high)
+    return level_dict

@@ -12,10 +12,10 @@ if __name__ == "__main__":
         level_data = json.load(level_data_file)
     env = level.Level(10, 5, level_data, False, fps=10)
     action_list = [
-        ["plant", "sunflower", 0, 0],
-        ["plant", "sunflower", 1, 0],
-        ["plant", "peashooter", 1, 1],
-        ["plant", "peashooter", 2, 1]
+        ["plant", "Sunflower", 0, 0],
+        ["plant", "Sunflower", 1, 0],
+        ["plant", "Peashooter", 1, 1],
+        ["plant", "Peashooter", 2, 1]
     ]
     while not env.done:
         action = []

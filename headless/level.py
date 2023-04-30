@@ -23,7 +23,7 @@ class Level():
 
     TODO: Carefully consider the right Data structures to use for efficient management of objects in the environment. Check out dicts - O(1) removal
     """
-    def __init__(self, columns, lanes, level_data: dict, chosen_plants: List[str], random = False, fps = 30, logfile=consts.LOG_FILE_NAME):
+    def __init__(self, columns, lanes, level_data: dict, chosen_plants: List[str], fps = 30, logfile=consts.LOG_FILE_NAME):
         # Technical data:
         self.fps = fps
         self.frame = 0
@@ -50,12 +50,8 @@ class Level():
         self.sun_value = 25
         self.last_sun_generated_frame = 0
         self.sun_interval = 10
-        if random:
-            #TODO: Randomize level
-            pass
-        else:
-            self.level_data = level_data # type: dict
-            self.zombies_to_be_spawned = utils.get_zombies_to_be_spawned(level_data)
+        self.level_data = level_data # type: dict
+        self.zombies_to_be_spawned = utils.get_zombies_to_be_spawned(level_data)
 
         utils.configure_logging(logfile)
         
@@ -109,9 +105,6 @@ class Level():
         for plant in self.plants:
             plant.generate_sun(self)
 
-    # def activate_lawnmower(self, lane: int):
-    #     self.bullets.append(plant.Lawnmower(lane))
-    
     def _is_plant_legal(self, plant_name: str, lane, column):
         # Are the provided coords within the map?
         if lane < 0 or lane >= self.lanes or column < 0 or column >= self.columns:
