@@ -163,6 +163,8 @@ class Level():
         for zombie in self.zombies[:]:
             if zombie.reached_house: # zombie reached last column and is trying to move into house
                 if self.lawnmowers[zombie.lane]: # if theres a lawnmower in it's lane
+                    self.lawnmowers[zombie.lane] = False
+                    logging.debug(f"[{self.frame}] Zombie in {zombie.lane, zombie.column} triggered a lawnmower.")
                     spawned_lawnmower = plant.Lawnmower(zombie.lane)
                     self.bullets.append(spawned_lawnmower)
                     spawned_lawnmower.attack(self)

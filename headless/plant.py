@@ -99,6 +99,9 @@ class Plant():
         self.recharge = 0
         # self.type = plant_type
 
+    def generate_sun(self, level: "Level"):  # TODO - I put it here so that the code will run. Not sure if I want to keep it
+        pass
+    
     def do_action(self, level: "Level"):
         # Virtual func
         # Represents attacking, generating a sun, exploding, doing nothing, etc.
@@ -255,8 +258,10 @@ class Sunflower(SunPlant):
 
 
 class Peashooter(ShooterPlant):
-    def __init__(self, plant_type, lane, column, frame):
-        super().__init__(plant_type, lane, column, frame)
+    def __init__(self, lane, column, frame):
+        super().__init__(lane, column, frame)
+    # def __init__(self, plant_type, lane, column, frame):   # TODO What is plant_type? ShooterPlant doesn't seem to expect it
+    #     super().__init__(plant_type, lane, column, frame)
         self.load_stats()
         self.bullet_type = Pea
 

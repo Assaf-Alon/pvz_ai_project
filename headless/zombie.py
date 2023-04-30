@@ -64,12 +64,10 @@ class Zombie():
         #     return
         self.last_moved = level.frame
         # self.last_attack = level.frame # TODO - consider this, to let the zombie prepare for the first attack 
-        level.zombie_grid[self.lane][self.column].remove(self)
-        self.column -= 1
-        logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column + 1} moved to {self.lane, self.column}.")
         
-        if self.column < 0:
+        if self.column <= 0:
             self.reached_house = True
+            logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} attempted entering the house.")
             # level.zombies.remove(self)
             # if level.lawnmower_column[self.lane] == True:
             #     logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} triggered a lawnmower.")
@@ -80,7 +78,10 @@ class Zombie():
             #     level.win = False
             #     logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} has killed you!")
         else:
+            level.zombie_grid[self.lane][self.column].remove(self)
+            self.column -= 1
             level.zombie_grid[self.lane][self.column].append(self)
+            logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column + 1} moved to {self.lane, self.column}.")
         
     def __repr__(self):
         """

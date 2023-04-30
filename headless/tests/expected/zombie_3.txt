@@ -153,137 +153,146 @@
 [547] Zombie in (2, 9) moved to (2, 8).
 [547] Zombie in (3, 9) moved to (3, 8).
 [547] Zombie in (4, 9) moved to (4, 8).
-[570] Zombie in (0, 0) moved to (0, -1).
-[570] Zombie in (0, -1) triggered a lawnmower.
-[570] Zombie in (2, 0) moved to (2, -1).
-[570] Zombie in (2, -1) triggered a lawnmower.
-[570] Zombie in (4, 0) moved to (4, -1).
-[570] Zombie in (4, -1) triggered a lawnmower.
-[571] LawnMower in (0, -1) moved to (0, 0).
-[571] LawnMower in (2, -1) moved to (2, 0).
-[571] LawnMower in (4, -1) moved to (4, 0).
-[571] Zombie in (1, 0) moved to (1, -1).
-[571] Zombie in (1, -1) triggered a lawnmower.
-[572] LawnMower in (1, -1) moved to (1, 0).
-[572] Zombie in (3, 0) moved to (3, -1).
-[572] Zombie in (3, -1) triggered a lawnmower.
-[573] LawnMower in (0, 0) moved to (0, 1).
-[573] LawnMower in (2, 0) moved to (2, 1).
-[573] LawnMower in (4, 0) moved to (4, 1).
-[573] LawnMower in (3, -1) moved to (3, 0).
-[574] LawnMower in (1, 0) moved to (1, 1).
-[575] LawnMower in (0, 1) moved to (0, 2).
-[575] LawnMower in (0, 2) attacked.
-[575] Zombie in (0, 2) was damaged. HP: -9819.
-[575] Zombie in (0, 2) was killed.
-[575] LawnMower in (2, 1) moved to (2, 2).
-[575] LawnMower in (2, 2) attacked.
-[575] Zombie in (2, 2) was damaged. HP: -9819.
-[575] Zombie in (2, 2) was killed.
-[575] LawnMower in (4, 1) moved to (4, 2).
-[575] LawnMower in (4, 2) attacked.
-[575] Zombie in (4, 2) was damaged. HP: -9819.
-[575] Zombie in (4, 2) was killed.
-[575] LawnMower in (3, 0) moved to (3, 1).
-[576] LawnMower in (1, 1) moved to (1, 2).
-[576] LawnMower in (1, 2) attacked.
-[576] Zombie in (1, 2) was damaged. HP: -9819.
-[576] Zombie in (1, 2) was killed.
-[576] Zombie in (3, 2) moved to (3, 1).
-[577] LawnMower in (0, 2) moved to (0, 3).
-[577] LawnMower in (2, 2) moved to (2, 3).
-[577] LawnMower in (4, 2) moved to (4, 3).
-[577] LawnMower in (3, 1) attacked.
-[577] Zombie in (3, 1) was damaged. HP: -9819.
-[577] Zombie in (3, 1) was killed.
-[577] LawnMower in (3, 1) moved to (3, 2).
-[578] LawnMower in (1, 2) moved to (1, 3).
-[579] LawnMower in (0, 3) moved to (0, 4).
-[579] LawnMower in (0, 4) attacked.
-[579] Zombie in (0, 4) was damaged. HP: -9819.
-[579] Zombie in (0, 4) was killed.
-[579] LawnMower in (2, 3) moved to (2, 4).
-[579] LawnMower in (2, 4) attacked.
-[579] Zombie in (2, 4) was damaged. HP: -9819.
-[579] Zombie in (2, 4) was killed.
-[579] LawnMower in (4, 3) moved to (4, 4).
-[579] LawnMower in (4, 4) attacked.
-[579] Zombie in (4, 4) was damaged. HP: -9819.
-[579] Zombie in (4, 4) was killed.
-[579] LawnMower in (3, 2) moved to (3, 3).
-[580] LawnMower in (1, 3) moved to (1, 4).
-[580] LawnMower in (1, 4) attacked.
-[580] Zombie in (1, 4) was damaged. HP: -9819.
-[580] Zombie in (1, 4) was killed.
-[581] LawnMower in (0, 4) moved to (0, 5).
-[581] LawnMower in (2, 4) moved to (2, 5).
-[581] LawnMower in (4, 4) moved to (4, 5).
-[581] LawnMower in (3, 3) moved to (3, 4).
-[581] LawnMower in (3, 4) attacked.
-[581] Zombie in (3, 4) was damaged. HP: -9819.
-[581] Zombie in (3, 4) was killed.
-[582] LawnMower in (1, 4) moved to (1, 5).
-[583] LawnMower in (0, 5) moved to (0, 6).
-[583] LawnMower in (0, 6) attacked.
-[583] Zombie in (0, 6) was damaged. HP: -9819.
-[583] Zombie in (0, 6) was killed.
-[583] LawnMower in (2, 5) moved to (2, 6).
-[583] LawnMower in (2, 6) attacked.
-[583] Zombie in (2, 6) was damaged. HP: -9819.
-[583] Zombie in (2, 6) was killed.
-[583] LawnMower in (4, 5) moved to (4, 6).
-[583] LawnMower in (4, 6) attacked.
-[583] Zombie in (4, 6) was damaged. HP: -9819.
-[583] Zombie in (4, 6) was killed.
-[583] LawnMower in (3, 4) moved to (3, 5).
-[584] LawnMower in (1, 5) moved to (1, 6).
-[584] LawnMower in (1, 6) attacked.
-[584] Zombie in (1, 6) was damaged. HP: -9819.
-[584] Zombie in (1, 6) was killed.
-[585] LawnMower in (0, 6) moved to (0, 7).
-[585] LawnMower in (2, 6) moved to (2, 7).
-[585] LawnMower in (4, 6) moved to (4, 7).
-[585] LawnMower in (3, 5) moved to (3, 6).
-[585] LawnMower in (3, 6) attacked.
-[585] Zombie in (3, 6) was damaged. HP: -9819.
-[585] Zombie in (3, 6) was killed.
-[586] LawnMower in (1, 6) moved to (1, 7).
-[587] LawnMower in (0, 7) moved to (0, 8).
-[587] LawnMower in (0, 8) attacked.
-[587] Zombie in (0, 8) was damaged. HP: -9819.
-[587] Zombie in (0, 8) was killed.
-[587] LawnMower in (2, 7) moved to (2, 8).
-[587] LawnMower in (2, 8) attacked.
-[587] Zombie in (2, 8) was damaged. HP: -9819.
-[587] Zombie in (2, 8) was killed.
-[587] LawnMower in (4, 7) moved to (4, 8).
-[587] LawnMower in (4, 8) attacked.
-[587] Zombie in (4, 8) was damaged. HP: -9819.
-[587] Zombie in (4, 8) was killed.
-[587] LawnMower in (3, 6) moved to (3, 7).
-[588] LawnMower in (1, 7) moved to (1, 8).
-[588] LawnMower in (1, 8) attacked.
-[588] Zombie in (1, 8) was damaged. HP: -9819.
-[588] Zombie in (1, 8) was killed.
-[589] LawnMower in (0, 8) moved to (0, 9).
-[589] LawnMower in (2, 8) moved to (2, 9).
-[589] LawnMower in (4, 8) moved to (4, 9).
-[589] LawnMower in (3, 7) moved to (3, 8).
-[589] LawnMower in (3, 8) attacked.
-[589] Zombie in (3, 8) was damaged. HP: -9819.
-[589] Zombie in (3, 8) was killed.
-[590] LawnMower in (1, 8) moved to (1, 9).
-[591] LawnMower in (0, 9) moved to (0, 10).
-[591] LawnMower in (0, 10) removed.
-[591] LawnMower in (2, 9) moved to (2, 10).
-[591] LawnMower in (2, 10) removed.
-[591] LawnMower in (4, 9) moved to (4, 10).
-[591] LawnMower in (4, 10) removed.
-[591] LawnMower in (3, 8) moved to (3, 9).
-[592] LawnMower in (1, 9) moved to (1, 10).
-[592] LawnMower in (1, 10) removed.
-[593] LawnMower in (3, 9) moved to (3, 10).
-[593] LawnMower in (3, 10) removed.
+[570] Zombie in (0, 0) attempted entering the house.
+[570] Zombie in (1, 0) attempted entering the house.
+[570] Zombie in (2, 0) attempted entering the house.
+[570] Zombie in (3, 0) attempted entering the house.
+[570] Zombie in (4, 0) attempted entering the house.
+[570] Zombie in (0, 0) triggered a lawnmower.
+[570] Lawnmower in (0, 0) attacked.
+[570] Zombie in (0, 0) was damaged. HP: -9818.
+[570] Zombie in (0, 0) was killed.
+[570] Zombie in (1, 0) triggered a lawnmower.
+[570] Lawnmower in (1, 0) attacked.
+[570] Zombie in (1, 0) was damaged. HP: -9818.
+[570] Zombie in (1, 0) was killed.
+[570] Zombie in (2, 0) triggered a lawnmower.
+[570] Lawnmower in (2, 0) attacked.
+[570] Zombie in (2, 0) was damaged. HP: -9818.
+[570] Zombie in (2, 0) was killed.
+[570] Zombie in (3, 0) triggered a lawnmower.
+[570] Lawnmower in (3, 0) attacked.
+[570] Zombie in (3, 0) was damaged. HP: -9818.
+[570] Zombie in (3, 0) was killed.
+[570] Zombie in (4, 0) triggered a lawnmower.
+[570] Lawnmower in (4, 0) attacked.
+[570] Zombie in (4, 0) was damaged. HP: -9818.
+[570] Zombie in (4, 0) was killed.
+[571] Lawnmower in (0, 0) moved to (0, 1).
+[571] Lawnmower in (1, 0) moved to (1, 1).
+[571] Lawnmower in (2, 0) moved to (2, 1).
+[571] Lawnmower in (3, 0) moved to (3, 1).
+[571] Lawnmower in (4, 0) moved to (4, 1).
+[573] Lawnmower in (0, 1) moved to (0, 2).
+[573] Lawnmower in (0, 2) attacked.
+[573] Zombie in (0, 2) was damaged. HP: -9818.
+[573] Zombie in (0, 2) was killed.
+[573] Lawnmower in (1, 1) moved to (1, 2).
+[573] Lawnmower in (1, 2) attacked.
+[573] Zombie in (1, 2) was damaged. HP: -9818.
+[573] Zombie in (1, 2) was killed.
+[573] Lawnmower in (2, 1) moved to (2, 2).
+[573] Lawnmower in (2, 2) attacked.
+[573] Zombie in (2, 2) was damaged. HP: -9818.
+[573] Zombie in (2, 2) was killed.
+[573] Lawnmower in (3, 1) moved to (3, 2).
+[573] Lawnmower in (3, 2) attacked.
+[573] Zombie in (3, 2) was damaged. HP: -9818.
+[573] Zombie in (3, 2) was killed.
+[573] Lawnmower in (4, 1) moved to (4, 2).
+[573] Lawnmower in (4, 2) attacked.
+[573] Zombie in (4, 2) was damaged. HP: -9818.
+[573] Zombie in (4, 2) was killed.
+[575] Lawnmower in (0, 2) moved to (0, 3).
+[575] Lawnmower in (1, 2) moved to (1, 3).
+[575] Lawnmower in (2, 2) moved to (2, 3).
+[575] Lawnmower in (3, 2) moved to (3, 3).
+[575] Lawnmower in (4, 2) moved to (4, 3).
+[577] Lawnmower in (0, 3) moved to (0, 4).
+[577] Lawnmower in (0, 4) attacked.
+[577] Zombie in (0, 4) was damaged. HP: -9818.
+[577] Zombie in (0, 4) was killed.
+[577] Lawnmower in (1, 3) moved to (1, 4).
+[577] Lawnmower in (1, 4) attacked.
+[577] Zombie in (1, 4) was damaged. HP: -9818.
+[577] Zombie in (1, 4) was killed.
+[577] Lawnmower in (2, 3) moved to (2, 4).
+[577] Lawnmower in (2, 4) attacked.
+[577] Zombie in (2, 4) was damaged. HP: -9818.
+[577] Zombie in (2, 4) was killed.
+[577] Lawnmower in (3, 3) moved to (3, 4).
+[577] Lawnmower in (3, 4) attacked.
+[577] Zombie in (3, 4) was damaged. HP: -9818.
+[577] Zombie in (3, 4) was killed.
+[577] Lawnmower in (4, 3) moved to (4, 4).
+[577] Lawnmower in (4, 4) attacked.
+[577] Zombie in (4, 4) was damaged. HP: -9818.
+[577] Zombie in (4, 4) was killed.
+[579] Lawnmower in (0, 4) moved to (0, 5).
+[579] Lawnmower in (1, 4) moved to (1, 5).
+[579] Lawnmower in (2, 4) moved to (2, 5).
+[579] Lawnmower in (3, 4) moved to (3, 5).
+[579] Lawnmower in (4, 4) moved to (4, 5).
+[581] Lawnmower in (0, 5) moved to (0, 6).
+[581] Lawnmower in (0, 6) attacked.
+[581] Zombie in (0, 6) was damaged. HP: -9818.
+[581] Zombie in (0, 6) was killed.
+[581] Lawnmower in (1, 5) moved to (1, 6).
+[581] Lawnmower in (1, 6) attacked.
+[581] Zombie in (1, 6) was damaged. HP: -9818.
+[581] Zombie in (1, 6) was killed.
+[581] Lawnmower in (2, 5) moved to (2, 6).
+[581] Lawnmower in (2, 6) attacked.
+[581] Zombie in (2, 6) was damaged. HP: -9818.
+[581] Zombie in (2, 6) was killed.
+[581] Lawnmower in (3, 5) moved to (3, 6).
+[581] Lawnmower in (3, 6) attacked.
+[581] Zombie in (3, 6) was damaged. HP: -9818.
+[581] Zombie in (3, 6) was killed.
+[581] Lawnmower in (4, 5) moved to (4, 6).
+[581] Lawnmower in (4, 6) attacked.
+[581] Zombie in (4, 6) was damaged. HP: -9818.
+[581] Zombie in (4, 6) was killed.
+[583] Lawnmower in (0, 6) moved to (0, 7).
+[583] Lawnmower in (1, 6) moved to (1, 7).
+[583] Lawnmower in (2, 6) moved to (2, 7).
+[583] Lawnmower in (3, 6) moved to (3, 7).
+[583] Lawnmower in (4, 6) moved to (4, 7).
+[585] Lawnmower in (0, 7) moved to (0, 8).
+[585] Lawnmower in (0, 8) attacked.
+[585] Zombie in (0, 8) was damaged. HP: -9818.
+[585] Zombie in (0, 8) was killed.
+[585] Lawnmower in (1, 7) moved to (1, 8).
+[585] Lawnmower in (1, 8) attacked.
+[585] Zombie in (1, 8) was damaged. HP: -9818.
+[585] Zombie in (1, 8) was killed.
+[585] Lawnmower in (2, 7) moved to (2, 8).
+[585] Lawnmower in (2, 8) attacked.
+[585] Zombie in (2, 8) was damaged. HP: -9818.
+[585] Zombie in (2, 8) was killed.
+[585] Lawnmower in (3, 7) moved to (3, 8).
+[585] Lawnmower in (3, 8) attacked.
+[585] Zombie in (3, 8) was damaged. HP: -9818.
+[585] Zombie in (3, 8) was killed.
+[585] Lawnmower in (4, 7) moved to (4, 8).
+[585] Lawnmower in (4, 8) attacked.
+[585] Zombie in (4, 8) was damaged. HP: -9818.
+[585] Zombie in (4, 8) was killed.
+[587] Lawnmower in (0, 8) moved to (0, 9).
+[587] Lawnmower in (1, 8) moved to (1, 9).
+[587] Lawnmower in (2, 8) moved to (2, 9).
+[587] Lawnmower in (3, 8) moved to (3, 9).
+[587] Lawnmower in (4, 8) moved to (4, 9).
+[589] Lawnmower in (0, 9) moved to (0, 10).
+[589] Lawnmower in (0, 10) removed.
+[589] Lawnmower in (1, 9) moved to (1, 10).
+[589] Lawnmower in (1, 10) removed.
+[589] Lawnmower in (2, 9) moved to (2, 10).
+[589] Lawnmower in (2, 10) removed.
+[589] Lawnmower in (3, 9) moved to (3, 10).
+[589] Lawnmower in (3, 10) removed.
+[589] Lawnmower in (4, 9) moved to (4, 10).
+[589] Lawnmower in (4, 10) removed.
 [600] Zombie being spawned at lane 0
 [600] Zombie being spawned at lane 1
 [600] Zombie being spawned at lane 2
@@ -379,9 +388,9 @@
 [1029] Zombie in (2, 3) moved to (2, 2).
 [1029] Zombie in (3, 3) moved to (3, 2).
 [1029] Zombie in (4, 3) moved to (4, 2).
-[1070] Zombie in (0, 0) moved to (0, -1).
-[1070] Zombie in (0, -1) has killed you!
-[1070] Zombie in (2, 0) moved to (2, -1).
-[1070] Zombie in (2, -1) has killed you!
-[1070] Zombie in (4, 0) moved to (4, -1).
-[1070] Zombie in (4, -1) has killed you!
+[1070] Zombie in (0, 0) attempted entering the house.
+[1070] Zombie in (1, 0) attempted entering the house.
+[1070] Zombie in (2, 0) attempted entering the house.
+[1070] Zombie in (3, 0) attempted entering the house.
+[1070] Zombie in (4, 0) attempted entering the house.
+[1070] You've lost! Zombie entered at lane 0
