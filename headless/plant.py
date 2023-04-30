@@ -251,13 +251,13 @@ class SunPlant(Plant):
 class Sunflower(SunPlant):
     def __init__(self, lane, column, frame):
         super().__init__(lane, column, frame)
-        self.load_stats("sunflower")
+        self.load_stats()
 
 
 class Peashooter(ShooterPlant):
     def __init__(self, plant_type, lane, column, frame):
         super().__init__(plant_type, lane, column, frame)
-        self.load_stats("peashooter")
+        self.load_stats()
         self.bullet_type = Pea
 
 
@@ -317,9 +317,9 @@ class name_to_class(Enum):
     
     
 def create_plant_instance(plant_name, lane, column, frame):
-    if plant_name == "sunflower":
-        return Sunflower(plant_name, lane, column, frame)
-    elif plant_name == "peashooter":
-        return Peashooter(plant_name, lane, column, frame)
+    if plant_name == "Sunflower":
+        return Sunflower(lane, column, frame)
+    elif plant_name == "Peashooter":
+        return Peashooter(lane, column, frame)
     
     

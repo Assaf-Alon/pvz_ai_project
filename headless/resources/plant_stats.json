@@ -1,5 +1,5 @@
 {
-    "sunflower": {
+    "Sunflower": {
         "attack_interval": 24.25,
         "damage": 0,
         "hp": 300,
@@ -10,7 +10,7 @@
         "sun_value": 25
     },
 
-    "peashooter": {
+    "Peashooter": {
         "attack_interval": 1.425,
         "damage": 20,
         "hp": 300,
