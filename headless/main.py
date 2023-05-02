@@ -4,43 +4,25 @@ import level
 from pprint import pprint
 import os
 from copy import deepcopy
-from utils import printable_grid
-    # def __init__(self, length, height, level_data: dict, random = False, fps = 30):
+from utils import printable_grid, generate_random_level_dict
 
 if __name__ == "__main__":
-    with open("resources/level0.json", "r") as level_data_file:
-        level_data = json.load(level_data_file)
-    env = level.Level(10, 5, level_data, False, fps=10)
-    action_list = [
-        ["plant", "Sunflower", 0, 0],
-        ["plant", "Sunflower", 1, 0],
-        ["plant", "Peashooter", 1, 1],
-        ["plant", "Peashooter", 2, 1]
-    ]
+    # with open("resources/level0.json", "r") as level_data_file:
+    #     level_data = json.load(level_data_file)
+    level_data = generate_random_level_dict(5, "hard")
+    env = level.Level(10, 5, level_data, ["Sunflower", "Peashooter"], fps=10)
+    actions_taken = []
+
     while not env.done:
-        action = []
-        if action_list and env.action_is_legal(action_list[0]):
-            action = action_list[0]
-            action_list = action_list[1:]
-        print(action)
-        env.step(action)
+        action = env.sample_action()
+        print(f"action: {action}")
+        state = env.step(action)
         grid = printable_grid(env)
         pprint(grid)
         print(f"frame num: {env.frame}")
-        print(f"suns: {env.suns}")
-        for zombie in env.zombies:
-            print(f"Zombie: {zombie.lane, zombie.column} , HP={zombie.hp}")
-        state = env.construct_state()
-        for lane in state[2]:
-            for square in lane:
-                print(square, end='')
-            print()
-        # print("---------------")
-        # for plant in env.plants:
-        #     print(f"Plant: {plant.position} , HP={plant.hp}")
-        # for bullet in env.bullets:
-        #     print(f"Bullet [{bullet.lane}, {bullet.column}]")
-        time.sleep(0.1)
-        # input()
-        # os.system('clear')
-        # os.system('cls')
+        if action:
+            actions_taken.append(action)
+
+    print(f"victory: {env.win}")
+    print("actions taken:")
+    print(actions_taken)

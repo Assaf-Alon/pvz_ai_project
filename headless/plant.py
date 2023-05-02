@@ -98,9 +98,6 @@ class Plant():
         self.hp = None
         self.recharge = 0
         # self.type = plant_type
-
-    def generate_sun(self, level: "Level"):  # TODO - I put it here so that the code will run. Not sure if I want to keep it
-        pass
     
     def do_action(self, level: "Level"):
         # Virtual func

@@ -70,7 +70,7 @@ def printable_grid(level: "Level"):
                 to_write_in_grid += '_'
             grid[x][y] = to_write_in_grid
     for x in range(height):
-        if level.lawnmowers[x]:
+        if level.home_column[x]:
             grid[x] = ["M"] + grid[x]
         else:
             grid[x] = ["_"] + grid[x]
