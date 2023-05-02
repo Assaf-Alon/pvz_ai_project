@@ -57,18 +57,29 @@
 [923] Zombie in (2, 1) moved to (2, 0).
 [923] Zombie in (3, 1) moved to (3, 0).
 [923] Zombie in (4, 1) moved to (4, 0).
-[970] Zombie in (0, 0) moved to (0, -1).
-[970] Zombie in (0, -1) triggered a lawnmower.
-[970] Zombie in (2, 0) moved to (2, -1).
-[970] Zombie in (2, -1) triggered a lawnmower.
-[970] Zombie in (4, 0) moved to (4, -1).
-[970] Zombie in (4, -1) triggered a lawnmower.
-[971] LawnMower in (0, -1) moved to (0, 0).
-[971] LawnMower in (2, -1) moved to (2, 0).
-[971] LawnMower in (4, -1) moved to (4, 0).
-[971] Zombie in (1, 0) moved to (1, -1).
-[971] Zombie in (1, -1) triggered a lawnmower.
-[972] LawnMower in (1, -1) moved to (1, 0).
-[972] Zombie in (3, 0) moved to (3, -1).
-[972] Zombie in (3, -1) triggered a lawnmower.
-[972] You've won!
+[970] Zombie in (0, 0) attempted entering the house.
+[970] Zombie in (1, 0) attempted entering the house.
+[970] Zombie in (2, 0) attempted entering the house.
+[970] Zombie in (3, 0) attempted entering the house.
+[970] Zombie in (4, 0) attempted entering the house.
+[970] Zombie in (0, 0) triggered a lawnmower.
+[970] Lawnmower in (0, 0) attacked.
+[970] Zombie in (0, 0) was damaged. HP: -9818.
+[970] Zombie in (0, 0) was killed.
+[970] Zombie in (1, 0) triggered a lawnmower.
+[970] Lawnmower in (1, 0) attacked.
+[970] Zombie in (1, 0) was damaged. HP: -9818.
+[970] Zombie in (1, 0) was killed.
+[970] Zombie in (2, 0) triggered a lawnmower.
+[970] Lawnmower in (2, 0) attacked.
+[970] Zombie in (2, 0) was damaged. HP: -9818.
+[970] Zombie in (2, 0) was killed.
+[970] Zombie in (3, 0) triggered a lawnmower.
+[970] Lawnmower in (3, 0) attacked.
+[970] Zombie in (3, 0) was damaged. HP: -9818.
+[970] Zombie in (3, 0) was killed.
+[970] Zombie in (4, 0) triggered a lawnmower.
+[970] Lawnmower in (4, 0) attacked.
+[970] Zombie in (4, 0) was damaged. HP: -9818.
+[970] Zombie in (4, 0) was killed.
+[970] You've won!

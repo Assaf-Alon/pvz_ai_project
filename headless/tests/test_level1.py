@@ -5,10 +5,10 @@ class TestLevel1(unittest.TestCase):
         env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON = setup_test("1")
         
         action_list = [
-            ["plant", "sunflower", 0, 0],
-            ["plant", "sunflower", 1, 0],
-            ["plant", "peashooter", 1, 1],
-            ["plant", "peashooter", 2, 1]
+            ["plant", "Sunflower", 0, 0],
+            ["plant", "Sunflower", 1, 0],
+            ["plant", "Peashooter", 1, 1],
+            ["plant", "Peashooter", 2, 1]
         ]
         
         play_game(env, action_list)
@@ -20,10 +20,10 @@ class TestLevel1(unittest.TestCase):
         env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON = setup_test("2")
         
         action_list = [
-            ["plant", "sunflower", 0, 0],
-            ["plant", "sunflower", 1, 0],
-            ["plant", "peashooter", 1, 1],
-            ["plant", "peashooter", 2, 1]
+            ["plant", "Sunflower", 0, 0],
+            ["plant", "Sunflower", 1, 0],
+            ["plant", "Peashooter", 1, 1],
+            ["plant", "Peashooter", 2, 1]
         ]
         
         play_game(env, action_list)
@@ -35,10 +35,10 @@ class TestLevel1(unittest.TestCase):
         env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON = setup_test("3")
         
         action_list = [
-            ["plant", "sunflower", 0, 0],
-            ["plant", "sunflower", 1, 0],
-            ["plant", "peashooter", 1, 1],
-            ["plant", "peashooter", 2, 1]
+            ["plant", "Sunflower", 0, 0],
+            ["plant", "Sunflower", 1, 0],
+            ["plant", "Peashooter", 1, 1],
+            ["plant", "Peashooter", 2, 1]
         ]
         
         play_game(env, action_list)

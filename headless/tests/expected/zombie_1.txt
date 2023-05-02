@@ -13,6 +13,9 @@
 [476] Zombie in (1, 2) moved to (1, 1).
 [505] Sun autospawned. Total: 175.
 [523] Zombie in (1, 1) moved to (1, 0).
-[570] Zombie in (1, 0) moved to (1, -1).
-[570] Zombie in (1, -1) triggered a lawnmower.
+[570] Zombie in (1, 0) attempted entering the house.
+[570] Zombie in (1, 0) triggered a lawnmower.
+[570] Lawnmower in (1, 0) attacked.
+[570] Zombie in (1, 0) was damaged. HP: -9818.
+[570] Zombie in (1, 0) was killed.
 [570] You've won!

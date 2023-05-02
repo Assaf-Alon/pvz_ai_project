@@ -1,11 +1,11 @@
 from tests.testing_utils import *
 
 class TestSunflower(unittest.TestCase):
-    def test_sunflower1(self):
-        env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON = setup_test("1", "sunflower")
+    def test_Sunflower1(self):
+        env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON = setup_test("1", "Sunflower")
         
         action_list = [
-            ["plant", "sunflower", 0, 0]
+            ["plant", "Sunflower", 0, 0]
         ]
         
         play_game(env, action_list)
@@ -14,14 +14,14 @@ class TestSunflower(unittest.TestCase):
         self.assertTrue(passed)
         
     
-    def test_sunflower2(self):
-        env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON = setup_test("2", "sunflower")
+    def test_Sunflower2(self):
+        env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON = setup_test("2", "Sunflower")
         
         action_list = [
-            ["plant", "sunflower", 4, 4],
-            ["plant", "sunflower", 1, 1],
-            ["plant", "sunflower", 1, 0],
-            ["plant", "sunflower", 2, 1]
+            ["plant", "Sunflower", 4, 4],
+            ["plant", "Sunflower", 1, 1],
+            ["plant", "Sunflower", 1, 0],
+            ["plant", "Sunflower", 2, 1]
         ]
         
         play_game(env, action_list)
@@ -29,20 +29,20 @@ class TestSunflower(unittest.TestCase):
         passed = compare_results(EXPECTED_FILE, ACTUAL_FILE)
         self.assertTrue(passed)
 
-    def test_sunflower3(self):
-        env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON = setup_test("3", "sunflower")
+    def test_Sunflower3(self):
+        env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON = setup_test("3", "Sunflower")
         
         action_list = [
-            ["plant", "sunflower", 3, 4],
-            ["plant", "sunflower", 3, 1],
-            ["plant", "sunflower", 3, 0],
-            ["plant", "sunflower", 3, 2],
-            ["plant", "sunflower", 3, 5],
-            ["plant", "sunflower", 3, 4],
-            ["plant", "sunflower", 3, 3],
-            ["plant", "sunflower", 3, 2],
-            ["plant", "sunflower", 3, 1],
-            ["plant", "sunflower", 3, 0],
+            ["plant", "Sunflower", 3, 4],
+            ["plant", "Sunflower", 3, 1],
+            ["plant", "Sunflower", 3, 0],
+            ["plant", "Sunflower", 3, 2],
+            ["plant", "Sunflower", 3, 5],
+            ["plant", "Sunflower", 3, 4],
+            ["plant", "Sunflower", 3, 3],
+            ["plant", "Sunflower", 3, 2],
+            ["plant", "Sunflower", 3, 1],
+            ["plant", "Sunflower", 3, 0],
         ]
         
         play_game(env, action_list)

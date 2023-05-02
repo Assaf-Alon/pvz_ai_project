@@ -10,11 +10,11 @@
 1. Explore switching lists to dicts for easy deletion of killed objects
 2. Implement all Plant types
 3. Implement all zombie types (check if subclassing is necessary)
-4. Implement an fps switch (delays between actions are in frames, adjust accordingly)
+<!-- 4. Implement an fps switch (delays between actions are in frames, adjust accordingly) -->
 5. Implement level randomization
-6. Implement state output
-7. Implement user action (be careful with illegal operators)
+<!-- 6. Implement state output -->
+<!-- 7. Implement user action (be careful with illegal operators) -->
 8. (?) Add GUI mode
-9. Make JSON reading happen once on import instead of each time an object is created (I/O overhead)
+<!-- 9. Make JSON reading happen once on import instead of each time an object is created (I/O overhead) -->
 10. Let plants shoot only if there's a zombie in the lane (or in range..?)
-11. Implement plant cooldown/recharge
+<!-- 11. Implement plant cooldown/recharge -->

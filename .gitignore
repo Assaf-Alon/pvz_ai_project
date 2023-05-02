@@ -1,3 +1,6 @@
 **/__pycache__/**
 headless/**/*.log
 **/tests/output/**
+venv**/
+driving_backup/
+experiments.py

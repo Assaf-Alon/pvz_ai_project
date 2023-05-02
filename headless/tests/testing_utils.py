@@ -36,7 +36,7 @@ def setup_test(num, plant=""):
 
     with open(LEVEL_JSON, "r") as level_data_file:
         level_data = json.load(level_data_file)
-    env = level.Level(COLUMNS, LANES, level_data, False, fps=FPS, logfile=ACTUAL_FILE)
+    env = level.Level(COLUMNS, LANES, level_data, chosen_plants=["Peashooter", "Sunflower"], fps=FPS, logfile=ACTUAL_FILE)
     
     return (env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON)
 
@@ -70,3 +70,11 @@ def compare_results(expected_file, actual_file):
         passed = False
         print(line)
     return passed
+
+def update_tests():
+    import shutil
+    src_dir = "tests/output"
+    dst_dir = "tests/expected"
+    # files = os.listdir(src_dir)
+    # shutil.rmtree(dst_dir)
+    shutil.copytree(src_dir, dst_dir)

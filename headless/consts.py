@@ -32,3 +32,14 @@ LOG_FILE_NAME = "pvz.log"
 LOG_FORMAT = "%(message)s"
 
 TYPECHECK = False # avoid circular imports while allowing typechecks and autocompletes
+
+# Random level generation
+spawn_interval_low = 1
+spawn_interval_high = 7
+zombie_types = ["normal", "conehead", "buckethead", "newspaper", "flag"]
+zombie_weights = [0.4, 0.2, 0.2, 0.1, 0.1]
+num_of_zombies_low = 1
+num_of_zombies_high = 3
+short_game = 5
+medium_game = 3
+long_game = 1
