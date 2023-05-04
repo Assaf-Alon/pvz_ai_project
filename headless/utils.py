@@ -93,4 +93,7 @@ def generate_random_level_dict(lanes, difficulty="low"):
             zombie_spawn = [random.choices(consts.zombie_types, weights=consts.zombie_weights, k=1)[0], random.randrange(0, lanes)]
             level_dict[str(time)].append(zombie_spawn)
         time += random.randrange(consts.spawn_interval_low, consts.spawn_interval_high)
+    # logging.debug(f"random level_dict: {str(level_dict)}")
+    with open("resources/random_level.json", "w") as random_level_file:
+        json.dump(level_dict, random_level_file)
     return level_dict

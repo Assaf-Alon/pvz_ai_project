@@ -57,21 +57,32 @@ class Level():
 
         utils.configure_logging(logfile)
         
-    def assign_zombie_damage(self):
-        for zombie in self.zombies:
-            zombie.attack(self)
+    # def assign_zombie_damage(self):
+    #     for zombie in self.zombies:
+    #         zombie.attack(self)
 
-    def assign_plant_damage(self):
-        for plant in self.plants: # All plants try to shoot or attack
+    # def assign_plant_damage(self):
+    #     for plant in self.plants: # All plants try to shoot or attack
+    #         plant.do_action(self)
+        
+    #     # TODO - [note] We're copying the bullets array here because we're removing objects from it while iterating
+    #     for bullet in self.bullets[:]: # All bullets either hit a target or move. New bullet can hit target on same frame as it's created
+    #         bullet.attack_or_move(self)
+
+    # def move_zombies(self):
+    #     for zombie in self.zombies:
+    #         zombie.move(self)
+
+    def do_plant_actions(self):
+        for plant in self.plants[:]:
             plant.do_action(self)
         
-        # TODO - [note] We're copying the bullets array here because we're removing objects from it while iterating
-        for bullet in self.bullets[:]: # All bullets either hit a target or move. New bullet can hit target on same frame as it's created
+        for bullet in self.bullets[:]:
             bullet.attack_or_move(self)
 
-    def move_zombies(self):
-        for zombie in self.zombies:
-            zombie.move(self)
+    def do_zombie_actions(self):
+        for zombie in self.zombies[:]:
+            zombie.do_action(self)
 
     def spawn_zombies(self):
         """
@@ -86,7 +97,7 @@ class Level():
         curr_sec = str(self.frame // self.fps)
         if self.frame % self.fps == 0 and self.zombies_to_be_spawned.get(curr_sec):
             for zombie_type, lane in self.zombies_to_be_spawned[curr_sec]:
-                logging.debug(f"[{self.frame}] Zombie being spawned at lane {lane}")
+                logging.debug(f"[{self.frame}] {zombie_type} Zombie being spawned at lane {lane}")
                 new_zombie = zombie.Zombie(zombie_type)
                 new_zombie.lane = lane
                 new_zombie.column = self.columns - 1
@@ -147,10 +158,6 @@ class Level():
     def do_player_action(self, action: list):
         if not action:
             return
-        # to plant a new plant, action must be of the form:
-        # plant <plantname> <lane coord> <column coord>
-        # Example: ["plant", "peashooter", 2, 5]
-        # Note! lane, column coords must be integers
         if action[0] == "plant":
             _, plant_name, lane, column = action
             self.plant(plant_name, lane, column)
@@ -224,9 +231,8 @@ class Level():
         Note: one step corresponds to one frame (in a 60 fps game). As such, things wont acutally happen at every step.
         For example, plants will attack every ~60-120 frames (depending on plant), suns are auto-generated every ~600 frames 
         """
-        self.assign_zombie_damage()
-        self.assign_plant_damage()
-        self.move_zombies()
+        self.do_plant_actions()
+        self.do_zombie_actions()
         self.spawn_zombies()
         self.spawn_suns()
         self.do_player_action(action)

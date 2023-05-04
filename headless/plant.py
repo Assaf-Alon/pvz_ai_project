@@ -31,23 +31,12 @@ class Bullet():
         logging.debug(f"[{level.frame}] {bullet_type} in {self.lane, self.column} attacked.")
         if self.pierce: # Attack all zombies in the grid square
             for target_zombie in level.zombie_grid[self.lane][self.column][:]: # Shallow copy to remove items while iterating
-                target_zombie.hp -= self.damage
-                logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was damaged. HP: {target_zombie.hp}.")
-                if target_zombie.hp <= 0:
-                    logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was killed.")
-                    level.zombies.remove(target_zombie)
-                    level.zombie_grid[self.lane][self.column].remove(target_zombie)
+                target_zombie.get_damaged(self.damage, level)
         else: # Attack first zombie in grid square, then delete self
             target_zombie = level.zombie_grid[self.lane][self.column][0] # type: Zombie
-            target_zombie.hp -= self.damage
-            logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was damaged. HP: {target_zombie.hp}.")
-            if target_zombie.hp <= 0: # delete zomble from existence
-                logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} was killed.")
-                level.zombies.remove(target_zombie)
-                level.zombie_grid[self.lane][self.column].remove(target_zombie)
+            target_zombie.get_damaged(self.damage, level)
             level.bullets.remove(self) # remove self from bullet list after hitting zomble
             logging.debug(f"[{level.frame}] {bullet_type} in {self.lane, self.column} removed.")
-
 
     def move(self, level: "Level"):
         if (level.frame - self.last_moved) < self.move_interval * level.fps:
@@ -103,6 +92,17 @@ class Plant():
         # Virtual func
         # Represents attacking, generating a sun, exploding, doing nothing, etc.
         pass
+
+    def get_damaged(self, damage, level: "Level"):
+        logging.debug(f"[{level.frame}] {type(self).__name__} in {self.lane, self.column} got damaged. HP: {self.hp}")
+        self.hp -= damage
+        if self.hp <= 0:
+            self.die(level)
+            logging.debug(f"[{level.frame}] {type(self).__name__} in {self.lane, self.column} died.")
+    
+    def die(self, level: "Level"):
+        level.plants.remove(self)
+        level.plant_grid[self.lane][self.column] = None
 
     def __repr__(self):
         """
