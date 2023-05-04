@@ -44,7 +44,7 @@ class Level():
         self.plants = [] # type: list[plant.Plant]
         self.active_suns = []
         self.bullets = [] # type: list[plant.Bullet]
-        self.home_column = ["L"] * lanes # type: list[str] # This is a special column that contains either a lawnmower, nothing or a zombie
+        self.home_column = [True] * lanes # type: list[str] # This is a special column that contains either a lawnmower, nothing or a zombie
         self.zombie_grid = [[[] for _ in range(columns)] for _ in range(lanes)] # type: list[list[list[zombie.Zombie]]]
         self.plant_grid = [[None for _ in range(columns)] for _ in range(lanes)] # type: list[list[plant.Plant]]
         
@@ -162,8 +162,8 @@ class Level():
                 continue
             for zombie in last_tile:
                 if zombie.reached_house: # Zombie is about to enter the house
-                    if self.home_column[lane] == 'L': # There is a lawnmower in this lane
-                        self.home_column[lane] = ""
+                    if self.home_column[lane]: # There is a lawnmower in this lane
+                        self.home_column[lane] = False
                         logging.debug(f"[{self.frame}] Zombie in {zombie.lane, zombie.column} triggered a lawnmower.")
                         active_lawnmower = plant.Lawnmower(lane)
                         self.bullets.append(active_lawnmower)
