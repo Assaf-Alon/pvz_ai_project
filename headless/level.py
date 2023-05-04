@@ -1,6 +1,8 @@
 import os
 from typing import Dict, List
 import logging
+import random
+import itertools
 
 import consts
 import utils
@@ -33,16 +35,16 @@ class Level():
         self.win = False
         self.suns = 50 # Bank value
         self.chosen_plants = chosen_plants
-        self.plant_cooldowns = {plant_name: 0 for plant_name in chosen_plants}
+        self.plant_available_frame = {plant_name: 0 for plant_name in chosen_plants}
+        self.plant_costs = utils.get_plant_costs()
         
         # Object data
         self.replant_queue = {plant_name: 0 for plant_name in utils.get_plant_names()}
-        self.plant_costs = utils.get_plant_costs()
         self.zombies = [] # type: list[zombie.Zombie]
         self.plants = [] # type: list[plant.Plant]
         self.active_suns = []
         self.bullets = [] # type: list[plant.Bullet]
-        self.lawnmowers = ["L"] * lanes # This is a special column that contains either a lawnmower, nothing or a zombie
+        self.home_column = [True] * lanes # type: list[str] # This is a special column that contains either a lawnmower, nothing or a zombie
         self.zombie_grid = [[[] for _ in range(columns)] for _ in range(lanes)] # type: list[list[list[zombie.Zombie]]]
         self.plant_grid = [[None for _ in range(columns)] for _ in range(lanes)] # type: list[list[plant.Plant]]
         
@@ -102,8 +104,6 @@ class Level():
             else:
                 self.active_suns.append([0, 0]) # TODO: Randomize sun location
             logging.debug(f"[{self.frame}] Sun autospawned. Total: {self.suns}.")
-        for plant in self.plants:
-            plant.generate_sun(self)
 
     def _is_plant_legal(self, plant_name: str, lane, column):
         # Are the provided coords within the map?
@@ -116,7 +116,7 @@ class Level():
         if self.plant_grid[lane][column]:
             return False
         # There's no need to recharge
-        if self.plant_cooldowns[plant_name] > 0:
+        if self.plant_available_frame[plant_name] > self.frame:
             return False
         # There's enough suns
         if self.suns < self.plant_costs[plant_name]:
@@ -141,12 +141,8 @@ class Level():
         self.plants.append(new_plant)
         self.plant_grid[lane][column] = new_plant
         self.suns -= new_plant.cost
-        self.plant_cooldowns[plant_name] = new_plant.recharge * self.fps
+        self.plant_available_frame[plant_name] = self.frame + (new_plant.recharge * self.fps) # Next frame the plant is plantable is this frame + cooldown frames
         logging.debug(f"[{self.frame}] Planted {plant_name} in {lane, column}. Total: {self.suns}.")
-        
-    def update_cooldowns(self):
-        for plant in self.plant_cooldowns:
-            self.plant_cooldowns[plant] = max(0, self.plant_cooldowns[plant] - 1)
         
     def do_player_action(self, action: list):
         if not action:
@@ -160,27 +156,30 @@ class Level():
             self.plant(plant_name, lane, column)
     
     def check_done(self):
-        for zombie in self.zombies[:]:
-            if zombie.reached_house: # zombie reached last column and is trying to move into house
-                if self.lawnmowers[zombie.lane]: # if theres a lawnmower in it's lane
-                    self.lawnmowers[zombie.lane] = False
-                    logging.debug(f"[{self.frame}] Zombie in {zombie.lane, zombie.column} triggered a lawnmower.")
-                    spawned_lawnmower = plant.Lawnmower(zombie.lane)
-                    self.bullets.append(spawned_lawnmower)
-                    spawned_lawnmower.attack(self)
-                    # TODO: Make sure this action kills the zombies that are trying to move into the house
-                else:
-                    self.done = True
-                    self.win = False
-                    logging.debug(f"[{self.frame}] You've lost! Zombie entered at lane {zombie.lane}")
-                    return # Lazy eval + don't set victory by next loop
+        for lane in range(self.lanes):
+            last_tile = self.zombie_grid[lane][0]
+            if not last_tile: # if there are no zombies in the last tile of this lane
+                continue
+            for zombie in last_tile:
+                if zombie.reached_house: # Zombie is about to enter the house
+                    if self.home_column[lane]: # There is a lawnmower in this lane
+                        self.home_column[lane] = False
+                        logging.debug(f"[{self.frame}] Zombie in {zombie.lane, zombie.column} triggered a lawnmower.")
+                        active_lawnmower = plant.Lawnmower(lane)
+                        self.bullets.append(active_lawnmower)
+                        active_lawnmower.attack(self)
+                    else:
+                        self.done = True
+                        self.win = False
+                        logging.debug(f"[{self.frame}] You've lost! Zombie entered at lane {zombie.lane}")
+                        return
 
         if not self.done and not self.zombies_to_be_spawned and not self.zombies:
             # No zombies left to spawn or on the map
             self.done = True
             self.win = True
             logging.debug(f"[{self.frame}] You've won!")
-            
+            return
         
     def construct_state(self):
         grid = [[[] for _ in range(self.columns)] for _ in range(self.lanes)]
@@ -189,8 +188,29 @@ class Level():
             grid[lane][column].append(plant.__repr__())
         for zombie in self.zombies:
             grid[zombie.lane][zombie.column].append(zombie.__repr__())
-        state_tuple = (self.suns, self.lawnmowers, grid)
+        state_tuple = (self.suns, self.home_column, grid)
         return state_tuple
+
+    def sample_action(self):
+        """
+        This function returns a random legal action from the action space.
+        If there are no legal action, returns None.
+        """
+        affordable_plants = []
+        for plant in self.chosen_plants:
+            if self.plant_costs[plant] <= self.suns and self.plant_available_frame[plant] < self.frame:
+                affordable_plants.append(plant)
+        if not affordable_plants:
+            return None # No plants are affordable
+        chosen_plant = random.choice(affordable_plants)
+        open_positions = []
+        for position in itertools.product(range(self.lanes), range(self.columns)):
+            if not self.plant_grid[position[0]][position[1]]:
+                open_positions.append(position)
+        if not open_positions:
+            return None # No positions are open
+        chosen_position = random.choice(open_positions)
+        return ["plant", chosen_plant, chosen_position[0], chosen_position[1]]
 
     def step(self, action: str):
         """
@@ -204,17 +224,15 @@ class Level():
         Note: one step corresponds to one frame (in a 60 fps game). As such, things wont acutally happen at every step.
         For example, plants will attack every ~60-120 frames (depending on plant), suns are auto-generated every ~600 frames 
         """
-        self.frame += 1
         self.assign_zombie_damage()
         self.assign_plant_damage()
         self.move_zombies()
         self.spawn_zombies()
         self.spawn_suns()
-        self.update_cooldowns()
         self.do_player_action(action)
         self.check_done()
+        self.frame += 1
         return self.construct_state()
-        # TODO: return state
 
     def print_grid(self):
         os.system('clear')
