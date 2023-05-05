@@ -34,14 +34,52 @@ LOG_FORMAT = "%(message)s"
 TYPECHECK = False # avoid circular imports while allowing typechecks and autocompletes
 
 # Random level generation
-spawn_interval_low = 1
-spawn_interval_high = 7
-# zombie_types = ["normal", "conehead", "buckethead", "newspaper", "flag"]
-zombie_types = ["normal"]
-# zombie_weights = [0.4, 0.2, 0.2, 0.1, 0.1]
-zombie_weights = [1]
-num_of_zombies_low = 1
-num_of_zombies_high = 3
-short_game = 5
-medium_game = 3
-long_game = 1
+difficulty = {
+    "easy": {
+        "spawn_interval_low": 2,
+        "spawn_interval_high": 7,
+        "zombie_types": ["Normal", "Conehead", "Buckethead", "Newspaper", "Flag"],
+        "zombie_weights": [0.4, 0.2, 0.2, 0.1, 0.1],
+        "num_of_zombies_low": 1,
+        "num_of_zombies_high": 4,
+        "waves": 5,
+        "first_spawn_low": 3,
+        "first_spawn_high": 10,
+    },
+    "medium": {
+        "spawn_interval_low": 1,
+        "spawn_interval_high": 5,
+        "zombie_types": ["Normal", "Conehead", "Buckethead", "Newspaper", "Flag"],
+        "zombie_weights": [0.4, 0.2, 0.2, 0.1, 0.1],
+        "num_of_zombies_low": 2,
+        "num_of_zombies_high": 5,
+        "waves": 10,
+        "first_spawn_low": 3,
+        "first_spawn_high": 6,
+    },
+    "hard": {
+        "spawn_interval_low": 1,
+        "spawn_interval_high": 3,
+        "zombie_types": ["Normal", "Conehead", "Buckethead", "Newspaper", "Flag"],
+        "zombie_weights": [0.2, 0.25, 0.25, 0.2, 0.1],
+        "num_of_zombies_low": 3,
+        "num_of_zombies_high": 7,
+        "waves": 20,
+        "first_spawn_low": 0,
+        "first_spawn_high": 4,
+    },
+    "insane": {
+        "spawn_interval_low": 1,
+        "spawn_interval_high": 3,
+        "zombie_types": ["Normal", "Conehead", "Buckethead", "Newspaper", "Flag"],
+        "zombie_weights": [0.1, 0.3, 0.3, 0.2, 0.1],
+        "num_of_zombies_low": 4,
+        "num_of_zombies_high": 10,
+        "waves": 35,
+        "first_spawn_low": 0,
+        "first_spawn_high": 4,
+    }
+}
+
+# Zombie-related consts
+
