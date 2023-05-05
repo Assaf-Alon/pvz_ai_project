@@ -60,7 +60,7 @@ class Zombie():
             return
         self.last_action = level.frame
 
-        logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} Attacked.")
+        logging.debug(f"[{level.frame}] {self.type} zombie in {self.lane, self.column} attacked.")
         target_plant.get_damaged(self.damage, level)
         # target_plant.hp -= self.damage
         # logging.debug(f"[{level.frame}] {type(target_plant).__name__} in {self.lane, self.column} was damaged. HP: {target_plant.hp}.")
@@ -75,13 +75,13 @@ class Zombie():
         
         if self.column == 0: # If zombie wants to enter the house in this frame
             self.reached_house = True
-            logging.debug(f"[{level.frame}] Zombie in {self.lane, self.column} attempted entering the house.")
+            logging.debug(f"[{level.frame}] {self.type} zombie in {self.lane, self.column} attempted entering the house.")
 
         else:
             level.zombie_grid[self.lane][self.column].remove(self)
             self.column -= 1
             level.zombie_grid[self.lane][self.column].append(self)
-            logging.debug(f"[{level.frame}] {self.type} Zombie in {self.lane, self.column + 1} moved to {self.lane, self.column}.")
+            logging.debug(f"[{level.frame}] {self.type} zombie in {self.lane, self.column + 1} moved to {self.lane, self.column}.")
 
     def add_status(self, level: "Level", status: str):
         """
@@ -104,7 +104,7 @@ class Zombie():
         self.last_action = level.frame
 
         target_zombie = target_zombie_list[0]
-        logging.debug(f"[{level.frame}] Hypnotized {self.type} Zombie in {self.lane, self.column} Attacked another zombie!")
+        logging.debug(f"[{level.frame}] Hypnotized {self.type} zombie in {self.lane, self.column} attacked another zombie!")
         target_zombie.get_damaged(self.damage, level)
 
     def hypnotized_move(self, level: "Level"):
@@ -113,21 +113,21 @@ class Zombie():
         self.last_action = level.frame
 
         if self.column == level.columns - 1:
-            logging.debug(f"[{level.frame}] Hypnotized {self.type} Zombie in {self.lane, self.column} has fell off the map!")
+            logging.debug(f"[{level.frame}] Hypnotized {self.type} zombie in {self.lane, self.column} has fell off the map!")
             self.die(level)
         else:
             level.zombie_grid[self.lane][self.column].remove(self)
             self.column -= 1
             level.zombie_grid[self.lane][self.column].append(self)
-            logging.debug(f"[{level.frame}] Hypnotized {self.type} Zombie in {self.lane, self.column + 1} moved to {self.lane, self.column}.")
+            logging.debug(f"[{level.frame}] Hypnotized {self.type} zombie in {self.lane, self.column + 1} moved to {self.lane, self.column}.")
 
 
     def get_damaged(self, damage, level: "Level"):
         self.hp -= damage
-        logging.debug(f"[{level.frame}] {self.type} in {self.lane, self.column} was damaged. HP: {self.hp}.")
+        logging.debug(f"[{level.frame}] {self.type} zombie in {self.lane, self.column} was damaged. HP: {self.hp}.")
         if self.type == "newspaper": # newspaper zombie gets damaged differently
             if self.hp <= self.newspaper_threshold: # attribute unique to this zombie type
-                logging.debug(f"[{level.frame}] {self.type} Zombie in {self.lane, self.column} lost his newspaper!")
+                logging.debug(f"[{level.frame}] {self.type} zombie in {self.lane, self.column} lost his newspaper!")
                 self.move_interval = self.no_newspaper_move_interval # attribute unique to this zombie type
                 self.type = "no_newspaper"
         if self.hp <= 0:
@@ -137,7 +137,7 @@ class Zombie():
         """
         Method to die if hp is zero. Will be called by either bullet or plant.
         """
-        logging.debug(f"[{level.frame}] {self.type} Zombie in {self.lane, self.column} was killed.")
+        logging.debug(f"[{level.frame}] {self.type} zombie in {self.lane, self.column} was killed.")
         level.zombies.remove(self)
         level.zombie_grid[self.lane][self.column].remove(self)
         

@@ -97,24 +97,25 @@ class Level():
         curr_sec = str(self.frame // self.fps)
         if self.frame % self.fps == 0 and self.zombies_to_be_spawned.get(curr_sec):
             for zombie_type, lane in self.zombies_to_be_spawned[curr_sec]:
-                logging.debug(f"[{self.frame}] {zombie_type} Zombie being spawned at lane {lane}")
+                logging.debug(f"[{self.frame}] {zombie_type} zombie being spawned at lane {lane}")
                 new_zombie = zombie.Zombie(zombie_type)
                 new_zombie.lane = lane
                 new_zombie.column = self.columns - 1
-                new_zombie.last_moved = self.frame
+                new_zombie.last_action = self.frame
                 # self.zombies[new_zombie] = new_zombie.pos
                 self.zombies.append(new_zombie)
                 self.zombie_grid[lane][self.columns - 1].append(new_zombie)
             self.zombies_to_be_spawned.pop(curr_sec)
 
     def spawn_suns(self):
-        if (self.frame - self.last_sun_generated_frame) > self.sun_interval * self.fps:
-            self.last_sun_generated_frame = self.frame
-            if consts.AUTO_COLLECT:
-                self.suns += 25
-            else:
-                self.active_suns.append([0, 0]) # TODO: Randomize sun location
-            logging.debug(f"[{self.frame}] Sun autospawned. Total: {self.suns}.")
+        if (self.frame - self.last_sun_generated_frame) < self.sun_interval * self.fps:
+            return
+        self.last_sun_generated_frame = self.frame
+        if consts.AUTO_COLLECT:
+            self.suns += self.sun_value
+        else:
+            self.active_suns.append([0, 0]) # TODO: Randomize sun location
+        logging.debug(f"[{self.frame}] Sun autospawned. Total: {self.suns}.")
 
     def _is_plant_legal(self, plant_name: str, lane, column):
         # Are the provided coords within the map?
@@ -171,7 +172,7 @@ class Level():
                 if zombie.reached_house: # Zombie is about to enter the house
                     if self.home_column[lane]: # There is a lawnmower in this lane
                         self.home_column[lane] = False
-                        logging.debug(f"[{self.frame}] Zombie in {zombie.lane, zombie.column} triggered a lawnmower.")
+                        logging.debug(f"[{self.frame}] {self.type} zombie in {zombie.lane, zombie.column} triggered a lawnmower.")
                         active_lawnmower = plant.Lawnmower(lane)
                         self.bullets.append(active_lawnmower)
                         active_lawnmower.attack(self)

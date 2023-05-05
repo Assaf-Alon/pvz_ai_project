@@ -94,8 +94,8 @@ class Plant():
         pass
 
     def get_damaged(self, damage, level: "Level"):
-        logging.debug(f"[{level.frame}] {type(self).__name__} in {self.lane, self.column} got damaged. HP: {self.hp}")
         self.hp -= damage
+        logging.debug(f"[{level.frame}] {type(self).__name__} in {self.lane, self.column} got damaged. HP: {self.hp}")
         if self.hp <= 0:
             self.die(level)
             logging.debug(f"[{level.frame}] {type(self).__name__} in {self.lane, self.column} died.")
