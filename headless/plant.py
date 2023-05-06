@@ -68,12 +68,6 @@ class Pea(Bullet):
     def __init__(self, lane: int, column: int, damage, move_interval = 20, pierce = False):
         super().__init__(lane, column, damage)
     
-    # def attack(self, level: "Level"): # TODO - consider merging this back to attack_or_move for better performance
-    #     super().attack(level)
-            
-    # def attack_or_move(self, level: "Level"):
-    #     super().attack_or_move(level)
-
 
 class Plant():
     def __init__(self, lane, column):
@@ -177,6 +171,16 @@ class MinePlant(Plant):
             "right": 0
         } # how many squares in each direction to damage
     
+    def should_explode(self, level: "Level"):
+        if not self.armed:
+            return False
+        
+        if self.trigger_type == "zombie":
+            if not any([level.zombie_grid[self.lane + pos[0]][self.column + pos[1]] for pos in self.trigger_pos]):
+                return False
+        
+        return True
+    
     def explode(self, level: "Level"):
         # fuck this dont make it generic
         if not self.armed:
@@ -211,6 +215,9 @@ class MinePlant(Plant):
         if (level.frame - self.frame_planted) < self.arming_interval * level.fps:
             return
         
+        if self.armed == False:
+            logging.debug(f"[{level.frame}] {type(self).__name__} in {self.lane, self.column} is armed!")
+            
         self.armed = True
 
     def do_action(self, level: "Level"):
@@ -263,11 +270,30 @@ class Peashooter(ShooterPlant):
         self.bullet_type = Pea
 
 
-class PotatoMine(Plant):
-    def __init__(self):
-        super(self, Plant).__init__()
+class PotatoMine(MinePlant):
+    def __init__(self, lane, column, frame):
+        super().__init__(lane, column, frame)
         self.load_stats()
         # Stats
+    
+    # TODO - make the potatomine immortal once armed
+    # def arm(self, level: "Level"):
+    #     super().arm(level)
+    #     if self.armed:
+    #         self.hp = math.inf
+        
+
+    def explode(self, level: "Level"):
+        if not super().should_explode(level):
+            return
+        logging.debug(f"[{level.frame}] {type(self).__name__} in {self.lane, self.column} is preparing to explode.")
+        for column in range(self.column, self.column + 2):
+            for target_zombie in level.zombie_grid[self.lane][column][:]: # shallow copy to remove items while iterating
+                target_zombie.get_damaged(self.damage, level)
+        level.plants.remove(self)
+        level.plant_grid[self.lane][self.column] = None
+        logging.debug(f"[{level.frame}] {type(self).__name__} in {self.lane, self.column} has exploded.")
+        
 
 
 class CherryBomb(Plant):
@@ -309,8 +335,10 @@ class SunShroom(Plant):
 class ThreePeater(Plant):
     pass
 
-class WallNut(Plant):
-    pass
+class WallNut(WallPlant):
+    def __init__(self, lane, column, frame):
+        super().__init__(lane, column, frame)
+        self.load_stats()
 
 class name_to_class(Enum):
     peashooter = Peashooter
@@ -323,5 +351,14 @@ def create_plant_instance(plant_name, lane, column, frame):
         return Sunflower(lane, column, frame)
     elif plant_name == "Peashooter":
         return Peashooter(lane, column, frame)
-    
-    
+    elif plant_name == "WallNut":
+        return WallNut(lane, column, frame)
+    elif plant_name == "PotatoMine":
+        return PotatoMine(lane, column, frame)
+    else:
+        # TODO - implement default?
+        from inspect import currentframe, getframeinfo
+        frameinfo = getframeinfo(currentframe())
+        print(f"DUDE!! WHAT THE HELL IS {plant_name.upper()}?!")
+        print(f"Add this plant to {frameinfo.filename}, line {frameinfo.lineno - 3} ")
+        exit(1)

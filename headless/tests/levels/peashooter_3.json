@@ -1,8 +1,8 @@
 {
-    "30": [["normal", 0], ["normal", 1], ["normal", 2]],
-    "32": [["normal", 0]],
-    "34": [["normal", 0], ["normal", 1], ["normal", 2]],
-    "36": [["normal", 0]],
-    "38": [["normal", 0]],
-    "40": [["normal", 0]]
+    "30": [["Normal", 0], ["Normal", 1], ["Normal", 2]],
+    "32": [["Normal", 0]],
+    "34": [["Normal", 0], ["Normal", 1], ["Normal", 2]],
+    "36": [["Normal", 0]],
+    "38": [["Normal", 0]],
+    "40": [["Normal", 0]]
 }

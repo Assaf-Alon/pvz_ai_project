@@ -29,14 +29,15 @@ def get_file_names(number, plant=""):
            f"tests/output/{file_id}.txt",
            f"tests/levels/{file_id}.json")
 
-def setup_test(num, plant=""):
+def setup_test(num, plant="", level_data=None, allowed_plants=["Peashooter", "Sunflower"]):
     EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON = get_file_names(num, plant)
     if os.path.exists(ACTUAL_FILE):
         os.remove(ACTUAL_FILE)
 
-    with open(LEVEL_JSON, "r") as level_data_file:
-        level_data = json.load(level_data_file)
-    env = level.Level(COLUMNS, LANES, level_data, chosen_plants=["Peashooter", "Sunflower"], fps=FPS, logfile=ACTUAL_FILE)
+    # if not level_data:
+    #     with open(LEVEL_JSON, "r") as level_data_file:
+    #         level_data = json.load(level_data_file)
+    env = level.Level(COLUMNS, LANES, level_data, chosen_plants=allowed_plants, fps=FPS, logfile=ACTUAL_FILE)
     
     return (env, EXPECTED_FILE, ACTUAL_FILE, LEVEL_JSON)
 

@@ -1,9 +1,9 @@
 {
-    "10": [["normal", 0], ["normal", 1], ["normal", 2], ["normal", 3], ["normal", 4]],
-    "20": [["normal", 0], ["normal", 1], ["normal", 2], ["normal", 3], ["normal", 4]],
-    "30": [["normal", 0], ["normal", 1], ["normal", 2], ["normal", 3], ["normal", 4]],
-    "40": [["normal", 0], ["normal", 1], ["normal", 2], ["normal", 3], ["normal", 4]],
-    "50": [["normal", 0], ["normal", 1], ["normal", 2], ["normal", 3], ["normal", 4]],
-    "60": [["normal", 0], ["normal", 1], ["normal", 2], ["normal", 3], ["normal", 4]],
-    "70": [["normal", 0], ["normal", 1], ["normal", 2], ["normal", 3], ["normal", 4]]
+    "10": [["Normal", 0], ["Normal", 1], ["Normal", 2], ["Normal", 3], ["Normal", 4]],
+    "20": [["Normal", 0], ["Normal", 1], ["Normal", 2], ["Normal", 3], ["Normal", 4]],
+    "30": [["Normal", 0], ["Normal", 1], ["Normal", 2], ["Normal", 3], ["Normal", 4]],
+    "40": [["Normal", 0], ["Normal", 1], ["Normal", 2], ["Normal", 3], ["Normal", 4]],
+    "50": [["Normal", 0], ["Normal", 1], ["Normal", 2], ["Normal", 3], ["Normal", 4]],
+    "60": [["Normal", 0], ["Normal", 1], ["Normal", 2], ["Normal", 3], ["Normal", 4]],
+    "70": [["Normal", 0], ["Normal", 1], ["Normal", 2], ["Normal", 3], ["Normal", 4]]
 }

@@ -121,18 +121,23 @@ class Level():
         # Are the provided coords within the map?
         if lane < 0 or lane >= self.lanes or column < 0 or column >= self.columns:
             return False
+        
         # Was this plant selected for this run?
         if plant_name not in self.chosen_plants:
             return False
+        
         # Location is free
         if self.plant_grid[lane][column]:
             return False
+        
         # There's no need to recharge
         if self.plant_available_frame[plant_name] > self.frame:
             return False
+        
         # There's enough suns
         if self.suns < self.plant_costs[plant_name]:
             return False
+        
         return True
         
     def action_is_legal(self, action): # This is for the player to check if he can do an action right now

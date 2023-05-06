@@ -62,11 +62,6 @@ class Zombie():
 
         logging.debug(f"[{level.frame}] {self.type} zombie in {self.lane, self.column} attacked.")
         target_plant.get_damaged(self.damage, level)
-        # target_plant.hp -= self.damage
-        # logging.debug(f"[{level.frame}] {type(target_plant).__name__} in {self.lane, self.column} was damaged. HP: {target_plant.hp}.")
-        # if target_plant.hp <= 0:
-        #     target_plant.die(level)
-        #     logging.debug(f"[{level.frame}] {type(target_plant).__name__} in {self.lane, self.column} was killed.")
 
     def move(self, level: "Level"):
         if (level.frame - self.last_action) < self.move_interval * level.fps * self.action_interval_modifier:
