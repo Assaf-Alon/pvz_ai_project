@@ -1,8 +1,10 @@
 import json
 from enum import Enum
 from itertools import product
-
+import sys
+import inspect
 import logging
+
 import consts
 if consts.TYPECHECK:
     from zombie import Zombie
@@ -347,6 +349,11 @@ class name_to_class(Enum):
     
     
 def create_plant_instance(plant_name, lane, column, frame):
+    classes = inspect.getmembers(sys.modules[__name__], inspect.isclass)
+    for class_name, class_object in classes:
+        if class_name == plant_name:
+            return class_object(lane, column, frame)
+
     if plant_name == "Sunflower":
         return Sunflower(lane, column, frame)
     elif plant_name == "Peashooter":
