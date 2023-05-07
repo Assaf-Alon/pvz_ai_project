@@ -349,18 +349,4 @@ class name_to_class(Enum):
     
     
 def create_plant_instance(plant_name, lane, column, frame):
-    if plant_name == "Sunflower":
-        return Sunflower(lane, column, frame)
-    elif plant_name == "Peashooter":
-        return Peashooter(lane, column, frame)
-    elif plant_name == "WallNut":
-        return WallNut(lane, column, frame)
-    elif plant_name == "PotatoMine":
-        return PotatoMine(lane, column, frame)
-    else:
-        # TODO - implement default?
-        from inspect import currentframe, getframeinfo
-        frameinfo = getframeinfo(currentframe())
-        print(f"DUDE!! WHAT THE HELL IS {plant_name.upper()}?!")
-        print(f"Add this plant to {frameinfo.filename}, line {frameinfo.lineno - 3} ")
-        exit(1)
+    return globals()[plant_name](lane, column, frame)
