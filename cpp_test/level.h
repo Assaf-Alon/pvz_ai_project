@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <list>
 using std::vector;
 using std::string;
 
@@ -22,8 +23,9 @@ public:
 //     int lane;
 // } Zombie2Spawn;
 
-typedef struct zombie_data {
-    bool alive;
+class Zombie {
+    public:
+    bool alive = true;
     int lane;
     int col;
     int hp;
@@ -32,26 +34,9 @@ typedef struct zombie_data {
     int move_interval;
     int attack_interval;
     int last_action;
-    bool entering_house;
+    bool entering_house = false;
     // bool frozen;
     // bool hypnotized;
-} Zombie_data;
-
-typedef struct plant_data {
-    int lane;
-    int col;
-    int hp;
-    int damage;
-    int attack_interval;
-    int sun_interval;
-    int last_action;
-} Plant_data;
-
-class Zombie {
-public:
-    Zombie_data* data;
-    Zombie* next;
-    Zombie* prev;
     Zombie(int lane, int column, Level* level);
     void attack(Level* level);
     void move(Level* level);
@@ -61,12 +46,15 @@ public:
 
 class Plant {
 public:
-    Plant_data* data;
-    Plant* next;
-    Plant* prev;
+    int lane;
+    int col;
+    int hp;
+    int damage;
+    int attack_interval;
+    int sun_interval;
+    int last_action;
     bool isSunflower;
-    Plant(int lane, int column);
-    Plant(int lane, int column, bool isSunflower);
+    Plant(int lane, int column, int frame, bool isSunflower);
     void attack(Level* level);
     void generate_sun(Level* level);
     void do_action(Level* level);
@@ -85,14 +73,23 @@ public:
     bool done;
     bool win;
     bool *lawnmowers;
-    Zombie_data zombie_data_array[1024];
-    Plant* plant_list_head;
-    Zombie* zombie_list_head;
+    std::list<Zombie*> zombie_list;
+    std::list<Zombie*>** zombie_grid;
+    std::list<Plant*> plant_list;
+    Plant*** plant_grid;
     vector<Zombie2Spawn> zombies_to_spawn;
-    // Zombie
 
     Level(int lanes, int columns, int fps);
     bool step(string plant_type, int lane, int col);
+    void do_zombie_actions();
+    void do_plant_actions();
+    void remove_dead_objects();
+    void do_player_action(string plant_name, int lane, int col);
+    void spawn_zombies();
+    void spawn_suns();
+    void check_endgame();
+    bool is_action_legal(string plant_name, int lane, int col);
+
     
     void plant(int lane, int column, bool isSunflower);
     // void remove_plant(int lane, int col);
