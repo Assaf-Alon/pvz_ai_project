@@ -25,14 +25,13 @@ public:
 
 class Zombie {
     public:
-    bool alive = true;
     int lane;
     int col;
-    int hp;
-    int damage;
+    int hp = 181;
+    int damage = 100;
     // int type_code;
-    int move_interval;
-    int attack_interval;
+    int move_interval = 5;
+    int attack_interval = 1;
     int last_action;
     bool entering_house = false;
     // bool frozen;
@@ -48,10 +47,9 @@ class Plant {
 public:
     int lane;
     int col;
-    int hp;
-    int damage;
-    int attack_interval;
-    int sun_interval;
+    int hp = 0;
+    int damage = 0;
+    int action_interval = 0;
     int last_action;
     bool isSunflower;
     Plant(int lane, int column, int frame, bool isSunflower);
@@ -73,6 +71,7 @@ public:
     bool done;
     bool win;
     bool *lawnmowers;
+    int fps = 10;
     std::list<Zombie*> zombie_list;
     std::list<Zombie*>** zombie_grid;
     std::list<Plant*> plant_list;
@@ -80,15 +79,15 @@ public:
     vector<Zombie2Spawn> zombies_to_spawn;
 
     Level(int lanes, int columns, int fps);
-    bool step(string plant_type, int lane, int col);
+    ~Level();
+    bool step(const string &plant_type, int lane, int col);
     void do_zombie_actions();
     void do_plant_actions();
-    void remove_dead_objects();
-    void do_player_action(string plant_name, int lane, int col);
+    void do_player_action(const string &plant_name, int lane, int col);
     void spawn_zombies();
     void spawn_suns();
     void check_endgame();
-    bool is_action_legal(string plant_name, int lane, int col);
+    bool is_action_legal(const string &plant_name, int lane, int col);
 
     
     void plant(int lane, int column, bool isSunflower);
