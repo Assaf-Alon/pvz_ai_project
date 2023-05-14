@@ -1,0 +1,1905 @@
+[1] performing step
+[1] zombies left to spawn: 6
+[1] planted sunflower at lane 1 col 0
+[2] performing step
+[2] zombies left to spawn: 6
+[2] no action
+[3] performing step
+[3] zombies left to spawn: 6
+[3] no action
+[4] performing step
+[4] zombies left to spawn: 6
+[4] no action
+[5] performing step
+[5] zombies left to spawn: 6
+[5] no action
+[6] performing step
+[6] zombies left to spawn: 6
+[6] no action
+[7] performing step
+[7] zombies left to spawn: 6
+[7] no action
+[8] performing step
+[8] zombies left to spawn: 6
+[8] no action
+[9] performing step
+[9] zombies left to spawn: 6
+[9] no action
+[10] performing step
+[10] zombies left to spawn: 6
+[10] no action
+[11] performing step
+[11] zombies left to spawn: 6
+[11] no action
+[12] performing step
+[12] zombies left to spawn: 6
+[12] no action
+[13] performing step
+[13] zombies left to spawn: 6
+[13] no action
+[14] performing step
+[14] zombies left to spawn: 6
+[14] no action
+[15] performing step
+[15] zombies left to spawn: 6
+[15] no action
+[16] performing step
+[16] zombies left to spawn: 6
+[16] no action
+[17] performing step
+[17] zombies left to spawn: 6
+[17] no action
+[18] performing step
+[18] zombies left to spawn: 6
+[18] no action
+[19] performing step
+[19] zombies left to spawn: 6
+[19] no action
+[20] performing step
+[20] zombies left to spawn: 6
+[20] no action
+[21] performing step
+[21] zombies left to spawn: 6
+[21] no action
+[22] performing step
+[22] zombies left to spawn: 6
+[22] no action
+[23] performing step
+[23] zombies left to spawn: 6
+[23] no action
+[24] performing step
+[24] zombies left to spawn: 6
+[24] no action
+[25] performing step
+[25] zombies left to spawn: 6
+[25] no action
+[26] performing step
+[26] zombies left to spawn: 6
+[26] no action
+[27] performing step
+[27] zombies left to spawn: 6
+[27] no action
+[28] performing step
+[28] zombies left to spawn: 6
+[28] no action
+[29] performing step
+[29] zombies left to spawn: 6
+[29] no action
+[30] performing step
+[30] zombies left to spawn: 6
+[30] no action
+[31] performing step
+[31] zombies left to spawn: 6
+[31] no action
+[32] performing step
+[32] zombies left to spawn: 6
+[32] no action
+[33] performing step
+[33] zombies left to spawn: 6
+[33] no action
+[34] performing step
+[34] zombies left to spawn: 6
+[34] no action
+[35] performing step
+[35] zombies left to spawn: 6
+[35] no action
+[36] performing step
+[36] zombies left to spawn: 6
+[36] no action
+[37] performing step
+[37] zombies left to spawn: 6
+[37] no action
+[38] performing step
+[38] zombies left to spawn: 6
+[38] no action
+[39] performing step
+[39] zombies left to spawn: 6
+[39] no action
+[40] performing step
+[40] zombies left to spawn: 6
+[40] no action
+[41] performing step
+[41] zombies left to spawn: 6
+[41] no action
+[42] performing step
+[42] zombies left to spawn: 6
+[42] no action
+[43] performing step
+[43] zombies left to spawn: 6
+[43] no action
+[44] performing step
+[44] zombies left to spawn: 6
+[44] no action
+[45] performing step
+[45] zombies left to spawn: 6
+[45] no action
+[46] performing step
+[46] zombies left to spawn: 6
+[46] no action
+[47] performing step
+[47] zombies left to spawn: 6
+[47] no action
+[48] performing step
+[48] zombies left to spawn: 6
+[48] no action
+[49] performing step
+[49] zombies left to spawn: 6
+[49] no action
+[50] performing step
+[50] zombies left to spawn: 6
+[50] no action
+[51] performing step
+[51] zombies left to spawn: 6
+[51] no action
+[52] performing step
+[52] zombies left to spawn: 6
+[52] no action
+[53] performing step
+[53] zombies left to spawn: 6
+[53] no action
+[54] performing step
+[54] zombies left to spawn: 6
+[54] no action
+[55] performing step
+[55] zombies left to spawn: 6
+[55] no action
+[56] performing step
+[56] zombies left to spawn: 6
+[56] no action
+[57] performing step
+[57] zombies left to spawn: 6
+[57] no action
+[58] performing step
+[58] zombies left to spawn: 6
+[58] no action
+[59] performing step
+[59] zombies left to spawn: 6
+[59] no action
+[60] performing step
+[60] zombies left to spawn: 6
+[60] no action
+[61] performing step
+[61] zombies left to spawn: 6
+[61] no action
+[62] performing step
+[62] zombies left to spawn: 6
+[62] no action
+[63] performing step
+[63] zombies left to spawn: 6
+[63] no action
+[64] performing step
+[64] zombies left to spawn: 6
+[64] no action
+[65] performing step
+[65] zombies left to spawn: 6
+[65] no action
+[66] performing step
+[66] zombies left to spawn: 6
+[66] no action
+[67] performing step
+[67] zombies left to spawn: 6
+[67] no action
+[68] performing step
+[68] zombies left to spawn: 6
+[68] no action
+[69] performing step
+[69] zombies left to spawn: 6
+[69] no action
+[70] performing step
+[70] zombies left to spawn: 6
+[70] no action
+[71] performing step
+[71] zombies left to spawn: 6
+[71] no action
+[72] performing step
+[72] zombies left to spawn: 6
+[72] no action
+[73] performing step
+[73] zombies left to spawn: 6
+[73] no action
+[74] performing step
+[74] zombies left to spawn: 6
+[74] no action
+[75] performing step
+[75] zombies left to spawn: 6
+[75] no action
+[76] performing step
+[76] zombies left to spawn: 6
+[76] no action
+[77] performing step
+[77] zombies left to spawn: 6
+[77] no action
+[78] performing step
+[78] zombies left to spawn: 6
+[78] no action
+[79] performing step
+[79] zombies left to spawn: 6
+[79] no action
+[80] performing step
+[80] zombies left to spawn: 6
+[80] no action
+[81] performing step
+[81] zombies left to spawn: 6
+[81] no action
+[82] performing step
+[82] zombies left to spawn: 6
+[82] no action
+[83] performing step
+[83] zombies left to spawn: 6
+[83] no action
+[84] performing step
+[84] zombies left to spawn: 6
+[84] no action
+[85] performing step
+[85] zombies left to spawn: 6
+[85] no action
+[86] performing step
+[86] zombies left to spawn: 6
+[86] no action
+[87] performing step
+[87] zombies left to spawn: 6
+[87] no action
+[88] performing step
+[88] zombies left to spawn: 6
+[88] no action
+[89] performing step
+[89] zombies left to spawn: 6
+[89] no action
+[90] performing step
+[90] zombies left to spawn: 6
+[90] no action
+[91] performing step
+[91] zombies left to spawn: 6
+[91] no action
+[92] performing step
+[92] zombies left to spawn: 6
+[92] no action
+[93] performing step
+[93] zombies left to spawn: 6
+[93] no action
+[94] performing step
+[94] zombies left to spawn: 6
+[94] no action
+[95] performing step
+[95] zombies left to spawn: 6
+[95] no action
+[96] performing step
+[96] zombies left to spawn: 6
+[96] no action
+[97] performing step
+[97] zombies left to spawn: 6
+[97] no action
+[98] performing step
+[98] zombies left to spawn: 6
+[98] no action
+[99] performing step
+[99] zombies left to spawn: 6
+[99] no action
+[100] performing step
+[100] zombies left to spawn: 6
+[100] no action
+[100] Spawning zombie in 1,9
+[101] performing step
+[101] zombies left to spawn: 5
+[101] no action
+[101] generated sun
+[102] performing step
+[102] zombies left to spawn: 5
+[102] no action
+[103] performing step
+[103] zombies left to spawn: 5
+[103] no action
+[104] performing step
+[104] zombies left to spawn: 5
+[104] no action
+[105] performing step
+[105] zombies left to spawn: 5
+[105] no action
+[106] performing step
+[106] zombies left to spawn: 5
+[106] no action
+[107] performing step
+[107] zombies left to spawn: 5
+[107] no action
+[108] performing step
+[108] zombies left to spawn: 5
+[108] no action
+[109] performing step
+[109] zombies left to spawn: 5
+[109] no action
+[110] performing step
+[110] zombies left to spawn: 5
+[110] zombie at 1, 9 moved
+[110] no action
+[111] performing step
+[111] zombies left to spawn: 5
+[111] no action
+[112] performing step
+[112] zombies left to spawn: 5
+[112] no action
+[113] performing step
+[113] zombies left to spawn: 5
+[113] no action
+[114] performing step
+[114] zombies left to spawn: 5
+[114] no action
+[115] performing step
+[115] zombies left to spawn: 5
+[115] no action
+[116] performing step
+[116] zombies left to spawn: 5
+[116] no action
+[117] performing step
+[117] zombies left to spawn: 5
+[117] no action
+[118] performing step
+[118] zombies left to spawn: 5
+[118] no action
+[119] performing step
+[119] zombies left to spawn: 5
+[119] no action
+[120] performing step
+[120] zombies left to spawn: 5
+[120] zombie at 1, 8 moved
+[120] no action
+[121] performing step
+[121] zombies left to spawn: 5
+[121] no action
+[122] performing step
+[122] zombies left to spawn: 5
+[122] no action
+[123] performing step
+[123] zombies left to spawn: 5
+[123] no action
+[124] performing step
+[124] zombies left to spawn: 5
+[124] no action
+[125] performing step
+[125] zombies left to spawn: 5
+[125] no action
+[126] performing step
+[126] zombies left to spawn: 5
+[126] no action
+[127] performing step
+[127] zombies left to spawn: 5
+[127] no action
+[128] performing step
+[128] zombies left to spawn: 5
+[128] no action
+[129] performing step
+[129] zombies left to spawn: 5
+[129] no action
+[130] performing step
+[130] zombies left to spawn: 5
+[130] zombie at 1, 7 moved
+[130] no action
+[131] performing step
+[131] zombies left to spawn: 5
+[131] no action
+[132] performing step
+[132] zombies left to spawn: 5
+[132] no action
+[133] performing step
+[133] zombies left to spawn: 5
+[133] no action
+[134] performing step
+[134] zombies left to spawn: 5
+[134] no action
+[135] performing step
+[135] zombies left to spawn: 5
+[135] no action
+[136] performing step
+[136] zombies left to spawn: 5
+[136] no action
+[137] performing step
+[137] zombies left to spawn: 5
+[137] no action
+[138] performing step
+[138] zombies left to spawn: 5
+[138] no action
+[139] performing step
+[139] zombies left to spawn: 5
+[139] no action
+[140] performing step
+[140] zombies left to spawn: 5
+[140] zombie at 1, 6 moved
+[140] no action
+[141] performing step
+[141] zombies left to spawn: 5
+[141] no action
+[142] performing step
+[142] zombies left to spawn: 5
+[142] no action
+[143] performing step
+[143] zombies left to spawn: 5
+[143] no action
+[144] performing step
+[144] zombies left to spawn: 5
+[144] no action
+[145] performing step
+[145] zombies left to spawn: 5
+[145] no action
+[146] performing step
+[146] zombies left to spawn: 5
+[146] no action
+[147] performing step
+[147] zombies left to spawn: 5
+[147] no action
+[148] performing step
+[148] zombies left to spawn: 5
+[148] no action
+[149] performing step
+[149] zombies left to spawn: 5
+[149] no action
+[150] performing step
+[150] zombies left to spawn: 5
+[150] zombie at 1, 5 moved
+[150] no action
+[151] performing step
+[151] zombies left to spawn: 5
+[151] no action
+[152] performing step
+[152] zombies left to spawn: 5
+[152] no action
+[153] performing step
+[153] zombies left to spawn: 5
+[153] no action
+[154] performing step
+[154] zombies left to spawn: 5
+[154] no action
+[155] performing step
+[155] zombies left to spawn: 5
+[155] no action
+[156] performing step
+[156] zombies left to spawn: 5
+[156] no action
+[157] performing step
+[157] zombies left to spawn: 5
+[157] no action
+[158] performing step
+[158] zombies left to spawn: 5
+[158] no action
+[159] performing step
+[159] zombies left to spawn: 5
+[159] no action
+[160] performing step
+[160] zombies left to spawn: 5
+[160] zombie at 1, 4 moved
+[160] no action
+[161] performing step
+[161] zombies left to spawn: 5
+[161] no action
+[162] performing step
+[162] zombies left to spawn: 5
+[162] no action
+[163] performing step
+[163] zombies left to spawn: 5
+[163] no action
+[164] performing step
+[164] zombies left to spawn: 5
+[164] no action
+[165] performing step
+[165] zombies left to spawn: 5
+[165] no action
+[166] performing step
+[166] zombies left to spawn: 5
+[166] no action
+[167] performing step
+[167] zombies left to spawn: 5
+[167] no action
+[168] performing step
+[168] zombies left to spawn: 5
+[168] no action
+[169] performing step
+[169] zombies left to spawn: 5
+[169] no action
+[170] performing step
+[170] zombies left to spawn: 5
+[170] zombie at 1, 3 moved
+[170] no action
+[171] performing step
+[171] zombies left to spawn: 5
+[171] no action
+[172] performing step
+[172] zombies left to spawn: 5
+[172] no action
+[173] performing step
+[173] zombies left to spawn: 5
+[173] no action
+[174] performing step
+[174] zombies left to spawn: 5
+[174] no action
+[175] performing step
+[175] zombies left to spawn: 5
+[175] no action
+[176] performing step
+[176] zombies left to spawn: 5
+[176] no action
+[177] performing step
+[177] zombies left to spawn: 5
+[177] no action
+[178] performing step
+[178] zombies left to spawn: 5
+[178] no action
+[179] performing step
+[179] zombies left to spawn: 5
+[179] no action
+[180] performing step
+[180] zombies left to spawn: 5
+[180] zombie at 1, 2 moved
+[180] no action
+[181] performing step
+[181] zombies left to spawn: 5
+[181] no action
+[182] performing step
+[182] zombies left to spawn: 5
+[182] no action
+[183] performing step
+[183] zombies left to spawn: 5
+[183] no action
+[184] performing step
+[184] zombies left to spawn: 5
+[184] no action
+[185] performing step
+[185] zombies left to spawn: 5
+[185] no action
+[186] performing step
+[186] zombies left to spawn: 5
+[186] no action
+[187] performing step
+[187] zombies left to spawn: 5
+[187] no action
+[188] performing step
+[188] zombies left to spawn: 5
+[188] no action
+[189] performing step
+[189] zombies left to spawn: 5
+[189] no action
+[190] performing step
+[190] zombies left to spawn: 5
+[190] zombie at 1, 1 moved
+[190] no action
+[191] performing step
+[191] zombies left to spawn: 5
+[191] no action
+[192] performing step
+[192] zombies left to spawn: 5
+[192] no action
+[193] performing step
+[193] zombies left to spawn: 5
+[193] no action
+[194] performing step
+[194] zombies left to spawn: 5
+[194] no action
+[195] performing step
+[195] zombies left to spawn: 5
+[195] no action
+[196] performing step
+[196] zombies left to spawn: 5
+[196] no action
+[197] performing step
+[197] zombies left to spawn: 5
+[197] no action
+[198] performing step
+[198] zombies left to spawn: 5
+[198] no action
+[199] performing step
+[199] zombies left to spawn: 5
+[199] no action
+[200] performing step
+[200] zombies left to spawn: 5
+[200] no action
+[200] Spawning zombie in 2,9
+[200] Spawning zombie in 3,9
+[200] lawnmower destroying lane number 1
+[200] Zombie at 1,0 sustained 9999 damage
+[201] performing step
+[201] zombies left to spawn: 3
+[201] no action
+[201] generated sun
+[202] performing step
+[202] zombies left to spawn: 3
+[202] planted sunflower at lane 1 col 1
+[203] performing step
+[203] zombies left to spawn: 3
+[203] no action
+[204] performing step
+[204] zombies left to spawn: 3
+[204] no action
+[205] performing step
+[205] zombies left to spawn: 3
+[205] no action
+[206] performing step
+[206] zombies left to spawn: 3
+[206] no action
+[207] performing step
+[207] zombies left to spawn: 3
+[207] no action
+[208] performing step
+[208] zombies left to spawn: 3
+[208] no action
+[209] performing step
+[209] zombies left to spawn: 3
+[209] no action
+[210] performing step
+[210] zombies left to spawn: 3
+[210] zombie at 2, 9 moved
+[210] zombie at 3, 9 moved
+[210] no action
+[211] performing step
+[211] zombies left to spawn: 3
+[211] no action
+[212] performing step
+[212] zombies left to spawn: 3
+[212] no action
+[213] performing step
+[213] zombies left to spawn: 3
+[213] no action
+[214] performing step
+[214] zombies left to spawn: 3
+[214] no action
+[215] performing step
+[215] zombies left to spawn: 3
+[215] no action
+[216] performing step
+[216] zombies left to spawn: 3
+[216] no action
+[217] performing step
+[217] zombies left to spawn: 3
+[217] no action
+[218] performing step
+[218] zombies left to spawn: 3
+[218] no action
+[219] performing step
+[219] zombies left to spawn: 3
+[219] no action
+[220] performing step
+[220] zombies left to spawn: 3
+[220] zombie at 2, 8 moved
+[220] zombie at 3, 8 moved
+[220] no action
+[221] performing step
+[221] zombies left to spawn: 3
+[221] no action
+[222] performing step
+[222] zombies left to spawn: 3
+[222] no action
+[223] performing step
+[223] zombies left to spawn: 3
+[223] no action
+[224] performing step
+[224] zombies left to spawn: 3
+[224] no action
+[225] performing step
+[225] zombies left to spawn: 3
+[225] no action
+[226] performing step
+[226] zombies left to spawn: 3
+[226] no action
+[227] performing step
+[227] zombies left to spawn: 3
+[227] no action
+[228] performing step
+[228] zombies left to spawn: 3
+[228] no action
+[229] performing step
+[229] zombies left to spawn: 3
+[229] no action
+[230] performing step
+[230] zombies left to spawn: 3
+[230] zombie at 2, 7 moved
+[230] zombie at 3, 7 moved
+[230] no action
+[231] performing step
+[231] zombies left to spawn: 3
+[231] no action
+[232] performing step
+[232] zombies left to spawn: 3
+[232] no action
+[233] performing step
+[233] zombies left to spawn: 3
+[233] no action
+[234] performing step
+[234] zombies left to spawn: 3
+[234] no action
+[235] performing step
+[235] zombies left to spawn: 3
+[235] no action
+[236] performing step
+[236] zombies left to spawn: 3
+[236] no action
+[237] performing step
+[237] zombies left to spawn: 3
+[237] no action
+[238] performing step
+[238] zombies left to spawn: 3
+[238] no action
+[239] performing step
+[239] zombies left to spawn: 3
+[239] no action
+[240] performing step
+[240] zombies left to spawn: 3
+[240] zombie at 2, 6 moved
+[240] zombie at 3, 6 moved
+[240] no action
+[241] performing step
+[241] zombies left to spawn: 3
+[241] no action
+[242] performing step
+[242] zombies left to spawn: 3
+[242] no action
+[243] performing step
+[243] zombies left to spawn: 3
+[243] no action
+[244] performing step
+[244] zombies left to spawn: 3
+[244] plant at 1, 0 generated sun
+[244] no action
+[245] performing step
+[245] zombies left to spawn: 3
+[245] no action
+[246] performing step
+[246] zombies left to spawn: 3
+[246] no action
+[247] performing step
+[247] zombies left to spawn: 3
+[247] no action
+[248] performing step
+[248] zombies left to spawn: 3
+[248] no action
+[249] performing step
+[249] zombies left to spawn: 3
+[249] no action
+[250] performing step
+[250] zombies left to spawn: 3
+[250] zombie at 2, 5 moved
+[250] zombie at 3, 5 moved
+[250] no action
+[251] performing step
+[251] zombies left to spawn: 3
+[251] no action
+[252] performing step
+[252] zombies left to spawn: 3
+[252] no action
+[253] performing step
+[253] zombies left to spawn: 3
+[253] no action
+[254] performing step
+[254] zombies left to spawn: 3
+[254] no action
+[255] performing step
+[255] zombies left to spawn: 3
+[255] no action
+[256] performing step
+[256] zombies left to spawn: 3
+[256] no action
+[257] performing step
+[257] zombies left to spawn: 3
+[257] no action
+[258] performing step
+[258] zombies left to spawn: 3
+[258] no action
+[259] performing step
+[259] zombies left to spawn: 3
+[259] no action
+[260] performing step
+[260] zombies left to spawn: 3
+[260] zombie at 2, 4 moved
+[260] zombie at 3, 4 moved
+[260] no action
+[261] performing step
+[261] zombies left to spawn: 3
+[261] no action
+[262] performing step
+[262] zombies left to spawn: 3
+[262] no action
+[263] performing step
+[263] zombies left to spawn: 3
+[263] no action
+[264] performing step
+[264] zombies left to spawn: 3
+[264] no action
+[265] performing step
+[265] zombies left to spawn: 3
+[265] no action
+[266] performing step
+[266] zombies left to spawn: 3
+[266] no action
+[267] performing step
+[267] zombies left to spawn: 3
+[267] no action
+[268] performing step
+[268] zombies left to spawn: 3
+[268] no action
+[269] performing step
+[269] zombies left to spawn: 3
+[269] no action
+[270] performing step
+[270] zombies left to spawn: 3
+[270] zombie at 2, 3 moved
+[270] zombie at 3, 3 moved
+[270] no action
+[271] performing step
+[271] zombies left to spawn: 3
+[271] no action
+[272] performing step
+[272] zombies left to spawn: 3
+[272] no action
+[273] performing step
+[273] zombies left to spawn: 3
+[273] no action
+[274] performing step
+[274] zombies left to spawn: 3
+[274] no action
+[275] performing step
+[275] zombies left to spawn: 3
+[275] no action
+[276] performing step
+[276] zombies left to spawn: 3
+[276] no action
+[277] performing step
+[277] zombies left to spawn: 3
+[277] no action
+[278] performing step
+[278] zombies left to spawn: 3
+[278] no action
+[279] performing step
+[279] zombies left to spawn: 3
+[279] no action
+[280] performing step
+[280] zombies left to spawn: 3
+[280] zombie at 2, 2 moved
+[280] zombie at 3, 2 moved
+[280] no action
+[281] performing step
+[281] zombies left to spawn: 3
+[281] no action
+[282] performing step
+[282] zombies left to spawn: 3
+[282] no action
+[283] performing step
+[283] zombies left to spawn: 3
+[283] no action
+[284] performing step
+[284] zombies left to spawn: 3
+[284] no action
+[285] performing step
+[285] zombies left to spawn: 3
+[285] no action
+[286] performing step
+[286] zombies left to spawn: 3
+[286] no action
+[287] performing step
+[287] zombies left to spawn: 3
+[287] no action
+[288] performing step
+[288] zombies left to spawn: 3
+[288] no action
+[289] performing step
+[289] zombies left to spawn: 3
+[289] no action
+[290] performing step
+[290] zombies left to spawn: 3
+[290] zombie at 2, 1 moved
+[290] zombie at 3, 1 moved
+[290] no action
+[291] performing step
+[291] zombies left to spawn: 3
+[291] no action
+[292] performing step
+[292] zombies left to spawn: 3
+[292] no action
+[293] performing step
+[293] zombies left to spawn: 3
+[293] no action
+[294] performing step
+[294] zombies left to spawn: 3
+[294] no action
+[295] performing step
+[295] zombies left to spawn: 3
+[295] no action
+[296] performing step
+[296] zombies left to spawn: 3
+[296] no action
+[297] performing step
+[297] zombies left to spawn: 3
+[297] no action
+[298] performing step
+[298] zombies left to spawn: 3
+[298] no action
+[299] performing step
+[299] zombies left to spawn: 3
+[299] no action
+[300] performing step
+[300] zombies left to spawn: 3
+[300] no action
+[300] lawnmower destroying lane number 2
+[300] Zombie at 2,0 sustained 9999 damage
+[300] lawnmower destroying lane number 3
+[300] Zombie at 3,0 sustained 9999 damage
+[301] performing step
+[301] zombies left to spawn: 3
+[301] no action
+[301] generated sun
+[302] performing step
+[302] zombies left to spawn: 3
+[302] no action
+[303] performing step
+[303] zombies left to spawn: 3
+[303] no action
+[304] performing step
+[304] zombies left to spawn: 3
+[304] no action
+[305] performing step
+[305] zombies left to spawn: 3
+[305] no action
+[306] performing step
+[306] zombies left to spawn: 3
+[306] no action
+[307] performing step
+[307] zombies left to spawn: 3
+[307] no action
+[308] performing step
+[308] zombies left to spawn: 3
+[308] no action
+[309] performing step
+[309] zombies left to spawn: 3
+[309] no action
+[310] performing step
+[310] zombies left to spawn: 3
+[310] no action
+[311] performing step
+[311] zombies left to spawn: 3
+[311] no action
+[312] performing step
+[312] zombies left to spawn: 3
+[312] no action
+[313] performing step
+[313] zombies left to spawn: 3
+[313] no action
+[314] performing step
+[314] zombies left to spawn: 3
+[314] no action
+[315] performing step
+[315] zombies left to spawn: 3
+[315] no action
+[316] performing step
+[316] zombies left to spawn: 3
+[316] no action
+[317] performing step
+[317] zombies left to spawn: 3
+[317] no action
+[318] performing step
+[318] zombies left to spawn: 3
+[318] no action
+[319] performing step
+[319] zombies left to spawn: 3
+[319] no action
+[320] performing step
+[320] zombies left to spawn: 3
+[320] no action
+[321] performing step
+[321] zombies left to spawn: 3
+[321] no action
+[322] performing step
+[322] zombies left to spawn: 3
+[322] no action
+[323] performing step
+[323] zombies left to spawn: 3
+[323] no action
+[324] performing step
+[324] zombies left to spawn: 3
+[324] no action
+[325] performing step
+[325] zombies left to spawn: 3
+[325] no action
+[326] performing step
+[326] zombies left to spawn: 3
+[326] no action
+[327] performing step
+[327] zombies left to spawn: 3
+[327] no action
+[328] performing step
+[328] zombies left to spawn: 3
+[328] no action
+[329] performing step
+[329] zombies left to spawn: 3
+[329] no action
+[330] performing step
+[330] zombies left to spawn: 3
+[330] no action
+[331] performing step
+[331] zombies left to spawn: 3
+[331] no action
+[332] performing step
+[332] zombies left to spawn: 3
+[332] no action
+[333] performing step
+[333] zombies left to spawn: 3
+[333] no action
+[334] performing step
+[334] zombies left to spawn: 3
+[334] no action
+[335] performing step
+[335] zombies left to spawn: 3
+[335] no action
+[336] performing step
+[336] zombies left to spawn: 3
+[336] no action
+[337] performing step
+[337] zombies left to spawn: 3
+[337] no action
+[338] performing step
+[338] zombies left to spawn: 3
+[338] no action
+[339] performing step
+[339] zombies left to spawn: 3
+[339] no action
+[340] performing step
+[340] zombies left to spawn: 3
+[340] no action
+[341] performing step
+[341] zombies left to spawn: 3
+[341] no action
+[342] performing step
+[342] zombies left to spawn: 3
+[342] no action
+[343] performing step
+[343] zombies left to spawn: 3
+[343] no action
+[344] performing step
+[344] zombies left to spawn: 3
+[344] no action
+[345] performing step
+[345] zombies left to spawn: 3
+[345] no action
+[346] performing step
+[346] zombies left to spawn: 3
+[346] no action
+[347] performing step
+[347] zombies left to spawn: 3
+[347] no action
+[348] performing step
+[348] zombies left to spawn: 3
+[348] no action
+[349] performing step
+[349] zombies left to spawn: 3
+[349] no action
+[350] performing step
+[350] zombies left to spawn: 3
+[350] no action
+[351] performing step
+[351] zombies left to spawn: 3
+[351] no action
+[352] performing step
+[352] zombies left to spawn: 3
+[352] no action
+[353] performing step
+[353] zombies left to spawn: 3
+[353] no action
+[354] performing step
+[354] zombies left to spawn: 3
+[354] no action
+[355] performing step
+[355] zombies left to spawn: 3
+[355] no action
+[356] performing step
+[356] zombies left to spawn: 3
+[356] no action
+[357] performing step
+[357] zombies left to spawn: 3
+[357] no action
+[358] performing step
+[358] zombies left to spawn: 3
+[358] no action
+[359] performing step
+[359] zombies left to spawn: 3
+[359] no action
+[360] performing step
+[360] zombies left to spawn: 3
+[360] no action
+[361] performing step
+[361] zombies left to spawn: 3
+[361] no action
+[362] performing step
+[362] zombies left to spawn: 3
+[362] no action
+[363] performing step
+[363] zombies left to spawn: 3
+[363] no action
+[364] performing step
+[364] zombies left to spawn: 3
+[364] no action
+[365] performing step
+[365] zombies left to spawn: 3
+[365] no action
+[366] performing step
+[366] zombies left to spawn: 3
+[366] no action
+[367] performing step
+[367] zombies left to spawn: 3
+[367] no action
+[368] performing step
+[368] zombies left to spawn: 3
+[368] no action
+[369] performing step
+[369] zombies left to spawn: 3
+[369] no action
+[370] performing step
+[370] zombies left to spawn: 3
+[370] no action
+[371] performing step
+[371] zombies left to spawn: 3
+[371] no action
+[372] performing step
+[372] zombies left to spawn: 3
+[372] no action
+[373] performing step
+[373] zombies left to spawn: 3
+[373] no action
+[374] performing step
+[374] zombies left to spawn: 3
+[374] no action
+[375] performing step
+[375] zombies left to spawn: 3
+[375] no action
+[376] performing step
+[376] zombies left to spawn: 3
+[376] no action
+[377] performing step
+[377] zombies left to spawn: 3
+[377] no action
+[378] performing step
+[378] zombies left to spawn: 3
+[378] no action
+[379] performing step
+[379] zombies left to spawn: 3
+[379] no action
+[380] performing step
+[380] zombies left to spawn: 3
+[380] no action
+[381] performing step
+[381] zombies left to spawn: 3
+[381] no action
+[382] performing step
+[382] zombies left to spawn: 3
+[382] no action
+[383] performing step
+[383] zombies left to spawn: 3
+[383] no action
+[384] performing step
+[384] zombies left to spawn: 3
+[384] no action
+[385] performing step
+[385] zombies left to spawn: 3
+[385] no action
+[386] performing step
+[386] zombies left to spawn: 3
+[386] no action
+[387] performing step
+[387] zombies left to spawn: 3
+[387] no action
+[388] performing step
+[388] zombies left to spawn: 3
+[388] no action
+[389] performing step
+[389] zombies left to spawn: 3
+[389] no action
+[390] performing step
+[390] zombies left to spawn: 3
+[390] no action
+[391] performing step
+[391] zombies left to spawn: 3
+[391] no action
+[392] performing step
+[392] zombies left to spawn: 3
+[392] no action
+[393] performing step
+[393] zombies left to spawn: 3
+[393] no action
+[394] performing step
+[394] zombies left to spawn: 3
+[394] no action
+[395] performing step
+[395] zombies left to spawn: 3
+[395] no action
+[396] performing step
+[396] zombies left to spawn: 3
+[396] no action
+[397] performing step
+[397] zombies left to spawn: 3
+[397] no action
+[398] performing step
+[398] zombies left to spawn: 3
+[398] no action
+[399] performing step
+[399] zombies left to spawn: 3
+[399] no action
+[400] performing step
+[400] zombies left to spawn: 3
+[400] no action
+[401] performing step
+[401] zombies left to spawn: 3
+[401] no action
+[401] generated sun
+[402] performing step
+[402] zombies left to spawn: 3
+[402] no action
+[403] performing step
+[403] zombies left to spawn: 3
+[403] no action
+[404] performing step
+[404] zombies left to spawn: 3
+[404] no action
+[405] performing step
+[405] zombies left to spawn: 3
+[405] no action
+[406] performing step
+[406] zombies left to spawn: 3
+[406] no action
+[407] performing step
+[407] zombies left to spawn: 3
+[407] no action
+[408] performing step
+[408] zombies left to spawn: 3
+[408] no action
+[409] performing step
+[409] zombies left to spawn: 3
+[409] no action
+[410] performing step
+[410] zombies left to spawn: 3
+[410] no action
+[411] performing step
+[411] zombies left to spawn: 3
+[411] no action
+[412] performing step
+[412] zombies left to spawn: 3
+[412] no action
+[413] performing step
+[413] zombies left to spawn: 3
+[413] no action
+[414] performing step
+[414] zombies left to spawn: 3
+[414] no action
+[415] performing step
+[415] zombies left to spawn: 3
+[415] no action
+[416] performing step
+[416] zombies left to spawn: 3
+[416] no action
+[417] performing step
+[417] zombies left to spawn: 3
+[417] no action
+[418] performing step
+[418] zombies left to spawn: 3
+[418] no action
+[419] performing step
+[419] zombies left to spawn: 3
+[419] no action
+[420] performing step
+[420] zombies left to spawn: 3
+[420] no action
+[421] performing step
+[421] zombies left to spawn: 3
+[421] no action
+[422] performing step
+[422] zombies left to spawn: 3
+[422] no action
+[423] performing step
+[423] zombies left to spawn: 3
+[423] no action
+[424] performing step
+[424] zombies left to spawn: 3
+[424] no action
+[425] performing step
+[425] zombies left to spawn: 3
+[425] no action
+[426] performing step
+[426] zombies left to spawn: 3
+[426] no action
+[427] performing step
+[427] zombies left to spawn: 3
+[427] no action
+[428] performing step
+[428] zombies left to spawn: 3
+[428] no action
+[429] performing step
+[429] zombies left to spawn: 3
+[429] no action
+[430] performing step
+[430] zombies left to spawn: 3
+[430] no action
+[431] performing step
+[431] zombies left to spawn: 3
+[431] no action
+[432] performing step
+[432] zombies left to spawn: 3
+[432] no action
+[433] performing step
+[433] zombies left to spawn: 3
+[433] no action
+[434] performing step
+[434] zombies left to spawn: 3
+[434] no action
+[435] performing step
+[435] zombies left to spawn: 3
+[435] no action
+[436] performing step
+[436] zombies left to spawn: 3
+[436] no action
+[437] performing step
+[437] zombies left to spawn: 3
+[437] no action
+[438] performing step
+[438] zombies left to spawn: 3
+[438] no action
+[439] performing step
+[439] zombies left to spawn: 3
+[439] no action
+[440] performing step
+[440] zombies left to spawn: 3
+[440] no action
+[441] performing step
+[441] zombies left to spawn: 3
+[441] no action
+[442] performing step
+[442] zombies left to spawn: 3
+[442] no action
+[443] performing step
+[443] zombies left to spawn: 3
+[443] no action
+[444] performing step
+[444] zombies left to spawn: 3
+[444] no action
+[445] performing step
+[445] zombies left to spawn: 3
+[445] plant at 1, 1 generated sun
+[445] no action
+[446] performing step
+[446] zombies left to spawn: 3
+[446] planted peashooter at lane 1 col 2
+[447] performing step
+[447] zombies left to spawn: 3
+[447] no action
+[448] performing step
+[448] zombies left to spawn: 3
+[448] no action
+[449] performing step
+[449] zombies left to spawn: 3
+[449] no action
+[450] performing step
+[450] zombies left to spawn: 3
+[450] no action
+[451] performing step
+[451] zombies left to spawn: 3
+[451] no action
+[452] performing step
+[452] zombies left to spawn: 3
+[452] no action
+[453] performing step
+[453] zombies left to spawn: 3
+[453] no action
+[454] performing step
+[454] zombies left to spawn: 3
+[454] no action
+[455] performing step
+[455] zombies left to spawn: 3
+[455] no action
+[456] performing step
+[456] zombies left to spawn: 3
+[456] no action
+[457] performing step
+[457] zombies left to spawn: 3
+[457] no action
+[458] performing step
+[458] zombies left to spawn: 3
+[458] no action
+[459] performing step
+[459] zombies left to spawn: 3
+[459] no action
+[460] performing step
+[460] zombies left to spawn: 3
+[460] no action
+[461] performing step
+[461] zombies left to spawn: 3
+[461] plant at 1, 2 attacked
+[461] no action
+[462] performing step
+[462] zombies left to spawn: 3
+[462] no action
+[463] performing step
+[463] zombies left to spawn: 3
+[463] no action
+[464] performing step
+[464] zombies left to spawn: 3
+[464] no action
+[465] performing step
+[465] zombies left to spawn: 3
+[465] no action
+[466] performing step
+[466] zombies left to spawn: 3
+[466] no action
+[467] performing step
+[467] zombies left to spawn: 3
+[467] no action
+[468] performing step
+[468] zombies left to spawn: 3
+[468] no action
+[469] performing step
+[469] zombies left to spawn: 3
+[469] no action
+[470] performing step
+[470] zombies left to spawn: 3
+[470] no action
+[471] performing step
+[471] zombies left to spawn: 3
+[471] no action
+[472] performing step
+[472] zombies left to spawn: 3
+[472] no action
+[473] performing step
+[473] zombies left to spawn: 3
+[473] no action
+[474] performing step
+[474] zombies left to spawn: 3
+[474] no action
+[475] performing step
+[475] zombies left to spawn: 3
+[475] no action
+[476] performing step
+[476] zombies left to spawn: 3
+[476] plant at 1, 2 attacked
+[476] no action
+[477] performing step
+[477] zombies left to spawn: 3
+[477] no action
+[478] performing step
+[478] zombies left to spawn: 3
+[478] no action
+[479] performing step
+[479] zombies left to spawn: 3
+[479] no action
+[480] performing step
+[480] zombies left to spawn: 3
+[480] no action
+[481] performing step
+[481] zombies left to spawn: 3
+[481] no action
+[482] performing step
+[482] zombies left to spawn: 3
+[482] no action
+[483] performing step
+[483] zombies left to spawn: 3
+[483] no action
+[484] performing step
+[484] zombies left to spawn: 3
+[484] no action
+[485] performing step
+[485] zombies left to spawn: 3
+[485] no action
+[486] performing step
+[486] zombies left to spawn: 3
+[486] no action
+[487] performing step
+[487] zombies left to spawn: 3
+[487] plant at 1, 0 generated sun
+[487] no action
+[488] performing step
+[488] zombies left to spawn: 3
+[488] no action
+[489] performing step
+[489] zombies left to spawn: 3
+[489] no action
+[490] performing step
+[490] zombies left to spawn: 3
+[490] no action
+[491] performing step
+[491] zombies left to spawn: 3
+[491] plant at 1, 2 attacked
+[491] no action
+[492] performing step
+[492] zombies left to spawn: 3
+[492] no action
+[493] performing step
+[493] zombies left to spawn: 3
+[493] no action
+[494] performing step
+[494] zombies left to spawn: 3
+[494] no action
+[495] performing step
+[495] zombies left to spawn: 3
+[495] no action
+[496] performing step
+[496] zombies left to spawn: 3
+[496] no action
+[497] performing step
+[497] zombies left to spawn: 3
+[497] no action
+[498] performing step
+[498] zombies left to spawn: 3
+[498] no action
+[499] performing step
+[499] zombies left to spawn: 3
+[499] no action
+[500] performing step
+[500] zombies left to spawn: 3
+[500] no action
+[500] Spawning zombie in 1,9
+[500] Spawning zombie in 4,9
+[500] Spawning zombie in 1,9
+[501] performing step
+[501] zombies left to spawn: 0
+[501] no action
+[501] generated sun
+[502] performing step
+[502] zombies left to spawn: 0
+[502] no action
+[503] performing step
+[503] zombies left to spawn: 0
+[503] no action
+[504] performing step
+[504] zombies left to spawn: 0
+[504] no action
+[505] performing step
+[505] zombies left to spawn: 0
+[505] no action
+[506] performing step
+[506] zombies left to spawn: 0
+[506] plant at 1, 2 attacked
+[506] Zombie at 1,9 sustained 20 damage
+[506] no action
+[507] performing step
+[507] zombies left to spawn: 0
+[507] no action
+[508] performing step
+[508] zombies left to spawn: 0
+[508] no action
+[509] performing step
+[509] zombies left to spawn: 0
+[509] no action
+[510] performing step
+[510] zombies left to spawn: 0
+[510] zombie at 1, 9 moved
+[510] zombie at 4, 9 moved
+[510] zombie at 1, 9 moved
+[510] no action
+[511] performing step
+[511] zombies left to spawn: 0
+[511] no action
+[512] performing step
+[512] zombies left to spawn: 0
+[512] no action
+[513] performing step
+[513] zombies left to spawn: 0
+[513] no action
+[514] performing step
+[514] zombies left to spawn: 0
+[514] no action
+[515] performing step
+[515] zombies left to spawn: 0
+[515] no action
+[516] performing step
+[516] zombies left to spawn: 0
+[516] no action
+[517] performing step
+[517] zombies left to spawn: 0
+[517] no action
+[518] performing step
+[518] zombies left to spawn: 0
+[518] no action
+[519] performing step
+[519] zombies left to spawn: 0
+[519] no action
+[520] performing step
+[520] zombies left to spawn: 0
+[520] zombie at 1, 8 moved
+[520] zombie at 4, 8 moved
+[520] zombie at 1, 8 moved
+[520] no action
+[521] performing step
+[521] zombies left to spawn: 0
+[521] plant at 1, 2 attacked
+[521] Zombie at 1,7 sustained 20 damage
+[521] no action
+[522] performing step
+[522] zombies left to spawn: 0
+[522] no action
+[523] performing step
+[523] zombies left to spawn: 0
+[523] no action
+[524] performing step
+[524] zombies left to spawn: 0
+[524] no action
+[525] performing step
+[525] zombies left to spawn: 0
+[525] no action
+[526] performing step
+[526] zombies left to spawn: 0
+[526] no action
+[527] performing step
+[527] zombies left to spawn: 0
+[527] no action
+[528] performing step
+[528] zombies left to spawn: 0
+[528] no action
+[529] performing step
+[529] zombies left to spawn: 0
+[529] no action
+[530] performing step
+[530] zombies left to spawn: 0
+[530] zombie at 1, 7 moved
+[530] zombie at 4, 7 moved
+[530] zombie at 1, 7 moved
+[530] no action
+[531] performing step
+[531] zombies left to spawn: 0
+[531] no action
+[532] performing step
+[532] zombies left to spawn: 0
+[532] no action
+[533] performing step
+[533] zombies left to spawn: 0
+[533] no action
+[534] performing step
+[534] zombies left to spawn: 0
+[534] no action
+[535] performing step
+[535] zombies left to spawn: 0
+[535] no action
+[536] performing step
+[536] zombies left to spawn: 0
+[536] plant at 1, 2 attacked
+[536] Zombie at 1,6 sustained 20 damage
+[536] no action
+[537] performing step
+[537] zombies left to spawn: 0
+[537] no action
+[538] performing step
+[538] zombies left to spawn: 0
+[538] no action
+[539] performing step
+[539] zombies left to spawn: 0
+[539] no action
+[540] performing step
+[540] zombies left to spawn: 0
+[540] zombie at 1, 6 moved
+[540] zombie at 4, 6 moved
+[540] zombie at 1, 6 moved
+[540] no action
+[541] performing step
+[541] zombies left to spawn: 0
+[541] no action
+[542] performing step
+[542] zombies left to spawn: 0
+[542] no action
+[543] performing step
+[543] zombies left to spawn: 0
+[543] no action
+[544] performing step
+[544] zombies left to spawn: 0
+[544] no action
+[545] performing step
+[545] zombies left to spawn: 0
+[545] no action
+[546] performing step
+[546] zombies left to spawn: 0
+[546] no action
+[547] performing step
+[547] zombies left to spawn: 0
+[547] no action
+[548] performing step
+[548] zombies left to spawn: 0
+[548] no action
+[549] performing step
+[549] zombies left to spawn: 0
+[549] no action
+[550] performing step
+[550] zombies left to spawn: 0
+[550] zombie at 1, 5 moved
+[550] zombie at 4, 5 moved
+[550] zombie at 1, 5 moved
+[550] no action
+[551] performing step
+[551] zombies left to spawn: 0
+[551] plant at 1, 2 attacked
+[551] Zombie at 1,4 sustained 20 damage
+[551] no action
+[552] performing step
+[552] zombies left to spawn: 0
+[552] no action
+[553] performing step
+[553] zombies left to spawn: 0
+[553] no action
+[554] performing step
+[554] zombies left to spawn: 0
+[554] no action
+[555] performing step
+[555] zombies left to spawn: 0
+[555] no action
+[556] performing step
+[556] zombies left to spawn: 0
+[556] no action
+[557] performing step
+[557] zombies left to spawn: 0
+[557] no action
+[558] performing step
+[558] zombies left to spawn: 0
+[558] no action
+[559] performing step
+[559] zombies left to spawn: 0
+[559] no action
+[560] performing step
+[560] zombies left to spawn: 0
+[560] zombie at 1, 4 moved
+[560] zombie at 4, 4 moved
+[560] zombie at 1, 4 moved
+[560] no action
+[561] performing step
+[561] zombies left to spawn: 0
+[561] no action
+[562] performing step
+[562] zombies left to spawn: 0
+[562] no action
+[563] performing step
+[563] zombies left to spawn: 0
+[563] no action
+[564] performing step
+[564] zombies left to spawn: 0
+[564] no action
+[565] performing step
+[565] zombies left to spawn: 0
+[565] no action
+[566] performing step
+[566] zombies left to spawn: 0
+[566] plant at 1, 2 attacked
+[566] Zombie at 1,3 sustained 20 damage
+[566] no action
+[567] performing step
+[567] zombies left to spawn: 0
+[567] no action
+[568] performing step
+[568] zombies left to spawn: 0
+[568] no action
+[569] performing step
+[569] zombies left to spawn: 0
+[569] no action
+[570] performing step
+[570] zombies left to spawn: 0
+[570] zombie at 1, 3 moved
+[570] zombie at 4, 3 moved
+[570] zombie at 1, 3 moved
+[570] no action
+[571] performing step
+[571] zombies left to spawn: 0
+[571] no action
+[572] performing step
+[572] zombies left to spawn: 0
+[572] no action
+[573] performing step
+[573] zombies left to spawn: 0
+[573] no action
+[574] performing step
+[574] zombies left to spawn: 0
+[574] no action
+[575] performing step
+[575] zombies left to spawn: 0
+[575] no action
+[576] performing step
+[576] zombies left to spawn: 0
+[576] no action
+[577] performing step
+[577] zombies left to spawn: 0
+[577] no action
+[578] performing step
+[578] zombies left to spawn: 0
+[578] no action
+[579] performing step
+[579] zombies left to spawn: 0
+[579] no action
+[580] performing step
+[580] zombies left to spawn: 0
+[580] zombie at 1, 2 moved
+[580] zombie at 4, 2 moved
+[580] zombie at 1, 2 moved
+[580] no action
+[581] performing step
+[581] zombies left to spawn: 0
+[581] plant at 1, 2 attacked
+[581] Zombie at 1,1 sustained 20 damage
+[581] no action
+[582] performing step
+[582] zombies left to spawn: 0
+[582] no action
+[583] performing step
+[583] zombies left to spawn: 0
+[583] no action
+[584] performing step
+[584] zombies left to spawn: 0
+[584] no action
+[585] performing step
+[585] zombies left to spawn: 0
+[585] no action
+[586] performing step
+[586] zombies left to spawn: 0
+[586] no action
+[587] performing step
+[587] zombies left to spawn: 0
+[587] no action
+[588] performing step
+[588] zombies left to spawn: 0
+[588] no action
+[589] performing step
+[589] zombies left to spawn: 0
+[589] no action
+[590] performing step
+[590] zombies left to spawn: 0
+[590] zombie at 1, 1 moved
+[590] zombie at 4, 1 moved
+[590] zombie at 1, 1 moved
+[590] no action
+[591] performing step
+[591] zombies left to spawn: 0
+[591] no action
+[592] performing step
+[592] zombies left to spawn: 0
+[592] no action
+[593] performing step
+[593] zombies left to spawn: 0
+[593] no action
+[594] performing step
+[594] zombies left to spawn: 0
+[594] no action
+[595] performing step
+[595] zombies left to spawn: 0
+[595] no action
+[596] performing step
+[596] zombies left to spawn: 0
+[596] plant at 1, 2 attacked
+[596] Zombie at 1,0 sustained 20 damage
+[596] no action
+[597] performing step
+[597] zombies left to spawn: 0
+[597] no action
+[598] performing step
+[598] zombies left to spawn: 0
+[598] no action
+[599] performing step
+[599] zombies left to spawn: 0
+[599] no action
+[600] performing step
+[600] zombies left to spawn: 0
+[600] no action
+[600] Zombie at 1,0 killed ya
+[601] destructor called
+zombies left on field: 3
+zombies left to spawn: 0
+[601] Plant at 1,2 sustained 9999 damage
+[601] Plant at 1,2 died
+[601] Plant at 1,1 sustained 9999 damage
+[601] Plant at 1,1 died
+[601] Plant at 1,0 sustained 9999 damage
+[601] Plant at 1,0 died
+[601] Zombie at 1,0 sustained 9999 damage
+[601] Zombie at 4,0 sustained 9999 damage
+[601] Zombie at 4,0 lost newspaper
+[601] Zombie at 1,0 sustained 9999 damage
