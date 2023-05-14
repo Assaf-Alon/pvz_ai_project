@@ -1,29 +1,14 @@
 #include "level.h"
-#include <assert.h>
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <list>
 
-#ifndef NDEBUG
-#define LOG_FRAME(frame, msg) std::cout << "[" << frame << "] " << msg << endl;
-#else
-#define LOG_FRAME(frame, msg)
-#endif
 
-using std::string;
 
 using std::cout;
 using std::endl;
+using std::string;
 
-Level::Level(int lanes, int columns, int fps): lanes(lanes), cols(columns), fps(fps)
+Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &level_data) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
 {
-    this->suns = 50;
-    this->frame = 1;
-    this->last_sun_generated = 1;
-    this->zombie_in_home_col = false;
-    this->done = false;
-    this->win = false;
+    this->sun_interval = this->fps * this->sun_interval_seconds;
     this->lawnmowers = new bool[lanes];
     for (int i = 0; i < lanes; i++)
     {
@@ -45,112 +30,117 @@ Level::Level(int lanes, int columns, int fps): lanes(lanes), cols(columns), fps(
             this->plant_grid[i][j] = nullptr;
         }
     }
-    this->zombies_to_spawn = std::list<Zombie2Spawn>();
-    this->zombies_to_spawn.push_back(Zombie2Spawn(100, 2));
-    this->zombies_to_spawn.push_back(Zombie2Spawn(300, 2));
+}
+Level::Level(const Level &other_level)
+{
 }
 
-bool Level::is_action_legal(const string &plant_name, int lane, int col)
+bool Level::is_action_legal(const Action &action)
 {
     if (this->done == true)
     {
         return false;
     }
-    if (plant_name == "no_action")
+    if (action.plant_name == "no_action")
     {
         return true;
     }
-    if (lane >= this->lanes || col >= this->cols)
+    if (action.lane >= this->lanes || action.col >= this->cols)
     {
         return false;
     }
-    if (this->plant_grid[lane][col] != nullptr)
+    if (this->plant_grid[action.lane][action.col] != nullptr)
     {
         return false;
     }
-    if (plant_name != "sunflower" && plant_name != "peashooter")
+    if (action.plant_name != "sunflower" && action.plant_name != "peashooter")
     {
         return false;
     }
-    if (plant_name == "sunflower" && this->suns < 50)
+    if (action.plant_name == "sunflower" && this->suns < 50)
     {
         return false;
     }
-    if (plant_name == "peashooter" && this->suns < 100)
+    if (action.plant_name == "peashooter" && this->suns < 100)
     {
         return false;
     }
     return true;
 }
 
-void Level::plant(int lane, int column, bool isSunflower)
+void Level::plant(const Action &action)
 {
-    Plant *new_plant = new Plant(lane, column, this->frame, isSunflower);
+    // TODO: fix up this selector
+    Plant *new_plant = nullptr;
+    if (action.plant_name == "sunflower")
+    {
+        new_plant = new Sunflower(action.lane, action.col, this->frame, this->fps);
+        this->suns -= new_plant->cost;
+    }
+    else if (action.plant_name == "peashooter")
+    {
+        new_plant = new Peashooter(action.lane, action.col, this->frame, this->fps);
+        this->suns -= new_plant->cost;
+    }
     this->plant_list.push_front(new_plant);
-    this->plant_grid[lane][column] = new_plant;
+    this->plant_grid[action.lane][action.col] = new_plant;
 }
 void Level::do_zombie_actions()
 {
     for (Zombie *zombie : this->zombie_list)
     {
-        zombie->do_action(this);
+        zombie->do_action(*this);
     }
 }
 void Level::do_plant_actions()
 {
     for (Plant *plant : this->plant_list)
     {
-        plant->do_action(this);
+        plant->do_action(*this);
     }
 }
-void Level::do_player_action(const string &plant_name, int lane, int col)
+void Level::do_player_action(const Action &action)
 {
-    if (this->is_action_legal(plant_name, lane, col) == false)
+    if (this->is_action_legal(action) == false)
     {
         LOG_FRAME(this->frame, "ILLEGAL ACTION");
         return;
     }
-    if (plant_name == "sunflower")
-    {
-        this->plant(lane, col, true);
-        std::stringstream log_msg;
-        log_msg << "planted sunflower at lane " << lane << " col " << col;
-        LOG_FRAME(this->frame, log_msg.str());
-    }
-    else if (plant_name == "peashooter")
-    {
-        this->plant(lane, col, false);
-        std::stringstream log_msg;
-        log_msg << "planted peashooter at lane " << lane << " col " << col;
-        LOG_FRAME(this->frame, log_msg.str());
-    }
-    else if (plant_name == "no_action")
+    if (action.plant_name == "no_action")
     {
         // do nothing
         LOG_FRAME(this->frame, "no action");
     }
+    else
+    {
+        this->plant(action);
+#ifdef DEBUG
+        std::stringstream log_msg;
+        log_msg << "planted " << action.plant_name << " at lane " << action.lane << " col " << action.col;
+        LOG_FRAME(this->frame, log_msg.str());
+#endif
+    }
 }
 void Level::spawn_zombies()
 {
-    if (this->zombies_to_spawn.empty()) {
-        return;
-    }
-    if (this->zombies_to_spawn.front().frame == this->frame) {
-        Zombie2Spawn zombie_template = this->zombies_to_spawn.front();
-        this->zombies_to_spawn.pop_front();
-        Zombie* new_zombie = new Zombie(zombie_template.lane, this->cols - 1, this);
+    while (!this->level_data.empty() && this->level_data.front().second * this->fps <= this->frame)
+    {
+        ZombieSpawnTemplate zombie_template = this->level_data.front();
+        this->level_data.pop_front();
+        Zombie *new_zombie = new Zombie(zombie_template.type, zombie_template.lane, *this);
         this->zombie_list.push_back(new_zombie);
         this->zombie_grid[new_zombie->lane][new_zombie->col].push_back(new_zombie);
+#ifdef DEBUG
         std::stringstream log_msg;
         log_msg << "Spawning zombie in " << new_zombie->lane << "," << new_zombie->col;
         LOG_FRAME(this->frame, log_msg.str());
+#endif
     }
 }
 void Level::spawn_suns()
 {
-    if (this->frame - this->last_sun_generated >= 100)
+    if ((this->frame - this->last_sun_generated) >= this->sun_interval)
     {
-        assert(this->frame - this->last_sun_generated == 100);
         this->suns += 25;
         this->last_sun_generated = this->frame;
         LOG_FRAME(this->frame, "generated sun");
@@ -176,10 +166,12 @@ void Level::check_endgame()
                     }
                     else
                     {
-                        // yer ded
+// yer ded
+#ifdef DEBUG
                         std::stringstream log_msg;
                         log_msg << "Zombie at " << zombie->lane << "," << zombie->col << " killed ya";
                         LOG_FRAME(this->frame, log_msg.str());
+#endif
                         this->done = true;
                         this->win = false;
                         return;
@@ -188,17 +180,25 @@ void Level::check_endgame()
             }
             if (kill_lane == true)
             {
+            // consider optimizing by iterating over main list with iterators instead
+            // this way, we iterate once over the big list in o(n) and then for each cell, call erase()
+            // total complexity bounded by o(2n)
+                #ifdef DEBUG
+                std::stringstream log_msg;
+                log_msg << "lawnmower destroying lane number " << lane;
+                LOG_FRAME(this->frame, log_msg.str());
+                #endif
                 kill_lane = false;
                 for (int col = 0; col < this->cols; col++)
                 {
                     while (this->zombie_grid[lane][col].empty() == false)
                     {
-                        this->zombie_grid[lane][col].front()->get_damaged(9999, this);
+                        this->zombie_grid[lane][col].front()->get_damaged(9999, *this);
                     }
                 }
             }
         }
-        if (this->zombies_to_spawn.empty() && this->zombie_list.empty())
+        if (this->level_data.empty() && this->zombie_list.empty())
         {
             // no  more zombies to spawn and no more alive zombies left!
             this->done = true;
@@ -206,168 +206,54 @@ void Level::check_endgame()
         }
     }
 }
-bool Level::step(const string &plant_type, int lane, int col)
+State *Level::step(const Action &action)
 {
-    if (lane >= this->lanes || col >= this->cols)
+    if (action.lane >= this->lanes || action.col >= this->cols)
     {
-        return false;
+        return nullptr;
     }
     LOG_FRAME(this->frame, "performing step");
+    #ifdef DEBUG
+    std::stringstream log_msg;
+    log_msg << "zombies left to spawn: " << this->level_data.size();
+    LOG_FRAME(this->frame, log_msg.str());
+    #endif
     this->do_zombie_actions();
     this->do_plant_actions();
-    this->do_player_action(plant_type, lane, col);
+    this->do_player_action(action);
     this->spawn_zombies();
     this->spawn_suns();
     this->check_endgame();
     (this->frame)++;
-    // return self.construct_state()
-    return true;
+    if (this->return_state == true)
+    {
+        // return self.construct_state()
+    }
+    return nullptr;
 }
 
-Level::~Level(){
+// Action& Level::get_random_action(){
+// }
+
+Level::~Level()
+{
     LOG_FRAME(this->frame, "destructor called");
     printf("zombies left on field: %d\n", this->zombie_list.size());
-    printf("zombies left to spawn: %d\n", this->zombies_to_spawn.size());
-    while (this->plant_list.empty() == false){
-        this->plant_list.front()->get_damaged(9999, this);
+    printf("zombies left to spawn: %d\n", this->level_data.size());
+    while (this->plant_list.empty() == false)
+    {
+        this->plant_list.front()->get_damaged(9999, *this);
     }
-    while (this->zombie_list.empty() == false){
-        this->zombie_list.front()->get_damaged(9999, this);
+    while (this->zombie_list.empty() == false)
+    {
+        this->zombie_list.front()->get_damaged(9999, *this);
     }
-    for (int lane = 0; lane < this->lanes; lane++){
+    for (int lane = 0; lane < this->lanes; lane++)
+    {
         delete[] this->zombie_grid[lane];
         delete[] this->plant_grid[lane];
     }
     delete[] this->zombie_grid;
     delete[] this->plant_grid;
     delete[] this->lawnmowers;
-}
-
-// ====================================================================
-// ====================================================================
-// ====================================================================
-
-Zombie::Zombie(int lane, int column, Level *level) : lane(lane), col(column), last_action(level->frame)
-{
-    // TODO: Placeholder values!! updaate!!!!
-}
-void Zombie::attack(Level *level)
-{
-    if ((level->frame - this->last_action) < static_cast<int>(this->move_interval * level->fps))
-    {
-        return;
-    }
-    Plant *target_plant = level->plant_grid[this->lane][this->col];
-    if (target_plant == nullptr)
-    {
-        return;
-    }
-    std::stringstream log_msg;
-    log_msg << "zombie at " << this->lane << ", " << this->col << " attacked";
-    LOG_FRAME(level->frame, log_msg.str());
-    this->last_action = level->frame;
-    target_plant->get_damaged(this->damage, level);
-}
-void Zombie::move(Level *level)
-{
-    if ((level->frame - this->last_action) < static_cast<int>(this->attack_interval * level->fps))
-    {
-        return;
-    }
-    this->last_action = level->frame;
-    if (this->col == 0)
-    {
-        level->zombie_in_home_col = true;
-        this->entering_house = true;
-    }
-    else
-    {
-        std::stringstream log_msg;
-        log_msg << "zombie at " << this->lane << ", " << this->col << " moved";
-        LOG_FRAME(level->frame, log_msg.str());
-        level->zombie_grid[this->lane][this->col].remove(this);
-        this->col -= 1;
-        level->zombie_grid[this->lane][this->col].push_front(this);
-    }
-}
-void Zombie::do_action(Level *level)
-{
-    this->attack(level);
-    this->move(level);
-}
-void Zombie::get_damaged(int damage, Level *level)
-{
-    std::stringstream log_msg;
-    log_msg << "Zombie at " << this->lane << "," << this->col << " sustained " << damage << " damage";
-    LOG_FRAME(level->frame, log_msg.str());
-    this->hp -= damage;
-    if (this->hp <= 0)
-    {
-        // remove self from both global and cell lists
-        level->zombie_list.remove(this);
-        level->zombie_grid[this->lane][this->col].remove(this);
-        delete this;
-    }
-}
-
-// ====================================================================
-// ====================================================================
-// ====================================================================
-
-Plant::Plant(int lane, int column, int frame, bool isSunflower) : lane(lane), col(column), last_action(frame), isSunflower(isSunflower)
-{
-    hp = 300;
-    damage = 20;
-    if (isSunflower)
-    {
-        action_interval = 50;
-    }
-    else
-    {
-        action_interval = 10;
-    }
-}
-void Plant::attack(Level *level)
-{
-    this->last_action = level->frame;
-    std::stringstream log_msg;
-    log_msg << "plant at " << this->lane << ", " << this->col << " attacked [NOT REALLY]";
-    LOG_FRAME(level->frame, log_msg.str());
-    // pea shoot goes burr
-}
-void Plant::generate_sun(Level *level)
-{
-    level->suns += 25;
-    this->last_action = level->frame;
-    std::stringstream log_msg;
-    log_msg << "plant at " << this->lane << ", " << this->col << " generated sun";
-    LOG_FRAME(level->frame, log_msg.str());
-}
-void Plant::do_action(Level *level)
-{
-    if ((level->frame - this->last_action) < static_cast<int>(this->action_interval * level->fps))
-    {
-        return;
-    }
-    if (this->isSunflower)
-    {
-        this->generate_sun(level);
-    }
-    else
-    {
-        this->attack(level);
-    }
-}
-void Plant::get_damaged(int damage, Level *level)
-{
-    std::stringstream log_msg;
-    log_msg << "Plant at " << this->lane << "," << this->col << " sustained " << damage << " damage";
-    LOG_FRAME(level->frame, log_msg.str());
-    this->hp -= damage;
-    if (this->hp <= 0)
-    {
-        level->plant_list.remove(this);
-        level->plant_grid[this->lane][this->col] = nullptr;
-        delete this;
-    }
 }
