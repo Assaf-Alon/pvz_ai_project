@@ -15,6 +15,24 @@
         "damage": 20,
         "hp": 300,
         "cost": 100,
-        "refund": 50
+        "refund": 50,
+        "recharge": 7.5
+    },
+
+    "WallNut": {
+        "hp": 4000,
+        "cost": 50,
+        "refund": 0,
+        "recharge": 30
+    },
+
+    "PotatoMine": {
+        "damage": 9999,
+        "hp": 300,
+        "cost": 25,
+        "refund": 0,
+        "recharge": 30,
+        "arming_interval": 15,
+        "trigger_type": "zombie"
     }
 }

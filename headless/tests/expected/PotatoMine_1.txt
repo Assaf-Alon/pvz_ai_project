@@ -1,0 +1,19 @@
+[0] Planted PotatoMine in (3, 0). Total: 25.
+[10] Normal zombie being spawned at lane 3
+[57] Normal zombie in (3, 9) moved to (3, 8).
+[100] Sun autospawned. Total: 50.
+[104] Normal zombie in (3, 8) moved to (3, 7).
+[150] PotatoMine in (3, 0) is armed!
+[151] Normal zombie in (3, 7) moved to (3, 6).
+[198] Normal zombie in (3, 6) moved to (3, 5).
+[200] Sun autospawned. Total: 75.
+[245] Normal zombie in (3, 5) moved to (3, 4).
+[292] Normal zombie in (3, 4) moved to (3, 3).
+[300] Sun autospawned. Total: 100.
+[339] Normal zombie in (3, 3) moved to (3, 2).
+[386] Normal zombie in (3, 2) moved to (3, 1).
+[387] PotatoMine in (3, 0) is preparing to explode.
+[387] Normal zombie in (3, 1) was damaged. HP: -9818.
+[387] Normal zombie in (3, 1) was killed.
+[387] PotatoMine in (3, 0) has exploded.
+[387] You've won!

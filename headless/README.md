@@ -18,3 +18,4 @@
 <!-- 9. Make JSON reading happen once on import instead of each time an object is created (I/O overhead) -->
 10. Let plants shoot only if there's a zombie in the lane (or in range..?)
 <!-- 11. Implement plant cooldown/recharge -->
+12. Add environment tests (unallowed plants, ilegal locations...)

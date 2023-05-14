@@ -1,0 +1,106 @@
+[0] Planted WallNut in (3, 0). Total: 0.
+[10] Normal zombie being spawned at lane 3
+[57] Normal zombie in (3, 9) moved to (3, 8).
+[100] Sun autospawned. Total: 25.
+[104] Normal zombie in (3, 8) moved to (3, 7).
+[151] Normal zombie in (3, 7) moved to (3, 6).
+[198] Normal zombie in (3, 6) moved to (3, 5).
+[200] Sun autospawned. Total: 50.
+[245] Normal zombie in (3, 5) moved to (3, 4).
+[292] Normal zombie in (3, 4) moved to (3, 3).
+[300] Sun autospawned. Total: 75.
+[339] Normal zombie in (3, 3) moved to (3, 2).
+[386] Normal zombie in (3, 2) moved to (3, 1).
+[400] Sun autospawned. Total: 100.
+[433] Normal zombie in (3, 1) moved to (3, 0).
+[443] Normal zombie in (3, 0) attacked.
+[443] WallNut in (3, 0) got damaged. HP: 3900
+[453] Normal zombie in (3, 0) attacked.
+[453] WallNut in (3, 0) got damaged. HP: 3800
+[463] Normal zombie in (3, 0) attacked.
+[463] WallNut in (3, 0) got damaged. HP: 3700
+[473] Normal zombie in (3, 0) attacked.
+[473] WallNut in (3, 0) got damaged. HP: 3600
+[483] Normal zombie in (3, 0) attacked.
+[483] WallNut in (3, 0) got damaged. HP: 3500
+[493] Normal zombie in (3, 0) attacked.
+[493] WallNut in (3, 0) got damaged. HP: 3400
+[500] Sun autospawned. Total: 125.
+[503] Normal zombie in (3, 0) attacked.
+[503] WallNut in (3, 0) got damaged. HP: 3300
+[513] Normal zombie in (3, 0) attacked.
+[513] WallNut in (3, 0) got damaged. HP: 3200
+[523] Normal zombie in (3, 0) attacked.
+[523] WallNut in (3, 0) got damaged. HP: 3100
+[533] Normal zombie in (3, 0) attacked.
+[533] WallNut in (3, 0) got damaged. HP: 3000
+[543] Normal zombie in (3, 0) attacked.
+[543] WallNut in (3, 0) got damaged. HP: 2900
+[553] Normal zombie in (3, 0) attacked.
+[553] WallNut in (3, 0) got damaged. HP: 2800
+[563] Normal zombie in (3, 0) attacked.
+[563] WallNut in (3, 0) got damaged. HP: 2700
+[573] Normal zombie in (3, 0) attacked.
+[573] WallNut in (3, 0) got damaged. HP: 2600
+[583] Normal zombie in (3, 0) attacked.
+[583] WallNut in (3, 0) got damaged. HP: 2500
+[593] Normal zombie in (3, 0) attacked.
+[593] WallNut in (3, 0) got damaged. HP: 2400
+[600] Sun autospawned. Total: 150.
+[603] Normal zombie in (3, 0) attacked.
+[603] WallNut in (3, 0) got damaged. HP: 2300
+[613] Normal zombie in (3, 0) attacked.
+[613] WallNut in (3, 0) got damaged. HP: 2200
+[623] Normal zombie in (3, 0) attacked.
+[623] WallNut in (3, 0) got damaged. HP: 2100
+[633] Normal zombie in (3, 0) attacked.
+[633] WallNut in (3, 0) got damaged. HP: 2000
+[643] Normal zombie in (3, 0) attacked.
+[643] WallNut in (3, 0) got damaged. HP: 1900
+[653] Normal zombie in (3, 0) attacked.
+[653] WallNut in (3, 0) got damaged. HP: 1800
+[663] Normal zombie in (3, 0) attacked.
+[663] WallNut in (3, 0) got damaged. HP: 1700
+[673] Normal zombie in (3, 0) attacked.
+[673] WallNut in (3, 0) got damaged. HP: 1600
+[683] Normal zombie in (3, 0) attacked.
+[683] WallNut in (3, 0) got damaged. HP: 1500
+[693] Normal zombie in (3, 0) attacked.
+[693] WallNut in (3, 0) got damaged. HP: 1400
+[700] Sun autospawned. Total: 175.
+[703] Normal zombie in (3, 0) attacked.
+[703] WallNut in (3, 0) got damaged. HP: 1300
+[713] Normal zombie in (3, 0) attacked.
+[713] WallNut in (3, 0) got damaged. HP: 1200
+[723] Normal zombie in (3, 0) attacked.
+[723] WallNut in (3, 0) got damaged. HP: 1100
+[733] Normal zombie in (3, 0) attacked.
+[733] WallNut in (3, 0) got damaged. HP: 1000
+[743] Normal zombie in (3, 0) attacked.
+[743] WallNut in (3, 0) got damaged. HP: 900
+[753] Normal zombie in (3, 0) attacked.
+[753] WallNut in (3, 0) got damaged. HP: 800
+[763] Normal zombie in (3, 0) attacked.
+[763] WallNut in (3, 0) got damaged. HP: 700
+[773] Normal zombie in (3, 0) attacked.
+[773] WallNut in (3, 0) got damaged. HP: 600
+[783] Normal zombie in (3, 0) attacked.
+[783] WallNut in (3, 0) got damaged. HP: 500
+[793] Normal zombie in (3, 0) attacked.
+[793] WallNut in (3, 0) got damaged. HP: 400
+[800] Sun autospawned. Total: 200.
+[803] Normal zombie in (3, 0) attacked.
+[803] WallNut in (3, 0) got damaged. HP: 300
+[813] Normal zombie in (3, 0) attacked.
+[813] WallNut in (3, 0) got damaged. HP: 200
+[823] Normal zombie in (3, 0) attacked.
+[823] WallNut in (3, 0) got damaged. HP: 100
+[833] Normal zombie in (3, 0) attacked.
+[833] WallNut in (3, 0) got damaged. HP: 0
+[833] WallNut in (3, 0) died.
+[880] Normal zombie in (3, 0) attempted entering the house.
+[880] Normal zombie in (3, 0) triggered a lawnmower.
+[880] Lawnmower in (3, 0) attacked.
+[880] Normal zombie in (3, 0) was damaged. HP: -9818.
+[880] Normal zombie in (3, 0) was killed.
+[880] You've won!
