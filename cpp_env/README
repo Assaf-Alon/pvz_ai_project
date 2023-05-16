@@ -1,0 +1,25 @@
+# Usage
+To compile:
+`g++ *.cpp`
+`g++ -DDEBUG *.cpp` // Note, not DNDEBUG. This is to enable debug printing
+To run:
+`./a.out`
+`./a.out > out.txt`
+
+# TODO
+
+## Fixes
+1. Zombies are not attacking plants, figure out why
+2. almost surely many more issues
+
+## Enchancements
+1. Write random action generator in an efficient way
+2. Write Level copy operator in an efficient way
+3. Write multithreading rollout function that uses 1,2
+4. Add more plant subclasses
+5. Figure out swig
+
+## Assaf:
+Pick out some stuff from enhancements that looks interesting to you.
+No hurries and no worries, prio is low ATM.
+(note: 4 is not interesting)
