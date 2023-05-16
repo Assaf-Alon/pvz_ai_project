@@ -19,6 +19,7 @@ void Plant::get_damaged(int damage, Level &level)
 #endif
         level.plant_list.remove(this);
         level.plant_grid[this->lane][this->col] = nullptr;
+        delete this;
     }
 }
 Sunflower::Sunflower(int lane, int column, int frame, int fps) : Plant(lane, column, frame, fps)
@@ -69,7 +70,8 @@ void Peashooter::do_action(Level &level)
     LOG_FRAME(level.frame, log_msg.str());
 #endif
     this->last_action = level.frame;
-    for (int i = 0; i < level.cols; i++){
+    for (int i = 0; i < level.cols; i++)
+    {
         Zombie *target_zombie = level.zombie_grid[this->lane][i].front();
         if (target_zombie == nullptr)
         {

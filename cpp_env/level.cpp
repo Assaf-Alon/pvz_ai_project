@@ -45,7 +45,7 @@ bool Level::is_action_legal(const Action &action)
     {
         return true;
     }
-    if (action.lane >= this->lanes || action.col >= this->cols)
+    if (action.lane >= this->lanes || action.col >= this->cols || action.lane < 0 || action.col < 0)
     {
         return false;
     }
@@ -148,68 +148,68 @@ void Level::spawn_suns()
 }
 void Level::check_endgame()
 {
-    if (this->zombie_in_home_col == true)
+    if (this->zombie_in_home_col == false)
     {
-        bool kill_lane = false;
-        this->zombie_in_home_col = false;
-        for (int lane = 0; lane < this->lanes; lane++)
-        { // for lane in lanes
-            for (Zombie *zombie : this->zombie_grid[lane][0])
-            { // for zombie in lane's 0th col
-                if (zombie->entering_house == true)
-                {
-                    if (this->lawnmowers[lane] == true)
-                    {
-                        this->lawnmowers[lane] = false;
-                        kill_lane = true; // lawnmower kills all zombles in the lane
-                        break;
-                    }
-                    else
-                    {
-// yer ded
-#ifdef DEBUG
-                        std::stringstream log_msg;
-                        log_msg << "Zombie at " << zombie->lane << "," << zombie->col << " killed ya";
-                        LOG_FRAME(this->frame, log_msg.str());
-#endif
-                        this->done = true;
-                        this->win = false;
-                        return;
-                    }
-                }
-            }
-            if (kill_lane == true)
-            {
-            // consider optimizing by iterating over main list with iterators instead
-            // this way, we iterate once over the big list in o(n) and then for each cell, call erase()
-            // total complexity bounded by o(2n)
-                #ifdef DEBUG
-                std::stringstream log_msg;
-                log_msg << "lawnmower destroying lane number " << lane;
-                LOG_FRAME(this->frame, log_msg.str());
-                #endif
-                kill_lane = false;
-                for (int col = 0; col < this->cols; col++)
-                {
-                    while (this->zombie_grid[lane][col].empty() == false)
-                    {
-                        this->zombie_grid[lane][col].front()->get_damaged(9999, *this);
-                    }
-                }
-            }
-        }
         if (this->level_data.empty() && this->zombie_list.empty())
         {
             // no  more zombies to spawn and no more alive zombies left!
             this->done = true;
             this->win = true;
         }
+        return;
     }
+    bool kill_lane = false;
+    this->zombie_in_home_col = false;
+    for (int lane = 0; lane < this->lanes; lane++)
+    { // for lane in lanes
+        for (Zombie *zombie : this->zombie_grid[lane][0])
+        { // for zombie in lane's 0th col
+            if (zombie->entering_house == true)
+            {
+                if (this->lawnmowers[lane] == true)
+                {
+                    this->lawnmowers[lane] = false;
+                    kill_lane = true; // lawnmower kills all zombles in the lane
+                    break;
+                }
+                else
+                {
+// yer ded
+#ifdef DEBUG
+                    std::stringstream log_msg;
+                    log_msg << "Zombie at " << zombie->lane << "," << zombie->col << " killed ya";
+                    LOG_FRAME(this->frame, log_msg.str());
+#endif
+                    this->done = true;
+                    this->win = false;
+                    return;
+                }
+            }
+        }
+        if (kill_lane == true)
+        {
+        // consider optimizing by iterating over main list with iterators instead
+        // this way, we iterate once over the big list in o(n) and then for each cell, call erase()
+        // total complexity bounded by o(2n)
+            #ifdef DEBUG
+            std::stringstream log_msg;
+            log_msg << "lawnmower destroying lane number " << lane;
+            LOG_FRAME(this->frame, log_msg.str());
+            #endif
+            kill_lane = false;
+            for (int col = 0; col < this->cols; col++)
+            {
+                while (this->zombie_grid[lane][col].empty() == false)
+                {
+                    this->zombie_grid[lane][col].front()->get_damaged(9999, *this);
+                }
+            }
+        }
+    } 
 }
 State *Level::step(const Action &action)
 {
-    if (action.lane >= this->lanes || action.col >= this->cols)
-    {
+    if (!this->is_action_legal(action)){
         return nullptr;
     }
     LOG_FRAME(this->frame, "performing step");
@@ -238,8 +238,8 @@ State *Level::step(const Action &action)
 Level::~Level()
 {
     LOG_FRAME(this->frame, "destructor called");
-    printf("zombies left on field: %d\n", this->zombie_list.size());
-    printf("zombies left to spawn: %d\n", this->level_data.size());
+    std::cout << "zombies left on field: " << this->zombie_list.size() << std::endl;
+    std::cout << "zombies left to spawn: " << this->level_data.size() << std::endl;
     while (this->plant_list.empty() == false)
     {
         this->plant_list.front()->get_damaged(9999, *this);
