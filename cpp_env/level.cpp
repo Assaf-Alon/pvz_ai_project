@@ -224,6 +224,18 @@ State *Level::step(const Action &action)
     this->spawn_zombies();
     this->spawn_suns();
     this->check_endgame();
+    if (this->done) {
+        std::stringstream log_msg;
+        if (this->win) {
+            log_msg << "You've won!";
+        }
+        else {
+            log_msg << "You've lost!";
+        }
+        LOG_FRAME(this->frame, log_msg.str());
+        return nullptr;
+    }
+
     (this->frame)++;
     if (this->return_state == true)
     {

@@ -5,3 +5,4 @@ venv**/
 driving_backup/
 experiments.py
 headless/resources/random*
+.vscode/**
