@@ -127,7 +127,7 @@ public:
     void do_player_action(const Action& action);
     void spawn_zombies();
     void spawn_suns();
-    void check_endgame();
+    bool check_endgame();
     bool is_action_legal(const Action& action);
 
     std::vector<int>& rollout(int num_cpu); // return num_victories, num_losses? (DIFFICULTY: MEDIUM)

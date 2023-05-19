@@ -71,12 +71,12 @@ void Zombie::do_action(Level &level)
 }
 void Zombie::get_damaged(int damage, Level &level)
 {
+    this->hp -= damage;
 #ifdef DEBUG
     std::stringstream log_msg;
-    log_msg << "Zombie at " << this->lane << "," << this->col << " sustained " << damage << " damage";
+    log_msg << "Zombie at " << this->lane << "," << this->col << " sustained " << damage << " damage. HP: " << std::to_string(this->hp);
     LOG_FRAME(level.frame, log_msg.str());
 #endif
-    this->hp -= damage;
     if (this->type == "newspaper")
     {
         if (this->hp <= 181)

@@ -143,20 +143,22 @@ void Level::spawn_suns()
     {
         this->suns += 25;
         this->last_sun_generated = this->frame;
-        LOG_FRAME(this->frame, "generated sun");
+        LOG_FRAME(this->frame, "generated sun. total: " + std::to_string(this->suns));
     }
 }
-void Level::check_endgame()
+bool Level::check_endgame()
 {
-    if (this->zombie_in_home_col == false)
+    if (this->zombie_in_home_col == false) // TODO - Why do we check this here?
     {
         if (this->level_data.empty() && this->zombie_list.empty())
         {
             // no  more zombies to spawn and no more alive zombies left!
             this->done = true;
             this->win = true;
+            return true;
         }
-        return;
+        // no zombies at home, and there're still zombies alive / to spawn
+        return false;
     }
     bool kill_lane = false;
     this->zombie_in_home_col = false;
@@ -182,7 +184,7 @@ void Level::check_endgame()
 #endif
                     this->done = true;
                     this->win = false;
-                    return;
+                    return true;
                 }
             }
         }
@@ -204,8 +206,17 @@ void Level::check_endgame()
                     this->zombie_grid[lane][col].front()->get_damaged(9999, *this);
                 }
             }
+
+            if (this->level_data.empty() && this->zombie_list.empty())
+            {
+                // no  more zombies to spawn and no more alive zombies left!
+                this->done = true;
+                this->win = true;
+                return true;
+            }
         }
-    } 
+    }
+    return false;
 }
 State *Level::step(const Action &action)
 {
@@ -223,8 +234,7 @@ State *Level::step(const Action &action)
     this->do_player_action(action);
     this->spawn_zombies();
     this->spawn_suns();
-    this->check_endgame();
-    if (this->done) {
+    if (this->check_endgame()) {
         std::stringstream log_msg;
         if (this->win) {
             log_msg << "You've won!";
