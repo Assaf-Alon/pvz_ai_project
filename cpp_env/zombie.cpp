@@ -23,7 +23,7 @@ Zombie::Zombie(const std::string &type, int lane, const Level &level) : type(typ
 }
 void Zombie::attack(Level &level)
 {
-    if ((level.frame - this->last_action) < this->move_interval)
+    if ((level.frame - this->last_action) < this->attack_interval)
     {
         return;
     }
@@ -42,7 +42,7 @@ void Zombie::attack(Level &level)
 }
 void Zombie::move(Level &level)
 {
-    if ((level.frame - this->last_action) < this->attack_interval)
+    if ((level.frame - this->last_action) < this->move_interval)
     {
         return;
     }

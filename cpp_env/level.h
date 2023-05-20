@@ -95,9 +95,11 @@ class Action {
     std::string plant_name; // plant_name or none
     int lane;
     int col;
+    Action(std::string name, int lane, int col) : plant_name(name), lane(lane), col(col) {}
 };
 class Level {
 public:
+    int delete_me_action_probability; // TODO - delete this (not yet tho)
     int lanes;
     int cols;
     int suns = 50;
@@ -131,8 +133,10 @@ public:
     bool is_action_legal(const Action& action);
 
     std::vector<int>& rollout(int num_cpu); // return num_victories, num_losses? (DIFFICULTY: MEDIUM)
-    Action& get_random_action(); // guranteed to be legal (DIFFICULTY: MEDIUM)
-
+    Action get_random_action(); // guranteed to be legal (DIFFICULTY: MEDIUM)
+    int get_random_uniform(int min, int max);
+    std::string get_random_plant();
+    bool get_random_position(std::string plant_name, int* lane, int* col);
     
     void plant(const Action& action);
     // void remove_plant(int lane, int col);

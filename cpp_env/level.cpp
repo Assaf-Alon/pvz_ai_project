@@ -1,7 +1,6 @@
 #include "level.h"
 
 
-
 using std::cout;
 using std::endl;
 using std::string;
@@ -109,14 +108,15 @@ void Level::do_player_action(const Action &action)
     if (action.plant_name == "no_action")
     {
         // do nothing
-        LOG_FRAME(this->frame, "no action");
+        // LOG_FRAME(this->frame, "no action");
+        return;
     }
     else
     {
         this->plant(action);
 #ifdef DEBUG
         std::stringstream log_msg;
-        log_msg << "planted " << action.plant_name << " at lane " << action.lane << " col " << action.col;
+        log_msg << "planted " << action.plant_name << " at lane " << action.lane << " col " << action.col << " with probability " << delete_me_action_probability << "%";
         LOG_FRAME(this->frame, log_msg.str());
 #endif
     }
@@ -223,11 +223,14 @@ State *Level::step(const Action &action)
     if (!this->is_action_legal(action)){
         return nullptr;
     }
-    LOG_FRAME(this->frame, "performing step");
+
+    // LOG_FRAME(this->frame, "performing step");
     #ifdef DEBUG
-    std::stringstream log_msg;
-    log_msg << "zombies left to spawn: " << this->level_data.size();
-    LOG_FRAME(this->frame, log_msg.str());
+    if (frame % 100 == 0) {
+        std::stringstream log_msg;
+        log_msg << "zombies left to spawn: " << this->level_data.size();
+        LOG_FRAME(this->frame, log_msg.str());
+    }
     #endif
     this->do_zombie_actions();
     this->do_plant_actions();
@@ -254,8 +257,68 @@ State *Level::step(const Action &action)
     return nullptr;
 }
 
-// Action& Level::get_random_action(){
-// }
+int Level::get_random_uniform(int min, int max) {
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist(min, max); // distribution in range [min, max]
+    return dist(rng);
+}
+
+// TODO - get suns as input?
+std::string Level::get_random_plant() {
+    LOG_FRAME(frame, "Randomizing plant");
+    int plant = get_random_uniform(1, 3);
+    if (plant == 1) {
+        return "sunflower";
+    }
+    if (plant == 2){
+        return "peashooter";
+    }
+    return "no_action";
+}
+
+bool Level::get_random_position(std::string plant_name, int* lane, int* col) {
+    // As long as a substantial amount of the board is free, this should work efficiently
+    for (int attempt = 0; attempt < 3; attempt++) {
+        *lane = get_random_uniform(0, lanes);
+        *col = get_random_uniform(0, cols);
+        Action action = Action("sunflower", *lane, *col);
+        if (is_action_legal(action)) {
+            return true;
+        }
+    }
+    *lane = -1;
+    *col = -1;
+    return false; // no_action
+}
+
+// TODO - discuss optimizing this
+Action Level::get_random_action(){
+    Action no_action = Action{plant_name: "no_action", lane: 0, col: 0};
+    if (this->suns < 50) {
+        delete_me_action_probability = 100;
+        return no_action;
+    }
+    else if (this->suns < 100) {
+        // In order to avoid planting sunflower ASAP, randomizing whether to plant it
+        if(get_random_uniform(1, 50) == 1) {
+            delete_me_action_probability = 2;
+            int lane, col;
+            if(get_random_position("sunflower", &lane, &col)) {
+                return Action("sunflower", lane, col);
+            }
+        }
+    }
+    else { // Can plant anything - will likely plant something
+        delete_me_action_probability = 33;
+        string plant_name = get_random_plant();
+        int lane, col;
+        if(get_random_position(plant_name, &lane, &col)) {
+            return Action(plant_name, lane, col);
+        }
+    }
+    return no_action;
+}
 
 Level::~Level()
 {
