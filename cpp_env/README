@@ -9,8 +9,7 @@ To run:
 # TODO
 
 ## Fixes
-1. Zombies are not attacking plants, figure out why
-2. almost surely many more issues
+1. Need to play around with the code to find out more issues
 
 ## Enchancements
 1. Write random action generator in an efficient way

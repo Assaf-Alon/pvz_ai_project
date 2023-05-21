@@ -52,6 +52,7 @@ class Zombie {
     bool hypnotized = false;
     // Zombie(int lane, int column, Level* level);
     Zombie(const string& type, int lane, const Level& level);
+    Zombie(const Zombie& other) = default;
     void attack(Level& level);
     void move(Level& level);
     void do_action(Level& level);
@@ -70,21 +71,33 @@ public:
     float recharge_seconds;
     int recharge;
     int last_action;
+    int fps;   // for clone...?
     Plant(int lane, int column, int frame, int fps);
     virtual void do_action(Level& level) = 0;
     void get_damaged(int damage, Level& level);
+    virtual Plant* clone() const = 0;
 };
 
 class Sunflower : public Plant {
     public:
     void do_action(Level& level) override;
     Sunflower(int lane, int column, int frame, int fps);
+    virtual Sunflower* clone() const override {
+        Sunflower* cloned = new Sunflower(lane, col, last_action, fps);
+        // std::cout << "Cloned sunflower at " << lane << ", " << col << std::endl;
+        return cloned;
+    }
 };
 
 class Peashooter : public Plant {
     public:
     void do_action(Level& level) override;
     Peashooter(int lane, int column, int frame, int fps);
+    virtual Peashooter* clone() const override {
+        Peashooter* cloned = new Peashooter(lane, col, last_action, fps);
+        // std::cout << "Cloned Peashooter at " << lane << ", " << col << std::endl;
+        return cloned;
+    }
 };
 
 class State {
@@ -99,7 +112,7 @@ class Action {
 };
 class Level {
 public:
-    int delete_me_action_probability; // TODO - delete this (not yet tho)
+    int delete_me_action_probability = 100; // TODO - delete this (not yet tho)
     int lanes;
     int cols;
     int suns = 50;
@@ -120,6 +133,7 @@ public:
     // std::list<Zombie2Spawn> zombies_to_spawn;
     std::deque<ZombieSpawnTemplate> level_data;
 
+    Level();
     Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate>& level_data);
     Level(const Level& other_level); // copy constructor (DIFFUCULTY: HELL)
     ~Level();

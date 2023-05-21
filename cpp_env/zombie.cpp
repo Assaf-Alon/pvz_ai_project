@@ -34,7 +34,7 @@ void Zombie::attack(Level &level)
     }
 #ifdef DEBUG
     std::stringstream log_msg;
-    log_msg << "zombie at " << this->lane << ", " << this->col << " attacked";
+    log_msg << "Zombie at " << this->lane << ", " << this->col << " attacked";
     LOG_FRAME(level.frame, log_msg.str());
 #endif
     this->last_action = level.frame;
@@ -56,7 +56,7 @@ void Zombie::move(Level &level)
     {
 #ifdef DEBUG
         std::stringstream log_msg;
-        log_msg << "zombie at " << this->lane << ", " << this->col << " moved";
+        log_msg << "Zombie at " << this->lane << ", " << this->col << " moved";
         LOG_FRAME(level.frame, log_msg.str());
 #endif
         level.zombie_grid[this->lane][this->col].remove(this);
@@ -74,7 +74,7 @@ void Zombie::get_damaged(int damage, Level &level)
     this->hp -= damage;
 #ifdef DEBUG
     std::stringstream log_msg;
-    log_msg << "Zombie at " << this->lane << "," << this->col << " sustained " << damage << " damage. HP: " << std::to_string(this->hp);
+    log_msg << "Zombie at " << this->lane << ", " << this->col << " sustained " << damage << " damage. HP: " << std::to_string(this->hp);
     LOG_FRAME(level.frame, log_msg.str());
 #endif
     if (this->type == "newspaper")
@@ -83,7 +83,7 @@ void Zombie::get_damaged(int damage, Level &level)
         {
 #ifdef DEBUG
             std::stringstream log_msg;
-            log_msg << "Zombie at " << this->lane << "," << this->col << " lost newspaper";
+            log_msg << "Zombie at " << this->lane << ", " << this->col << " lost newspaper";
             LOG_FRAME(level.frame, log_msg.str());
 #endif
             this->type = "lost_newspaper"; // danger zone with strings
