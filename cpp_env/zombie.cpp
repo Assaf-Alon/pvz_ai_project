@@ -1,6 +1,6 @@
 #include "level.h"
 
-Zombie::Zombie(const std::string &type, int lane, const Level &level) : type(type), lane(lane), col(level.cols - 1), last_action(level.frame)
+Zombie::Zombie(const std::string &type, int lane, const Level &level) : lane(lane), col(level.cols - 1), last_action(level.frame), type(type)
 {
     if (type == "conehead")
     {
@@ -12,7 +12,7 @@ Zombie::Zombie(const std::string &type, int lane, const Level &level) : type(typ
     }
     else if (type == "flag")
     {
-        this->move_interval = 3.7;
+        this->move_interval_seconds = 3.7;
     }
     else if (type == "newspaper")
     {
@@ -23,7 +23,7 @@ Zombie::Zombie(const std::string &type, int lane, const Level &level) : type(typ
 }
 void Zombie::attack(Level &level)
 {
-    if ((level.frame - this->last_action) < this->move_interval)
+    if ((level.frame - this->last_action) < this->attack_interval)
     {
         return;
     }
@@ -34,7 +34,7 @@ void Zombie::attack(Level &level)
     }
 #ifdef DEBUG
     std::stringstream log_msg;
-    log_msg << "zombie at " << this->lane << ", " << this->col << " attacked";
+    log_msg << "Zombie at " << this->lane << ", " << this->col << " attacked";
     LOG_FRAME(level.frame, log_msg.str());
 #endif
     this->last_action = level.frame;
@@ -42,7 +42,7 @@ void Zombie::attack(Level &level)
 }
 void Zombie::move(Level &level)
 {
-    if ((level.frame - this->last_action) < this->attack_interval)
+    if ((level.frame - this->last_action) < this->move_interval)
     {
         return;
     }
@@ -56,7 +56,7 @@ void Zombie::move(Level &level)
     {
 #ifdef DEBUG
         std::stringstream log_msg;
-        log_msg << "zombie at " << this->lane << ", " << this->col << " moved";
+        log_msg << "Zombie at " << this->lane << ", " << this->col << " moved";
         LOG_FRAME(level.frame, log_msg.str());
 #endif
         level.zombie_grid[this->lane][this->col].remove(this);
@@ -71,19 +71,19 @@ void Zombie::do_action(Level &level)
 }
 void Zombie::get_damaged(int damage, Level &level)
 {
+    this->hp -= damage;
 #ifdef DEBUG
     std::stringstream log_msg;
-    log_msg << "Zombie at " << this->lane << "," << this->col << " sustained " << damage << " damage";
+    log_msg << "Zombie at " << this->lane << ", " << this->col << " sustained " << damage << " damage. HP: " << std::to_string(this->hp);
     LOG_FRAME(level.frame, log_msg.str());
 #endif
-    this->hp -= damage;
     if (this->type == "newspaper")
     {
         if (this->hp <= 181)
         {
 #ifdef DEBUG
             std::stringstream log_msg;
-            log_msg << "Zombie at " << this->lane << "," << this->col << " lost newspaper";
+            log_msg << "Zombie at " << this->lane << ", " << this->col << " lost newspaper";
             LOG_FRAME(level.frame, log_msg.str());
 #endif
             this->type = "lost_newspaper"; // danger zone with strings
@@ -93,6 +93,11 @@ void Zombie::get_damaged(int damage, Level &level)
     if (this->hp <= 0)
     {
         // remove self from both global and cell lists
+        #ifdef DEBUG
+        std::stringstream log_msg;
+        log_msg << "Zombie at " << this->lane << ", " << this->col << " died";
+        LOG_FRAME(level.frame, log_msg.str());
+        #endif
         level.zombie_list.remove(this);
         level.zombie_grid[this->lane][this->col].remove(this);
         delete this;

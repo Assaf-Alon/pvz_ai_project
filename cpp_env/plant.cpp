@@ -1,25 +1,26 @@
 #include "level.h"
 
-Plant::Plant(int lane, int column, int frame, int fps) : lane(lane), col(column), last_action(frame) {}
+Plant::Plant(int lane, int column, int frame, int fps) : lane(lane), col(column), last_action(frame), fps(fps) {}
 
 void Plant::get_damaged(int damage, Level &level)
 {
+    this->hp -= damage;
 #ifdef DEBUG
     std::stringstream log_msg;
-    log_msg << "Plant at " << this->lane << "," << this->col << " sustained " << damage << " damage";
+    log_msg << "Plant at " << this->lane << ", " << this->col << " sustained " << damage << " damage. HP: " << std::to_string(this->hp);
     LOG_FRAME(level.frame, log_msg.str());
 #endif
-    this->hp -= damage;
     if (this->hp <= 0)
     {
-#ifdef DEBUG
-        std::stringstream log_msg;
-        log_msg << "Plant at " << this->lane << "," << this->col << " died";
-        LOG_FRAME(level.frame, log_msg.str());
-#endif
         level.plant_list.remove(this);
         level.plant_grid[this->lane][this->col] = nullptr;
-        delete this;
+#ifdef DEBUG
+        std::stringstream log_msg;
+        log_msg << "Plant at " << this->lane << ", " << this->col << " died";
+        LOG_FRAME(level.frame, log_msg.str());
+        LOG_FRAME(level.frame, " >> Plants left: " + std::to_string(level.plant_list.size()));
+#endif
+        delete this; // this is a really bad idea and needs to be fixed by moving to smart ptrs
     }
 }
 Sunflower::Sunflower(int lane, int column, int frame, int fps) : Plant(lane, column, frame, fps)
@@ -39,13 +40,13 @@ void Sunflower::do_action(Level &level)
     {
         return;
     }
-#ifdef DEBUG
-    std::stringstream log_msg;
-    log_msg << "plant at " << this->lane << ", " << this->col << " generated sun";
-    LOG_FRAME(level.frame, log_msg.str());
-#endif
     this->last_action = level.frame;
     level.suns += this->damage;
+#ifdef DEBUG
+    std::stringstream log_msg;
+    log_msg << "Plant at " << this->lane << ", " << this->col << " generated sun. total: " + std::to_string(level.suns);
+    LOG_FRAME(level.frame, log_msg.str());
+#endif
 }
 
 Peashooter::Peashooter(int lane, int column, int frame, int fps) : Plant(lane, column, frame, fps)
@@ -66,7 +67,7 @@ void Peashooter::do_action(Level &level)
     }
 #ifdef DEBUG
     std::stringstream log_msg;
-    log_msg << "plant at " << this->lane << ", " << this->col << " attacked";
+    log_msg << "Plant at " << this->lane << ", " << this->col << " attacked";
     LOG_FRAME(level.frame, log_msg.str());
 #endif
     this->last_action = level.frame;

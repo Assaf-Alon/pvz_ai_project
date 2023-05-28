@@ -1,13 +1,13 @@
 #include "level.h"
 
 
-
 using std::cout;
 using std::endl;
 using std::string;
 
 Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &level_data) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
 {
+    // this->plant_grid = std::vector<std::vector<std::unique_ptr<Plant>>>{lanes, std::vector<std::unique_ptr<Plant>>{cols}};
     this->sun_interval = this->fps * this->sun_interval_seconds;
     this->lawnmowers = new bool[lanes];
     for (int i = 0; i < lanes; i++)
@@ -31,8 +31,60 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &l
         }
     }
 }
-Level::Level(const Level &other_level)
+Level::Level(const Level& other_level)
 {
+    this->delete_me_action_probability = other_level.delete_me_action_probability;
+    this->lanes = other_level.lanes;
+    this->cols = other_level.cols;
+    this->suns = other_level.suns;
+    this->frame = other_level.frame;
+    this->last_sun_generated = other_level.last_sun_generated;
+    this->sun_interval_seconds = other_level.sun_interval_seconds;
+    this->zombie_in_home_col = other_level.zombie_in_home_col;
+    this->done = other_level.done;
+    this->win = other_level.win;
+    this->sun_interval = other_level.sun_interval;
+    this->fps = other_level.fps;
+    this->return_state = other_level.return_state;
+
+    // Copy lawnmowers
+    this->lawnmowers = new bool[lanes];
+    for (int lane = 0; lane < lanes; lane++) {
+        (this->lawnmowers)[lane] = other_level.lawnmowers[lane];
+    }
+
+    // Copy zombies
+    this->zombie_list = std::list<Zombie*>();
+    this->zombie_grid = new std::list<Zombie*> *[lanes];
+    for (int lane = 0; lane < lanes; lane++) {
+        this->zombie_grid[lane] = new std::list<Zombie*>[cols];
+        for (int col = 0; col < cols; col++) {
+            for (Zombie* zombie : other_level.zombie_grid[lane][col]) {
+                this->zombie_grid[lane][col].push_back(new Zombie(*zombie));
+                this->zombie_list.push_back(new Zombie(*zombie));
+            }
+        }
+    }
+
+    // Copy plants
+    this->plant_list = std::list<Plant*>();
+    this->plant_grid = new Plant **[lanes];
+    for (int lane = 0; lane < lanes; lane++) {
+        this->plant_grid[lane] = new Plant *[cols];
+        for (int col = 0; col < cols; col++) {
+            if(other_level.plant_grid[lane][col] == nullptr) {
+                this->plant_grid[lane][col] = nullptr;
+            }
+            else {
+                Plant* new_plant = other_level.plant_grid[lane][col]->clone();
+                this->plant_grid[lane][col] = new_plant;
+                this->plant_list.push_back(new_plant);
+            }
+        }
+    }
+
+    // Copy level data
+    this->level_data = other_level.level_data;
 }
 
 bool Level::is_action_legal(const Action &action)
@@ -109,15 +161,17 @@ void Level::do_player_action(const Action &action)
     if (action.plant_name == "no_action")
     {
         // do nothing
-        LOG_FRAME(this->frame, "no action");
+        // LOG_FRAME(this->frame, "no action");
+        return;
     }
     else
     {
         this->plant(action);
 #ifdef DEBUG
         std::stringstream log_msg;
-        log_msg << "planted " << action.plant_name << " at lane " << action.lane << " col " << action.col;
+        log_msg << "Planted " << action.plant_name << " at lane " << action.lane << " col " << action.col << " with probability " << delete_me_action_probability << "%";
         LOG_FRAME(this->frame, log_msg.str());
+        LOG_FRAME(this->frame, " >> Plants left: " + std::to_string(this->plant_list.size()));
 #endif
     }
 }
@@ -132,7 +186,7 @@ void Level::spawn_zombies()
         this->zombie_grid[new_zombie->lane][new_zombie->col].push_back(new_zombie);
 #ifdef DEBUG
         std::stringstream log_msg;
-        log_msg << "Spawning zombie in " << new_zombie->lane << "," << new_zombie->col;
+        log_msg << "Spawning zombie in " << new_zombie->lane << ", " << new_zombie->col;
         LOG_FRAME(this->frame, log_msg.str());
 #endif
     }
@@ -143,20 +197,24 @@ void Level::spawn_suns()
     {
         this->suns += 25;
         this->last_sun_generated = this->frame;
-        LOG_FRAME(this->frame, "generated sun");
+#ifdef DEBUG
+        LOG_FRAME(this->frame, "Generated sun. total: " + std::to_string(this->suns));
+#endif
     }
 }
-void Level::check_endgame()
+bool Level::check_endgame()
 {
-    if (this->zombie_in_home_col == false)
+    if (this->zombie_in_home_col == false) // TODO - Why do we check this here?
     {
         if (this->level_data.empty() && this->zombie_list.empty())
         {
             // no  more zombies to spawn and no more alive zombies left!
             this->done = true;
             this->win = true;
+            return true;
         }
-        return;
+        // no zombies at home, and there're still zombies alive / to spawn
+        return false;
     }
     bool kill_lane = false;
     this->zombie_in_home_col = false;
@@ -177,12 +235,12 @@ void Level::check_endgame()
 // yer ded
 #ifdef DEBUG
                     std::stringstream log_msg;
-                    log_msg << "Zombie at " << zombie->lane << "," << zombie->col << " killed ya";
+                    log_msg << "Zombie at " << zombie->lane << ", " << zombie->col << " killed ya";
                     LOG_FRAME(this->frame, log_msg.str());
 #endif
                     this->done = true;
                     this->win = false;
-                    return;
+                    return true;
                 }
             }
         }
@@ -204,26 +262,46 @@ void Level::check_endgame()
                     this->zombie_grid[lane][col].front()->get_damaged(9999, *this);
                 }
             }
+            if (this->level_data.empty() && this->zombie_list.empty())
+            {
+                // no  more zombies to spawn and no more alive zombies left!
+                this->done = true;
+                this->win = true;
+                return true;
+            }
         }
-    } 
+    }
+    return false;
 }
 State *Level::step(const Action &action)
 {
     if (!this->is_action_legal(action)){
         return nullptr;
     }
-    LOG_FRAME(this->frame, "performing step");
+    // LOG_FRAME(this->frame, "performing step");
     #ifdef DEBUG
-    std::stringstream log_msg;
-    log_msg << "zombies left to spawn: " << this->level_data.size();
-    LOG_FRAME(this->frame, log_msg.str());
+    if (frame % 100 == 0) {
+        std::stringstream log_msg;
+        log_msg << "Zombies left to spawn: " << this->level_data.size();
+        LOG_FRAME(this->frame, log_msg.str());
+    }
     #endif
     this->do_zombie_actions();
     this->do_plant_actions();
     this->do_player_action(action);
     this->spawn_zombies();
     this->spawn_suns();
-    this->check_endgame();
+    if (this->check_endgame()) {
+        std::stringstream log_msg;
+        if (this->win) {
+            log_msg << "You've won!";
+        }
+        else {
+            log_msg << "You've lost!";
+        }
+        LOG_FRAME(this->frame, log_msg.str());
+        return nullptr;
+    }
     (this->frame)++;
     if (this->return_state == true)
     {
@@ -232,14 +310,67 @@ State *Level::step(const Action &action)
     return nullptr;
 }
 
-// Action& Level::get_random_action(){
-// }
+int Level::get_random_uniform(int min, int max) {
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist(min, max); // distribution in range [min, max]
+    return dist(rng);
+}
+
+// TODO - get suns as input?
+std::string Level::get_random_plant() {
+    LOG_FRAME(frame, "Randomizing plant");
+    int plant = get_random_uniform(1, 3);
+    if (plant == 1) {
+        return "sunflower";
+    }
+    if (plant == 2){
+        return "peashooter";
+    }
+    return "no_action";
+}
+
+bool Level::get_random_position(int& lane, int& col) {
+    // As long as a substantial amount of the board is free, this should work efficiently
+    for (int attempt = 0; attempt < 3; attempt++) {
+        lane = get_random_uniform(0, lanes - 1);
+        col = get_random_uniform(0, cols - 1);
+        if (this->plant_grid[lane][col] == nullptr) {
+            return true;
+        }
+    }
+    lane = -1;
+    col = -1;
+    return false; // no_action
+}
+
+// TODO - discuss optimizing this
+Action Level::get_random_action(){
+    Action no_action("no_action", 0, 0);
+    if (this->suns < 50) { // this->suns < this->cheapest_plant_cost?
+        return no_action;
+    }
+    if (get_random_uniform(1,10) > 6) { // 60% chance to do nothing, consider some other probability
+        return no_action;
+    }
+    for (int i = 0; i < 5; i++) { // 5 attempts to plant a plant
+        std::string plant_name = get_random_plant();
+        int lane, col;
+        if(get_random_position(lane, col)) {
+            Action action(plant_name, lane, col);
+            if (this->is_action_legal(action)) {
+                return action;
+            }
+        }
+    }
+    return no_action;
+}
 
 Level::~Level()
 {
     LOG_FRAME(this->frame, "destructor called");
-    std::cout << "zombies left on field: " << this->zombie_list.size() << std::endl;
-    std::cout << "zombies left to spawn: " << this->level_data.size() << std::endl;
+    std::cout << "Zombies left on field: " << this->zombie_list.size() << std::endl;
+    std::cout << "Zombies left to spawn: " << this->level_data.size() << std::endl;
     while (this->plant_list.empty() == false)
     {
         this->plant_list.front()->get_damaged(9999, *this);
@@ -257,3 +388,5 @@ Level::~Level()
     delete[] this->plant_grid;
     delete[] this->lawnmowers;
 }
+
+Level::Level() : lanes(5), cols(10), fps(10), level_data(std::deque<ZombieSpawnTemplate>()) {}

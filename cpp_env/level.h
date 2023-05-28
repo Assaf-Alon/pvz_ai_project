@@ -6,6 +6,7 @@
 #include <assert.h>
 #include <iostream>
 #include <random>
+#include <memory>
 using std::vector;
 using std::string;
 #define LOG_FRAME(frame, msg) std::cout << "[" << frame << "] " << msg << std::endl;
@@ -52,6 +53,7 @@ class Zombie {
     bool hypnotized = false;
     // Zombie(int lane, int column, Level* level);
     Zombie(const string& type, int lane, const Level& level);
+    Zombie(const Zombie& other) = default;
     void attack(Level& level);
     void move(Level& level);
     void do_action(Level& level);
@@ -70,21 +72,36 @@ public:
     float recharge_seconds;
     int recharge;
     int last_action;
+    int fps;   // for clone...?
     Plant(int lane, int column, int frame, int fps);
     virtual void do_action(Level& level) = 0;
     void get_damaged(int damage, Level& level);
+    virtual Plant* clone() const = 0;
+    virtual ~Plant() = default;
 };
 
 class Sunflower : public Plant {
     public:
     void do_action(Level& level) override;
     Sunflower(int lane, int column, int frame, int fps);
+    virtual Sunflower* clone() const override {
+        Sunflower* cloned = new Sunflower(lane, col, last_action, fps);
+        // std::cout << "Cloned sunflower at " << lane << ", " << col << std::endl;
+        return cloned;
+    }
+    ~Sunflower() = default;
 };
 
 class Peashooter : public Plant {
     public:
     void do_action(Level& level) override;
     Peashooter(int lane, int column, int frame, int fps);
+    virtual Peashooter* clone() const override {
+        Peashooter* cloned = new Peashooter(lane, col, last_action, fps);
+        // std::cout << "Cloned Peashooter at " << lane << ", " << col << std::endl;
+        return cloned;
+    }
+    ~Peashooter() = default;
 };
 
 class State {
@@ -95,9 +112,11 @@ class Action {
     std::string plant_name; // plant_name or none
     int lane;
     int col;
+    Action(std::string name, int lane, int col) : plant_name(name), lane(lane), col(col) {}
 };
 class Level {
 public:
+    int delete_me_action_probability = 100; // TODO - delete this (not yet tho)
     int lanes;
     int cols;
     int suns = 50;
@@ -114,10 +133,12 @@ public:
     std::list<Zombie*> zombie_list;
     std::list<Zombie*>** zombie_grid;
     std::list<Plant*> plant_list;
+    // std::vector<std::vector<std::unique_ptr<Plant>>> plant_grid;
     Plant*** plant_grid;
     // std::list<Zombie2Spawn> zombies_to_spawn;
     std::deque<ZombieSpawnTemplate> level_data;
 
+    Level();
     Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate>& level_data);
     Level(const Level& other_level); // copy constructor (DIFFUCULTY: HELL)
     ~Level();
@@ -127,13 +148,14 @@ public:
     void do_player_action(const Action& action);
     void spawn_zombies();
     void spawn_suns();
-    void check_endgame();
+    bool check_endgame();
     bool is_action_legal(const Action& action);
 
     std::vector<int>& rollout(int num_cpu); // return num_victories, num_losses? (DIFFICULTY: MEDIUM)
-    Action& get_random_action(); // guranteed to be legal (DIFFICULTY: MEDIUM)
-
-    
+    Action get_random_action(); // guranteed to be legal (DIFFICULTY: MEDIUM)
+    int get_random_uniform(int min, int max);
+    std::string get_random_plant();
+    bool get_random_position(int& lane, int& col);
     void plant(const Action& action);
     // void remove_plant(int lane, int col);
 };
