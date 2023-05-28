@@ -171,8 +171,6 @@ void Level::do_player_action(const Action &action)
         log_msg << "Planted " << action.plant_name << " at lane " << action.lane << " col " << action.col << " with probability " << delete_me_action_probability << "%";
         LOG_FRAME(this->frame, log_msg.str());
         LOG_FRAME(this->frame, " >> Plants left: " + std::to_string(this->plant_list.size()));
-
-
 #endif
     }
 }
@@ -261,7 +259,6 @@ bool Level::check_endgame()
                     this->zombie_grid[lane][col].front()->get_damaged(9999, *this);
                 }
             }
-
             if (this->level_data.empty() && this->zombie_list.empty())
             {
                 // no  more zombies to spawn and no more alive zombies left!
@@ -278,7 +275,6 @@ State *Level::step(const Action &action)
     if (!this->is_action_legal(action)){
         return nullptr;
     }
-
     // LOG_FRAME(this->frame, "performing step");
     #ifdef DEBUG
     if (frame % 100 == 0) {
@@ -303,7 +299,6 @@ State *Level::step(const Action &action)
         LOG_FRAME(this->frame, log_msg.str());
         return nullptr;
     }
-
     (this->frame)++;
     if (this->return_state == true)
     {

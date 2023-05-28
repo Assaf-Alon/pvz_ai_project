@@ -151,7 +151,6 @@ public:
     int get_random_uniform(int min, int max);
     std::string get_random_plant();
     bool get_random_position(std::string plant_name, int* lane, int* col);
-    
     void plant(const Action& action);
     // void remove_plant(int lane, int col);
 };

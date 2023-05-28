@@ -64,7 +64,6 @@ void play_game1() {
         }
     }
 }
-
 void play_game1_but_copy_midway() {
     
     int switch_frame = 100;
