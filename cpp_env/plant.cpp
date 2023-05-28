@@ -20,7 +20,7 @@ void Plant::get_damaged(int damage, Level &level)
         LOG_FRAME(level.frame, log_msg.str());
         LOG_FRAME(level.frame, " >> Plants left: " + std::to_string(level.plant_list.size()));
 #endif
-        delete this;
+        delete this; // this is a really bad idea and needs to be fixed by moving to smart ptrs
     }
 }
 Sunflower::Sunflower(int lane, int column, int frame, int fps) : Plant(lane, column, frame, fps)

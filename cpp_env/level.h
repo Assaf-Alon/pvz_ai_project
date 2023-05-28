@@ -6,6 +6,7 @@
 #include <assert.h>
 #include <iostream>
 #include <random>
+#include <memory>
 using std::vector;
 using std::string;
 #define LOG_FRAME(frame, msg) std::cout << "[" << frame << "] " << msg << std::endl;
@@ -76,6 +77,7 @@ public:
     virtual void do_action(Level& level) = 0;
     void get_damaged(int damage, Level& level);
     virtual Plant* clone() const = 0;
+    virtual ~Plant() = default;
 };
 
 class Sunflower : public Plant {
@@ -87,6 +89,7 @@ class Sunflower : public Plant {
         // std::cout << "Cloned sunflower at " << lane << ", " << col << std::endl;
         return cloned;
     }
+    ~Sunflower() = default;
 };
 
 class Peashooter : public Plant {
@@ -98,6 +101,7 @@ class Peashooter : public Plant {
         // std::cout << "Cloned Peashooter at " << lane << ", " << col << std::endl;
         return cloned;
     }
+    ~Peashooter() = default;
 };
 
 class State {
@@ -129,6 +133,7 @@ public:
     std::list<Zombie*> zombie_list;
     std::list<Zombie*>** zombie_grid;
     std::list<Plant*> plant_list;
+    // std::vector<std::vector<std::unique_ptr<Plant>>> plant_grid;
     Plant*** plant_grid;
     // std::list<Zombie2Spawn> zombies_to_spawn;
     std::deque<ZombieSpawnTemplate> level_data;
@@ -150,7 +155,7 @@ public:
     Action get_random_action(); // guranteed to be legal (DIFFICULTY: MEDIUM)
     int get_random_uniform(int min, int max);
     std::string get_random_plant();
-    bool get_random_position(std::string plant_name, int* lane, int* col);
+    bool get_random_position(int& lane, int& col);
     void plant(const Action& action);
     // void remove_plant(int lane, int col);
 };

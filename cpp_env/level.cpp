@@ -7,6 +7,7 @@ using std::string;
 
 Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &level_data) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
 {
+    // this->plant_grid = std::vector<std::vector<std::unique_ptr<Plant>>>{lanes, std::vector<std::unique_ptr<Plant>>{cols}};
     this->sun_interval = this->fps * this->sun_interval_seconds;
     this->lawnmowers = new bool[lanes];
     for (int i = 0; i < lanes; i++)
@@ -196,7 +197,9 @@ void Level::spawn_suns()
     {
         this->suns += 25;
         this->last_sun_generated = this->frame;
+#ifdef DEBUG
         LOG_FRAME(this->frame, "Generated sun. total: " + std::to_string(this->suns));
+#endif
     }
 }
 bool Level::check_endgame()
@@ -327,44 +330,37 @@ std::string Level::get_random_plant() {
     return "no_action";
 }
 
-bool Level::get_random_position(std::string plant_name, int* lane, int* col) {
+bool Level::get_random_position(int& lane, int& col) {
     // As long as a substantial amount of the board is free, this should work efficiently
     for (int attempt = 0; attempt < 3; attempt++) {
-        *lane = get_random_uniform(0, lanes);
-        *col = get_random_uniform(0, cols);
-        Action action = Action("sunflower", *lane, *col);
-        if (is_action_legal(action)) {
+        lane = get_random_uniform(0, lanes - 1);
+        col = get_random_uniform(0, cols - 1);
+        if (this->plant_grid[lane][col] == nullptr) {
             return true;
         }
     }
-    *lane = -1;
-    *col = -1;
+    lane = -1;
+    col = -1;
     return false; // no_action
 }
 
 // TODO - discuss optimizing this
 Action Level::get_random_action(){
-    Action no_action = Action{plant_name: "no_action", lane: 0, col: 0};
-    if (this->suns < 50) {
-        delete_me_action_probability = 100;
+    Action no_action("no_action", 0, 0);
+    if (this->suns < 50) { // this->suns < this->cheapest_plant_cost?
         return no_action;
     }
-    else if (this->suns < 100) {
-        // In order to avoid planting sunflower ASAP, randomizing whether to plant it
-        if(get_random_uniform(1, 50) == 1) {
-            delete_me_action_probability = 2;
-            int lane, col;
-            if(get_random_position("sunflower", &lane, &col)) {
-                return Action("sunflower", lane, col);
-            }
-        }
+    if (get_random_uniform(1,10) > 6) { // 60% chance to do nothing, consider some other probability
+        return no_action;
     }
-    else { // Can plant anything - will likely plant something
-        delete_me_action_probability = 33;
-        string plant_name = get_random_plant();
+    for (int i = 0; i < 5; i++) { // 5 attempts to plant a plant
+        std::string plant_name = get_random_plant();
         int lane, col;
-        if(get_random_position(plant_name, &lane, &col)) {
-            return Action(plant_name, lane, col);
+        if(get_random_position(lane, col)) {
+            Action action(plant_name, lane, col);
+            if (this->is_action_legal(action)) {
+                return action;
+            }
         }
     }
     return no_action;

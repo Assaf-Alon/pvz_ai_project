@@ -1,6 +1,6 @@
 #include "level.h"
 
-Zombie::Zombie(const std::string &type, int lane, const Level &level) : type(type), lane(lane), col(level.cols - 1), last_action(level.frame)
+Zombie::Zombie(const std::string &type, int lane, const Level &level) : lane(lane), col(level.cols - 1), last_action(level.frame), type(type)
 {
     if (type == "conehead")
     {
@@ -12,7 +12,7 @@ Zombie::Zombie(const std::string &type, int lane, const Level &level) : type(typ
     }
     else if (type == "flag")
     {
-        this->move_interval = 3.7;
+        this->move_interval_seconds = 3.7;
     }
     else if (type == "newspaper")
     {
@@ -93,6 +93,11 @@ void Zombie::get_damaged(int damage, Level &level)
     if (this->hp <= 0)
     {
         // remove self from both global and cell lists
+        #ifdef DEBUG
+        std::stringstream log_msg;
+        log_msg << "Zombie at " << this->lane << ", " << this->col << " died";
+        LOG_FRAME(level.frame, log_msg.str());
+        #endif
         level.zombie_list.remove(this);
         level.zombie_grid[this->lane][this->col].remove(this);
         delete this;
