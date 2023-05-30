@@ -1,13 +1,13 @@
 # Usage
 To compile:
-make fast //
-make profile // 
+make fast        // Basic
+make debug       // Debug mode, extra prints
+make debug-clang // Debug mode, extra prints, sanitizer
+(Then run `./main.out`)
 
-`g++ *.cpp`
-`g++ -DDEBUG *.cpp` // Note, not DNDEBUG. This is to enable debug printing
-To run:
-`./a.out`
-`./a.out > out.txt`
+make profile     // Uses gprof to profile the program
+`./main.out`
+`gprof main.out gmon.out > analysis.txt`
 
 # TODO
 
