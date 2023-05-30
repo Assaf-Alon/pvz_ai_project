@@ -61,7 +61,7 @@ void play_game1() {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data1();
     std::deque<Action> action_list = get_action_list1();
     Action no_action = Action(NO_PLANT, 0,  0);
-    std::vector<PlantName> chosen_plants = {"sunflower", "peashooter", POTATOMINE, SQUASH, SPIKEWEED, WALLNUT};
+    std::vector<PlantName> chosen_plants = {"sunflower", "peashooter", "potatomine", "squash", "spikeweed", "wallnut"};
 
 
     //                lane, columns, fps, level_data
@@ -143,7 +143,7 @@ void play_game1() {
 bool play_game_random() {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data2();
     Action no_action = Action(NO_PLANT, 0,  0);
-    std::vector<PlantName> chosen_plants = {"sunflower", "peashooter", POTATOMINE, SQUASH, SPIKEWEED};
+    std::vector<PlantName> chosen_plants = {"sunflower", "peashooter", "potatomine", "squash", "spikeweed", "wallnut"};
 
 
     //                lane, columns, fps, level_data
@@ -164,7 +164,7 @@ bool play_game_random() {
 bool play_game_random_w_rollouts() {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
     Action no_action = Action(NO_PLANT, 0,  0);
-    std::vector<PlantName> chosen_plants = {"sunflower", "peashooter", POTATOMINE, SQUASH, SPIKEWEED};
+    std::vector<PlantName> chosen_plants = {"sunflower", "peashooter", "potatomine", "squash", "spikeweed", "wallnut"};
 
     //                lane, columns, fps, level_data, legal_plants
     Level env = Level(5,    10,      10, level_data,  chosen_plants);

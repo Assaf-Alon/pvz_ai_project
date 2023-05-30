@@ -1,6 +1,4 @@
 #include "level.h"
-#include <omp.h>
-#include <unordered_map>
 using std::cout;
 using std::endl;
 using std::string;
@@ -18,17 +16,15 @@ using std::unique_ptr;
 //     &squash_action, &sunflower_action, &sunshroom_action, \
 //     &threepeater_action, &wallnut_action \
 // };
+// int hp;
+// int damage;
+// float action_interval_seconds;
+// float recharge_seconds;
+// int cost;
 
-static std::unordered_map<std::string, std::pair<int, std::function<void(Level&, Plant&)>>> plant_data = {
-    {"sunflower", {50, &sunflower_action}},
-    {"peashooter", {100, &peashooter_action}},
-    {"potatomine", {25, &potatomine_action}},
-    {"wallnut", {50, &wallnut_action}},
-    {"squash", {50, &squash_action}},
-    {"spikeweed", {100, &spikeweed_action}},
-};
 
-Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &level_data, vector<PlantName> legal_plants) : lanes(lanes), cols(columns), fps(fps), level_data(level_data), plant_cooldown(vector<int>(NUM_PLANTS, 999999))
+
+Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &level_data, vector<PlantName> legal_plants) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
 {
     this->plant_grid = vector<vector<Plant*>>(lanes, vector<Plant*>(cols, nullptr));
     this->zombie_grid = vector<vector<list<Zombie*>>>(lanes, vector<list<Zombie*>>(cols, list<Zombie*>()));
@@ -38,10 +34,17 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &l
     std::random_device dev;
     std::mt19937 rng(dev());
     this->random_gen = rng;
-
-    // vector<PlantName> legal_plants = {"peashooter", "sunflower"};
-    for (int i = 0 ; i < (int)legal_plants.size() ; i++) { 
-        this->plant_cooldown[legal_plants[i]] = 0; // TODO - Change this to the actual cooldown of the plant
+    this->plant_data = std::unordered_map<std::string, PlantData>{
+        /*                       HP DMG INTERVAL CD COST CD_END     ACTION       */
+        {"sunflower", PlantData{300, 25, 24.25, 7.5, 50, &sunflower_action}},
+        {"peashooter", PlantData{300, 20, 1.425, 7.5, 100, &peashooter_action}},
+        {"potatomine", PlantData{300, 1800, 15, 30, 25, &potatomine_action}},
+        {"wallnut", PlantData{4000, 0, 9999, 30, 50, &wallnut_action}},
+        {"squash", PlantData{300, 1800, 1.425, 30, 50, &squash_action}},
+        {"spikeweed", PlantData{300, 20, 1, 7.5, 100, &spikeweed_action}},
+    };
+    for (PlantName plant_name : legal_plants){
+        plant_data[plant_name].next_available_frame = 0;
     }
 }
 Level::Level(const Level& other_level)
@@ -93,10 +96,10 @@ Level::Level(const Level& other_level)
     }
 
     // Copy level data
-    this->level_data = other_level.level_data;
+    this->level_data = std::deque<ZombieSpawnTemplate>(other_level.level_data);
 
     // Copy cooldown
-    this->plant_cooldown = other_level.plant_cooldown;
+    this->plant_data = std::unordered_map<std::string, PlantData>(other_level.plant_data);
 }
 
 bool Level::is_action_legal(const Action &action)
@@ -104,10 +107,6 @@ bool Level::is_action_legal(const Action &action)
     if (action.plant_name == NO_PLANT)
     {
         return true;
-    }
-    if ((this->plant_cooldown)[action.plant_name] > this->frame)
-    {
-        return false;
     }
     if (action.lane >= this->lanes || action.col >= this->cols || action.lane < 0 || action.col < 0)
     {
@@ -117,7 +116,11 @@ bool Level::is_action_legal(const Action &action)
     {
         return false;
     }
-    if (plant_data[action.plant_name].first < this->suns)
+    if (this->plant_data[action.plant_name].next_available_frame > this->frame)
+    {
+        return false;
+    }
+    if (plant_data[action.plant_name].cost < this->suns)
     {
         return false;
     }
@@ -130,15 +133,9 @@ bool Level::is_action_legal(const Action &action)
 
 void Level::plant(const Action &action)
 {
-    // TODO: fix up this selector
     Plant *new_plant = nullptr;
-    auto plant_action = plant_actions[action.plant_name].second();
-    new_plant = new Plant(action.lane, action.col, this->frame, this->fps, action.plant_name, plant_action);
+    new_plant = new Plant(action.lane, action.col, plant_data[action.plant_name], this->frame, this->fps);
     this->suns -= new_plant->cost;
-    // else if(action.plant_name == "cherrybomb"){
-    //     new_plant = new Plant(action.lane, action.col, this->frame, this->fps, &cherrybomb_action);
-    //     this->suns -= new_plant->cost;
-    // }
     this->plant_list.push_back(new_plant);
     this->plant_grid[action.lane][action.col] = new_plant;
 }
@@ -328,9 +325,9 @@ PlantName Level::get_random_plant() {
     #endif
     vector<PlantName> legal_plants = {NO_PLANT};
     
-    for (int i = 1 ; i < (int)plant_cooldown.size() ; i++) {
-        if (plant_cooldown[i] <= frame) {
-            legal_plants.push_back(PlantName(i));
+    for (auto& entry : this->plant_data) {
+        if (entry.second.next_available_frame <= frame) {
+            legal_plants.push_back(entry.first);
         }
     }
     std::cout << "plants off cooldown: " << legal_plants.size() << std::endl;

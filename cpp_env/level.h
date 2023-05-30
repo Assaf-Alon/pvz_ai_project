@@ -7,19 +7,33 @@
 #include <iostream>
 #include <random>
 #include <memory>
+#include <unordered_map>
 #include <functional>
 #include <algorithm>
+#include <omp.h>
 using std::vector;
 using std::string;
 #define LOG_FRAME(frame, msg) std::cout << "[" << frame << "] " << msg << std::endl;
+#define NO_PLANT "no_plant"
 
 class Level;
 class Zombie;
 class Plant;
 
+class PlantData {
+    public:
+    int hp;
+    int damage;
+    float action_interval_seconds;
+    float recharge_seconds;
+    int cost;
+    std::function<void(Level&, Plant&)> action_func;
+    int next_available_frame = 9999;
+};
+
 // enum PlantName { NO_PLANT, CHERRYBOMB, CHOMPER,
 //                  HYPNOSHROOM, ICESHROOM, JALAPENO,
-//                  "peashooter", POTATOMINE, PUFFSHROOM,
+//                  PEASHOOTER, POTATOMINE, PUFFSHROOM,
 //                  REPEATERPEA, SCAREDYSHROOM, SNOWPEA,
 //                  SPIKEWEED, SQUASH, "sunflower",
 //                  SUNSHROOM, THREEPEATER, WALLNUT,
@@ -72,6 +86,7 @@ public:
     int last_action;
     int fps;   // for clone...?
     Plant(int lane, int column, int frame, int fps, PlantName plant_name, const std::function<void(Level&, Plant&)> action);
+    Plant(int lane, int column, PlantData &plant_data, int frame, int fps);
     // virtual void do_action(Level& level) = 0;
     std::function<void(Level&, Plant&)> action;
     void do_action(Level& level);
@@ -153,7 +168,7 @@ public:
     std::list<Plant*> plant_list;
     std::vector<std::vector<Plant*>> plant_grid;
     std::deque<ZombieSpawnTemplate> level_data;
-    std::vector<int> plant_cooldown;
+    std::unordered_map<std::string, PlantData> plant_data;
 
     Level();
     Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate>& level_data, vector<PlantName> legal_plants);
