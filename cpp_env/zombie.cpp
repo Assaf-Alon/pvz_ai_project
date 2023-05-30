@@ -1,4 +1,5 @@
 #include "level.h"
+#include <unistd.h>
 
 Zombie::Zombie(const std::string &type, int lane, const Level &level) : lane(lane), col(level.cols - 1), last_action(level.frame), type(type)
 {
@@ -61,7 +62,7 @@ void Zombie::move(Level &level)
 #endif
         level.zombie_grid[this->lane][this->col].remove(this);
         this->col -= 1;
-        level.zombie_grid[this->lane][this->col].push_front(this);
+        level.zombie_grid[this->lane][this->col].push_back(this);
     }
 }
 void Zombie::do_action(Level &level)
@@ -98,8 +99,8 @@ void Zombie::get_damaged(int damage, Level &level)
         log_msg << "Zombie at " << this->lane << ", " << this->col << " died";
         LOG_FRAME(level.frame, log_msg.str());
         #endif
-        level.zombie_list.remove(this);
         level.zombie_grid[this->lane][this->col].remove(this);
+        level.zombie_list.remove(this);
         delete this;
     }
 }

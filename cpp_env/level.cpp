@@ -1,39 +1,25 @@
 #include "level.h"
-
+#include <omp.h>
 
 using std::cout;
 using std::endl;
 using std::string;
+using std::vector;
+using std::list;
+using std::unique_ptr;
 
 Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &level_data) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
 {
-    // this->plant_grid = std::vector<std::vector<std::unique_ptr<Plant>>>{lanes, std::vector<std::unique_ptr<Plant>>{cols}};
+    this->plant_grid = vector<vector<Plant*>>(lanes, vector<Plant*>(cols, nullptr));
+    this->zombie_grid = vector<vector<list<Zombie*>>>(lanes, vector<list<Zombie*>>(cols, list<Zombie*>()));
+    this->lawnmowers = vector<bool>(lanes, true);
     this->sun_interval = this->fps * this->sun_interval_seconds;
-    this->lawnmowers = new bool[lanes];
-    for (int i = 0; i < lanes; i++)
-    {
-        this->lawnmowers[i] = true;
-    }
-    this->zombie_list = std::list<Zombie *>();
-    this->zombie_grid = new std::list<Zombie *> *[lanes];
-    for (int i = 0; i < lanes; i++)
-    {
-        this->zombie_grid[i] = new std::list<Zombie *>[cols];
-    }
-    this->plant_list = std::list<Plant *>();
-    this->plant_grid = new Plant **[lanes];
-    for (int i = 0; i < lanes; i++)
-    {
-        this->plant_grid[i] = new Plant *[cols];
-        for (int j = 0; j < columns; j++)
-        {
-            this->plant_grid[i][j] = nullptr;
-        }
-    }
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    this->random_gen = rng;
 }
 Level::Level(const Level& other_level)
 {
-    this->delete_me_action_probability = other_level.delete_me_action_probability;
     this->lanes = other_level.lanes;
     this->cols = other_level.cols;
     this->suns = other_level.suns;
@@ -47,39 +33,36 @@ Level::Level(const Level& other_level)
     this->fps = other_level.fps;
     this->return_state = other_level.return_state;
 
+    // Generate new rng
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    this->random_gen = rng;
+
     // Copy lawnmowers
-    this->lawnmowers = new bool[lanes];
-    for (int lane = 0; lane < lanes; lane++) {
-        (this->lawnmowers)[lane] = other_level.lawnmowers[lane];
-    }
+    this->lawnmowers = other_level.lawnmowers;
 
     // Copy zombies
-    this->zombie_list = std::list<Zombie*>();
-    this->zombie_grid = new std::list<Zombie*> *[lanes];
-    for (int lane = 0; lane < lanes; lane++) {
-        this->zombie_grid[lane] = new std::list<Zombie*>[cols];
-        for (int col = 0; col < cols; col++) {
-            for (Zombie* zombie : other_level.zombie_grid[lane][col]) {
-                this->zombie_grid[lane][col].push_back(new Zombie(*zombie));
-                this->zombie_list.push_back(new Zombie(*zombie));
+    this->zombie_grid = vector<vector<list<Zombie*>>>(lanes, vector<list<Zombie*>>(this->cols, list<Zombie*>()));
+    for (int lane = 0; lane < lanes; lane++){
+        for (int col = 0; col < cols; col++){
+            for (Zombie* zombie : other_level.zombie_grid[lane][col]){
+                Zombie* zombie_copy = new Zombie(*zombie);
+                this->zombie_grid[lane][col].push_back(zombie_copy);
+                this->zombie_list.push_back(zombie_copy);
             }
         }
     }
 
     // Copy plants
-    this->plant_list = std::list<Plant*>();
-    this->plant_grid = new Plant **[lanes];
+    this->plant_grid = vector<vector<Plant*>>(this->lanes, vector<Plant*>(this->cols, nullptr));
     for (int lane = 0; lane < lanes; lane++) {
-        this->plant_grid[lane] = new Plant *[cols];
         for (int col = 0; col < cols; col++) {
-            if(other_level.plant_grid[lane][col] == nullptr) {
-                this->plant_grid[lane][col] = nullptr;
+            if (other_level.plant_grid[lane][col] == nullptr){
+                continue;
             }
-            else {
-                Plant* new_plant = other_level.plant_grid[lane][col]->clone();
-                this->plant_grid[lane][col] = new_plant;
-                this->plant_list.push_back(new_plant);
-            }
+            Plant* new_plant = other_level.plant_grid[lane][col]->clone();
+            this->plant_grid[lane][col] = new_plant;
+            this->plant_list.push_back(new_plant);
         }
     }
 
@@ -134,19 +117,19 @@ void Level::plant(const Action &action)
         new_plant = new Peashooter(action.lane, action.col, this->frame, this->fps);
         this->suns -= new_plant->cost;
     }
-    this->plant_list.push_front(new_plant);
+    this->plant_list.push_back(new_plant);
     this->plant_grid[action.lane][action.col] = new_plant;
 }
 void Level::do_zombie_actions()
 {
-    for (Zombie *zombie : this->zombie_list)
+    for (Zombie* zombie : this->zombie_list)
     {
         zombie->do_action(*this);
     }
 }
 void Level::do_plant_actions()
 {
-    for (Plant *plant : this->plant_list)
+    for(Plant* plant : this->plant_list)
     {
         plant->do_action(*this);
     }
@@ -292,6 +275,7 @@ State *Level::step(const Action &action)
     this->spawn_zombies();
     this->spawn_suns();
     if (this->check_endgame()) {
+        #ifdef DEBUG
         std::stringstream log_msg;
         if (this->win) {
             log_msg << "You've won!";
@@ -300,6 +284,7 @@ State *Level::step(const Action &action)
             log_msg << "You've lost!";
         }
         LOG_FRAME(this->frame, log_msg.str());
+        #endif
         return nullptr;
     }
     (this->frame)++;
@@ -311,15 +296,15 @@ State *Level::step(const Action &action)
 }
 
 int Level::get_random_uniform(int min, int max) {
-    std::random_device dev;
-    std::mt19937 rng(dev());
     std::uniform_int_distribution<std::mt19937::result_type> dist(min, max); // distribution in range [min, max]
-    return dist(rng);
+    return dist(this->random_gen);
 }
 
 // TODO - get suns as input?
 std::string Level::get_random_plant() {
+    #ifdef DEBUG
     LOG_FRAME(frame, "Randomizing plant");
+    #endif
     int plant = get_random_uniform(1, 3);
     if (plant == 1) {
         return "sunflower";
@@ -368,9 +353,11 @@ Action Level::get_random_action(){
 
 Level::~Level()
 {
+    #ifdef DEBUG
     LOG_FRAME(this->frame, "destructor called");
     std::cout << "Zombies left on field: " << this->zombie_list.size() << std::endl;
     std::cout << "Zombies left to spawn: " << this->level_data.size() << std::endl;
+    #endif
     while (this->plant_list.empty() == false)
     {
         this->plant_list.front()->get_damaged(9999, *this);
@@ -379,14 +366,40 @@ Level::~Level()
     {
         this->zombie_list.front()->get_damaged(9999, *this);
     }
-    for (int lane = 0; lane < this->lanes; lane++)
-    {
-        delete[] this->zombie_grid[lane];
-        delete[] this->plant_grid[lane];
+    // for (int lane = 0; lane < this->lanes; lane++)
+    // {
+    //     delete[] this->zombie_grid[lane];
+    //     delete[] this->plant_grid[lane];
+    // }
+    // delete[] this->zombie_grid;
+    // delete[] this->plant_grid;
+    // delete[] this->lawnmowers;
+}
+
+bool Level::play_random_game(Level env) {
+    Action no_action = Action("no_action", 0,  0);
+    while (!env.done) {
+        Action next_action = env.get_random_action();
+        if (env.is_action_legal(next_action)) {
+            env.step(next_action);
+        }
+        else {
+            env.step(no_action);
+        }
     }
-    delete[] this->zombie_grid;
-    delete[] this->plant_grid;
-    delete[] this->lawnmowers;
+    return env.win;
+}
+
+int Level::rollout(int num_cpu, int num_games) {
+    std::vector<bool> victories(num_games, false);
+    omp_set_num_threads(num_cpu);
+    #pragma omp parallel for shared(victories)
+    for (int i = 0; i < num_games; i++){
+        victories[i] = Level::play_random_game(*this);
+        // victories[i] = play_random_game(*this);
+    }
+    
+    return std::count(victories.begin(), victories.end(), true);
 }
 
 Level::Level() : lanes(5), cols(10), fps(10), level_data(std::deque<ZombieSpawnTemplate>()) {}
