@@ -50,10 +50,10 @@ std::deque<ZombieSpawnTemplate> get_level_data3() {
 std::deque<Action> get_action_list1() {
     std::deque<Action> action_list;
     Action no_action(NO_PLANT, 0,  0);
-    action_list.push_back(Action(SUNFLOWER, 1,  0));
-    action_list.push_back(Action(SUNFLOWER, 1,  1));
-    action_list.push_back(Action(PEASHOOTER, 1,  2));
-    action_list.push_back(Action(PEASHOOTER, 1,  4));
+    action_list.push_back(Action("sunflower", 1,  0));
+    action_list.push_back(Action("sunflower", 1,  1));
+    action_list.push_back(Action("peashooter", 1,  2));
+    action_list.push_back(Action("peashooter", 1,  4));
     return action_list;
 }
 
@@ -61,9 +61,12 @@ void play_game1() {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data1();
     std::deque<Action> action_list = get_action_list1();
     Action no_action = Action(NO_PLANT, 0,  0);
+    std::vector<PlantName> chosen_plants = {"sunflower", "peashooter", POTATOMINE, SQUASH, SPIKEWEED, WALLNUT};
+
 
     //                lane, columns, fps, level_data
-    Level env = Level(5,    10,      10, level_data);
+    Level env = Level(5,    10,      10, level_data,  chosen_plants);
+
 
     while (!env.done) {
         if (action_list.empty()) {
@@ -140,9 +143,11 @@ void play_game1() {
 bool play_game_random() {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data2();
     Action no_action = Action(NO_PLANT, 0,  0);
+    std::vector<PlantName> chosen_plants = {"sunflower", "peashooter", POTATOMINE, SQUASH, SPIKEWEED};
+
 
     //                lane, columns, fps, level_data
-    Level env = Level(5,    10,      10, level_data);
+    Level env = Level(5,    10,      10, level_data, chosen_plants);
 
     while (!env.done) {
         Action next_action = env.get_random_action();
@@ -159,9 +164,10 @@ bool play_game_random() {
 bool play_game_random_w_rollouts() {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
     Action no_action = Action(NO_PLANT, 0,  0);
+    std::vector<PlantName> chosen_plants = {"sunflower", "peashooter", POTATOMINE, SQUASH, SPIKEWEED};
 
-    //                lane, columns, fps, level_data
-    Level env = Level(5,    10,      10, level_data);
+    //                lane, columns, fps, level_data, legal_plants
+    Level env = Level(5,    10,      10, level_data,  chosen_plants);
     int num_rollouts = 0;
     while (!env.done) {
         if (env.frame % 100 == 0) {
@@ -183,7 +189,7 @@ bool play_game_random_w_rollouts() {
 
 
 
-void play_random_games(int num_games=10000) {
+void play_random_games(int num_games) {
     std::vector<bool> victories(num_games, false);
     omp_set_num_threads(8);
     #pragma omp parallel for shared(victories)
@@ -200,6 +206,6 @@ int main() {
     // play_game1();
     // play_game_random();
     // play_game1_but_copy_midway();
-    // play_random_games(1);
-    play_game_random_w_rollouts();
+    play_random_games(1);
+    // play_game_random_w_rollouts();
 }

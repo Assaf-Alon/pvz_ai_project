@@ -8,6 +8,7 @@
 #include <random>
 #include <memory>
 #include <functional>
+#include <algorithm>
 using std::vector;
 using std::string;
 #define LOG_FRAME(frame, msg) std::cout << "[" << frame << "] " << msg << std::endl;
@@ -16,7 +17,15 @@ class Level;
 class Zombie;
 class Plant;
 
-enum PlantName { NO_PLANT, PEASHOOTER, SUNFLOWER, CHERRYBOMB };
+// enum PlantName { NO_PLANT, CHERRYBOMB, CHOMPER,
+//                  HYPNOSHROOM, ICESHROOM, JALAPENO,
+//                  "peashooter", POTATOMINE, PUFFSHROOM,
+//                  REPEATERPEA, SCAREDYSHROOM, SNOWPEA,
+//                  SPIKEWEED, SQUASH, "sunflower",
+//                  SUNSHROOM, THREEPEATER, WALLNUT,
+//                  NUM_PLANTS };
+
+typedef std::string PlantName;
 
 class ZombieSpawnTemplate {
     public:
@@ -57,7 +66,7 @@ public:
     int cost;
     int damage; // for sun-generating plants, this is the value of the sun generated
     float action_interval_seconds;
-    int action_interval;
+    float action_interval;
     float recharge_seconds;
     int recharge;
     int last_action;
@@ -89,6 +98,8 @@ void sunflower_action(Level& level, Plant& plant);
 void sunshroom_action(Level& level, Plant& plant);
 void threepeater_action(Level& level, Plant& plant);
 void wallnut_action(Level& level, Plant& plant);
+
+
 
 /*
 Cherrybomb
@@ -134,27 +145,19 @@ public:
     bool zombie_in_home_col = false;
     bool done = false;
     bool win = false;
-    // bool *lawnmowers;
     std::vector<bool> lawnmowers;
     int fps = 10;
     bool return_state = false;
-    // Initialize the lists before the grids to make lifetime of lists longer
-    // this will make the unique_ptrs to call the destructors after the grid itself leaves scope
-    // ensuring correct order of deletion of plants and zombies
     std::list<Zombie*> zombie_list;
-    // std::list<Zombie*> zombie_list;
     std::vector<std::vector<std::list<Zombie*>>> zombie_grid;
-    // std::list<Zombie*>** zombie_grid;
     std::list<Plant*> plant_list;
-    // std::list<Plant*> plant_list;
     std::vector<std::vector<Plant*>> plant_grid;
-    // Plant*** plant_grid;
-    // std::list<Zombie2Spawn> zombies_to_spawn;
     std::deque<ZombieSpawnTemplate> level_data;
+    std::vector<int> plant_cooldown;
 
     Level();
-    Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate>& level_data);
-    Level(const Level& other_level); // copy constructor (DIFFUCULTY: HELL)
+    Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate>& level_data, vector<PlantName> legal_plants);
+    Level(const Level& other_level);
     ~Level();
     State* step(const Action& action);
     void do_zombie_actions();
@@ -166,7 +169,7 @@ public:
     bool is_action_legal(const Action& action);
 
     int rollout(int num_cpu, int num_games=10000); // return num_victories
-    Action get_random_action(); // guranteed to be legal (DIFFICULTY: MEDIUM)
+    Action get_random_action(); // guranteed to be legal
     int get_random_uniform(int min, int max);
     PlantName get_random_plant();
     bool get_random_position(int& lane, int& col);

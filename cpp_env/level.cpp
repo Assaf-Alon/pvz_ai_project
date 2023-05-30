@@ -1,6 +1,6 @@
 #include "level.h"
 #include <omp.h>
-
+#include <unordered_map>
 using std::cout;
 using std::endl;
 using std::string;
@@ -8,15 +8,41 @@ using std::vector;
 using std::list;
 using std::unique_ptr;
 
-Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &level_data) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
+
+// std::vector<int> plant_costs = {0, 150, 150, 75, 75, 125, 100, 25, 0, 200, 25, 175, 100, 50, 50, 25, 325, 50};
+// std::vector<std::function<void(Level&, Plant&)>> plant_actions = { \
+//     &cherrybomb_action, &chomper_action, &hypnoshroom_action, \
+//     &iceshroom_action, &jalapeno_action, &peashooter_action, \
+//     &potatomine_action, &puffshroom_action, &repeaterpea_action, \
+//     &scaredyshroom_action, &snowpea_action, &spikeweed_action, \
+//     &squash_action, &sunflower_action, &sunshroom_action, \
+//     &threepeater_action, &wallnut_action \
+// };
+
+static std::unordered_map<std::string, std::pair<int, std::function<void(Level&, Plant&)>>> plant_data = {
+    {"sunflower", {50, &sunflower_action}},
+    {"peashooter", {100, &peashooter_action}},
+    {"potatomine", {25, &potatomine_action}},
+    {"wallnut", {50, &wallnut_action}},
+    {"squash", {50, &squash_action}},
+    {"spikeweed", {100, &spikeweed_action}},
+};
+
+Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &level_data, vector<PlantName> legal_plants) : lanes(lanes), cols(columns), fps(fps), level_data(level_data), plant_cooldown(vector<int>(NUM_PLANTS, 999999))
 {
     this->plant_grid = vector<vector<Plant*>>(lanes, vector<Plant*>(cols, nullptr));
     this->zombie_grid = vector<vector<list<Zombie*>>>(lanes, vector<list<Zombie*>>(cols, list<Zombie*>()));
     this->lawnmowers = vector<bool>(lanes, true);
     this->sun_interval = this->fps * this->sun_interval_seconds;
+
     std::random_device dev;
     std::mt19937 rng(dev());
     this->random_gen = rng;
+
+    // vector<PlantName> legal_plants = {"peashooter", "sunflower"};
+    for (int i = 0 ; i < (int)legal_plants.size() ; i++) { 
+        this->plant_cooldown[legal_plants[i]] = 0; // TODO - Change this to the actual cooldown of the plant
+    }
 }
 Level::Level(const Level& other_level)
 {
@@ -68,17 +94,20 @@ Level::Level(const Level& other_level)
 
     // Copy level data
     this->level_data = other_level.level_data;
+
+    // Copy cooldown
+    this->plant_cooldown = other_level.plant_cooldown;
 }
 
 bool Level::is_action_legal(const Action &action)
 {
-    if (this->done == true)
-    {
-        return false;
-    }
     if (action.plant_name == NO_PLANT)
     {
         return true;
+    }
+    if ((this->plant_cooldown)[action.plant_name] > this->frame)
+    {
+        return false;
     }
     if (action.lane >= this->lanes || action.col >= this->cols || action.lane < 0 || action.col < 0)
     {
@@ -88,15 +117,11 @@ bool Level::is_action_legal(const Action &action)
     {
         return false;
     }
-    if (action.plant_name != SUNFLOWER && action.plant_name != PEASHOOTER)
+    if (plant_data[action.plant_name].first < this->suns)
     {
         return false;
     }
-    if (action.plant_name == SUNFLOWER && this->suns < 50)
-    {
-        return false;
-    }
-    if (action.plant_name == PEASHOOTER && this->suns < 100)
+    if (this->done == true)
     {
         return false;
     }
@@ -107,16 +132,9 @@ void Level::plant(const Action &action)
 {
     // TODO: fix up this selector
     Plant *new_plant = nullptr;
-    if (action.plant_name == SUNFLOWER)
-    {
-        new_plant = new Plant(action.lane, action.col, this->frame, this->fps, action.plant_name, &sunflower_action);
-        this->suns -= new_plant->cost;
-    }
-    else if (action.plant_name == PEASHOOTER)
-    {
-        new_plant = new Plant(action.lane, action.col, this->frame, this->fps, action.plant_name, &peashooter_action);
-        this->suns -= new_plant->cost;
-    }
+    auto plant_action = plant_actions[action.plant_name].second();
+    new_plant = new Plant(action.lane, action.col, this->frame, this->fps, action.plant_name, plant_action);
+    this->suns -= new_plant->cost;
     // else if(action.plant_name == "cherrybomb"){
     //     new_plant = new Plant(action.lane, action.col, this->frame, this->fps, &cherrybomb_action);
     //     this->suns -= new_plant->cost;
@@ -152,16 +170,14 @@ void Level::do_player_action(const Action &action)
         // LOG_FRAME(this->frame, "no action");
         return;
     }
-    else
-    {
-        this->plant(action);
-        #ifdef DEBUG
-        std::stringstream log_msg;
-        log_msg << "Planted " << action.plant_name << " at lane " << action.lane << " col " << action.col << " with probability " << delete_me_action_probability << "%";
-        LOG_FRAME(this->frame, log_msg.str());
-        LOG_FRAME(this->frame, " >> Plants left: " + std::to_string(this->plant_list.size()));
-        #endif
-    }
+
+    this->plant(action);
+    #ifdef DEBUG
+    std::stringstream log_msg;
+    log_msg << "Planted " << action.plant_name << " at lane " << action.lane << " col " << action.col << " with probability " << delete_me_action_probability << "%";
+    LOG_FRAME(this->frame, log_msg.str());
+    LOG_FRAME(this->frame, " >> Plants left: " + std::to_string(this->plant_list.size()));
+    #endif
 }
 void Level::spawn_zombies()
 {
@@ -172,11 +188,11 @@ void Level::spawn_zombies()
         Zombie *new_zombie = new Zombie(zombie_template.type, zombie_template.lane, *this);
         this->zombie_list.push_back(new_zombie);
         this->zombie_grid[new_zombie->lane][new_zombie->col].push_back(new_zombie);
-#ifdef DEBUG
+        #ifdef DEBUG
         std::stringstream log_msg;
         log_msg << "Spawning zombie in " << new_zombie->lane << ", " << new_zombie->col;
         LOG_FRAME(this->frame, log_msg.str());
-#endif
+        #endif
     }
 }
 void Level::spawn_suns()
@@ -220,12 +236,12 @@ bool Level::check_endgame()
                 }
                 else
                 {
-// yer ded
-#ifdef DEBUG
+                    // yer ded
+                    #ifdef DEBUG
                     std::stringstream log_msg;
                     log_msg << "Zombie at " << zombie->lane << ", " << zombie->col << " killed ya";
                     LOG_FRAME(this->frame, log_msg.str());
-#endif
+                    #endif
                     this->done = true;
                     this->win = false;
                     return true;
@@ -310,18 +326,28 @@ PlantName Level::get_random_plant() {
     #ifdef DEBUG
     LOG_FRAME(frame, "Randomizing plant");
     #endif
-    int plant = get_random_uniform(1, 3);
-    if (plant == 1) {
-        return SUNFLOWER;
+    vector<PlantName> legal_plants = {NO_PLANT};
+    
+    for (int i = 1 ; i < (int)plant_cooldown.size() ; i++) {
+        if (plant_cooldown[i] <= frame) {
+            legal_plants.push_back(PlantName(i));
+        }
     }
-    if (plant == 2){
-        return PEASHOOTER;
-    }
-    return NO_PLANT;
+    std::cout << "plants off cooldown: " << legal_plants.size() << std::endl;
+
+    int plant = get_random_uniform(0, legal_plants.size() - 1);
+    return (PlantName)legal_plants[plant];
+    // if (plant == 1) {
+    //     return "sunflower";
+    // }
+    // if (plant == 2){
+    //     return "peashooter";
+    // }
+    // return NO_PLANT;
 }
 
-bool Level::get_random_position(int& lane, int& col) {
     // As long as a substantial amount of the board is free, this should work efficiently
+bool Level::get_random_position(int& lane, int& col) {
     for (int attempt = 0; attempt < 3; attempt++) {
         lane = get_random_uniform(0, lanes - 1);
         col = get_random_uniform(0, cols - 1);
@@ -408,4 +434,4 @@ int Level::rollout(int num_cpu, int num_games) {
     return std::count(victories.begin(), victories.end(), true);
 }
 
-Level::Level() : lanes(5), cols(10), fps(10), level_data(std::deque<ZombieSpawnTemplate>()) {}
+// Level::Level() : lanes(5), cols(10), fps(10), level_data(std::deque<ZombieSpawnTemplate>()) {}

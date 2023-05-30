@@ -15,11 +15,11 @@ make profile     // Uses gprof to profile the program
 1. Need to play around with the code to find out more issues
 
 ## Enchancements
-1. Add more plant subclasses
-2. Add plant name enum (plant name string comparison is really really slow)
-3. Add plant refresh timer (using enum)
-4. Add random zombie generator?
-5. Figure out swig
+1. Finish implementing plants (5 left)
+2. fix plant refresh timer (using unordered map?)
+3. Add random zombie generator?
+4. Figure out swig
+5. !!! Unordered map with plant structs (static values. cost, hp, cooldown in seconds...)
 
 # 
 1. Create function that returns all legal actions for the player (plant, lane, col)
