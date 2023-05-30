@@ -20,3 +20,6 @@ make profile     // Uses gprof to profile the program
 3. Add plant refresh timer (using enum)
 4. Add random zombie generator?
 5. Figure out swig
+
+# 
+1. Create function that returns all legal actions for the player (plant, lane, col)

@@ -76,7 +76,7 @@ bool Level::is_action_legal(const Action &action)
     {
         return false;
     }
-    if (action.plant_name == "no_action")
+    if (action.plant_name == NO_PLANT)
     {
         return true;
     }
@@ -88,15 +88,15 @@ bool Level::is_action_legal(const Action &action)
     {
         return false;
     }
-    if (action.plant_name != "sunflower" && action.plant_name != "peashooter")
+    if (action.plant_name != SUNFLOWER && action.plant_name != PEASHOOTER)
     {
         return false;
     }
-    if (action.plant_name == "sunflower" && this->suns < 50)
+    if (action.plant_name == SUNFLOWER && this->suns < 50)
     {
         return false;
     }
-    if (action.plant_name == "peashooter" && this->suns < 100)
+    if (action.plant_name == PEASHOOTER && this->suns < 100)
     {
         return false;
     }
@@ -107,20 +107,20 @@ void Level::plant(const Action &action)
 {
     // TODO: fix up this selector
     Plant *new_plant = nullptr;
-    if (action.plant_name == "sunflower")
+    if (action.plant_name == SUNFLOWER)
     {
-        new_plant = new Sunflower(action.lane, action.col, this->frame, this->fps);
+        new_plant = new Plant(action.lane, action.col, this->frame, this->fps, action.plant_name, &sunflower_action);
         this->suns -= new_plant->cost;
     }
-    else if (action.plant_name == "peashooter")
+    else if (action.plant_name == PEASHOOTER)
     {
-        new_plant = new Peashooter(action.lane, action.col, this->frame, this->fps);
+        new_plant = new Plant(action.lane, action.col, this->frame, this->fps, action.plant_name, &peashooter_action);
         this->suns -= new_plant->cost;
     }
-    else if(action.plant_name == "cherrybomb"){
-        new_plant = new Cherrybomb(action.lane, action.col, this->frame, this->fps);
-        this->suns -= new_plant->cost;
-    }
+    // else if(action.plant_name == "cherrybomb"){
+    //     new_plant = new Plant(action.lane, action.col, this->frame, this->fps, &cherrybomb_action);
+    //     this->suns -= new_plant->cost;
+    // }
     this->plant_list.push_back(new_plant);
     this->plant_grid[action.lane][action.col] = new_plant;
 }
@@ -133,6 +133,7 @@ void Level::do_zombie_actions()
 }
 void Level::do_plant_actions()
 {
+    // Note! this may cause issues with exploading plants and the iterator being invalidated!!!!
     for(Plant* plant : this->plant_list)
     {
         plant->do_action(*this);
@@ -145,7 +146,7 @@ void Level::do_player_action(const Action &action)
         LOG_FRAME(this->frame, "ILLEGAL ACTION");
         return;
     }
-    if (action.plant_name == "no_action")
+    if (action.plant_name == NO_PLANT)
     {
         // do nothing
         // LOG_FRAME(this->frame, "no action");
@@ -154,12 +155,12 @@ void Level::do_player_action(const Action &action)
     else
     {
         this->plant(action);
-#ifdef DEBUG
+        #ifdef DEBUG
         std::stringstream log_msg;
         log_msg << "Planted " << action.plant_name << " at lane " << action.lane << " col " << action.col << " with probability " << delete_me_action_probability << "%";
         LOG_FRAME(this->frame, log_msg.str());
         LOG_FRAME(this->frame, " >> Plants left: " + std::to_string(this->plant_list.size()));
-#endif
+        #endif
     }
 }
 void Level::spawn_zombies()
@@ -305,18 +306,18 @@ int Level::get_random_uniform(int min, int max) {
 }
 
 // TODO - get suns as input?
-std::string Level::get_random_plant() {
+PlantName Level::get_random_plant() {
     #ifdef DEBUG
     LOG_FRAME(frame, "Randomizing plant");
     #endif
     int plant = get_random_uniform(1, 3);
     if (plant == 1) {
-        return "sunflower";
+        return SUNFLOWER;
     }
     if (plant == 2){
-        return "peashooter";
+        return PEASHOOTER;
     }
-    return "no_action";
+    return NO_PLANT;
 }
 
 bool Level::get_random_position(int& lane, int& col) {
@@ -335,7 +336,7 @@ bool Level::get_random_position(int& lane, int& col) {
 
 // TODO - discuss optimizing this
 Action Level::get_random_action(){
-    Action no_action("no_action", 0, 0);
+    Action no_action(NO_PLANT, 0, 0); // make this a singleton
     if (this->suns < 50) { // this->suns < this->cheapest_plant_cost?
         return no_action;
     }
@@ -347,7 +348,7 @@ Action Level::get_random_action(){
         return no_action;
     }
     for (int i = 0; i < 5; i++) { // 5 attempts to plant a plant
-        std::string plant_name = get_random_plant();
+        PlantName plant_name = get_random_plant();
         Action action(plant_name, lane, col);
         if (this->is_action_legal(action)) {
             return action;
@@ -382,7 +383,7 @@ Level::~Level()
 }
 
 bool Level::play_random_game(Level env) {
-    Action no_action = Action("no_action", 0,  0);
+    Action no_action = Action(NO_PLANT, 0,  0);
     while (!env.done) {
         Action next_action = env.get_random_action();
         if (env.is_action_legal(next_action)) {

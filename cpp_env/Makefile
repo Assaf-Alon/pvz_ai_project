@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-I. -std=c++20 -Wall -Werror -Wextra -fopenmp
+CFLAGS=-I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp
 DFLAGS = -DDEBUG -g $(CFLAGS)
 DEPS = level.h
 OBJ = main.o plant.o zombie.o level.o

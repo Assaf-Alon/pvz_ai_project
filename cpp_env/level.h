@@ -7,7 +7,7 @@
 #include <iostream>
 #include <random>
 #include <memory>
-#include <algorithm>
+#include <functional>
 using std::vector;
 using std::string;
 #define LOG_FRAME(frame, msg) std::cout << "[" << frame << "] " << msg << std::endl;
@@ -15,6 +15,8 @@ using std::string;
 class Level;
 class Zombie;
 class Plant;
+
+enum PlantName { NO_PLANT, PEASHOOTER, SUNFLOWER, CHERRYBOMB };
 
 class ZombieSpawnTemplate {
     public:
@@ -60,143 +62,33 @@ public:
     int recharge;
     int last_action;
     int fps;   // for clone...?
-    Plant(int lane, int column, int frame, int fps);
-    virtual void do_action(Level& level) = 0;
+    Plant(int lane, int column, int frame, int fps, PlantName plant_name, const std::function<void(Level&, Plant&)> action);
+    // virtual void do_action(Level& level) = 0;
+    std::function<void(Level&, Plant&)> action;
+    void do_action(Level& level);
     void get_damaged(int damage, Level& level);
-    virtual Plant* clone() const = 0;
-    virtual ~Plant() = default;
+    // virtual Plant* clone() const = 0;
+    Plant* clone() const;
+    ~Plant() = default;
 };
 
-class Cherrybomb : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Cherrybomb(int lane, int column, int frame, int fps);
-    virtual Cherrybomb* clone() const override;
-    ~Cherrybomb() = default;
-};
-
-class Chomper : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Chomper(int lane, int column, int frame, int fps);
-    virtual Chomper* clone() const override;
-    ~Chomper() = default;
-};
-
-class Iceshroom : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Iceshroom(int lane, int column, int frame, int fps);
-    virtual Iceshroom* clone() const override;
-    ~Iceshroom() = default;
-};
-
-class Jalapeno : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Jalapeno(int lane, int column, int frame, int fps);
-    virtual Jalapeno* clone() const override;
-    ~Jalapeno() = default;
-};
-
-class Peashooter : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Peashooter(int lane, int column, int frame, int fps);
-    Peashooter* clone() const override;
-    ~Peashooter() = default;
-};
-
-class Potatomine : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Potatomine(int lane, int column, int frame, int fps);
-    virtual Potatomine* clone() const override;
-    ~Potatomine() = default;
-};
-
-class Puffshroom : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Puffshroom(int lane, int column, int frame, int fps);
-    virtual Puffshroom* clone() const override;
-    ~Puffshroom() = default;
-};
-
-class Repeaterpea : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Repeaterpea(int lane, int column, int frame, int fps);
-    virtual Repeaterpea* clone() const override;
-    ~Repeaterpea() = default;
-};
-
-class Scaredyshroom : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Scaredyshroom(int lane, int column, int frame, int fps);
-    virtual Scaredyshroom* clone() const override;
-    ~Scaredyshroom() = default;
-};
-
-class Snowpea : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Snowpea(int lane, int column, int frame, int fps);
-    virtual Snowpea* clone() const override;
-    ~Snowpea() = default;
-};
-
-class Spikeweed : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Spikeweed(int lane, int column, int frame, int fps);
-    virtual Spikeweed* clone() const override;
-    ~Spikeweed() = default;
-};
-
-class Squash : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Squash(int lane, int column, int frame, int fps);
-    virtual Squash* clone() const override;
-    ~Squash() = default;
-};
-
-class Sunflower : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Sunflower(int lane, int column, int frame, int fps);
-    Sunflower* clone() const override;
-    ~Sunflower() = default;
-};
-
-class Sunshroom : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Sunshroom(int lane, int column, int frame, int fps);
-    virtual Sunshroom* clone() const override;
-    ~Sunshroom() = default;
-};
-
-class Threepeater : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Threepeater(int lane, int column, int frame, int fps);
-    virtual Threepeater* clone() const override;
-    ~Threepeater() = default;
-};
-
-class Wallnut : public Plant {
-    public:
-    void do_action(Level& level) override;
-    Wallnut(int lane, int column, int frame, int fps);
-    virtual Wallnut* clone() const override {
-        Wallnut* cloned = new Wallnut(lane, col, last_action, fps);
-        return cloned;
-    }
-    ~Wallnut() = default;
-};
+void cherrybomb_action(Level& level, Plant& plant);
+void chomper_action(Level& level, Plant& plant);
+void hypnoshroom_action(Level& level, Plant& plant);
+void iceshroom_action(Level& level, Plant& plant);
+void jalapeno_action(Level& level, Plant& plant);
+void peashooter_action(Level& level, Plant& plant);
+void potatomine_action(Level& level, Plant& plant);
+void puffshroom_action(Level& level, Plant& plant);
+void repeaterpea_action(Level& level, Plant& plant);
+void scaredyshroom_action(Level& level, Plant& plant);
+void snowpea_action(Level& level, Plant& plant);
+void spikeweed_action(Level& level, Plant& plant);
+void squash_action(Level& level, Plant& plant);
+void sunflower_action(Level& level, Plant& plant);
+void sunshroom_action(Level& level, Plant& plant);
+void threepeater_action(Level& level, Plant& plant);
+void wallnut_action(Level& level, Plant& plant);
 
 /*
 Cherrybomb
@@ -223,10 +115,10 @@ class State {
 };
 class Action {
     public:
-    std::string plant_name; // plant_name or none
+    PlantName plant_name; // plant_name or none
     int lane;
     int col;
-    Action(std::string name, int lane, int col) : plant_name(name), lane(lane), col(col) {}
+    Action(PlantName name, int lane, int col) : plant_name(name), lane(lane), col(col) {}
 };
 class Level {
 public:
@@ -276,7 +168,7 @@ public:
     int rollout(int num_cpu, int num_games=10000); // return num_victories
     Action get_random_action(); // guranteed to be legal (DIFFICULTY: MEDIUM)
     int get_random_uniform(int min, int max);
-    std::string get_random_plant();
+    PlantName get_random_plant();
     bool get_random_position(int& lane, int& col);
     void plant(const Action& action);
     // void remove_plant(int lane, int col);
