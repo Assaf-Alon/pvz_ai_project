@@ -1,5 +1,8 @@
 # Usage
 To compile:
+make fast //
+make profile // 
+
 `g++ *.cpp`
 `g++ -DDEBUG *.cpp` // Note, not DNDEBUG. This is to enable debug printing
 To run:
@@ -12,13 +15,8 @@ To run:
 1. Need to play around with the code to find out more issues
 
 ## Enchancements
-1. Write random action generator in an efficient way
-2. Write Level copy operator in an efficient way
-3. Write multithreading rollout function that uses 1,2
-4. Add more plant subclasses
+1. Add more plant subclasses
+2. Add plant name enum (plant name string comparison is really really slow)
+3. Add plant refresh timer (using enum)
+4. Add random zombie generator?
 5. Figure out swig
-
-## Assaf:
-Pick out some stuff from enhancements that looks interesting to you.
-No hurries and no worries, prio is low ATM.
-(note: 4 is not interesting)

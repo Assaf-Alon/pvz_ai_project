@@ -117,6 +117,10 @@ void Level::plant(const Action &action)
         new_plant = new Peashooter(action.lane, action.col, this->frame, this->fps);
         this->suns -= new_plant->cost;
     }
+    else if(action.plant_name == "cherrybomb"){
+        new_plant = new Cherrybomb(action.lane, action.col, this->frame, this->fps);
+        this->suns -= new_plant->cost;
+    }
     this->plant_list.push_back(new_plant);
     this->plant_grid[action.lane][action.col] = new_plant;
 }
@@ -335,17 +339,18 @@ Action Level::get_random_action(){
     if (this->suns < 50) { // this->suns < this->cheapest_plant_cost?
         return no_action;
     }
-    if (get_random_uniform(1,10) > 6) { // 60% chance to do nothing, consider some other probability
+    if (get_random_uniform(1,10) <= 4) { // 40% chance to do nothing, consider some other probability
+        return no_action;
+    }
+    int lane, col;
+    if (!get_random_position(lane, col)){
         return no_action;
     }
     for (int i = 0; i < 5; i++) { // 5 attempts to plant a plant
         std::string plant_name = get_random_plant();
-        int lane, col;
-        if(get_random_position(lane, col)) {
-            Action action(plant_name, lane, col);
-            if (this->is_action_legal(action)) {
-                return action;
-            }
+        Action action(plant_name, lane, col);
+        if (this->is_action_legal(action)) {
+            return action;
         }
     }
     return no_action;

@@ -67,37 +67,37 @@ public:
     virtual ~Plant() = default;
 };
 
-// class Cherrybomb : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Cherrybomb(int lane, int column, int frame, int fps);
-//     virtual Cherrybomb* clone() const override;
-//     ~Cherrybomb() = default;
-// };
+class Cherrybomb : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Cherrybomb(int lane, int column, int frame, int fps);
+    virtual Cherrybomb* clone() const override;
+    ~Cherrybomb() = default;
+};
 
-// class Chomper : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Chomper(int lane, int column, int frame, int fps);
-//     virtual Chomper* clone() const override;
-//     ~Chomper() = default;
-// };
+class Chomper : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Chomper(int lane, int column, int frame, int fps);
+    virtual Chomper* clone() const override;
+    ~Chomper() = default;
+};
 
-// class Iceshroom : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Iceshroom(int lane, int column, int frame, int fps);
-//     virtual Iceshroom* clone() const override;
-//     ~Iceshroom() = default;
-// };
+class Iceshroom : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Iceshroom(int lane, int column, int frame, int fps);
+    virtual Iceshroom* clone() const override;
+    ~Iceshroom() = default;
+};
 
-// class Jalapeno : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Jalapeno(int lane, int column, int frame, int fps);
-//     virtual Jalapeno* clone() const override;
-//     ~Jalapeno() = default;
-// };
+class Jalapeno : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Jalapeno(int lane, int column, int frame, int fps);
+    virtual Jalapeno* clone() const override;
+    ~Jalapeno() = default;
+};
 
 class Peashooter : public Plant {
     public:
@@ -107,61 +107,61 @@ class Peashooter : public Plant {
     ~Peashooter() = default;
 };
 
-// class Potatomine : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Potatomine(int lane, int column, int frame, int fps);
-//     virtual Potatomine* clone() const override;
-//     ~Potatomine() = default;
-// };
+class Potatomine : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Potatomine(int lane, int column, int frame, int fps);
+    virtual Potatomine* clone() const override;
+    ~Potatomine() = default;
+};
 
-// class Puffshroom : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Puffshroom(int lane, int column, int frame, int fps);
-//     virtual Puffshroom* clone() const override;
-//     ~Puffshroom() = default;
-// };
+class Puffshroom : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Puffshroom(int lane, int column, int frame, int fps);
+    virtual Puffshroom* clone() const override;
+    ~Puffshroom() = default;
+};
 
-// class Repeaterpea : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Repeaterpea(int lane, int column, int frame, int fps);
-//     virtual Repeaterpea* clone() const override;
-//     ~Repeaterpea() = default;
-// };
+class Repeaterpea : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Repeaterpea(int lane, int column, int frame, int fps);
+    virtual Repeaterpea* clone() const override;
+    ~Repeaterpea() = default;
+};
 
-// class Scaredyshroom : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Scaredyshroom(int lane, int column, int frame, int fps);
-//     virtual Scaredyshroom* clone() const override;
-//     ~Scaredyshroom() = default;
-// };
+class Scaredyshroom : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Scaredyshroom(int lane, int column, int frame, int fps);
+    virtual Scaredyshroom* clone() const override;
+    ~Scaredyshroom() = default;
+};
 
-// class Snowpea : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Snowpea(int lane, int column, int frame, int fps);
-//     virtual Snowpea* clone() const override;
-//     ~Snowpea() = default;
-// };
+class Snowpea : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Snowpea(int lane, int column, int frame, int fps);
+    virtual Snowpea* clone() const override;
+    ~Snowpea() = default;
+};
 
-// class Spikeweed : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Spikeweed(int lane, int column, int frame, int fps);
-//     virtual Spikeweed* clone() const override;
-//     ~Spikeweed() = default;
-// };
+class Spikeweed : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Spikeweed(int lane, int column, int frame, int fps);
+    virtual Spikeweed* clone() const override;
+    ~Spikeweed() = default;
+};
 
-// class Squash : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Squash(int lane, int column, int frame, int fps);
-//     virtual Squash* clone() const override;
-//     ~Squash() = default;
-// };
+class Squash : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Squash(int lane, int column, int frame, int fps);
+    virtual Squash* clone() const override;
+    ~Squash() = default;
+};
 
 class Sunflower : public Plant {
     public:
@@ -171,32 +171,32 @@ class Sunflower : public Plant {
     ~Sunflower() = default;
 };
 
-// class Sunshroom : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Sunshroom(int lane, int column, int frame, int fps);
-//     virtual Sunshroom* clone() const override;
-//     ~Sunshroom() = default;
-// };
+class Sunshroom : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Sunshroom(int lane, int column, int frame, int fps);
+    virtual Sunshroom* clone() const override;
+    ~Sunshroom() = default;
+};
 
-// class Threepeater : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Threepeater(int lane, int column, int frame, int fps);
-//     virtual Threepeater* clone() const override;
-//     ~Threepeater() = default;
-// };
+class Threepeater : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Threepeater(int lane, int column, int frame, int fps);
+    virtual Threepeater* clone() const override;
+    ~Threepeater() = default;
+};
 
-// class Wallnut : public Plant {
-//     public:
-//     void do_action(Level& level) override;
-//     Wallnut(int lane, int column, int frame, int fps);
-//     virtual Wallnut* clone() const override {
-//         Wallnut* cloned = new Wallnut(lane, col, last_action, fps);
-//         return cloned;
-//     }
-//     ~Wallnut() = default;
-// };
+class Wallnut : public Plant {
+    public:
+    void do_action(Level& level) override;
+    Wallnut(int lane, int column, int frame, int fps);
+    virtual Wallnut* clone() const override {
+        Wallnut* cloned = new Wallnut(lane, col, last_action, fps);
+        return cloned;
+    }
+    ~Wallnut() = default;
+};
 
 /*
 Cherrybomb

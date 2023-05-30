@@ -16,10 +16,10 @@ clang-debug: #$(OBJ)
 	clang++ -fsanitize=address -o $(EXEC) $(DFLAGS) *.cpp
 
 fast:
-	clang++ -O3 -o $(EXEC) $(CFLAGS) *.cpp
+	clang++ -O2 -o $(EXEC) $(CFLAGS) *.cpp
 
 profile:
-	$(CC) -o $(EXEC) $(CFLAGS) -pg *.cpp
+	$(CC) -O2 -o $(EXEC) $(CFLAGS) -pg *.cpp
 
 clean:
 	rm -f $(OBJ) main.out
