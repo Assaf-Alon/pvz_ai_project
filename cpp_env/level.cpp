@@ -6,6 +6,8 @@ using std::vector;
 using std::list;
 using std::unique_ptr;
 
+std::random_device dev;
+std::mt19937 rng(dev());
 
 Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &level_data, vector<PlantName> legal_plants) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
 {
@@ -14,9 +16,9 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &l
     this->lawnmowers = vector<bool>(lanes, true);
     this->sun_interval = this->fps * this->sun_interval_seconds;
 
-    std::random_device dev;
-    std::mt19937 rng(dev());
-    this->random_gen = rng;
+    // std::random_device dev;
+    // std::mt19937 rng(dev());
+    // this->random_gen = rng;
     // make some of these constexprs!
     this->plant_data = std::vector<PlantData>(NUM_PLANTS, PlantData(this->fps, 0,0,0,0,0,PlantAction(&wallnut_action), "no_plant"));
     this->plant_data[SUNFLOWER] = PlantData(this->fps, 300, 25, 24.25, 7.5, 50, PlantAction(&sunflower_action), "sunflower");
@@ -46,9 +48,9 @@ Level::Level(const Level& other_level)
     this->return_state = other_level.return_state;
 
     // Generate new rng
-    std::random_device dev;
-    std::mt19937 rng(dev());
-    this->random_gen = rng;
+    // std::random_device dev;
+    // std::mt19937 rng(dev());
+    // this->random_gen = rng;
 
     // Copy lawnmowers
     this->lawnmowers = other_level.lawnmowers;
@@ -307,13 +309,13 @@ State *Level::step(const Action &action)
     return nullptr;
 }
 
-int Level::get_random_uniform(int min, int max) {
+int Level::get_random_uniform(int min, int max) const {
     std::uniform_int_distribution<std::mt19937::result_type> dist(min, max); // distribution in range [min, max]
-    return dist(this->random_gen);
+    return dist(rng);
 }
 
 // TODO - get suns as input?
-PlantName Level::get_random_plant() {
+PlantName Level::get_random_plant() const {
     #ifdef DEBUG
     LOG_FRAME(frame, "Randomizing plant");
     #endif
@@ -331,7 +333,7 @@ PlantName Level::get_random_plant() {
 }
 
     // As long as a substantial amount of the board is free, this should work efficiently
-bool Level::get_random_position(int& lane, int& col) {
+bool Level::get_random_position(int& lane, int& col) const {
     for (int attempt = 0; attempt < 3; attempt++) {
         lane = get_random_uniform(0, lanes - 1);
         col = get_random_uniform(0, cols - 1);
@@ -345,7 +347,7 @@ bool Level::get_random_position(int& lane, int& col) {
 }
 
 // TODO - discuss optimizing this
-const Action Level::get_random_action() {
+const Action Level::get_random_action() const {
     if (this->suns < 50) { // this->suns < this->cheapest_plant_cost?
         return this->no_action;
     }

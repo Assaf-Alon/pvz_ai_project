@@ -160,8 +160,7 @@ class Action {
 };
 class Level {
 public:
-    std::mt19937 random_gen;
-    int delete_me_action_probability = 100; // TODO - delete this (not yet tho)
+    // std::mt19937 random_gen;
     int lanes;
     int cols;
     int suns = 50;
@@ -197,10 +196,10 @@ public:
     bool is_action_legal(const Action& action) const;
 
     int rollout(int num_cpu, int num_games=10000); // return num_victories
-    const Action get_random_action(); // guranteed to be legal
-    int get_random_uniform(int min, int max);
-    PlantName get_random_plant();
-    bool get_random_position(int& lane, int& col);
+    const Action get_random_action() const; // guranteed to be legal
+    int get_random_uniform(int min, int max) const;
+    PlantName get_random_plant() const;
+    bool get_random_position(int& lane, int& col) const;
     void plant(const Action& action);
     // void remove_plant(int lane, int col);
     const Action no_action = Action(NO_PLANT, 0, 0);
