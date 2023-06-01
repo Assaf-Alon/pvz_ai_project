@@ -18,6 +18,9 @@ clang-debug: #$(OBJ)
 fast:
 	clang++ -O2 -o $(EXEC) $(CFLAGS) *.cpp
 
+fast-sanitize:
+	clang++ -O2 -o $(EXEC) $(CFLAGS) -fsanitize=address,undefined,leak *.cpp
+
 profile:
 	$(CC) -O2 -o $(EXEC) $(CFLAGS) -pg *.cpp
 

@@ -128,12 +128,14 @@ Plant::Plant(int lane, int column, PlantData& plant_data, int frame, int fps){
     this->hp = plant_data.hp;
     this->damage = plant_data.damage;
     this->action_interval_seconds = plant_data.action_interval_seconds;
-    this->action_interval = static_cast<int>(this->action_interval_seconds * fps);
+    this->action_interval = plant_data.action_interval;
     this->recharge_seconds = plant_data.recharge_seconds;
-    this->recharge = static_cast<int>(this->recharge_seconds * fps);
+    this->recharge = plant_data.recharge;
     this->cost = plant_data.cost;
     this->lane = lane;
     this->col = column;
+    this->plant_name = std::string(plant_data.plant_name);
+    this->action = PlantAction(plant_data.action_func);
 }
 
 Plant* Plant::clone() const{
@@ -145,7 +147,7 @@ void Plant::get_damaged(int damage, Level &level)
     this->hp -= damage;
     #ifdef DEBUG
     std::stringstream log_msg;
-    log_msg << "Plant at " << this->lane << ", " << this->col << " sustained " << damage << " damage. HP: " << std::to_string(this->hp);
+    log_msg << this->plant_name << " at " << this->lane << ", " << this->col << " sustained " << damage << " damage. HP: " << std::to_string(this->hp);
     LOG_FRAME(level.frame, log_msg.str());
     #endif
     if (this->hp <= 0)
@@ -154,7 +156,7 @@ void Plant::get_damaged(int damage, Level &level)
         level.plant_grid[this->lane][this->col] = nullptr;
         #ifdef DEBUG
         std::stringstream log_msg;
-        log_msg << "Plant at " << this->lane << ", " << this->col << " died";
+        log_msg << this->plant_name << " at " << this->lane << ", " << this->col << " died";
         LOG_FRAME(level.frame, log_msg.str());
         LOG_FRAME(level.frame, " >> Plants left: " + std::to_string(level.plant_list.size()));
         #endif
@@ -167,15 +169,20 @@ void Plant::do_action(Level& level){
     {
         return;
     }
+    // this doesnt work well because some plants self destruct...
     #ifdef DEBUG
-    std::stringstream log_msg;
-    log_msg << "Plant at " << this->lane << ", " << this->col << " attacked";
-    LOG_FRAME(level.frame, log_msg.str());
-    #endif
+    bool attacked = this->action(level, *this);
+    if(attacked){
+        // std::stringstream log_msg;
+        // log_msg << this->plant_name << " at " << this->lane << ", " << this->col << " attacked";
+        LOG_FRAME(level.frame, "plant attacked!");
+    }
+    #else
     this->action(level, *this);
+    #endif
 }
 
-void cherrybomb_action(Level& level, Plant& plant){
+bool cherrybomb_action(Level& level, Plant& plant){
     //explode
     for (int i = -1; i <= 1; i++){
         int target_lane = plant.lane + i;
@@ -187,43 +194,46 @@ void cherrybomb_action(Level& level, Plant& plant){
             if(target_col <= 0 || target_col >= level.cols){
                 continue;
             }
-            std::list<Zombie*> cell = level.zombie_grid[target_lane][target_col];
+            std::list<Zombie*> &cell = level.zombie_grid[target_lane][target_col];
             while(!cell.empty()){
                 cell.front()->get_damaged(plant.damage, level);
             }
         }
     }
     plant.get_damaged(9999, level); // self destruct
+    return true;
 }
-void chomper_action(Level& level, Plant& plant){
+bool chomper_action(Level& level, Plant& plant){
     for (int pos_mod = 0; pos_mod <= 1; pos_mod++){
         if (plant.col + pos_mod >= level.cols){
             continue;
         }
-        std::list<Zombie*> cell = level.zombie_grid[plant.lane][plant.col + pos_mod];
+        std::list<Zombie*> &cell = level.zombie_grid[plant.lane][plant.col + pos_mod];
         if(!cell.empty()){
             plant.last_action = level.frame;
             cell.front()->get_damaged(plant.damage, level);
-            return;
+            return true;
         }
     }
+    return false;
 }
-void hypnoshroom_action(Level& level, Plant& plant){
-    return;
+bool hypnoshroom_action(Level& level, Plant& plant){
+    return false;
 }
-void iceshroom_action(Level& level, Plant& plant){
-    return;
+bool iceshroom_action(Level& level, Plant& plant){
+    return false;
 }
-void jalapeno_action(Level& level, Plant& plant){
+bool jalapeno_action(Level& level, Plant& plant){
     for (int col = 0; col < level.cols; col++){
-        std::list<Zombie*> cell = level.zombie_grid[plant.lane][col];
+        std::list<Zombie*> &cell = level.zombie_grid[plant.lane][col];
         while(!cell.empty()){
             cell.front()->get_damaged(plant.damage, level);
         }
     }
     plant.get_damaged(9999, level); // self destruct
+    return true;
 }
-void peashooter_action(Level& level, Plant& plant){
+bool peashooter_action(Level& level, Plant& plant){
     for (int i = plant.col; i < level.cols; i++)
     {
         Zombie *target_zombie = level.zombie_grid[plant.lane][i].front();
@@ -233,23 +243,26 @@ void peashooter_action(Level& level, Plant& plant){
         }
         target_zombie->get_damaged(plant.damage, level);
         plant.last_action = level.frame;
-        return;
+        return true;
     }
+    return false;
 }
-void potatomine_action(Level& level, Plant& plant){
-    std::list<Zombie*> cell = level.zombie_grid[plant.lane][plant.col];
+bool potatomine_action(Level& level, Plant& plant){
+    std::list<Zombie*> &cell = level.zombie_grid[plant.lane][plant.col];
     if(cell.empty()){
-        return;
+        return false;
     }
     while(!cell.empty()){
         cell.front()->get_damaged(plant.damage, level);
     }
     plant.get_damaged(9999, level); // self destruct
+    return true;
 }
-void puffshroom_action(Level& level, Plant& plant){
-    return;
+bool puffshroom_action(Level& level, Plant& plant){
+    return false;
 }
-void repeaterpea_action(Level& level, Plant& plant){
+bool repeaterpea_action(Level& level, Plant& plant){
+    bool attacked = false;
     for (int shots = 0; shots <= 1; shots++){ // shoots twice
         for (int i = plant.col; i < level.cols; i++)
         {
@@ -260,14 +273,16 @@ void repeaterpea_action(Level& level, Plant& plant){
             }
             plant.last_action = level.frame;
             target_zombie->get_damaged(plant.damage, level);
+            attacked = true;
             break;
         }
     }
+    return attacked;
 }
-void scaredyshroom_action(Level& level, Plant& plant){
-    return;
+bool scaredyshroom_action(Level& level, Plant& plant){
+    return false;
 }
-void snowpea_action(Level& level, Plant& plant){
+bool snowpea_action(Level& level, Plant& plant){
     for (int i = plant.col; i < level.cols; i++)
     {
         Zombie *target_zombie = level.zombie_grid[plant.lane][i].front();
@@ -278,42 +293,53 @@ void snowpea_action(Level& level, Plant& plant){
         target_zombie->get_damaged(plant.damage, level);
         // target_zombie->get_frozen(); !!!!
         plant.last_action = level.frame;
-        break;
+        return true;
     }
+    return false;
 }
-void spikeweed_action(Level& level, Plant& plant){
+bool spikeweed_action(Level& level, Plant& plant){
     plant.last_action = level.frame;
-    std::list<Zombie*> cell = level.zombie_grid[plant.lane][plant.col];
-    while (!cell.empty()){
-        cell.front()->get_damaged(plant.damage, level);
+    std::list<Zombie*> &cell = level.zombie_grid[plant.lane][plant.col];
+    if (cell.empty()){
+        return false;
     }
-
+    std::list<Zombie*>::iterator curr = cell.begin();
+    std::list<Zombie*>::iterator backup = curr;
+    while(curr != cell.end()){
+        backup++;
+        (*curr)->get_damaged(plant.damage, level);
+        curr = backup;
+    }
+    return true;
 }
-void squash_action(Level& level, Plant& plant){
+bool squash_action(Level& level, Plant& plant){
     for (int pos_mod = 0; pos_mod <= 1; pos_mod++){
         if (plant.col + pos_mod >= level.cols){
             continue;
         }
-        std::list<Zombie*> cell = level.zombie_grid[plant.lane][plant.col + pos_mod];
+        std::list<Zombie*> &cell = level.zombie_grid[plant.lane][plant.col + pos_mod];
         if(cell.empty()){
             // important! if you remove this, the plant will delete itself without damaging anything
             continue;
         }
         while(!cell.empty()){
-            cell.front()->get_damaged(plant.damage, level);
+            cell.back()->get_damaged(plant.damage, level);
         }
         plant.get_damaged(9999, level);
-        return;
+        return true;
     }
+    return false;
 }
-void sunflower_action(Level& level, Plant& plant){
+bool sunflower_action(Level& level, Plant& plant){
     plant.last_action = level.frame;
     level.suns += plant.damage;
+    return true;
 }
-void sunshroom_action(Level& level, Plant& plant){
-    return;
+bool sunshroom_action(Level& level, Plant& plant){
+    return false;
 }
-void threepeater_action(Level& level, Plant& plant){
+bool threepeater_action(Level& level, Plant& plant){
+    bool attacked = false;
     for (int lane_mod = -1; lane_mod <= 1; lane_mod++){
         if(plant.lane + lane_mod <= 0 || plant.lane + lane_mod >= level.lanes){
             continue;
@@ -327,134 +353,13 @@ void threepeater_action(Level& level, Plant& plant){
             }
             target_zombie->get_damaged(plant.damage, level);
             plant.last_action = level.frame;
+            attacked = true;
             break;
         }
     }
+    return attacked;
 }
-void wallnut_action(Level& level, Plant& plant){
-    return;
+bool wallnut_action(Level& level, Plant& plant){
+    return false;
 }
 
-
-
-
-// //========================================
-// //Sunflower 
-// //========================================
-
-// Sunflower::Sunflower(int lane, int column, int frame, int fps) : Plant(lane, column, frame, fps)
-// {
-//     this->hp = 300;
-//     this->damage = 25;
-//     this->action_interval_seconds = 24.25;
-//     this->action_interval = static_cast<int>(this->action_interval_seconds * fps);
-//     this->recharge_seconds = 7.5;
-//     this->recharge = static_cast<int>(this->recharge_seconds * fps);
-//     this->cost = 50;
-// }
-
-// void Sunflower::do_action(Level &level)
-// {
-//     if (level.frame - this->last_action <= this->action_interval)
-//     {
-//         return;
-//     }
-//     this->last_action = level.frame;
-//     level.suns += this->damage;
-//     #ifdef DEBUG
-//     std::stringstream log_msg;
-//     log_msg << "Plant at " << this->lane << ", " << this->col << " generated sun. total: " + std::to_string(level.suns);
-//     LOG_FRAME(level.frame, log_msg.str());
-//     #endif
-// }
-
-// Sunflower* Sunflower::clone() const {
-//     Sunflower* cloned = new Sunflower(lane, col, last_action, fps);
-//     return cloned;
-// }
-
-// //========================================
-// //Peashooter 
-// //========================================
-
-// Peashooter::Peashooter(int lane, int column, int frame, int fps) : Plant(lane, column, frame, fps)
-// {
-//     this->hp = 300;
-//     this->damage = 20;
-//     this->action_interval_seconds = 1.425;
-//     this->action_interval = static_cast<int>(this->action_interval_seconds * fps);
-//     this->recharge_seconds = 7.5;
-//     this->recharge = static_cast<int>(this->recharge_seconds * fps);
-//     this->cost = 100;
-// }
-// void Peashooter::do_action(Level &level)
-// {
-//     if (level.frame - this->last_action <= this->action_interval)
-//     {
-//         return;
-//     }
-//     #ifdef DEBUG
-//     std::stringstream log_msg;
-//     log_msg << "Plant at " << this->lane << ", " << this->col << " attacked";
-//     LOG_FRAME(level.frame, log_msg.str());
-//     #endif
-//     this->last_action = level.frame;
-//     for (int i = 0; i < level.cols; i++)
-//     {
-//         Zombie *target_zombie = level.zombie_grid[this->lane][i].front();
-//         if (target_zombie == nullptr)
-//         {
-//             continue;
-//         }
-//         target_zombie->get_damaged(this->damage, level);
-//         break;
-//     }
-// }
-
-// Peashooter* Peashooter::clone() const {
-//     Peashooter* cloned = new Peashooter(lane, col, last_action, fps);
-//     // std::cout << "Cloned Peashooter at " << lane << ", " << col << std::endl;
-//     return cloned;
-// }
-
-// //========================================
-// //Cherrybomb 
-// //========================================
-
-// Cherrybomb::Cherrybomb(int lane, int column, int frame, int fps): Plant(lane, column, frame, fps)
-// {
-//     this->hp = 9998;
-//     this->damage = 1800;
-//     this->action_interval_seconds = 1.2;
-//     this->action_interval = static_cast<int>(this->action_interval_seconds * fps); // action interval of bomb is arm time
-//     this->recharge_seconds = 50;
-//     this->recharge = static_cast<int>(this->recharge_seconds * fps);
-//     this->cost = 150;
-// }
-// void Cherrybomb::do_action(Level& level){
-//     if(level.frame - this->last_action <= this->action_interval){
-//         return;
-//     }
-//     //explode
-//     for (int i = -1; i <= 1; i++){
-//         int target_lane = this->lane + i;
-//         if (target_lane <= 0 || target_lane >= level.lanes){
-//             continue;
-//         }
-//         for (int j = -1; j <= 1; j++){
-//             int target_col = this->col + j;
-//             if(target_col <= 0 || target_col >= level.cols){
-//                 continue;
-//             }
-//             std::list<Zombie*> cell = level.zombie_grid[target_lane][target_col];
-//             for (auto zombie : cell){
-//                 zombie->get_damaged(this->damage, level);
-//             }
-//         }
-//     }
-//     this->get_damaged(9999, level);
-// }
-
-// Cherrybomb* Cherrybomb::clone() const {
-//     return new Cherrybomb(this->lane, this->col, this->last_action, this->fps);
-// }

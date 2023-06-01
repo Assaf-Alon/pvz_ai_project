@@ -73,20 +73,20 @@ void Zombie::do_action(Level &level)
 void Zombie::get_damaged(int damage, Level &level)
 {
     this->hp -= damage;
-#ifdef DEBUG
+    #ifdef DEBUG
     std::stringstream log_msg;
-    log_msg << "Zombie at " << this->lane << ", " << this->col << " sustained " << damage << " damage. HP: " << std::to_string(this->hp);
+    log_msg << this->type << " zombie at " << this->lane << ", " << this->col << " sustained " << damage << " damage. HP: " << std::to_string(this->hp);
     LOG_FRAME(level.frame, log_msg.str());
-#endif
+    #endif
     if (this->type == "newspaper")
     {
         if (this->hp <= 181)
         {
-#ifdef DEBUG
+            #ifdef DEBUG
             std::stringstream log_msg;
             log_msg << "Zombie at " << this->lane << ", " << this->col << " lost newspaper";
             LOG_FRAME(level.frame, log_msg.str());
-#endif
+            #endif
             this->type = "lost_newspaper"; // danger zone with strings
             this->move_interval = 1.8 * level.fps;
         }

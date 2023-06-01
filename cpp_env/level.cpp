@@ -7,23 +7,6 @@ using std::list;
 using std::unique_ptr;
 
 
-// std::vector<int> plant_costs = {0, 150, 150, 75, 75, 125, 100, 25, 0, 200, 25, 175, 100, 50, 50, 25, 325, 50};
-// std::vector<std::function<void(Level&, Plant&)>> plant_actions = { \
-//     &cherrybomb_action, &chomper_action, &hypnoshroom_action, \
-//     &iceshroom_action, &jalapeno_action, &peashooter_action, \
-//     &potatomine_action, &puffshroom_action, &repeaterpea_action, \
-//     &scaredyshroom_action, &snowpea_action, &spikeweed_action, \
-//     &squash_action, &sunflower_action, &sunshroom_action, \
-//     &threepeater_action, &wallnut_action \
-// };
-// int hp;
-// int damage;
-// float action_interval_seconds;
-// float recharge_seconds;
-// int cost;
-
-
-
 Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &level_data, vector<PlantName> legal_plants) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
 {
     this->plant_grid = vector<vector<Plant*>>(lanes, vector<Plant*>(cols, nullptr));
@@ -34,15 +17,15 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &l
     std::random_device dev;
     std::mt19937 rng(dev());
     this->random_gen = rng;
-    this->plant_data = std::unordered_map<std::string, PlantData>{
-        /*                       HP DMG INTERVAL CD COST CD_END     ACTION       */
-        {"sunflower", PlantData{300, 25, 24.25, 7.5, 50, &sunflower_action}},
-        {"peashooter", PlantData{300, 20, 1.425, 7.5, 100, &peashooter_action}},
-        {"potatomine", PlantData{300, 1800, 15, 30, 25, &potatomine_action}},
-        {"wallnut", PlantData{4000, 0, 9999, 30, 50, &wallnut_action}},
-        {"squash", PlantData{300, 1800, 1.425, 30, 50, &squash_action}},
-        {"spikeweed", PlantData{300, 20, 1, 7.5, 100, &spikeweed_action}},
-    };
+    // make some of these constexprs!
+    this->plant_data = std::vector<PlantData>(NUM_PLANTS, PlantData(this->fps, 0,0,0,0,0,PlantAction(&wallnut_action), "no_plant"));
+    this->plant_data[SUNFLOWER] = PlantData(this->fps, 300, 25, 24.25, 7.5, 50, PlantAction(&sunflower_action), "sunflower");
+    this->plant_data[PEASHOOTER] = PlantData(this->fps, 300, 20, 1.425, 7.5, 100, PlantAction(&peashooter_action), "peashooter");
+    this->plant_data[POTATOMINE] = PlantData(this->fps, 300, 1800, 15, 30, 25, PlantAction(&potatomine_action), "potatomine");
+    this->plant_data[WALLNUT] = PlantData(this->fps, 4000, 0, 9999, 30, 50, PlantAction(&wallnut_action), "wallnut");
+    this->plant_data[SQUASH] = PlantData(this->fps, 300, 1800, 1.425, 30, 50, PlantAction(&squash_action), "squash");
+    this->plant_data[SPIKEWEED] = PlantData(this->fps, 300, 20, 1, 7.5, 100, PlantAction(&spikeweed_action), "spikeweed");
+
     for (PlantName plant_name : legal_plants){
         plant_data[plant_name].next_available_frame = 0;
     }
@@ -99,10 +82,10 @@ Level::Level(const Level& other_level)
     this->level_data = std::deque<ZombieSpawnTemplate>(other_level.level_data);
 
     // Copy cooldown
-    this->plant_data = std::unordered_map<std::string, PlantData>(other_level.plant_data);
+    this->plant_data = vector<PlantData>(other_level.plant_data);
 }
 
-bool Level::is_action_legal(const Action &action)
+bool Level::is_action_legal(const Action &action) const
 {
     if (action.plant_name == NO_PLANT)
     {
@@ -120,7 +103,7 @@ bool Level::is_action_legal(const Action &action)
     {
         return false;
     }
-    if (plant_data[action.plant_name].cost < this->suns)
+    if (plant_data[action.plant_name].cost > this->suns)
     {
         return false;
     }
@@ -134,10 +117,12 @@ bool Level::is_action_legal(const Action &action)
 void Level::plant(const Action &action)
 {
     Plant *new_plant = nullptr;
-    new_plant = new Plant(action.lane, action.col, plant_data[action.plant_name], this->frame, this->fps);
-    this->suns -= new_plant->cost;
+    PlantData &planted_plant_data = this->plant_data[action.plant_name];
+    new_plant = new Plant(action.lane, action.col, planted_plant_data, this->frame, this->fps);
+    this->suns -= planted_plant_data.cost;
     this->plant_list.push_back(new_plant);
     this->plant_grid[action.lane][action.col] = new_plant;
+    planted_plant_data.next_available_frame = this->frame + planted_plant_data.recharge_seconds * this->fps;
 }
 void Level::do_zombie_actions()
 {
@@ -149,10 +134,19 @@ void Level::do_zombie_actions()
 void Level::do_plant_actions()
 {
     // Note! this may cause issues with exploading plants and the iterator being invalidated!!!!
-    for(Plant* plant : this->plant_list)
-    {
-        plant->do_action(*this);
+    // note, it does!
+    // std::list<Plant*> tmp_list = std::list<Plant*>(this->plant_list);
+    // for(Plant* plant : tmp_list){
+    //     plant->do_action(*this);
+    // }
+    std::list<Plant*>::iterator curr = this->plant_list.begin();
+    std::list<Plant*>::iterator backup = curr;
+    while(curr != this->plant_list.end()){
+        backup++;
+        (*curr)->do_action(*this);
+        curr = backup;
     }
+
 }
 void Level::do_player_action(const Action &action)
 {
@@ -171,7 +165,7 @@ void Level::do_player_action(const Action &action)
     this->plant(action);
     #ifdef DEBUG
     std::stringstream log_msg;
-    log_msg << "Planted " << action.plant_name << " at lane " << action.lane << " col " << action.col << " with probability " << delete_me_action_probability << "%";
+    log_msg << "Planted " << this->plant_data[action.plant_name].plant_name << " at lane " << action.lane << " col " << action.col;
     LOG_FRAME(this->frame, log_msg.str());
     LOG_FRAME(this->frame, " >> Plants left: " + std::to_string(this->plant_list.size()));
     #endif
@@ -198,9 +192,9 @@ void Level::spawn_suns()
     {
         this->suns += 25;
         this->last_sun_generated = this->frame;
-#ifdef DEBUG
+        #ifdef DEBUG
         LOG_FRAME(this->frame, "Generated sun. total: " + std::to_string(this->suns));
-#endif
+        #endif
     }
 }
 bool Level::check_endgame()
@@ -323,24 +317,17 @@ PlantName Level::get_random_plant() {
     #ifdef DEBUG
     LOG_FRAME(frame, "Randomizing plant");
     #endif
-    vector<PlantName> legal_plants = {NO_PLANT};
-    
-    for (auto& entry : this->plant_data) {
-        if (entry.second.next_available_frame <= frame) {
-            legal_plants.push_back(entry.first);
+    vector<PlantName> legal_plants;
+    for(int idx = 1; idx < static_cast<int>(this->plant_data.size()); idx++){
+        if (this->plant_data[idx].next_available_frame < this->frame){
+            legal_plants.push_back(static_cast<PlantName>(idx));
         }
     }
-    std::cout << "plants off cooldown: " << legal_plants.size() << std::endl;
-
+    if(legal_plants.empty()){
+        return NO_PLANT;
+    }
     int plant = get_random_uniform(0, legal_plants.size() - 1);
-    return (PlantName)legal_plants[plant];
-    // if (plant == 1) {
-    //     return "sunflower";
-    // }
-    // if (plant == 2){
-    //     return "peashooter";
-    // }
-    // return NO_PLANT;
+    return legal_plants[plant];
 }
 
     // As long as a substantial amount of the board is free, this should work efficiently
@@ -358,20 +345,22 @@ bool Level::get_random_position(int& lane, int& col) {
 }
 
 // TODO - discuss optimizing this
-Action Level::get_random_action(){
-    Action no_action(NO_PLANT, 0, 0); // make this a singleton
+const Action Level::get_random_action() {
     if (this->suns < 50) { // this->suns < this->cheapest_plant_cost?
-        return no_action;
+        return this->no_action;
     }
     if (get_random_uniform(1,10) <= 4) { // 40% chance to do nothing, consider some other probability
-        return no_action;
+        return this->no_action;
     }
     int lane, col;
     if (!get_random_position(lane, col)){
-        return no_action;
+        return this->no_action;
     }
     for (int i = 0; i < 5; i++) { // 5 attempts to plant a plant
         PlantName plant_name = get_random_plant();
+        if(plant_name == NO_PLANT){
+            continue;
+        }
         Action action(plant_name, lane, col);
         if (this->is_action_legal(action)) {
             return action;
