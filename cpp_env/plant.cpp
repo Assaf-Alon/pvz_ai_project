@@ -136,6 +136,7 @@ Plant::Plant(int lane, int column, PlantData& plant_data, int frame, int fps){
     this->col = column;
     this->plant_name = std::string(plant_data.plant_name);
     this->action = PlantAction(plant_data.action_func);
+    this->frame_action_available = frame;
 }
 
 Plant* Plant::clone() const{
@@ -165,7 +166,8 @@ void Plant::get_damaged(int damage, Level &level)
 }
 
 void Plant::do_action(Level& level){
-    if (level.frame - this->last_action <= this->action_interval)
+    // if (level.frame - this->last_action <= this->action_interval)
+    if(level.frame < this->frame_action_available)
     {
         return;
     }
@@ -210,7 +212,7 @@ bool chomper_action(Level& level, Plant& plant){
         }
         std::list<Zombie*> &cell = level.zombie_grid[plant.lane][plant.col + pos_mod];
         if(!cell.empty()){
-            plant.last_action = level.frame;
+            plant.frame_action_available = level.frame + plant.action_interval;
             cell.front()->get_damaged(plant.damage, level);
             return true;
         }
@@ -242,7 +244,7 @@ bool peashooter_action(Level& level, Plant& plant){
             continue;
         }
         target_zombie->get_damaged(plant.damage, level);
-        plant.last_action = level.frame;
+        plant.frame_action_available = level.frame + plant.action_interval;
         return true;
     }
     return false;
@@ -271,7 +273,7 @@ bool repeaterpea_action(Level& level, Plant& plant){
             {
                 continue;
             }
-            plant.last_action = level.frame;
+            plant.frame_action_available = level.frame + plant.action_interval;
             target_zombie->get_damaged(plant.damage, level);
             attacked = true;
             break;
@@ -292,13 +294,13 @@ bool snowpea_action(Level& level, Plant& plant){
         }
         target_zombie->get_damaged(plant.damage, level);
         // target_zombie->get_frozen(); !!!!
-        plant.last_action = level.frame;
+        plant.frame_action_available = level.frame + plant.action_interval;
         return true;
     }
     return false;
 }
 bool spikeweed_action(Level& level, Plant& plant){
-    plant.last_action = level.frame;
+    plant.frame_action_available = level.frame + plant.action_interval;
     std::list<Zombie*> &cell = level.zombie_grid[plant.lane][plant.col];
     if (cell.empty()){
         return false;
@@ -331,7 +333,7 @@ bool squash_action(Level& level, Plant& plant){
     return false;
 }
 bool sunflower_action(Level& level, Plant& plant){
-    plant.last_action = level.frame;
+    plant.frame_action_available = level.frame + plant.action_interval;
     level.suns += plant.damage;
     return true;
 }
@@ -352,7 +354,7 @@ bool threepeater_action(Level& level, Plant& plant){
                 continue;
             }
             target_zombie->get_damaged(plant.damage, level);
-            plant.last_action = level.frame;
+            plant.frame_action_available = level.frame + plant.action_interval;
             attacked = true;
             break;
         }

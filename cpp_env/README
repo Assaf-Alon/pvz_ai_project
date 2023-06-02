@@ -3,8 +3,8 @@ To compile:
 make fast        // Basic
 make debug       // Debug mode, extra prints
 make debug-clang // Debug mode, extra prints, sanitizer
+make fast-sanitize // sanitizer but without debug prints and with extra flags to find rare exceptions
 (Then run `./main.out`)
-
 make profile     // Uses gprof to profile the program
 `./main.out`
 `gprof main.out gmon.out > analysis.txt`
@@ -16,10 +16,9 @@ make profile     // Uses gprof to profile the program
 
 ## Enchancements
 1. Finish implementing plants (5 left)
-2. fix plant refresh timer (using unordered map?)
+2. Think about how to make the random plant generator plant more expensive plants
 3. Add random zombie generator?
 4. Figure out swig
-5. !!! Unordered map with plant structs (static values. cost, hp, cooldown in seconds...)
 
 # 
 1. Create function that returns all legal actions for the player (plant, lane, col)

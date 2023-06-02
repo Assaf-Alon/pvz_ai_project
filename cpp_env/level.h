@@ -14,7 +14,9 @@
 using std::vector;
 using std::string;
 #define LOG_FRAME(frame, msg) std::cout << "[" << frame << "] " << msg << std::endl;
-// #define NO_PLANT "no_plant"
+#define FAST 7.5
+#define SLOW 30
+#define VERY_SLOW 50
 
 class Level;
 class Zombie;
@@ -41,14 +43,14 @@ class PlantData {
     };
 };
 
-// enum PlantName { NO_PLANT, CHERRYBOMB, CHOMPER,
-//                  HYPNOSHROOM, ICESHROOM, JALAPENO,
-//                  PEASHOOTER, POTATOMINE, PUFFSHROOM,
-//                  REPEATERPEA, SCAREDYSHROOM, SNOWPEA,
-//                  SPIKEWEED, SQUASH, SUNFLOWER,
-//                  SUNSHROOM, THREEPEATER, WALLNUT,
-//                  NUM_PLANTS };
-enum PlantName {NO_PLANT, PEASHOOTER, SUNFLOWER, SQUASH, WALLNUT, POTATOMINE, SPIKEWEED, NUM_PLANTS};
+enum PlantName { NO_PLANT, CHERRYBOMB, CHOMPER,
+                 HYPNOSHROOM, ICESHROOM, JALAPENO,
+                 PEASHOOTER, POTATOMINE, PUFFSHROOM,
+                 REPEATERPEA, SCAREDYSHROOM, SNOWPEA,
+                 SPIKEWEED, SQUASH, SUNFLOWER,
+                 SUNSHROOM, THREEPEATER, WALLNUT,
+                 NUM_PLANTS };
+// enum PlantName {NO_PLANT, PEASHOOTER, SUNFLOWER, SQUASH, WALLNUT, POTATOMINE, SPIKEWEED, NUM_PLANTS};
 
 // typedef std::string PlantName;
 
@@ -94,7 +96,7 @@ public:
     float action_interval;
     float recharge_seconds;
     int recharge;
-    int last_action;
+    int frame_action_available;
     int fps;   // for clone...?
     std::string plant_name;
     Plant(int lane, int column, int frame, int fps, PlantName plant_name, const PlantAction action);

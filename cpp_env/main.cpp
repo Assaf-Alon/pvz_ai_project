@@ -3,6 +3,7 @@
 #include <iostream>
 #include <thread>
 #include <vector>
+#include <chrono>
 using std::string;
 #ifdef _WIN32
 #include <Windows.h>
@@ -141,9 +142,9 @@ void play_game1() {
 // }
 
 bool play_game_random() {
-    std::deque<ZombieSpawnTemplate> level_data = get_level_data2();
+    std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
     Action no_action = Action(NO_PLANT, 0,  0);
-    std::vector<PlantName> chosen_plants = {SUNFLOWER, PEASHOOTER, POTATOMINE, SQUASH, SPIKEWEED, WALLNUT};
+    std::vector<PlantName> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
 
 
     //                lane, columns, fps, level_data
@@ -155,6 +156,7 @@ bool play_game_random() {
             env.step(next_action);
         }
         else {
+            std::cout << "illegal move!" << std::endl;
             env.step(no_action);
         }
     }
@@ -164,8 +166,7 @@ bool play_game_random() {
 bool play_game_random_w_rollouts(int rollotus_per_cycle) {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
     Action no_action = Action(NO_PLANT, 0,  0);
-    std::vector<PlantName> chosen_plants = {SUNFLOWER, PEASHOOTER, POTATOMINE, SQUASH, SPIKEWEED, WALLNUT};
-
+    std::vector<PlantName> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
     //                lane, columns, fps, level_data, legal_plants
     Level env = Level(5,    10,      10, level_data,  chosen_plants);
     int num_rollouts = 0;
@@ -202,10 +203,28 @@ void play_random_games(int num_games) {
     std::cout << std::endl;
 }
 
+
+void estimate_game_duration(int num_games){
+    // std::vector<bool> victories(num_games, false);
+    int wins = 0;
+    omp_set_num_threads(8);
+    auto start = std::chrono::high_resolution_clock::now();
+    #pragma omp parallel for shared(wins)
+    for(int i = 0; i < num_games; i++){
+        wins += play_game_random();
+    }
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    std::cout << "Time taken by function: " << ((float)duration.count() / num_games) / 1000000 << " secs" << std::endl;
+    std::cout << "wins: " << wins << std::endl;
+}
+
 int main() {
     // play_game1();
-    // play_game_random();
+    play_game_random();
     // play_game1_but_copy_midway();
     // play_random_games(10000);
-    play_game_random_w_rollouts(10000);
+    // play_game_random_w_rollouts(10000);
+    // estimate_game_duration(1000000);
+    // play_random_games(1);
 }
