@@ -1,3 +1,5 @@
+#ifndef _PVZ_LEVEL
+#define _PVZ_LEVEL
 #include <vector>
 #include <string>
 #include <list>
@@ -93,7 +95,7 @@ public:
     int cost;
     int damage; // for sun-generating plants, this is the value of the sun generated
     float action_interval_seconds;
-    float action_interval;
+    int action_interval;
     float recharge_seconds;
     int recharge;
     int frame_action_available;
@@ -208,3 +210,6 @@ public:
 
     static bool play_random_game(Level env);
 };
+
+
+#endif // _PVZ_LEVEL

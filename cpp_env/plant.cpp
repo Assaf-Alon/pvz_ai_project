@@ -136,7 +136,15 @@ Plant::Plant(int lane, int column, PlantData& plant_data, int frame, int fps){
     this->col = column;
     this->plant_name = std::string(plant_data.plant_name);
     this->action = PlantAction(plant_data.action_func);
-    this->frame_action_available = frame;
+    
+    // TODO - pretty much all plants but the comper should start as-if they just attacked,
+    // that is, they should wait before they attack.
+    // The string comparation here sucks.
+    // Maybe Keep the enum value inside PlantData?
+    this->frame_action_available = frame + this->action_interval;
+    if (this->plant_name == "chomper") {
+        this->frame_action_available = frame;
+    }
 }
 
 Plant* Plant::clone() const{
@@ -175,9 +183,9 @@ void Plant::do_action(Level& level){
     #ifdef DEBUG
     bool attacked = this->action(level, *this);
     if(attacked){
-        // std::stringstream log_msg;
-        // log_msg << this->plant_name << " at " << this->lane << ", " << this->col << " attacked";
-        LOG_FRAME(level.frame, "plant attacked!");
+        std::stringstream log_msg;
+        log_msg << this->plant_name << " at " << this->lane << ", " << this->col << " attacked";
+        LOG_FRAME(level.frame, log_msg.str());
     }
     #else
     this->action(level, *this);

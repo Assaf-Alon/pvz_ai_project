@@ -21,23 +21,24 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &l
 
     // make some of these constexprs!
     this->plant_data = std::vector<PlantData>(NUM_PLANTS, PlantData(this->fps, 0,0,0,0,0,PlantAction(&wallnut_action), "no_plant"));
-    this->plant_data[CHERRYBOMB] = PlantData(this->fps, 5000, 9000, 0, 50, 150, PlantAction(&cherrybomb_action), "cherrybomb");
-    this->plant_data[CHOMPER] = PlantData(this->fps, 300, 9000, 42, 7.5, 150, PlantAction(&chomper_action), "chomper");
-    this->plant_data[HYPNOSHROOM] = PlantData(this->fps, 300, 20, 0, 30, 75, PlantAction(&hypnoshroom_action), "hypnoshroom");
-    this->plant_data[ICESHROOM] = PlantData(this->fps, 5000, 20, 1, 50, 75, PlantAction(&iceshroom_action), "iceshroom");
-    this->plant_data[JALAPENO] = PlantData(this->fps, 300, 9000, 1, 50, 125, PlantAction(&jalapeno_action), "jalapeno");
-    this->plant_data[PEASHOOTER] = PlantData(this->fps, 300, 20, 1.425, 7.5, 100, PlantAction(&peashooter_action), "peashooter");
-    this->plant_data[POTATOMINE] = PlantData(this->fps, 300, 1800, 15, 30, 25, PlantAction(&potatomine_action), "potatomine");
-    this->plant_data[PUFFSHROOM] = PlantData(this->fps, 300, 20, 1.425, 7.5, 0, PlantAction(&puffshroom_action), "puffshroom");
-    this->plant_data[REPEATERPEA] = PlantData(this->fps, 300, 20, 1.425, 7.5, 200, PlantAction(&repeaterpea_action), "repeaterpea");
+    
+    this->plant_data[CHERRYBOMB]    = PlantData(this->fps, 5000, 9000, 1.2, 50, 150, PlantAction(&cherrybomb_action), "cherrybomb");
+    this->plant_data[CHOMPER]       = PlantData(this->fps, 300, 9000, 42, 7.5, 150, PlantAction(&chomper_action), "chomper");
+    this->plant_data[HYPNOSHROOM]   = PlantData(this->fps, 300, 20, 0, 30, 75, PlantAction(&hypnoshroom_action), "hypnoshroom");
+    this->plant_data[ICESHROOM]     = PlantData(this->fps, 5000, 20, 1, 50, 75, PlantAction(&iceshroom_action), "iceshroom");
+    this->plant_data[JALAPENO]      = PlantData(this->fps, 300, 9000, 1, 50, 125, PlantAction(&jalapeno_action), "jalapeno");
+    this->plant_data[PEASHOOTER]    = PlantData(this->fps, 300, 20, 1.425, 7.5, 100, PlantAction(&peashooter_action), "peashooter");
+    this->plant_data[POTATOMINE]    = PlantData(this->fps, 300, 1800, 15, 30, 25, PlantAction(&potatomine_action), "potatomine");
+    this->plant_data[PUFFSHROOM]    = PlantData(this->fps, 300, 20, 1.425, 7.5, 0, PlantAction(&puffshroom_action), "puffshroom");
+    this->plant_data[REPEATERPEA]   = PlantData(this->fps, 300, 20, 1.425, 7.5, 200, PlantAction(&repeaterpea_action), "repeaterpea");
     this->plant_data[SCAREDYSHROOM] = PlantData(this->fps, 300, 20, 1.425, 7.5, 20, PlantAction(&scaredyshroom_action), "scaredyshroom");
-    this->plant_data[SNOWPEA] = PlantData(this->fps, 300, 20, 1.425, 7.5, 175, PlantAction(&snowpea_action), "snowpea");
-    this->plant_data[SPIKEWEED] = PlantData(this->fps, 300, 20, 1, 7.5, 100, PlantAction(&spikeweed_action), "spikeweed");
-    this->plant_data[SQUASH] = PlantData(this->fps, 300, 1800, 1.425, 30, 50, PlantAction(&squash_action), "squash");
-    this->plant_data[SUNFLOWER] = PlantData(this->fps, 300, 25, 24.25, 7.5, 50, PlantAction(&sunflower_action), "sunflower");
-    this->plant_data[SUNSHROOM] = PlantData(this->fps, 300, 15, 24.25, 7.5, 25, PlantAction(&sunshroom_action), "sunshroom");
-    this->plant_data[THREEPEATER] = PlantData(this->fps, 300, 20, 1.425, 7.5, 325, PlantAction(&threepeater_action), "threepeater");
-    this->plant_data[WALLNUT] = PlantData(this->fps, 4000, 0, 9999, 30, 50, PlantAction(&wallnut_action), "wallnut");
+    this->plant_data[SNOWPEA]       = PlantData(this->fps, 300, 20, 1.425, 7.5, 175, PlantAction(&snowpea_action), "snowpea");
+    this->plant_data[SPIKEWEED]     = PlantData(this->fps, 300, 20, 1, 7.5, 100, PlantAction(&spikeweed_action), "spikeweed");
+    this->plant_data[SQUASH]        = PlantData(this->fps, 300, 1800, 1.425, 30, 50, PlantAction(&squash_action), "squash");
+    this->plant_data[SUNFLOWER]     = PlantData(this->fps, 300, 25, 24.25, 7.5, 50, PlantAction(&sunflower_action), "sunflower");
+    this->plant_data[SUNSHROOM]     = PlantData(this->fps, 300, 15, 24.25, 7.5, 25, PlantAction(&sunshroom_action), "sunshroom");
+    this->plant_data[THREEPEATER]   = PlantData(this->fps, 300, 20, 1.425, 7.5, 325, PlantAction(&threepeater_action), "threepeater");
+    this->plant_data[WALLNUT]       = PlantData(this->fps, 4000, 0, 9999, 30, 50, PlantAction(&wallnut_action), "wallnut");
 
     for (PlantName plant_name : legal_plants){
         plant_data[plant_name].next_available_frame = 0;
@@ -338,6 +339,9 @@ PlantName Level::get_random_plant() const {
         }
     }
     if(legal_plants.empty()){
+        #ifdef DEBUG
+        LOG_FRAME(frame, " >> No legal plant");
+        #endif
         return NO_PLANT;
     }
     int plant = get_random_uniform(0, legal_plants.size() - 1);
