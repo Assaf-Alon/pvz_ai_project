@@ -1,3 +1,5 @@
+#ifndef _PVZ_LEVEL
+#define _PVZ_LEVEL
 #include <vector>
 #include <string>
 #include <list>
@@ -7,16 +9,54 @@
 #include <iostream>
 #include <random>
 #include <memory>
+#include <unordered_map>
 #include <functional>
+#include <algorithm>
+#include <omp.h>
 using std::vector;
 using std::string;
 #define LOG_FRAME(frame, msg) std::cout << "[" << frame << "] " << msg << std::endl;
+#define FAST 7.5
+#define SLOW 30
+#define VERY_SLOW 50
+
+int get_random_number(const int min, const int max);
 
 class Level;
 class Zombie;
 class Plant;
+typedef std::function<bool(Level&, Plant&)> PlantAction;
 
-enum PlantName { NO_PLANT, PEASHOOTER, SUNFLOWER, CHERRYBOMB };
+class PlantData {
+    public:
+    int hp;
+    int damage;
+    float action_interval_seconds;
+    int action_interval;
+    float recharge_seconds;
+    int recharge;
+    int cost;
+    PlantAction action_func;
+    std::string plant_name;
+    int next_available_frame = 9999;
+    // PlantData(const PlantData& other) = default;
+    PlantData(int fps, int hp, int damage, float action_interval_seconds, float recharge_seconds, int cost, PlantAction action_func, std::string plant_name) : \
+    hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name) {
+        this->action_interval = static_cast<int>(action_interval_seconds * fps);
+        this->recharge = static_cast<int>(recharge_seconds * fps);
+    };
+};
+
+enum PlantName { NO_PLANT, CHERRYBOMB, CHOMPER,
+                 HYPNOSHROOM, ICESHROOM, JALAPENO,
+                 PEASHOOTER, POTATOMINE, PUFFSHROOM,
+                 REPEATERPEA, SCAREDYSHROOM, SNOWPEA,
+                 SPIKEWEED, SQUASH, SUNFLOWER,
+                 SUNSHROOM, THREEPEATER, WALLNUT,
+                 NUM_PLANTS };
+// enum PlantName {NO_PLANT, PEASHOOTER, SUNFLOWER, SQUASH, WALLNUT, POTATOMINE, SPIKEWEED, NUM_PLANTS};
+
+// typedef std::string PlantName;
 
 class ZombieSpawnTemplate {
     public:
@@ -40,7 +80,6 @@ class Zombie {
     string type;
     bool frozen = false;
     bool hypnotized = false;
-    // Zombie(int lane, int column, Level* level);
     Zombie(const string& type, int lane, const Level& level);
     Zombie(const Zombie& other) = default;
     void attack(Level& level);
@@ -60,70 +99,46 @@ public:
     int action_interval;
     float recharge_seconds;
     int recharge;
-    int last_action;
+    int frame_action_available;
     int fps;   // for clone...?
-    Plant(int lane, int column, int frame, int fps, PlantName plant_name, const std::function<void(Level&, Plant&)> action);
-    // virtual void do_action(Level& level) = 0;
-    std::function<void(Level&, Plant&)> action;
+    std::string plant_name;
+    Plant(int lane, int column, PlantData &plant_data, int frame, int fps);
+    PlantAction action;
     void do_action(Level& level);
     void get_damaged(int damage, Level& level);
-    // virtual Plant* clone() const = 0;
     Plant* clone() const;
     ~Plant() = default;
 };
 
-void cherrybomb_action(Level& level, Plant& plant);
-void chomper_action(Level& level, Plant& plant);
-void hypnoshroom_action(Level& level, Plant& plant);
-void iceshroom_action(Level& level, Plant& plant);
-void jalapeno_action(Level& level, Plant& plant);
-void peashooter_action(Level& level, Plant& plant);
-void potatomine_action(Level& level, Plant& plant);
-void puffshroom_action(Level& level, Plant& plant);
-void repeaterpea_action(Level& level, Plant& plant);
-void scaredyshroom_action(Level& level, Plant& plant);
-void snowpea_action(Level& level, Plant& plant);
-void spikeweed_action(Level& level, Plant& plant);
-void squash_action(Level& level, Plant& plant);
-void sunflower_action(Level& level, Plant& plant);
-void sunshroom_action(Level& level, Plant& plant);
-void threepeater_action(Level& level, Plant& plant);
-void wallnut_action(Level& level, Plant& plant);
+bool cherrybomb_action(Level& level, Plant& plant);
+bool chomper_action(Level& level, Plant& plant);
+bool hypnoshroom_action(Level& level, Plant& plant);
+bool iceshroom_action(Level& level, Plant& plant);
+bool jalapeno_action(Level& level, Plant& plant);
+bool peashooter_action(Level& level, Plant& plant);
+bool potatomine_action(Level& level, Plant& plant);
+bool puffshroom_action(Level& level, Plant& plant);
+bool repeaterpea_action(Level& level, Plant& plant);
+bool scaredyshroom_action(Level& level, Plant& plant);
+bool snowpea_action(Level& level, Plant& plant);
+bool spikeweed_action(Level& level, Plant& plant);
+bool squash_action(Level& level, Plant& plant);
+bool sunflower_action(Level& level, Plant& plant);
+bool sunshroom_action(Level& level, Plant& plant);
+bool threepeater_action(Level& level, Plant& plant);
+bool wallnut_action(Level& level, Plant& plant);
 
-/*
-Cherrybomb
-Chomper
-HypnoShroom (fuck)
-Iceshroom
-Jalapeno
-[DONE] Peashooter
-Potatomine
-Puffshroom
-Repeaterpea
-Scaredyshroom
-Snowpea
-Spikeweed (fuck)
-Squash
-[DONE] Sunflower
-Sunshroom
-Threepeater
-Wallnut
-*/
+class State {};
 
-class State {
-
-};
 class Action {
     public:
-    PlantName plant_name; // plant_name or none
+    const PlantName plant_name; // plant_name or none
     int lane;
     int col;
     Action(PlantName name, int lane, int col) : plant_name(name), lane(lane), col(col) {}
 };
 class Level {
 public:
-    std::mt19937 random_gen;
-    int delete_me_action_probability = 100; // TODO - delete this (not yet tho)
     int lanes;
     int cols;
     int suns = 50;
@@ -134,27 +149,19 @@ public:
     bool zombie_in_home_col = false;
     bool done = false;
     bool win = false;
-    // bool *lawnmowers;
     std::vector<bool> lawnmowers;
     int fps = 10;
     bool return_state = false;
-    // Initialize the lists before the grids to make lifetime of lists longer
-    // this will make the unique_ptrs to call the destructors after the grid itself leaves scope
-    // ensuring correct order of deletion of plants and zombies
     std::list<Zombie*> zombie_list;
-    // std::list<Zombie*> zombie_list;
     std::vector<std::vector<std::list<Zombie*>>> zombie_grid;
-    // std::list<Zombie*>** zombie_grid;
     std::list<Plant*> plant_list;
-    // std::list<Plant*> plant_list;
     std::vector<std::vector<Plant*>> plant_grid;
-    // Plant*** plant_grid;
-    // std::list<Zombie2Spawn> zombies_to_spawn;
     std::deque<ZombieSpawnTemplate> level_data;
+    std::vector<PlantData> plant_data;
 
     Level();
-    Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate>& level_data);
-    Level(const Level& other_level); // copy constructor (DIFFUCULTY: HELL)
+    Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate>& level_data, vector<PlantName> legal_plants);
+    Level(const Level& other_level);
     ~Level();
     State* step(const Action& action);
     void do_zombie_actions();
@@ -163,15 +170,18 @@ public:
     void spawn_zombies();
     void spawn_suns();
     bool check_endgame();
-    bool is_action_legal(const Action& action);
+    bool is_action_legal(const Action& action) const;
 
     int rollout(int num_cpu, int num_games=10000); // return num_victories
-    Action get_random_action(); // guranteed to be legal (DIFFICULTY: MEDIUM)
-    int get_random_uniform(int min, int max);
-    PlantName get_random_plant();
-    bool get_random_position(int& lane, int& col);
+    const Action get_random_action() const; // guranteed to be legal
+    PlantName get_random_plant() const;
+    bool get_random_position(int& lane, int& col) const;
     void plant(const Action& action);
     // void remove_plant(int lane, int col);
+    const Action no_action = Action(NO_PLANT, 0, 0);
 
     static bool play_random_game(Level env);
 };
+
+
+#endif // _PVZ_LEVEL

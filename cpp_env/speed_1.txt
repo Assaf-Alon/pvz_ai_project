@@ -1,0 +1,22 @@
+Speed with:
+1. 8 cores
+2. function pointers
+3. marsenne twister random numer generator
+
+./main.out  10.79s user 0.12s system 788% cpu 1.384 total
+./main.out  12.45s user 0.12s system 786% cpu 1.600 total
+./main.out  8.80s user 0.02s system 792% cpu 1.114 total
+
+## Switched to enums
+
+./main.out  9.97s user 0.11s system 761% cpu 1.324 total
+./main.out  7.93s user 0.06s system 790% cpu 1.012 total
+./main.out  6.24s user 0.06s system 783% cpu 0.804 total
+
+## Added more plant types
+
+./main.out  7.07s user 0.04s system 857% cpu 0.829 total
+./main.out  8.28s user 0.07s system 858% cpu 0.972 total
+./main.out  28.20s user 0.04s system 866% cpu 3.258 total
+Using 8 threads, estimated time per game is [1.25e-5, 3e-5] secs
+Using 8 threads and profiling optimization, time per game is 9.7e-6 secs
