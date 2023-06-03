@@ -181,10 +181,10 @@ void Plant::do_action(Level& level){
     }
     // this doesnt work well because some plants self destruct...
     #ifdef DEBUG
+    std::stringstream log_msg;
+    log_msg << this->plant_name << " at " << this->lane << ", " << this->col << " attacked";
     bool attacked = this->action(level, *this);
     if(attacked){
-        std::stringstream log_msg;
-        log_msg << this->plant_name << " at " << this->lane << ", " << this->col << " attacked";
         LOG_FRAME(level.frame, log_msg.str());
     }
     #else
