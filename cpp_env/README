@@ -2,7 +2,7 @@
 To compile:
 make fast        // Basic
 make debug       // Debug mode, extra prints
-make debug-clang // Debug mode, extra prints, sanitizer
+make clang-debug // Debug mode, extra prints, sanitizer
 make fast-sanitize // sanitizer but without debug prints and with extra flags to find rare exceptions
 (Then run `./main.out`)
 make profile     // Uses gprof to profile the program
