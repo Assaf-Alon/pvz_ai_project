@@ -8,7 +8,7 @@ using std::unique_ptr;
 
 // std::random_device dev;
 // std::mt19937 rng(dev());
-std::mt19937 rng(std::random_device{}());
+thread_local std::mt19937 rng(std::random_device{}());
 // std::minstd_rand rng(std::random_device{}());
 // std::ranlux48 rng(std::random_device{}());
 

@@ -14,6 +14,7 @@ using std::string;
 #include <omp.h>
 #include "games.hpp"
 
+#define MICROSECONDS_IN_SECOND 1000000
 
 // void play_game1_but_copy_midway() {
     
@@ -84,7 +85,7 @@ void estimate_game_duration(int num_games){
     }
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "Time taken by function: " << ((float)duration.count() / num_games) / 1000000 << " secs" << std::endl;
+    std::cout << "Time taken by function: " << ((float)duration.count() / num_games) / MICROSECONDS_IN_SECOND << " secs" << std::endl;
     std::cout << "wins: " << wins << std::endl;
 }
 
@@ -95,8 +96,8 @@ int main() {
     // play_random_games(10000);
     // play_game_random_w_rollouts(10000);
     // play_game_random_w_rollouts_after_action(10000);
-    // estimate_game_duration(1000000);
+    estimate_game_duration(100000);
     // play_random_games(1);
     // play_game_single_plant(CHERRYBOMB);
-    play_specific_game();
+    // play_specific_game();
 }
