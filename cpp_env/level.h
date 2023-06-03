@@ -20,6 +20,8 @@ using std::string;
 #define SLOW 30
 #define VERY_SLOW 50
 
+int get_random_number(const int min, const int max);
+
 class Level;
 class Zombie;
 class Plant;
@@ -78,7 +80,6 @@ class Zombie {
     string type;
     bool frozen = false;
     bool hypnotized = false;
-    // Zombie(int lane, int column, Level* level);
     Zombie(const string& type, int lane, const Level& level);
     Zombie(const Zombie& other) = default;
     void attack(Level& level);
@@ -101,13 +102,10 @@ public:
     int frame_action_available;
     int fps;   // for clone...?
     std::string plant_name;
-    Plant(int lane, int column, int frame, int fps, PlantName plant_name, const PlantAction action);
     Plant(int lane, int column, PlantData &plant_data, int frame, int fps);
-    // virtual void do_action(Level& level) = 0;
     PlantAction action;
     void do_action(Level& level);
     void get_damaged(int damage, Level& level);
-    // virtual Plant* clone() const = 0;
     Plant* clone() const;
     ~Plant() = default;
 };
@@ -130,28 +128,6 @@ bool sunshroom_action(Level& level, Plant& plant);
 bool threepeater_action(Level& level, Plant& plant);
 bool wallnut_action(Level& level, Plant& plant);
 
-
-
-/*
-Cherrybomb
-Chomper
-HypnoShroom (fuck)
-Iceshroom
-Jalapeno
-[DONE] Peashooter
-Potatomine
-Puffshroom
-Repeaterpea
-Scaredyshroom
-Snowpea
-Spikeweed (fuck)
-Squash
-[DONE] Sunflower
-Sunshroom
-Threepeater
-Wallnut
-*/
-
 class State {};
 
 class Action {
@@ -159,12 +135,10 @@ class Action {
     const PlantName plant_name; // plant_name or none
     int lane;
     int col;
-    // constexpr Action(const PlantName name, int lane, int col) : plant_name(name), lane(lane), col(col) {}
     Action(PlantName name, int lane, int col) : plant_name(name), lane(lane), col(col) {}
 };
 class Level {
 public:
-    // std::mt19937 random_gen;
     int lanes;
     int cols;
     int suns = 50;
@@ -183,7 +157,6 @@ public:
     std::list<Plant*> plant_list;
     std::vector<std::vector<Plant*>> plant_grid;
     std::deque<ZombieSpawnTemplate> level_data;
-    // std::unordered_map<std::string, PlantData> plant_data;
     std::vector<PlantData> plant_data;
 
     Level();
@@ -201,7 +174,6 @@ public:
 
     int rollout(int num_cpu, int num_games=10000); // return num_victories
     const Action get_random_action() const; // guranteed to be legal
-    int get_random_uniform(int min, int max) const;
     PlantName get_random_plant() const;
     bool get_random_position(int& lane, int& col) const;
     void plant(const Action& action);

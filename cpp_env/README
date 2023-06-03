@@ -9,6 +9,10 @@ make profile     // Uses gprof to profile the program
 `./main.out`
 `gprof main.out gmon.out > analysis.txt`
 
+# clang-profile-optimize:
+For optimal performance, run `make clang-profile-optimize`.
+Note: this will take a while (30-100 sec), but generate code that is up to 2x faster.
+
 # TODO
 
 ## Fixes
