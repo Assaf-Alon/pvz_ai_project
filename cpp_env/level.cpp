@@ -51,6 +51,10 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> le
     }
 }
 
+Level* Level::clone() {
+    return new Level(*this);
+}
+
 void Level::append_zombie(int second, int lane, std::string type){
     this->level_data.push_back(ZombieSpawnTemplate(second, lane, type));
 }

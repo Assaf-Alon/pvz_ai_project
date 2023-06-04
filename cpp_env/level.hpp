@@ -163,6 +163,7 @@ public:
     std::vector<PlantData> plant_data;
 
     Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants);
+    Level* clone();
     Level(const Level& other_level);
     ~Level();
     State* step(const Action& action);
