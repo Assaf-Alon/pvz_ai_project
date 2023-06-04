@@ -1,4 +1,4 @@
-#include "level.h"
+#include "level.hpp"
 #include <unistd.h>
 
 Zombie::Zombie(const std::string &type, int lane, const Level &level) : lane(lane), col(level.cols - 1), last_action(level.frame), type(type)

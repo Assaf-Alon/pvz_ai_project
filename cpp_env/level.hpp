@@ -63,6 +63,7 @@ class ZombieSpawnTemplate {
     int second;
     int lane;
     std::string type;
+    ZombieSpawnTemplate() = default;
     ZombieSpawnTemplate(int second, int lane, std::string type): second(second), lane(lane), type(type) {};
 };
 
@@ -161,11 +162,11 @@ public:
     std::deque<ZombieSpawnTemplate> level_data;
     std::vector<PlantData> plant_data;
 
-    Level(int lanes, int columns, int fps, vector<int> legal_plants);
-    Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate>& level_data, vector<PlantName> legal_plants);
+    Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants);
     Level(const Level& other_level);
     ~Level();
     State* step(const Action& action);
+    State* step(int plant, int row, int col);
     void do_zombie_actions();
     void do_plant_actions();
     void do_player_action(const Action& action);

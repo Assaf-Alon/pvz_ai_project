@@ -6,12 +6,12 @@
 // %template(ZombieSpawnTemplateDeque) std::deque<ZombieSpawnTemplate>;
 %{
     #define SWIG_FILE_WITH_INIT
-    #include "level.h"
+    #include "level.hpp"
 %}
 // %ignore std::deque<ZombieSpawnTemplate>::vector(size_type);
 // %ignore std::deque<ZombieSpawnTemplate>::resize;
 namespace std{
     %template(LegalPlantVector) vector<int>;
-    // %template(ZombieQueue) deque<ZombieSpawnTemplate>;
+    %template(ZombieQueue) deque<ZombieSpawnTemplate>;
 }
-%include "level.h"
+%include "level.hpp"
