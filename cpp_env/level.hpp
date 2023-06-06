@@ -63,7 +63,10 @@ class ZombieSpawnTemplate {
     int second;
     int lane;
     std::string type;
+    ZombieSpawnTemplate() = default;
+    ZombieSpawnTemplate(int second, int lane, std::string type): second(second), lane(lane), type(type) {};
 };
+
 
 class Zombie {
     public:
@@ -159,11 +162,12 @@ public:
     std::deque<ZombieSpawnTemplate> level_data;
     std::vector<PlantData> plant_data;
 
-    Level();
-    Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate>& level_data, vector<PlantName> legal_plants);
+    Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants);
+    Level* clone();
     Level(const Level& other_level);
     ~Level();
     State* step(const Action& action);
+    State* step(int plant, int row, int col);
     void do_zombie_actions();
     void do_plant_actions();
     void do_player_action(const Action& action);
@@ -171,6 +175,7 @@ public:
     void spawn_suns();
     bool check_endgame();
     bool is_action_legal(const Action& action) const;
+    void append_zombie(int second, int lane, std::string type);
 
     int rollout(int num_cpu, int num_games=10000); // return num_victories
     const Action get_random_action() const; // guranteed to be legal

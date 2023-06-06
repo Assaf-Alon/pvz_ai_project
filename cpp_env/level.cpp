@@ -1,4 +1,4 @@
-#include "level.h"
+#include "level.hpp"
 using std::cout;
 using std::endl;
 using std::string;
@@ -18,7 +18,7 @@ inline int get_random_number(const int min, const int max){
     return distribution(generator);
 }
 
-Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &level_data, vector<PlantName> legal_plants) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
+Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
 {
     this->plant_grid = vector<vector<Plant*>>(lanes, vector<Plant*>(cols, nullptr));
     this->zombie_grid = vector<vector<list<Zombie*>>>(lanes, vector<list<Zombie*>>(cols, list<Zombie*>()));
@@ -46,10 +46,19 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> &l
     this->plant_data[THREEPEATER]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 325, PlantAction(&threepeater_action), "threepeater");
     this->plant_data[WALLNUT]       = PlantData(this->fps, 4000, 0,    9999,  30,  50,  PlantAction(&wallnut_action), "wallnut");
 
-    for (PlantName plant_name : legal_plants){
+    for (auto plant_name : legal_plants){
         plant_data[plant_name].next_available_frame = 0;
     }
 }
+
+Level* Level::clone() {
+    return new Level(*this);
+}
+
+void Level::append_zombie(int second, int lane, std::string type){
+    this->level_data.push_back(ZombieSpawnTemplate(second, lane, type));
+}
+
 Level::Level(const Level& other_level)
 {
     this->lanes = other_level.lanes;
@@ -99,6 +108,7 @@ Level::Level(const Level& other_level)
     // Copy cooldown
     this->plant_data = vector<PlantData>(other_level.plant_data);
 }
+
 
 bool Level::is_action_legal(const Action &action) const
 {
@@ -311,6 +321,11 @@ State *Level::step(const Action &action)
         // return self.construct_state()
     }
     return nullptr;
+}
+
+State* Level::step(int plant, int row, int col)
+{
+    return this->step(Action(PlantName(plant), row, col));
 }
 
 // TODO - get suns as input?
