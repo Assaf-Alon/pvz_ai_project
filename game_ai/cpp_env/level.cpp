@@ -26,25 +26,25 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> le
     this->sun_interval = this->fps * this->sun_interval_seconds;
 
     // make some of these constexprs!
-    this->plant_data = std::vector<PlantData>(NUM_PLANTS, PlantData(this->fps, 0,0,0,0,0,PlantAction(&wallnut_action), "no_plant"));
+    this->plant_data = std::vector<PlantData>(NUM_PLANTS, PlantData(this->fps, 0,0,0,0,0,PlantAction(&wallnut_action), "no_plant", NO_PLANT));
     
-    this->plant_data[CHERRYBOMB]    = PlantData(this->fps, 5000, 9000, 1.2,   50,  150, PlantAction(&cherrybomb_action), "cherrybomb");
-    this->plant_data[CHOMPER]       = PlantData(this->fps, 300,  9000, 42,    7.5, 150, PlantAction(&chomper_action), "chomper");
-    this->plant_data[HYPNOSHROOM]   = PlantData(this->fps, 300,  20,   0,     30,  75,  PlantAction(&hypnoshroom_action), "hypnoshroom");
-    this->plant_data[ICESHROOM]     = PlantData(this->fps, 5000, 20,   1,     50,  75,  PlantAction(&iceshroom_action), "iceshroom");
-    this->plant_data[JALAPENO]      = PlantData(this->fps, 300,  9000, 1,     50,  125, PlantAction(&jalapeno_action), "jalapeno");
-    this->plant_data[PEASHOOTER]    = PlantData(this->fps, 300,  20,   1.425, 7.5, 100, PlantAction(&peashooter_action), "peashooter");
-    this->plant_data[POTATOMINE]    = PlantData(this->fps, 300,  1800, 15,    30,  25,  PlantAction(&potatomine_action), "potatomine");
-    this->plant_data[PUFFSHROOM]    = PlantData(this->fps, 300,  20,   1.425, 7.5, 0,   PlantAction(&puffshroom_action), "puffshroom");
-    this->plant_data[REPEATERPEA]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 200, PlantAction(&repeaterpea_action), "repeaterpea");
-    this->plant_data[SCAREDYSHROOM] = PlantData(this->fps, 300,  20,   1.425, 7.5, 20,  PlantAction(&scaredyshroom_action), "scaredyshroom");
-    this->plant_data[SNOWPEA]       = PlantData(this->fps, 300,  20,   1.425, 7.5, 175, PlantAction(&snowpea_action), "snowpea");
-    this->plant_data[SPIKEWEED]     = PlantData(this->fps, 300,  20,   1,     7.5, 100, PlantAction(&spikeweed_action), "spikeweed");
-    this->plant_data[SQUASH]        = PlantData(this->fps, 300,  1800, 1.425, 30,  50,  PlantAction(&squash_action), "squash");
-    this->plant_data[SUNFLOWER]     = PlantData(this->fps, 300,  25,   24.25, 7.5, 50,  PlantAction(&sunflower_action), "sunflower");
-    this->plant_data[SUNSHROOM]     = PlantData(this->fps, 300,  15,   24.25, 7.5, 25,  PlantAction(&sunshroom_action), "sunshroom");
-    this->plant_data[THREEPEATER]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 325, PlantAction(&threepeater_action), "threepeater");
-    this->plant_data[WALLNUT]       = PlantData(this->fps, 4000, 0,    9999,  30,  50,  PlantAction(&wallnut_action), "wallnut");
+    this->plant_data[CHERRYBOMB]    = PlantData(this->fps, 5000, 9000, 1.2,   50,  150, PlantAction(&cherrybomb_action), "cherrybomb", CHERRYBOMB);
+    this->plant_data[CHOMPER]       = PlantData(this->fps, 300,  9000, 42,    7.5, 150, PlantAction(&chomper_action), "chomper", CHOMPER);
+    this->plant_data[HYPNOSHROOM]   = PlantData(this->fps, 300,  20,   0,     30,  75,  PlantAction(&hypnoshroom_action), "hypnoshroom", HYPNOSHROOM);
+    this->plant_data[ICESHROOM]     = PlantData(this->fps, 5000, 20,   1,     50,  75,  PlantAction(&iceshroom_action), "iceshroom", ICESHROOM);
+    this->plant_data[JALAPENO]      = PlantData(this->fps, 300,  9000, 1,     50,  125, PlantAction(&jalapeno_action), "jalapeno", JALAPENO);
+    this->plant_data[PEASHOOTER]    = PlantData(this->fps, 300,  20,   1.425, 7.5, 100, PlantAction(&peashooter_action), "peashooter", PEASHOOTER);
+    this->plant_data[POTATOMINE]    = PlantData(this->fps, 300,  1800, 15,    30,  25,  PlantAction(&potatomine_action), "potatomine", POTATOMINE);
+    this->plant_data[PUFFSHROOM]    = PlantData(this->fps, 300,  20,   1.425, 7.5, 0,   PlantAction(&puffshroom_action), "puffshroom", PUFFSHROOM);
+    this->plant_data[REPEATERPEA]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 200, PlantAction(&repeaterpea_action), "repeaterpea", REPEATERPEA);
+    this->plant_data[SCAREDYSHROOM] = PlantData(this->fps, 300,  20,   1.425, 7.5, 20,  PlantAction(&scaredyshroom_action), "scaredyshroom", SCAREDYSHROOM);
+    this->plant_data[SNOWPEA]       = PlantData(this->fps, 300,  20,   1.425, 7.5, 175, PlantAction(&snowpea_action), "snowpea", SNOWPEA);
+    this->plant_data[SPIKEWEED]     = PlantData(this->fps, 300,  20,   1,     7.5, 100, PlantAction(&spikeweed_action), "spikeweed", SPIKEWEED);
+    this->plant_data[SQUASH]        = PlantData(this->fps, 300,  1800, 1.425, 30,  50,  PlantAction(&squash_action), "squash", SQUASH);
+    this->plant_data[SUNFLOWER]     = PlantData(this->fps, 300,  25,   24.25, 7.5, 50,  PlantAction(&sunflower_action), "sunflower", SUNFLOWER);
+    this->plant_data[SUNSHROOM]     = PlantData(this->fps, 300,  15,   24.25, 7.5, 25,  PlantAction(&sunshroom_action), "sunshroom", SUNSHROOM);
+    this->plant_data[THREEPEATER]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 325, PlantAction(&threepeater_action), "threepeater", THREEPEATER);
+    this->plant_data[WALLNUT]       = PlantData(this->fps, 4000, 0,    9999,  30,  50,  PlantAction(&wallnut_action), "wallnut", WALLNUT);
 
     for (auto plant_name : legal_plants){
         plant_data[plant_name].next_available_frame = 0;
@@ -284,10 +284,10 @@ bool Level::check_endgame()
     }
     return false;
 }
-State *Level::step(const Action &action)
+void Level::step(const Action &action)
 {
     if (!this->is_action_legal(action)){
-        return nullptr;
+        return;
     }
     // LOG_FRAME(this->frame, "performing step");
     #ifdef DEBUG
@@ -313,19 +313,87 @@ State *Level::step(const Action &action)
         }
         LOG_FRAME(this->frame, log_msg.str());
         #endif
-        return nullptr;
+        return;
     }
     (this->frame)++;
     if (this->return_state == true)
     {
         // return self.construct_state()
     }
-    return nullptr;
 }
 
-State* Level::step(int plant, int row, int col)
+void Level::step(int plant, int row, int col)
 {
-    return this->step(Action(PlantName(plant), row, col));
+    this->step(Action(PlantName(plant), row, col));
+}
+
+Observation Level::get_observation(){
+    Observation obs = vector<vector<CellObservation>>(this->lanes, vector<CellObservation>(this->cols, CellObservation()));
+    for (int lane = 0; lane < this->lanes; lane++){
+        for (int col = 0; col < this->cols; col++){
+            if (this->plant_grid[lane][col] != nullptr){
+                Plant* plant = this->plant_grid[lane][col];
+                int hp = plant->hp;
+                int total_hp = this->plant_data[plant->plant_type].hp;
+                int third;
+                if (hp <= total_hp / 3){
+                    third = 0;
+                }
+                else if (hp <= 2 * (total_hp / 3)){
+                    third = 1;
+                }
+                else {
+                    third = 2;
+                }
+                obs[lane][col].plant_type = this->plant_grid[lane][col]->plant_type;
+                obs[lane][col].plant_hp_phase = third;
+            }
+            else {
+                obs[lane][col].plant_type = 0;
+                obs[lane][col].plant_hp_phase = 0;
+            }
+            int danger_level = 0;
+            int total_cell_hp = 0;
+            for (auto zombie : this->zombie_grid[lane][col]){
+                total_cell_hp += zombie->hp;
+            }
+            if (total_cell_hp == 0){
+                danger_level = 0;
+            }
+            else {
+                danger_level = 1 + total_cell_hp / 200;
+            }
+            obs[lane][col].zombie_danger_level = danger_level;
+        }
+    }
+    return obs;
+}
+
+State Level::get_state(){
+    PlantInfo empty_plant;
+    empty_plant.plant_name = "no_plant";
+    empty_plant.hp = 0;
+    empty_plant.col = -1;
+    empty_plant.lane = -1;
+    State state;
+    for (int lane = 0; lane < this->lanes; lane++){
+        std::vector<Cell> lane_vector;
+        for (int col = 0; col < this->cols; col++){
+            Cell cell = Cell();
+            if (this->plant_grid[lane][col]){
+                cell.plant_info = this->plant_grid[lane][col]->get_info();
+            }
+            else {
+                cell.plant_info = empty_plant;
+            }
+            for (Zombie* zombie : this->zombie_grid[lane][col]){
+                cell.zombie_info_vec.push_back(zombie->get_info());
+            }
+            lane_vector.push_back(cell);
+        }
+        state.push_back(lane_vector);
+    }
+    return state;
 }
 
 // TODO - get suns as input?

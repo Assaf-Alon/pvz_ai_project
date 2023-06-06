@@ -104,3 +104,12 @@ void Zombie::get_damaged(int damage, Level &level)
         delete this;
     }
 }
+ZombieInfo Zombie::get_info(){
+    ZombieInfo info;
+    info.hp = this->hp;
+    info.type = this->type;
+    info.lane = this->lane;
+    info.col = this->col;
+    info.frozen = this->frozen;
+    return info;
+}
