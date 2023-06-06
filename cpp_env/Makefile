@@ -13,7 +13,6 @@ all: $(OBJ)
 
 debug: #$(OBJ)
 	$(CC) -o $(EXEC) $(DFLAGS) *.cpp
-# $(CC) -o $(EXEC) $^ $(DFLAGS)
 
 clang-debug: #$(OBJ)
 	clang++ -fsanitize=address -o $(EXEC) $(DFLAGS) *.cpp
