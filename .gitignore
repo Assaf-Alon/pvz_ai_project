@@ -1,0 +1,14 @@
+**/__pycache__
+headless/**/*.log
+**/tests/output/**
+venv**/
+driving_backup/
+experiments/
+headless/resources/random*
+.vscode/**
+**/.vscode
+*.o
+*.out 
+*.prof*
+*.prettierrc
+game_ai/cpp_env/pvz_ai

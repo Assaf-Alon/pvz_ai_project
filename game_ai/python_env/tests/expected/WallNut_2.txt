@@ -1,0 +1,116 @@
+[0] Planted WallNut in (3, 3). Total: 0.
+[10] Normal zombie being spawned at lane 3
+[20] Normal zombie being spawned at lane 3
+[57] Normal zombie in (3, 9) moved to (3, 8).
+[67] Normal zombie in (3, 9) moved to (3, 8).
+[100] Sun autospawned. Total: 25.
+[104] Normal zombie in (3, 8) moved to (3, 7).
+[114] Normal zombie in (3, 8) moved to (3, 7).
+[151] Normal zombie in (3, 7) moved to (3, 6).
+[161] Normal zombie in (3, 7) moved to (3, 6).
+[198] Normal zombie in (3, 6) moved to (3, 5).
+[200] Sun autospawned. Total: 50.
+[208] Normal zombie in (3, 6) moved to (3, 5).
+[245] Normal zombie in (3, 5) moved to (3, 4).
+[255] Normal zombie in (3, 5) moved to (3, 4).
+[292] Normal zombie in (3, 4) moved to (3, 3).
+[300] Sun autospawned. Total: 75.
+[302] Normal zombie in (3, 3) attacked.
+[302] WallNut in (3, 3) got damaged. HP: 3900
+[302] Normal zombie in (3, 4) moved to (3, 3).
+[312] Normal zombie in (3, 3) attacked.
+[312] WallNut in (3, 3) got damaged. HP: 3800
+[312] Normal zombie in (3, 3) attacked.
+[312] WallNut in (3, 3) got damaged. HP: 3700
+[322] Normal zombie in (3, 3) attacked.
+[322] WallNut in (3, 3) got damaged. HP: 3600
+[322] Normal zombie in (3, 3) attacked.
+[322] WallNut in (3, 3) got damaged. HP: 3500
+[332] Normal zombie in (3, 3) attacked.
+[332] WallNut in (3, 3) got damaged. HP: 3400
+[332] Normal zombie in (3, 3) attacked.
+[332] WallNut in (3, 3) got damaged. HP: 3300
+[342] Normal zombie in (3, 3) attacked.
+[342] WallNut in (3, 3) got damaged. HP: 3200
+[342] Normal zombie in (3, 3) attacked.
+[342] WallNut in (3, 3) got damaged. HP: 3100
+[352] Normal zombie in (3, 3) attacked.
+[352] WallNut in (3, 3) got damaged. HP: 3000
+[352] Normal zombie in (3, 3) attacked.
+[352] WallNut in (3, 3) got damaged. HP: 2900
+[362] Normal zombie in (3, 3) attacked.
+[362] WallNut in (3, 3) got damaged. HP: 2800
+[362] Normal zombie in (3, 3) attacked.
+[362] WallNut in (3, 3) got damaged. HP: 2700
+[372] Normal zombie in (3, 3) attacked.
+[372] WallNut in (3, 3) got damaged. HP: 2600
+[372] Normal zombie in (3, 3) attacked.
+[372] WallNut in (3, 3) got damaged. HP: 2500
+[382] Normal zombie in (3, 3) attacked.
+[382] WallNut in (3, 3) got damaged. HP: 2400
+[382] Normal zombie in (3, 3) attacked.
+[382] WallNut in (3, 3) got damaged. HP: 2300
+[392] Normal zombie in (3, 3) attacked.
+[392] WallNut in (3, 3) got damaged. HP: 2200
+[392] Normal zombie in (3, 3) attacked.
+[392] WallNut in (3, 3) got damaged. HP: 2100
+[400] Sun autospawned. Total: 100.
+[402] Normal zombie in (3, 3) attacked.
+[402] WallNut in (3, 3) got damaged. HP: 2000
+[402] Normal zombie in (3, 3) attacked.
+[402] WallNut in (3, 3) got damaged. HP: 1900
+[412] Normal zombie in (3, 3) attacked.
+[412] WallNut in (3, 3) got damaged. HP: 1800
+[412] Normal zombie in (3, 3) attacked.
+[412] WallNut in (3, 3) got damaged. HP: 1700
+[422] Normal zombie in (3, 3) attacked.
+[422] WallNut in (3, 3) got damaged. HP: 1600
+[422] Normal zombie in (3, 3) attacked.
+[422] WallNut in (3, 3) got damaged. HP: 1500
+[432] Normal zombie in (3, 3) attacked.
+[432] WallNut in (3, 3) got damaged. HP: 1400
+[432] Normal zombie in (3, 3) attacked.
+[432] WallNut in (3, 3) got damaged. HP: 1300
+[442] Normal zombie in (3, 3) attacked.
+[442] WallNut in (3, 3) got damaged. HP: 1200
+[442] Normal zombie in (3, 3) attacked.
+[442] WallNut in (3, 3) got damaged. HP: 1100
+[452] Normal zombie in (3, 3) attacked.
+[452] WallNut in (3, 3) got damaged. HP: 1000
+[452] Normal zombie in (3, 3) attacked.
+[452] WallNut in (3, 3) got damaged. HP: 900
+[462] Normal zombie in (3, 3) attacked.
+[462] WallNut in (3, 3) got damaged. HP: 800
+[462] Normal zombie in (3, 3) attacked.
+[462] WallNut in (3, 3) got damaged. HP: 700
+[472] Normal zombie in (3, 3) attacked.
+[472] WallNut in (3, 3) got damaged. HP: 600
+[472] Normal zombie in (3, 3) attacked.
+[472] WallNut in (3, 3) got damaged. HP: 500
+[482] Normal zombie in (3, 3) attacked.
+[482] WallNut in (3, 3) got damaged. HP: 400
+[482] Normal zombie in (3, 3) attacked.
+[482] WallNut in (3, 3) got damaged. HP: 300
+[492] Normal zombie in (3, 3) attacked.
+[492] WallNut in (3, 3) got damaged. HP: 200
+[492] Normal zombie in (3, 3) attacked.
+[492] WallNut in (3, 3) got damaged. HP: 100
+[500] Sun autospawned. Total: 125.
+[502] Normal zombie in (3, 3) attacked.
+[502] WallNut in (3, 3) got damaged. HP: 0
+[502] WallNut in (3, 3) died.
+[539] Normal zombie in (3, 3) moved to (3, 2).
+[549] Normal zombie in (3, 3) moved to (3, 2).
+[586] Normal zombie in (3, 2) moved to (3, 1).
+[596] Normal zombie in (3, 2) moved to (3, 1).
+[600] Sun autospawned. Total: 150.
+[633] Normal zombie in (3, 1) moved to (3, 0).
+[643] Normal zombie in (3, 1) moved to (3, 0).
+[680] Normal zombie in (3, 0) attempted entering the house.
+[680] Normal zombie in (3, 0) triggered a lawnmower.
+[680] Lawnmower in (3, 0) attacked.
+[680] Normal zombie in (3, 0) was damaged. HP: -9818.
+[680] Normal zombie in (3, 0) was killed.
+[680] Normal zombie in (3, 0) was damaged. HP: -9818.
+[680] Normal zombie in (3, 0) was killed.
+[680] You've won!
