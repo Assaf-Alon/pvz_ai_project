@@ -13,6 +13,8 @@
 #include <functional>
 #include <algorithm>
 #include <omp.h>
+#include <utility>
+// #include <numpy/ndarrayobject.h>
 using std::vector;
 using std::string;
 #define LOG_FRAME(frame, msg) std::cout << "[" << frame << "] " << msg << std::endl;
@@ -207,6 +209,7 @@ public:
     std::vector<bool> lawnmowers;
     int fps = 10;
     bool return_state = false;
+    std::vector<int> chosen_plants;
     std::list<Zombie*> zombie_list;
     std::vector<std::vector<std::list<Zombie*>>> zombie_grid;
     std::list<Plant*> plant_list;
@@ -220,6 +223,7 @@ public:
     ~Level();
     void step(const Action& action);
     void step(int plant, int row, int col);
+    void step();
     void do_zombie_actions();
     void do_plant_actions();
     void do_player_action(const Action& action);
@@ -227,17 +231,21 @@ public:
     void spawn_suns();
     bool check_endgame();
     bool is_action_legal(const Action& action) const;
+    bool is_action_legal(int plant, int row, int col) const;
     void append_zombie(int second, int lane, std::string type);
     Observation get_observation();
     State get_state();
 
     int rollout(int num_cpu, int num_games=10000); // return num_victories
     const Action get_random_action() const; // guranteed to be legal
-    PlantName get_random_plant() const;
-    bool get_random_position(int& lane, int& col) const;
+    PlantName get_random_legal_plant() const;
+    int get_random_plant() const;
+    bool _get_random_position(int& lane, int& col) const;
     void plant(const Action& action);
     // void remove_plant(int lane, int col);
     const Action no_action = Action(NO_PLANT, 0, 0);
+    bool is_plantable(int plant_name) const;
+    std::pair<int, int> get_random_position() const;
 
     static bool play_random_game(Level env);
 };

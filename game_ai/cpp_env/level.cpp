@@ -46,6 +46,7 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> le
     this->plant_data[THREEPEATER]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 325, PlantAction(&threepeater_action), "threepeater", THREEPEATER);
     this->plant_data[WALLNUT]       = PlantData(this->fps, 4000, 0,    9999,  30,  50,  PlantAction(&wallnut_action), "wallnut", WALLNUT);
 
+    this->chosen_plants = std::vector<int>(legal_plants);
     for (auto plant_name : legal_plants){
         plant_data[plant_name].next_available_frame = 0;
     }
@@ -137,6 +138,11 @@ bool Level::is_action_legal(const Action &action) const
         return false;
     }
     return true;
+}
+
+bool Level::is_action_legal(int plant, int row, int col) const
+{
+    return this->is_action_legal(Action((PlantName)plant, row, col));
 }
 
 void Level::plant(const Action &action)
@@ -327,8 +333,12 @@ void Level::step(int plant, int row, int col)
     this->step(Action(PlantName(plant), row, col));
 }
 
+void Level::step() {
+    this->step(this->no_action);
+}
+
 Observation Level::get_observation(){
-    Observation obs = vector<vector<CellObservation>>(this->lanes, vector<CellObservation>(this->cols, CellObservation()));
+    Observation obs = vector<vector<CellObservation>>(this->lanes, vector<CellObservation>(this->cols, CellObservation()));    
     for (int lane = 0; lane < this->lanes; lane++){
         for (int col = 0; col < this->cols; col++){
             if (this->plant_grid[lane][col] != nullptr){
@@ -396,8 +406,12 @@ State Level::get_state(){
     return state;
 }
 
+int Level::get_random_plant() const {
+    return this->chosen_plants[get_random_number(0, this->chosen_plants.size() - 1)];
+}
+
 // TODO - get suns as input?
-PlantName Level::get_random_plant() const {
+PlantName Level::get_random_legal_plant() const {
     #ifdef DEBUG
     LOG_FRAME(frame, "Randomizing plant");
     #endif
@@ -417,8 +431,15 @@ PlantName Level::get_random_plant() const {
     return legal_plants[plant];
 }
 
+std::pair<int, int> Level::get_random_position() const {
+    int lane, col;
+    this->_get_random_position(lane, col);
+    std::pair<int, int> result(lane, col);
+    return result;
+}
+
     // As long as a substantial amount of the board is free, this should work efficiently
-bool Level::get_random_position(int& lane, int& col) const {
+bool Level::_get_random_position(int& lane, int& col) const {
     for (int attempt = 0; attempt < 3; attempt++) {
         lane = get_random_number(0, lanes - 1);
         col = get_random_number(0, cols - 1);
@@ -440,10 +461,10 @@ const Action Level::get_random_action() const {
         return this->no_action;
     }
     int lane, col;
-    if (!get_random_position(lane, col)){
+    if (!_get_random_position(lane, col)){
         return this->no_action;
     }
-    PlantName plant_name = get_random_plant();
+    PlantName plant_name = get_random_legal_plant();
     return Action(plant_name, lane, col);
 }
 
@@ -464,7 +485,14 @@ Level::~Level()
     }
 }
 
-bool Level::play_random_game(Level env) {
+bool Level::is_plantable(int plant_name) const
+{
+    auto plant_data = this->plant_data[plant_name];
+    return plant_data.cost <= this->suns && plant_data.next_available_frame <= this->frame;
+}
+
+bool Level::play_random_game(Level env)
+{
     Action no_action = Action(NO_PLANT, 0,  0);
     while (!env.done) {
         Action next_action = env.get_random_action();
