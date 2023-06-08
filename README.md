@@ -17,6 +17,7 @@
 
 
 ## Not Interesting:
+0. Add "num_available_actions" to c++
 1. Add state output to c++ (add selector for generating or not generating state)
 2. Finish implementing plants in c++
 3. Add option to clone with different FPS value
@@ -32,3 +33,11 @@
 13. Night levels/ conveyor belt levels
 14. Interface with pygame implementation?
 15. Clean up repo even more
+
+## Notes:
+1. When dealing with RL, grid should look as follows:
+arr(lanes, arr(cols, cell))
+cell is an arr: plant_type, plant_hp, num_zombies, zombie_tier
+zombie_tier is an int that is a function of:
+    1. total hp of zombies in this cell (in hundreds? twenties?)
+    2. avg move speed of zombies in this cell

@@ -15,6 +15,7 @@
 #include <omp.h>
 using std::vector;
 using std::string;
+using std::pair;
 #define LOG_FRAME(frame, msg) std::cout << "[" << frame << "] " << msg << std::endl;
 #define FAST 7.5
 #define SLOW 30
@@ -26,6 +27,7 @@ class Level;
 class Zombie;
 class Plant;
 typedef std::function<bool(Level&, Plant&)> PlantAction;
+typedef std::pair<int, int> Pos;
 
 class PlantData {
     public:
@@ -40,6 +42,7 @@ class PlantData {
     std::string plant_name;
     int next_available_frame = 9999;
     // PlantData(const PlantData& other) = default;
+    PlantData() = default;
     PlantData(int fps, int hp, int damage, float action_interval_seconds, float recharge_seconds, int cost, PlantAction action_func, std::string plant_name) : \
     hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name) {
         this->action_interval = static_cast<int>(action_interval_seconds * fps);
@@ -161,6 +164,7 @@ public:
     std::vector<std::vector<Plant*>> plant_grid;
     std::deque<ZombieSpawnTemplate> level_data;
     std::vector<PlantData> plant_data;
+    std::vector<Pos> free_spaces;
 
     Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants);
     Level* clone();
@@ -168,6 +172,7 @@ public:
     ~Level();
     State* step(const Action& action);
     State* step(int plant, int row, int col);
+    void step();
     void do_zombie_actions();
     void do_plant_actions();
     void do_player_action(const Action& action);
@@ -184,6 +189,7 @@ public:
     void plant(const Action& action);
     // void remove_plant(int lane, int col);
     const Action no_action = Action(NO_PLANT, 0, 0);
+    vector<Pos>* get_all_legal_positions(); // for use in python
 
     static bool play_random_game(Level env);
 };

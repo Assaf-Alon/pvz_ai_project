@@ -49,6 +49,14 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> le
     for (auto plant_name : legal_plants){
         plant_data[plant_name].next_available_frame = 0;
     }
+    // =========================================
+    this->free_spaces.reserve(lanes * cols * 2);
+    for(int lane = 0; lane < lanes; lane++){
+        for(int col = 0; col < cols; col++){
+            this->free_spaces.push_back(Pos(lane, col));
+        }
+    }
+    // =========================================
 }
 
 Level* Level::clone() {
@@ -107,6 +115,9 @@ Level::Level(const Level& other_level)
 
     // Copy cooldown
     this->plant_data = vector<PlantData>(other_level.plant_data);
+
+    // Copy free spaces
+    this->free_spaces = vector<Pos>(other_level.free_spaces);
 }
 
 
@@ -148,6 +159,13 @@ void Level::plant(const Action &action)
     this->plant_list.push_back(new_plant);
     this->plant_grid[action.lane][action.col] = new_plant;
     planted_plant_data.next_available_frame = this->frame + planted_plant_data.recharge_seconds * this->fps;
+    std::vector<Pos>& free_spaces = this->free_spaces;
+    for (auto it = free_spaces.begin(); it != free_spaces.end(); it++){
+        if (it->first == action.lane && it->second == action.col){
+            free_spaces.erase(it);
+            break;
+        }
+    }
 }
 void Level::do_zombie_actions()
 {
@@ -328,6 +346,9 @@ State* Level::step(int plant, int row, int col)
     return this->step(Action(PlantName(plant), row, col));
 }
 
+void Level::step() {
+    this->step(this->no_action);
+}
 // TODO - get suns as input?
 PlantName Level::get_random_plant() const {
     #ifdef DEBUG
@@ -349,33 +370,58 @@ PlantName Level::get_random_plant() const {
     return legal_plants[plant];
 }
 
-    // As long as a substantial amount of the board is free, this should work efficiently
+vector<Pos>* Level::get_all_legal_positions() {
+    return &(this->free_spaces);
+}
+
+// As long as a substantial amount of the board is free, this should work efficiently
 bool Level::get_random_position(int& lane, int& col) const {
-    for (int attempt = 0; attempt < 3; attempt++) {
-        lane = get_random_number(0, lanes - 1);
-        col = get_random_number(0, cols - 1);
-        if (this->plant_grid[lane][col] == nullptr) {
-            return true;
-        }
+    // vector<Pos> free_spaces = this->get_all_legal_positions();
+    const vector<Pos>& free_spaces = this->free_spaces;
+    if (free_spaces.size() == 0){
+        lane = -1;
+        col = -1;
+        return false;
     }
-    lane = -1;
-    col = -1;
-    return false; // no_action
+    pair<int, int> position = free_spaces[get_random_number(0, free_spaces.size() - 1)];
+    lane = position.first;
+    col = position.second;
+    return true;
+    // ==================================================================
+    // for (int attempt = 0; attempt < 3; attempt++) {
+    //     lane = get_random_number(0, lanes - 1);
+    //     col = get_random_number(0, cols - 1);
+    //     if (this->plant_grid[lane][col] == nullptr) {
+    //         return true;
+    //     }
+    // }
+    // lane = -1;
+    // col = -1;
+    // return false; // no_action
 }
 
 // TODO - discuss optimizing this
 const Action Level::get_random_action() const {
     if (this->suns < 50) { // this->suns < this->cheapest_plant_cost?
+        // std::cout << "not enough suns to do actions!" << std::endl;
         return this->no_action;
     }
     if (get_random_number(1,10) <= 4) { // 40% chance to do nothing, consider some other probability
+        // std::cout << "randomly do nothing" << std::endl;
         return this->no_action;
     }
     int lane, col;
     if (!get_random_position(lane, col)){
+        // std::cout << "no legal positions found!" << std::endl;
         return this->no_action;
     }
     PlantName plant_name = get_random_plant();
+    // if (plant_name == 0){
+    //     // std::cout << "no legal plants found!" << std::endl;
+    // }
+    // else {
+    //     std::cout << "selected plant" << this->plant_data[plant_name].plant_name << ", planting at " << lane << ", " << col << std::endl;
+    // }
     return Action(plant_name, lane, col);
 }
 
@@ -397,15 +443,16 @@ Level::~Level()
 }
 
 bool Level::play_random_game(Level env) {
-    Action no_action = Action(NO_PLANT, 0,  0);
+    // Action no_action = Action(NO_PLANT, 0,  0);
     while (!env.done) {
-        Action next_action = env.get_random_action();
-        if (env.is_action_legal(next_action)) {
-            env.step(next_action);
-        }
-        else {
-            env.step(no_action);
-        }
+        // Action next_action = env.get_random_action();
+        // if (env.is_action_legal(next_action)) {
+        //     env.step(next_action);
+        // }
+        // else {
+        //     env.step(no_action);
+        // }
+        env.step(env.get_random_action());
     }
     return env.win;
 }

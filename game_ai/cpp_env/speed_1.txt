@@ -18,5 +18,10 @@ Speed with:
 ./main.out  7.07s user 0.04s system 857% cpu 0.829 total
 ./main.out  8.28s user 0.07s system 858% cpu 0.972 total
 ./main.out  28.20s user 0.04s system 866% cpu 3.258 total
-Using 8 threads, estimated time per game is [1.25e-5, 3e-5] secs
+Using 8 threads, estimated time per game is [1.25e-5, 2e-5] secs
 Using 8 threads and profiling optimization, time per game is 9.7e-6 secs
+Using 8 threads and modified random (using free list): [4.5e-5, 6e-6] secs
+Using 8 threads, modified random and profiling optimization: [3e-5 - 3.2e-5] secs
+Using 8 threads, fixed modified random: [1.15e-5, 1.5e-5] secs
+Using 8 threads, fixed modified random, profiling optimization: [0.85e-5, 1.05e-5] secs
+

@@ -26,7 +26,7 @@ fast-sanitize:
 profile:
 	$(CC) -O2 -o $(EXEC) $(CFLAGS) -pg *.cpp
 	./$(EXEC)
-	gprof main.out  gmon.out > analysis.txt
+	gprof main.out gmon.out > analysis.txt
 
 intel-profile:
 	icpx -O2 -o $(EXEC) $(CFLAGS) -lsvml -shared-intel -debug inline-debug-info -qopenmp -g *.cpp

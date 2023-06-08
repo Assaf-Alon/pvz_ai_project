@@ -89,6 +89,7 @@ void estimate_game_duration(int num_games){
     std::cout << "wins: " << wins << std::endl;
 }
 
+
 int main() {
     // play_game1();
     // play_game_random();
@@ -96,8 +97,13 @@ int main() {
     // play_random_games(10000);
     // play_game_random_w_rollouts(10000);
     // play_game_random_w_rollouts_after_action(10000);
-    estimate_game_duration(100000);
+    // estimate_game_duration(100000);
     // play_random_games(1);
     // play_game_single_plant(CHERRYBOMB);
     // play_specific_game();
+    std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
+    auto level_data = get_level_data3();
+    Level level = Level(5,    10,      10, level_data,  chosen_plants);
+    int wins = level.rollout(8,1);
+    std::cout << wins << std::endl;
 }

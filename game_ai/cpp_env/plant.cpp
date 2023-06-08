@@ -39,6 +39,7 @@ void Plant::get_damaged(int damage, Level &level)
     {
         level.plant_list.remove(this);
         level.plant_grid[this->lane][this->col] = nullptr;
+        level.free_spaces.push_back(Pos(this->lane, this->col));
         #ifdef DEBUG
         std::stringstream log_msg;
         log_msg << this->plant_name << " at " << this->lane << ", " << this->col << " died";

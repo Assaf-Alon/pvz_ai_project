@@ -8,36 +8,36 @@ typedef vector<pair<int, Action>> ActionVec;
 
 std::deque<ZombieSpawnTemplate> get_level_data1() {
     std::deque<ZombieSpawnTemplate> level_data;
-    level_data.push_back(ZombieSpawnTemplate{.second = 10, .lane = 1, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 20, .lane = 3, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 20, .lane = 2, .type = "buckethead"});
+    level_data.push_back(ZombieSpawnTemplate(10, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(20, 3, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(20, 2, "buckethead"));
     return level_data;
 }
 
 std::deque<ZombieSpawnTemplate> get_level_data2() {
     std::deque<ZombieSpawnTemplate> level_data;
-    level_data.push_back(ZombieSpawnTemplate{.second = 10, .lane = 1, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 11, .lane = 1, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 12, .lane = 1, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 20, .lane = 3, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 20, .lane = 2, .type = "buckethead"});
-    // level_data.push_back(ZombieSpawnTemplate{.second = 50, .lane = 1, .type = "flag"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 50, .lane = 4, .type = "newspaper"});
-    // level_data.push_back(ZombieSpawnTemplate{.second = 50, .lane = 1, .type = "conehead"});
+    level_data.push_back(ZombieSpawnTemplate(10, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(11, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(12, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(20, 3, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(20, 2, "buckethead"));
+    // level_data.push_back(ZombieSpawnTemplate(50, 1, "flag"));
+    level_data.push_back(ZombieSpawnTemplate(50, 4, "newspaper"));
+    // level_data.push_back(ZombieSpawnTemplate(50, 1, "conehead"));
     return level_data;
 }
 
 std::deque<ZombieSpawnTemplate> get_level_data3() {
     std::deque<ZombieSpawnTemplate> level_data;
-    level_data.push_back(ZombieSpawnTemplate{.second = 10, .lane = 1, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 11, .lane = 1, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 12, .lane = 1, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 20, .lane = 3, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 20, .lane = 2, .type = "buckethead"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 50, .lane = 1, .type = "flag"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 50, .lane = 4, .type = "newspaper"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 50, .lane = 1, .type = "conehead"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 85, .lane = 1, .type = "normal"});
+    level_data.push_back(ZombieSpawnTemplate(10, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(11, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(12, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(20, 3, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(20, 2, "buckethead"));
+    level_data.push_back(ZombieSpawnTemplate(50, 1, "flag"));
+    level_data.push_back(ZombieSpawnTemplate(50, 4, "newspaper"));
+    level_data.push_back(ZombieSpawnTemplate(50, 1, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(85, 1, "normal"));
     return level_data;
 }
 
@@ -55,7 +55,7 @@ void play_game1() {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data1();
     std::deque<Action> action_list = get_action_list1();
     Action no_action = Action(NO_PLANT, 0,  0);
-    std::vector<PlantName> chosen_plants = {SUNFLOWER, PEASHOOTER, POTATOMINE, SQUASH, SPIKEWEED, WALLNUT};
+    std::vector<int> chosen_plants = {SUNFLOWER, PEASHOOTER, POTATOMINE, SQUASH, SPIKEWEED, WALLNUT};
 
 
     //                lane, columns, fps, level_data
@@ -79,15 +79,15 @@ void play_game1() {
     }
 }
 
-std::vector<PlantName> get_plants3() {
-    // std::vector<PlantName> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
-    std::vector<PlantName> chosen_plants = { CHOMPER };
+std::vector<int> get_plants3() {
+    std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
+    // std::vector<int> chosen_plants = { CHOMPER };
     return chosen_plants;
 }
 
 bool play_game_random() {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
-    std::vector<PlantName> chosen_plants       = get_plants3();
+    std::vector<int> chosen_plants       = get_plants3();
     Action no_action = Action(NO_PLANT, 0,  0);
 
     //                lane, columns, fps, level_data
@@ -109,7 +109,7 @@ bool play_game_random() {
 bool play_game_random_w_rollouts(int rollotus_per_cycle) {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
     Action no_action = Action(NO_PLANT, 0,  0);
-    std::vector<PlantName> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
+    std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
     //                lane, columns, fps, level_data, legal_plants
     Level env = Level(5,    10,      10, level_data,  chosen_plants);
     int num_rollouts = 0;
@@ -133,8 +133,8 @@ bool play_game_random_w_rollouts(int rollotus_per_cycle) {
 bool play_game_random_w_rollouts_after_action(int rollotus_per_cycle) {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
     Action no_action = Action(NO_PLANT, 0,  0);
-    // std::vector<PlantName> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
-    std::vector<PlantName> chosen_plants = { CHERRYBOMB };
+    // std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
+    std::vector<int> chosen_plants = { CHERRYBOMB };
     //                lane, columns, fps, level_data, legal_plants
     Level env = Level(5,    10,      10, level_data,  chosen_plants);
     ActionVec actions_taken = ActionVec();
@@ -179,10 +179,10 @@ void play_random_games(int num_games) {
 
 bool play_specific_game() {
     std::deque<ZombieSpawnTemplate> level_data;
-    level_data.push_back(ZombieSpawnTemplate{.second = 15, .lane = 1, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 60, .lane = 1, .type = "normal"});
-    level_data.push_back(ZombieSpawnTemplate{.second = 95, .lane = 1, .type = "normal"});
-    std::vector<PlantName> chosen_plants       = { CHOMPER };
+    level_data.push_back(ZombieSpawnTemplate(15, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(60, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(95, 1, "normal"));
+    std::vector<int> chosen_plants       = { CHOMPER };
     Action no_action = Action(NO_PLANT, 0,  0);
 
     //                lane, columns, fps, level_data
