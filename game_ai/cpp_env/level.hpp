@@ -13,6 +13,9 @@
 #include <functional>
 #include <algorithm>
 #include <omp.h>
+#include <utility>
+#include <bitset>
+// #include <numpy/ndarrayobject.h>
 using std::vector;
 using std::string;
 using std::pair;
@@ -41,10 +44,10 @@ class PlantData {
     PlantAction action_func;
     std::string plant_name;
     int next_available_frame = 9999;
-    // PlantData(const PlantData& other) = default;
+    int plant_type;
     PlantData() = default;
-    PlantData(int fps, int hp, int damage, float action_interval_seconds, float recharge_seconds, int cost, PlantAction action_func, std::string plant_name) : \
-    hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name) {
+    PlantData(int fps, int hp, int damage, float action_interval_seconds, float recharge_seconds, int cost, PlantAction action_func, std::string plant_name, int plant_type) : \
+    hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name), plant_type(plant_type) {
         this->action_interval = static_cast<int>(action_interval_seconds * fps);
         this->recharge = static_cast<int>(recharge_seconds * fps);
     };
@@ -57,9 +60,6 @@ enum PlantName { NO_PLANT, CHERRYBOMB, CHOMPER,
                  SPIKEWEED, SQUASH, SUNFLOWER,
                  SUNSHROOM, THREEPEATER, WALLNUT,
                  NUM_PLANTS };
-// enum PlantName {NO_PLANT, PEASHOOTER, SUNFLOWER, SQUASH, WALLNUT, POTATOMINE, SPIKEWEED, NUM_PLANTS};
-
-// typedef std::string PlantName;
 
 class ZombieSpawnTemplate {
     public:
@@ -70,6 +70,14 @@ class ZombieSpawnTemplate {
     ZombieSpawnTemplate(int second, int lane, std::string type): second(second), lane(lane), type(type) {};
 };
 
+class ZombieInfo {
+    public:
+    int hp;
+    string type;
+    int lane;
+    int col;
+    bool frozen;
+};
 
 class Zombie {
     public:
@@ -92,6 +100,15 @@ class Zombie {
     void move(Level& level);
     void do_action(Level& level);
     void get_damaged(int damage, Level& Levels);
+    ZombieInfo get_info();
+};
+
+class PlantInfo {
+    public:
+    int hp;
+    std::string plant_name;
+    int lane;
+    int col;
 };
 
 class Plant {
@@ -107,9 +124,11 @@ public:
     int recharge;
     int frame_action_available;
     int fps;   // for clone...?
+    int plant_type;
     std::string plant_name;
     Plant(int lane, int column, PlantData &plant_data, int frame, int fps);
     PlantAction action;
+    PlantInfo get_info();
     void do_action(Level& level);
     void get_damaged(int damage, Level& level);
     Plant* clone() const;
@@ -134,7 +153,33 @@ bool sunshroom_action(Level& level, Plant& plant);
 bool threepeater_action(Level& level, Plant& plant);
 bool wallnut_action(Level& level, Plant& plant);
 
-class State {};
+class Cell {
+    public:
+    PlantInfo plant_info;
+    vector<ZombieInfo> zombie_info_vec;
+    Cell() {
+        this->zombie_info_vec = vector<ZombieInfo>();
+    }
+};
+
+typedef vector<vector<Cell>> State;
+
+class CellObservation {
+    public:
+    int plant_type;
+    int plant_hp_phase;
+    int zombie_danger_level;
+    CellObservation(){
+        this->plant_type = 0;
+        this->plant_hp_phase = 0;
+        this->zombie_danger_level = 0;
+    }
+    CellObservation(int plant_type, int plant_hp_phase, int zombie_danger_level) : 
+        plant_type(plant_type), plant_hp_phase(plant_hp_phase), zombie_danger_level(zombie_danger_level) {};
+    ~CellObservation() = default;
+};
+
+typedef vector<vector<CellObservation>> Observation;
 
 class Action {
     public:
@@ -158,6 +203,8 @@ public:
     std::vector<bool> lawnmowers;
     int fps = 10;
     bool return_state = false;
+    const Action no_action = Action(NO_PLANT, 0, 0);
+    std::vector<int> chosen_plants;
     std::list<Zombie*> zombie_list;
     std::vector<std::vector<std::list<Zombie*>>> zombie_grid;
     std::list<Plant*> plant_list;
@@ -166,12 +213,16 @@ public:
     std::vector<PlantData> plant_data;
     std::vector<Pos> free_spaces;
 
+
+    // Constructors, copy, destructors
     Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants);
     Level* clone();
     Level(const Level& other_level);
     ~Level();
-    State* step(const Action& action);
-    State* step(int plant, int row, int col);
+
+    // Step and step-related
+    void step(const Action& action);
+    void step(int plant, int row, int col);
     void step();
     void do_zombie_actions();
     void do_plant_actions();
@@ -179,20 +230,27 @@ public:
     void spawn_zombies();
     void spawn_suns();
     bool check_endgame();
-    bool is_action_legal(const Action& action) const;
-    void append_zombie(int second, int lane, std::string type);
-
-    int rollout(int num_cpu, int num_games=10000); // return num_victories
-    const Action get_random_action() const; // guranteed to be legal
-    PlantName get_random_plant() const;
-    bool get_random_position(int& lane, int& col) const;
     void plant(const Action& action);
-    // void remove_plant(int lane, int col);
-    const Action no_action = Action(NO_PLANT, 0, 0);
+
+    // Action related
+    bool is_action_legal(const Action& action) const;
+    bool is_action_legal(int plant, int row, int col) const;
+    const Action get_random_action() const; // guranteed to be legal
+    PlantName get_random_legal_plant() const;
+    int get_random_plant() const;
+    bool get_random_position(int& lane, int& col) const;
     vector<Pos>* get_all_legal_positions(); // for use in python
 
-    static bool play_random_game(Level env);
+    // State/Observation
+    Observation get_observation();
+    State get_state();
+
+    // misc
+    void append_zombie(int second, int lane, std::string type);
+    int rollout(int num_cpu, int num_games=10000); // return num_victories
+
 };
+bool play_random_game(Level env);
 
 
 #endif // _PVZ_LEVEL

@@ -33,6 +33,9 @@ class node:
         pass
 
     def expand(self, get_random_action: callable):
+        """
+        Create {size_expand} child nodes with unique random actions
+        """
         for _ in range(size_expand):
             # while (action := self.level.get_random_action()) in self.children.keys(): pass
             while (action := get_random_action()) in self.children.keys(): pass

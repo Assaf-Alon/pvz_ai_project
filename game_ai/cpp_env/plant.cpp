@@ -12,6 +12,7 @@ Plant::Plant(int lane, int column, PlantData& plant_data, int frame, int fps){
     this->col = column;
     this->plant_name = std::string(plant_data.plant_name);
     this->action = PlantAction(plant_data.action_func);
+    this->plant_type = plant_data.plant_type;
     
     // TODO - pretty much all plants but the comper should start as-if they just attacked,
     // that is, they should wait before they attack.
@@ -67,6 +68,14 @@ void Plant::do_action(Level& level){
     #else
     this->action(level, *this);
     #endif
+}
+PlantInfo Plant::get_info(){
+    PlantInfo plant_info;
+    plant_info.hp = this->hp;
+    plant_info.lane = this->lane;
+    plant_info.col = this->col;
+    plant_info.plant_name = this->plant_name;
+    return plant_info;
 }
 
 bool cherrybomb_action(Level& level, Plant& plant){
