@@ -81,7 +81,7 @@ void play_game1() {
     std::deque<Action> action_list = get_action_list1();
     Action no_action = Action(NO_PLANT, 0,  0);
     std::vector<int> chosen_plants = {SUNFLOWER, PEASHOOTER, POTATOMINE, SQUASH, SPIKEWEED, WALLNUT};
-    std::vector<int> chosen_plants = {SUNFLOWER, PEASHOOTER, POTATOMINE, SQUASH, SPIKEWEED, WALLNUT};
+    // std::vector<int> chosen_plants = {SUNFLOWER, PEASHOOTER, POTATOMINE, SQUASH, SPIKEWEED, WALLNUT};
 
 
     //                lane, columns, fps, level_data
@@ -114,7 +114,6 @@ std::vector<int> get_plants3() {
 bool play_game_random() {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
     std::vector<int> chosen_plants       = get_plants3();
-    std::vector<int> chosen_plants       = get_plants3();
     Action no_action = Action(NO_PLANT, 0,  0);
 
     //                lane, columns, fps, level_data
@@ -136,7 +135,7 @@ bool play_game_random() {
 bool play_game_random_w_rollouts(int rollotus_per_cycle) {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
     Action no_action = Action(NO_PLANT, 0,  0);
-    std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
+    // std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
     std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
     //                lane, columns, fps, level_data, legal_plants
     Level env = Level(5,    10,      10, level_data,  chosen_plants);
@@ -162,7 +161,7 @@ bool play_game_random_w_rollouts_after_action(int rollotus_per_cycle) {
     std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
     Action no_action = Action(NO_PLANT, 0,  0);
     // std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
-    std::vector<int> chosen_plants = { CHERRYBOMB };
+    // std::vector<int> chosen_plants = { CHERRYBOMB };
     // std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
     std::vector<int> chosen_plants = { CHERRYBOMB };
     //                lane, columns, fps, level_data, legal_plants
@@ -213,10 +212,10 @@ bool play_specific_game() {
     level_data.push_back(ZombieSpawnTemplate(60, 1, "normal"));
     level_data.push_back(ZombieSpawnTemplate(95, 1, "normal"));
     std::vector<int> chosen_plants       = { CHOMPER };
-    level_data.push_back(ZombieSpawnTemplate(15, 1, "normal"));
-    level_data.push_back(ZombieSpawnTemplate(60, 1, "normal"));
-    level_data.push_back(ZombieSpawnTemplate(95, 1, "normal"));
-    std::vector<int> chosen_plants       = { CHOMPER };
+    // level_data.push_back(ZombieSpawnTemplate(15, 1, "normal"));
+    // level_data.push_back(ZombieSpawnTemplate(60, 1, "normal"));
+    // level_data.push_back(ZombieSpawnTemplate(95, 1, "normal"));
+    // std::vector<int> chosen_plants       = { CHOMPER };
     Action no_action = Action(NO_PLANT, 0,  0);
 
     //                lane, columns, fps, level_data
@@ -257,54 +256,54 @@ void play_game_with_state_printing(){
         env.step(next_action);
     }
 }
-void play_game_with_observations(){
-    const std::string yellow = "\033[43m";
-    const std::string red =    "\033[41m";
-    const std::string green =  "\033[42m";
-    const std::string blue =   "\033[44m";
-    const std::string reset =  "\033[0m";
-    Level env(5, 10, 10, get_level_data3(), default_chosen_plants);
-    std::string linebreak = "";
-    for (int cols = 0; cols < env.cols; cols++) linebreak += "_______";
-    while(!env.done){
-        auto obs = env.get_observation();
-        std::system("clear");
-        std::cout << "Frame number: " << env.frame << ", zombies on field: " << env.zombie_list.size() << std::endl;
-        std::cout << linebreak << std::endl;
-        for (int lane = 0; lane < env.lanes; lane++){
-            for (int col = 0; col < env.cols; col++){
-                CellObservation cell = obs[lane][col];
-                std::string plant_color;
-                switch (cell.plant_hp_phase){
-                    case 0: plant_color = red;
-                    break;
-                    case 1: plant_color = yellow;
-                    break;
-                    case 2: plant_color = green;
-                    break;
-                    default: plant_color = reset;
-                }
-                if (cell.plant_type == 0) plant_color = reset;
-                std::cout << "|" << plant_color << cell.plant_type << reset << "," << cell.plant_hp_phase << ",";
-                std::string zomb_color;
-                switch (cell.zombie_danger_level) {
-                    case 0: zomb_color = reset;
-                    break;
-                    case 1: zomb_color = yellow;
-                    break;
-                    case 2: zomb_color = red;
-                    break;
-                    default: zomb_color = red;
-                    break;
-                }
-                std::cout << zomb_color << cell.zombie_danger_level << reset << "|"; 
-            }
-            std::cout << std::endl;
-        }
-        // std::cout << std::endl;
-        env.step(env.get_random_action());
-        usleep(50000);
-    }
-}
+// void play_game_with_observations(){
+//     const std::string yellow = "\033[43m";
+//     const std::string red =    "\033[41m";
+//     const std::string green =  "\033[42m";
+//     const std::string blue =   "\033[44m";
+//     const std::string reset =  "\033[0m";
+//     Level env(5, 10, 10, get_level_data3(), default_chosen_plants);
+//     std::string linebreak = "";
+//     for (int cols = 0; cols < env.cols; cols++) linebreak += "_______";
+//     while(!env.done){
+//         auto obs = env.get_observation();
+//         std::system("clear");
+//         std::cout << "Frame number: " << env.frame << ", zombies on field: " << env.zombie_list.size() << std::endl;
+//         std::cout << linebreak << std::endl;
+//         for (int lane = 0; lane < env.lanes; lane++){
+//             for (int col = 0; col < env.cols; col++){
+//                 CellObservation cell = obs[lane][col];
+//                 std::string plant_color;
+//                 switch (cell.plant_hp_phase){
+//                     case 0: plant_color = red;
+//                     break;
+//                     case 1: plant_color = yellow;
+//                     break;
+//                     case 2: plant_color = green;
+//                     break;
+//                     default: plant_color = reset;
+//                 }
+//                 if (cell.plant_type == 0) plant_color = reset;
+//                 std::cout << "|" << plant_color << cell.plant_type << reset << "," << cell.plant_hp_phase << ",";
+//                 std::string zomb_color;
+//                 switch (cell.zombie_danger_level) {
+//                     case 0: zomb_color = reset;
+//                     break;
+//                     case 1: zomb_color = yellow;
+//                     break;
+//                     case 2: zomb_color = red;
+//                     break;
+//                     default: zomb_color = red;
+//                     break;
+//                 }
+//                 std::cout << zomb_color << cell.zombie_danger_level << reset << "|"; 
+//             }
+//             std::cout << std::endl;
+//         }
+//         // std::cout << std::endl;
+//         env.step(env.get_random_action());
+//         usleep(50000);
+//     }
+// }
 
 #endif // _PVZ_GAMES

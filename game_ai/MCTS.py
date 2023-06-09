@@ -35,6 +35,7 @@ class node:
     def expand(self, get_random_action: callable):
         """
         Create {size_expand} child nodes with unique random actions
+        Actions don't have to be legal, as the child nodes will simply do nothing until they can do the action
         """
         for _ in range(size_expand):
             # while (action := self.level.get_random_action()) in self.children.keys(): pass

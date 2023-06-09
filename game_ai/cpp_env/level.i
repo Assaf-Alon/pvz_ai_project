@@ -15,8 +15,9 @@ namespace std{
     %template(FreePositions) pair<int, int>;
     %template(PlantDataVector) vector<PlantData>;
     %template(position) pair<int, int>;
-    %template(observation_vector) vector<CellObservation>;
-    %template(observation_matrix) vector<vector<CellObservation>>;
+    // %template(cell_observation) vector<int>;
+    %template(observation_vector) vector<vector<int>>;
+    %template(observation_matrix) vector<vector<vector<int>>>;
     %template(state_lane) vector<Cell>;
     %template(state_matrix) vector<vector<Cell>>;
 }

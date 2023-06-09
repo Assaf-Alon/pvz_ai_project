@@ -352,17 +352,20 @@ void Level::step(int plant, int row, int col)
 }
 
 Observation Level::get_observation(){
-    Observation obs = vector<vector<CellObservation>>(this->lanes, vector<CellObservation>(this->cols, CellObservation()));    
+    Observation obs = vector<vector<vector<int>>>(this->lanes, vector<vector<int>>(this->cols, vector<int>(3, 0)));    
     for (int lane = 0; lane < this->lanes; lane++){
         for (int col = 0; col < this->cols; col++){
             if (this->plant_grid[lane][col] != nullptr){
                 Plant* plant = this->plant_grid[lane][col];
                 int total_hp = this->plant_data[plant->plant_type].hp;
-                int hp_third = plant->hp / (total_hp / 3);
-                obs[lane][col].plant_hp_phase = hp_third;
+                // hp_third represents which third of the total hp the current hp is in.
+                // for example: 
+                // total hp = 300, current hp = 50: hp_thirds = 1
+                int hp_third = 1 + (int)((plant->hp - 1) / (int)(total_hp / 3));
+                obs[lane][col][0] = plant->plant_type;
+                obs[lane][col][1] = hp_third;
                 // delete me
                 // assert(hp_third == 0 || hp_third == 1 || hp_third == 2 || hp_third == 3);
-                obs[lane][col].plant_type = this->plant_grid[lane][col]->plant_type;
                 // let this be a reminder of the shit I somtimes do 
                 // // stupid part BEGIN
                 // int third;
@@ -379,10 +382,6 @@ Observation Level::get_observation(){
                 // obs[lane][col].plant_hp_phase = third;
                 // // // stupid part END
             }
-            else {
-                obs[lane][col].plant_type = 0;
-                obs[lane][col].plant_hp_phase = 0;
-            }
             int danger_level = 0;
             int total_cell_hp = 0;
             for (auto zombie : this->zombie_grid[lane][col]){
@@ -394,7 +393,7 @@ Observation Level::get_observation(){
             else {
                 danger_level = 1 + total_cell_hp / 200;
             }
-            obs[lane][col].zombie_danger_level = danger_level;
+            obs[lane][col][2] = danger_level;
         }
     }
     return obs;

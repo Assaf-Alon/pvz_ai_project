@@ -179,7 +179,7 @@ class CellObservation {
     ~CellObservation() = default;
 };
 
-typedef vector<vector<CellObservation>> Observation;
+typedef vector<vector<vector<int>>> Observation;
 
 class Action {
     public:
