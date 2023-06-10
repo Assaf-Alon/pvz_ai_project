@@ -1,4 +1,6 @@
 #include "level.hpp"
+#include "zombie.h"
+#include "plant.h"
 using std::cout;
 using std::endl;
 using std::string;
@@ -119,6 +121,9 @@ Level::Level(const Level& other_level)
 
     // Copy free spaces
     this->free_spaces = vector<Pos>(other_level.free_spaces);
+
+    // Copy chosen plants
+    this->chosen_plants = vector<int>(other_level.chosen_plants);
 }
 
 
@@ -516,19 +521,39 @@ Level::~Level()
     }
 }
 
-bool play_random_game(Level env) {
-    while (!env.done) {
-        env.step(env.get_random_action());
+bool play_random_game(Level env, int randomization_mode){
+    switch(randomization_mode){
+        case 1:
+        while (!env.done) {
+            env.step(env.get_random_action());
+        }
+        return env.win;
+        break;
+        case 2:
+        while(!env.done) {
+            int lane = get_random_number(0, env.lanes - 1);
+            int col = get_random_number(0, env.cols - 1);
+            int plant = env.get_random_plant();
+            Action next_step = Action((PlantName)plant, lane, col);
+            while (!env.is_action_legal(next_step) && !env.done){
+                env.step();
+            }
+            if (env.done) {
+                return env.win;
+            }
+            env.step(next_step);
+        }
+        break;
     }
     return env.win;
 }
 
-int Level::rollout(int num_cpu, int num_games) {
+int Level::rollout(int num_cpu, int num_games, int mode) {
     std::vector<bool> victories(num_games, false);
     omp_set_num_threads(num_cpu);
     #pragma omp parallel for shared(victories)
     for (int i = 0; i < num_games; i++){
-        victories[i] = play_random_game(*this);
+        victories[i] = play_random_game(*this, mode);
     }
     return std::count(victories.begin(), victories.end(), true);
 }

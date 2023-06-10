@@ -1,4 +1,6 @@
 #include "level.hpp"
+#include "zombie.h"
+#include "plant.h"
 
 Plant::Plant(int lane, int column, PlantData& plant_data, int frame, int fps){
     this->hp = plant_data.hp;

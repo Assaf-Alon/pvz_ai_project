@@ -142,7 +142,7 @@ bool play_game_random_w_rollouts(int rollotus_per_cycle) {
     int num_rollouts = 0;
     while (!env.done) {
         if (env.frame % 100 == 0) {
-            std::cout << "["<< env.frame << "] Rollout: " << env.rollout(8, rollotus_per_cycle) << std::endl;
+            std::cout << "["<< env.frame << "] Rollout: " << env.rollout(8, rollotus_per_cycle, 1) << std::endl;
             num_rollouts += rollotus_per_cycle;
         }
         Action next_action = env.get_random_action();

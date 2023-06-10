@@ -95,9 +95,9 @@ int main() {
     // play_game_random();
     // play_game1_but_copy_midway();
     // play_random_games(10000);
-    // play_game_random_w_rollouts(10000);
+    play_game_random_w_rollouts(10000);
     // play_game_random_w_rollouts_after_action(10000);
-    estimate_game_duration(100000);
+    // estimate_game_duration(100000);
     // play_random_games(1);
     // play_game_single_plant(CHERRYBOMB);
     // play_specific_game();

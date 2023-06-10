@@ -15,7 +15,6 @@
 #include <omp.h>
 #include <utility>
 #include <bitset>
-// #include <numpy/ndarrayobject.h>
 using std::vector;
 using std::string;
 using std::pair;
@@ -28,10 +27,12 @@ int get_random_number(const int min, const int max);
 
 class Level;
 class Zombie;
+class ZombieInfo;
 class Plant;
 typedef std::function<bool(Level&, Plant&)> PlantAction;
 typedef std::pair<int, int> Pos;
 
+// try to move it to plant.h
 class PlantData {
     public:
     int hp;
@@ -70,6 +71,7 @@ class ZombieSpawnTemplate {
     ZombieSpawnTemplate(int second, int lane, std::string type): second(second), lane(lane), type(type) {};
 };
 
+// try to move to zombie.h
 class ZombieInfo {
     public:
     int hp;
@@ -79,30 +81,7 @@ class ZombieInfo {
     bool frozen;
 };
 
-class Zombie {
-    public:
-    int lane;
-    int col;
-    int hp = 181;
-    int damage = 100;
-    double move_interval_seconds = 4.7;
-    int move_interval;
-    double attack_interval_seconds = 1.0;
-    int attack_interval;
-    int last_action;
-    bool entering_house = false;
-    string type;
-    bool frozen = false;
-    bool hypnotized = false;
-    Zombie(const string& type, int lane, const Level& level);
-    Zombie(const Zombie& other) = default;
-    void attack(Level& level);
-    void move(Level& level);
-    void do_action(Level& level);
-    void get_damaged(int damage, Level& Levels);
-    ZombieInfo get_info();
-};
-
+// try to move to plant.h
 class PlantInfo {
     public:
     int hp;
@@ -110,48 +89,6 @@ class PlantInfo {
     int lane;
     int col;
 };
-
-class Plant {
-public:
-    int lane;
-    int col;
-    int hp;
-    int cost;
-    int damage; // for sun-generating plants, this is the value of the sun generated
-    float action_interval_seconds;
-    int action_interval;
-    float recharge_seconds;
-    int recharge;
-    int frame_action_available;
-    int fps;   // for clone...?
-    int plant_type;
-    std::string plant_name;
-    Plant(int lane, int column, PlantData &plant_data, int frame, int fps);
-    PlantAction action;
-    PlantInfo get_info();
-    void do_action(Level& level);
-    void get_damaged(int damage, Level& level);
-    Plant* clone() const;
-    ~Plant() = default;
-};
-
-bool cherrybomb_action(Level& level, Plant& plant);
-bool chomper_action(Level& level, Plant& plant);
-bool hypnoshroom_action(Level& level, Plant& plant);
-bool iceshroom_action(Level& level, Plant& plant);
-bool jalapeno_action(Level& level, Plant& plant);
-bool peashooter_action(Level& level, Plant& plant);
-bool potatomine_action(Level& level, Plant& plant);
-bool puffshroom_action(Level& level, Plant& plant);
-bool repeaterpea_action(Level& level, Plant& plant);
-bool scaredyshroom_action(Level& level, Plant& plant);
-bool snowpea_action(Level& level, Plant& plant);
-bool spikeweed_action(Level& level, Plant& plant);
-bool squash_action(Level& level, Plant& plant);
-bool sunflower_action(Level& level, Plant& plant);
-bool sunshroom_action(Level& level, Plant& plant);
-bool threepeater_action(Level& level, Plant& plant);
-bool wallnut_action(Level& level, Plant& plant);
 
 class Cell {
     public:
@@ -247,10 +184,10 @@ public:
 
     // misc
     void append_zombie(int second, int lane, std::string type);
-    int rollout(int num_cpu, int num_games=10000); // return num_victories
+    int rollout(int num_cpu, int num_games=10000, int mode=1); // return num_victories
 
 };
-bool play_random_game(Level env);
+bool play_random_game(Level env, int randomization_mode);
 
 
 #endif // _PVZ_LEVEL

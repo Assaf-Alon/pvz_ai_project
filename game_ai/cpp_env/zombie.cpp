@@ -1,4 +1,7 @@
 #include "level.hpp"
+#include "zombie.h"
+#include "plant.h"
+
 #include <unistd.h>
 
 Zombie::Zombie(const std::string &type, int lane, const Level &level) : lane(lane), col(level.cols - 1), last_action(level.frame), type(type)
