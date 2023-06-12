@@ -9,12 +9,12 @@
 #include <iostream>
 #include <random>
 #include <memory>
-#include <unordered_map>
 #include <functional>
 #include <algorithm>
 #include <omp.h>
 #include <utility>
-#include <bitset>
+#include <future>
+#include <chrono>
 using std::vector;
 using std::string;
 using std::pair;
@@ -175,6 +175,7 @@ public:
     const Action get_random_action() const; // guranteed to be legal
     PlantName get_random_legal_plant() const;
     int get_random_plant() const;
+    bool is_plantable(int plant) const;
     bool get_random_position(int& lane, int& col) const;
     vector<Pos>* get_all_legal_positions(); // for use in python
 
@@ -185,7 +186,7 @@ public:
     // misc
     void append_zombie(int second, int lane, std::string type);
     int rollout(int num_cpu, int num_games=10000, int mode=1); // return num_victories
-
+    std::pair<int, int> timed_rollout(int num_cpu, int time_limit_ms, int mode = 1);
 };
 bool play_random_game(Level env, int randomization_mode);
 

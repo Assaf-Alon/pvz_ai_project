@@ -9,26 +9,28 @@ class Action;
 class PlantInfo;
 
 class PlantData;
-// class PlantData {
-//     public:
-//     int hp;
-//     int damage;
-//     float action_interval_seconds;
-//     int action_interval;
-//     float recharge_seconds;
-//     int recharge;
-//     int cost;
-//     std::function<bool(Level&, Plant&)> action_func;
-//     std::string plant_name;
-//     int next_available_frame = 9999;
-//     int plant_type;
-//     PlantData() = default;
-//     PlantData(int fps, int hp, int damage, float action_interval_seconds, float recharge_seconds, int cost, std::function<bool(Level&, Plant&)> action_func, std::string plant_name, int plant_type) : \
-//     hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name), plant_type(plant_type) {
-//         this->action_interval = static_cast<int>(action_interval_seconds * fps);
-//         this->recharge = static_cast<int>(recharge_seconds * fps);
-//     };
-// };
+/*
+class PlantData {
+    public:
+    int hp;
+    int damage;
+    float action_interval_seconds;
+    int action_interval;
+    float recharge_seconds;
+    int recharge;
+    int cost;
+    std::function<bool(Level&, Plant&)> action_func;
+    std::string plant_name;
+    int next_available_frame = 9999;
+    int plant_type;
+    PlantData() = default;
+    PlantData(int fps, int hp, int damage, float action_interval_seconds, float recharge_seconds, int cost, std::function<bool(Level&, Plant&)> action_func, std::string plant_name, int plant_type) : \
+    hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name), plant_type(plant_type) {
+        this->action_interval = static_cast<int>(action_interval_seconds * fps);
+        this->recharge = static_cast<int>(recharge_seconds * fps);
+    };
+};
+*/
 
 class Plant {
 public:

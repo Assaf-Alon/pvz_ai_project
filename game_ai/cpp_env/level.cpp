@@ -52,14 +52,12 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> le
     for (auto plant_name : legal_plants){
         plant_data[plant_name].next_available_frame = 0;
     }
-    // =========================================
     this->free_spaces.reserve(lanes * cols * 2);
     for(int lane = 0; lane < lanes; lane++){
         for(int col = 0; col < cols; col++){
             this->free_spaces.push_back(Pos(lane, col));
         }
     }
-    // =========================================
 }
 
 Level* Level::clone() {
@@ -363,29 +361,9 @@ Observation Level::get_observation(){
             if (this->plant_grid[lane][col] != nullptr){
                 Plant* plant = this->plant_grid[lane][col];
                 int total_hp = this->plant_data[plant->plant_type].hp;
-                // hp_third represents which third of the total hp the current hp is in.
-                // for example: 
-                // total hp = 300, current hp = 50: hp_thirds = 1
                 int hp_third = 1 + (int)((plant->hp - 1) / (int)(total_hp / 3));
                 obs[lane][col][0] = plant->plant_type;
                 obs[lane][col][1] = hp_third;
-                // delete me
-                // assert(hp_third == 0 || hp_third == 1 || hp_third == 2 || hp_third == 3);
-                // let this be a reminder of the shit I somtimes do 
-                // // stupid part BEGIN
-                // int third;
-                // int hp = plant->hp;
-                // if (hp <= total_hp / 3){
-                //     third = 0;
-                // }
-                // else if (hp <= 2 * (total_hp / 3)){
-                //     third = 1;
-                // }
-                // else {
-                //     third = 2;
-                // }
-                // obs[lane][col].plant_hp_phase = third;
-                // // // stupid part END
             }
             int danger_level = 0;
             int total_cell_hp = 0;
@@ -435,6 +413,13 @@ int Level::get_random_plant() const {
     return this->chosen_plants[get_random_number(0, this->chosen_plants.size() - 1)];
 }
 
+bool Level::is_plantable(int plant) const {
+    if (plant >= NUM_PLANTS || plant < NO_PLANT) {
+        return false;
+    }
+    return (this->frame >= this->plant_data[plant].next_available_frame) && (this->suns >= this->plant_data[plant].cost);
+}
+
 void Level::step() {
     this->step(this->no_action);
 }
@@ -463,7 +448,7 @@ vector<Pos>* Level::get_all_legal_positions() {
     return &(this->free_spaces);
 }
 
-// As long as a substantial amount of the board is free, this should work efficiently
+// guranteed to be a legal position if one exists
 bool Level::get_random_position(int& lane, int& col) const {
     const vector<Pos>& free_spaces = this->free_spaces;
     if (free_spaces.size() == 0){
@@ -475,17 +460,6 @@ bool Level::get_random_position(int& lane, int& col) const {
     lane = position.first;
     col = position.second;
     return true;
-    // ==================================================================
-    // for (int attempt = 0; attempt < 3; attempt++) {
-    //     lane = get_random_number(0, lanes - 1);
-    //     col = get_random_number(0, cols - 1);
-    //     if (this->plant_grid[lane][col] == nullptr) {
-    //         return true;
-    //     }
-    // }
-    // lane = -1;
-    // col = -1;
-    // return false; // no_action
 }
 
 // TODO - discuss optimizing this
@@ -511,25 +485,31 @@ Level::~Level()
     std::cout << "Zombies left on field: " << this->zombie_list.size() << std::endl;
     std::cout << "Zombies left to spawn: " << this->level_data.size() << std::endl;
     #endif
-    while (this->plant_list.empty() == false)
-    {
-        this->plant_list.front()->get_damaged(9999, *this);
+    // while (this->plant_list.empty() == false)
+    // {
+    //     this->plant_list.front()->get_damaged(9999, *this);
+    // }
+    // while (this->zombie_list.empty() == false)
+    // {
+    //     this->zombie_list.front()->get_damaged(9999, *this);
+    // }
+    for (auto plant : this->plant_list) {
+        delete plant;
     }
-    while (this->zombie_list.empty() == false)
-    {
-        this->zombie_list.front()->get_damaged(9999, *this);
+    for (auto zombie : this->zombie_list) {
+        delete zombie;
     }
 }
 
 bool play_random_game(Level env, int randomization_mode){
     switch(randomization_mode){
-        case 1:
+        case 1: // for each step, choose a random action available right now
         while (!env.done) {
             env.step(env.get_random_action());
         }
         return env.win;
         break;
-        case 2:
+        case 2: // select next action, do empty steps until its possible, then do it
         while(!env.done) {
             int lane = get_random_number(0, env.lanes - 1);
             int col = get_random_number(0, env.cols - 1);
@@ -544,6 +524,24 @@ bool play_random_game(Level env, int randomization_mode){
             env.step(next_step);
         }
         break;
+        case 3: // select next plant to plant, wait until it's possible, select random empty cell and plant it
+        while(!env.done) {
+            int next_plant = env.get_random_plant();
+            while(!env.is_plantable(next_plant) && !env.done) {
+                env.step();
+            }
+            if (env.done) {
+                return env.win;
+            }
+            int lane, col;
+            while(!env.get_random_position(lane, col) && !env.done) {
+                env.step();
+            }
+            if (env.done) {
+                return env.win;
+            }
+            env.step((PlantName)next_plant, lane, col);
+        }
     }
     return env.win;
 }
@@ -556,4 +554,19 @@ int Level::rollout(int num_cpu, int num_games, int mode) {
         victories[i] = play_random_game(*this, mode);
     }
     return std::count(victories.begin(), victories.end(), true);
+}
+
+// returns pair(rollouts, victories)
+std::pair<int, int> Level::timed_rollout(int num_cpu, int time_limit_ms, int mode) {
+    int rollouts = 0, victories = 0;
+    auto start_time = std::chrono::high_resolution_clock::now();
+    auto end_time = start_time + std::chrono::milliseconds(time_limit_ms);
+    omp_set_num_threads(num_cpu);
+    #pragma omp parallel reduction(+:victories) reduction(+:rollouts)
+    while(std::chrono::high_resolution_clock::now() < end_time) {
+        int win = play_random_game(*this, mode);
+        victories += win;
+        rollouts++;
+    }
+    return std::pair<int, int>(rollouts, victories);
 }

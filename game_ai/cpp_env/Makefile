@@ -7,7 +7,7 @@ LIBRARY := _level.so
 PYTHONI := -I/usr/include/python3.11
 PYTHONL := -Xlinker -export-dynamic
 LIBFLAGS := -L/usr/local/lib -lgmpxx -lgmp
-CFLAGS := -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -O3 -flto
+CFLAGS := -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -O2 -flto
 DFLAGS := -DDEBUG -fsanitize=address,undefined,leak,thread -g $(CFLAGS) -OO
 CC := clang++
 
@@ -44,13 +44,21 @@ debug:
 	$(CC) -o $(EXEC) $(DFLAGS) *.cpp
 
 fast:
-	clang++ -O2 -o $(EXEC) $(CFLAGS) *.cpp
+	clang++ -o $(EXEC) $(CFLAGS) *.cpp
 
 fast-sanitize:
 	clang++ -o $(EXEC) -g -std=c++20 -fopenmp -O0 -fsanitize=address,undefined,leak *.cpp
 
+.PHONY: profile
 profile:
-	g++ -O2 -o $(EXEC) $(CFLAGS) -pg *.cpp
+	g++ -o $(EXEC) $(CFLAGS) -pg *.cpp
 	./$(EXEC)
 	mv gmon.out profile/
-	gprof main.out profile/gmon.out > analysis.txt
+	gprof main.out profile/gmon.out > profile/analysis.txt
+
+clang-profile-optimize:
+	$(CC) -o $(EXEC) $(CFLAGS) -fprofile-instr-generate *.cpp
+	./$(EXEC)
+	mv *.profraw profile/
+	llvm-profdata merge -output=profile/code.profdata profile/*.profraw 
+	$(CC) -o $(EXEC) $(CFLAGS) -fprofile-instr-use=profile/code.profdata *.cpp

@@ -163,11 +163,13 @@ def estimate_simulation_speed():
 
 
 if __name__ == "__main__":
-    level = cpp_level.Level(5, 10, 10, level_data_1, chosen_plants_1)
-    print(level.rollout(8, 10000, 1))
-    print(level.rollout(8, 10000, 2))
+    # level = cpp_level.Level(5, 10, 10, level_data_1, chosen_plants_1)
+    # print(level.rollout(8, 10000, 1))
+    # print(level.rollout(8, 10000, 2))
+    # print(level.rollout(8, 10000, 3))
+
     # animate_observation(level)
-    # run_animation()
+    run_animation()
     # estimate_simulation_speed()
     # import pstats
     # p = pstats.Stats('profile.txt')
