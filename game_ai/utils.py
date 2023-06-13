@@ -236,6 +236,21 @@ def run_animation():
         frame_list.append(frame)
     animate_observation_buffer(frame_list)
 
+def simulate_set_game(level: cpp_level.Level, action_list: list[tuple[int]]):
+    frames = []
+    for action in action_list:
+        cpp_action = cpp_level.Action(*action)
+        while not level.is_action_legal(cpp_action) and not level.done:
+            level.step()
+            frames.append(get_frame_from_obs(get_numpy_arr_from_level_obs(level)))
+        level.step(cpp_action)
+        frames.append(get_frame_from_obs(get_numpy_arr_from_level_obs(level)))
+    print(f"lawnmowers: {level.lawnmowers[0]} {level.lawnmowers[1]} {level.lawnmowers[2]} {level.lawnmowers[3]} {level.lawnmowers[4]}")
+    input()
+    animate_observation_buffer(frames)
+    
+    
+    
 def estimate_simulation_speed():
     level = cpp_level.Level(5, 10, 10, level_data_1, chosen_plants_basic)
     num_rollout = 1000000
@@ -270,27 +285,30 @@ def play_level3():
 
 def play_level4():
     FPS = 10
-    GAMES = 1000000
+    GAMES = 100000
     level = cpp_level.Level(5, 10, FPS, lvl4_data, chosen_plants_lvl4)
     print(f"Level 4 Mode 1: {level.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 4 Mode 2: {level.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 4 Mode 3: {level.rollout(8, GAMES, 3)} / {GAMES}")
 
 if __name__ == "__main__":
-    # play_level1()
-    # print()
-    # play_level2()
-    # print()
-    # play_level3()
-    # print()
-    # play_level4()
+    play_level1()
+    print()
+    play_level2()
+    print()
+    play_level3()
+    print()
+    play_level4()
     # level = cpp_level.Level(5, 10, 10, level_data_1, chosen_plants_1)
     # print(level.rollout(8, 10000, 1))
     # print(level.rollout(8, 10000, 2))
     # print(level.rollout(8, 10000, 3))
+    # print(level.timed_rollout(8, 2000, 1))
+    # print(level.timed_rollout(8, 2000, 2))
+    # print(level.timed_rollout(8, 2000, 3))
 
     # animate_observation(level)
-    run_animation()
+    # run_animation()
     # estimate_simulation_speed()
     # import pstats
     # p = pstats.Stats('profile.txt')

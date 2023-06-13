@@ -132,7 +132,7 @@ public:
     int suns = 50;
     int frame = 1;
     int last_sun_generated = 1;
-    float sun_interval_seconds = 10;
+    float sun_interval_seconds = 6; // Used to be 10
     int sun_interval;
     bool zombie_in_home_col = false;
     bool done = false;

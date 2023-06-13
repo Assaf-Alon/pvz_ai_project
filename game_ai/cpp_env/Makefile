@@ -51,7 +51,7 @@ fast-sanitize:
 
 .PHONY: profile
 profile:
-	g++ -o $(EXEC) $(CFLAGS) -pg *.cpp
+	g++ -o $(EXEC) -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -O2 -pg *.cpp
 	./$(EXEC)
 	mv gmon.out profile/
 	gprof main.out profile/gmon.out > profile/analysis.txt

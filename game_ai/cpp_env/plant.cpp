@@ -21,8 +21,13 @@ Plant::Plant(int lane, int column, PlantData& plant_data, int frame, int fps){
     // The string comparation here sucks.
     // Maybe Keep the enum value inside PlantData?
     this->frame_action_available = frame + this->action_interval;
-    if (this->plant_name == "chomper") {
+    if (this->plant_type == CHOMPER) {
         this->frame_action_available = frame;
+    }
+
+    // Sunflower's first sun generated takes about 6 seconds
+    if (this->plant_type == SUNFLOWER) {
+        this->frame_action_available = frame + (6/fps);
     }
 }
 
