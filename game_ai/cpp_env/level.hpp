@@ -120,10 +120,12 @@ typedef vector<vector<vector<int>>> Observation;
 
 class Action {
     public:
-    const PlantName plant_name; // plant_name or none
+    PlantName plant_name; // plant_name or none
     int lane;
     int col;
-    Action(PlantName name, int lane, int col) : plant_name(name), lane(lane), col(col) {}
+    Action(PlantName name, int lane, int col) : plant_name(name), lane(lane), col(col) {};
+    Action() = default;
+    // Action& operator=(Action& action) = default;
 };
 class Level {
 public:
@@ -178,6 +180,7 @@ public:
     bool is_plantable(int plant) const;
     bool get_random_position(int& lane, int& col) const;
     vector<Pos>* get_all_legal_positions(); // for use in python
+    vector<Action> get_action_space() const;
 
     // State/Observation
     Observation get_observation();

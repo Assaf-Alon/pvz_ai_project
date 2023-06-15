@@ -1,9 +1,12 @@
 # Define the source files and object files
-SRCS := level_wrap.cxx zombie.cpp plant.cpp level.cpp 
-OBJS := $(SRCS:%.cpp=%.o)
-OBJS := $(OBJS:%.cxx=%.o)
+SWIG_SRCS := level_wrap.cxx zombie.cpp plant.cpp level.cpp 
+SWIG_OBJS := $(SWIG_SRCS:%.cpp=%.o)
+SWIG_OBJS := $(SWIG_OBJS:%.cxx=%.o)
 EXEC := main.out
-LIBRARY := _level.so
+SWIG_LIBRARY := _level.so
+LIBRARY := lib_level.so
+LIB_SRCS := zombie.cpp plant.cpp level.cpp 
+LIB_OBJS := $(LIB_SRCS:%.cpp=%.o)
 PYTHONI := -I/usr/include/python3.11
 PYTHONL := -Xlinker -export-dynamic
 LIBFLAGS := -L/usr/local/lib -lgmpxx -lgmp
@@ -12,7 +15,9 @@ DFLAGS := -DDEBUG -fsanitize=address,undefined,leak,thread -g $(CFLAGS) -OO
 CC := clang++
 
 # Default target
-all: $(LIBRARY)
+all: $(SWIG_LIBRARY)
+
+lib: $(LIBRARY)
 
 # Rule for generating object files from source files
 %.o: %.cpp
@@ -22,8 +27,12 @@ all: $(LIBRARY)
 		$(CC) $(CFLAGS) $(PYTHONI) -c $< -o $@ -fPIC
 
 # Rule for generating the library by linking object files
-$(LIBRARY): $(OBJS)
-		$(CC) $(PYTHONL) -flto -shared $(OBJS) $(LIBFLAGS) -fopenmp -o $(LIBRARY)
+$(SWIG_LIBRARY): $(SWIG_OBJS)
+		$(CC) $(PYTHONL) -flto -shared $(SWIG_OBJS) $(LIBFLAGS) -fopenmp -o $(SWIG_LIBRARY)
+
+
+$(LIBRARY): $(LIB_OBJS)
+	$(CC) -flto -shared $(LIB_OBJS) $(LIBFLAGS) -fopenmp -o $(LIBRARY)
 
 # Rule for generating the swig interface file
 level_wrap.cxx: level.i
@@ -32,10 +41,10 @@ level_wrap.cxx: level.i
 # Clean target to remove generated files
 .PHONY: clean
 clean:
-		rm -f $(OBJS) $(LIBRARY) level_wrap.cxx level_wrap.o level.py level.pyc
+		rm -f $(SWIG_OBJS) $(SWIG_LIBRARY) level_wrap.cxx level_wrap.o level.py level.pyc
 
 # Additional dependencies
-$(OBJS): level.hpp
+$(SWIG_OBJS): level.hpp
 
 # Disable implicit rules
 .SUFFIXES:

@@ -1040,12 +1040,12 @@ _level.CellObservation_swigregister(CellObservation)
 class Action(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    plant_name = property(_level.Action_plant_name_get, _level.Action_plant_name_set)
+    plant_name = property(_level.Action_plant_name_get)
     lane = property(_level.Action_lane_get, _level.Action_lane_set)
     col = property(_level.Action_col_get, _level.Action_col_set)
 
-    def __init__(self, *args):
-        _level.Action_swiginit(self, _level.new_Action(*args))
+    def __init__(self, name, lane, col):
+        _level.Action_swiginit(self, _level.new_Action(name, lane, col))
     __swig_destroy__ = _level.delete_Action
 
 # Register Action in _level:
@@ -1120,17 +1120,11 @@ class Level(object):
     def get_random_plant(self):
         return _level.Level_get_random_plant(self)
 
-    def is_plantable(self, plant):
-        return _level.Level_is_plantable(self, plant)
-
     def get_random_position(self, lane, col):
         return _level.Level_get_random_position(self, lane, col)
 
     def get_all_legal_positions(self):
         return _level.Level_get_all_legal_positions(self)
-
-    def get_action_space(self):
-        return _level.Level_get_action_space(self)
 
     def get_observation(self):
         return _level.Level_get_observation(self)
@@ -1141,17 +1135,14 @@ class Level(object):
     def append_zombie(self, second, lane, type):
         return _level.Level_append_zombie(self, second, lane, type)
 
-    def rollout(self, num_cpu, num_games=10000, mode=1):
-        return _level.Level_rollout(self, num_cpu, num_games, mode)
-
-    def timed_rollout(self, num_cpu, time_limit_ms, mode=1):
-        return _level.Level_timed_rollout(self, num_cpu, time_limit_ms, mode)
+    def rollout(self, num_cpu, num_games=10000):
+        return _level.Level_rollout(self, num_cpu, num_games)
 
 # Register Level in _level:
 _level.Level_swigregister(Level)
 
 
-def play_random_game(env, randomization_mode):
-    return _level.play_random_game(env, randomization_mode)
+def play_random_game(env):
+    return _level.play_random_game(env)
 
 

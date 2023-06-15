@@ -1,0 +1,489 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 22.03      0.13     0.13  7415173     0.00     0.00  Zombie::do_action(Level&)
+ 15.25      0.22     0.09  1368595     0.00     0.00  Level::spawn_zombies()
+ 11.86      0.29     0.07  7217832     0.00     0.00  Zombie::move(Level&)
+ 11.86      0.36     0.07                             _init
+  6.78      0.40     0.04  2174503     0.00     0.00  Plant::do_action(Level&)
+  5.08      0.43     0.03  3320206     0.00     0.00  Level::is_action_legal(Action const&) const
+  5.08      0.46     0.03  1275252     0.00     0.00  Level::check_endgame()
+  5.08      0.49     0.03      406     0.07     1.26  play_random_game(Level, int)
+  3.39      0.51     0.02   381571     0.00     0.00  squash_action(Level&, Plant&)
+  1.69      0.52     0.01   775961     0.00     0.00  std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_invoke(std::_Any_data const&, Level&, Plant&)
+  1.69      0.53     0.01   344413     0.00     0.00  Level::get_random_action() const
+  1.69      0.54     0.01   274109     0.00     0.00  potatomine_action(Level&, Plant&)
+  1.69      0.55     0.01   164074     0.00     0.00  Plant::get_info()
+  1.69      0.56     0.01    44100     0.00     0.00  repeaterpea_action(Level&, Plant&)
+  1.69      0.57     0.01    23354     0.00     0.00  Plant::get_damaged(int, Level&)
+  1.69      0.58     0.01     4863     0.00     0.00  Level::plant(Action const&)
+  1.69      0.59     0.01      548     0.02     0.02  std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >* std::__do_uninit_fill_n<std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >*, unsigned long, std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > > >(std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >*, unsigned long, std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > > const&)
+  0.00      0.59     0.00  1556304     0.00     0.00  Level::do_player_action(Action const&)
+  0.00      0.59     0.00    76936     0.00     0.00  peashooter_action(Level&, Plant&)
+  0.00      0.59     0.00    67409     0.00     0.00  chomper_action(Level&, Plant&)
+  0.00      0.59     0.00    37420     0.00     0.00  std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)
+  0.00      0.59     0.00    20306     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+  0.00      0.59     0.00    15806     0.00     0.00  get_random_number(int, int)
+  0.00      0.59     0.00    11333     0.00     0.00  Zombie::get_damaged(int, Level&)
+  0.00      0.59     0.00     9677     0.00     0.00  Zombie::Zombie(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int, Level const&)
+  0.00      0.59     0.00     8834     0.00     0.00  spikeweed_action(Level&, Plant&)
+  0.00      0.59     0.00     8263     0.00     0.00  threepeater_action(Level&, Plant&)
+  0.00      0.59     0.00     5938     0.00     0.00  Plant::Plant(int, int, PlantData&, int, int)
+  0.00      0.59     0.00     3085     0.00     0.00  Level::get_random_legal_plant() const
+  0.00      0.59     0.00     2689     0.00     0.00  std::_Deque_base<Action, std::allocator<Action> >::~_Deque_base()
+  0.00      0.59     0.00     2072     0.00     0.00  std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::~_Deque_base()
+  0.00      0.59     0.00     1735     0.00     0.00  frame_dummy
+  0.00      0.59     0.00     1636     0.00     0.00  sunflower_action(Level&, Plant&)
+  0.00      0.59     0.00     1167     0.00     0.00  std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::_M_initialize_map(unsigned long)
+  0.00      0.59     0.00      893     0.00     0.00  Level::~Level()
+  0.00      0.59     0.00      400     0.00     0.00  std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::deque(std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> > const&)
+  0.00      0.59     0.00      383     0.00     0.00  std::vector<std::vector<Plant*, std::allocator<Plant*> >, std::allocator<std::vector<Plant*, std::allocator<Plant*> > > >::vector(unsigned long, std::vector<Plant*, std::allocator<Plant*> > const&, std::allocator<std::vector<Plant*, std::allocator<Plant*> > > const&)
+  0.00      0.59     0.00      364     0.00     0.03  Level::Level(Level const&)
+  0.00      0.59     0.00      236     0.00     0.00  cherrybomb_action(Level&, Plant&)
+  0.00      0.59     0.00      233     0.00     0.00  jalapeno_action(Level&, Plant&)
+  0.00      0.59     0.00       27     0.00     0.00  void std::vector<Cell, std::allocator<Cell> >::_M_realloc_insert<Cell const&>(__gnu_cxx::__normal_iterator<Cell*, std::vector<Cell, std::allocator<Cell> > >, Cell const&)
+  0.00      0.59     0.00       25     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+  0.00      0.59     0.00       18     0.00     0.00  PlantData::PlantData(int, int, int, float, float, int, std::function<bool (Level&, Plant&)>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int)
+  0.00      0.59     0.00       11     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose()
+  0.00      0.59     0.00        3     0.00     0.00  Level::timed_rollout(int, int, int)
+  0.00      0.59     0.00        2     0.00     0.00  estimate_game_duration(int)
+  0.00      0.59     0.00        2     0.00     0.00  std::_Vector_base<int, std::allocator<int> >::~_Vector_base()
+  0.00      0.59     0.00        2     0.00     0.00  std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::~deque()
+  0.00      0.59     0.00        1     0.00     0.00  get_level_data3()
+  0.00      0.59     0.00        1     0.00     0.02  Level::Level(int, int, int, std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >, std::vector<int, std::allocator<int> >)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 1.69% of 0.59 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     88.1    0.00    0.52                 Level::clone() [1]
+                0.03    0.48     406/406         play_random_game(Level, int) [2]
+                0.00    0.01     364/364         Level::Level(Level const&) [20]
+                0.00    0.00     892/893         Level::~Level() [46]
+-----------------------------------------------
+                0.03    0.48     406/406         Level::clone() [1]
+[2]     86.4    0.03    0.48     406         play_random_game(Level, int) [2]
+                0.09    0.37 1368595/1368595     Level::spawn_zombies() [3]
+                0.01    0.00 1643420/3320206     Level::is_action_legal(Action const&) const [9]
+                0.01    0.00  344413/344413      Level::get_random_action() const [15]
+                0.00    0.00    8263/20306       std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [37]
+                0.00    0.00    6405/15806       get_random_number(int, int) [38]
+-----------------------------------------------
+                             1073699             Level::spawn_zombies() [3]
+                0.09    0.37 1368595/1368595     play_random_game(Level, int) [2]
+[3]     77.1    0.09    0.37 1368595+1073699 Level::spawn_zombies() [3]
+                0.13    0.01 7415173/7415173     Zombie::do_action(Level&) [4]
+                0.07    0.01 7217832/7217832     Zombie::move(Level&) [5]
+                0.04    0.00 2174503/2174503     Plant::do_action(Level&) [7]
+                0.03    0.00 1275252/1275252     Level::check_endgame() [8]
+                0.02    0.00  381571/381571      squash_action(Level&, Plant&) [10]
+                0.00    0.02 1556304/1556304     Level::do_player_action(Action const&) [11]
+                0.01    0.00   44100/44100       repeaterpea_action(Level&, Plant&) [12]
+                0.01    0.00  274109/274109      potatomine_action(Level&, Plant&) [13]
+                0.01    0.00  775961/775961      std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_invoke(std::_Any_data const&, Level&, Plant&) [14]
+                0.01    0.00    4863/4863        Level::plant(Action const&) [18]
+                0.00    0.00   76936/76936       peashooter_action(Level&, Plant&) [22]
+                0.00    0.00    8834/8834        spikeweed_action(Level&, Plant&) [23]
+                0.00    0.00    8263/8263        threepeater_action(Level&, Plant&) [24]
+                0.00    0.00     233/233         jalapeno_action(Level&, Plant&) [27]
+                0.00    0.00   67409/67409       chomper_action(Level&, Plant&) [28]
+                0.00    0.00     236/236         cherrybomb_action(Level&, Plant&) [29]
+                0.00    0.00    9677/9677        Zombie::Zombie(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int, Level const&) [39]
+                0.00    0.00    1636/1636        sunflower_action(Level&, Plant&) [44]
+                             1073699             Level::spawn_zombies() [3]
+-----------------------------------------------
+                0.13    0.01 7415173/7415173     Level::spawn_zombies() [3]
+[4]     23.7    0.13    0.01 7415173         Zombie::do_action(Level&) [4]
+                0.01    0.00   23354/23354       Plant::get_damaged(int, Level&) [17]
+                0.00    0.00    1985/2689        std::_Deque_base<Action, std::allocator<Action> >::~_Deque_base() [42]
+-----------------------------------------------
+                0.07    0.01 7217832/7217832     Level::spawn_zombies() [3]
+[5]     13.4    0.07    0.01 7217832         Zombie::move(Level&) [5]
+                0.01    0.00  150646/164074      Plant::get_info() [16]
+-----------------------------------------------
+                                                 <spontaneous>
+[6]     11.9    0.07    0.00                 _init [6]
+-----------------------------------------------
+                0.04    0.00 2174503/2174503     Level::spawn_zombies() [3]
+[7]      6.8    0.04    0.00 2174503         Plant::do_action(Level&) [7]
+-----------------------------------------------
+                0.03    0.00 1275252/1275252     Level::spawn_zombies() [3]
+[8]      5.1    0.03    0.00 1275252         Level::check_endgame() [8]
+                0.00    0.00    3917/11333       Zombie::get_damaged(int, Level&) [21]
+-----------------------------------------------
+                0.01    0.00 1643420/3320206     play_random_game(Level, int) [2]
+                0.02    0.00 1676786/3320206     Level::do_player_action(Action const&) [11]
+[9]      5.1    0.03    0.00 3320206         Level::is_action_legal(Action const&) const [9]
+-----------------------------------------------
+                0.02    0.00  381571/381571      Level::spawn_zombies() [3]
+[10]     3.4    0.02    0.00  381571         squash_action(Level&, Plant&) [10]
+                0.00    0.00     730/11333       Zombie::get_damaged(int, Level&) [21]
+                0.00    0.00     190/2689        std::_Deque_base<Action, std::allocator<Action> >::~_Deque_base() [42]
+-----------------------------------------------
+                0.00    0.02 1556304/1556304     Level::spawn_zombies() [3]
+[11]     2.6    0.00    0.02 1556304         Level::do_player_action(Action const&) [11]
+                0.02    0.00 1676786/3320206     Level::is_action_legal(Action const&) const [9]
+-----------------------------------------------
+                0.01    0.00   44100/44100       Level::spawn_zombies() [3]
+[12]     1.7    0.01    0.00   44100         repeaterpea_action(Level&, Plant&) [12]
+                0.00    0.00    2176/11333       Zombie::get_damaged(int, Level&) [21]
+-----------------------------------------------
+                0.01    0.00  274109/274109      Level::spawn_zombies() [3]
+[13]     1.7    0.01    0.00  274109         potatomine_action(Level&, Plant&) [13]
+                0.00    0.00     508/11333       Zombie::get_damaged(int, Level&) [21]
+                0.00    0.00     161/2689        std::_Deque_base<Action, std::allocator<Action> >::~_Deque_base() [42]
+-----------------------------------------------
+                0.01    0.00  775961/775961      Level::spawn_zombies() [3]
+[14]     1.7    0.01    0.00  775961         std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_invoke(std::_Any_data const&, Level&, Plant&) [14]
+-----------------------------------------------
+                0.01    0.00  344413/344413      play_random_game(Level, int) [2]
+[15]     1.7    0.01    0.00  344413         Level::get_random_action() const [15]
+                0.00    0.00    9559/20306       std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [37]
+                0.00    0.00    8124/15806       get_random_number(int, int) [38]
+                0.00    0.00    3085/3085        Level::get_random_legal_plant() const [41]
+-----------------------------------------------
+                0.00    0.00   13428/164074      Zombie::get_damaged(int, Level&) [21]
+                0.01    0.00  150646/164074      Zombie::move(Level&) [5]
+[16]     1.7    0.01    0.00  164074         Plant::get_info() [16]
+-----------------------------------------------
+                0.01    0.00   23354/23354       Zombie::do_action(Level&) [4]
+[17]     1.7    0.01    0.00   23354         Plant::get_damaged(int, Level&) [17]
+-----------------------------------------------
+                0.01    0.00    4863/4863        Level::spawn_zombies() [3]
+[18]     1.7    0.01    0.00    4863         Level::plant(Action const&) [18]
+                0.00    0.00    5938/5938        Plant::Plant(int, int, PlantData&, int, int) [40]
+-----------------------------------------------
+                0.00    0.00       1/548         Level::Level(int, int, int, std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >, std::vector<int, std::allocator<int> >) [26]
+                0.01    0.00     547/548         Level::Level(Level const&) [20]
+[19]     1.7    0.01    0.00     548         std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >* std::__do_uninit_fill_n<std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >*, unsigned long, std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > > >(std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >*, unsigned long, std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > > const&) [19]
+-----------------------------------------------
+                0.00    0.01     364/364         Level::clone() [1]
+[20]     1.7    0.00    0.01     364         Level::Level(Level const&) [20]
+                0.01    0.00     547/548         std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >* std::__do_uninit_fill_n<std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >*, unsigned long, std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > > >(std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >*, unsigned long, std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > > const&) [19]
+                0.00    0.00   13573/37420       std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation) [36]
+                0.00    0.00    1254/1735        frame_dummy [30]
+                0.00    0.00    1228/2072        std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::~_Deque_base() [43]
+                0.00    0.00     418/1167        std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::_M_initialize_map(unsigned long) [45]
+                0.00    0.00     398/400         std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::deque(std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> > const&) [47]
+                0.00    0.00     382/383         std::vector<std::vector<Plant*, std::allocator<Plant*> >, std::allocator<std::vector<Plant*, std::allocator<Plant*> > > >::vector(unsigned long, std::vector<Plant*, std::allocator<Plant*> > const&, std::allocator<std::vector<Plant*, std::allocator<Plant*> > > const&) [48]
+-----------------------------------------------
+                0.00    0.00     157/11333       cherrybomb_action(Level&, Plant&) [29]
+                0.00    0.00     177/11333       chomper_action(Level&, Plant&) [28]
+                0.00    0.00     209/11333       jalapeno_action(Level&, Plant&) [27]
+                0.00    0.00     437/11333       threepeater_action(Level&, Plant&) [24]
+                0.00    0.00     508/11333       potatomine_action(Level&, Plant&) [13]
+                0.00    0.00     563/11333       spikeweed_action(Level&, Plant&) [23]
+                0.00    0.00     730/11333       squash_action(Level&, Plant&) [10]
+                0.00    0.00    2176/11333       repeaterpea_action(Level&, Plant&) [12]
+                0.00    0.00    2459/11333       peashooter_action(Level&, Plant&) [22]
+                0.00    0.00    3917/11333       Level::check_endgame() [8]
+[21]     0.1    0.00    0.00   11333         Zombie::get_damaged(int, Level&) [21]
+                0.00    0.00   13428/164074      Plant::get_info() [16]
+-----------------------------------------------
+                0.00    0.00   76936/76936       Level::spawn_zombies() [3]
+[22]     0.0    0.00    0.00   76936         peashooter_action(Level&, Plant&) [22]
+                0.00    0.00    2459/11333       Zombie::get_damaged(int, Level&) [21]
+-----------------------------------------------
+                0.00    0.00    8834/8834        Level::spawn_zombies() [3]
+[23]     0.0    0.00    0.00    8834         spikeweed_action(Level&, Plant&) [23]
+                0.00    0.00     563/11333       Zombie::get_damaged(int, Level&) [21]
+-----------------------------------------------
+                0.00    0.00    8263/8263        Level::spawn_zombies() [3]
+[24]     0.0    0.00    0.00    8263         threepeater_action(Level&, Plant&) [24]
+                0.00    0.00     437/11333       Zombie::get_damaged(int, Level&) [21]
+-----------------------------------------------
+                                                 <spontaneous>
+[25]     0.0    0.00    0.00                 main [25]
+                0.00    0.00       1/1           Level::Level(int, int, int, std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >, std::vector<int, std::allocator<int> >) [26]
+                0.00    0.00       9/27          void std::vector<Cell, std::allocator<Cell> >::_M_realloc_insert<Cell const&>(__gnu_cxx::__normal_iterator<Cell*, std::vector<Cell, std::allocator<Cell> > >, Cell const&) [49]
+                0.00    0.00       3/3           Level::timed_rollout(int, int, int) [53]
+                0.00    0.00       2/2072        std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::~_Deque_base() [43]
+                0.00    0.00       2/2           std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::~deque() [56]
+                0.00    0.00       2/2           std::_Vector_base<int, std::allocator<int> >::~_Vector_base() [55]
+                0.00    0.00       1/1           get_level_data3() [57]
+                0.00    0.00       1/2           estimate_game_duration(int) [54]
+                0.00    0.00       1/400         std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::deque(std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> > const&) [47]
+                0.00    0.00       1/893         Level::~Level() [46]
+-----------------------------------------------
+                0.00    0.00       1/1           main [25]
+[26]     0.0    0.00    0.00       1         Level::Level(int, int, int, std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >, std::vector<int, std::allocator<int> >) [26]
+                0.00    0.00       1/548         std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >* std::__do_uninit_fill_n<std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >*, unsigned long, std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > > >(std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >*, unsigned long, std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > > const&) [19]
+                0.00    0.00      37/37420       std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation) [36]
+                0.00    0.00      18/18          PlantData::PlantData(int, int, int, float, float, int, std::function<bool (Level&, Plant&)>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int) [51]
+                0.00    0.00      17/1735        frame_dummy [30]
+                0.00    0.00      11/11          std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose() [52]
+                0.00    0.00       1/400         std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::deque(std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> > const&) [47]
+                0.00    0.00       1/383         std::vector<std::vector<Plant*, std::allocator<Plant*> >, std::allocator<std::vector<Plant*, std::allocator<Plant*> > > >::vector(unsigned long, std::vector<Plant*, std::allocator<Plant*> > const&, std::allocator<std::vector<Plant*, std::allocator<Plant*> > > const&) [48]
+-----------------------------------------------
+                0.00    0.00     233/233         Level::spawn_zombies() [3]
+[27]     0.0    0.00    0.00     233         jalapeno_action(Level&, Plant&) [27]
+                0.00    0.00     209/11333       Zombie::get_damaged(int, Level&) [21]
+                0.00    0.00     151/2689        std::_Deque_base<Action, std::allocator<Action> >::~_Deque_base() [42]
+-----------------------------------------------
+                0.00    0.00   67409/67409       Level::spawn_zombies() [3]
+[28]     0.0    0.00    0.00   67409         chomper_action(Level&, Plant&) [28]
+                0.00    0.00     177/11333       Zombie::get_damaged(int, Level&) [21]
+-----------------------------------------------
+                0.00    0.00     236/236         Level::spawn_zombies() [3]
+[29]     0.0    0.00    0.00     236         cherrybomb_action(Level&, Plant&) [29]
+                0.00    0.00     157/11333       Zombie::get_damaged(int, Level&) [21]
+                0.00    0.00     202/2689        std::_Deque_base<Action, std::allocator<Action> >::~_Deque_base() [42]
+-----------------------------------------------
+                0.00    0.00       2/1735        std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::~deque() [56]
+                0.00    0.00      17/1735        Level::Level(int, int, int, std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >, std::vector<int, std::allocator<int> >) [26]
+                0.00    0.00     462/1735        Level::~Level() [46]
+                0.00    0.00    1254/1735        Level::Level(Level const&) [20]
+[30]     0.0    0.00    0.00    1735         frame_dummy [30]
+                0.00    0.00      17/37420       std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation) [36]
+-----------------------------------------------
+                0.00    0.00      17/37420       frame_dummy [30]
+                0.00    0.00      18/37420       PlantData::PlantData(int, int, int, float, float, int, std::function<bool (Level&, Plant&)>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int) [51]
+                0.00    0.00      37/37420       Level::Level(int, int, int, std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >, std::vector<int, std::allocator<int> >) [26]
+                0.00    0.00    2117/37420       std::_Deque_base<Action, std::allocator<Action> >::~_Deque_base() [42]
+                0.00    0.00    2208/37420       Plant::Plant(int, int, PlantData&, int, int) [40]
+                0.00    0.00   13573/37420       Level::Level(Level const&) [20]
+                0.00    0.00   19450/37420       Level::~Level() [46]
+[36]     0.0    0.00    0.00   37420         std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation) [36]
+-----------------------------------------------
+                               14110             std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [37]
+                0.00    0.00    2484/20306       Level::get_random_legal_plant() const [41]
+                0.00    0.00    8263/20306       play_random_game(Level, int) [2]
+                0.00    0.00    9559/20306       Level::get_random_action() const [15]
+[37]     0.0    0.00    0.00   20306+14110   std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [37]
+                0.00    0.00      25/25          std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [50]
+                               14110             std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [37]
+-----------------------------------------------
+                0.00    0.00    1277/15806       Level::get_random_legal_plant() const [41]
+                0.00    0.00    6405/15806       play_random_game(Level, int) [2]
+                0.00    0.00    8124/15806       Level::get_random_action() const [15]
+[38]     0.0    0.00    0.00   15806         get_random_number(int, int) [38]
+-----------------------------------------------
+                0.00    0.00    9677/9677        Level::spawn_zombies() [3]
+[39]     0.0    0.00    0.00    9677         Zombie::Zombie(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int, Level const&) [39]
+-----------------------------------------------
+                0.00    0.00    5938/5938        Level::plant(Action const&) [18]
+[40]     0.0    0.00    0.00    5938         Plant::Plant(int, int, PlantData&, int, int) [40]
+                0.00    0.00    2208/37420       std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation) [36]
+-----------------------------------------------
+                0.00    0.00    3085/3085        Level::get_random_action() const [15]
+[41]     0.0    0.00    0.00    3085         Level::get_random_legal_plant() const [41]
+                0.00    0.00    2484/20306       std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [37]
+                0.00    0.00    1277/15806       get_random_number(int, int) [38]
+-----------------------------------------------
+                0.00    0.00     151/2689        jalapeno_action(Level&, Plant&) [27]
+                0.00    0.00     161/2689        potatomine_action(Level&, Plant&) [13]
+                0.00    0.00     190/2689        squash_action(Level&, Plant&) [10]
+                0.00    0.00     202/2689        cherrybomb_action(Level&, Plant&) [29]
+                0.00    0.00    1985/2689        Zombie::do_action(Level&) [4]
+[42]     0.0    0.00    0.00    2689         std::_Deque_base<Action, std::allocator<Action> >::~_Deque_base() [42]
+                0.00    0.00    2117/37420       std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation) [36]
+-----------------------------------------------
+                0.00    0.00       2/2072        main [25]
+                0.00    0.00     842/2072        Level::~Level() [46]
+                0.00    0.00    1228/2072        Level::Level(Level const&) [20]
+[43]     0.0    0.00    0.00    2072         std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::~_Deque_base() [43]
+-----------------------------------------------
+                0.00    0.00    1636/1636        Level::spawn_zombies() [3]
+[44]     0.0    0.00    0.00    1636         sunflower_action(Level&, Plant&) [44]
+-----------------------------------------------
+                0.00    0.00       1/1167        get_level_data3() [57]
+                0.00    0.00     418/1167        Level::Level(Level const&) [20]
+                0.00    0.00     748/1167        std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::deque(std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> > const&) [47]
+[45]     0.0    0.00    0.00    1167         std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::_M_initialize_map(unsigned long) [45]
+-----------------------------------------------
+                0.00    0.00       1/893         main [25]
+                0.00    0.00     892/893         Level::clone() [1]
+[46]     0.0    0.00    0.00     893         Level::~Level() [46]
+                0.00    0.00   19450/37420       std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation) [36]
+                0.00    0.00     842/2072        std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::~_Deque_base() [43]
+                0.00    0.00     462/1735        frame_dummy [30]
+-----------------------------------------------
+                0.00    0.00       1/400         main [25]
+                0.00    0.00       1/400         Level::Level(int, int, int, std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >, std::vector<int, std::allocator<int> >) [26]
+                0.00    0.00     398/400         Level::Level(Level const&) [20]
+[47]     0.0    0.00    0.00     400         std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::deque(std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> > const&) [47]
+                0.00    0.00     748/1167        std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::_M_initialize_map(unsigned long) [45]
+-----------------------------------------------
+                0.00    0.00       1/383         Level::Level(int, int, int, std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >, std::vector<int, std::allocator<int> >) [26]
+                0.00    0.00     382/383         Level::Level(Level const&) [20]
+[48]     0.0    0.00    0.00     383         std::vector<std::vector<Plant*, std::allocator<Plant*> >, std::allocator<std::vector<Plant*, std::allocator<Plant*> > > >::vector(unsigned long, std::vector<Plant*, std::allocator<Plant*> > const&, std::allocator<std::vector<Plant*, std::allocator<Plant*> > > const&) [48]
+-----------------------------------------------
+                0.00    0.00       9/27          main [25]
+                0.00    0.00      18/27          get_level_data3() [57]
+[49]     0.0    0.00    0.00      27         void std::vector<Cell, std::allocator<Cell> >::_M_realloc_insert<Cell const&>(__gnu_cxx::__normal_iterator<Cell*, std::vector<Cell, std::allocator<Cell> > >, Cell const&) [49]
+-----------------------------------------------
+                0.00    0.00      25/25          std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [37]
+[50]     0.0    0.00    0.00      25         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [50]
+-----------------------------------------------
+                0.00    0.00      18/18          Level::Level(int, int, int, std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >, std::vector<int, std::allocator<int> >) [26]
+[51]     0.0    0.00    0.00      18         PlantData::PlantData(int, int, int, float, float, int, std::function<bool (Level&, Plant&)>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int) [51]
+                0.00    0.00      18/37420       std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation) [36]
+-----------------------------------------------
+                0.00    0.00      11/11          Level::Level(int, int, int, std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >, std::vector<int, std::allocator<int> >) [26]
+[52]     0.0    0.00    0.00      11         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose() [52]
+-----------------------------------------------
+                0.00    0.00       3/3           main [25]
+[53]     0.0    0.00    0.00       3         Level::timed_rollout(int, int, int) [53]
+-----------------------------------------------
+                0.00    0.00       1/2           main [25]
+                0.00    0.00       1/2           _GLOBAL__sub_I_default_chosen_plants [61]
+[54]     0.0    0.00    0.00       2         estimate_game_duration(int) [54]
+-----------------------------------------------
+                0.00    0.00       2/2           main [25]
+[55]     0.0    0.00    0.00       2         std::_Vector_base<int, std::allocator<int> >::~_Vector_base() [55]
+-----------------------------------------------
+                0.00    0.00       2/2           main [25]
+[56]     0.0    0.00    0.00       2         std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::~deque() [56]
+                0.00    0.00       2/1735        frame_dummy [30]
+-----------------------------------------------
+                0.00    0.00       1/1           main [25]
+[57]     0.0    0.00    0.00       1         get_level_data3() [57]
+                0.00    0.00      18/27          void std::vector<Cell, std::allocator<Cell> >::_M_realloc_insert<Cell const&>(__gnu_cxx::__normal_iterator<Cell*, std::vector<Cell, std::allocator<Cell> > >, Cell const&) [49]
+                0.00    0.00       1/1167        std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::_M_initialize_map(unsigned long) [45]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [10] squash_action(Level&, Plant&) [11] Level::do_player_action(Action const&) [45] std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::_M_initialize_map(unsigned long)
+  [28] chomper_action(Level&, Plant&) [18] Level::plant(Action const&) [43] std::_Deque_base<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::~_Deque_base()
+  [57] get_level_data3()      [20] Level::Level(Level const&) [42] std::_Deque_base<Action, std::allocator<Action> >::~_Deque_base()
+  [27] jalapeno_action(Level&, Plant&) [26] Level::Level(int, int, int, std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >, std::vector<int, std::allocator<int> >) [55] std::_Vector_base<int, std::allocator<int> >::~_Vector_base()
+   [2] play_random_game(Level, int) [46] Level::~Level()  [36] std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)
+  [23] spikeweed_action(Level&, Plant&) [17] Plant::get_damaged(int, Level&) [14] std::_Function_handler<bool (Level&, Plant&), bool (*)(Level&, Plant&)>::_M_invoke(std::_Any_data const&, Level&, Plant&)
+  [44] sunflower_action(Level&, Plant&) [16] Plant::get_info() [50] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+  [29] cherrybomb_action(Level&, Plant&) [7] Plant::do_action(Level&) [37] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+  [38] get_random_number(int, int) [40] Plant::Plant(int, int, PlantData&, int, int) [47] std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::deque(std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> > const&)
+  [22] peashooter_action(Level&, Plant&) [21] Zombie::get_damaged(int, Level&) [56] std::deque<ZombieSpawnTemplate, std::allocator<ZombieSpawnTemplate> >::~deque()
+  [13] potatomine_action(Level&, Plant&) [5] Zombie::move(Level&) [49] void std::vector<Cell, std::allocator<Cell> >::_M_realloc_insert<Cell const&>(__gnu_cxx::__normal_iterator<Cell*, std::vector<Cell, std::allocator<Cell> > >, Cell const&)
+  [12] repeaterpea_action(Level&, Plant&) [4] Zombie::do_action(Level&) [48] std::vector<std::vector<Plant*, std::allocator<Plant*> >, std::allocator<std::vector<Plant*, std::allocator<Plant*> > > >::vector(unsigned long, std::vector<Plant*, std::allocator<Plant*> > const&, std::allocator<std::vector<Plant*, std::allocator<Plant*> > > const&)
+  [24] threepeater_action(Level&, Plant&) [39] Zombie::Zombie(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int, Level const&) [52] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose()
+  [54] estimate_game_duration(int) [51] PlantData::PlantData(int, int, int, float, float, int, std::function<bool (Level&, Plant&)>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int) [19] std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >* std::__do_uninit_fill_n<std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >*, unsigned long, std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > > >(std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > >*, unsigned long, std::vector<std::__cxx11::list<Zombie*, std::allocator<Zombie*> >, std::allocator<std::__cxx11::list<Zombie*, std::allocator<Zombie*> > > > const&)
+   [8] Level::check_endgame()  [9] Level::is_action_legal(Action const&) const [6] _init
+   [3] Level::spawn_zombies() [15] Level::get_random_action() const [30] frame_dummy
+  [53] Level::timed_rollout(int, int, int) [41] Level::get_random_legal_plant() const

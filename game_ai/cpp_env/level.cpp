@@ -448,6 +448,22 @@ vector<Pos>* Level::get_all_legal_positions() {
     return &(this->free_spaces);
 }
 
+vector<Action> Level::get_action_space() const
+{
+    std::cout << "Generating action space" << std::endl;
+    vector<Action> action_space;
+    action_space.reserve(this->lanes * this->cols * this->chosen_plants.size() * 2);
+    for (size_t plant_idx = 0; plant_idx < this->chosen_plants.size(); plant_idx++) {
+        PlantName plant = (PlantName)this->chosen_plants[plant_idx];
+        for (int lane = 0; lane < this->lanes; lane++) {
+            for (int col = 0; col < this->cols; col++) {
+                action_space.push_back(Action(plant, lane, col));
+            }
+        }
+    }
+    return action_space;
+}
+
 // guranteed to be a legal position if one exists
 bool Level::get_random_position(int& lane, int& col) const {
     const vector<Pos>& free_spaces = this->free_spaces;
