@@ -39,15 +39,15 @@ public:
     int hp;
     int cost;
     int damage; // for sun-generating plants, this is the value of the sun generated
-    float action_interval_seconds;
+    // float action_interval_seconds;
     int action_interval;
-    float recharge_seconds;
+    // float recharge_seconds;
     int recharge;
     int frame_action_available;
     int fps;   // for clone...?
     int plant_type;
     std::string plant_name;
-    Plant(int lane, int column, PlantData &plant_data, int frame, int fps);
+    Plant(int lane, int column, const PlantData &plant_data, int frame, int fps);
     std::function<bool(Level&, Plant&)> action;
     PlantInfo get_info();
     void do_action(Level& level);

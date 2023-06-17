@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <list>
+#include <array>
 #include <deque>
 #include <sstream>
 #include <assert.h>
@@ -15,15 +16,23 @@
 #include <utility>
 #include <future>
 #include <chrono>
+#include "plant.h"
 using std::vector;
 using std::string;
 using std::pair;
+using std::array;
 #define LOG_FRAME(frame, msg) std::cout << "[" << frame << "] " << msg << std::endl;
 #define FAST 7.5
 #define SLOW 30
 #define VERY_SLOW 50
 
-int get_random_number(const int min, const int max);
+// int get_random_number(const int min, const int max);
+
+inline int get_random_number(const int min, const int max){ 
+    thread_local std::mt19937 generator(std::random_device{}());
+    std::uniform_int_distribution<int> distribution(min, max);
+    return distribution(generator);
+}
 
 class Level;
 class Zombie;
@@ -32,28 +41,6 @@ class Plant;
 typedef std::function<bool(Level&, Plant&)> PlantAction;
 typedef std::pair<int, int> Pos;
 
-// try to move it to plant.h
-class PlantData {
-    public:
-    int hp;
-    int damage;
-    float action_interval_seconds;
-    int action_interval;
-    float recharge_seconds;
-    int recharge;
-    int cost;
-    PlantAction action_func;
-    std::string plant_name;
-    int next_available_frame = 9999;
-    int plant_type;
-    PlantData() = default;
-    PlantData(int fps, int hp, int damage, float action_interval_seconds, float recharge_seconds, int cost, PlantAction action_func, std::string plant_name, int plant_type) : \
-    hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name), plant_type(plant_type) {
-        this->action_interval = static_cast<int>(action_interval_seconds * fps);
-        this->recharge = static_cast<int>(recharge_seconds * fps);
-    };
-};
-
 enum PlantName { NO_PLANT, CHERRYBOMB, CHOMPER,
                  HYPNOSHROOM, ICESHROOM, JALAPENO,
                  PEASHOOTER, POTATOMINE, PUFFSHROOM,
@@ -61,6 +48,54 @@ enum PlantName { NO_PLANT, CHERRYBOMB, CHOMPER,
                  SPIKEWEED, SQUASH, SUNFLOWER,
                  SUNSHROOM, THREEPEATER, WALLNUT,
                  NUM_PLANTS };
+
+// try to move it to plant.h
+class PlantData {
+    public:
+    int hp;
+    int damage;
+    float action_interval_seconds;
+    // int action_interval;
+    float recharge_seconds;
+    // int recharge;
+    int cost;
+    PlantAction action_func;
+    std::string plant_name;
+    int next_available_frame = 9999;
+    int plant_type;
+    PlantData() = default;
+    // PlantData(int fps, int hp, int damage, float action_interval_seconds, float recharge_seconds, int cost, PlantAction action_func, std::string plant_name, int plant_type) : \
+    // hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name), plant_type(plant_type) {
+    //     this->action_interval = static_cast<int>(action_interval_seconds * fps);
+    //     this->recharge = static_cast<int>(recharge_seconds * fps);
+    // };
+    PlantData(int hp, int damage, float action_interval_seconds, float recharge_seconds, int cost, PlantAction action_func, std::string plant_name, int plant_type) : \
+    hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name), plant_type(plant_type) {
+        // this->action_interval = static_cast<int>(action_interval_seconds * fps);
+        // this->recharge = static_cast<int>(recharge_seconds * fps);
+    };
+};
+
+static const std::array<PlantData, NUM_PLANTS> plant_data = {
+        PlantData(0, 0, 0,   0,  0, PlantAction(&wallnut_action), "no_plant", NO_PLANT),
+        PlantData(5000, 9000, 1.2,   50,  150, PlantAction(&cherrybomb_action), "cherrybomb", CHERRYBOMB),
+        PlantData(300,  9000, 42,    7.5, 150, PlantAction(&chomper_action), "chomper", CHOMPER),
+        PlantData(300,  20,   0,     30,  75,  PlantAction(&hypnoshroom_action), "hypnoshroom", HYPNOSHROOM),
+        PlantData(5000, 20,   1,     50,  75,  PlantAction(&iceshroom_action), "iceshroom", ICESHROOM),
+        PlantData(300,  9000, 1,     50,  125, PlantAction(&jalapeno_action), "jalapeno", JALAPENO),
+        PlantData(300,  20,   1.425, 7.5, 100, PlantAction(&peashooter_action), "peashooter", PEASHOOTER),
+        PlantData(300,  1800, 15,    30,  25,  PlantAction(&potatomine_action), "potatomine", POTATOMINE),
+        PlantData(300,  20,   1.425, 7.5, 0,   PlantAction(&puffshroom_action), "puffshroom", PUFFSHROOM),
+        PlantData(300,  20,   1.425, 7.5, 200, PlantAction(&repeaterpea_action), "repeaterpea", REPEATERPEA),
+        PlantData(300,  20,   1.425, 7.5, 20,  PlantAction(&scaredyshroom_action), "scaredyshroom", SCAREDYSHROOM),
+        PlantData(300,  20,   1.425, 7.5, 175, PlantAction(&snowpea_action), "snowpea", SNOWPEA),
+        PlantData(300,  20,   1,     7.5, 100, PlantAction(&spikeweed_action), "spikeweed", SPIKEWEED),
+        PlantData(300,  1800, 1.425, 30,  50,  PlantAction(&squash_action), "squash", SQUASH),
+        PlantData(300,  25,   24.25, 7.5, 50,  PlantAction(&sunflower_action), "sunflower", SUNFLOWER),
+        PlantData(300,  15,   24.25, 7.5, 25,  PlantAction(&sunshroom_action), "sunshroom", SUNSHROOM),
+        PlantData(300,  20,   1.425, 7.5, 325, PlantAction(&threepeater_action), "threepeater", THREEPEATER),
+        PlantData(4000, 0,    9999,  30,  50,  PlantAction(&wallnut_action), "wallnut", WALLNUT)
+};
 
 class ZombieSpawnTemplate {
     public:
@@ -149,7 +184,7 @@ public:
     std::list<Plant*> plant_list;
     std::vector<std::vector<Plant*>> plant_grid;
     std::deque<ZombieSpawnTemplate> level_data;
-    std::vector<PlantData> plant_data;
+    std::vector<int> plant_cooldowns = std::vector<int>(9999, NUM_PLANTS);
     std::vector<Pos> free_spaces;
 
 
@@ -183,13 +218,13 @@ public:
     vector<Action> get_action_space() const;
 
     // State/Observation
-    Observation get_observation();
-    State get_state();
+    Observation get_observation() const;
+    State get_state() const;
 
     // misc
     void append_zombie(int second, int lane, std::string type);
-    int rollout(int num_cpu, int num_games=10000, int mode=1); // return num_victories
-    std::pair<int, int> timed_rollout(int num_cpu, int time_limit_ms, int mode = 1);
+    int rollout(int num_cpu, int num_games=10000, int mode=1) const; // return num_victories
+    std::pair<int, int> timed_rollout(int num_cpu, int time_limit_ms, int mode = 1) const;
 };
 bool play_random_game(Level env, int randomization_mode);
 

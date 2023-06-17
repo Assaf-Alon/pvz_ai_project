@@ -29,6 +29,23 @@ $(SWIG_LIBRARY): $(SWIG_OBJS)
 $(LIBRARY): $(OBJS)
 	$(CC) $(CFLAGS) -shared $(OBJS) -o $(LIBRARY)
 
+debug-FUBAR:
+	mkdir tmp/
+	swig -c++ -python mcts.i
+	cp ../cpp_env/*.cpp tmp/
+	cp ../cpp_env/*.cxx tmp/
+	cp ../cpp_env/*.hpp tmp/
+	cp ../cpp_env/*.h tmp/
+	cp mcts* tmp/
+	clang++ -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -fsanitize=address,leak,undefined -O2 -flto -I/usr/include/python3.11 -c tmp/mcts_wrap.cxx -o mcts_wrap.o -fPIC
+	clang++ -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -fsanitize=address,leak,undefined -O2 -flto -I/usr/include/python3.11 -c tmp/level_wrap.cxx -o level_wrap.o -fPIC
+	clang++ -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -fsanitize=address,leak,undefined -O2 -flto -I/usr/include/python3.11 -c tmp/zombie.cpp -o zombie.o -fPIC
+	clang++ -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -fsanitize=address,leak,undefined -O2 -flto -I/usr/include/python3.11 -c tmp/plant.cpp -o plant.o -fPIC
+	clang++ -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -fsanitize=address,leak,undefined -O2 -flto -I/usr/include/python3.11 -c tmp/level.cpp -o level.o -fPIC
+	clang++ -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -fsanitize=address,leak,undefined -O2 -flto -I/usr/include/python3.11 -c tmp/mcts.cpp -o mcts.o -fPIC
+	clang++ -Xlinker -export-dynamic -flto -shared *.o -L/usr/local/lib -lgmpxx -lgmp -fopenmp -fsanitize=address,leak,undefined -o _mcts.so
+	rm -r tmp/
+
 # Rule for generating the swig interface file
 mcts_wrap.cxx: mcts.i
 		swig -c++ -python mcts.i
@@ -36,7 +53,7 @@ mcts_wrap.cxx: mcts.i
 # Clean target to remove generated files
 .PHONY: clean
 clean:
-		rm -f $(SWIG_OBJS) $(SWIG_LIBRARY) mcts_wrap.cxx mcts_wrap.o mcts.py
+		rm -f $(SWIG_OBJS) $(SWIG_LIBRARY) mcts_wrap.cxx mcts_wrap.o mcts.py *.o
 
 # Additional dependencies
 $(SWIG_OBJS): mcts.h

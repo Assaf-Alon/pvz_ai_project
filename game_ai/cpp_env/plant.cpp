@@ -2,13 +2,13 @@
 #include "zombie.h"
 #include "plant.h"
 
-Plant::Plant(int lane, int column, PlantData& plant_data, int frame, int fps){
+Plant::Plant(int lane, int column, const PlantData& plant_data, int frame, int fps){
     this->hp = plant_data.hp;
     this->damage = plant_data.damage;
-    this->action_interval_seconds = plant_data.action_interval_seconds;
-    this->action_interval = plant_data.action_interval;
-    this->recharge_seconds = plant_data.recharge_seconds;
-    this->recharge = plant_data.recharge;
+    // this->action_interval_seconds = plant_data.action_interval_seconds;
+    this->action_interval = plant_data.action_interval_seconds * fps;
+    // this->recharge_seconds = plant_data.recharge_seconds;
+    this->recharge = plant_data.recharge_seconds * fps;
     this->cost = plant_data.cost;
     this->lane = lane;
     this->col = column;

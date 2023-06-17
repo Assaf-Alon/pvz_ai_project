@@ -48,4 +48,4 @@ class Node {
 
 // Node& select_node(Node& root);
 Action select_best_action(Node& root);
-Action run(Level& level, int timeout, int games_per_rollout);
+Action run(Level& level, int timeout, int games_per_rollout, bool debug=false);

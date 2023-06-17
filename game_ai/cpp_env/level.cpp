@@ -14,43 +14,36 @@ using std::unique_ptr;
 // std::minstd_rand rng(std::random_device{}());
 // std::ranlux48 rng(std::random_device{}());
 
-inline int get_random_number(const int min, const int max){ 
-    thread_local std::mt19937 generator(std::random_device{}());
-    std::uniform_int_distribution<int> distribution(min, max);
-    return distribution(generator);
-}
-
+    // make some of these constexprs!
+    // this->plant_data = std::vector<PlantData>(NUM_PLANTS, PlantData(this->fps, 0,0,0,0,0,PlantAction(&wallnut_action), "no_plant", NO_PLANT));
+    
+    // this->plant_data[CHERRYBOMB]    = PlantData(this->fps, 5000, 9000, 1.2,   50,  150, PlantAction(&cherrybomb_action), "cherrybomb", CHERRYBOMB);
+    // this->plant_data[CHOMPER]       = PlantData(this->fps, 300,  9000, 42,    7.5, 150, PlantAction(&chomper_action), "chomper", CHOMPER);
+    // this->plant_data[HYPNOSHROOM]   = PlantData(this->fps, 300,  20,   0,     30,  75,  PlantAction(&hypnoshroom_action), "hypnoshroom", HYPNOSHROOM);
+    // this->plant_data[ICESHROOM]     = PlantData(this->fps, 5000, 20,   1,     50,  75,  PlantAction(&iceshroom_action), "iceshroom", ICESHROOM);
+    // this->plant_data[JALAPENO]      = PlantData(this->fps, 300,  9000, 1,     50,  125, PlantAction(&jalapeno_action), "jalapeno", JALAPENO);
+    // this->plant_data[PEASHOOTER]    = PlantData(this->fps, 300,  20,   1.425, 7.5, 100, PlantAction(&peashooter_action), "peashooter", PEASHOOTER);
+    // this->plant_data[POTATOMINE]    = PlantData(this->fps, 300,  1800, 15,    30,  25,  PlantAction(&potatomine_action), "potatomine", POTATOMINE);
+    // this->plant_data[PUFFSHROOM]    = PlantData(this->fps, 300,  20,   1.425, 7.5, 0,   PlantAction(&puffshroom_action), "puffshroom", PUFFSHROOM);
+    // this->plant_data[REPEATERPEA]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 200, PlantAction(&repeaterpea_action), "repeaterpea", REPEATERPEA);
+    // this->plant_data[SCAREDYSHROOM] = PlantData(this->fps, 300,  20,   1.425, 7.5, 20,  PlantAction(&scaredyshroom_action), "scaredyshroom", SCAREDYSHROOM);
+    // this->plant_data[SNOWPEA]       = PlantData(this->fps, 300,  20,   1.425, 7.5, 175, PlantAction(&snowpea_action), "snowpea", SNOWPEA);
+    // this->plant_data[SPIKEWEED]     = PlantData(this->fps, 300,  20,   1,     7.5, 100, PlantAction(&spikeweed_action), "spikeweed", SPIKEWEED);
+    // this->plant_data[SQUASH]        = PlantData(this->fps, 300,  1800, 1.425, 30,  50,  PlantAction(&squash_action), "squash", SQUASH);
+    // this->plant_data[SUNFLOWER]     = PlantData(this->fps, 300,  25,   24.25, 7.5, 50,  PlantAction(&sunflower_action), "sunflower", SUNFLOWER);
+    // this->plant_data[SUNSHROOM]     = PlantData(this->fps, 300,  15,   24.25, 7.5, 25,  PlantAction(&sunshroom_action), "sunshroom", SUNSHROOM);
+    // this->plant_data[THREEPEATER]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 325, PlantAction(&threepeater_action), "threepeater", THREEPEATER);
+    // this->plant_data[WALLNUT]       = PlantData(this->fps, 4000, 0,    9999,  30,  50,  PlantAction(&wallnut_action), "wallnut", WALLNUT);
 Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
 {
     this->plant_grid = vector<vector<Plant*>>(lanes, vector<Plant*>(cols, nullptr));
     this->zombie_grid = vector<vector<list<Zombie*>>>(lanes, vector<list<Zombie*>>(cols, list<Zombie*>()));
     this->lawnmowers = vector<bool>(lanes, true);
     this->sun_interval = this->fps * this->sun_interval_seconds;
-
-    // make some of these constexprs!
-    this->plant_data = std::vector<PlantData>(NUM_PLANTS, PlantData(this->fps, 0,0,0,0,0,PlantAction(&wallnut_action), "no_plant", NO_PLANT));
-    
-    this->plant_data[CHERRYBOMB]    = PlantData(this->fps, 5000, 9000, 1.2,   50,  150, PlantAction(&cherrybomb_action), "cherrybomb", CHERRYBOMB);
-    this->plant_data[CHOMPER]       = PlantData(this->fps, 300,  9000, 42,    7.5, 150, PlantAction(&chomper_action), "chomper", CHOMPER);
-    this->plant_data[HYPNOSHROOM]   = PlantData(this->fps, 300,  20,   0,     30,  75,  PlantAction(&hypnoshroom_action), "hypnoshroom", HYPNOSHROOM);
-    this->plant_data[ICESHROOM]     = PlantData(this->fps, 5000, 20,   1,     50,  75,  PlantAction(&iceshroom_action), "iceshroom", ICESHROOM);
-    this->plant_data[JALAPENO]      = PlantData(this->fps, 300,  9000, 1,     50,  125, PlantAction(&jalapeno_action), "jalapeno", JALAPENO);
-    this->plant_data[PEASHOOTER]    = PlantData(this->fps, 300,  20,   1.425, 7.5, 100, PlantAction(&peashooter_action), "peashooter", PEASHOOTER);
-    this->plant_data[POTATOMINE]    = PlantData(this->fps, 300,  1800, 15,    30,  25,  PlantAction(&potatomine_action), "potatomine", POTATOMINE);
-    this->plant_data[PUFFSHROOM]    = PlantData(this->fps, 300,  20,   1.425, 7.5, 0,   PlantAction(&puffshroom_action), "puffshroom", PUFFSHROOM);
-    this->plant_data[REPEATERPEA]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 200, PlantAction(&repeaterpea_action), "repeaterpea", REPEATERPEA);
-    this->plant_data[SCAREDYSHROOM] = PlantData(this->fps, 300,  20,   1.425, 7.5, 20,  PlantAction(&scaredyshroom_action), "scaredyshroom", SCAREDYSHROOM);
-    this->plant_data[SNOWPEA]       = PlantData(this->fps, 300,  20,   1.425, 7.5, 175, PlantAction(&snowpea_action), "snowpea", SNOWPEA);
-    this->plant_data[SPIKEWEED]     = PlantData(this->fps, 300,  20,   1,     7.5, 100, PlantAction(&spikeweed_action), "spikeweed", SPIKEWEED);
-    this->plant_data[SQUASH]        = PlantData(this->fps, 300,  1800, 1.425, 30,  50,  PlantAction(&squash_action), "squash", SQUASH);
-    this->plant_data[SUNFLOWER]     = PlantData(this->fps, 300,  25,   24.25, 7.5, 50,  PlantAction(&sunflower_action), "sunflower", SUNFLOWER);
-    this->plant_data[SUNSHROOM]     = PlantData(this->fps, 300,  15,   24.25, 7.5, 25,  PlantAction(&sunshroom_action), "sunshroom", SUNSHROOM);
-    this->plant_data[THREEPEATER]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 325, PlantAction(&threepeater_action), "threepeater", THREEPEATER);
-    this->plant_data[WALLNUT]       = PlantData(this->fps, 4000, 0,    9999,  30,  50,  PlantAction(&wallnut_action), "wallnut", WALLNUT);
-
     this->chosen_plants = std::vector<int>(legal_plants);
+    this->plant_cooldowns = std::vector<int>(9999, NUM_PLANTS);
     for (auto plant_name : legal_plants){
-        plant_data[plant_name].next_available_frame = 0;
+        this->plant_cooldowns[plant_name] = 0;
     }
     this->free_spaces.reserve(lanes * cols * 2);
     for(int lane = 0; lane < lanes; lane++){
@@ -115,7 +108,8 @@ Level::Level(const Level& other_level)
     this->level_data = std::deque<ZombieSpawnTemplate>(other_level.level_data);
 
     // Copy cooldown
-    this->plant_data = vector<PlantData>(other_level.plant_data);
+    // this->plant_data = vector<PlantData>(other_level.plant_data);
+    this->plant_cooldowns = vector<int>(other_level.plant_cooldowns);
 
     // Copy free spaces
     this->free_spaces = vector<Pos>(other_level.free_spaces);
@@ -139,7 +133,7 @@ bool Level::is_action_legal(const Action &action) const
     {
         return false;
     }
-    if (this->plant_data[action.plant_name].next_available_frame > this->frame)
+    if (this->plant_cooldowns[action.plant_name] > this->frame)
     {
         return false;
     }
@@ -162,12 +156,12 @@ bool Level::is_action_legal(int plant, int row, int col) const
 void Level::plant(const Action &action)
 {
     Plant *new_plant = nullptr;
-    PlantData &planted_plant_data = this->plant_data[action.plant_name];
+    const PlantData &planted_plant_data = plant_data[action.plant_name];
     new_plant = new Plant(action.lane, action.col, planted_plant_data, this->frame, this->fps);
     this->suns -= planted_plant_data.cost;
     this->plant_list.push_back(new_plant);
     this->plant_grid[action.lane][action.col] = new_plant;
-    planted_plant_data.next_available_frame = this->frame + planted_plant_data.recharge_seconds * this->fps;
+    this->plant_cooldowns[action.plant_name] = this->frame + planted_plant_data.recharge_seconds * this->fps;
     std::vector<Pos>& free_spaces = this->free_spaces;
     for (auto it = free_spaces.begin(); it != free_spaces.end(); it++){
         if (it->first == action.lane && it->second == action.col){
@@ -354,13 +348,13 @@ void Level::step(int plant, int row, int col)
     this->step(Action(PlantName(plant), row, col));
 }
 
-Observation Level::get_observation(){
+Observation Level::get_observation() const{
     Observation obs = vector<vector<vector<int>>>(this->lanes, vector<vector<int>>(this->cols, vector<int>(3, 0)));    
     for (int lane = 0; lane < this->lanes; lane++){
         for (int col = 0; col < this->cols; col++){
             if (this->plant_grid[lane][col] != nullptr){
                 Plant* plant = this->plant_grid[lane][col];
-                int total_hp = this->plant_data[plant->plant_type].hp;
+                int total_hp = plant_data[plant->plant_type].hp;
                 int hp_third = 1 + (int)((plant->hp - 1) / (int)(total_hp / 3));
                 obs[lane][col][0] = plant->plant_type;
                 obs[lane][col][1] = hp_third;
@@ -382,7 +376,7 @@ Observation Level::get_observation(){
     return obs;
 }
 
-State Level::get_state(){
+State Level::get_state() const{
     PlantInfo empty_plant;
     empty_plant.plant_name = "no_plant";
     empty_plant.hp = 0;
@@ -417,7 +411,7 @@ bool Level::is_plantable(int plant) const {
     if (plant >= NUM_PLANTS || plant < NO_PLANT) {
         return false;
     }
-    return (this->frame >= this->plant_data[plant].next_available_frame) && (this->suns >= this->plant_data[plant].cost);
+    return (this->frame >= this->plant_cooldowns[plant]) && (this->suns >= plant_data[plant].cost);
 }
 
 void Level::step() {
@@ -429,8 +423,8 @@ PlantName Level::get_random_legal_plant() const {
     LOG_FRAME(frame, "Randomizing plant");
     #endif
     vector<PlantName> legal_plants;
-    for(int idx = 1; idx < static_cast<int>(this->plant_data.size()); idx++){
-        if (this->plant_data[idx].next_available_frame < this->frame && this->plant_data[idx].cost <= this->suns){
+    for(int idx = 1; idx < static_cast<int>(plant_data.size()); idx++){
+        if (this->plant_cooldowns[idx] < this->frame && plant_data[idx].cost <= this->suns){
             legal_plants.push_back(static_cast<PlantName>(idx));
         }
     }
@@ -562,7 +556,7 @@ bool play_random_game(Level env, int randomization_mode){
     return env.win;
 }
 
-int Level::rollout(int num_cpu, int num_games, int mode) {
+int Level::rollout(int num_cpu, int num_games, int mode) const {
     std::vector<bool> victories(num_games, false);
     omp_set_num_threads(num_cpu);
     #pragma omp parallel for shared(victories)
@@ -573,7 +567,7 @@ int Level::rollout(int num_cpu, int num_games, int mode) {
 }
 
 // returns pair(rollouts, victories)
-std::pair<int, int> Level::timed_rollout(int num_cpu, int time_limit_ms, int mode) {
+std::pair<int, int> Level::timed_rollout(int num_cpu, int time_limit_ms, int mode) const {
     int rollouts = 0, victories = 0;
     auto start_time = std::chrono::high_resolution_clock::now();
     auto end_time = start_time + std::chrono::milliseconds(time_limit_ms);
