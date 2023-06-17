@@ -8,3 +8,6 @@ cp cpp_env/lib_level.so cpp_mcts/
 cd cpp_mcts/
 make clean && make
 cd ..
+echo "==========================================================================================="
+echo "do 'export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/PATH/TO/cpp_env/' if you want things to work!"
+echo "==========================================================================================="
