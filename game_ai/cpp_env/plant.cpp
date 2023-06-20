@@ -27,7 +27,7 @@ Plant::Plant(int lane, int column, const PlantData& plant_data, int frame, int f
 
     // Sunflower's first sun generated takes about 6 seconds
     if (this->plant_type == SUNFLOWER) {
-        this->frame_action_available = frame + (6/fps);
+        this->frame_action_available = frame + (6*fps);
     }
 }
 

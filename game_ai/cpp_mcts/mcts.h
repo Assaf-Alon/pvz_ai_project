@@ -1,3 +1,5 @@
+#ifndef _MCTS
+#define _MCTS
 #include <list>
 #include <vector>
 #include <chrono>
@@ -5,15 +7,18 @@
 #include <math.h>
 #include <omp.h>
 #include <utility>
+#include <algorithm>
 using std::list;
 using std::vector;
 
 class Node;
 
+
 class Node {
     public:
     int num_rollouts = 0;
     float num_wins = 0;
+    const float ucb_coefficient;
     Level* level;
     Action action;
     Node* parent;
@@ -22,31 +27,40 @@ class Node {
     void expand(int num_rollouts);
     void backpropagate(int wins, int rollouts);
     void rollout(int num_rollouts);
-    inline double ucb() const {
-        if (this->num_rollouts == 0) {
+    inline float ucb() const {
+        if (this->level->done) {
             return 0;
         }
-        const float c = 1.4;
+        if (this->num_rollouts == 0) { // MAX EXPLORE!
+            return 100000;
+        }
+        // const float c = 1.4;
         int wins = this->num_wins;
         int rollouts = this->num_rollouts;
         int parent_rollouts;
         if (this->parent != nullptr) {
             parent_rollouts = this->parent->num_rollouts;
             if (parent_rollouts == 0) {
+                // std::cout << "TODO SHOULDN'T GET HERE IMO?!!" << std::endl;
                 return 0;
             }
         }
         else {
             parent_rollouts = this->num_rollouts;
         }
-        double ucb = ((double)wins / rollouts) + (c * sqrt(log(parent_rollouts) / rollouts));
+        float ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(log(parent_rollouts) / rollouts));
         return ucb;
     };
-    Node(Node* parent, Level& level, Action action);
+    // friend inline bool operator<(const Node& first, const Node& second) {
+    //     return first.current_ucb < second.current_ucb;
+    // };
+    Node(Node* parent, Level& level, Action action, const float ucb_coefficient);
     Node* select();
     ~Node();
 };
 
 // Node& select_node(Node& root);
 Action select_best_action(Node& root);
-std::pair<Action, int> run(Level& level, int timeout, int games_per_rollout, bool debug=false);
+Action run(Level& level, int timeout_ms, int games_per_rollout, bool debug=false, float ucb_const=1.4);
+
+#endif

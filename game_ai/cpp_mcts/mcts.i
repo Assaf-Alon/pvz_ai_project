@@ -8,4 +8,7 @@
     #define SWIG_FILE_WITH_INIT
     #include "mcts.h"
 %}
+namespace std{
+    %template(run_result) pair<Action, int>;
+}
 %include "mcts.h"

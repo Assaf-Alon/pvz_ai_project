@@ -24,13 +24,14 @@ MCTS_SWIG_LIB := _mcts.so
 PYTHONI := -I/usr/include/python3.11 # change to 3.10 if 3.11 is not installed
 PYTHONL := -Xlinker -export-dynamic
 LIBFLAGS := -L/usr/local/lib -lgmpxx -lgmp -fopenmp
-CFLAGS := -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -O2 -flto
+CFLAGS := -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -O2 -flto -mavx
 # available sanitizers: address, undefined, leak, thread. Note: some of these are incompatible with eachother!
 DFLAGS := -fsanitize=address,undefined,leak -g -O1 -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp
 PRINT_DFLAGS := $(DFLAGS) -DDEBUG
 CC := clang++
 DEBUG_CPP := debug.cpp
 DEBUG_EXEC := debug.out
+PROFILE_EXEC := profile_exec.out
 
 # all: $(LEVEL_SWIG_LIB) $(MCTS_SWIG_LIB)
 all: $(LEVEL_SWIG_LIB) $(MCTS_SWIG_LIB)
@@ -65,9 +66,17 @@ level_wrap.cxx: level.i
 mcts_wrap.cxx: mcts.i
 	swig -c++ -python mcts.i
 
+.PHONY: fast
+fast:
+	$(CC) -o $(EXEC) $(CFLAGS) $(LEVEL_SRCS) $(MCTS_SRCS) $(DEBUG_CPP)
+
 .PHONY: debug
 debug:
 	$(CC) -o $(DEBUG_EXEC) $(DFLAGS) $(LEVEL_SRCS) $(MCTS_SRCS) $(DEBUG_CPP)
+
+.PHONY: profile
+profile:
+	g++ -pg -O2 -fopenmp -o $(PROFILE_EXEC) $(LEVEL_SRCS) $(MCTS_SRCS) $(DEBUG_CPP)
 
 .PHONY: check
 check:
