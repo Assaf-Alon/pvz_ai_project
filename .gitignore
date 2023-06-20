@@ -8,6 +8,7 @@ headless/resources/random*
 .vscode/**
 **/.vscode
 *.o
+*.so
 *.out 
 *.prof*
 *.prettierrc

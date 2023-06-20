@@ -4,6 +4,7 @@
 #include "../cpp_env/level.hpp"
 #include <math.h>
 #include <omp.h>
+#include <utility>
 using std::list;
 using std::vector;
 
@@ -48,4 +49,4 @@ class Node {
 
 // Node& select_node(Node& root);
 Action select_best_action(Node& root);
-Action run(Level& level, int timeout, int games_per_rollout, bool debug=false);
+std::pair<Action, int> run(Level& level, int timeout, int games_per_rollout, bool debug=false);
