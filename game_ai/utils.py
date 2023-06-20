@@ -236,22 +236,21 @@ def run_animation():
         frame_list.append(frame)
     animate_observation_buffer(frame_list)
 
-def simulate_set_game(level: level.Level, action_list: list[tuple[int]]):
+def simulate_set_game(level: level.Level, action_list: list[level.Action]):
     frames = []
     for action in action_list:
-        cpp_action = level.Action(*action)
-        while not level.is_action_legal(cpp_action) and not level.done:
+        while not level.is_action_legal(action) and not level.done:
             level.step()
             frames.append(get_frame_from_obs(get_numpy_arr_from_level_obs(level)))
-        level.step(cpp_action)
+        level.step(action)
         frames.append(get_frame_from_obs(get_numpy_arr_from_level_obs(level)))
     # print(f"lawnmowers: {level.lawnmowers[0]} {level.lawnmowers[1]} {level.lawnmowers[2]} {level.lawnmowers[3]} {level.lawnmowers[4]}")
-    input()
     animate_observation_buffer(frames)
-    
-def action_to_string(action: level.Action, level: level.Level):
-    plant_name = "placeholer"
-    return f"action: plant {action.plant_name} at coords: {action.lane}, {action.col}"
+
+plant_to_name = ("no_plant","cherrybomb","chomper","hypnoshroom","iceshroom","jalapeno","peashooter","potatomine","puffshroom","repeaterpea","scaredyshroom","snowpea","spikeweed","squash","sunflower","sunshroom","threepeater","wallnut")
+
+def action_to_string(action: level.Action):
+    return f"action: plant {plant_to_name[action.plant_name]} at coords: {action.lane}, {action.col}"
     
 def estimate_simulation_speed():
     level = level.Level(5, 10, 10, level_data_1, chosen_plants_basic)

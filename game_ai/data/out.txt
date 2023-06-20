@@ -1,0 +1,7059 @@
+winrate before: 2.83%
+optimizing num rollouts for 1s MCTS
+Generating action space
+starting MCTS iteration
+expanding root
+root expansion num 1
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 2
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 3
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 4
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 5
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 6
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 7
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 8
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 9
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 10
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 11
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 12
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 13
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 14
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 15
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 16
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 17
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 18
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 19
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 20
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 21
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 22
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 23
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 24
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 25
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 26
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 27
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 28
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 29
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 30
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 31
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 32
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 33
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 34
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 35
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 36
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 37
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 38
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 39
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 40
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 41
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 42
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 43
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 44
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 45
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 46
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 47
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 48
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 49
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 50
+frame before rollout: 1
+frame after rollout: 123
+root expansion num 51
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 52
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 53
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 54
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 55
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 56
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 57
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 58
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 59
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 60
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 61
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 62
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 63
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 64
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 65
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 66
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 67
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 68
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 69
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 70
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 71
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 72
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 73
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 74
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 75
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 76
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 77
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 78
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 79
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 80
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 81
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 82
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 83
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 84
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 85
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 86
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 87
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 88
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 89
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 90
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 91
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 92
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 93
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 94
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 95
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 96
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 97
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 98
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 99
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 100
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 101
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 102
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 103
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 104
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 105
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 106
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 107
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 108
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 109
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 110
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 111
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 112
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 113
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 114
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 115
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 116
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 117
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 118
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 119
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 120
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 121
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 122
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 123
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 124
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 125
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 126
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 127
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 128
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 129
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 130
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 131
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 132
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 133
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 134
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 135
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 136
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 137
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 138
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 139
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 140
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 141
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 142
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 143
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 144
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 145
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 146
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 147
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 148
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 149
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 150
+frame before rollout: 1
+frame after rollout: 243
+root expansion num 151
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 152
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 153
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 154
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 155
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 156
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 157
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 158
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 159
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 160
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 161
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 162
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 163
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 164
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 165
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 166
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 167
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 168
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 169
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 170
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 171
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 172
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 173
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 174
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 175
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 176
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 177
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 178
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 179
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 180
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 181
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 182
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 183
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 184
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 185
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 186
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 187
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 188
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 189
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 190
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 191
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 192
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 193
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 194
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 195
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 196
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 197
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 198
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 199
+frame before rollout: 1
+frame after rollout: 2
+root expansion num 200
+frame before rollout: 1
+frame after rollout: 2
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 246
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 487
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 664
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 318
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 363
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 423
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 318
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 558
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 318
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 487
+starting MCTS iteration
+frame before rollout: 318
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 487
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 487
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 318
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 318
+frame after rollout: 393
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 487
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 727
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 987
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 1243
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1447
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 558
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1447
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 607
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 744
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 987
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 318
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 318
+frame after rollout: 902
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 423
+starting MCTS iteration
+frame before rollout: 727
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 423
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 558
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1243
+frame after rollout: 1244
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 744
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1243
+frame after rollout: 1244
+starting MCTS iteration
+frame before rollout: 1244
+frame after rollout: 1245
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 744
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 558
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 987
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1245
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 393
+frame after rollout: 1026
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1223
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 664
+frame after rollout: 739
+starting MCTS iteration
+frame before rollout: 318
+frame after rollout: 393
+starting MCTS iteration
+frame before rollout: 423
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 784
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 483
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 863
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 558
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 727
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 902
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 784
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1343
+starting MCTS iteration
+frame before rollout: 863
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 393
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1243
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 678
+starting MCTS iteration
+frame before rollout: 558
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1244
+frame after rollout: 1245
+starting MCTS iteration
+frame before rollout: 1244
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 969
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 964
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1243
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 487
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 988
+starting MCTS iteration
+frame before rollout: 558
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 423
+frame after rollout: 487
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1463
+starting MCTS iteration
+frame before rollout: 1203
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 438
+starting MCTS iteration
+frame before rollout: 1026
+frame after rollout: 1027
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1084
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 302
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1223
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 302
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 678
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 543
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1223
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 987
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 664
+frame after rollout: 739
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 784
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1223
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1791
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1223
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 302
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1243
+frame after rollout: 1244
+starting MCTS iteration
+frame before rollout: 1244
+frame after rollout: 1319
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 544
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 393
+frame after rollout: 562
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 438
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 423
+frame after rollout: 487
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 902
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1243
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 863
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 1027
+starting MCTS iteration
+frame before rollout: 1245
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 1107
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 303
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 987
+starting MCTS iteration
+frame before rollout: 1319
+frame after rollout: 1394
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1223
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1083
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1243
+frame after rollout: 1244
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 987
+starting MCTS iteration
+frame before rollout: 1245
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 863
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1223
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 1027
+frame after rollout: 1327
+starting MCTS iteration
+frame before rollout: 1223
+frame after rollout: 1224
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 989
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 964
+starting MCTS iteration
+frame before rollout: 863
+frame after rollout: 1363
+starting MCTS iteration
+frame before rollout: 739
+frame after rollout: 908
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1223
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 123
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1063
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 302
+starting MCTS iteration
+frame before rollout: 784
+frame after rollout: 902
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 989
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 183
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 438
+frame after rollout: 513
+starting MCTS iteration
+frame before rollout: 1343
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 1223
+frame after rollout: 1224
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1288
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 123
+starting MCTS iteration
+frame before rollout: 1327
+frame after rollout: 1328
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 607
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 784
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1243
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 863
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1363
+frame after rollout: 1364
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1328
+frame after rollout: 1329
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 602
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 1107
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 544
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 1223
+frame after rollout: 1224
+starting MCTS iteration
+frame before rollout: 1224
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 303
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 558
+frame after rollout: 633
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 784
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1024
+starting MCTS iteration
+frame before rollout: 1023
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1223
+frame after rollout: 1224
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 964
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 513
+starting MCTS iteration
+frame before rollout: 784
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 607
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 989
+starting MCTS iteration
+frame before rollout: 1084
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1223
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 393
+frame after rollout: 423
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 964
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 367
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 963
+starting MCTS iteration
+frame before rollout: 1223
+frame after rollout: 1723
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 739
+frame after rollout: 814
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1463
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 987
+starting MCTS iteration
+frame before rollout: 1224
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 303
+starting MCTS iteration
+frame before rollout: 784
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1038
+starting MCTS iteration
+frame before rollout: 723
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1087
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1224
+frame after rollout: 1299
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 902
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1283
+starting MCTS iteration
+frame before rollout: 1224
+frame after rollout: 1299
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1463
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 787
+starting MCTS iteration
+frame before rollout: 1319
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 302
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 423
+frame after rollout: 562
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 367
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 303
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 183
+starting MCTS iteration
+frame before rollout: 989
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 978
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 303
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 678
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 393
+frame after rollout: 487
+starting MCTS iteration
+frame before rollout: 303
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 1083
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 558
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 784
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 987
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 363
+starting MCTS iteration
+frame before rollout: 1288
+frame after rollout: 1289
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1343
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 664
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1683
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 989
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 303
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 1243
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 423
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 1299
+frame after rollout: 1374
+starting MCTS iteration
+frame before rollout: 739
+frame after rollout: 814
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1224
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1223
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 902
+frame after rollout: 1028
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 964
+frame after rollout: 1464
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 904
+starting MCTS iteration
+frame before rollout: 1224
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 303
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 739
+frame after rollout: 1698
+starting MCTS iteration
+frame before rollout: 367
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 544
+starting MCTS iteration
+frame before rollout: 544
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 1243
+starting MCTS iteration
+frame before rollout: 544
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1083
+starting MCTS iteration
+frame before rollout: 1243
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1227
+starting MCTS iteration
+frame before rollout: 562
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 77
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1038
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 602
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1283
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1223
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 988
+starting MCTS iteration
+frame before rollout: 303
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1363
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1363
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 983
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 602
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 77
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 989
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1780
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1463
+frame after rollout: 1464
+starting MCTS iteration
+frame before rollout: 1243
+frame after rollout: 1244
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1283
+frame after rollout: 1284
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 562
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 603
+starting MCTS iteration
+frame before rollout: 1107
+frame after rollout: 1108
+starting MCTS iteration
+frame before rollout: 1288
+frame after rollout: 1289
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1374
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 753
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 989
+frame after rollout: 1289
+starting MCTS iteration
+frame before rollout: 303
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 678
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1147
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1363
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 983
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 513
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1284
+frame after rollout: 1285
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 918
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 303
+frame after rollout: 367
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 1263
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 989
+starting MCTS iteration
+frame before rollout: 1026
+frame after rollout: 1027
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 77
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 867
+starting MCTS iteration
+frame before rollout: 1224
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 744
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 63
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 544
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1028
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1027
+frame after rollout: 1028
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 544
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1245
+frame after rollout: 1319
+starting MCTS iteration
+frame before rollout: 1289
+frame after rollout: 1290
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1084
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 602
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 1263
+starting MCTS iteration
+frame before rollout: 303
+frame after rollout: 423
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1244
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1213
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1223
+frame after rollout: 1224
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 423
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1223
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1489
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 664
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1603
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 678
+starting MCTS iteration
+frame before rollout: 964
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1223
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 544
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 844
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 804
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1223
+frame after rollout: 1224
+starting MCTS iteration
+frame before rollout: 1084
+frame after rollout: 1085
+starting MCTS iteration
+frame before rollout: 1463
+starting MCTS iteration
+frame before rollout: 664
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 1027
+frame after rollout: 1101
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1213
+starting MCTS iteration
+frame before rollout: 1084
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 1299
+starting MCTS iteration
+frame before rollout: 1224
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1299
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 246
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1563
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 367
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 123
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 633
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 978
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 724
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 678
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1028
+starting MCTS iteration
+frame before rollout: 1038
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1203
+starting MCTS iteration
+frame before rollout: 1085
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1104
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 987
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1489
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1089
+starting MCTS iteration
+frame before rollout: 1394
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 1563
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1063
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 678
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 604
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 1028
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 602
+starting MCTS iteration
+frame before rollout: 1603
+frame after rollout: 1604
+starting MCTS iteration
+frame before rollout: 989
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 744
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 967
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1523
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1283
+starting MCTS iteration
+frame before rollout: 1463
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1743
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 724
+starting MCTS iteration
+frame before rollout: 1289
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 753
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1478
+starting MCTS iteration
+frame before rollout: 1289
+frame after rollout: 1589
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1147
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1101
+frame after rollout: 1102
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 987
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1213
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 814
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1244
+frame after rollout: 1319
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 664
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1283
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 724
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1028
+frame after rollout: 1528
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 558
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1683
+frame after rollout: 1803
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 844
+frame after rollout: 845
+starting MCTS iteration
+frame before rollout: 544
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1763
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1643
+starting MCTS iteration
+frame before rollout: 1224
+frame after rollout: 1524
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1289
+starting MCTS iteration
+frame before rollout: 724
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1288
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1147
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1523
+frame after rollout: 1524
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 798
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 863
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 744
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 1243
+frame after rollout: 1244
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1244
+frame after rollout: 1743
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 602
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1500
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1244
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1084
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 183
+starting MCTS iteration
+frame before rollout: 1329
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 678
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1638
+starting MCTS iteration
+frame before rollout: 1604
+starting MCTS iteration
+frame before rollout: 602
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1463
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 607
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1101
+frame after rollout: 1102
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 423
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 423
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 1203
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 787
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 964
+starting MCTS iteration
+frame before rollout: 1463
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 724
+frame after rollout: 1224
+starting MCTS iteration
+frame before rollout: 903
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1158
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1489
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1329
+frame after rollout: 1627
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1683
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 847
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1289
+frame after rollout: 1290
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 1524
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1518
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 787
+frame after rollout: 788
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 438
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 123
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1943
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1604
+frame after rollout: 1605
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1468
+starting MCTS iteration
+frame before rollout: 978
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1289
+frame after rollout: 1290
+starting MCTS iteration
+frame before rollout: 1085
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 562
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1213
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1263
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 678
+starting MCTS iteration
+frame before rollout: 602
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 318
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 918
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1650
+starting MCTS iteration
+frame before rollout: 183
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 867
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 1028
+frame after rollout: 1101
+starting MCTS iteration
+frame before rollout: 1087
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 902
+starting MCTS iteration
+frame before rollout: 1143
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 983
+starting MCTS iteration
+frame before rollout: 1478
+frame after rollout: 1479
+starting MCTS iteration
+frame before rollout: 1803
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 637
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 1213
+frame after rollout: 1791
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1063
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1107
+starting MCTS iteration
+frame before rollout: 367
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 753
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1283
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 744
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1398
+starting MCTS iteration
+frame before rollout: 602
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 607
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 1223
+frame after rollout: 1224
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1463
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 607
+starting MCTS iteration
+frame before rollout: 1224
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1523
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1683
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 858
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 63
+starting MCTS iteration
+frame before rollout: 1398
+frame after rollout: 1455
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 604
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1743
+frame after rollout: 1863
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 983
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1627
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1500
+frame after rollout: 1501
+starting MCTS iteration
+frame before rollout: 1104
+frame after rollout: 1179
+starting MCTS iteration
+frame before rollout: 1524
+frame after rollout: 1525
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 77
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1523
+frame after rollout: 1524
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1763
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 63
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 744
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 724
+frame after rollout: 725
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 303
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 983
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 63
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 1101
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 1223
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1027
+frame after rollout: 1028
+starting MCTS iteration
+frame before rollout: 1489
+frame after rollout: 1490
+starting MCTS iteration
+frame before rollout: 1290
+frame after rollout: 1365
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1144
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 844
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1518
+starting MCTS iteration
+frame before rollout: 744
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 303
+frame after rollout: 487
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 1028
+frame after rollout: 1270
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1024
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 1319
+starting MCTS iteration
+frame before rollout: 1083
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1743
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 1179
+frame after rollout: 1254
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1043
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1338
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 983
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1643
+frame after rollout: 1644
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 63
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1104
+starting MCTS iteration
+frame before rollout: 423
+frame after rollout: 487
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1743
+starting MCTS iteration
+frame before rollout: 1224
+frame after rollout: 1225
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1084
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 1522
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 989
+frame after rollout: 1064
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1489
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 664
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 904
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1523
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1288
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 989
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1943
+starting MCTS iteration
+frame before rollout: 423
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1343
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1763
+frame after rollout: 1863
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1589
+frame after rollout: 1590
+starting MCTS iteration
+frame before rollout: 664
+frame after rollout: 729
+starting MCTS iteration
+frame before rollout: 1243
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1283
+frame after rollout: 1783
+starting MCTS iteration
+frame before rollout: 1108
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 604
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 964
+frame after rollout: 965
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 183
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 804
+starting MCTS iteration
+frame before rollout: 1102
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1263
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1089
+frame after rollout: 1389
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 603
+starting MCTS iteration
+frame before rollout: 1803
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1563
+starting MCTS iteration
+frame before rollout: 1743
+frame after rollout: 1744
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1218
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 1254
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1650
+frame after rollout: 1725
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1102
+frame after rollout: 1327
+starting MCTS iteration
+frame before rollout: 1638
+frame after rollout: 1713
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 967
+frame after rollout: 1467
+starting MCTS iteration
+frame before rollout: 1043
+frame after rollout: 1044
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1489
+frame after rollout: 1490
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 744
+starting MCTS iteration
+frame before rollout: 77
+frame after rollout: 152
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1283
+frame after rollout: 1284
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 787
+frame after rollout: 788
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1455
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1104
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1063
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1290
+frame after rollout: 1291
+starting MCTS iteration
+frame before rollout: 1101
+frame after rollout: 1327
+starting MCTS iteration
+frame before rollout: 1319
+frame after rollout: 1394
+starting MCTS iteration
+frame before rollout: 1158
+frame after rollout: 1160
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 1683
+frame after rollout: 1803
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1213
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1489
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 964
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1144
+frame after rollout: 1219
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1384
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 847
+frame after rollout: 922
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 1102
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 678
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1108
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 983
+frame after rollout: 984
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 246
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1343
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 77
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1743
+starting MCTS iteration
+frame before rollout: 918
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1743
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1225
+frame after rollout: 1724
+starting MCTS iteration
+frame before rollout: 1522
+frame after rollout: 1523
+starting MCTS iteration
+frame before rollout: 1524
+frame after rollout: 1526
+starting MCTS iteration
+frame before rollout: 1490
+starting MCTS iteration
+frame before rollout: 1104
+frame after rollout: 1179
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 1308
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1213
+frame after rollout: 1289
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 367
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1028
+frame after rollout: 1101
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1863
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 562
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 967
+starting MCTS iteration
+frame before rollout: 1478
+frame after rollout: 1479
+starting MCTS iteration
+frame before rollout: 1526
+starting MCTS iteration
+frame before rollout: 1365
+frame after rollout: 1455
+starting MCTS iteration
+frame before rollout: 725
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1223
+starting MCTS iteration
+frame before rollout: 1213
+frame after rollout: 1288
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1028
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1089
+frame after rollout: 1389
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 607
+starting MCTS iteration
+frame before rollout: 63
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1698
+frame after rollout: 1699
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 983
+starting MCTS iteration
+frame before rollout: 858
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1528
+frame after rollout: 1529
+starting MCTS iteration
+frame before rollout: 1803
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 904
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 423
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1943
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1724
+frame after rollout: 1725
+starting MCTS iteration
+frame before rollout: 787
+frame after rollout: 1405
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 1043
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1489
+starting MCTS iteration
+frame before rollout: 1104
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 907
+starting MCTS iteration
+frame before rollout: 1643
+frame after rollout: 1644
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1213
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 607
+starting MCTS iteration
+frame before rollout: 1725
+frame after rollout: 1726
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 302
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 198
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 63
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 544
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 1107
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1458
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1104
+starting MCTS iteration
+frame before rollout: 303
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1743
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 1107
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 423
+frame after rollout: 602
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 438
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 63
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 918
+frame after rollout: 1283
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1061
+starting MCTS iteration
+frame before rollout: 1803
+starting MCTS iteration
+frame before rollout: 1589
+frame after rollout: 1590
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1489
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 983
+frame after rollout: 1483
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1338
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 729
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 364
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1780
+frame after rollout: 1781
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1232
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1464
+frame after rollout: 1465
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 983
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1204
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1463
+frame after rollout: 1464
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1101
+frame after rollout: 1102
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 1043
+starting MCTS iteration
+frame before rollout: 1723
+frame after rollout: 1724
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1455
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1103
+starting MCTS iteration
+frame before rollout: 1288
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1743
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 1308
+frame after rollout: 1309
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 969
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 902
+starting MCTS iteration
+frame before rollout: 983
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1327
+starting MCTS iteration
+frame before rollout: 804
+starting MCTS iteration
+frame before rollout: 1104
+frame after rollout: 1179
+starting MCTS iteration
+frame before rollout: 1308
+frame after rollout: 1309
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 1526
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1064
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1104
+starting MCTS iteration
+frame before rollout: 1319
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1104
+starting MCTS iteration
+frame before rollout: 602
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1101
+frame after rollout: 1176
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1327
+frame after rollout: 1328
+starting MCTS iteration
+frame before rollout: 1327
+frame after rollout: 1328
+starting MCTS iteration
+frame before rollout: 1328
+frame after rollout: 1627
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1319
+frame after rollout: 1320
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 744
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1455
+starting MCTS iteration
+frame before rollout: 1863
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1288
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 246
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 1528
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1743
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 847
+starting MCTS iteration
+frame before rollout: 1763
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1489
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 1726
+frame after rollout: 1800
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 904
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1500
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1102
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 964
+starting MCTS iteration
+frame before rollout: 1290
+frame after rollout: 1291
+starting MCTS iteration
+frame before rollout: 1803
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1518
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 246
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1213
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 977
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1223
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 123
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 798
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1605
+frame after rollout: 1680
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1464
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 123
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 364
+starting MCTS iteration
+frame before rollout: 1103
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 744
+starting MCTS iteration
+frame before rollout: 1263
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1564
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1270
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1283
+frame after rollout: 1284
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1043
+starting MCTS iteration
+frame before rollout: 1103
+starting MCTS iteration
+frame before rollout: 1725
+frame after rollout: 1726
+starting MCTS iteration
+frame before rollout: 1290
+starting MCTS iteration
+frame before rollout: 1158
+starting MCTS iteration
+frame before rollout: 1283
+frame after rollout: 1284
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 798
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 844
+starting MCTS iteration
+frame before rollout: 1143
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1107
+frame after rollout: 1108
+starting MCTS iteration
+frame before rollout: 1263
+starting MCTS iteration
+frame before rollout: 1084
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 1780
+frame after rollout: 1781
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1144
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 787
+starting MCTS iteration
+frame before rollout: 1638
+frame after rollout: 1943
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 904
+frame after rollout: 979
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 1213
+frame after rollout: 1821
+starting MCTS iteration
+frame before rollout: 729
+frame after rollout: 804
+starting MCTS iteration
+frame before rollout: 725
+frame after rollout: 879
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 902
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1384
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1522
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 814
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 438
+starting MCTS iteration
+frame before rollout: 318
+frame after rollout: 562
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1588
+starting MCTS iteration
+frame before rollout: 1028
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 302
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 1104
+frame after rollout: 1106
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 678
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1803
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 63
+frame after rollout: 246
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1158
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 804
+starting MCTS iteration
+frame before rollout: 1203
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 607
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 303
+starting MCTS iteration
+frame before rollout: 1743
+frame after rollout: 1863
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 633
+frame after rollout: 727
+starting MCTS iteration
+frame before rollout: 1143
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 843
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1490
+starting MCTS iteration
+frame before rollout: 983
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 1104
+frame after rollout: 1178
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1345
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 367
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 544
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 918
+frame after rollout: 993
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 198
+starting MCTS iteration
+frame before rollout: 1283
+frame after rollout: 1783
+starting MCTS iteration
+frame before rollout: 77
+frame after rollout: 152
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1309
+frame after rollout: 1384
+starting MCTS iteration
+frame before rollout: 1590
+frame after rollout: 1591
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 978
+starting MCTS iteration
+frame before rollout: 1525
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1139
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1363
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 602
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1863
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 77
+frame after rollout: 303
+starting MCTS iteration
+frame before rollout: 1522
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1743
+starting MCTS iteration
+frame before rollout: 787
+frame after rollout: 1087
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1270
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1084
+starting MCTS iteration
+frame before rollout: 1102
+frame after rollout: 1327
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1863
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1213
+frame after rollout: 1513
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 744
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 1458
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1264
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1309
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1231
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1644
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1483
+frame after rollout: 1484
+starting MCTS iteration
+frame before rollout: 1389
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 1803
+starting MCTS iteration
+frame before rollout: 1328
+frame after rollout: 1329
+starting MCTS iteration
+frame before rollout: 814
+frame after rollout: 1820
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1278
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1583
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1743
+starting MCTS iteration
+frame before rollout: 1455
+frame after rollout: 1697
+starting MCTS iteration
+frame before rollout: 729
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 243
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1529
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1384
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1327
+starting MCTS iteration
+frame before rollout: 988
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1503
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 971
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1518
+starting MCTS iteration
+frame before rollout: 1203
+starting MCTS iteration
+frame before rollout: 77
+frame after rollout: 123
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1233
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1144
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1791
+frame after rollout: 1792
+starting MCTS iteration
+frame before rollout: 965
+frame after rollout: 1039
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1289
+frame after rollout: 1290
+starting MCTS iteration
+frame before rollout: 1343
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 902
+starting MCTS iteration
+frame before rollout: 1791
+frame after rollout: 1792
+starting MCTS iteration
+frame before rollout: 1463
+frame after rollout: 1464
+starting MCTS iteration
+frame before rollout: 1364
+starting MCTS iteration
+frame before rollout: 1084
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1394
+frame after rollout: 1395
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 183
+frame after rollout: 246
+starting MCTS iteration
+frame before rollout: 1713
+frame after rollout: 1743
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 438
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1143
+starting MCTS iteration
+frame before rollout: 1523
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1803
+starting MCTS iteration
+frame before rollout: 1028
+frame after rollout: 1327
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 753
+frame after rollout: 1043
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1623
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1309
+frame after rollout: 1310
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1683
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 63
+frame after rollout: 183
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 847
+starting MCTS iteration
+frame before rollout: 1490
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1104
+frame after rollout: 1105
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1204
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 367
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1464
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 1176
+frame after rollout: 1251
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 967
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 1160
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 983
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 847
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1522
+frame after rollout: 1523
+starting MCTS iteration
+frame before rollout: 1270
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1327
+starting MCTS iteration
+frame before rollout: 1213
+frame after rollout: 1713
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1087
+frame after rollout: 1088
+starting MCTS iteration
+frame before rollout: 1284
+frame after rollout: 1285
+starting MCTS iteration
+frame before rollout: 1489
+frame after rollout: 1490
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1064
+frame after rollout: 1139
+starting MCTS iteration
+frame before rollout: 1179
+frame after rollout: 1603
+starting MCTS iteration
+frame before rollout: 1364
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1107
+starting MCTS iteration
+frame before rollout: 1744
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1583
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1024
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 729
+frame after rollout: 804
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1102
+frame after rollout: 1327
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1744
+starting MCTS iteration
+frame before rollout: 902
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1291
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 729
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1043
+frame after rollout: 1044
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1444
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1283
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1683
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1471
+starting MCTS iteration
+frame before rollout: 1489
+frame after rollout: 1623
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1343
+starting MCTS iteration
+frame before rollout: 1783
+frame after rollout: 1784
+starting MCTS iteration
+frame before rollout: 1290
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1270
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1103
+starting MCTS iteration
+frame before rollout: 562
+frame after rollout: 637
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1063
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1263
+starting MCTS iteration
+frame before rollout: 152
+frame after rollout: 246
+starting MCTS iteration
+frame before rollout: 1328
+frame after rollout: 1329
+starting MCTS iteration
+frame before rollout: 987
+frame after rollout: 988
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1943
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 302
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1821
+frame after rollout: 1851
+starting MCTS iteration
+frame before rollout: 1524
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 198
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1104
+starting MCTS iteration
+frame before rollout: 544
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1479
+frame after rollout: 1480
+starting MCTS iteration
+frame before rollout: 753
+frame after rollout: 755
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1213
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 724
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1743
+starting MCTS iteration
+frame before rollout: 77
+frame after rollout: 123
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 858
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1107
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 544
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 77
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1603
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1384
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 904
+frame after rollout: 979
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1024
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1213
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 246
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 904
+frame after rollout: 979
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 744
+starting MCTS iteration
+frame before rollout: 1563
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1489
+starting MCTS iteration
+frame before rollout: 1218
+frame after rollout: 1293
+starting MCTS iteration
+frame before rollout: 303
+frame after rollout: 1308
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1043
+frame after rollout: 1044
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 1455
+starting MCTS iteration
+frame before rollout: 1104
+starting MCTS iteration
+frame before rollout: 1763
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1158
+starting MCTS iteration
+frame before rollout: 558
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 804
+frame after rollout: 1043
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 198
+starting MCTS iteration
+frame before rollout: 1327
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 908
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 364
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1087
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 1943
+starting MCTS iteration
+frame before rollout: 1563
+starting MCTS iteration
+frame before rollout: 1329
+frame after rollout: 1330
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 977
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1503
+frame after rollout: 1803
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1590
+frame after rollout: 1665
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1324
+starting MCTS iteration
+frame before rollout: 1526
+starting MCTS iteration
+frame before rollout: 63
+frame after rollout: 246
+starting MCTS iteration
+frame before rollout: 783
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 983
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 863
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 1943
+starting MCTS iteration
+frame before rollout: 1501
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 1338
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 678
+frame after rollout: 679
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1523
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1288
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1278
+frame after rollout: 1353
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1219
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1683
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1024
+starting MCTS iteration
+frame before rollout: 1203
+starting MCTS iteration
+frame before rollout: 602
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1263
+starting MCTS iteration
+frame before rollout: 983
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 964
+frame after rollout: 965
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1243
+starting MCTS iteration
+frame before rollout: 513
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 1038
+frame after rollout: 1522
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 902
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 847
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1087
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 63
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 1503
+frame after rollout: 1504
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1480
+frame after rollout: 1555
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1683
+frame after rollout: 1803
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1363
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1583
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1863
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1327
+frame after rollout: 1328
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 798
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 744
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1490
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1179
+frame after rollout: 1181
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 246
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 1309
+frame after rollout: 1310
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 863
+starting MCTS iteration
+frame before rollout: 1743
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1489
+frame after rollout: 1623
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 743
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1384
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1107
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1162
+starting MCTS iteration
+frame before rollout: 1319
+starting MCTS iteration
+frame before rollout: 1523
+frame after rollout: 1524
+starting MCTS iteration
+frame before rollout: 483
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1384
+starting MCTS iteration
+frame before rollout: 1244
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 984
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1288
+frame after rollout: 1363
+starting MCTS iteration
+frame before rollout: 487
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1523
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1327
+starting MCTS iteration
+frame before rollout: 1105
+frame after rollout: 1179
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 847
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 788
+frame after rollout: 1087
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 604
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 1463
+frame after rollout: 1464
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1518
+starting MCTS iteration
+frame before rollout: 744
+frame after rollout: 1243
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1284
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1213
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1490
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1683
+frame after rollout: 1803
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 849
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1327
+frame after rollout: 1328
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1623
+frame after rollout: 1803
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1703
+starting MCTS iteration
+frame before rollout: 1563
+frame after rollout: 1627
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 783
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 879
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1144
+frame after rollout: 1213
+starting MCTS iteration
+frame before rollout: 1943
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 1293
+starting MCTS iteration
+frame before rollout: 1389
+frame after rollout: 1487
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1024
+starting MCTS iteration
+frame before rollout: 607
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 967
+frame after rollout: 1467
+starting MCTS iteration
+frame before rollout: 1488
+frame after rollout: 1490
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 603
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1039
+frame after rollout: 1208
+starting MCTS iteration
+frame before rollout: 1650
+frame after rollout: 1651
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 983
+frame after rollout: 984
+starting MCTS iteration
+frame before rollout: 1803
+starting MCTS iteration
+frame before rollout: 1364
+frame after rollout: 1664
+starting MCTS iteration
+frame before rollout: 1327
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1623
+starting MCTS iteration
+frame before rollout: 1290
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1107
+frame after rollout: 1607
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1603
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 1204
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 1338
+frame after rollout: 1413
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1384
+frame after rollout: 1683
+starting MCTS iteration
+frame before rollout: 1329
+frame after rollout: 1403
+starting MCTS iteration
+frame before rollout: 1291
+frame after rollout: 1365
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1458
+frame after rollout: 1533
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1178
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 1233
+starting MCTS iteration
+frame before rollout: 1104
+frame after rollout: 1105
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1783
+frame after rollout: 1784
+starting MCTS iteration
+frame before rollout: 1743
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1283
+frame after rollout: 1284
+starting MCTS iteration
+frame before rollout: 1943
+frame after rollout: 1944
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1278
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1324
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 983
+frame after rollout: 1483
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 983
+frame after rollout: 1483
+starting MCTS iteration
+frame before rollout: 963
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 843
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 543
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 423
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1102
+frame after rollout: 1327
+starting MCTS iteration
+frame before rollout: 979
+frame after rollout: 1415
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1158
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 607
+starting MCTS iteration
+frame before rollout: 1583
+frame after rollout: 1683
+starting MCTS iteration
+frame before rollout: 1383
+starting MCTS iteration
+frame before rollout: 1310
+starting MCTS iteration
+frame before rollout: 843
+frame after rollout: 918
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1107
+frame after rollout: 1607
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1290
+frame after rollout: 1421
+starting MCTS iteration
+frame before rollout: 1464
+starting MCTS iteration
+frame before rollout: 1043
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1285
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1501
+starting MCTS iteration
+frame before rollout: 903
+frame after rollout: 1023
+starting MCTS iteration
+frame before rollout: 1061
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 1564
+frame after rollout: 1638
+starting MCTS iteration
+frame before rollout: 727
+frame after rollout: 877
+starting MCTS iteration
+frame before rollout: 744
+frame after rollout: 949
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1803
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 863
+frame after rollout: 1363
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1263
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 996
+starting MCTS iteration
+frame before rollout: 1203
+starting MCTS iteration
+frame before rollout: 183
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 543
+frame after rollout: 607
+starting MCTS iteration
+frame before rollout: 967
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 1106
+frame after rollout: 1406
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1803
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1278
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1328
+frame after rollout: 1329
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1503
+frame after rollout: 1697
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1213
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1024
+frame after rollout: 1224
+starting MCTS iteration
+frame before rollout: 1490
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1398
+starting MCTS iteration
+frame before rollout: 989
+frame after rollout: 1289
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1523
+starting MCTS iteration
+frame before rollout: 1863
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1328
+starting MCTS iteration
+frame before rollout: 1518
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 1489
+starting MCTS iteration
+frame before rollout: 1479
+frame after rollout: 1480
+starting MCTS iteration
+frame before rollout: 1243
+frame after rollout: 1244
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1203
+starting MCTS iteration
+frame before rollout: 1224
+frame after rollout: 1724
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 755
+frame after rollout: 828
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 804
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1851
+frame after rollout: 1852
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1327
+frame after rollout: 1328
+starting MCTS iteration
+frame before rollout: 1308
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1289
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1103
+frame after rollout: 1603
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1603
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 1243
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 788
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1791
+starting MCTS iteration
+frame before rollout: 1288
+frame after rollout: 1588
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 1323
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 1525
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 744
+starting MCTS iteration
+frame before rollout: 1455
+starting MCTS iteration
+frame before rollout: 1284
+starting MCTS iteration
+frame before rollout: 1489
+frame after rollout: 1503
+starting MCTS iteration
+frame before rollout: 744
+frame after rollout: 903
+starting MCTS iteration
+frame before rollout: 1044
+frame after rollout: 1119
+starting MCTS iteration
+frame before rollout: 1283
+frame after rollout: 1296
+starting MCTS iteration
+frame before rollout: 787
+frame after rollout: 1087
+starting MCTS iteration
+frame before rollout: 1513
+frame after rollout: 1514
+starting MCTS iteration
+frame before rollout: 1487
+starting MCTS iteration
+frame before rollout: 1104
+frame after rollout: 1327
+starting MCTS iteration
+frame before rollout: 1213
+frame after rollout: 1383
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1323
+starting MCTS iteration
+frame before rollout: 1290
+starting MCTS iteration
+frame before rollout: 183
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 544
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 1043
+frame after rollout: 1044
+starting MCTS iteration
+frame before rollout: 1158
+frame after rollout: 1233
+starting MCTS iteration
+frame before rollout: 1490
+starting MCTS iteration
+frame before rollout: 1323
+starting MCTS iteration
+frame before rollout: 1328
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1563
+starting MCTS iteration
+frame before rollout: 1443
+frame after rollout: 1444
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 789
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 1590
+starting MCTS iteration
+frame before rollout: 1683
+starting MCTS iteration
+frame before rollout: 1083
+frame after rollout: 1583
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 1329
+frame after rollout: 1627
+starting MCTS iteration
+frame before rollout: 1263
+frame after rollout: 1270
+starting MCTS iteration
+frame before rollout: 1061
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 483
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 2
+frame after rollout: 302
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 902
+starting MCTS iteration
+frame before rollout: 1310
+frame after rollout: 1385
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 1092
+starting MCTS iteration
+frame before rollout: 1503
+starting MCTS iteration
+frame before rollout: 783
+frame after rollout: 963
+starting MCTS iteration
+frame before rollout: 663
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 984
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1503
+frame after rollout: 1504
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 663
+starting MCTS iteration
+frame before rollout: 723
+frame after rollout: 843
+starting MCTS iteration
+frame before rollout: 1405
+starting MCTS iteration
+frame before rollout: 971
+frame after rollout: 1083
+starting MCTS iteration
+frame before rollout: 183
+frame after rollout: 363
+starting MCTS iteration
+frame before rollout: 1203
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 1443
+starting MCTS iteration
+frame before rollout: 438
+frame after rollout: 603
+starting MCTS iteration
+frame before rollout: 1308
+frame after rollout: 1309
+starting MCTS iteration
+frame before rollout: 1697
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 123
+frame after rollout: 243
+starting MCTS iteration
+frame before rollout: 1487
+frame after rollout: 1488
+starting MCTS iteration
+frame before rollout: 1143
+frame after rollout: 1443
+starting MCTS iteration
+frame before rollout: 363
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 1488
+starting MCTS iteration
+frame before rollout: 743
+frame after rollout: 744
+starting MCTS iteration
+frame before rollout: 1023
+starting MCTS iteration
+frame before rollout: 603
+frame after rollout: 723
+starting MCTS iteration
+frame before rollout: 438
+frame after rollout: 483
+starting MCTS iteration
+frame before rollout: 1023
+frame after rollout: 1143
+starting MCTS iteration
+frame before rollout: 1383
+frame after rollout: 1683
+Action chosen: <cpp_env.level.Action; proxy of <Swig Object of type 'Action *' at 0x7f9cd28d6070> >
+starting MCTS iteration
+expanding root
+root expansion num 1
+frame before rollout: 123
+root expansion num 2
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 3
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 4
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 5
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 6
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 7
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 8
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 9
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 10
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 11
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 12
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 13
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 14
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 15
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 16
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 17
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 18
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 19
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 20
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 21
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 22
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 23
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 24
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 25
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 26
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 27
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 28
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 29
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 30
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 31
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 32
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 33
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 34
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 35
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 36
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 37
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 38
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 39
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 40
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 41
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 42
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 43
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 44
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 45
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 46
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 47
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 48
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 49
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 50
+frame before rollout: 123
+frame after rollout: 363
+root expansion num 51
+frame before rollout: 123
+root expansion num 52
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 53
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 54
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 55
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 56
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 57
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 58
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 59
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 60
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 61
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 62
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 63
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 64
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 65
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 66
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 67
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 68
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 69
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 70
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 71
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 72
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 73
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 74
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 75
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 76
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 77
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 78
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 79
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 80
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 81
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 82
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 83
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 84
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 85
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 86
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 87
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 88
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 89
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 90
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 91
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 92
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 93
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 94
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 95
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 96
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 97
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 98
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 99
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 100
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 101
+frame before rollout: 123
+root expansion num 102
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 103
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 104
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 105
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 106
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 107
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 108
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 109
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 110
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 111
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 112
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 113
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 114
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 115
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 116
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 117
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 118
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 119
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 120
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 121
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 122
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 123
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 124
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 125
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 126
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 127
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 128
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 129
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 130
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 131
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 132
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 133
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 134
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 135
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 136
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 137
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 138
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 139
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 140
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 141
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 142
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 143
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 144
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 145
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 146
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 147
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 148
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 149
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 150
+frame before rollout: 123
+frame after rollout: 483
+root expansion num 151
+frame before rollout: 123
+root expansion num 152
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 153
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 154
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 155
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 156
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 157
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 158
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 159
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 160
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 161
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 162
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 163
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 164
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 165
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 166
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 167
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 168
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 169
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 170
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 171
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 172
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 173
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 174
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 175
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 176
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 177
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 178
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 179
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 180
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 181
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 182
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 183
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 184
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 185
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 186
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 187
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 188
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 189
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 190
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 191
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 192
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 193
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 194
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 195
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 196
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 197
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 198
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 199
+frame before rollout: 123
+frame after rollout: 243
+root expansion num 200
+frame before rollout: 123
+frame after rollout: 243
+Action chosen: <cpp_env.level.Action; proxy of <Swig Object of type 'Action *' at 0x7f9cd28d60a0> >
+starting MCTS iteration
+expanding root
+root expansion num 1
+frame before rollout: 363
+root expansion num 2
+frame before rollout: 363
+root expansion num 3
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 4
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 5
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 6
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 7
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 8
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 9
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 10
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 11
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 12
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 13
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 14
+frame before rollout: 363
+frame after rollout: 603
+root expansion num 15
+frame before rollout: 363
+frame after rollout: 603

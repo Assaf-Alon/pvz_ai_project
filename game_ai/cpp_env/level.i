@@ -22,6 +22,5 @@ namespace std{
     %template(observation_matrix) vector<vector<vector<int>>>;
     %template(state_lane) vector<Cell>;
     %template(state_matrix) vector<vector<Cell>>;
-    %template(Plant_list) array<PlantData, 18>; 
 }
 %include "level.hpp"
