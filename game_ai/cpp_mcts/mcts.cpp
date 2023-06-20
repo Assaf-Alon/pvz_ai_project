@@ -60,7 +60,9 @@ void Node::expand(int num_rollouts) {
     }
     if (this->parent == nullptr) { // root node gets fully expanded 
         std::cout << "expanding root" << std::endl;
+        int i = 0;
         for (auto action : this->available_actions) {
+            std::cout << "root expansion num " << ++ i << std::endl;
             Node* child = new Node(this, *this->level, action);
             child->rollout(num_rollouts);
             this->childern.push_back(child);
@@ -77,13 +79,17 @@ void Node::expand(int num_rollouts) {
 
 }
 void Node::rollout(int num_rollouts) {
-    while (!this->level->is_action_legal(action) && !(this->level->done)) this->level->step();
+    std::cout << "frame before action: " << this->level->frame << std::endl;
+    while (!this->level->is_action_legal(action) && !(this->level->done)) {
+        this->level->step();
+    }
     if (this->level->done){
         this->backpropagate((int)this->level->win, 1);
         this->available_actions.clear();
         return;
     }
     this->level->step(this->action);
+    std::cout << "frame after action: " << this->level->frame << std::endl;
     // static const int rollout = 12;
     int win = this->level->rollout(8, num_rollouts, 1);
     this->backpropagate(win, num_rollouts);
@@ -128,12 +134,13 @@ Action select_best_action(Node& root) {
     }
     return action;
 }
-Action run(Level& level, int timeout, int games_per_rollout, bool debug){
-    omp_set_num_threads(8);
+std::pair<Action, int> run(Level& level, int timeout, int games_per_rollout, bool debug){
+    // omp_set_num_threads(8);
     Node root = Node(nullptr, level, Action((PlantName)0,0,0));
     auto start_time = std::chrono::high_resolution_clock::now();
     auto end_time = start_time + std::chrono::seconds(timeout);
     while(std::chrono::high_resolution_clock::now() < end_time) {
+        std::cout << "starting MCTS iteration" << std::endl;
         Node* next_node = root.select();
         if (next_node == nullptr) {
             break;
@@ -144,7 +151,7 @@ Action run(Level& level, int timeout, int games_per_rollout, bool debug){
     if (debug) {
         std::cout << "total expanded: " << root.num_rollouts << std::endl;
     }
-    return chosen_action;
+    return std::pair<Action, int>(chosen_action, root.num_rollouts);
 }
 // int main() {
 //     omp_set_num_threads(8);

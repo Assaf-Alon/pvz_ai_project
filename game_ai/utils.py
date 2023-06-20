@@ -1,4 +1,4 @@
-import cpp_env.level as cpp_level
+import level
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -9,22 +9,22 @@ from time import time
 
 def construct_level_data_from_list(list: list):
     list.sort(key=lambda item: item[0]) # sort by first element of tuple (list[tuple])
-    level_data = cpp_level.ZombieQueue()
+    level_data = level.ZombieQueue()
     for item in list:
-        level_data.push_back(cpp_level.ZombieSpawnTemplate(item[0], item[1], item[2]))
+        level_data.push_back(level.ZombieSpawnTemplate(item[0], item[1], item[2]))
     return level_data
 
 
-# level_data_1 = cpp_level.ZombieQueue()
-# level_data_1.push_back(cpp_level.ZombieSpawnTemplate(10, 1, "normal"))
-# level_data_1.push_back(cpp_level.ZombieSpawnTemplate(11, 1, "normal"))
-# level_data_1.push_back(cpp_level.ZombieSpawnTemplate(12, 1, "normal"))
-# level_data_1.push_back(cpp_level.ZombieSpawnTemplate(20, 3, "normal"))
-# level_data_1.push_back(cpp_level.ZombieSpawnTemplate(20, 2, "buckethead"))
-# level_data_1.push_back(cpp_level.ZombieSpawnTemplate(50, 1, "flag"))
-# level_data_1.push_back(cpp_level.ZombieSpawnTemplate(50, 4, "newspaper"))
-# level_data_1.push_back(cpp_level.ZombieSpawnTemplate(50, 1, "conehead"))
-# level_data_1.push_back(cpp_level.ZombieSpawnTemplate(85, 1, "normal"))
+# level_data_1 = level.ZombieQueue()
+# level_data_1.push_back(level.ZombieSpawnTemplate(10, 1, "normal"))
+# level_data_1.push_back(level.ZombieSpawnTemplate(11, 1, "normal"))
+# level_data_1.push_back(level.ZombieSpawnTemplate(12, 1, "normal"))
+# level_data_1.push_back(level.ZombieSpawnTemplate(20, 3, "normal"))
+# level_data_1.push_back(level.ZombieSpawnTemplate(20, 2, "buckethead"))
+# level_data_1.push_back(level.ZombieSpawnTemplate(50, 1, "flag"))
+# level_data_1.push_back(level.ZombieSpawnTemplate(50, 4, "newspaper"))
+# level_data_1.push_back(level.ZombieSpawnTemplate(50, 1, "conehead"))
+# level_data_1.push_back(level.ZombieSpawnTemplate(85, 1, "normal"))
 
 level_data_1_list = [
     (10, 1, "normal"),
@@ -39,18 +39,18 @@ level_data_1_list = [
 ]
 level_data_1 = construct_level_data_from_list(level_data_1_list)
 
-# level_data_2 = cpp_level.ZombieQueue()
-# level_data_2.push_back(cpp_level.ZombieSpawnTemplate(10, 1, "normal"))
-# level_data_2.push_back(cpp_level.ZombieSpawnTemplate(11, 1, "normal"))
-# level_data_2.push_back(cpp_level.ZombieSpawnTemplate(12, 1, "normal"))
-# level_data_2.push_back(cpp_level.ZombieSpawnTemplate(20, 3, "normal"))
-# level_data_2.push_back(cpp_level.ZombieSpawnTemplate(20, 2, "buckethead"))
-# level_data_2.push_back(cpp_level.ZombieSpawnTemplate(50, 1, "flag"))
-# level_data_2.push_back(cpp_level.ZombieSpawnTemplate(50, 4, "newspaper"))
-# level_data_2.push_back(cpp_level.ZombieSpawnTemplate(50, 1, "conehead"))
-# level_data_2.push_back(cpp_level.ZombieSpawnTemplate(85, 1, "normal"))
-# level_data_2.push_back(cpp_level.ZombieSpawnTemplate(85, 2, "normal"))
-# level_data_2.push_back(cpp_level.ZombieSpawnTemplate(85, 3, "normal"))
+# level_data_2 = level.ZombieQueue()
+# level_data_2.push_back(level.ZombieSpawnTemplate(10, 1, "normal"))
+# level_data_2.push_back(level.ZombieSpawnTemplate(11, 1, "normal"))
+# level_data_2.push_back(level.ZombieSpawnTemplate(12, 1, "normal"))
+# level_data_2.push_back(level.ZombieSpawnTemplate(20, 3, "normal"))
+# level_data_2.push_back(level.ZombieSpawnTemplate(20, 2, "buckethead"))
+# level_data_2.push_back(level.ZombieSpawnTemplate(50, 1, "flag"))
+# level_data_2.push_back(level.ZombieSpawnTemplate(50, 4, "newspaper"))
+# level_data_2.push_back(level.ZombieSpawnTemplate(50, 1, "conehead"))
+# level_data_2.push_back(level.ZombieSpawnTemplate(85, 1, "normal"))
+# level_data_2.push_back(level.ZombieSpawnTemplate(85, 2, "normal"))
+# level_data_2.push_back(level.ZombieSpawnTemplate(85, 3, "normal"))
 
 level_data_2_list = [
     (10, 1, "normal"), 
@@ -139,8 +139,8 @@ lvl4_data_list = [
 
 level_data_2 = construct_level_data_from_list(level_data_2_list)
 
-chosen_plants_1 = [cpp_level.SUNFLOWER, cpp_level.PEASHOOTER, cpp_level.POTATOMINE, cpp_level.SQUASH, cpp_level.SPIKEWEED, cpp_level.WALLNUT]
-chosen_plants_basic = [cpp_level.SUNFLOWER, cpp_level.PEASHOOTER]
+chosen_plants_1 = [level.SUNFLOWER, level.PEASHOOTER, level.POTATOMINE, level.SQUASH, level.SPIKEWEED, level.WALLNUT]
+chosen_plants_basic = [level.SUNFLOWER, level.PEASHOOTER]
 
 # Actual levels
 lvl1_data = construct_level_data_from_list(lvl1_data_list)
@@ -148,23 +148,23 @@ lvl2_data = construct_level_data_from_list(lvl2_data_list)
 lvl3_data = construct_level_data_from_list(lvl3_data_list)
 lvl4_data = construct_level_data_from_list(lvl4_data_list)
 
-chosen_plants_lvl1 = [cpp_level.PEASHOOTER]
-chosen_plants_lvl2 = [cpp_level.PEASHOOTER, cpp_level.SUNFLOWER]
-chosen_plants_lvl3 = [cpp_level.PEASHOOTER, cpp_level.SUNFLOWER, cpp_level.CHERRYBOMB]
-chosen_plants_lvl4 = [cpp_level.PEASHOOTER, cpp_level.SUNFLOWER, cpp_level.CHERRYBOMB, cpp_level.WALLNUT]
+chosen_plants_lvl1 = [level.PEASHOOTER]
+chosen_plants_lvl2 = [level.PEASHOOTER, level.SUNFLOWER]
+chosen_plants_lvl3 = [level.PEASHOOTER, level.SUNFLOWER, level.CHERRYBOMB]
+chosen_plants_lvl4 = [level.PEASHOOTER, level.SUNFLOWER, level.CHERRYBOMB, level.WALLNUT]
 
 
 
-def get_numpy_arr_from_level_obs(level: cpp_level.Level):
+def get_numpy_arr_from_level_obs(level: level.Level):
     arr = level.get_observation()
     result = np.asarray(arr)
     return result
 
-def print_level_state(level: cpp_level.Level):
-    state = level.get_state() # type: cpp_level.State
+def print_level_state(level: level.Level):
+    state = level.get_state() # type: level.State
     for lane in range(state.size()):
         for col in range(state[lane].size()):
-            cell = state[lane][col] # type: cpp_level.Cell
+            cell = state[lane][col] # type: level.Cell
 
 def get_frame_from_obs(observation: np.ndarray):
     num_rows, num_cols, _ = observation.shape
@@ -227,7 +227,7 @@ def animate_observation_buffer(frame_buffer: list):
     plt.show()
 
 def run_animation():
-    level = cpp_level.Level(5, 10, 10, level_data_1, chosen_plants_basic)
+    level = level.Level(5, 10, 10, level_data_1, chosen_plants_basic)
     frame_list = []
     while not level.done:
         level.step(level.get_random_action())
@@ -236,23 +236,25 @@ def run_animation():
         frame_list.append(frame)
     animate_observation_buffer(frame_list)
 
-def simulate_set_game(level: cpp_level.Level, action_list: list[tuple[int]]):
+def simulate_set_game(level: level.Level, action_list: list[tuple[int]]):
     frames = []
     for action in action_list:
-        cpp_action = cpp_level.Action(*action)
+        cpp_action = level.Action(*action)
         while not level.is_action_legal(cpp_action) and not level.done:
             level.step()
             frames.append(get_frame_from_obs(get_numpy_arr_from_level_obs(level)))
         level.step(cpp_action)
         frames.append(get_frame_from_obs(get_numpy_arr_from_level_obs(level)))
-    print(f"lawnmowers: {level.lawnmowers[0]} {level.lawnmowers[1]} {level.lawnmowers[2]} {level.lawnmowers[3]} {level.lawnmowers[4]}")
+    # print(f"lawnmowers: {level.lawnmowers[0]} {level.lawnmowers[1]} {level.lawnmowers[2]} {level.lawnmowers[3]} {level.lawnmowers[4]}")
     input()
     animate_observation_buffer(frames)
     
-    
+def action_to_string(action: level.Action, level: level.Level):
+    plant_name = "placeholer"
+    return f"action: plant {action.plant_name} at coords: {action.lane}, {action.col}"
     
 def estimate_simulation_speed():
-    level = cpp_level.Level(5, 10, 10, level_data_1, chosen_plants_basic)
+    level = level.Level(5, 10, 10, level_data_1, chosen_plants_basic)
     num_rollout = 1000000
     start = time()
     level.rollout(14, num_rollout)
@@ -262,7 +264,7 @@ def estimate_simulation_speed():
 def play_level1():
     FPS = 10
     GAMES = 10000
-    level = cpp_level.Level(1, 10, FPS, lvl1_data, chosen_plants_lvl1)
+    level = level.Level(1, 10, FPS, lvl1_data, chosen_plants_lvl1)
     print(f"Level 1 Mode 1: {level.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 1 Mode 2: {level.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 1 Mode 3: {level.rollout(8, GAMES, 3)} / {GAMES}")
@@ -270,7 +272,7 @@ def play_level1():
 def play_level2():
     FPS = 10
     GAMES = 10000
-    level = cpp_level.Level(3, 10, FPS, lvl2_data, chosen_plants_lvl2)
+    level = level.Level(3, 10, FPS, lvl2_data, chosen_plants_lvl2)
     print(f"Level 2 Mode 1: {level.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 2 Mode 2: {level.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 2 Mode 3: {level.rollout(8, GAMES, 3)} / {GAMES}")
@@ -278,7 +280,7 @@ def play_level2():
 def play_level3():
     FPS = 10
     GAMES = 10000
-    level = cpp_level.Level(3, 10, FPS, lvl3_data, chosen_plants_lvl3)
+    level = level.Level(3, 10, FPS, lvl3_data, chosen_plants_lvl3)
     print(f"Level 3 Mode 1: {level.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 3 Mode 2: {level.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 3 Mode 3: {level.rollout(8, GAMES, 3)} / {GAMES}")
@@ -286,7 +288,7 @@ def play_level3():
 def play_level4():
     FPS = 10
     GAMES = 100000
-    level = cpp_level.Level(5, 10, FPS, lvl4_data, chosen_plants_lvl4)
+    level = level.Level(5, 10, FPS, lvl4_data, chosen_plants_lvl4)
     print(f"Level 4 Mode 1: {level.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 4 Mode 2: {level.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 4 Mode 3: {level.rollout(8, GAMES, 3)} / {GAMES}")
@@ -299,7 +301,7 @@ if __name__ == "__main__":
     play_level3()
     print()
     play_level4()
-    # level = cpp_level.Level(5, 10, 10, level_data_1, chosen_plants_1)
+    # level = level.Level(5, 10, 10, level_data_1, chosen_plants_1)
     # print(level.rollout(8, 10000, 1))
     # print(level.rollout(8, 10000, 2))
     # print(level.rollout(8, 10000, 3))
