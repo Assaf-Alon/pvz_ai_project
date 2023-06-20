@@ -552,16 +552,69 @@ bool play_random_game(Level env, int randomization_mode){
             }
             env.step((PlantName)next_plant, lane, col);
         }
+        break;
+        case 4:
+        while(!env.done){
+            static const vector<Action> action_space = vector<Action>(env.get_action_space());
+            int most_wins = 0;
+            Action best_action = Action();
+            // omp_set_num_threads(8);
+            #pragma omp parallel for
+            for(int i = 0; i < 6; i++){
+                Action next_action = action_space[get_random_number(0, action_space.size())];
+                Level* cloned = env.clone();
+                while(!cloned->is_action_legal(next_action) && !cloned->done){
+                    cloned->step();
+                }
+                if(cloned->done){
+                    continue;
+                }
+                cloned->step(next_action);
+                int wins = cloned->rollout(-1, 10, 1);
+                #pragma omp critical
+                {
+                    if(wins > most_wins){
+                        most_wins = wins;
+                        best_action = next_action;
+                    }
+                }
+            }
+            while(!env.is_action_legal(best_action) && !env.done){
+                env.step();
+            }
+            if(env.done){
+                break;
+            }
+            env.step(best_action);
+        }
+        break;
     }
     return env.win;
 }
 
 int Level::rollout(int num_cpu, int num_games, int mode) const {
     std::vector<bool> victories(num_games, false);
-    omp_set_num_threads(num_cpu);
-    #pragma omp parallel for shared(victories)
-    for (int i = 0; i < num_games; i++){
-        victories[i] = play_random_game(*this, mode);
+    switch (num_cpu){
+        case 1:
+        for (int i = 0; i < num_games; i++){
+            victories[i] = play_random_game(*this, mode);
+        }
+        break;
+        case -1:
+        // omp_set_num_threads(8);
+        omp_set_dynamic(1);
+        #pragma omp parallel for shared(victories)
+        for (int i = 0; i < num_games; i++){
+            victories[i] = play_random_game(*this, mode);
+        }
+        break;
+        default:
+        omp_set_num_threads(num_cpu);
+        #pragma omp parallel for shared(victories)
+        for (int i = 0; i < num_games; i++){
+            victories[i] = play_random_game(*this, mode);
+        }
+        break;
     }
     return std::count(victories.begin(), victories.end(), true);
 }

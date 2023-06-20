@@ -51,9 +51,6 @@ class Node {
         float ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(log(parent_rollouts) / rollouts));
         return ucb;
     };
-    // friend inline bool operator<(const Node& first, const Node& second) {
-    //     return first.current_ucb < second.current_ucb;
-    // };
     Node(Node* parent, Level& level, Action action, const float ucb_coefficient);
     Node* select();
     ~Node();

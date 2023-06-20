@@ -79,7 +79,7 @@ void Node::rollout(int num_rollouts) {
         return;
     }
     this->level->step(this->action);
-    int wins = this->level->rollout(8, num_rollouts, 1);
+    int wins = this->level->rollout(1, num_rollouts, 1);
     this->backpropagate(wins, num_rollouts);
 }
 void Node::backpropagate(int wins, int rollouts) {
