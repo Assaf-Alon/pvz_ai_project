@@ -4,13 +4,19 @@ import mcts
 import level
 import utils
 
-env = level.Level(5, 10, 10, utils.lvl4_data, utils.chosen_plants_lvl4)
+# env = level.Level(5, 10, 10, utils.lvl4_data, utils.chosen_plants_lvl4)
+level_data = utils.construct_level_data_from_list(utils.lvl9_data_list)
+env = level.Level(5, 10, 10, level_data, utils.lvl9_legal_plants)
+# print(env.rollout(-1, 20, 4))
+# print(env.rollout(-1, 10000000, 1))
+# exit()
 base_env = env.clone()
 action_list = []
+# mcts.run(env, 5000, 1, True)
 while not env.done:
     print(f"win rate before mcts action: {100 * (env.rollout(-1, 10000, 1) / 10000)}%")
     print(f"frame before mcts: {env.frame}")
-    action = mcts.run(env, 50, 1, True, 50)
+    action = mcts.run(env, 20000, 300, True, 15)
     action_list.append(action)
     print(f"frame after mcts: {env.frame}")
     print(utils.action_to_string(action))
@@ -21,9 +27,10 @@ while not env.done:
     print(f"frame waiting for step: {env.frame}")
     env.step(action)
     print(f"win rate after mcts action: {100 * (env.rollout(-1, 10000, 1) / 10000)}%")
+    print("----------------------------")
 print(f"Game finished with status: {env.win}, at frame number {env.frame}")
 
-# utils.simulate_set_game(base_env, action_list)
+utils.simulate_set_game(base_env, action_list)
 
 # num_rollouts = 10000
 # winrate = 100 * (env.rollout(8, num_rollouts, 1) / num_rollouts)

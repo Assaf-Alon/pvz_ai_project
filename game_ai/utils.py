@@ -137,16 +137,80 @@ lvl4_data_list = [
     (246, 4, "normal")
 ]
 
+lvl9_data_list = [
+    (20, 0, "normal"),
+    (50, 2, "normal"),
+    (70, 1, "normal"),
+    (90, 0, "normal"),
+    (90, 3, "normal"),
+    (110, 4, "normal"),
+    (110, 2, "normal"),
+    (130, 0, "pole"),
+    (155, 1, "normal"),
+    (155, 3, "normal"),
+    (156, 2, "normal"),
+    (175, 4, "pole"),
+    (175, 0, "normal"),
+    (195, 2, "normal"),
+    (195, 4, "conehead"),
+    (215, 4, "flag"),
+    (216, 3, "normal"),
+    (216, 3, "normal"),
+    (216, 2, "conehead"),
+    (216, 2, "normal"),
+    (216, 1, "normal"),
+    (217, 0, "normal"),
+    (217, 0, "conehead"),
+    (220, 0, "pole"),
+    (220, 2, "normal"),
+    (221, 1, "normal"),
+    (236, 3, "buckethead"),
+    (260, 0, "conehead"),
+    (260, 1, "normal"),
+    (260, 4, "pole"),
+    (270, 2, "conehead"),
+    (270, 0, "conehead"),
+    (270, 3, "normal"),
+    (285, 0, "normal"),
+    (285, 1, "conehead"),
+    (285, 4, "conehead"),
+    (300, 0, "normal"),
+    (300, 1, "pole"),
+    (300, 3, "normal"),
+    (301, 2, "conehead"),
+    (310, 3, "buckethead"),
+    (310, 4, "normal"),
+    (310, 4, "normal"),
+    (322, 0, "conehead"),
+    (322, 1, "conehead"),
+    (322, 2, "conehead"),
+    (331, 1, "pole"),
+    (331, 4, "normal"),
+    (331, 3, "conehead"),
+    (332, 3, "conehead"),
+    (370, 0, "flag"),
+    (371, 4, "pole"),
+    (371, 3, "normal"),
+    (371, 3, "conehead"),
+    (371, 2, "normal"),
+    (372, 2, "normal"),
+    (372, 1, "normal"),
+    (372, 1, "normal"),
+    (372, 0, "normal"),
+    (372, 0, "buckethead")
+]
+
 level_data_2 = construct_level_data_from_list(level_data_2_list)
 
 chosen_plants_1 = [level.SUNFLOWER, level.PEASHOOTER, level.POTATOMINE, level.SQUASH, level.SPIKEWEED, level.WALLNUT]
 chosen_plants_basic = [level.SUNFLOWER, level.PEASHOOTER]
-
+lvl9_legal_plants = [level.SUNFLOWER, level.PEASHOOTER, level.WALLNUT, level.POTATOMINE, level.REPEATERPEA, level.CHERRYBOMB]
 # Actual levels
 lvl1_data = construct_level_data_from_list(lvl1_data_list)
 lvl2_data = construct_level_data_from_list(lvl2_data_list)
 lvl3_data = construct_level_data_from_list(lvl3_data_list)
 lvl4_data = construct_level_data_from_list(lvl4_data_list)
+lvl9_data = construct_level_data_from_list(lvl9_data_list)
 
 chosen_plants_lvl1 = [level.PEASHOOTER]
 chosen_plants_lvl2 = [level.PEASHOOTER, level.SUNFLOWER]

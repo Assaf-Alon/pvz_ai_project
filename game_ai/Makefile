@@ -34,7 +34,7 @@ DEBUG_EXEC := debug.out
 PROFILE_EXEC := profile_exec.out
 
 # all: $(LEVEL_SWIG_LIB) $(MCTS_SWIG_LIB)
-all: $(LEVEL_SWIG_LIB) $(MCTS_SWIG_LIB)
+all: $(LEVEL_SWIG_LIB) $(MCTS_SWIG_LIB) $(LEVEL_SWIG_SRCS) $(MCTS_SWIG_SRCS)
 	cp $(LEVEL_PY) .
 	cp $(MCTS_PY) .
 	@echo "do: 'export LD_LIBRARY_PATH=$(pwd)"
@@ -61,7 +61,7 @@ $(MCTS_SWIG_LIB): $(MCTS_SWIG_OBJS) $(LEVEL_LIB) $(MCTS_SWIG_SRCS)
 	$(CC) $(PYTHONL) -flto -shared -L. -l:$(LEVEL_LIB) $(MCTS_SWIG_OBJS) $(LEVEL_LIB) $(LIBFLAGS) -o $(MCTS_SWIG_LIB)
 
 $(LEVEL_SWIG_SRCS): $(LEVEL_SWIG_FILE)
-	swig -c++ -python level.i
+	swig -c++ -python $(LEVEL_DIR)level.i
 
 $(MCTS_SWIG_SRCS): $(MCTS_SWIG_FILE)
 	swig -c++ -python $(MCTS_DIR)mcts.i

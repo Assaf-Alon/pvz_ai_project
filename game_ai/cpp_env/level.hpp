@@ -225,6 +225,10 @@ public:
     void append_zombie(int second, int lane, std::string type);
     int rollout(int num_cpu, int num_games=10000, int mode=1) const; // return num_victories
     std::pair<int, int> timed_rollout(int num_cpu, int time_limit_ms, int mode = 1) const;
+
+    int count_plant(PlantName plant) const;
+    int count_lawnmowers() const;
+    int count_plant() const;
 };
 bool play_random_game(Level env, int randomization_mode);
 

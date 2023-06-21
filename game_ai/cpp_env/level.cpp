@@ -1,6 +1,7 @@
 #include "level.hpp"
 #include "zombie.h"
 #include "plant.h"
+#include <algorithm>
 using std::cout;
 using std::endl;
 using std::string;
@@ -560,7 +561,7 @@ bool play_random_game(Level env, int randomization_mode){
             Action best_action = Action();
             // omp_set_num_threads(8);
             #pragma omp parallel for
-            for(int i = 0; i < 6; i++){
+            for(int i = 0; i < 22; i++){
                 Action next_action = action_space[get_random_number(0, action_space.size())];
                 Level* cloned = env.clone();
                 while(!cloned->is_action_legal(next_action) && !cloned->done){
@@ -570,7 +571,7 @@ bool play_random_game(Level env, int randomization_mode){
                     continue;
                 }
                 cloned->step(next_action);
-                int wins = cloned->rollout(-1, 10, 1);
+                int wins = cloned->rollout(-1, 20, 1);
                 #pragma omp critical
                 {
                     if(wins > most_wins){
@@ -632,4 +633,37 @@ std::pair<int, int> Level::timed_rollout(int num_cpu, int time_limit_ms, int mod
         rollouts++;
     }
     return std::pair<int, int>(rollouts, victories);
+}
+
+
+int Level::count_plant(PlantName plant) {
+    int count = 0;
+    for (int i = 0; i < this->lanes; i++)
+    {
+        for (int j = 0; j < this->cols; j++)
+        {
+            if (this->plant_grid[i][j] != nullptr && (this->plant_grid[i][j])->plant_type == plant) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+int Level::count_plant() {
+    int count = 0;
+    for (int i = 0; i < this->lanes; i++)
+    {
+        for (int j = 0; j < this->cols; j++)
+        {
+            if (this->plant_grid[i][j] != nullptr) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+int Level::count_lawnmowers() {
+    return std::count(this->lawnmowers.begin(), this->lawnmowers.end(), true);
 }

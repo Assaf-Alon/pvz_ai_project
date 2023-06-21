@@ -135,6 +135,71 @@ std::deque<ZombieSpawnTemplate> get_level_data6() {
     level_data.push_back(ZombieSpawnTemplate(385, 1, "buckethead"));
     return level_data;
 }
+std::deque<ZombieSpawnTemplate> get_level_data_9(){
+    std::deque<ZombieSpawnTemplate> level_data;
+    level_data.push_back(ZombieSpawnTemplate(20, 0, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(50, 2, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(70, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(90, 0, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(90, 3, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(110, 4, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(110, 2, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(130, 0, "pole"));
+    level_data.push_back(ZombieSpawnTemplate(155, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(155, 3, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(156, 2, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(175, 4, "pole"));
+    level_data.push_back(ZombieSpawnTemplate(175, 0, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(195, 2, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(195, 4, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(215, 4, "flag"));
+    level_data.push_back(ZombieSpawnTemplate(216, 3, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(216, 3, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(216, 2, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(216, 2, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(216, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(217, 0, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(217, 0, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(220, 0, "pole"));
+    level_data.push_back(ZombieSpawnTemplate(220, 2, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(221, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(236, 3, "buckethead"));
+    level_data.push_back(ZombieSpawnTemplate(260, 0, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(260, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(260, 4, "pole"));
+    level_data.push_back(ZombieSpawnTemplate(270, 2, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(270, 0, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(270, 3, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(285, 0, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(285, 1, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(285, 4, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(300, 0, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(300, 1, "pole"));
+    level_data.push_back(ZombieSpawnTemplate(300, 3, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(301, 2, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(310, 3, "buckethead"));
+    level_data.push_back(ZombieSpawnTemplate(310, 4, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(310, 4, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(322, 0, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(322, 1, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(322, 2, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(331, 1, "pole"));
+    level_data.push_back(ZombieSpawnTemplate(331, 4, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(331, 3, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(332, 3, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(370, 0, "flag"));
+    level_data.push_back(ZombieSpawnTemplate(371, 4, "pole"));
+    level_data.push_back(ZombieSpawnTemplate(371, 3, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(371, 3, "conehead"));
+    level_data.push_back(ZombieSpawnTemplate(371, 2, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(372, 2, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(372, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(372, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(372, 0, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(372, 0, "buckethead"));
+    return level_data;
+
+}
 void try_action(Level& level, Action action) {
     while (!level.is_action_legal(action)) {
         level.step();
@@ -148,11 +213,11 @@ void try_action(Level& level, Action action) {
 }
 
 void estimate_speed(Level& level) {
-    run(level, 5000, 1, true);
+    run(level, 5000, 1, true, 1.4);
 }
 int main() {
-    Level env = Level(5, 10, 10, get_level_data6(), default_chosen_plants);
-    std::cout << env.rollout(-1, 100000, 1) << std::endl;
+    Level env = Level(5, 10, 10, get_level_data_9(), default_chosen_plants);
+    std::cout << env.rollout(1, 100000, 1) << std::endl;
     // estimate_speed(env);
     // std::cout << env.rollout(-1, 20, 4) << std::endl;
     // while (!env.done) {

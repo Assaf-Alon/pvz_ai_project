@@ -21,12 +21,14 @@ class Zombie {
     std::string type;
     bool frozen = false;
     bool hypnotized = false;
+    bool can_jump;
     Zombie(const std::string& type, int lane, const Level& level);
     Zombie(const Zombie& other) = default;
     void attack(Level& level);
     void move(Level& level);
     void do_action(Level& level);
-    void get_damaged(int damage, Level& Levels);
+    void get_damaged(int damage, Level& Level);
+    void vault(Level& level);
     ZombieInfo get_info();
 };
 
