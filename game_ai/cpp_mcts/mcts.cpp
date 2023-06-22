@@ -6,8 +6,7 @@ inline void print_action(Action& action, Level& level){
 }
 static vector<Action> action_space; //  = vector<Action>(level.get_action_space()); // populate using level
 
-Node::Node(Node* parent, Level& level, Action action, const float ucb_coefficient, int rollouts_per_leaf) : \
-    ucb_coefficient(ucb_coefficient), rollouts_per_leaf(rollouts_per_leaf) {
+Node::Node(Node* parent, Level& level, Action action) {
     this->num_rollouts = 0;
     this->num_wins = 0;
     this->available_actions = vector<Action>(action_space);
@@ -16,7 +15,7 @@ Node::Node(Node* parent, Level& level, Action action, const float ucb_coefficien
     this->level = level.clone();
     this->childern.reserve(this->available_actions.size());
 }
-
+/*
 Node* Node::select_with_heuristic() {
         if (this->childern.size() == 0) {
         return this;
@@ -46,7 +45,7 @@ Node* Node::select_with_heuristic() {
         return this;
     }
     return best_node;
-}
+} */
 
 Node* Node::select() {
     if (this->childern.size() == 0) {
@@ -94,7 +93,7 @@ void Node::expand() {
         // for (int index = 0; index < (int)this->available_actions.size(); index++)
         for (auto action : this->available_actions) {
         {
-            Node* child = new Node(this, *this->level, action, this->ucb_coefficient, this->rollouts_per_leaf);
+            Node* child = new Node(this, *this->level, action);
             child->rollout();
             // #pragma omp critical
             {
@@ -113,7 +112,7 @@ void Node::expand() {
     }
     int action_index = get_random_number(0, this->available_actions.size() - 1);
     Action chosen_action = this->available_actions[action_index];
-    Node* child = new Node(this, *this->level, chosen_action, this->ucb_coefficient, this->rollouts_per_leaf);
+    Node* child = new Node(this, *this->level, chosen_action);
     child->rollout();
     this->childern.push_back(child);
     this->available_actions.erase(this->available_actions.begin() + action_index);
@@ -124,16 +123,20 @@ void Node::rollout() {
         this->level->step();
     }
     if (this->level->done){
-        this->backpropagate((double)this->level->win);
+        this->backpropagate((int)this->level->win);
         this->available_actions.clear();
         return;
     }
     this->level->step(this->action);
-    double wins = (double)this->level->rollout(-1, num_rollouts, 1) / num_rollouts;
+    int wins = 0;
+    if (this->level->rollout(8, rollouts_per_leaf, 1) > 0){
+        // std::cout << "found A win" << std::endl;
+        wins = 1;
+    }
     this->backpropagate(wins);
 }
-void Node::backpropagate(double wins) {
-    this->num_wins = ((this->num_wins * this->num_rollouts) + wins) / (this->num_rollouts + 1);
+void Node::backpropagate(int wins) {
+    this->num_wins += wins;
     this->num_rollouts++;
     if (this->parent != nullptr){
         this->parent->backpropagate(wins);
@@ -166,8 +169,10 @@ Action select_best_action(Node& root) {
 Action run(Level& level, int timeout_ms, int games_per_rollout, bool debug, float ucb_const){
     // omp_set_num_threads(8);
     // omp_set_dynamic(1);
+    ucb_coefficient = ucb_const;
+    rollouts_per_leaf = games_per_rollout;
     action_space = vector<Action>(level.get_action_space());
-    Node root = Node(nullptr, level, Action((PlantName)0,0,0), ucb_const, games_per_rollout);
+    Node root = Node(nullptr, level, Action((PlantName)0,0,0));
     auto start_time = std::chrono::high_resolution_clock::now();
     auto end_time = start_time + std::chrono::milliseconds(timeout_ms);
     while(std::chrono::high_resolution_clock::now() < end_time && root.num_rollouts < 200000) {
@@ -189,7 +194,7 @@ int heuristic1(const Level& level)
     return (10 * level.count_plant(SUNFLOWER) + 5 * level.count_lawnmowers()) * level.frame;
 }
 
-int heuristic1(const Level& level)
+int heuristic2(const Level& level)
 {
     return (5 * level.count_plant(SUNFLOWER) + 4 * level.count_lawnmowers() + 2 * level.count_plant()) * level.frame;
 }

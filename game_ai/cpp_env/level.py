@@ -918,34 +918,85 @@ class state_matrix(object):
 # Register state_matrix in _level:
 _level.state_matrix_swigregister(state_matrix)
 
+class plant_data_arr(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        return _level.plant_data_arr_iterator(self)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        return _level.plant_data_arr___nonzero__(self)
+
+    def __bool__(self):
+        return _level.plant_data_arr___bool__(self)
+
+    def __len__(self):
+        return _level.plant_data_arr___len__(self)
+
+    def __getslice__(self, i, j):
+        return _level.plant_data_arr___getslice__(self, i, j)
+
+    def __setslice__(self, *args):
+        return _level.plant_data_arr___setslice__(self, *args)
+
+    def __delslice__(self, i, j):
+        return _level.plant_data_arr___delslice__(self, i, j)
+
+    def __delitem__(self, *args):
+        return _level.plant_data_arr___delitem__(self, *args)
+
+    def __getitem__(self, *args):
+        return _level.plant_data_arr___getitem__(self, *args)
+
+    def __setitem__(self, *args):
+        return _level.plant_data_arr___setitem__(self, *args)
+
+    def __init__(self, *args):
+        _level.plant_data_arr_swiginit(self, _level.new_plant_data_arr(*args))
+
+    def empty(self):
+        return _level.plant_data_arr_empty(self)
+
+    def size(self):
+        return _level.plant_data_arr_size(self)
+
+    def swap(self, v):
+        return _level.plant_data_arr_swap(self, v)
+
+    def begin(self):
+        return _level.plant_data_arr_begin(self)
+
+    def end(self):
+        return _level.plant_data_arr_end(self)
+
+    def rbegin(self):
+        return _level.plant_data_arr_rbegin(self)
+
+    def rend(self):
+        return _level.plant_data_arr_rend(self)
+
+    def front(self):
+        return _level.plant_data_arr_front(self)
+
+    def back(self):
+        return _level.plant_data_arr_back(self)
+
+    def fill(self, u):
+        return _level.plant_data_arr_fill(self, u)
+    __swig_destroy__ = _level.delete_plant_data_arr
+
+# Register plant_data_arr in _level:
+_level.plant_data_arr_swigregister(plant_data_arr)
+
 FAST = _level.FAST
 SLOW = _level.SLOW
 VERY_SLOW = _level.VERY_SLOW
 
 def get_random_number(min, max):
     return _level.get_random_number(min, max)
-class PlantData(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-    hp = property(_level.PlantData_hp_get, _level.PlantData_hp_set)
-    damage = property(_level.PlantData_damage_get, _level.PlantData_damage_set)
-    action_interval_seconds = property(_level.PlantData_action_interval_seconds_get, _level.PlantData_action_interval_seconds_set)
-    action_interval = property(_level.PlantData_action_interval_get, _level.PlantData_action_interval_set)
-    recharge_seconds = property(_level.PlantData_recharge_seconds_get, _level.PlantData_recharge_seconds_set)
-    recharge = property(_level.PlantData_recharge_get, _level.PlantData_recharge_set)
-    cost = property(_level.PlantData_cost_get, _level.PlantData_cost_set)
-    action_func = property(_level.PlantData_action_func_get, _level.PlantData_action_func_set)
-    plant_name = property(_level.PlantData_plant_name_get, _level.PlantData_plant_name_set)
-    next_available_frame = property(_level.PlantData_next_available_frame_get, _level.PlantData_next_available_frame_set)
-    plant_type = property(_level.PlantData_plant_type_get, _level.PlantData_plant_type_set)
-
-    def __init__(self, *args):
-        _level.PlantData_swiginit(self, _level.new_PlantData(*args))
-    __swig_destroy__ = _level.delete_PlantData
-
-# Register PlantData in _level:
-_level.PlantData_swigregister(PlantData)
-
 NO_PLANT = _level.NO_PLANT
 CHERRYBOMB = _level.CHERRYBOMB
 CHOMPER = _level.CHOMPER
@@ -965,6 +1016,26 @@ SUNSHROOM = _level.SUNSHROOM
 THREEPEATER = _level.THREEPEATER
 WALLNUT = _level.WALLNUT
 NUM_PLANTS = _level.NUM_PLANTS
+class PlantData(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    hp = property(_level.PlantData_hp_get, _level.PlantData_hp_set)
+    damage = property(_level.PlantData_damage_get, _level.PlantData_damage_set)
+    action_interval_seconds = property(_level.PlantData_action_interval_seconds_get, _level.PlantData_action_interval_seconds_set)
+    recharge_seconds = property(_level.PlantData_recharge_seconds_get, _level.PlantData_recharge_seconds_set)
+    cost = property(_level.PlantData_cost_get, _level.PlantData_cost_set)
+    action_func = property(_level.PlantData_action_func_get, _level.PlantData_action_func_set)
+    plant_name = property(_level.PlantData_plant_name_get, _level.PlantData_plant_name_set)
+    next_available_frame = property(_level.PlantData_next_available_frame_get, _level.PlantData_next_available_frame_set)
+    plant_type = property(_level.PlantData_plant_type_get, _level.PlantData_plant_type_set)
+
+    def __init__(self, *args):
+        _level.PlantData_swiginit(self, _level.new_PlantData(*args))
+    __swig_destroy__ = _level.delete_PlantData
+
+# Register PlantData in _level:
+_level.PlantData_swigregister(PlantData)
+
 class ZombieSpawnTemplate(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
@@ -978,6 +1049,8 @@ class ZombieSpawnTemplate(object):
 
 # Register ZombieSpawnTemplate in _level:
 _level.ZombieSpawnTemplate_swigregister(ZombieSpawnTemplate)
+cvar = _level.cvar
+plant_data = cvar.plant_data
 
 class ZombieInfo(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
@@ -1074,7 +1147,7 @@ class Level(object):
     plant_list = property(_level.Level_plant_list_get, _level.Level_plant_list_set)
     plant_grid = property(_level.Level_plant_grid_get, _level.Level_plant_grid_set)
     level_data = property(_level.Level_level_data_get, _level.Level_level_data_set)
-    plant_data = property(_level.Level_plant_data_get, _level.Level_plant_data_set)
+    plant_cooldowns = property(_level.Level_plant_cooldowns_get, _level.Level_plant_cooldowns_set)
     free_spaces = property(_level.Level_free_spaces_get, _level.Level_free_spaces_set)
 
     def clone(self):
@@ -1086,6 +1159,9 @@ class Level(object):
 
     def step(self, *args):
         return _level.Level_step(self, *args)
+
+    def deferred_step(self, action):
+        return _level.Level_deferred_step(self, action)
 
     def do_zombie_actions(self):
         return _level.Level_do_zombie_actions(self)
@@ -1147,11 +1223,20 @@ class Level(object):
     def timed_rollout(self, num_cpu, time_limit_ms, mode=1):
         return _level.Level_timed_rollout(self, num_cpu, time_limit_ms, mode)
 
+    def count_lawnmowers(self):
+        return _level.Level_count_lawnmowers(self)
+
+    def count_plant(self, *args):
+        return _level.Level_count_plant(self, *args)
+
 # Register Level in _level:
 _level.Level_swigregister(Level)
 
 
 def play_random_game(env, randomization_mode):
     return _level.play_random_game(env, randomization_mode)
+
+def play_random_heuristic_game(env, func, mode=1):
+    return _level.play_random_heuristic_game(env, func, mode)
 
 

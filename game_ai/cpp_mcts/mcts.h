@@ -11,22 +11,23 @@
 using std::list;
 using std::vector;
 
-class Node;
 
+static float ucb_coefficient;
+static int rollouts_per_leaf;
+
+class Node;
 
 class Node {
     public:
     int num_rollouts;
-    double num_wins;
-    const float ucb_coefficient;
-    int rollouts_per_leaf;
+    int num_wins;
     Level* level;
     Action action;
     Node* parent;
     vector<Node*> childern;
     vector<Action> available_actions;
     void expand();
-    void backpropagate(double wins);
+    void backpropagate(int wins);
     void rollout();
     inline float ucb() const {
         if (this->level->done) {
@@ -52,9 +53,9 @@ class Node {
         float ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(log(parent_rollouts) / rollouts));
         return ucb;
     };
-    Node(Node* parent, Level& level, Action action, const float ucb_coefficient, int rollouts_per_leaf);
+    Node(Node* parent, Level& level, Action action);
     Node* select();
-    Node* select_with_heuristic();
+    // Node* select_with_heuristic();
     ~Node();
 };
 

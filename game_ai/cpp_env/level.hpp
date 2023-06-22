@@ -9,12 +9,10 @@
 #include <assert.h>
 #include <iostream>
 #include <random>
-#include <memory>
 #include <functional>
 #include <algorithm>
 #include <omp.h>
 #include <utility>
-#include <future>
 #include <chrono>
 #include "plant.h"
 using std::vector;
@@ -25,8 +23,6 @@ using std::array;
 #define FAST 7.5
 #define SLOW 30
 #define VERY_SLOW 50
-
-// int get_random_number(const int min, const int max);
 
 inline int get_random_number(const int min, const int max){ 
     thread_local std::mt19937 generator(std::random_device{}());
@@ -39,6 +35,7 @@ class Zombie;
 class ZombieInfo;
 class Plant;
 typedef std::function<bool(Level&, Plant&)> PlantAction;
+typedef std::function<double(const Level&)> heuristic_function;
 typedef std::pair<int, int> Pos;
 
 enum PlantName { NO_PLANT, CHERRYBOMB, CHOMPER,
@@ -64,16 +61,8 @@ class PlantData {
     int next_available_frame = 9999;
     int plant_type;
     PlantData() = default;
-    // PlantData(int fps, int hp, int damage, float action_interval_seconds, float recharge_seconds, int cost, PlantAction action_func, std::string plant_name, int plant_type) : \
-    // hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name), plant_type(plant_type) {
-    //     this->action_interval = static_cast<int>(action_interval_seconds * fps);
-    //     this->recharge = static_cast<int>(recharge_seconds * fps);
-    // };
     PlantData(int hp, int damage, float action_interval_seconds, float recharge_seconds, int cost, PlantAction action_func, std::string plant_name, int plant_type) : \
-    hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name), plant_type(plant_type) {
-        // this->action_interval = static_cast<int>(action_interval_seconds * fps);
-        // this->recharge = static_cast<int>(recharge_seconds * fps);
-    };
+    hp(hp), damage(damage), action_interval_seconds(action_interval_seconds), recharge_seconds(recharge_seconds), cost(cost), action_func(action_func), plant_name(plant_name), plant_type(plant_type) {};
 };
 
 static const std::array<PlantData, NUM_PLANTS> plant_data = {
@@ -190,7 +179,7 @@ public:
 
     // Constructors, copy, destructors
     Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants);
-    Level* clone();
+    Level* clone() const;
     Level(const Level& other_level);
     ~Level();
 
@@ -198,6 +187,7 @@ public:
     void step(const Action& action);
     void step(int plant, int row, int col);
     void step();
+    void deferred_step(const Action& action);
     void do_zombie_actions();
     void do_plant_actions();
     void do_player_action(const Action& action);
@@ -231,6 +221,6 @@ public:
     int count_plant() const;
 };
 bool play_random_game(Level env, int randomization_mode);
-
+bool play_random_heuristic_game(Level env, heuristic_function& func, int mode=1);
 
 #endif // _PVZ_LEVEL

@@ -5,7 +5,7 @@ import level
 import utils
 
 # env = level.Level(5, 10, 10, utils.lvl4_data, utils.chosen_plants_lvl4)
-level_data = utils.construct_level_data_from_list(utils.lvl9_data_list)
+level_data = utils.lvl9_data
 env = level.Level(5, 10, 10, level_data, utils.lvl9_legal_plants)
 # print(env.rollout(-1, 20, 4))
 # print(env.rollout(-1, 10000000, 1))
@@ -14,22 +14,29 @@ base_env = env.clone()
 action_list = []
 # mcts.run(env, 5000, 1, True)
 while not env.done:
-    print(f"win rate before mcts action: {100 * (env.rollout(-1, 10000, 1) / 10000)}%")
     print(f"frame before mcts: {env.frame}")
-    action = mcts.run(env, 20000, 300, True, 15)
+    action = mcts.run(env, 50000, 35, True, 25)
     action_list.append(action)
     print(f"frame after mcts: {env.frame}")
     print(utils.action_to_string(action))
-    while (not env.is_action_legal(action)) and (not env.done): 
-        env.step()
-    if env.done:
-        break
-    print(f"frame waiting for step: {env.frame}")
-    env.step(action)
-    print(f"win rate after mcts action: {100 * (env.rollout(-1, 10000, 1) / 10000)}%")
+    env.deferred_step(action)
+    print(f"frame after step: {env.frame}")
+    win_rate = 100 * (env.rollout(-1, 10000, 1) / 10000)
+    print(f"win rate after mcts action: {win_rate}%")
+    if win_rate >= 99.999: # finish loop early if win is already guranteed
+        empty_step_test_level = env.clone() # type: level.Level
+        while not empty_step_test_level.done:
+            empty_step_test_level.step()
+        if empty_step_test_level.win:
+            while not env.done:
+                env.step()
+            break
     print("----------------------------")
 print(f"Game finished with status: {env.win}, at frame number {env.frame}")
 
+action_string_list = [utils.action_to_string(action) for action in action_list]
+print(action_string_list)
+input()
 utils.simulate_set_game(base_env, action_list)
 
 # num_rollouts = 10000

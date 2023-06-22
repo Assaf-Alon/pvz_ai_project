@@ -122,6 +122,33 @@ class SwigPyIterator(object):
 # Register SwigPyIterator in _mcts:
 _mcts.SwigPyIterator_swigregister(SwigPyIterator)
 
+class run_result(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        _mcts.run_result_swiginit(self, _mcts.new_run_result(*args))
+    first = property(_mcts.run_result_first_get, _mcts.run_result_first_set)
+    second = property(_mcts.run_result_second_get, _mcts.run_result_second_set)
+    def __len__(self):
+        return 2
+    def __repr__(self):
+        return str((self.first, self.second))
+    def __getitem__(self, index): 
+        if not (index % 2):
+            return self.first
+        else:
+            return self.second
+    def __setitem__(self, index, val):
+        if not (index % 2):
+            self.first = val
+        else:
+            self.second = val
+    __swig_destroy__ = _mcts.delete_run_result
+
+# Register run_result in _mcts:
+_mcts.run_result_swigregister(run_result)
+
 class Node(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
@@ -133,14 +160,14 @@ class Node(object):
     childern = property(_mcts.Node_childern_get, _mcts.Node_childern_set)
     available_actions = property(_mcts.Node_available_actions_get, _mcts.Node_available_actions_set)
 
-    def expand(self, num_rollouts):
-        return _mcts.Node_expand(self, num_rollouts)
+    def expand(self):
+        return _mcts.Node_expand(self)
 
-    def backpropagate(self, wins, rollouts):
-        return _mcts.Node_backpropagate(self, wins, rollouts)
+    def backpropagate(self, wins):
+        return _mcts.Node_backpropagate(self, wins)
 
-    def rollout(self, num_rollouts):
-        return _mcts.Node_rollout(self, num_rollouts)
+    def rollout(self):
+        return _mcts.Node_rollout(self)
 
     def ucb(self):
         return _mcts.Node_ucb(self)
@@ -154,12 +181,19 @@ class Node(object):
 
 # Register Node in _mcts:
 _mcts.Node_swigregister(Node)
+cvar = _mcts.cvar
 
 
 def select_best_action(root):
     return _mcts.select_best_action(root)
 
-def run(level, timeout, games_per_rollout):
-    return _mcts.run(level, timeout, games_per_rollout)
+def run(level, timeout_ms, games_per_rollout, debug=False, ucb_const=1.4):
+    return _mcts.run(level, timeout_ms, games_per_rollout, debug, ucb_const)
+
+def heuristic1(level):
+    return _mcts.heuristic1(level)
+
+def heuristic2(level):
+    return _mcts.heuristic2(level)
 
 

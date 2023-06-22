@@ -7,34 +7,7 @@ using std::endl;
 using std::string;
 using std::vector;
 using std::list;
-using std::unique_ptr;
 
-// std::random_device dev;
-// std::mt19937 rng(dev());
-// thread_local std::mt19937 rng(std::random_device{}());
-// std::minstd_rand rng(std::random_device{}());
-// std::ranlux48 rng(std::random_device{}());
-
-    // make some of these constexprs!
-    // this->plant_data = std::vector<PlantData>(NUM_PLANTS, PlantData(this->fps, 0,0,0,0,0,PlantAction(&wallnut_action), "no_plant", NO_PLANT));
-    
-    // this->plant_data[CHERRYBOMB]    = PlantData(this->fps, 5000, 9000, 1.2,   50,  150, PlantAction(&cherrybomb_action), "cherrybomb", CHERRYBOMB);
-    // this->plant_data[CHOMPER]       = PlantData(this->fps, 300,  9000, 42,    7.5, 150, PlantAction(&chomper_action), "chomper", CHOMPER);
-    // this->plant_data[HYPNOSHROOM]   = PlantData(this->fps, 300,  20,   0,     30,  75,  PlantAction(&hypnoshroom_action), "hypnoshroom", HYPNOSHROOM);
-    // this->plant_data[ICESHROOM]     = PlantData(this->fps, 5000, 20,   1,     50,  75,  PlantAction(&iceshroom_action), "iceshroom", ICESHROOM);
-    // this->plant_data[JALAPENO]      = PlantData(this->fps, 300,  9000, 1,     50,  125, PlantAction(&jalapeno_action), "jalapeno", JALAPENO);
-    // this->plant_data[PEASHOOTER]    = PlantData(this->fps, 300,  20,   1.425, 7.5, 100, PlantAction(&peashooter_action), "peashooter", PEASHOOTER);
-    // this->plant_data[POTATOMINE]    = PlantData(this->fps, 300,  1800, 15,    30,  25,  PlantAction(&potatomine_action), "potatomine", POTATOMINE);
-    // this->plant_data[PUFFSHROOM]    = PlantData(this->fps, 300,  20,   1.425, 7.5, 0,   PlantAction(&puffshroom_action), "puffshroom", PUFFSHROOM);
-    // this->plant_data[REPEATERPEA]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 200, PlantAction(&repeaterpea_action), "repeaterpea", REPEATERPEA);
-    // this->plant_data[SCAREDYSHROOM] = PlantData(this->fps, 300,  20,   1.425, 7.5, 20,  PlantAction(&scaredyshroom_action), "scaredyshroom", SCAREDYSHROOM);
-    // this->plant_data[SNOWPEA]       = PlantData(this->fps, 300,  20,   1.425, 7.5, 175, PlantAction(&snowpea_action), "snowpea", SNOWPEA);
-    // this->plant_data[SPIKEWEED]     = PlantData(this->fps, 300,  20,   1,     7.5, 100, PlantAction(&spikeweed_action), "spikeweed", SPIKEWEED);
-    // this->plant_data[SQUASH]        = PlantData(this->fps, 300,  1800, 1.425, 30,  50,  PlantAction(&squash_action), "squash", SQUASH);
-    // this->plant_data[SUNFLOWER]     = PlantData(this->fps, 300,  25,   24.25, 7.5, 50,  PlantAction(&sunflower_action), "sunflower", SUNFLOWER);
-    // this->plant_data[SUNSHROOM]     = PlantData(this->fps, 300,  15,   24.25, 7.5, 25,  PlantAction(&sunshroom_action), "sunshroom", SUNSHROOM);
-    // this->plant_data[THREEPEATER]   = PlantData(this->fps, 300,  20,   1.425, 7.5, 325, PlantAction(&threepeater_action), "threepeater", THREEPEATER);
-    // this->plant_data[WALLNUT]       = PlantData(this->fps, 4000, 0,    9999,  30,  50,  PlantAction(&wallnut_action), "wallnut", WALLNUT);
 Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
 {
     this->plant_grid = vector<vector<Plant*>>(lanes, vector<Plant*>(cols, nullptr));
@@ -54,7 +27,7 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> le
     }
 }
 
-Level* Level::clone() {
+Level* Level::clone() const{
     return new Level(*this);
 }
 
@@ -349,6 +322,16 @@ void Level::step(int plant, int row, int col)
     this->step(Action(PlantName(plant), row, col));
 }
 
+void Level::deferred_step(const Action& action){
+    while (!this->is_action_legal(action) && !this->done){
+        this->step();
+    }
+    if (this->done){
+        return;
+    }
+    this->step(action);
+}
+
 Observation Level::get_observation() const{
     Observation obs = vector<vector<vector<int>>>(this->lanes, vector<vector<int>>(this->cols, vector<int>(3, 0)));    
     for (int lane = 0; lane < this->lanes; lane++){
@@ -564,14 +547,14 @@ bool play_random_game(Level env, int randomization_mode){
             for(int i = 0; i < 22; i++){
                 Action next_action = action_space[get_random_number(0, action_space.size())];
                 Level* cloned = env.clone();
-                while(!cloned->is_action_legal(next_action) && !cloned->done){
-                    cloned->step();
+                cloned->deferred_step(next_action);
+                int wins = 0;
+                if (cloned->done){
+                    wins = cloned->win;
                 }
-                if(cloned->done){
-                    continue;
+                else {
+                    wins = cloned->rollout(-1, 20, 1);
                 }
-                cloned->step(next_action);
-                int wins = cloned->rollout(-1, 20, 1);
                 #pragma omp critical
                 {
                     if(wins > most_wins){
@@ -580,13 +563,51 @@ bool play_random_game(Level env, int randomization_mode){
                     }
                 }
             }
-            while(!env.is_action_legal(best_action) && !env.done){
-                env.step();
-            }
-            if(env.done){
-                break;
+            env.deferred_step(best_action);
+        }
+        break;
+    }
+    return env.win;
+}
+bool play_random_heuristic_game(Level env, heuristic_function& func, int mode){
+    switch (mode){
+        case 1:
+        while (!env.done){
+            double best_h_score = 0;
+            Action best_action = Action();
+            #pragma omp parallel for
+            for(int i = 0; i < 50; i++){
+                Action next_action = env.get_random_action();
+                Level* cloned = env.clone();
+                cloned->step(next_action);
+                double score = func(*cloned);
+                #pragma omp critical
+                if (score > best_h_score){
+                    best_h_score = score;
+                    best_action = next_action;
+                }
             }
             env.step(best_action);
+        }
+        break;
+        case 2:
+        static const vector<Action> action_space = vector<Action>(env.get_action_space());
+        while(!env.done){
+            double best_h_score = 0;
+            Action best_action = Action();
+            #pragma omp parallel for
+            for(int i = 0; i < 50; i++){
+                Action next_action = action_space[get_random_number(0, action_space.size() - 1)];
+                Level* cloned = env.clone();
+                cloned->deferred_step(next_action);
+                double score = func(*cloned);
+                #pragma omp critical
+                if (score > best_h_score){
+                    best_h_score = score;
+                    best_action = next_action;
+                }
+            }
+            env.deferred_step(best_action);
         }
         break;
     }
@@ -636,7 +657,7 @@ std::pair<int, int> Level::timed_rollout(int num_cpu, int time_limit_ms, int mod
 }
 
 
-int Level::count_plant(PlantName plant) {
+int Level::count_plant(PlantName plant) const{
     int count = 0;
     for (int i = 0; i < this->lanes; i++)
     {
@@ -650,7 +671,7 @@ int Level::count_plant(PlantName plant) {
     return count;
 }
 
-int Level::count_plant() {
+int Level::count_plant() const{
     int count = 0;
     for (int i = 0; i < this->lanes; i++)
     {
@@ -664,6 +685,6 @@ int Level::count_plant() {
     return count;
 }
 
-int Level::count_lawnmowers() {
+int Level::count_lawnmowers() const{
     return std::count(this->lawnmowers.begin(), this->lawnmowers.end(), true);
 }

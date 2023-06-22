@@ -2715,28 +2715,31 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t swig_types[20]
 #define SWIGTYPE_p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t swig_types[21]
 #define SWIGTYPE_p_std__allocatorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_t swig_types[22]
-#define SWIGTYPE_p_std__dequeT_ZombieSpawnTemplate_std__allocatorT_ZombieSpawnTemplate_t_t swig_types[23]
-#define SWIGTYPE_p_std__functionT_bool_fLevel_R_Plant_RF_t swig_types[24]
-#define SWIGTYPE_p_std__invalid_argument swig_types[25]
-#define SWIGTYPE_p_std__listT_Plant_p_t swig_types[26]
-#define SWIGTYPE_p_std__listT_Zombie_p_t swig_types[27]
-#define SWIGTYPE_p_std__pairT_int_int_t swig_types[28]
-#define SWIGTYPE_p_std__vectorT_Action_std__allocatorT_Action_t_t swig_types[29]
-#define SWIGTYPE_p_std__vectorT_Cell_std__allocatorT_Cell_t_t swig_types[30]
-#define SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t swig_types[31]
-#define SWIGTYPE_p_std__vectorT_ZombieInfo_std__allocatorT_ZombieInfo_t_t swig_types[32]
-#define SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t swig_types[33]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[34]
-#define SWIGTYPE_p_std__vectorT_std__pairT_int_int_t_std__allocatorT_std__pairT_int_int_t_t_t swig_types[35]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t_t swig_types[36]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_Plant_p_std__allocatorT_Plant_p_t_t_std__allocatorT_std__vectorT_Plant_p_std__allocatorT_Plant_p_t_t_t_t swig_types[37]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t swig_types[38]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_std__listT_Zombie_p_t_std__allocatorT_std__listT_Zombie_p_t_t_t_std__allocatorT_std__vectorT_std__listT_Zombie_p_t_std__allocatorT_std__listT_Zombie_p_t_t_t_t_t swig_types[39]
-#define SWIGTYPE_p_std__vectorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_std__allocatorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_t_t swig_types[40]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[41]
-#define SWIGTYPE_p_value_type swig_types[42]
-static swig_type_info *swig_types[44];
-static swig_module_info swig_module = {swig_types, 43, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__arrayT_PlantData_18_t swig_types[23]
+#define SWIGTYPE_p_std__arrayT_PlantData_NUM_PLANTS_t swig_types[24]
+#define SWIGTYPE_p_std__dequeT_ZombieSpawnTemplate_std__allocatorT_ZombieSpawnTemplate_t_t swig_types[25]
+#define SWIGTYPE_p_std__functionT_bool_fLevel_R_Plant_RF_t swig_types[26]
+#define SWIGTYPE_p_std__functionT_double_fLevel_const_RF_t swig_types[27]
+#define SWIGTYPE_p_std__invalid_argument swig_types[28]
+#define SWIGTYPE_p_std__listT_Plant_p_t swig_types[29]
+#define SWIGTYPE_p_std__listT_Zombie_p_t swig_types[30]
+#define SWIGTYPE_p_std__pairT_int_int_t swig_types[31]
+#define SWIGTYPE_p_std__vectorT_Action_std__allocatorT_Action_t_t swig_types[32]
+#define SWIGTYPE_p_std__vectorT_Cell_std__allocatorT_Cell_t_t swig_types[33]
+#define SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t swig_types[34]
+#define SWIGTYPE_p_std__vectorT_ZombieInfo_std__allocatorT_ZombieInfo_t_t swig_types[35]
+#define SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t swig_types[36]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[37]
+#define SWIGTYPE_p_std__vectorT_std__pairT_int_int_t_std__allocatorT_std__pairT_int_int_t_t_t swig_types[38]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t_t swig_types[39]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_Plant_p_std__allocatorT_Plant_p_t_t_std__allocatorT_std__vectorT_Plant_p_std__allocatorT_Plant_p_t_t_t_t swig_types[40]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t swig_types[41]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_std__listT_Zombie_p_t_std__allocatorT_std__listT_Zombie_p_t_t_t_std__allocatorT_std__vectorT_std__listT_Zombie_p_t_std__allocatorT_std__listT_Zombie_p_t_t_t_t_t swig_types[42]
+#define SWIGTYPE_p_std__vectorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_std__allocatorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_t_t swig_types[43]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[44]
+#define SWIGTYPE_p_value_type swig_types[45]
+static swig_type_info *swig_types[47];
+static swig_module_info swig_module = {swig_types, 46, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5571,6 +5574,173 @@ SWIGINTERN std::vector< std::vector< Cell > >::iterator std_vector_Sl_std_vector
 SWIGINTERN std::vector< std::vector< Cell > >::iterator std_vector_Sl_std_vector_Sl_Cell_Sg__Sg__erase__SWIG_1(std::vector< std::vector< Cell > > *self,std::vector< std::vector< Cell > >::iterator first,std::vector< std::vector< Cell > >::iterator last){ return self->erase(first, last); }
 SWIGINTERN std::vector< std::vector< Cell > >::iterator std_vector_Sl_std_vector_Sl_Cell_Sg__Sg__insert__SWIG_0(std::vector< std::vector< Cell > > *self,std::vector< std::vector< Cell > >::iterator pos,std::vector< std::vector< Cell > >::value_type const &x){ return self->insert(pos, x); }
 SWIGINTERN void std_vector_Sl_std_vector_Sl_Cell_Sg__Sg__insert__SWIG_1(std::vector< std::vector< Cell > > *self,std::vector< std::vector< Cell > >::iterator pos,std::vector< std::vector< Cell > >::size_type n,std::vector< std::vector< Cell > >::value_type const &x){ self->insert(pos, n, x); }
+
+  namespace swig {
+    template <class T, size_t N>
+    struct traits_asptr<std::array<T, N> >  {
+      static int asptr(PyObject *obj, std::array<T, N> **vec) {
+	return traits_asptr_stdseq<std::array<T, N> >::asptr(obj, vec);
+      }
+    };
+
+    template <class T, size_t N>
+    struct traits_from<std::array<T, N> > {
+      static PyObject *from(const std::array<T, N>& vec) {
+	return traits_from_stdseq<std::array<T, N> >::from(vec);
+      }
+    };
+
+    template <class SwigPySeq, class T, size_t N>
+    inline void
+    assign(const SwigPySeq& swigpyseq, std::array<T, N>* seq) {
+      if (swigpyseq.size() < seq->size())
+        throw std::invalid_argument("std::array cannot be expanded in size");
+      else if (swigpyseq.size() > seq->size())
+        throw std::invalid_argument("std::array cannot be reduced in size");
+      std::copy(swigpyseq.begin(), swigpyseq.end(), seq->begin());
+    }
+
+    template <class T, size_t N>
+    inline void
+    erase(std::array<T, N>* SWIGUNUSEDPARM(seq), const typename std::array<T, N>::iterator& SWIGUNUSEDPARM(position)) {
+      throw std::invalid_argument("std::array object does not support item deletion");
+    }
+
+    // Only limited slicing is supported as std::array is fixed in size
+    template <class T, size_t N, class Difference>
+    inline std::array<T, N>*
+    getslice(const std::array<T, N>* self, Difference i, Difference j, Py_ssize_t step) {
+      typedef std::array<T, N> Sequence;
+      typename Sequence::size_type size = self->size();
+      Difference ii = 0;
+      Difference jj = 0;
+      swig::slice_adjust(i, j, step, size, ii, jj);
+
+      if (step == 1 && ii == 0 && static_cast<typename Sequence::size_type>(jj) == size) {
+        Sequence *sequence = new Sequence();
+        std::copy(self->begin(), self->end(), sequence->begin());
+        return sequence;
+      } else if (step == -1 && static_cast<typename Sequence::size_type>(ii) == (size - 1) && jj == -1) {
+        Sequence *sequence = new Sequence();
+        std::copy(self->rbegin(), self->rend(), sequence->begin());
+        return sequence;
+      } else {
+        throw std::invalid_argument("std::array object only supports getting a slice that is the size of the array");
+      }
+    }
+
+    template <class T, size_t N, class Difference, class InputSeq>
+    inline void
+    setslice(std::array<T, N>* self, Difference i, Difference j, Py_ssize_t step, const InputSeq& is = InputSeq()) {
+      typedef std::array<T, N> Sequence;
+      typename Sequence::size_type size = self->size();
+      Difference ii = 0;
+      Difference jj = 0;
+      swig::slice_adjust(i, j, step, size, ii, jj, true);
+
+      if (step == 1 && ii == 0 && static_cast<typename Sequence::size_type>(jj) == size) {
+        std::copy(is.begin(), is.end(), self->begin());
+      } else if (step == -1 && static_cast<typename Sequence::size_type>(ii) == (size - 1) && jj == -1) {
+        std::copy(is.rbegin(), is.rend(), self->begin());
+      } else {
+        throw std::invalid_argument("std::array object only supports setting a slice that is the size of the array");
+      }
+    }
+
+    template <class T, size_t N, class Difference>
+    inline void
+    delslice(std::array<T, N>* SWIGUNUSEDPARM(self), Difference SWIGUNUSEDPARM(i), Difference SWIGUNUSEDPARM(j), Py_ssize_t SWIGUNUSEDPARM(step)) {
+      throw std::invalid_argument("std::array object does not support item deletion");
+    }
+  }
+
+
+      namespace swig {
+	template <>  struct traits<std::array< PlantData, 18 > > {
+	  typedef pointer_category category;
+	  static const char* type_name() {
+	    return "std::array<" "PlantData" "," "18" " >";
+	  }
+	};
+      }
+    
+SWIGINTERN swig::SwigPyIterator *std_array_Sl_PlantData_Sc_18_Sg__iterator(std::array< PlantData,18 > *self,PyObject **PYTHON_SELF){
+      return swig::make_output_iterator(self->begin(), self->begin(), self->end(), *PYTHON_SELF);
+    }
+SWIGINTERN bool std_array_Sl_PlantData_Sc_18_Sg____nonzero__(std::array< PlantData,18 > const *self){
+      return !(self->empty());
+    }
+SWIGINTERN bool std_array_Sl_PlantData_Sc_18_Sg____bool__(std::array< PlantData,18 > const *self){
+      return !(self->empty());
+    }
+SWIGINTERN std::array< PlantData,18 >::size_type std_array_Sl_PlantData_Sc_18_Sg____len__(std::array< PlantData,18 > const *self){
+      return self->size();
+    }
+SWIGINTERN std::array< PlantData,18 > *std_array_Sl_PlantData_Sc_18_Sg____getslice__(std::array< PlantData,18 > *self,std::array< PlantData,18 >::difference_type i,std::array< PlantData,18 >::difference_type j){
+      return swig::getslice(self, i, j, 1);
+    }
+SWIGINTERN void std_array_Sl_PlantData_Sc_18_Sg____setslice____SWIG_0(std::array< PlantData,18 > *self,std::array< PlantData,18 >::difference_type i,std::array< PlantData,18 >::difference_type j){
+      swig::setslice(self, i, j, 1, std::array< PlantData,18 >());
+    }
+SWIGINTERN void std_array_Sl_PlantData_Sc_18_Sg____setslice____SWIG_1(std::array< PlantData,18 > *self,std::array< PlantData,18 >::difference_type i,std::array< PlantData,18 >::difference_type j,std::array< PlantData,18 > const &v){
+      swig::setslice(self, i, j, 1, v);
+    }
+SWIGINTERN void std_array_Sl_PlantData_Sc_18_Sg____delslice__(std::array< PlantData,18 > *self,std::array< PlantData,18 >::difference_type i,std::array< PlantData,18 >::difference_type j){
+      swig::delslice(self, i, j, 1);
+    }
+SWIGINTERN void std_array_Sl_PlantData_Sc_18_Sg____delitem____SWIG_0(std::array< PlantData,18 > *self,std::array< PlantData,18 >::difference_type i){
+      swig::erase(self, swig::getpos(self, i));
+    }
+SWIGINTERN std::array< PlantData,18 > *std_array_Sl_PlantData_Sc_18_Sg____getitem____SWIG_0(std::array< PlantData,18 > *self,PySliceObject *slice){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return NULL;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::array< PlantData,18 >::difference_type id = i;
+      std::array< PlantData,18 >::difference_type jd = j;
+      return swig::getslice(self, id, jd, step);
+    }
+SWIGINTERN void std_array_Sl_PlantData_Sc_18_Sg____setitem____SWIG_0(std::array< PlantData,18 > *self,PySliceObject *slice,std::array< PlantData,18 > const &v){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::array< PlantData,18 >::difference_type id = i;
+      std::array< PlantData,18 >::difference_type jd = j;
+      swig::setslice(self, id, jd, step, v);
+    }
+SWIGINTERN void std_array_Sl_PlantData_Sc_18_Sg____setitem____SWIG_1(std::array< PlantData,18 > *self,PySliceObject *slice){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::array< PlantData,18 >::difference_type id = i;
+      std::array< PlantData,18 >::difference_type jd = j;
+      swig::delslice(self, id, jd, step);
+    }
+SWIGINTERN void std_array_Sl_PlantData_Sc_18_Sg____delitem____SWIG_1(std::array< PlantData,18 > *self,PySliceObject *slice){
+      Py_ssize_t i, j, step;
+      if( !PySlice_Check(slice) ) {
+        SWIG_Error(SWIG_TypeError, "Slice object expected.");
+        return;
+      }
+      PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
+      std::array< PlantData,18 >::difference_type id = i;
+      std::array< PlantData,18 >::difference_type jd = j;
+      swig::delslice(self, id, jd, step);
+    }
+SWIGINTERN std::array< PlantData,18 >::value_type const &std_array_Sl_PlantData_Sc_18_Sg____getitem____SWIG_1(std::array< PlantData,18 > const *self,std::array< PlantData,18 >::difference_type i){
+      return *(swig::cgetpos(self, i));
+    }
+SWIGINTERN void std_array_Sl_PlantData_Sc_18_Sg____setitem____SWIG_2(std::array< PlantData,18 > *self,std::array< PlantData,18 >::difference_type i,std::array< PlantData,18 >::value_type const &x){
+      *(swig::getpos(self,i)) = x;
+    }
 
   #define SWIG_From_double   PyFloat_FromDouble 
 
@@ -20009,6 +20179,1121 @@ SWIGINTERN PyObject *state_matrix_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObj
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_plant_data_arr_iterator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  PyObject **arg2 = (PyObject **) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  swig::SwigPyIterator *result = 0 ;
+  
+  arg2 = &swig_obj[0];
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr_iterator" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = (swig::SwigPyIterator *)std_array_Sl_PlantData_Sc_18_Sg__iterator(arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___nonzero__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___nonzero__" "', argument " "1"" of type '" "std::array< PlantData,18 > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = (bool)std_array_Sl_PlantData_Sc_18_Sg____nonzero__((std::array< PlantData,18 > const *)arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___bool__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___bool__" "', argument " "1"" of type '" "std::array< PlantData,18 > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = (bool)std_array_Sl_PlantData_Sc_18_Sg____bool__((std::array< PlantData,18 > const *)arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___len__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::array< PlantData,18 >::size_type result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___len__" "', argument " "1"" of type '" "std::array< PlantData,18 > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = std_array_Sl_PlantData_Sc_18_Sg____len__((std::array< PlantData,18 > const *)arg1);
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___getslice__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  std::array< PlantData,18 >::difference_type arg2 ;
+  std::array< PlantData,18 >::difference_type arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  std::array< PlantData,18 > *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "plant_data_arr___getslice__", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___getslice__" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "plant_data_arr___getslice__" "', argument " "2"" of type '" "std::array< PlantData,18 >::difference_type""'");
+  } 
+  arg2 = static_cast< std::array< PlantData,18 >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "plant_data_arr___getslice__" "', argument " "3"" of type '" "std::array< PlantData,18 >::difference_type""'");
+  } 
+  arg3 = static_cast< std::array< PlantData,18 >::difference_type >(val3);
+  try {
+    result = (std::array< PlantData,18 > *)std_array_Sl_PlantData_Sc_18_Sg____getslice__(arg1,arg2,arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  } catch(std::invalid_argument &_e) {
+    SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__arrayT_PlantData_18_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___setslice____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  std::array< PlantData,18 >::difference_type arg2 ;
+  std::array< PlantData,18 >::difference_type arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___setslice__" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "plant_data_arr___setslice__" "', argument " "2"" of type '" "std::array< PlantData,18 >::difference_type""'");
+  } 
+  arg2 = static_cast< std::array< PlantData,18 >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "plant_data_arr___setslice__" "', argument " "3"" of type '" "std::array< PlantData,18 >::difference_type""'");
+  } 
+  arg3 = static_cast< std::array< PlantData,18 >::difference_type >(val3);
+  try {
+    std_array_Sl_PlantData_Sc_18_Sg____setslice____SWIG_0(arg1,arg2,arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  } catch(std::invalid_argument &_e) {
+    SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___setslice____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  std::array< PlantData,18 >::difference_type arg2 ;
+  std::array< PlantData,18 >::difference_type arg3 ;
+  std::array< PlantData,18 > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  int res4 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___setslice__" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "plant_data_arr___setslice__" "', argument " "2"" of type '" "std::array< PlantData,18 >::difference_type""'");
+  } 
+  arg2 = static_cast< std::array< PlantData,18 >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "plant_data_arr___setslice__" "', argument " "3"" of type '" "std::array< PlantData,18 >::difference_type""'");
+  } 
+  arg3 = static_cast< std::array< PlantData,18 >::difference_type >(val3);
+  {
+    std::array< PlantData,18 > *ptr = (std::array< PlantData,18 > *)0;
+    res4 = swig::asptr(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "plant_data_arr___setslice__" "', argument " "4"" of type '" "std::array< PlantData,18 > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "plant_data_arr___setslice__" "', argument " "4"" of type '" "std::array< PlantData,18 > const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  try {
+    std_array_Sl_PlantData_Sc_18_Sg____setslice____SWIG_1(arg1,arg2,arg3,(std::array< PlantData,18 > const &)*arg4);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  } catch(std::invalid_argument &_e) {
+    SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___setslice__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "plant_data_arr___setslice__", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::array< PlantData,18 >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_ptrdiff_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_plant_data_arr___setslice____SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::array< PlantData,18 >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_ptrdiff_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          int res = swig::asptr(argv[3], (std::array< PlantData,18 >**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_plant_data_arr___setslice____SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'plant_data_arr___setslice__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::array< PlantData,18 >::__setslice__(std::array< PlantData,18 >::difference_type,std::array< PlantData,18 >::difference_type)\n"
+    "    std::array< PlantData,18 >::__setslice__(std::array< PlantData,18 >::difference_type,std::array< PlantData,18 >::difference_type,std::array< PlantData,18 > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___delslice__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  std::array< PlantData,18 >::difference_type arg2 ;
+  std::array< PlantData,18 >::difference_type arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  ptrdiff_t val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "plant_data_arr___delslice__", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___delslice__" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "plant_data_arr___delslice__" "', argument " "2"" of type '" "std::array< PlantData,18 >::difference_type""'");
+  } 
+  arg2 = static_cast< std::array< PlantData,18 >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "plant_data_arr___delslice__" "', argument " "3"" of type '" "std::array< PlantData,18 >::difference_type""'");
+  } 
+  arg3 = static_cast< std::array< PlantData,18 >::difference_type >(val3);
+  try {
+    std_array_Sl_PlantData_Sc_18_Sg____delslice__(arg1,arg2,arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  } catch(std::invalid_argument &_e) {
+    SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___delitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  std::array< PlantData,18 >::difference_type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___delitem__" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "plant_data_arr___delitem__" "', argument " "2"" of type '" "std::array< PlantData,18 >::difference_type""'");
+  } 
+  arg2 = static_cast< std::array< PlantData,18 >::difference_type >(val2);
+  try {
+    std_array_Sl_PlantData_Sc_18_Sg____delitem____SWIG_0(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  } catch(std::invalid_argument &_e) {
+    SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___getitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::array< PlantData,18 > *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___getitem__" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "plant_data_arr___getitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  try {
+    result = (std::array< PlantData,18 > *)std_array_Sl_PlantData_Sc_18_Sg____getitem____SWIG_0(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  } catch(std::invalid_argument &_e) {
+    SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__arrayT_PlantData_18_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___setitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  std::array< PlantData,18 > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___setitem__" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "plant_data_arr___setitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  {
+    std::array< PlantData,18 > *ptr = (std::array< PlantData,18 > *)0;
+    res3 = swig::asptr(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "plant_data_arr___setitem__" "', argument " "3"" of type '" "std::array< PlantData,18 > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "plant_data_arr___setitem__" "', argument " "3"" of type '" "std::array< PlantData,18 > const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  try {
+    std_array_Sl_PlantData_Sc_18_Sg____setitem____SWIG_0(arg1,arg2,(std::array< PlantData,18 > const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  } catch(std::invalid_argument &_e) {
+    SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___setitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___setitem__" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "plant_data_arr___setitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  try {
+    std_array_Sl_PlantData_Sc_18_Sg____setitem____SWIG_1(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  } catch(std::invalid_argument &_e) {
+    SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___delitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  PySliceObject *arg2 = (PySliceObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___delitem__" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  {
+    if (!PySlice_Check(swig_obj[1])) {
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "plant_data_arr___delitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+    }
+    arg2 = (PySliceObject *) swig_obj[1];
+  }
+  try {
+    std_array_Sl_PlantData_Sc_18_Sg____delitem____SWIG_1(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  } catch(std::invalid_argument &_e) {
+    SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___delitem__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "plant_data_arr___delitem__", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::array< PlantData,18 >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+      if (_v) {
+        return _wrap_plant_data_arr___delitem____SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::array< PlantData,18 >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_plant_data_arr___delitem____SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'plant_data_arr___delitem__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::array< PlantData,18 >::__delitem__(std::array< PlantData,18 >::difference_type)\n"
+    "    std::array< PlantData,18 >::__delitem__(PySliceObject *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___getitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  std::array< PlantData,18 >::difference_type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  std::array< PlantData,18 >::value_type *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___getitem__" "', argument " "1"" of type '" "std::array< PlantData,18 > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "plant_data_arr___getitem__" "', argument " "2"" of type '" "std::array< PlantData,18 >::difference_type""'");
+  } 
+  arg2 = static_cast< std::array< PlantData,18 >::difference_type >(val2);
+  try {
+    result = (std::array< PlantData,18 >::value_type *) &std_array_Sl_PlantData_Sc_18_Sg____getitem____SWIG_1((std::array< PlantData,18 > const *)arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PlantData, 0 |  0 );
+  (void)swig::container_owner<swig::traits<std::array< PlantData,18 >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___getitem__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "plant_data_arr___getitem__", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::array< PlantData,18 >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+      if (_v) {
+        return _wrap_plant_data_arr___getitem____SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::array< PlantData,18 >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_plant_data_arr___getitem____SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'plant_data_arr___getitem__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::array< PlantData,18 >::__getitem__(PySliceObject *)\n"
+    "    std::array< PlantData,18 >::__getitem__(std::array< PlantData,18 >::difference_type) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___setitem____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  std::array< PlantData,18 >::difference_type arg2 ;
+  std::array< PlantData,18 >::value_type *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr___setitem__" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "plant_data_arr___setitem__" "', argument " "2"" of type '" "std::array< PlantData,18 >::difference_type""'");
+  } 
+  arg2 = static_cast< std::array< PlantData,18 >::difference_type >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_PlantData,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "plant_data_arr___setitem__" "', argument " "3"" of type '" "std::array< PlantData,18 >::value_type const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "plant_data_arr___setitem__" "', argument " "3"" of type '" "std::array< PlantData,18 >::value_type const &""'"); 
+  }
+  arg3 = reinterpret_cast< std::array< PlantData,18 >::value_type * >(argp3);
+  try {
+    std_array_Sl_PlantData_Sc_18_Sg____setitem____SWIG_2(arg1,arg2,(PlantData const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr___setitem__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "plant_data_arr___setitem__", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::array< PlantData,18 >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+      if (_v) {
+        return _wrap_plant_data_arr___setitem____SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::array< PlantData,18 >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+      if (_v) {
+        int res = swig::asptr(argv[2], (std::array< PlantData,18 >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_plant_data_arr___setitem____SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::array< PlantData,18 >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_PlantData, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_plant_data_arr___setitem____SWIG_2(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'plant_data_arr___setitem__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::array< PlantData,18 >::__setitem__(PySliceObject *,std::array< PlantData,18 > const &)\n"
+    "    std::array< PlantData,18 >::__setitem__(PySliceObject *)\n"
+    "    std::array< PlantData,18 >::__setitem__(std::array< PlantData,18 >::difference_type,std::array< PlantData,18 >::value_type const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_plant_data_arr__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  result = (std::array< PlantData,18 > *)new std::array< PlantData,18 >();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__arrayT_PlantData_18_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_plant_data_arr__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  std::array< PlantData,18 > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    std::array< PlantData,18 > *ptr = (std::array< PlantData,18 > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_plant_data_arr" "', argument " "1"" of type '" "std::array< PlantData,18 > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_plant_data_arr" "', argument " "1"" of type '" "std::array< PlantData,18 > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = (std::array< PlantData,18 > *)new std::array< PlantData,18 >((std::array< PlantData,18 > const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__arrayT_PlantData_18_t, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_plant_data_arr(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_plant_data_arr", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_plant_data_arr__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::array< PlantData,18 >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_plant_data_arr__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_plant_data_arr'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::array< PlantData,18 >::array()\n"
+    "    std::array< PlantData,18 >::array(std::array< PlantData,18 > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr_empty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr_empty" "', argument " "1"" of type '" "std::array< PlantData,18 > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = (bool)((std::array< PlantData,18 > const *)arg1)->empty();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::array< PlantData,18 >::size_type result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr_size" "', argument " "1"" of type '" "std::array< PlantData,18 > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = ((std::array< PlantData,18 > const *)arg1)->size();
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr_swap(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  std::array< PlantData,18 > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "plant_data_arr_swap", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr_swap" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__arrayT_PlantData_18_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "plant_data_arr_swap" "', argument " "2"" of type '" "std::array< PlantData,18 > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "plant_data_arr_swap" "', argument " "2"" of type '" "std::array< PlantData,18 > &""'"); 
+  }
+  arg2 = reinterpret_cast< std::array< PlantData,18 > * >(argp2);
+  (arg1)->swap(*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr_begin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::array< PlantData,18 >::iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr_begin" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = (arg1)->begin();
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::array< PlantData,18 >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr_end(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::array< PlantData,18 >::iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr_end" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = (arg1)->end();
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::array< PlantData,18 >::iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr_rbegin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::array< PlantData,18 >::reverse_iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr_rbegin" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = (arg1)->rbegin();
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::array< PlantData,18 >::reverse_iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr_rend(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::array< PlantData,18 >::reverse_iterator result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr_rend" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = (arg1)->rend();
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::array< PlantData,18 >::reverse_iterator & >(result)),
+    swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr_front(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::array< PlantData,18 >::value_type *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr_front" "', argument " "1"" of type '" "std::array< PlantData,18 > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = (std::array< PlantData,18 >::value_type *) &((std::array< PlantData,18 > const *)arg1)->front();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PlantData, 0 |  0 );
+  (void)swig::container_owner<swig::traits<std::array< PlantData,18 >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::array< PlantData,18 >::value_type *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr_back" "', argument " "1"" of type '" "std::array< PlantData,18 > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  result = (std::array< PlantData,18 >::value_type *) &((std::array< PlantData,18 > const *)arg1)->back();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PlantData, 0 |  0 );
+  (void)swig::container_owner<swig::traits<std::array< PlantData,18 >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_plant_data_arr_fill(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  std::array< PlantData,18 >::value_type *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "plant_data_arr_fill", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "plant_data_arr_fill" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_PlantData,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "plant_data_arr_fill" "', argument " "2"" of type '" "std::array< PlantData,18 >::value_type const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "plant_data_arr_fill" "', argument " "2"" of type '" "std::array< PlantData,18 >::value_type const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::array< PlantData,18 >::value_type * >(argp2);
+  (arg1)->fill((std::array< PlantData,18 >::value_type const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_plant_data_arr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::array< PlantData,18 > *arg1 = (std::array< PlantData,18 > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__arrayT_PlantData_18_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_plant_data_arr" "', argument " "1"" of type '" "std::array< PlantData,18 > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::array< PlantData,18 > * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *plant_data_arr_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_std__arrayT_PlantData_18_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *plant_data_arr_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 SWIGINTERN PyObject *_wrap_get_random_number(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
@@ -20195,58 +21480,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantData_action_interval_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  PlantData *arg1 = (PlantData *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "PlantData_action_interval_set", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PlantData, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantData_action_interval_set" "', argument " "1"" of type '" "PlantData *""'"); 
-  }
-  arg1 = reinterpret_cast< PlantData * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantData_action_interval_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  if (arg1) (arg1)->action_interval = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PlantData_action_interval_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  PlantData *arg1 = (PlantData *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PlantData, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantData_action_interval_get" "', argument " "1"" of type '" "PlantData *""'"); 
-  }
-  arg1 = reinterpret_cast< PlantData * >(argp1);
-  result = (int) ((arg1)->action_interval);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_PlantData_recharge_seconds_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PlantData *arg1 = (PlantData *) 0 ;
@@ -20293,58 +21526,6 @@ SWIGINTERN PyObject *_wrap_PlantData_recharge_seconds_get(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< PlantData * >(argp1);
   result = (float) ((arg1)->recharge_seconds);
   resultobj = SWIG_From_float(static_cast< float >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PlantData_recharge_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  PlantData *arg1 = (PlantData *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "PlantData_recharge_set", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PlantData, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantData_recharge_set" "', argument " "1"" of type '" "PlantData *""'"); 
-  }
-  arg1 = reinterpret_cast< PlantData * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantData_recharge_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  if (arg1) (arg1)->recharge = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PlantData_recharge_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  PlantData *arg1 = (PlantData *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PlantData, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantData_recharge_get" "', argument " "1"" of type '" "PlantData *""'"); 
-  }
-  arg1 = reinterpret_cast< PlantData * >(argp1);
-  result = (int) ((arg1)->recharge);
-  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -20635,32 +21816,29 @@ SWIGINTERN PyObject *_wrap_new_PlantData__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
-  int arg3 ;
+  float arg3 ;
   float arg4 ;
-  float arg5 ;
-  int arg6 ;
-  SwigValueWrapper< std::function< bool (Level &,Plant &) > > arg7 ;
-  std::string arg8 ;
-  int arg9 ;
+  int arg5 ;
+  SwigValueWrapper< std::function< bool (Level &,Plant &) > > arg6 ;
+  std::string arg7 ;
+  int arg8 ;
   int val1 ;
   int ecode1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  int val3 ;
+  float val3 ;
   int ecode3 = 0 ;
   float val4 ;
   int ecode4 = 0 ;
-  float val5 ;
+  int val5 ;
   int ecode5 = 0 ;
-  int val6 ;
-  int ecode6 = 0 ;
-  void *argp7 ;
-  int res7 = 0 ;
-  int val9 ;
-  int ecode9 = 0 ;
+  void *argp6 ;
+  int res6 = 0 ;
+  int val8 ;
+  int ecode8 = 0 ;
   PlantData *result = 0 ;
   
-  if ((nobjs < 9) || (nobjs > 9)) SWIG_fail;
+  if ((nobjs < 8) || (nobjs > 8)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_PlantData" "', argument " "1"" of type '" "int""'");
@@ -20671,54 +21849,49 @@ SWIGINTERN PyObject *_wrap_new_PlantData__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_PlantData" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_float(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_PlantData" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_PlantData" "', argument " "3"" of type '" "float""'");
   } 
-  arg3 = static_cast< int >(val3);
+  arg3 = static_cast< float >(val3);
   ecode4 = SWIG_AsVal_float(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_PlantData" "', argument " "4"" of type '" "float""'");
   } 
   arg4 = static_cast< float >(val4);
-  ecode5 = SWIG_AsVal_float(swig_obj[4], &val5);
+  ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_PlantData" "', argument " "5"" of type '" "float""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_PlantData" "', argument " "5"" of type '" "int""'");
   } 
-  arg5 = static_cast< float >(val5);
-  ecode6 = SWIG_AsVal_int(swig_obj[5], &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_PlantData" "', argument " "6"" of type '" "int""'");
-  } 
-  arg6 = static_cast< int >(val6);
+  arg5 = static_cast< int >(val5);
   {
-    res7 = SWIG_ConvertPtr(swig_obj[6], &argp7, SWIGTYPE_p_std__functionT_bool_fLevel_R_Plant_RF_t,  0  | 0);
-    if (!SWIG_IsOK(res7)) {
-      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "new_PlantData" "', argument " "7"" of type '" "PlantAction""'"); 
+    res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_std__functionT_bool_fLevel_R_Plant_RF_t,  0  | 0);
+    if (!SWIG_IsOK(res6)) {
+      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "new_PlantData" "', argument " "6"" of type '" "PlantAction""'"); 
     }  
-    if (!argp7) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PlantData" "', argument " "7"" of type '" "PlantAction""'");
+    if (!argp6) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PlantData" "', argument " "6"" of type '" "PlantAction""'");
     } else {
-      PlantAction * temp = reinterpret_cast< PlantAction * >(argp7);
-      arg7 = *temp;
-      if (SWIG_IsNewObj(res7)) delete temp;
+      PlantAction * temp = reinterpret_cast< PlantAction * >(argp6);
+      arg6 = *temp;
+      if (SWIG_IsNewObj(res6)) delete temp;
     }
   }
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[7], &ptr);
+    int res = SWIG_AsPtr_std_string(swig_obj[6], &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_PlantData" "', argument " "8"" of type '" "std::string""'"); 
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_PlantData" "', argument " "7"" of type '" "std::string""'"); 
     }
-    arg8 = *ptr;
+    arg7 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
   }
-  ecode9 = SWIG_AsVal_int(swig_obj[8], &val9);
-  if (!SWIG_IsOK(ecode9)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "new_PlantData" "', argument " "9"" of type '" "int""'");
+  ecode8 = SWIG_AsVal_int(swig_obj[7], &val8);
+  if (!SWIG_IsOK(ecode8)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_PlantData" "', argument " "8"" of type '" "int""'");
   } 
-  arg9 = static_cast< int >(val9);
-  result = (PlantData *)new PlantData(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
+  arg8 = static_cast< int >(val8);
+  result = (PlantData *)new PlantData(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PlantData, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -20728,16 +21901,16 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_PlantData(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[10] = {
+  PyObject *argv[9] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_PlantData", 0, 9, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_PlantData", 0, 8, argv))) SWIG_fail;
   --argc;
   if (argc == 0) {
     return _wrap_new_PlantData__SWIG_0(self, argc, argv);
   }
-  if (argc == 9) {
+  if (argc == 8) {
     int _v;
     {
       int res = SWIG_AsVal_int(argv[0], NULL);
@@ -20750,7 +21923,7 @@ SWIGINTERN PyObject *_wrap_new_PlantData(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
+          int res = SWIG_AsVal_float(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
         if (_v) {
@@ -20760,28 +21933,22 @@ SWIGINTERN PyObject *_wrap_new_PlantData(PyObject *self, PyObject *args) {
           }
           if (_v) {
             {
-              int res = SWIG_AsVal_float(argv[4], NULL);
+              int res = SWIG_AsVal_int(argv[4], NULL);
               _v = SWIG_CheckState(res);
             }
             if (_v) {
-              {
-                int res = SWIG_AsVal_int(argv[5], NULL);
-                _v = SWIG_CheckState(res);
-              }
+              int res = SWIG_ConvertPtr(argv[5], 0, SWIGTYPE_p_std__functionT_bool_fLevel_R_Plant_RF_t, SWIG_POINTER_NO_NULL | 0);
+              _v = SWIG_CheckState(res);
               if (_v) {
-                int res = SWIG_ConvertPtr(argv[6], 0, SWIGTYPE_p_std__functionT_bool_fLevel_R_Plant_RF_t, SWIG_POINTER_NO_NULL | 0);
+                int res = SWIG_AsPtr_std_string(argv[6], (std::string**)(0));
                 _v = SWIG_CheckState(res);
                 if (_v) {
-                  int res = SWIG_AsPtr_std_string(argv[7], (std::string**)(0));
-                  _v = SWIG_CheckState(res);
+                  {
+                    int res = SWIG_AsVal_int(argv[7], NULL);
+                    _v = SWIG_CheckState(res);
+                  }
                   if (_v) {
-                    {
-                      int res = SWIG_AsVal_int(argv[8], NULL);
-                      _v = SWIG_CheckState(res);
-                    }
-                    if (_v) {
-                      return _wrap_new_PlantData__SWIG_1(self, argc, argv);
-                    }
+                    return _wrap_new_PlantData__SWIG_1(self, argc, argv);
                   }
                 }
               }
@@ -20796,7 +21963,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_PlantData'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    PlantData::PlantData()\n"
-    "    PlantData::PlantData(int,int,int,float,float,int,PlantAction,std::string,int)\n");
+    "    PlantData::PlantData(int,int,float,float,int,PlantAction,std::string,int)\n");
   return 0;
 }
 
@@ -20833,6 +22000,20 @@ SWIGINTERN PyObject *PlantData_swigregister(PyObject *SWIGUNUSEDPARM(self), PyOb
 SWIGINTERN PyObject *PlantData_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
+
+SWIGINTERN int Swig_var_plant_data_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable plant_data is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_plant_data_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&plant_data), SWIGTYPE_p_std__arrayT_PlantData_NUM_PLANTS_t,  0 );
+  return pyobj;
+}
+
 
 SWIGINTERN PyObject *_wrap_ZombieSpawnTemplate_second_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -23422,28 +24603,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Level_plant_data_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Level_plant_cooldowns_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Level *arg1 = (Level *) 0 ;
-  std::vector< PlantData,std::allocator< PlantData > > *arg2 = (std::vector< PlantData,std::allocator< PlantData > > *) 0 ;
+  std::vector< int,std::allocator< int > > *arg2 = (std::vector< int,std::allocator< int > > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "Level_plant_data_set", 2, 2, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "Level_plant_cooldowns_set", 2, 2, swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_plant_data_set" "', argument " "1"" of type '" "Level *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_plant_cooldowns_set" "', argument " "1"" of type '" "Level *""'"); 
   }
   arg1 = reinterpret_cast< Level * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Level_plant_data_set" "', argument " "2"" of type '" "std::vector< PlantData,std::allocator< PlantData > > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Level_plant_cooldowns_set" "', argument " "2"" of type '" "std::vector< int,std::allocator< int > > *""'"); 
   }
-  arg2 = reinterpret_cast< std::vector< PlantData,std::allocator< PlantData > > * >(argp2);
-  if (arg1) (arg1)->plant_data = *arg2;
+  arg2 = reinterpret_cast< std::vector< int,std::allocator< int > > * >(argp2);
+  if (arg1) (arg1)->plant_cooldowns = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -23451,23 +24632,23 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Level_plant_data_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Level_plant_cooldowns_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Level *arg1 = (Level *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< PlantData,std::allocator< PlantData > > *result = 0 ;
+  std::vector< int,std::allocator< int > > *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_plant_data_get" "', argument " "1"" of type '" "Level *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_plant_cooldowns_get" "', argument " "1"" of type '" "Level *""'"); 
   }
   arg1 = reinterpret_cast< Level * >(argp1);
-  result = (std::vector< PlantData,std::allocator< PlantData > > *)& ((arg1)->plant_data);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  result = (std::vector< int,std::allocator< int > > *)& ((arg1)->plant_cooldowns);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -23595,10 +24776,10 @@ SWIGINTERN PyObject *_wrap_Level_clone(PyObject *SWIGUNUSEDPARM(self), PyObject 
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_clone" "', argument " "1"" of type '" "Level *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_clone" "', argument " "1"" of type '" "Level const *""'"); 
   }
   arg1 = reinterpret_cast< Level * >(argp1);
-  result = (Level *)(arg1)->clone();
+  result = (Level *)((Level const *)arg1)->clone();
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Level, 0 |  0 );
   return resultobj;
 fail:
@@ -23868,6 +25049,38 @@ fail:
     "    Level::step(int,int,int)\n"
     "    Level::step()\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Level_deferred_step(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Level *arg1 = (Level *) 0 ;
+  Action *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Level_deferred_step", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_deferred_step" "', argument " "1"" of type '" "Level *""'"); 
+  }
+  arg1 = reinterpret_cast< Level * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_Action,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Level_deferred_step" "', argument " "2"" of type '" "Action const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Level_deferred_step" "', argument " "2"" of type '" "Action const &""'"); 
+  }
+  arg2 = reinterpret_cast< Action * >(argp2);
+  (arg1)->deferred_step((Action const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -24382,10 +25595,10 @@ SWIGINTERN PyObject *_wrap_Level_get_observation(PyObject *SWIGUNUSEDPARM(self),
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_get_observation" "', argument " "1"" of type '" "Level *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_get_observation" "', argument " "1"" of type '" "Level const *""'"); 
   }
   arg1 = reinterpret_cast< Level * >(argp1);
-  result = (arg1)->get_observation();
+  result = ((Level const *)arg1)->get_observation();
   resultobj = swig::from(static_cast< std::vector< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > >,std::allocator< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > > > >(result));
   return resultobj;
 fail:
@@ -24405,10 +25618,10 @@ SWIGINTERN PyObject *_wrap_Level_get_state(PyObject *SWIGUNUSEDPARM(self), PyObj
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_get_state" "', argument " "1"" of type '" "Level *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_get_state" "', argument " "1"" of type '" "Level const *""'"); 
   }
   arg1 = reinterpret_cast< Level * >(argp1);
-  result = (arg1)->get_state();
+  result = ((Level const *)arg1)->get_state();
   resultobj = swig::from(static_cast< std::vector< std::vector< Cell,std::allocator< Cell > >,std::allocator< std::vector< Cell,std::allocator< Cell > > > > >(result));
   return resultobj;
 fail:
@@ -24482,7 +25695,7 @@ SWIGINTERN PyObject *_wrap_Level_rollout__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_rollout" "', argument " "1"" of type '" "Level *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_rollout" "', argument " "1"" of type '" "Level const *""'"); 
   }
   arg1 = reinterpret_cast< Level * >(argp1);
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
@@ -24500,7 +25713,7 @@ SWIGINTERN PyObject *_wrap_Level_rollout__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Level_rollout" "', argument " "4"" of type '" "int""'");
   } 
   arg4 = static_cast< int >(val4);
-  result = (int)(arg1)->rollout(arg2,arg3,arg4);
+  result = (int)((Level const *)arg1)->rollout(arg2,arg3,arg4);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -24524,7 +25737,7 @@ SWIGINTERN PyObject *_wrap_Level_rollout__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_rollout" "', argument " "1"" of type '" "Level *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_rollout" "', argument " "1"" of type '" "Level const *""'"); 
   }
   arg1 = reinterpret_cast< Level * >(argp1);
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
@@ -24537,7 +25750,7 @@ SWIGINTERN PyObject *_wrap_Level_rollout__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Level_rollout" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  result = (int)(arg1)->rollout(arg2,arg3);
+  result = (int)((Level const *)arg1)->rollout(arg2,arg3);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -24558,7 +25771,7 @@ SWIGINTERN PyObject *_wrap_Level_rollout__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_rollout" "', argument " "1"" of type '" "Level *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_rollout" "', argument " "1"" of type '" "Level const *""'"); 
   }
   arg1 = reinterpret_cast< Level * >(argp1);
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
@@ -24566,7 +25779,7 @@ SWIGINTERN PyObject *_wrap_Level_rollout__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Level_rollout" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  result = (int)(arg1)->rollout(arg2);
+  result = (int)((Level const *)arg1)->rollout(arg2);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -24649,9 +25862,9 @@ SWIGINTERN PyObject *_wrap_Level_rollout(PyObject *self, PyObject *args) {
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Level_rollout'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    Level::rollout(int,int,int)\n"
-    "    Level::rollout(int,int)\n"
-    "    Level::rollout(int)\n");
+    "    Level::rollout(int,int,int) const\n"
+    "    Level::rollout(int,int) const\n"
+    "    Level::rollout(int) const\n");
   return 0;
 }
 
@@ -24675,7 +25888,7 @@ SWIGINTERN PyObject *_wrap_Level_timed_rollout__SWIG_0(PyObject *SWIGUNUSEDPARM(
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_timed_rollout" "', argument " "1"" of type '" "Level *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_timed_rollout" "', argument " "1"" of type '" "Level const *""'"); 
   }
   arg1 = reinterpret_cast< Level * >(argp1);
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
@@ -24693,7 +25906,7 @@ SWIGINTERN PyObject *_wrap_Level_timed_rollout__SWIG_0(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Level_timed_rollout" "', argument " "4"" of type '" "int""'");
   } 
   arg4 = static_cast< int >(val4);
-  result = (arg1)->timed_rollout(arg2,arg3,arg4);
+  result = ((Level const *)arg1)->timed_rollout(arg2,arg3,arg4);
   resultobj = swig::from(static_cast< std::pair< int,int > >(result));
   return resultobj;
 fail:
@@ -24717,7 +25930,7 @@ SWIGINTERN PyObject *_wrap_Level_timed_rollout__SWIG_1(PyObject *SWIGUNUSEDPARM(
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_timed_rollout" "', argument " "1"" of type '" "Level *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_timed_rollout" "', argument " "1"" of type '" "Level const *""'"); 
   }
   arg1 = reinterpret_cast< Level * >(argp1);
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
@@ -24730,7 +25943,7 @@ SWIGINTERN PyObject *_wrap_Level_timed_rollout__SWIG_1(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Level_timed_rollout" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  result = (arg1)->timed_rollout(arg2,arg3);
+  result = ((Level const *)arg1)->timed_rollout(arg2,arg3);
   resultobj = swig::from(static_cast< std::pair< int,int > >(result));
   return resultobj;
 fail:
@@ -24798,8 +26011,123 @@ SWIGINTERN PyObject *_wrap_Level_timed_rollout(PyObject *self, PyObject *args) {
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Level_timed_rollout'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    Level::timed_rollout(int,int,int)\n"
-    "    Level::timed_rollout(int,int)\n");
+    "    Level::timed_rollout(int,int,int) const\n"
+    "    Level::timed_rollout(int,int) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Level_count_plant__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  Level *arg1 = (Level *) 0 ;
+  PlantName arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_count_plant" "', argument " "1"" of type '" "Level const *""'"); 
+  }
+  arg1 = reinterpret_cast< Level * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Level_count_plant" "', argument " "2"" of type '" "PlantName""'");
+  } 
+  arg2 = static_cast< PlantName >(val2);
+  result = (int)((Level const *)arg1)->count_plant(arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Level_count_lawnmowers(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Level *arg1 = (Level *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_count_lawnmowers" "', argument " "1"" of type '" "Level const *""'"); 
+  }
+  arg1 = reinterpret_cast< Level * >(argp1);
+  result = (int)((Level const *)arg1)->count_lawnmowers();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Level_count_plant__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  Level *arg1 = (Level *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Level, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Level_count_plant" "', argument " "1"" of type '" "Level const *""'"); 
+  }
+  arg1 = reinterpret_cast< Level * >(argp1);
+  result = (int)((Level const *)arg1)->count_plant();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Level_count_plant(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Level_count_plant", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Level, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Level_count_plant__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Level, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_Level_count_plant__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Level_count_plant'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Level::count_plant(PlantName) const\n"
+    "    Level::count_plant() const\n");
   return 0;
 }
 
@@ -24850,6 +26178,144 @@ SWIGINTERN PyObject *_wrap_play_random_game(PyObject *SWIGUNUSEDPARM(self), PyOb
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_play_random_heuristic_game__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  SwigValueWrapper< Level > arg1 ;
+  heuristic_function *arg2 = 0 ;
+  int arg3 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  bool result;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_Level,  0  | 0);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "play_random_heuristic_game" "', argument " "1"" of type '" "Level""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "play_random_heuristic_game" "', argument " "1"" of type '" "Level""'");
+    } else {
+      Level * temp = reinterpret_cast< Level * >(argp1);
+      arg1 = *temp;
+      if (SWIG_IsNewObj(res1)) delete temp;
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__functionT_double_fLevel_const_RF_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "play_random_heuristic_game" "', argument " "2"" of type '" "heuristic_function &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "play_random_heuristic_game" "', argument " "2"" of type '" "heuristic_function &""'"); 
+  }
+  arg2 = reinterpret_cast< heuristic_function * >(argp2);
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "play_random_heuristic_game" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (bool)play_random_heuristic_game(arg1,*arg2,arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_play_random_heuristic_game__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  SwigValueWrapper< Level > arg1 ;
+  heuristic_function *arg2 = 0 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_Level,  0  | 0);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "play_random_heuristic_game" "', argument " "1"" of type '" "Level""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "play_random_heuristic_game" "', argument " "1"" of type '" "Level""'");
+    } else {
+      Level * temp = reinterpret_cast< Level * >(argp1);
+      arg1 = *temp;
+      if (SWIG_IsNewObj(res1)) delete temp;
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__functionT_double_fLevel_const_RF_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "play_random_heuristic_game" "', argument " "2"" of type '" "heuristic_function &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "play_random_heuristic_game" "', argument " "2"" of type '" "heuristic_function &""'"); 
+  }
+  arg2 = reinterpret_cast< heuristic_function * >(argp2);
+  result = (bool)play_random_heuristic_game(arg1,*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_play_random_heuristic_game(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "play_random_heuristic_game", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_Level, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__functionT_double_fLevel_const_RF_t, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_play_random_heuristic_game__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_Level, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__functionT_double_fLevel_const_RF_t, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_play_random_heuristic_game__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'play_random_heuristic_game'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    play_random_heuristic_game(Level,heuristic_function &,int)\n"
+    "    play_random_heuristic_game(Level,heuristic_function &)\n");
+  return 0;
 }
 
 
@@ -25134,6 +26600,30 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_state_matrix", _wrap_delete_state_matrix, METH_O, NULL},
 	 { "state_matrix_swigregister", state_matrix_swigregister, METH_O, NULL},
 	 { "state_matrix_swiginit", state_matrix_swiginit, METH_VARARGS, NULL},
+	 { "plant_data_arr_iterator", _wrap_plant_data_arr_iterator, METH_O, NULL},
+	 { "plant_data_arr___nonzero__", _wrap_plant_data_arr___nonzero__, METH_O, NULL},
+	 { "plant_data_arr___bool__", _wrap_plant_data_arr___bool__, METH_O, NULL},
+	 { "plant_data_arr___len__", _wrap_plant_data_arr___len__, METH_O, NULL},
+	 { "plant_data_arr___getslice__", _wrap_plant_data_arr___getslice__, METH_VARARGS, NULL},
+	 { "plant_data_arr___setslice__", _wrap_plant_data_arr___setslice__, METH_VARARGS, NULL},
+	 { "plant_data_arr___delslice__", _wrap_plant_data_arr___delslice__, METH_VARARGS, NULL},
+	 { "plant_data_arr___delitem__", _wrap_plant_data_arr___delitem__, METH_VARARGS, NULL},
+	 { "plant_data_arr___getitem__", _wrap_plant_data_arr___getitem__, METH_VARARGS, NULL},
+	 { "plant_data_arr___setitem__", _wrap_plant_data_arr___setitem__, METH_VARARGS, NULL},
+	 { "new_plant_data_arr", _wrap_new_plant_data_arr, METH_VARARGS, NULL},
+	 { "plant_data_arr_empty", _wrap_plant_data_arr_empty, METH_O, NULL},
+	 { "plant_data_arr_size", _wrap_plant_data_arr_size, METH_O, NULL},
+	 { "plant_data_arr_swap", _wrap_plant_data_arr_swap, METH_VARARGS, NULL},
+	 { "plant_data_arr_begin", _wrap_plant_data_arr_begin, METH_O, NULL},
+	 { "plant_data_arr_end", _wrap_plant_data_arr_end, METH_O, NULL},
+	 { "plant_data_arr_rbegin", _wrap_plant_data_arr_rbegin, METH_O, NULL},
+	 { "plant_data_arr_rend", _wrap_plant_data_arr_rend, METH_O, NULL},
+	 { "plant_data_arr_front", _wrap_plant_data_arr_front, METH_O, NULL},
+	 { "plant_data_arr_back", _wrap_plant_data_arr_back, METH_O, NULL},
+	 { "plant_data_arr_fill", _wrap_plant_data_arr_fill, METH_VARARGS, NULL},
+	 { "delete_plant_data_arr", _wrap_delete_plant_data_arr, METH_O, NULL},
+	 { "plant_data_arr_swigregister", plant_data_arr_swigregister, METH_O, NULL},
+	 { "plant_data_arr_swiginit", plant_data_arr_swiginit, METH_VARARGS, NULL},
 	 { "get_random_number", _wrap_get_random_number, METH_VARARGS, NULL},
 	 { "PlantData_hp_set", _wrap_PlantData_hp_set, METH_VARARGS, NULL},
 	 { "PlantData_hp_get", _wrap_PlantData_hp_get, METH_O, NULL},
@@ -25141,12 +26631,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "PlantData_damage_get", _wrap_PlantData_damage_get, METH_O, NULL},
 	 { "PlantData_action_interval_seconds_set", _wrap_PlantData_action_interval_seconds_set, METH_VARARGS, NULL},
 	 { "PlantData_action_interval_seconds_get", _wrap_PlantData_action_interval_seconds_get, METH_O, NULL},
-	 { "PlantData_action_interval_set", _wrap_PlantData_action_interval_set, METH_VARARGS, NULL},
-	 { "PlantData_action_interval_get", _wrap_PlantData_action_interval_get, METH_O, NULL},
 	 { "PlantData_recharge_seconds_set", _wrap_PlantData_recharge_seconds_set, METH_VARARGS, NULL},
 	 { "PlantData_recharge_seconds_get", _wrap_PlantData_recharge_seconds_get, METH_O, NULL},
-	 { "PlantData_recharge_set", _wrap_PlantData_recharge_set, METH_VARARGS, NULL},
-	 { "PlantData_recharge_get", _wrap_PlantData_recharge_get, METH_O, NULL},
 	 { "PlantData_cost_set", _wrap_PlantData_cost_set, METH_VARARGS, NULL},
 	 { "PlantData_cost_get", _wrap_PlantData_cost_get, METH_O, NULL},
 	 { "PlantData_action_func_set", _wrap_PlantData_action_func_set, METH_VARARGS, NULL},
@@ -25264,14 +26750,15 @@ static PyMethodDef SwigMethods[] = {
 	 { "Level_plant_grid_get", _wrap_Level_plant_grid_get, METH_O, NULL},
 	 { "Level_level_data_set", _wrap_Level_level_data_set, METH_VARARGS, NULL},
 	 { "Level_level_data_get", _wrap_Level_level_data_get, METH_O, NULL},
-	 { "Level_plant_data_set", _wrap_Level_plant_data_set, METH_VARARGS, NULL},
-	 { "Level_plant_data_get", _wrap_Level_plant_data_get, METH_O, NULL},
+	 { "Level_plant_cooldowns_set", _wrap_Level_plant_cooldowns_set, METH_VARARGS, NULL},
+	 { "Level_plant_cooldowns_get", _wrap_Level_plant_cooldowns_get, METH_O, NULL},
 	 { "Level_free_spaces_set", _wrap_Level_free_spaces_set, METH_VARARGS, NULL},
 	 { "Level_free_spaces_get", _wrap_Level_free_spaces_get, METH_O, NULL},
 	 { "Level_clone", _wrap_Level_clone, METH_O, NULL},
 	 { "new_Level", _wrap_new_Level, METH_VARARGS, NULL},
 	 { "delete_Level", _wrap_delete_Level, METH_O, NULL},
 	 { "Level_step", _wrap_Level_step, METH_VARARGS, NULL},
+	 { "Level_deferred_step", _wrap_Level_deferred_step, METH_VARARGS, NULL},
 	 { "Level_do_zombie_actions", _wrap_Level_do_zombie_actions, METH_O, NULL},
 	 { "Level_do_plant_actions", _wrap_Level_do_plant_actions, METH_O, NULL},
 	 { "Level_do_player_action", _wrap_Level_do_player_action, METH_VARARGS, NULL},
@@ -25292,9 +26779,12 @@ static PyMethodDef SwigMethods[] = {
 	 { "Level_append_zombie", _wrap_Level_append_zombie, METH_VARARGS, NULL},
 	 { "Level_rollout", _wrap_Level_rollout, METH_VARARGS, NULL},
 	 { "Level_timed_rollout", _wrap_Level_timed_rollout, METH_VARARGS, NULL},
+	 { "Level_count_lawnmowers", _wrap_Level_count_lawnmowers, METH_O, NULL},
+	 { "Level_count_plant", _wrap_Level_count_plant, METH_VARARGS, NULL},
 	 { "Level_swigregister", Level_swigregister, METH_O, NULL},
 	 { "Level_swiginit", Level_swiginit, METH_VARARGS, NULL},
 	 { "play_random_game", _wrap_play_random_game, METH_VARARGS, NULL},
+	 { "play_random_heuristic_game", _wrap_play_random_heuristic_game, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -25309,7 +26799,7 @@ static swig_type_info _swigt__p_Action = {"_p_Action", "Action *", 0, 0, (void*)
 static swig_type_info _swigt__p_Cell = {"_p_Cell", "std::vector< Cell >::value_type *|Cell *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CellObservation = {"_p_CellObservation", "CellObservation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Level = {"_p_Level", "Level *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_PlantData = {"_p_PlantData", "std::vector< PlantData >::value_type *|PlantData *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PlantData = {"_p_PlantData", "std::vector< PlantData >::value_type *|std::array< PlantData,18 >::value_type *|PlantData *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PlantInfo = {"_p_PlantInfo", "PlantInfo *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ZombieInfo = {"_p_ZombieInfo", "ZombieInfo *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ZombieSpawnTemplate = {"_p_ZombieSpawnTemplate", "std::deque< ZombieSpawnTemplate >::value_type *|ZombieSpawnTemplate *", 0, 0, (void*)0, 0};
@@ -25328,8 +26818,11 @@ static swig_type_info _swigt__p_std__allocatorT_int_t = {"_p_std__allocatorT_int
 static swig_type_info _swigt__p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t = {"_p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t", "std::vector< std::vector< Cell > >::allocator_type *|std::allocator< std::vector< Cell,std::allocator< Cell > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t = {"_p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t", "std::vector< std::vector< int > >::allocator_type *|std::allocator< std::vector< int,std::allocator< int > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_t = {"_p_std__allocatorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_t", "std::allocator< std::vector< std::vector< int,std::allocator< int > >,std::allocator< std::vector< int,std::allocator< int > > > > > *|std::vector< std::vector< std::vector< int > > >::allocator_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__arrayT_PlantData_18_t = {"_p_std__arrayT_PlantData_18_t", "std::array< PlantData,18 > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__arrayT_PlantData_NUM_PLANTS_t = {"_p_std__arrayT_PlantData_NUM_PLANTS_t", "std::array< PlantData,NUM_PLANTS > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__dequeT_ZombieSpawnTemplate_std__allocatorT_ZombieSpawnTemplate_t_t = {"_p_std__dequeT_ZombieSpawnTemplate_std__allocatorT_ZombieSpawnTemplate_t_t", "std::deque< ZombieSpawnTemplate > *|std::deque< ZombieSpawnTemplate,std::allocator< ZombieSpawnTemplate > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__functionT_bool_fLevel_R_Plant_RF_t = {"_p_std__functionT_bool_fLevel_R_Plant_RF_t", "PlantAction *|std::function< bool (Level &,Plant &) > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__functionT_double_fLevel_const_RF_t = {"_p_std__functionT_double_fLevel_const_RF_t", "heuristic_function *|std::function< double (Level const &) > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__listT_Plant_p_t = {"_p_std__listT_Plant_p_t", "std::list< Plant * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__listT_Zombie_p_t = {"_p_std__listT_Zombie_p_t", "std::list< Zombie * > *", 0, 0, (void*)0, 0};
@@ -25373,8 +26866,11 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t,
   &_swigt__p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t,
   &_swigt__p_std__allocatorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_t,
+  &_swigt__p_std__arrayT_PlantData_18_t,
+  &_swigt__p_std__arrayT_PlantData_NUM_PLANTS_t,
   &_swigt__p_std__dequeT_ZombieSpawnTemplate_std__allocatorT_ZombieSpawnTemplate_t_t,
   &_swigt__p_std__functionT_bool_fLevel_R_Plant_RF_t,
+  &_swigt__p_std__functionT_double_fLevel_const_RF_t,
   &_swigt__p_std__invalid_argument,
   &_swigt__p_std__listT_Plant_p_t,
   &_swigt__p_std__listT_Zombie_p_t,
@@ -25418,8 +26914,11 @@ static swig_cast_info _swigc__p_std__allocatorT_int_t[] = {  {&_swigt__p_std__al
 static swig_cast_info _swigc__p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t[] = {  {&_swigt__p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t[] = {  {&_swigt__p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_t[] = {  {&_swigt__p_std__allocatorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__arrayT_PlantData_18_t[] = {  {&_swigt__p_std__arrayT_PlantData_18_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__arrayT_PlantData_NUM_PLANTS_t[] = {  {&_swigt__p_std__arrayT_PlantData_NUM_PLANTS_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__dequeT_ZombieSpawnTemplate_std__allocatorT_ZombieSpawnTemplate_t_t[] = {  {&_swigt__p_std__dequeT_ZombieSpawnTemplate_std__allocatorT_ZombieSpawnTemplate_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__functionT_bool_fLevel_R_Plant_RF_t[] = {  {&_swigt__p_std__functionT_bool_fLevel_R_Plant_RF_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__functionT_double_fLevel_const_RF_t[] = {  {&_swigt__p_std__functionT_double_fLevel_const_RF_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__listT_Plant_p_t[] = {  {&_swigt__p_std__listT_Plant_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__listT_Zombie_p_t[] = {  {&_swigt__p_std__listT_Zombie_p_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -25463,8 +26962,11 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t,
   _swigc__p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t,
   _swigc__p_std__allocatorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_t,
+  _swigc__p_std__arrayT_PlantData_18_t,
+  _swigc__p_std__arrayT_PlantData_NUM_PLANTS_t,
   _swigc__p_std__dequeT_ZombieSpawnTemplate_std__allocatorT_ZombieSpawnTemplate_t_t,
   _swigc__p_std__functionT_bool_fLevel_R_Plant_RF_t,
+  _swigc__p_std__functionT_double_fLevel_const_RF_t,
   _swigc__p_std__invalid_argument,
   _swigc__p_std__listT_Plant_p_t,
   _swigc__p_std__listT_Zombie_p_t,
@@ -26244,6 +27746,18 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "THREEPEATER",SWIG_From_int(static_cast< int >(THREEPEATER)));
   SWIG_Python_SetConstant(d, "WALLNUT",SWIG_From_int(static_cast< int >(WALLNUT)));
   SWIG_Python_SetConstant(d, "NUM_PLANTS",SWIG_From_int(static_cast< int >(NUM_PLANTS)));
+  globals = SWIG_globals();
+  if (!globals) {
+    PyErr_SetString(PyExc_TypeError, "Failure to create SWIG globals.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  PyDict_SetItemString(md, "cvar", globals);
+  Py_DECREF(globals);
+  SWIG_addvarlink(globals, "plant_data", Swig_var_plant_data_get, Swig_var_plant_data_set);
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else
