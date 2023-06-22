@@ -14,7 +14,8 @@ namespace std{
     %template(LegalPlantVector) vector<int>;
     %template(ZombieQueue) deque<ZombieSpawnTemplate>;
     %template(FreePositions) pair<int, int>;
-    %template(PlantDataVector) vector<PlantData>;
+    // %template(PlantDataVector) vector<PlantData>;
+    %template(Lawnmower) vector<bool>;
     %template(position) pair<int, int>;
     // %template(cell_observation) vector<int>;
     %template(observation_vector) vector<vector<int>>;
