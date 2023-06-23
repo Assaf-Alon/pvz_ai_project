@@ -15,7 +15,8 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> le
     this->lawnmowers = vector<bool>(lanes, true);
     this->sun_interval = this->fps * this->sun_interval_seconds;
     this->chosen_plants = std::vector<int>(legal_plants);
-    this->plant_cooldowns = std::vector<int>(9999, NUM_PLANTS);
+    this->plant_cooldowns = std::vector<int>(NUM_PLANTS, 99999);
+    // this->plant_cooldowns = std::vector<int>(9999, NUM_PLANTS);
     for (auto plant_name : legal_plants){
         this->plant_cooldowns[plant_name] = 0;
     }

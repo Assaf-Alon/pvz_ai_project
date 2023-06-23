@@ -87,24 +87,37 @@ def get_frame_from_obs(observation: np.ndarray):
 
             # Calculate the color for the left half of the cell based on plant_type and hp_thirds
             if plant_type == 0:
-                left_color = [0, 0, 0]  # Black
+                plant_pixel = [0, 0, 0]  # Black
             else:
-                if hp_thirds == 1:
-                    left_color = [1, 0, 0]  # Red
-                elif hp_thirds == 2:
-                    left_color = [1, 1, 0]  # Yellow
-                elif hp_thirds == 3:
-                    left_color = [0, 1, 0]  # Green
-                else:
-                    left_color = [0, 0, 0]  # Black
+                intensity = min(1.0, hp_thirds / 3.0)
+                if plant_type in [level.SUNFLOWER, level.SUNSHROOM]: # producer plants are yellow 
+                    plant_pixel = [intensity, intensity, 0]
+                elif plant_type in [level.PEASHOOTER, level.THREEPEATER, level.REPEATERPEA]: # shooter plants are green
+                    plant_pixel = [0, intensity, 0]
+                elif plant_type in [level.WALLNUT]: # wall plants are blue
+                    plant_pixel = [0, 0, intensity]
+                else: # mine/special plants are purple
+                    plant_pixel = [intensity, 0, intensity]
+            # else:
+            #     if hp_thirds == 1:
+            #         left_color = [1, 0, 0]  # Red
+            #     elif hp_thirds == 2:
+            #         left_color = [1, 1, 0]  # Yellow
+            #     elif hp_thirds == 3:
+            #         left_color = [0, 1, 0]  # Green
+            #     else:
+            #         left_color = [0, 0, 0]  # Black
 
             # Calculate the color for the right half of the cell based on zombie_danger
-            right_color_intensity = min(1.0, zombie_danger / 5.0)
-            right_color = [right_color_intensity, 0, 0]  # Shades of red based on zombie_danger
+            if zombie_danger != 0:
+                right_color_intensity = min(1.0, zombie_danger / 3.0)
+                zombie_pixel = [right_color_intensity, 0, 0]  # Shades of red based on zombie_danger
+            else:
+                zombie_pixel = plant_pixel
 
             # Set the colors for the left and right halves of the cell in the frame
-            frame[row][col * 2] = left_color
-            frame[row][col * 2 + 1] = right_color
+            frame[row][col * 2] = plant_pixel
+            frame[row][col * 2 + 1] = zombie_pixel
 
     return frame
 
@@ -119,12 +132,12 @@ def animate_observation_buffer(frame_buffer: list):
         # Update the plot with the next frame
         im.set_array(frame_buffer[frame])
         return [im]
-
     # Create the animation object using the FuncAnimation class
     anim = animation.FuncAnimation(fig, update, frames=len(frame_buffer), interval=1, blit=True)
     num_cols = frame_buffer[0].shape[1] // 2
     num_rows = frame_buffer[0].shape[0]
     aspect_ratio = num_cols / frame_buffer[0].shape[0]
+    plt.gca().set_aspect(2)
 
     # Set custom tick positions for half-width columns
     ax.set_xticks(np.arange(num_cols) * 2 + 0.5)

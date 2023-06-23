@@ -217,25 +217,25 @@ void estimate_speed(Level& level) {
 }
 int main() {
     Level env = Level(5, 10, 10, get_level_data_9(), default_chosen_plants);
-    std::cout << env.rollout(1, 100000, 1) << std::endl;
+    // std::cout << env.rollout(1, 100000, 1) << std::endl;
     // estimate_speed(env);
     // std::cout << env.rollout(-1, 20, 4) << std::endl;
-    // while (!env.done) {
-    //     Action run_result = run(env, 1700, 1, true, 30);
-    //     while (!env.is_action_legal(run_result) && !(env.done)){
-    //         env.step();
-    //     }
-    //     if (env.done) {
-    //         break;
-    //     }
-    //     std::cout << "[" << env.frame << "] " << "action taken: planted " << plant_data[run_result.plant_name].plant_name << " at: " << run_result.lane << ", " << run_result.col << std::endl;
-    //     std::pair<int, int> timed_rollout_res = env.timed_rollout(8, 300, 1);
-    //     double winrate_percent = 100 * ((float)timed_rollout_res.second / timed_rollout_res.first);
-    //     std::cout << "winrate before action: " << winrate_percent << "%" << std::endl;
-    //     env.step(run_result);
-    //     timed_rollout_res = env.timed_rollout(8, 300, 1);
-    //     winrate_percent = 100 * ((float)timed_rollout_res.second / timed_rollout_res.first);
-    //     std::cout << "winrate after action: " << winrate_percent << "%" << std::endl;
-    // }
-    // std::cout << "win status: " << env.win << std::endl;
+    while (!env.done) {
+        Action run_result = run(env, 1700, 1, true, 30);
+        while (!env.is_action_legal(run_result) && !(env.done)){
+            env.step();
+        }
+        if (env.done) {
+            break;
+        }
+        std::cout << "[" << env.frame << "] " << "action taken: planted " << plant_data[run_result.plant_name].plant_name << " at: " << run_result.lane << ", " << run_result.col << std::endl;
+        std::pair<int, int> timed_rollout_res = env.timed_rollout(8, 300, 1);
+        double winrate_percent = 100 * ((float)timed_rollout_res.second / timed_rollout_res.first);
+        std::cout << "winrate before action: " << winrate_percent << "%" << std::endl;
+        env.step(run_result);
+        timed_rollout_res = env.timed_rollout(8, 300, 1);
+        winrate_percent = 100 * ((float)timed_rollout_res.second / timed_rollout_res.first);
+        std::cout << "winrate after action: " << winrate_percent << "%" << std::endl;
+    }
+    std::cout << "win status: " << env.win << std::endl;
 }

@@ -13,17 +13,17 @@ Node::Node(Node* parent, Level& level, Action action) {
     this->action = action;
     this->parent = parent;
     this->level = level.clone();
-    this->childern.reserve(this->available_actions.size());
+    this->children.reserve(this->available_actions.size());
 }
 /*
 Node* Node::select_with_heuristic() {
-        if (this->childern.size() == 0) {
+        if (this->children.size() == 0) {
         return this;
     }
     float best_ucb = 0;
     float ucb;
-    Node* best_node = this->childern[0];
-    for (auto child : this->childern) {
+    Node* best_node = this->children[0];
+    for (auto child : this->children) {
         ucb = child->ucb() + heuristic2(this->level);
         if (ucb > best_ucb) {
             best_ucb = ucb;
@@ -48,13 +48,13 @@ Node* Node::select_with_heuristic() {
 } */
 
 Node* Node::select() {
-    if (this->childern.size() == 0) {
+    if (this->children.size() == 0) {
         return this;
     }
     float best_ucb = 0;
     float ucb;
-    Node* best_node = this->childern[0];
-    for (auto child : this->childern) {
+    Node* best_node = this->children[0];
+    for (auto child : this->children) {
         ucb = child->ucb();
         if (ucb > best_ucb) {
             best_ucb = ucb;
@@ -87,50 +87,45 @@ void Node::expand() {
         exit(0);
     }
     if (this->parent == nullptr) { // root node gets fully expanded 
-        this->childern.reserve(this->available_actions.size());
-        // std::vector<Node*>& children = this->childern;
-        // #pragma omp parallel for
-        // for (int index = 0; index < (int)this->available_actions.size(); index++)
+        this->children.reserve(this->available_actions.size());
         for (auto action : this->available_actions) {
-        {
             Node* child = new Node(this, *this->level, action);
             child->rollout();
             // #pragma omp critical
             {
-                this->childern.push_back(child);
+                this->children.push_back(child);
             }
         }
-        // std::cout << this->childern.size() << std::endl;
         this->available_actions.clear();
-        // this->num_rollouts = 0;
-        // this->num_wins = 0;
-        // for (auto child : this->childern){
-        //     this->num_rollouts += child->num_rollouts;
-        //     this->num_wins += child->num_wins;
-        }
         return;
     }
     int action_index = get_random_number(0, this->available_actions.size() - 1);
     Action chosen_action = this->available_actions[action_index];
     Node* child = new Node(this, *this->level, chosen_action);
     child->rollout();
-    this->childern.push_back(child);
+    this->children.push_back(child);
     this->available_actions.erase(this->available_actions.begin() + action_index);
 
 }
 void Node::rollout() {
-    while (!this->level->is_action_legal(this->action) && !(this->level->done)) {
-        this->level->step();
-    }
+    this->level->deferred_step(this->action);
     if (this->level->done){
         this->backpropagate((int)this->level->win);
         this->available_actions.clear();
         return;
     }
-    this->level->step(this->action);
+    int wins = this->level->rollout(-1, 1, 1);
+    this->backpropagate(wins);
+}
+void ParallelNode::rollout(){
+    this->level->deferred_step(this->action);
+    if (this->level->done){
+        this->backpropagate((int)this->level->win);
+        this->available_actions.clear();
+        return;
+    }
     int wins = 0;
     if (this->level->rollout(8, rollouts_per_leaf, 1) > 0){
-        // std::cout << "found A win" << std::endl;
         wins = 1;
     }
     this->backpropagate(wins);
@@ -144,8 +139,42 @@ void Node::backpropagate(int wins) {
 }
 Node::~Node() {
     delete level;
-    for (auto node : childern) {
+    for (auto node : children) {
         delete node;
+    }
+}
+
+Node* select(Node& root){
+    Node* current_node = &root;
+    while(true){
+        if(current_node->children.size() == 0){
+            return current_node;
+        }
+        float best_ucb = 0;
+        float ucb;
+        Node* best_node = nullptr; // = current_node.children[0];
+        for(auto child : current_node->children){ // find non-terminal child with highest ucb
+            if (child->level->done){
+                continue;
+            }
+            ucb = child->ucb();
+            if (ucb > best_ucb) {
+                best_ucb = ucb;
+                best_node = child;
+            }
+        }
+        if (best_node == nullptr){ // all children nodes are terminal
+            if (current_node->available_actions.size() > 0){
+                return current_node; // can create more children at this node
+            }
+            else { // this node is fully expanded and is terminal
+                return nullptr;
+            }
+        }
+        if ((current_node->available_actions.size() > 0) && (best_ucb < current_node->ucb())){ // if this node can still be expanded and it has a higher ucb
+            return current_node;
+        }
+        current_node = best_node;
     }
 }
 
@@ -153,7 +182,7 @@ Action select_best_action(Node& root) {
     Action action = Action((PlantName)0,0,0);
     int most_rollouts = 0;
     int most_rollouts_wins = 0;
-    for (auto node: root.childern) {
+    for (auto node: root.children) {
         if (node->num_rollouts == most_rollouts && node->num_wins > most_rollouts_wins) {
             action = node->action;
             most_rollouts_wins = node->num_wins;
@@ -172,20 +201,28 @@ Action run(Level& level, int timeout_ms, int games_per_rollout, bool debug, floa
     ucb_coefficient = ucb_const;
     rollouts_per_leaf = games_per_rollout;
     action_space = vector<Action>(level.get_action_space());
-    Node root = Node(nullptr, level, Action((PlantName)0,0,0));
+    Node* root;
+    if (games_per_rollout == 1){
+        root = new Node(nullptr, level, Action());
+    }
+    else {
+        root = new ParallelNode(nullptr, level, Action());
+    }
     auto start_time = std::chrono::high_resolution_clock::now();
     auto end_time = start_time + std::chrono::milliseconds(timeout_ms);
-    while(std::chrono::high_resolution_clock::now() < end_time && root.num_rollouts < 200000) {
-        Node* next_node = root.select();
+    while(std::chrono::high_resolution_clock::now() < end_time && root->num_rollouts < 800000) {
+        // Node* next_node = root.select();
+        Node* next_node = select(*root);
         if (next_node == nullptr) {
             break;
         }
         next_node->expand();
     }
-    Action chosen_action = select_best_action(root);
+    Action chosen_action = select_best_action(*root);
     if (debug) {
-        std::cout << "total expanded: " << root.num_rollouts << " total winrate: " << root.num_wins << std::endl;
+        std::cout << "total expanded: " << root->num_rollouts << " total winrate: " << root->num_wins << std::endl;
     }
+    delete root;
     return chosen_action;
 }
 
