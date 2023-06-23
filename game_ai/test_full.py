@@ -174,17 +174,25 @@ class TestSunflower(unittest.TestCase):
         
         frames_til_sun = int(SUN_INTERVAL * DEFAULT_FPS)
         frames_til_sunflower = int(24.25 * DEFAULT_FPS) # TODO - Take this from plant data
-
+        SUN_COOLDOWN = int(7.5 * DEFAULT_FPS)
+        new_sunflower = cpp_level.Action(cpp_level.SUNFLOWER, 1, 1)
+        
+        while level.frame < SUN_COOLDOWN + 1:
+            self.assertFalse(level.is_action_legal(new_sunflower))
+            level.step()
+        self.assertEqual(level.frame, SUN_COOLDOWN + 1)
+        self.assertEqual(level.suns, 50)
+        level.step(new_sunflower)
+        self.assertEqual(level.suns, 0)
+        second_sun_summon_frame = level.frame
         while level.frame < 6 * DEFAULT_FPS + 2:
             level.step()
         
-        self.assertEqual(level.suns, 50)
-        level.step(cpp_level.SUNFLOWER, 1, 1)
         
         while level.frame < 150 * DEFAULT_FPS:
-            gain_from_sky = int((level.frame - 2) // frames_til_sun)
-            gain_from_flower1 = int((level.frame + 18 * DEFAULT_FPS) // frames_til_sunflower)
-            gain_from_flower2 = int((level.frame + 18 * DEFAULT_FPS - 62) // frames_til_sunflower)
+            gain_from_sky = int((level.frame - 2) // frames_til_sun) - 1
+            gain_from_flower1 = int((level.frame + 18 * DEFAULT_FPS) // frames_til_sunflower) - 1
+            gain_from_flower2 = int((level.frame + 18 * DEFAULT_FPS + 2 - second_sun_summon_frame) // frames_til_sunflower)
             
             expected_suns = 25 *(gain_from_flower1 + gain_from_flower2 + gain_from_sky)
             self.assertEqual(level.suns, expected_suns, msg=f"Frame: {level.frame}, suns: {level.suns}, expected: {expected_suns}.   {gain_from_sky, gain_from_flower1, gain_from_flower2}")
@@ -256,7 +264,158 @@ class TestPeaShooter(unittest.TestCase):
         self.assertLessEqual(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED)))   # It should be dead now
         self.assertGreater(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - 2 - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED))) # It should be alive in the previous frame
 
+class TestZombies(unittest.TestCase):
+    def test_zombie_speed1(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(1, 0, "normal"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(48, 0, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER])
+        
+        while not level.done:
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (10 * 4.7 + 1)))
+    
+    def test_zombie_speed2(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(1, 0, "normal"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(49, 0, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER])
+        
+        while not level.done:
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertFalse(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (10 * 4.7 + 49)))
+    
+    def test_conehead_speed(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(1, 0, "conehead"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(49, 0, "conehead"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER])
+        
+        while not level.done:
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertFalse(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (10 * 4.7 + 49)))
+    
+    def test_flagzombie_speed(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(1, 0, "flag"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER])
+        
+        while not level.done:
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (10 * 3.7 + 1)))
 
+    def test_newspaperzombie_speed1(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(1, 0, "newspaper"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER])
+        
+        while not level.done:
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (10 * 4.7 + 1)))
+                
+    def test_newspaperzombie_speed2(self):
+        # Init level
+        seconds_until_spawn = 16
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(seconds_until_spawn, 0, "newspaper"))
+        level = cpp_level.Level(5, 10, 10, level_data, [cpp_level.PEASHOOTER])
+        
+        while level.frame < (seconds_until_spawn - 2) * 10:
+            level.step()
+        
+        self.assertTrue(level.is_action_legal(cpp_level.PEASHOOTER, 0, 0))
+        level.step(cpp_level.PEASHOOTER, 0, 7)
+        
+        # 331 -> 181
+        while not level.done:
+            level.step()
+        self.assertTrue(level.done)
+        self.assertTrue(level.win)
+        
+        frames_until_spawn = 10 * seconds_until_spawn
+        no_newspaper_speed = int(1.8 * 10)
+        newspaper_speed = int(4.7 * 10)
+        frames_with_newspaper = int(1.4 * 8 * 10) # Peashooter speed * the amount of shots to reduce HP enough (331-181)=150
+        frames_attacking = 3 * 10
+        distance_with_newspaper = frames_with_newspaper // newspaper_speed
+        frames_with_newspaper = distance_with_newspaper * newspaper_speed
+        distance_without_newspaper = 10 - distance_with_newspaper
+        frames_without_newspaper = no_newspaper_speed * distance_without_newspaper
+        self.assertEqual(level.frame, frames_until_spawn + frames_with_newspaper + frames_without_newspaper + frames_attacking)
 
+    def test_pole_speed1(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(1, 0, "pole"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER])
+        
+        while not level.done:
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (10 * 2.5 + 1)))
+    
+    def test_pole_speed2(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(1, 0, "pole"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(30, 0, "pole"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER])
+        
+        while level.frame < 30 * DEFAULT_FPS:
+            level.step()
+        
+        self.assertTrue(level.is_action_legal(cpp_level.PEASHOOTER, 0, 7))
+        level.step(cpp_level.Action(cpp_level.PEASHOOTER, 0, 7))
+        # 9 --> 7 in 5 seconds [50 frames]
+        # 7 --> 6 in 1 second  [10 frames] (Attacking)
+        # 6 --> 0 32.9 seconds [329 frames]
+        
+        while not level.done:
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertFalse(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (30 + 5 + 1 + 7 * 4.7)))
+    
+    def test_zombie_hp(self):
+        pass
+    
+    def test_conezombie_hp(self):
+        pass
+
+    def test_bucketzombie_hp(self):
+        pass
+
+    def test_polezombie_hp(self):
+        pass
+    
+    def test_flagzombie_hp(self):
+        pass
+    
+    def test_newspaperzombie_hp(self):
+        pass
+    
 if __name__ == '__main__':
     unittest.main()

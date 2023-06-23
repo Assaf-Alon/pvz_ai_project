@@ -6,7 +6,6 @@
 
 Zombie::Zombie(const std::string &type, int lane, const Level &level) : lane(lane), col(level.cols - 1), last_action(level.frame), type(type)
 {
-    this->can_jump = false;
     if (type == "conehead")
     {
         this->hp = 551;
@@ -134,8 +133,8 @@ void Zombie::vault(Level& level){
         level.zombie_grid[this->lane][this->col].push_back(this);
     }
     this->last_action = level.frame;
-    this->attack_interval_seconds = 4.7;
-    this->attack_interval_seconds = static_cast<int>(this->move_interval_seconds * level.fps);
+    this->move_interval_seconds = 4.7;
+    this->move_interval = static_cast<int>(this->move_interval_seconds * level.fps);
 }
 
 ZombieInfo Zombie::get_info(){

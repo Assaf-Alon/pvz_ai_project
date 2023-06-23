@@ -361,111 +361,111 @@ class FreePositions(object):
 # Register FreePositions in _level:
 _level.FreePositions_swigregister(FreePositions)
 
-class PlantDataVector(object):
+class Lawnmower(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def iterator(self):
-        return _level.PlantDataVector_iterator(self)
+        return _level.Lawnmower_iterator(self)
     def __iter__(self):
         return self.iterator()
 
     def __nonzero__(self):
-        return _level.PlantDataVector___nonzero__(self)
+        return _level.Lawnmower___nonzero__(self)
 
     def __bool__(self):
-        return _level.PlantDataVector___bool__(self)
+        return _level.Lawnmower___bool__(self)
 
     def __len__(self):
-        return _level.PlantDataVector___len__(self)
+        return _level.Lawnmower___len__(self)
 
     def __getslice__(self, i, j):
-        return _level.PlantDataVector___getslice__(self, i, j)
+        return _level.Lawnmower___getslice__(self, i, j)
 
     def __setslice__(self, *args):
-        return _level.PlantDataVector___setslice__(self, *args)
+        return _level.Lawnmower___setslice__(self, *args)
 
     def __delslice__(self, i, j):
-        return _level.PlantDataVector___delslice__(self, i, j)
+        return _level.Lawnmower___delslice__(self, i, j)
 
     def __delitem__(self, *args):
-        return _level.PlantDataVector___delitem__(self, *args)
+        return _level.Lawnmower___delitem__(self, *args)
 
     def __getitem__(self, *args):
-        return _level.PlantDataVector___getitem__(self, *args)
+        return _level.Lawnmower___getitem__(self, *args)
 
     def __setitem__(self, *args):
-        return _level.PlantDataVector___setitem__(self, *args)
+        return _level.Lawnmower___setitem__(self, *args)
 
     def pop(self):
-        return _level.PlantDataVector_pop(self)
+        return _level.Lawnmower_pop(self)
 
     def append(self, x):
-        return _level.PlantDataVector_append(self, x)
+        return _level.Lawnmower_append(self, x)
 
     def empty(self):
-        return _level.PlantDataVector_empty(self)
+        return _level.Lawnmower_empty(self)
 
     def size(self):
-        return _level.PlantDataVector_size(self)
+        return _level.Lawnmower_size(self)
 
     def swap(self, v):
-        return _level.PlantDataVector_swap(self, v)
+        return _level.Lawnmower_swap(self, v)
 
     def begin(self):
-        return _level.PlantDataVector_begin(self)
+        return _level.Lawnmower_begin(self)
 
     def end(self):
-        return _level.PlantDataVector_end(self)
+        return _level.Lawnmower_end(self)
 
     def rbegin(self):
-        return _level.PlantDataVector_rbegin(self)
+        return _level.Lawnmower_rbegin(self)
 
     def rend(self):
-        return _level.PlantDataVector_rend(self)
+        return _level.Lawnmower_rend(self)
 
     def clear(self):
-        return _level.PlantDataVector_clear(self)
+        return _level.Lawnmower_clear(self)
 
     def get_allocator(self):
-        return _level.PlantDataVector_get_allocator(self)
+        return _level.Lawnmower_get_allocator(self)
 
     def pop_back(self):
-        return _level.PlantDataVector_pop_back(self)
+        return _level.Lawnmower_pop_back(self)
 
     def erase(self, *args):
-        return _level.PlantDataVector_erase(self, *args)
+        return _level.Lawnmower_erase(self, *args)
 
     def __init__(self, *args):
-        _level.PlantDataVector_swiginit(self, _level.new_PlantDataVector(*args))
+        _level.Lawnmower_swiginit(self, _level.new_Lawnmower(*args))
 
     def push_back(self, x):
-        return _level.PlantDataVector_push_back(self, x)
+        return _level.Lawnmower_push_back(self, x)
 
     def front(self):
-        return _level.PlantDataVector_front(self)
+        return _level.Lawnmower_front(self)
 
     def back(self):
-        return _level.PlantDataVector_back(self)
+        return _level.Lawnmower_back(self)
 
     def assign(self, n, x):
-        return _level.PlantDataVector_assign(self, n, x)
+        return _level.Lawnmower_assign(self, n, x)
 
     def resize(self, *args):
-        return _level.PlantDataVector_resize(self, *args)
+        return _level.Lawnmower_resize(self, *args)
 
     def insert(self, *args):
-        return _level.PlantDataVector_insert(self, *args)
+        return _level.Lawnmower_insert(self, *args)
 
     def reserve(self, n):
-        return _level.PlantDataVector_reserve(self, n)
+        return _level.Lawnmower_reserve(self, n)
 
     def capacity(self):
-        return _level.PlantDataVector_capacity(self)
-    __swig_destroy__ = _level.delete_PlantDataVector
+        return _level.Lawnmower_capacity(self)
+    __swig_destroy__ = _level.delete_Lawnmower
 
-# Register PlantDataVector in _level:
-_level.PlantDataVector_swigregister(PlantDataVector)
+# Register Lawnmower in _level:
+_level.Lawnmower_swigregister(Lawnmower)
 
 class position(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")

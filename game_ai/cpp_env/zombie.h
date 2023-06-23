@@ -21,7 +21,7 @@ class Zombie {
     std::string type;
     bool frozen = false;
     bool hypnotized = false;
-    bool can_jump;
+    bool can_jump = false;
     Zombie(const std::string& type, int lane, const Level& level);
     Zombie(const Zombie& other) = default;
     void attack(Level& level);

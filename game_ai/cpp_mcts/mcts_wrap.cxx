@@ -2695,16 +2695,17 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_Action swig_types[0]
 #define SWIGTYPE_p_Level swig_types[1]
 #define SWIGTYPE_p_Node swig_types[2]
-#define SWIGTYPE_p_char swig_types[3]
-#define SWIGTYPE_p_first_type swig_types[4]
-#define SWIGTYPE_p_second_type swig_types[5]
-#define SWIGTYPE_p_std__invalid_argument swig_types[6]
-#define SWIGTYPE_p_std__pairT_Action_int_t swig_types[7]
-#define SWIGTYPE_p_std__vectorT_Action_std__allocatorT_Action_t_t swig_types[8]
-#define SWIGTYPE_p_std__vectorT_Node_p_std__allocatorT_Node_p_t_t swig_types[9]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[10]
-static swig_type_info *swig_types[12];
-static swig_module_info swig_module = {swig_types, 11, 0, 0, 0, 0};
+#define SWIGTYPE_p_ParallelNode swig_types[3]
+#define SWIGTYPE_p_char swig_types[4]
+#define SWIGTYPE_p_first_type swig_types[5]
+#define SWIGTYPE_p_second_type swig_types[6]
+#define SWIGTYPE_p_std__invalid_argument swig_types[7]
+#define SWIGTYPE_p_std__pairT_Action_int_t swig_types[8]
+#define SWIGTYPE_p_std__vectorT_Action_std__allocatorT_Action_t_t swig_types[9]
+#define SWIGTYPE_p_std__vectorT_Node_p_std__allocatorT_Node_p_t_t swig_types[10]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[11]
+static swig_type_info *swig_types[13];
+static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5292,7 +5293,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Node_childern_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Node_children_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Node *arg1 = (Node *) 0 ;
   vector< Node * > *arg2 = (vector< Node * > *) 0 ;
@@ -5302,18 +5303,18 @@ SWIGINTERN PyObject *_wrap_Node_childern_set(PyObject *SWIGUNUSEDPARM(self), PyO
   int res2 = 0 ;
   PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "Node_childern_set", 2, 2, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "Node_children_set", 2, 2, swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Node, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Node_childern_set" "', argument " "1"" of type '" "Node *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Node_children_set" "', argument " "1"" of type '" "Node *""'"); 
   }
   arg1 = reinterpret_cast< Node * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_std__vectorT_Node_p_std__allocatorT_Node_p_t_t, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Node_childern_set" "', argument " "2"" of type '" "vector< Node * > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Node_children_set" "', argument " "2"" of type '" "vector< Node * > *""'"); 
   }
   arg2 = reinterpret_cast< vector< Node * > * >(argp2);
-  if (arg1) (arg1)->childern = *arg2;
+  if (arg1) (arg1)->children = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5321,7 +5322,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Node_childern_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Node_children_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Node *arg1 = (Node *) 0 ;
   void *argp1 = 0 ;
@@ -5333,10 +5334,10 @@ SWIGINTERN PyObject *_wrap_Node_childern_get(PyObject *SWIGUNUSEDPARM(self), PyO
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Node, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Node_childern_get" "', argument " "1"" of type '" "Node *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Node_children_get" "', argument " "1"" of type '" "Node *""'"); 
   }
   arg1 = reinterpret_cast< Node * >(argp1);
-  result = (vector< Node * > *)& ((arg1)->childern);
+  result = (vector< Node * > *)& ((arg1)->children);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_Node_p_std__allocatorT_Node_p_t_t, 0 |  0 );
   return resultobj;
 fail:
@@ -5594,6 +5595,110 @@ SWIGINTERN PyObject *Node_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject 
 }
 
 SWIGINTERN PyObject *Node_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_ParallelNode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ParallelNode *arg1 = (ParallelNode *) 0 ;
+  Level *arg2 = 0 ;
+  Action arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  ParallelNode *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_ParallelNode", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ParallelNode, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParallelNode" "', argument " "1"" of type '" "ParallelNode *""'"); 
+  }
+  arg1 = reinterpret_cast< ParallelNode * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_Level,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParallelNode" "', argument " "2"" of type '" "Level &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParallelNode" "', argument " "2"" of type '" "Level &""'"); 
+  }
+  arg2 = reinterpret_cast< Level * >(argp2);
+  {
+    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_Action,  0  | 0);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParallelNode" "', argument " "3"" of type '" "Action""'"); 
+    }  
+    if (!argp3) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParallelNode" "', argument " "3"" of type '" "Action""'");
+    } else {
+      Action * temp = reinterpret_cast< Action * >(argp3);
+      arg3 = *temp;
+      if (SWIG_IsNewObj(res3)) delete temp;
+    }
+  }
+  result = (ParallelNode *)new ParallelNode(arg1,*arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ParallelNode, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParallelNode_rollout(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ParallelNode *arg1 = (ParallelNode *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ParallelNode, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParallelNode_rollout" "', argument " "1"" of type '" "ParallelNode *""'"); 
+  }
+  arg1 = reinterpret_cast< ParallelNode * >(argp1);
+  (arg1)->rollout();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ParallelNode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ParallelNode *arg1 = (ParallelNode *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ParallelNode, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ParallelNode" "', argument " "1"" of type '" "ParallelNode *""'"); 
+  }
+  arg1 = reinterpret_cast< ParallelNode * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ParallelNode_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_ParallelNode, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ParallelNode_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -5867,6 +5972,32 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_select(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Node *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Node *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_Node,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "select" "', argument " "1"" of type '" "Node &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "select" "', argument " "1"" of type '" "Node &""'"); 
+  }
+  arg1 = reinterpret_cast< Node * >(argp1);
+  result = (Node *)select(*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Node, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_heuristic1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Level *arg1 = 0 ;
@@ -5957,8 +6088,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "Node_action_get", _wrap_Node_action_get, METH_O, NULL},
 	 { "Node_parent_set", _wrap_Node_parent_set, METH_VARARGS, NULL},
 	 { "Node_parent_get", _wrap_Node_parent_get, METH_O, NULL},
-	 { "Node_childern_set", _wrap_Node_childern_set, METH_VARARGS, NULL},
-	 { "Node_childern_get", _wrap_Node_childern_get, METH_O, NULL},
+	 { "Node_children_set", _wrap_Node_children_set, METH_VARARGS, NULL},
+	 { "Node_children_get", _wrap_Node_children_get, METH_O, NULL},
 	 { "Node_available_actions_set", _wrap_Node_available_actions_set, METH_VARARGS, NULL},
 	 { "Node_available_actions_get", _wrap_Node_available_actions_get, METH_O, NULL},
 	 { "Node_expand", _wrap_Node_expand, METH_O, NULL},
@@ -5970,8 +6101,14 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_Node", _wrap_delete_Node, METH_O, NULL},
 	 { "Node_swigregister", Node_swigregister, METH_O, NULL},
 	 { "Node_swiginit", Node_swiginit, METH_VARARGS, NULL},
+	 { "new_ParallelNode", _wrap_new_ParallelNode, METH_VARARGS, NULL},
+	 { "ParallelNode_rollout", _wrap_ParallelNode_rollout, METH_O, NULL},
+	 { "delete_ParallelNode", _wrap_delete_ParallelNode, METH_O, NULL},
+	 { "ParallelNode_swigregister", ParallelNode_swigregister, METH_O, NULL},
+	 { "ParallelNode_swiginit", ParallelNode_swiginit, METH_VARARGS, NULL},
 	 { "select_best_action", _wrap_select_best_action, METH_O, NULL},
 	 { "run", _wrap_run, METH_VARARGS, NULL},
+	 { "select", _wrap_select, METH_O, NULL},
 	 { "heuristic1", _wrap_heuristic1, METH_O, NULL},
 	 { "heuristic2", _wrap_heuristic2, METH_O, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -5984,9 +6121,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_ParallelNodeTo_p_Node(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((Node *)  ((ParallelNode *) x));
+}
 static swig_type_info _swigt__p_Action = {"_p_Action", "Action *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Level = {"_p_Level", "Level *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Node = {"_p_Node", "Node *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ParallelNode = {"_p_ParallelNode", "ParallelNode *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_first_type = {"_p_first_type", "first_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_second_type = {"_p_second_type", "second_type *", 0, 0, (void*)0, 0};
@@ -6000,6 +6141,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Action,
   &_swigt__p_Level,
   &_swigt__p_Node,
+  &_swigt__p_ParallelNode,
   &_swigt__p_char,
   &_swigt__p_first_type,
   &_swigt__p_second_type,
@@ -6012,7 +6154,8 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_Action[] = {  {&_swigt__p_Action, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Level[] = {  {&_swigt__p_Level, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Node[] = {  {&_swigt__p_Node, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Node[] = {  {&_swigt__p_Node, 0, 0, 0},  {&_swigt__p_ParallelNode, _p_ParallelNodeTo_p_Node, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ParallelNode[] = {  {&_swigt__p_ParallelNode, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_first_type[] = {  {&_swigt__p_first_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_second_type[] = {  {&_swigt__p_second_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -6026,6 +6169,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Action,
   _swigc__p_Level,
   _swigc__p_Node,
+  _swigc__p_ParallelNode,
   _swigc__p_char,
   _swigc__p_first_type,
   _swigc__p_second_type,

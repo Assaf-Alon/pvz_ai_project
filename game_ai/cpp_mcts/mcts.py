@@ -157,7 +157,7 @@ class Node(object):
     level = property(_mcts.Node_level_get, _mcts.Node_level_set)
     action = property(_mcts.Node_action_get, _mcts.Node_action_set)
     parent = property(_mcts.Node_parent_get, _mcts.Node_parent_set)
-    childern = property(_mcts.Node_childern_get, _mcts.Node_childern_set)
+    children = property(_mcts.Node_children_get, _mcts.Node_children_set)
     available_actions = property(_mcts.Node_available_actions_get, _mcts.Node_available_actions_set)
 
     def expand(self):
@@ -183,12 +183,29 @@ class Node(object):
 _mcts.Node_swigregister(Node)
 cvar = _mcts.cvar
 
+class ParallelNode(Node):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, parent, level, action):
+        _mcts.ParallelNode_swiginit(self, _mcts.new_ParallelNode(parent, level, action))
+
+    def rollout(self):
+        return _mcts.ParallelNode_rollout(self)
+    __swig_destroy__ = _mcts.delete_ParallelNode
+
+# Register ParallelNode in _mcts:
+_mcts.ParallelNode_swigregister(ParallelNode)
+
 
 def select_best_action(root):
     return _mcts.select_best_action(root)
 
 def run(level, timeout_ms, games_per_rollout, debug=False, ucb_const=1.4):
     return _mcts.run(level, timeout_ms, games_per_rollout, debug, ucb_const)
+
+def select(root):
+    return _mcts.select(root)
 
 def heuristic1(level):
     return _mcts.heuristic1(level)

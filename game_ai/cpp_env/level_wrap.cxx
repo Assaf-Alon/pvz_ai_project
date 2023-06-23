@@ -2702,31 +2702,31 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_ZombieSpawnTemplate swig_types[7]
 #define SWIGTYPE_p_allocator_type swig_types[8]
 #define SWIGTYPE_p_char swig_types[9]
-#define SWIGTYPE_p_difference_type swig_types[10]
-#define SWIGTYPE_p_first_type swig_types[11]
-#define SWIGTYPE_p_int swig_types[12]
-#define SWIGTYPE_p_p_PyObject swig_types[13]
-#define SWIGTYPE_p_second_type swig_types[14]
-#define SWIGTYPE_p_size_type swig_types[15]
-#define SWIGTYPE_p_std__allocatorT_Cell_t swig_types[16]
-#define SWIGTYPE_p_std__allocatorT_PlantData_t swig_types[17]
+#define SWIGTYPE_p_const_reference swig_types[10]
+#define SWIGTYPE_p_difference_type swig_types[11]
+#define SWIGTYPE_p_first_type swig_types[12]
+#define SWIGTYPE_p_int swig_types[13]
+#define SWIGTYPE_p_p_PyObject swig_types[14]
+#define SWIGTYPE_p_second_type swig_types[15]
+#define SWIGTYPE_p_size_type swig_types[16]
+#define SWIGTYPE_p_std__allocatorT_Cell_t swig_types[17]
 #define SWIGTYPE_p_std__allocatorT_ZombieSpawnTemplate_t swig_types[18]
-#define SWIGTYPE_p_std__allocatorT_int_t swig_types[19]
-#define SWIGTYPE_p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t swig_types[20]
-#define SWIGTYPE_p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t swig_types[21]
-#define SWIGTYPE_p_std__allocatorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_t swig_types[22]
-#define SWIGTYPE_p_std__arrayT_PlantData_18_t swig_types[23]
-#define SWIGTYPE_p_std__arrayT_PlantData_NUM_PLANTS_t swig_types[24]
-#define SWIGTYPE_p_std__dequeT_ZombieSpawnTemplate_std__allocatorT_ZombieSpawnTemplate_t_t swig_types[25]
-#define SWIGTYPE_p_std__functionT_bool_fLevel_R_Plant_RF_t swig_types[26]
-#define SWIGTYPE_p_std__functionT_double_fLevel_const_RF_t swig_types[27]
-#define SWIGTYPE_p_std__invalid_argument swig_types[28]
-#define SWIGTYPE_p_std__listT_Plant_p_t swig_types[29]
-#define SWIGTYPE_p_std__listT_Zombie_p_t swig_types[30]
-#define SWIGTYPE_p_std__pairT_int_int_t swig_types[31]
-#define SWIGTYPE_p_std__vectorT_Action_std__allocatorT_Action_t_t swig_types[32]
-#define SWIGTYPE_p_std__vectorT_Cell_std__allocatorT_Cell_t_t swig_types[33]
-#define SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t swig_types[34]
+#define SWIGTYPE_p_std__allocatorT_bool_t swig_types[19]
+#define SWIGTYPE_p_std__allocatorT_int_t swig_types[20]
+#define SWIGTYPE_p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t swig_types[21]
+#define SWIGTYPE_p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t swig_types[22]
+#define SWIGTYPE_p_std__allocatorT_std__vectorT_std__vectorT_int_std__allocatorT_int_t_t_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t_t_t swig_types[23]
+#define SWIGTYPE_p_std__arrayT_PlantData_18_t swig_types[24]
+#define SWIGTYPE_p_std__arrayT_PlantData_NUM_PLANTS_t swig_types[25]
+#define SWIGTYPE_p_std__dequeT_ZombieSpawnTemplate_std__allocatorT_ZombieSpawnTemplate_t_t swig_types[26]
+#define SWIGTYPE_p_std__functionT_bool_fLevel_R_Plant_RF_t swig_types[27]
+#define SWIGTYPE_p_std__functionT_double_fLevel_const_RF_t swig_types[28]
+#define SWIGTYPE_p_std__invalid_argument swig_types[29]
+#define SWIGTYPE_p_std__listT_Plant_p_t swig_types[30]
+#define SWIGTYPE_p_std__listT_Zombie_p_t swig_types[31]
+#define SWIGTYPE_p_std__pairT_int_int_t swig_types[32]
+#define SWIGTYPE_p_std__vectorT_Action_std__allocatorT_Action_t_t swig_types[33]
+#define SWIGTYPE_p_std__vectorT_Cell_std__allocatorT_Cell_t_t swig_types[34]
 #define SWIGTYPE_p_std__vectorT_ZombieInfo_std__allocatorT_ZombieInfo_t_t swig_types[35]
 #define SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t swig_types[36]
 #define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[37]
@@ -5054,114 +5054,140 @@ SWIGINTERN void std_deque_Sl_ZombieSpawnTemplate_Sg__insert__SWIG_1(std::deque< 
       }
     
 
-  namespace swig {
-    template <>  struct traits< PlantData > {
-      typedef pointer_category category;
-      static const char* type_name() { return"PlantData"; }
-    };
-  }
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+
+namespace swig {
+  template <> struct traits< bool > {
+    typedef value_category category;
+    static const char* type_name() { return"bool"; }
+  };
+  template <>  struct traits_asval< bool > {
+    typedef bool value_type;
+    static int asval(PyObject *obj, value_type *val) {
+      return SWIG_AsVal_bool (obj, val);
+    }
+  };
+  template <>  struct traits_from< bool > {
+    typedef bool value_type;
+    static PyObject *from(const value_type& val) {
+      return SWIG_From_bool  (val);
+    }
+  };
+}
 
 
       namespace swig {
-	template <>  struct traits<std::vector< PlantData, std::allocator< PlantData > > > {
-	  typedef pointer_category category;
+	template <>  struct traits<std::vector<bool, std::allocator< bool > > > {
+	  typedef value_category category;
 	  static const char* type_name() {
-	    return "std::vector<" "PlantData" "," "std::allocator< PlantData >" " >";
+	    return "std::vector<bool, std::allocator< bool > >";
 	  }
 	};
       }
     
-SWIGINTERN swig::SwigPyIterator *std_vector_Sl_PlantData_Sg__iterator(std::vector< PlantData > *self,PyObject **PYTHON_SELF){
+SWIGINTERN swig::SwigPyIterator *std_vector_Sl_bool_Sg__iterator(std::vector< bool > *self,PyObject **PYTHON_SELF){
       return swig::make_output_iterator(self->begin(), self->begin(), self->end(), *PYTHON_SELF);
     }
-SWIGINTERN bool std_vector_Sl_PlantData_Sg____nonzero__(std::vector< PlantData > const *self){
+SWIGINTERN bool std_vector_Sl_bool_Sg____nonzero__(std::vector< bool > const *self){
       return !(self->empty());
     }
-SWIGINTERN bool std_vector_Sl_PlantData_Sg____bool__(std::vector< PlantData > const *self){
+SWIGINTERN bool std_vector_Sl_bool_Sg____bool__(std::vector< bool > const *self){
       return !(self->empty());
     }
-SWIGINTERN std::vector< PlantData >::size_type std_vector_Sl_PlantData_Sg____len__(std::vector< PlantData > const *self){
+SWIGINTERN std::vector< bool >::size_type std_vector_Sl_bool_Sg____len__(std::vector< bool > const *self){
       return self->size();
     }
-SWIGINTERN std::vector< PlantData,std::allocator< PlantData > > *std_vector_Sl_PlantData_Sg____getslice__(std::vector< PlantData > *self,std::vector< PlantData >::difference_type i,std::vector< PlantData >::difference_type j){
+SWIGINTERN std::vector< bool,std::allocator< bool > > *std_vector_Sl_bool_Sg____getslice__(std::vector< bool > *self,std::vector< bool >::difference_type i,std::vector< bool >::difference_type j){
       return swig::getslice(self, i, j, 1);
     }
-SWIGINTERN void std_vector_Sl_PlantData_Sg____setslice____SWIG_0(std::vector< PlantData > *self,std::vector< PlantData >::difference_type i,std::vector< PlantData >::difference_type j){
-      swig::setslice(self, i, j, 1, std::vector< PlantData,std::allocator< PlantData > >());
+SWIGINTERN void std_vector_Sl_bool_Sg____setslice____SWIG_0(std::vector< bool > *self,std::vector< bool >::difference_type i,std::vector< bool >::difference_type j){
+      swig::setslice(self, i, j, 1, std::vector<bool,std::allocator< bool > >());
     }
-SWIGINTERN void std_vector_Sl_PlantData_Sg____setslice____SWIG_1(std::vector< PlantData > *self,std::vector< PlantData >::difference_type i,std::vector< PlantData >::difference_type j,std::vector< PlantData,std::allocator< PlantData > > const &v){
+SWIGINTERN void std_vector_Sl_bool_Sg____setslice____SWIG_1(std::vector< bool > *self,std::vector< bool >::difference_type i,std::vector< bool >::difference_type j,std::vector< bool,std::allocator< bool > > const &v){
       swig::setslice(self, i, j, 1, v);
     }
-SWIGINTERN void std_vector_Sl_PlantData_Sg____delslice__(std::vector< PlantData > *self,std::vector< PlantData >::difference_type i,std::vector< PlantData >::difference_type j){
+SWIGINTERN void std_vector_Sl_bool_Sg____delslice__(std::vector< bool > *self,std::vector< bool >::difference_type i,std::vector< bool >::difference_type j){
       swig::delslice(self, i, j, 1);
     }
-SWIGINTERN void std_vector_Sl_PlantData_Sg____delitem____SWIG_0(std::vector< PlantData > *self,std::vector< PlantData >::difference_type i){
+SWIGINTERN void std_vector_Sl_bool_Sg____delitem____SWIG_0(std::vector< bool > *self,std::vector< bool >::difference_type i){
       swig::erase(self, swig::getpos(self, i));
     }
-SWIGINTERN std::vector< PlantData,std::allocator< PlantData > > *std_vector_Sl_PlantData_Sg____getitem____SWIG_0(std::vector< PlantData > *self,PySliceObject *slice){
+SWIGINTERN std::vector< bool,std::allocator< bool > > *std_vector_Sl_bool_Sg____getitem____SWIG_0(std::vector< bool > *self,PySliceObject *slice){
       Py_ssize_t i, j, step;
       if( !PySlice_Check(slice) ) {
         SWIG_Error(SWIG_TypeError, "Slice object expected.");
         return NULL;
       }
       PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
-      std::vector< PlantData,std::allocator< PlantData > >::difference_type id = i;
-      std::vector< PlantData,std::allocator< PlantData > >::difference_type jd = j;
+      std::vector<bool,std::allocator< bool > >::difference_type id = i;
+      std::vector<bool,std::allocator< bool > >::difference_type jd = j;
       return swig::getslice(self, id, jd, step);
     }
-SWIGINTERN void std_vector_Sl_PlantData_Sg____setitem____SWIG_0(std::vector< PlantData > *self,PySliceObject *slice,std::vector< PlantData,std::allocator< PlantData > > const &v){
+SWIGINTERN void std_vector_Sl_bool_Sg____setitem____SWIG_0(std::vector< bool > *self,PySliceObject *slice,std::vector< bool,std::allocator< bool > > const &v){
       Py_ssize_t i, j, step;
       if( !PySlice_Check(slice) ) {
         SWIG_Error(SWIG_TypeError, "Slice object expected.");
         return;
       }
       PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
-      std::vector< PlantData,std::allocator< PlantData > >::difference_type id = i;
-      std::vector< PlantData,std::allocator< PlantData > >::difference_type jd = j;
+      std::vector<bool,std::allocator< bool > >::difference_type id = i;
+      std::vector<bool,std::allocator< bool > >::difference_type jd = j;
       swig::setslice(self, id, jd, step, v);
     }
-SWIGINTERN void std_vector_Sl_PlantData_Sg____setitem____SWIG_1(std::vector< PlantData > *self,PySliceObject *slice){
+SWIGINTERN void std_vector_Sl_bool_Sg____setitem____SWIG_1(std::vector< bool > *self,PySliceObject *slice){
       Py_ssize_t i, j, step;
       if( !PySlice_Check(slice) ) {
         SWIG_Error(SWIG_TypeError, "Slice object expected.");
         return;
       }
       PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
-      std::vector< PlantData,std::allocator< PlantData > >::difference_type id = i;
-      std::vector< PlantData,std::allocator< PlantData > >::difference_type jd = j;
+      std::vector<bool,std::allocator< bool > >::difference_type id = i;
+      std::vector<bool,std::allocator< bool > >::difference_type jd = j;
       swig::delslice(self, id, jd, step);
     }
-SWIGINTERN void std_vector_Sl_PlantData_Sg____delitem____SWIG_1(std::vector< PlantData > *self,PySliceObject *slice){
+SWIGINTERN void std_vector_Sl_bool_Sg____delitem____SWIG_1(std::vector< bool > *self,PySliceObject *slice){
       Py_ssize_t i, j, step;
       if( !PySlice_Check(slice) ) {
         SWIG_Error(SWIG_TypeError, "Slice object expected.");
         return;
       }
       PySlice_GetIndices(SWIGPY_SLICE_ARG(slice), (Py_ssize_t)self->size(), &i, &j, &step);
-      std::vector< PlantData,std::allocator< PlantData > >::difference_type id = i;
-      std::vector< PlantData,std::allocator< PlantData > >::difference_type jd = j;
+      std::vector<bool,std::allocator< bool > >::difference_type id = i;
+      std::vector<bool,std::allocator< bool > >::difference_type jd = j;
       swig::delslice(self, id, jd, step);
     }
-SWIGINTERN std::vector< PlantData >::value_type const &std_vector_Sl_PlantData_Sg____getitem____SWIG_1(std::vector< PlantData > const *self,std::vector< PlantData >::difference_type i){
+SWIGINTERN std::vector< bool >::value_type std_vector_Sl_bool_Sg____getitem____SWIG_1(std::vector< bool > *self,std::vector< bool >::difference_type i){
       return *(swig::cgetpos(self, i));
     }
-SWIGINTERN void std_vector_Sl_PlantData_Sg____setitem____SWIG_2(std::vector< PlantData > *self,std::vector< PlantData >::difference_type i,std::vector< PlantData >::value_type const &x){
+SWIGINTERN void std_vector_Sl_bool_Sg____setitem____SWIG_2(std::vector< bool > *self,std::vector< bool >::difference_type i,std::vector< bool >::value_type x){
       *(swig::getpos(self,i)) = x;
     }
-SWIGINTERN std::vector< PlantData >::value_type std_vector_Sl_PlantData_Sg__pop(std::vector< PlantData > *self){
+SWIGINTERN std::vector< bool >::value_type std_vector_Sl_bool_Sg__pop(std::vector< bool > *self){
       if (self->size() == 0)
 	throw std::out_of_range("pop from empty container");
-      std::vector< PlantData,std::allocator< PlantData > >::value_type x = self->back();
+      std::vector<bool,std::allocator< bool > >::value_type x = self->back();
       self->pop_back();
       return x;
     }
-SWIGINTERN void std_vector_Sl_PlantData_Sg__append(std::vector< PlantData > *self,std::vector< PlantData >::value_type const &x){
+SWIGINTERN void std_vector_Sl_bool_Sg__append(std::vector< bool > *self,std::vector< bool >::value_type x){
       self->push_back(x);
     }
-SWIGINTERN std::vector< PlantData >::iterator std_vector_Sl_PlantData_Sg__erase__SWIG_0(std::vector< PlantData > *self,std::vector< PlantData >::iterator pos){ return self->erase(pos); }
-SWIGINTERN std::vector< PlantData >::iterator std_vector_Sl_PlantData_Sg__erase__SWIG_1(std::vector< PlantData > *self,std::vector< PlantData >::iterator first,std::vector< PlantData >::iterator last){ return self->erase(first, last); }
-SWIGINTERN std::vector< PlantData >::iterator std_vector_Sl_PlantData_Sg__insert__SWIG_0(std::vector< PlantData > *self,std::vector< PlantData >::iterator pos,std::vector< PlantData >::value_type const &x){ return self->insert(pos, x); }
-SWIGINTERN void std_vector_Sl_PlantData_Sg__insert__SWIG_1(std::vector< PlantData > *self,std::vector< PlantData >::iterator pos,std::vector< PlantData >::size_type n,std::vector< PlantData >::value_type const &x){ self->insert(pos, n, x); }
+SWIGINTERN std::vector< bool >::iterator std_vector_Sl_bool_Sg__erase__SWIG_0(std::vector< bool > *self,std::vector< bool >::iterator pos){ return self->erase(pos); }
+SWIGINTERN std::vector< bool >::iterator std_vector_Sl_bool_Sg__erase__SWIG_1(std::vector< bool > *self,std::vector< bool >::iterator first,std::vector< bool >::iterator last){ return self->erase(first, last); }
+SWIGINTERN std::vector< bool >::iterator std_vector_Sl_bool_Sg__insert__SWIG_0(std::vector< bool > *self,std::vector< bool >::iterator pos,std::vector< bool >::value_type x){ return self->insert(pos, x); }
+SWIGINTERN void std_vector_Sl_bool_Sg__insert__SWIG_1(std::vector< bool > *self,std::vector< bool >::iterator pos,std::vector< bool >::size_type n,std::vector< bool >::value_type x){ self->insert(pos, n, x); }
 
       namespace swig {
 	template <>  struct traits<std::vector< std::vector< int,std::allocator< int > >, std::allocator< std::vector< int,std::allocator< int > > > > > {
@@ -5574,6 +5600,14 @@ SWIGINTERN std::vector< std::vector< Cell > >::iterator std_vector_Sl_std_vector
 SWIGINTERN std::vector< std::vector< Cell > >::iterator std_vector_Sl_std_vector_Sl_Cell_Sg__Sg__erase__SWIG_1(std::vector< std::vector< Cell > > *self,std::vector< std::vector< Cell > >::iterator first,std::vector< std::vector< Cell > >::iterator last){ return self->erase(first, last); }
 SWIGINTERN std::vector< std::vector< Cell > >::iterator std_vector_Sl_std_vector_Sl_Cell_Sg__Sg__insert__SWIG_0(std::vector< std::vector< Cell > > *self,std::vector< std::vector< Cell > >::iterator pos,std::vector< std::vector< Cell > >::value_type const &x){ return self->insert(pos, x); }
 SWIGINTERN void std_vector_Sl_std_vector_Sl_Cell_Sg__Sg__insert__SWIG_1(std::vector< std::vector< Cell > > *self,std::vector< std::vector< Cell > >::iterator pos,std::vector< std::vector< Cell > >::size_type n,std::vector< std::vector< Cell > >::value_type const &x){ self->insert(pos, n, x); }
+
+  namespace swig {
+    template <>  struct traits< PlantData > {
+      typedef pointer_category category;
+      static const char* type_name() { return"PlantData"; }
+    };
+  }
+
 
   namespace swig {
     template <class T, size_t N>
@@ -5994,20 +6028,6 @@ SWIGINTERNINLINE PyObject *
 SWIG_From_std_string  (const std::string& s)
 {
   return SWIG_FromCharPtrAndSize(s.data(), s.size());
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_bool (PyObject *obj, bool *val)
-{
-  int r;
-  if (!PyBool_Check(obj))
-    return SWIG_ERROR;
-  r = PyObject_IsTrue(obj);
-  if (r == -1)
-    return SWIG_ERROR;
-  if (val) *val = r ? true : false;
-  return SWIG_OK;
 }
 
 #ifdef __cplusplus
@@ -10720,9 +10740,9 @@ SWIGINTERN PyObject *FreePositions_swiginit(PyObject *SWIGUNUSEDPARM(self), PyOb
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_iterator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_iterator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   PyObject **arg2 = (PyObject **) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -10732,12 +10752,12 @@ SWIGINTERN PyObject *_wrap_PlantDataVector_iterator(PyObject *SWIGUNUSEDPARM(sel
   arg2 = &swig_obj[0];
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_iterator" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_iterator" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  result = (swig::SwigPyIterator *)std_vector_Sl_PlantData_Sg__iterator(arg1,arg2);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  result = (swig::SwigPyIterator *)std_vector_Sl_bool_Sg__iterator(arg1,arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
@@ -10745,9 +10765,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___nonzero__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower___nonzero__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
@@ -10755,12 +10775,12 @@ SWIGINTERN PyObject *_wrap_PlantDataVector___nonzero__(PyObject *SWIGUNUSEDPARM(
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___nonzero__" "', argument " "1"" of type '" "std::vector< PlantData > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___nonzero__" "', argument " "1"" of type '" "std::vector< bool > const *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  result = (bool)std_vector_Sl_PlantData_Sg____nonzero__((std::vector< PlantData > const *)arg1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  result = (bool)std_vector_Sl_bool_Sg____nonzero__((std::vector< bool > const *)arg1);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -10768,9 +10788,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___bool__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower___bool__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
@@ -10778,12 +10798,12 @@ SWIGINTERN PyObject *_wrap_PlantDataVector___bool__(PyObject *SWIGUNUSEDPARM(sel
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___bool__" "', argument " "1"" of type '" "std::vector< PlantData > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___bool__" "', argument " "1"" of type '" "std::vector< bool > const *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  result = (bool)std_vector_Sl_PlantData_Sg____bool__((std::vector< PlantData > const *)arg1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  result = (bool)std_vector_Sl_bool_Sg____bool__((std::vector< bool > const *)arg1);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -10791,22 +10811,22 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___len__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower___len__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< PlantData >::size_type result;
+  std::vector< bool >::size_type result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___len__" "', argument " "1"" of type '" "std::vector< PlantData > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___len__" "', argument " "1"" of type '" "std::vector< bool > const *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  result = std_vector_Sl_PlantData_Sg____len__((std::vector< PlantData > const *)arg1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  result = std_vector_Sl_bool_Sg____len__((std::vector< bool > const *)arg1);
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
@@ -10814,11 +10834,11 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___getslice__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower___getslice__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::difference_type arg2 ;
-  std::vector< PlantData >::difference_type arg3 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::difference_type arg2 ;
+  std::vector< bool >::difference_type arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   ptrdiff_t val2 ;
@@ -10826,43 +10846,43 @@ SWIGINTERN PyObject *_wrap_PlantDataVector___getslice__(PyObject *SWIGUNUSEDPARM
   ptrdiff_t val3 ;
   int ecode3 = 0 ;
   PyObject *swig_obj[3] ;
-  std::vector< PlantData,std::allocator< PlantData > > *result = 0 ;
+  std::vector< bool,std::allocator< bool > > *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "PlantDataVector___getslice__", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "Lawnmower___getslice__", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___getslice__" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___getslice__" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantDataVector___getslice__" "', argument " "2"" of type '" "std::vector< PlantData >::difference_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower___getslice__" "', argument " "2"" of type '" "std::vector< bool >::difference_type""'");
   } 
-  arg2 = static_cast< std::vector< PlantData >::difference_type >(val2);
+  arg2 = static_cast< std::vector< bool >::difference_type >(val2);
   ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "PlantDataVector___getslice__" "', argument " "3"" of type '" "std::vector< PlantData >::difference_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Lawnmower___getslice__" "', argument " "3"" of type '" "std::vector< bool >::difference_type""'");
   } 
-  arg3 = static_cast< std::vector< PlantData >::difference_type >(val3);
+  arg3 = static_cast< std::vector< bool >::difference_type >(val3);
   try {
-    result = (std::vector< PlantData,std::allocator< PlantData > > *)std_vector_Sl_PlantData_Sg____getslice__(arg1,arg2,arg3);
+    result = (std::vector< bool,std::allocator< bool > > *)std_vector_Sl_bool_Sg____getslice__(arg1,arg2,arg3);
   } catch(std::out_of_range &_e) {
     SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
   } catch(std::invalid_argument &_e) {
     SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___setslice____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower___setslice____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::difference_type arg2 ;
-  std::vector< PlantData >::difference_type arg3 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::difference_type arg2 ;
+  std::vector< bool >::difference_type arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   ptrdiff_t val2 ;
@@ -10871,23 +10891,23 @@ SWIGINTERN PyObject *_wrap_PlantDataVector___setslice____SWIG_0(PyObject *SWIGUN
   int ecode3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___setslice__" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___setslice__" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantDataVector___setslice__" "', argument " "2"" of type '" "std::vector< PlantData >::difference_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower___setslice__" "', argument " "2"" of type '" "std::vector< bool >::difference_type""'");
   } 
-  arg2 = static_cast< std::vector< PlantData >::difference_type >(val2);
+  arg2 = static_cast< std::vector< bool >::difference_type >(val2);
   ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "PlantDataVector___setslice__" "', argument " "3"" of type '" "std::vector< PlantData >::difference_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Lawnmower___setslice__" "', argument " "3"" of type '" "std::vector< bool >::difference_type""'");
   } 
-  arg3 = static_cast< std::vector< PlantData >::difference_type >(val3);
+  arg3 = static_cast< std::vector< bool >::difference_type >(val3);
   try {
-    std_vector_Sl_PlantData_Sg____setslice____SWIG_0(arg1,arg2,arg3);
+    std_vector_Sl_bool_Sg____setslice____SWIG_0(arg1,arg2,arg3);
   } catch(std::out_of_range &_e) {
     SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
   } catch(std::invalid_argument &_e) {
@@ -10900,12 +10920,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___setslice____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower___setslice____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::difference_type arg2 ;
-  std::vector< PlantData >::difference_type arg3 ;
-  std::vector< PlantData,std::allocator< PlantData > > *arg4 = 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::difference_type arg2 ;
+  std::vector< bool >::difference_type arg3 ;
+  std::vector< bool,std::allocator< bool > > *arg4 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   ptrdiff_t val2 ;
@@ -10915,34 +10935,34 @@ SWIGINTERN PyObject *_wrap_PlantDataVector___setslice____SWIG_1(PyObject *SWIGUN
   int res4 = SWIG_OLDOBJ ;
   
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___setslice__" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___setslice__" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantDataVector___setslice__" "', argument " "2"" of type '" "std::vector< PlantData >::difference_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower___setslice__" "', argument " "2"" of type '" "std::vector< bool >::difference_type""'");
   } 
-  arg2 = static_cast< std::vector< PlantData >::difference_type >(val2);
+  arg2 = static_cast< std::vector< bool >::difference_type >(val2);
   ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "PlantDataVector___setslice__" "', argument " "3"" of type '" "std::vector< PlantData >::difference_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Lawnmower___setslice__" "', argument " "3"" of type '" "std::vector< bool >::difference_type""'");
   } 
-  arg3 = static_cast< std::vector< PlantData >::difference_type >(val3);
+  arg3 = static_cast< std::vector< bool >::difference_type >(val3);
   {
-    std::vector< PlantData,std::allocator< PlantData > > *ptr = (std::vector< PlantData,std::allocator< PlantData > > *)0;
+    std::vector<bool,std::allocator< bool > > *ptr = (std::vector<bool,std::allocator< bool > > *)0;
     res4 = swig::asptr(swig_obj[3], &ptr);
     if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "PlantDataVector___setslice__" "', argument " "4"" of type '" "std::vector< PlantData,std::allocator< PlantData > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Lawnmower___setslice__" "', argument " "4"" of type '" "std::vector< bool,std::allocator< bool > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PlantDataVector___setslice__" "', argument " "4"" of type '" "std::vector< PlantData,std::allocator< PlantData > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Lawnmower___setslice__" "', argument " "4"" of type '" "std::vector< bool,std::allocator< bool > > const &""'"); 
     }
     arg4 = ptr;
   }
   try {
-    std_vector_Sl_PlantData_Sg____setslice____SWIG_1(arg1,arg2,arg3,(std::vector< PlantData,std::allocator< PlantData > > const &)*arg4);
+    std_vector_Sl_bool_Sg____setslice____SWIG_1(arg1,arg2,arg3,(std::vector< bool,std::allocator< bool > > const &)*arg4);
   } catch(std::out_of_range &_e) {
     SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
   } catch(std::invalid_argument &_e) {
@@ -10957,17 +10977,17 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___setslice__(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower___setslice__(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[5] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "PlantDataVector___setslice__", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Lawnmower___setslice__", 0, 4, argv))) SWIG_fail;
   --argc;
   if (argc == 3) {
     int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -10980,14 +11000,14 @@ SWIGINTERN PyObject *_wrap_PlantDataVector___setslice__(PyObject *self, PyObject
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_PlantDataVector___setslice____SWIG_0(self, argc, argv);
+          return _wrap_Lawnmower___setslice____SWIG_0(self, argc, argv);
         }
       }
     }
   }
   if (argc == 4) {
     int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -11000,10 +11020,10 @@ SWIGINTERN PyObject *_wrap_PlantDataVector___setslice__(PyObject *self, PyObject
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          int res = swig::asptr(argv[3], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+          int res = swig::asptr(argv[3], (std::vector<bool,std::allocator< bool > >**)(0));
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_PlantDataVector___setslice____SWIG_1(self, argc, argv);
+            return _wrap_Lawnmower___setslice____SWIG_1(self, argc, argv);
           }
         }
       }
@@ -11011,19 +11031,19 @@ SWIGINTERN PyObject *_wrap_PlantDataVector___setslice__(PyObject *self, PyObject
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'PlantDataVector___setslice__'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Lawnmower___setslice__'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    std::vector< PlantData >::__setslice__(std::vector< PlantData >::difference_type,std::vector< PlantData >::difference_type)\n"
-    "    std::vector< PlantData >::__setslice__(std::vector< PlantData >::difference_type,std::vector< PlantData >::difference_type,std::vector< PlantData,std::allocator< PlantData > > const &)\n");
+    "    std::vector< bool >::__setslice__(std::vector< bool >::difference_type,std::vector< bool >::difference_type)\n"
+    "    std::vector< bool >::__setslice__(std::vector< bool >::difference_type,std::vector< bool >::difference_type,std::vector< bool,std::allocator< bool > > const &)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___delslice__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower___delslice__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::difference_type arg2 ;
-  std::vector< PlantData >::difference_type arg3 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::difference_type arg2 ;
+  std::vector< bool >::difference_type arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   ptrdiff_t val2 ;
@@ -11032,24 +11052,24 @@ SWIGINTERN PyObject *_wrap_PlantDataVector___delslice__(PyObject *SWIGUNUSEDPARM
   int ecode3 = 0 ;
   PyObject *swig_obj[3] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "PlantDataVector___delslice__", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "Lawnmower___delslice__", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___delslice__" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___delslice__" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantDataVector___delslice__" "', argument " "2"" of type '" "std::vector< PlantData >::difference_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower___delslice__" "', argument " "2"" of type '" "std::vector< bool >::difference_type""'");
   } 
-  arg2 = static_cast< std::vector< PlantData >::difference_type >(val2);
+  arg2 = static_cast< std::vector< bool >::difference_type >(val2);
   ecode3 = SWIG_AsVal_ptrdiff_t(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "PlantDataVector___delslice__" "', argument " "3"" of type '" "std::vector< PlantData >::difference_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Lawnmower___delslice__" "', argument " "3"" of type '" "std::vector< bool >::difference_type""'");
   } 
-  arg3 = static_cast< std::vector< PlantData >::difference_type >(val3);
+  arg3 = static_cast< std::vector< bool >::difference_type >(val3);
   try {
-    std_vector_Sl_PlantData_Sg____delslice__(arg1,arg2,arg3);
+    std_vector_Sl_bool_Sg____delslice__(arg1,arg2,arg3);
   } catch(std::out_of_range &_e) {
     SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
   } catch(std::invalid_argument &_e) {
@@ -11062,28 +11082,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___delitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower___delitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::difference_type arg2 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::difference_type arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   ptrdiff_t val2 ;
   int ecode2 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___delitem__" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___delitem__" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantDataVector___delitem__" "', argument " "2"" of type '" "std::vector< PlantData >::difference_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower___delitem__" "', argument " "2"" of type '" "std::vector< bool >::difference_type""'");
   } 
-  arg2 = static_cast< std::vector< PlantData >::difference_type >(val2);
+  arg2 = static_cast< std::vector< bool >::difference_type >(val2);
   try {
-    std_vector_Sl_PlantData_Sg____delitem____SWIG_0(arg1,arg2);
+    std_vector_Sl_bool_Sg____delitem____SWIG_0(arg1,arg2);
   } catch(std::out_of_range &_e) {
     SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
   } catch(std::invalid_argument &_e) {
@@ -11096,74 +11116,74 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___getitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower___getitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   PySliceObject *arg2 = (PySliceObject *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  std::vector< PlantData,std::allocator< PlantData > > *result = 0 ;
+  std::vector< bool,std::allocator< bool > > *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___getitem__" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___getitem__" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   {
     if (!PySlice_Check(swig_obj[1])) {
-      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector___getitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower___getitem__" "', argument " "2"" of type '" "PySliceObject *""'");
     }
     arg2 = (PySliceObject *) swig_obj[1];
   }
   try {
-    result = (std::vector< PlantData,std::allocator< PlantData > > *)std_vector_Sl_PlantData_Sg____getitem____SWIG_0(arg1,arg2);
+    result = (std::vector< bool,std::allocator< bool > > *)std_vector_Sl_bool_Sg____getitem____SWIG_0(arg1,arg2);
   } catch(std::out_of_range &_e) {
     SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
   } catch(std::invalid_argument &_e) {
     SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___setitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower___setitem____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   PySliceObject *arg2 = (PySliceObject *) 0 ;
-  std::vector< PlantData,std::allocator< PlantData > > *arg3 = 0 ;
+  std::vector< bool,std::allocator< bool > > *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res3 = SWIG_OLDOBJ ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___setitem__" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___setitem__" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   {
     if (!PySlice_Check(swig_obj[1])) {
-      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector___setitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower___setitem__" "', argument " "2"" of type '" "PySliceObject *""'");
     }
     arg2 = (PySliceObject *) swig_obj[1];
   }
   {
-    std::vector< PlantData,std::allocator< PlantData > > *ptr = (std::vector< PlantData,std::allocator< PlantData > > *)0;
+    std::vector<bool,std::allocator< bool > > *ptr = (std::vector<bool,std::allocator< bool > > *)0;
     res3 = swig::asptr(swig_obj[2], &ptr);
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PlantDataVector___setitem__" "', argument " "3"" of type '" "std::vector< PlantData,std::allocator< PlantData > > const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Lawnmower___setitem__" "', argument " "3"" of type '" "std::vector< bool,std::allocator< bool > > const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PlantDataVector___setitem__" "', argument " "3"" of type '" "std::vector< PlantData,std::allocator< PlantData > > const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Lawnmower___setitem__" "', argument " "3"" of type '" "std::vector< bool,std::allocator< bool > > const &""'"); 
     }
     arg3 = ptr;
   }
   try {
-    std_vector_Sl_PlantData_Sg____setitem____SWIG_0(arg1,arg2,(std::vector< PlantData,std::allocator< PlantData > > const &)*arg3);
+    std_vector_Sl_bool_Sg____setitem____SWIG_0(arg1,arg2,(std::vector< bool,std::allocator< bool > > const &)*arg3);
   } catch(std::out_of_range &_e) {
     SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
   } catch(std::invalid_argument &_e) {
@@ -11178,27 +11198,27 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___setitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower___setitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   PySliceObject *arg2 = (PySliceObject *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___setitem__" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___setitem__" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   {
     if (!PySlice_Check(swig_obj[1])) {
-      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector___setitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower___setitem__" "', argument " "2"" of type '" "PySliceObject *""'");
     }
     arg2 = (PySliceObject *) swig_obj[1];
   }
   try {
-    std_vector_Sl_PlantData_Sg____setitem____SWIG_1(arg1,arg2);
+    std_vector_Sl_bool_Sg____setitem____SWIG_1(arg1,arg2);
   } catch(std::out_of_range &_e) {
     SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
   } catch(std::invalid_argument &_e) {
@@ -11211,27 +11231,27 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___delitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower___delitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   PySliceObject *arg2 = (PySliceObject *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___delitem__" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___delitem__" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   {
     if (!PySlice_Check(swig_obj[1])) {
-      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector___delitem__" "', argument " "2"" of type '" "PySliceObject *""'");
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower___delitem__" "', argument " "2"" of type '" "PySliceObject *""'");
     }
     arg2 = (PySliceObject *) swig_obj[1];
   }
   try {
-    std_vector_Sl_PlantData_Sg____delitem____SWIG_1(arg1,arg2);
+    std_vector_Sl_bool_Sg____delitem____SWIG_1(arg1,arg2);
   } catch(std::out_of_range &_e) {
     SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
   } catch(std::invalid_argument &_e) {
@@ -11244,30 +11264,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___delitem__(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower___delitem__(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[3] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "PlantDataVector___delitem__", 0, 2, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Lawnmower___delitem__", 0, 2, argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
     int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       {
         _v = PySlice_Check(argv[1]);
       }
       if (_v) {
-        return _wrap_PlantDataVector___delitem____SWIG_1(self, argc, argv);
+        return _wrap_Lawnmower___delitem____SWIG_1(self, argc, argv);
       }
     }
   }
   if (argc == 2) {
     int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -11275,325 +11295,46 @@ SWIGINTERN PyObject *_wrap_PlantDataVector___delitem__(PyObject *self, PyObject 
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_PlantDataVector___delitem____SWIG_0(self, argc, argv);
+        return _wrap_Lawnmower___delitem____SWIG_0(self, argc, argv);
       }
     }
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'PlantDataVector___delitem__'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Lawnmower___delitem__'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    std::vector< PlantData >::__delitem__(std::vector< PlantData >::difference_type)\n"
-    "    std::vector< PlantData >::__delitem__(PySliceObject *)\n");
+    "    std::vector< bool >::__delitem__(std::vector< bool >::difference_type)\n"
+    "    std::vector< bool >::__delitem__(PySliceObject *)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector___getitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower___getitem____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::difference_type arg2 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::difference_type arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   ptrdiff_t val2 ;
   int ecode2 = 0 ;
-  std::vector< PlantData >::value_type *result = 0 ;
+  std::vector< bool >::value_type result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___getitem__" "', argument " "1"" of type '" "std::vector< PlantData > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___getitem__" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantDataVector___getitem__" "', argument " "2"" of type '" "std::vector< PlantData >::difference_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower___getitem__" "', argument " "2"" of type '" "std::vector< bool >::difference_type""'");
   } 
-  arg2 = static_cast< std::vector< PlantData >::difference_type >(val2);
+  arg2 = static_cast< std::vector< bool >::difference_type >(val2);
   try {
-    result = (std::vector< PlantData >::value_type *) &std_vector_Sl_PlantData_Sg____getitem____SWIG_1((std::vector< PlantData > const *)arg1,arg2);
+    result = (std::vector< bool >::value_type)std_vector_Sl_bool_Sg____getitem____SWIG_1(arg1,arg2);
   } catch(std::out_of_range &_e) {
     SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PlantData, 0 |  0 );
-  (void)swig::container_owner<swig::traits<std::vector< PlantData >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PlantDataVector___getitem__(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "PlantDataVector___getitem__", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        _v = PySlice_Check(argv[1]);
-      }
-      if (_v) {
-        return _wrap_PlantDataVector___getitem____SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_PlantDataVector___getitem____SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'PlantDataVector___getitem__'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    std::vector< PlantData >::__getitem__(PySliceObject *)\n"
-    "    std::vector< PlantData >::__getitem__(std::vector< PlantData >::difference_type) const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_PlantDataVector___setitem____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::difference_type arg2 ;
-  std::vector< PlantData >::value_type *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  ptrdiff_t val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector___setitem__" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
-  }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantDataVector___setitem__" "', argument " "2"" of type '" "std::vector< PlantData >::difference_type""'");
-  } 
-  arg2 = static_cast< std::vector< PlantData >::difference_type >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_PlantData,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PlantDataVector___setitem__" "', argument " "3"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PlantDataVector___setitem__" "', argument " "3"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  arg3 = reinterpret_cast< std::vector< PlantData >::value_type * >(argp3);
-  try {
-    std_vector_Sl_PlantData_Sg____setitem____SWIG_2(arg1,arg2,(PlantData const &)*arg3);
-  } catch(std::out_of_range &_e) {
-    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PlantDataVector___setitem__(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "PlantDataVector___setitem__", 0, 3, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        _v = PySlice_Check(argv[1]);
-      }
-      if (_v) {
-        return _wrap_PlantDataVector___setitem____SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        _v = PySlice_Check(argv[1]);
-      }
-      if (_v) {
-        int res = swig::asptr(argv[2], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_PlantDataVector___setitem____SWIG_0(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_PlantData, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_PlantDataVector___setitem____SWIG_2(self, argc, argv);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'PlantDataVector___setitem__'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    std::vector< PlantData >::__setitem__(PySliceObject *,std::vector< PlantData,std::allocator< PlantData > > const &)\n"
-    "    std::vector< PlantData >::__setitem__(PySliceObject *)\n"
-    "    std::vector< PlantData >::__setitem__(std::vector< PlantData >::difference_type,std::vector< PlantData >::value_type const &)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_PlantDataVector_pop(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::vector< PlantData >::value_type result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_pop" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
-  }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  try {
-    result = std_vector_Sl_PlantData_Sg__pop(arg1);
-  } catch(std::out_of_range &_e) {
-    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-  }
-  resultobj = SWIG_NewPointerObj((new std::vector< PlantData >::value_type(static_cast< const std::vector< PlantData >::value_type& >(result))), SWIGTYPE_p_PlantData, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PlantDataVector_append(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::value_type *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "PlantDataVector_append", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_append" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
-  }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_PlantData,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PlantDataVector_append" "', argument " "2"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PlantDataVector_append" "', argument " "2"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::vector< PlantData >::value_type * >(argp2);
-  std_vector_Sl_PlantData_Sg__append(arg1,(PlantData const &)*arg2);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_PlantDataVector__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  std::vector< PlantData > *result = 0 ;
-  
-  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
-  result = (std::vector< PlantData > *)new std::vector< PlantData >();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_PlantDataVector__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = 0 ;
-  int res1 = SWIG_OLDOBJ ;
-  std::vector< PlantData > *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  {
-    std::vector< PlantData,std::allocator< PlantData > > *ptr = (std::vector< PlantData,std::allocator< PlantData > > *)0;
-    res1 = swig::asptr(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PlantDataVector" "', argument " "1"" of type '" "std::vector< PlantData > const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PlantDataVector" "', argument " "1"" of type '" "std::vector< PlantData > const &""'"); 
-    }
-    arg1 = ptr;
-  }
-  result = (std::vector< PlantData > *)new std::vector< PlantData >((std::vector< PlantData > const &)*arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, SWIG_POINTER_NEW |  0 );
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res1)) delete arg1;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PlantDataVector_empty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  bool result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_empty" "', argument " "1"" of type '" "std::vector< PlantData > const *""'"); 
-  }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  result = (bool)((std::vector< PlantData > const *)arg1)->empty();
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -11601,22 +11342,296 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower___getitem__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Lawnmower___getitem__", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+      if (_v) {
+        return _wrap_Lawnmower___getitem____SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_Lawnmower___getitem____SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Lawnmower___getitem__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< bool >::__getitem__(PySliceObject *)\n"
+    "    std::vector< bool >::__getitem__(std::vector< bool >::difference_type)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lawnmower___setitem____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::difference_type arg2 ;
+  std::vector< bool >::value_type arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower___setitem__" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower___setitem__" "', argument " "2"" of type '" "std::vector< bool >::difference_type""'");
+  } 
+  arg2 = static_cast< std::vector< bool >::difference_type >(val2);
+  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Lawnmower___setitem__" "', argument " "3"" of type '" "std::vector< bool >::value_type""'");
+  } 
+  arg3 = static_cast< std::vector< bool >::value_type >(val3);
+  try {
+    std_vector_Sl_bool_Sg____setitem____SWIG_2(arg1,arg2,arg3);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lawnmower___setitem__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Lawnmower___setitem__", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+      if (_v) {
+        return _wrap_Lawnmower___setitem____SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PySlice_Check(argv[1]);
+      }
+      if (_v) {
+        int res = swig::asptr(argv[2], (std::vector<bool,std::allocator< bool > >**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_Lawnmower___setitem____SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_bool(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_Lawnmower___setitem____SWIG_2(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Lawnmower___setitem__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::vector< bool >::__setitem__(PySliceObject *,std::vector< bool,std::allocator< bool > > const &)\n"
+    "    std::vector< bool >::__setitem__(PySliceObject *)\n"
+    "    std::vector< bool >::__setitem__(std::vector< bool >::difference_type,std::vector< bool >::value_type)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lawnmower_pop(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< PlantData >::size_type result;
+  std::vector< bool >::value_type result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_size" "', argument " "1"" of type '" "std::vector< PlantData > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_pop" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  result = ((std::vector< PlantData > const *)arg1)->size();
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  try {
+    result = (std::vector< bool >::value_type)std_vector_Sl_bool_Sg__pop(arg1);
+  } catch(std::out_of_range &_e) {
+    SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lawnmower_append(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::value_type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Lawnmower_append", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_append" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower_append" "', argument " "2"" of type '" "std::vector< bool >::value_type""'");
+  } 
+  arg2 = static_cast< std::vector< bool >::value_type >(val2);
+  std_vector_Sl_bool_Sg__append(arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Lawnmower__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  std::vector< bool > *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  result = (std::vector< bool > *)new std::vector< bool >();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Lawnmower__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::vector< bool > *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  std::vector< bool > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    std::vector<bool,std::allocator< bool > > *ptr = (std::vector<bool,std::allocator< bool > > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Lawnmower" "', argument " "1"" of type '" "std::vector< bool > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Lawnmower" "', argument " "1"" of type '" "std::vector< bool > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = (std::vector< bool > *)new std::vector< bool >((std::vector< bool > const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lawnmower_empty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_empty" "', argument " "1"" of type '" "std::vector< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  result = (bool)((std::vector< bool > const *)arg1)->empty();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Lawnmower_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::vector< bool >::size_type result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_size" "', argument " "1"" of type '" "std::vector< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  result = ((std::vector< bool > const *)arg1)->size();
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
@@ -11624,30 +11639,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_swap(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_swap(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData > *arg2 = 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "PlantDataVector_swap", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "Lawnmower_swap", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_swap" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_swap" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t,  0 );
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PlantDataVector_swap" "', argument " "2"" of type '" "std::vector< PlantData > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Lawnmower_swap" "', argument " "2"" of type '" "std::vector< bool > &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PlantDataVector_swap" "', argument " "2"" of type '" "std::vector< PlantData > &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Lawnmower_swap" "', argument " "2"" of type '" "std::vector< bool > &""'"); 
   }
-  arg2 = reinterpret_cast< std::vector< PlantData > * >(argp2);
+  arg2 = reinterpret_cast< std::vector< bool > * >(argp2);
   (arg1)->swap(*arg2);
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11656,23 +11671,23 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_begin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_begin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< PlantData >::iterator result;
+  std::vector< bool >::iterator result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_begin" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_begin" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   result = (arg1)->begin();
-  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< PlantData >::iterator & >(result)),
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< bool >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
   return resultobj;
 fail:
@@ -11680,23 +11695,23 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_end(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_end(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< PlantData >::iterator result;
+  std::vector< bool >::iterator result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_end" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_end" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   result = (arg1)->end();
-  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< PlantData >::iterator & >(result)),
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< bool >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
   return resultobj;
 fail:
@@ -11704,23 +11719,23 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_rbegin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_rbegin(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< PlantData >::reverse_iterator result;
+  std::vector< bool >::reverse_iterator result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_rbegin" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_rbegin" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   result = (arg1)->rbegin();
-  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< PlantData >::reverse_iterator & >(result)),
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< bool >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
   return resultobj;
 fail:
@@ -11728,23 +11743,23 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_rend(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_rend(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< PlantData >::reverse_iterator result;
+  std::vector< bool >::reverse_iterator result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_rend" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_rend" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   result = (arg1)->rend();
-  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< PlantData >::reverse_iterator & >(result)),
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< bool >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
   return resultobj;
 fail:
@@ -11752,20 +11767,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_clear" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_clear" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   (arg1)->clear();
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11774,64 +11789,64 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_get_allocator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_get_allocator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  SwigValueWrapper< std::allocator< PlantData > > result;
+  SwigValueWrapper< std::allocator< bool > > result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_get_allocator" "', argument " "1"" of type '" "std::vector< PlantData > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_get_allocator" "', argument " "1"" of type '" "std::vector< bool > const *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  result = ((std::vector< PlantData > const *)arg1)->get_allocator();
-  resultobj = SWIG_NewPointerObj((new std::vector< PlantData >::allocator_type(static_cast< const std::vector< PlantData >::allocator_type& >(result))), SWIGTYPE_p_std__allocatorT_PlantData_t, SWIG_POINTER_OWN |  0 );
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  result = ((std::vector< bool > const *)arg1)->get_allocator();
+  resultobj = SWIG_NewPointerObj((new std::vector< bool >::allocator_type(static_cast< const std::vector< bool >::allocator_type& >(result))), SWIGTYPE_p_std__allocatorT_bool_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_new_PlantDataVector__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_Lawnmower__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData >::size_type arg1 ;
+  std::vector< bool >::size_type arg1 ;
   size_t val1 ;
   int ecode1 = 0 ;
-  std::vector< PlantData > *result = 0 ;
+  std::vector< bool > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_PlantDataVector" "', argument " "1"" of type '" "std::vector< PlantData >::size_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Lawnmower" "', argument " "1"" of type '" "std::vector< bool >::size_type""'");
   } 
-  arg1 = static_cast< std::vector< PlantData >::size_type >(val1);
-  result = (std::vector< PlantData > *)new std::vector< PlantData >(arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, SWIG_POINTER_NEW |  0 );
+  arg1 = static_cast< std::vector< bool >::size_type >(val1);
+  result = (std::vector< bool > *)new std::vector< bool >(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_pop_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_pop_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_pop_back" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_pop_back" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   (arg1)->pop_back();
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11840,26 +11855,26 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_resize__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower_resize__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::size_type arg2 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::size_type arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   size_t val2 ;
   int ecode2 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_resize" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_resize" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantDataVector_resize" "', argument " "2"" of type '" "std::vector< PlantData >::size_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower_resize" "', argument " "2"" of type '" "std::vector< bool >::size_type""'");
   } 
-  arg2 = static_cast< std::vector< PlantData >::size_type >(val2);
+  arg2 = static_cast< std::vector< bool >::size_type >(val2);
   (arg1)->resize(arg2);
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11868,35 +11883,35 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_erase__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower_erase__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::iterator arg2 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::iterator arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   swig::SwigPyIterator *iter2 = 0 ;
   int res2 ;
-  std::vector< PlantData >::iterator result;
+  std::vector< bool >::iterator result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_erase" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_erase" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
   if (!SWIG_IsOK(res2) || !iter2) {
-    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector_erase" "', argument " "2"" of type '" "std::vector< PlantData >::iterator""'");
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower_erase" "', argument " "2"" of type '" "std::vector< bool >::iterator""'");
   } else {
-    swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *>(iter2);
+    swig::SwigPyIterator_T<std::vector< bool >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< bool >::iterator > *>(iter2);
     if (iter_t) {
       arg2 = iter_t->get_current();
     } else {
-      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector_erase" "', argument " "2"" of type '" "std::vector< PlantData >::iterator""'");
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower_erase" "', argument " "2"" of type '" "std::vector< bool >::iterator""'");
     }
   }
-  result = std_vector_Sl_PlantData_Sg__erase__SWIG_0(arg1,arg2);
-  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< PlantData >::iterator & >(result)),
+  result = std_vector_Sl_bool_Sg__erase__SWIG_0(arg1,arg2);
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< bool >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
   return resultobj;
 fail:
@@ -11904,49 +11919,49 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_erase__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower_erase__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::iterator arg2 ;
-  std::vector< PlantData >::iterator arg3 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::iterator arg2 ;
+  std::vector< bool >::iterator arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   swig::SwigPyIterator *iter2 = 0 ;
   int res2 ;
   swig::SwigPyIterator *iter3 = 0 ;
   int res3 ;
-  std::vector< PlantData >::iterator result;
+  std::vector< bool >::iterator result;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_erase" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_erase" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
   if (!SWIG_IsOK(res2) || !iter2) {
-    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector_erase" "', argument " "2"" of type '" "std::vector< PlantData >::iterator""'");
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower_erase" "', argument " "2"" of type '" "std::vector< bool >::iterator""'");
   } else {
-    swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *>(iter2);
+    swig::SwigPyIterator_T<std::vector< bool >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< bool >::iterator > *>(iter2);
     if (iter_t) {
       arg2 = iter_t->get_current();
     } else {
-      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector_erase" "', argument " "2"" of type '" "std::vector< PlantData >::iterator""'");
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower_erase" "', argument " "2"" of type '" "std::vector< bool >::iterator""'");
     }
   }
   res3 = SWIG_ConvertPtr(swig_obj[2], SWIG_as_voidptrptr(&iter3), swig::SwigPyIterator::descriptor(), 0);
   if (!SWIG_IsOK(res3) || !iter3) {
-    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector_erase" "', argument " "3"" of type '" "std::vector< PlantData >::iterator""'");
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower_erase" "', argument " "3"" of type '" "std::vector< bool >::iterator""'");
   } else {
-    swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *>(iter3);
+    swig::SwigPyIterator_T<std::vector< bool >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< bool >::iterator > *>(iter3);
     if (iter_t) {
       arg3 = iter_t->get_current();
     } else {
-      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector_erase" "', argument " "3"" of type '" "std::vector< PlantData >::iterator""'");
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower_erase" "', argument " "3"" of type '" "std::vector< bool >::iterator""'");
     }
   }
-  result = std_vector_Sl_PlantData_Sg__erase__SWIG_1(arg1,arg2,arg3);
-  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< PlantData >::iterator & >(result)),
+  result = std_vector_Sl_bool_Sg__erase__SWIG_1(arg1,arg2,arg3);
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< bool >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
   return resultobj;
 fail:
@@ -11954,97 +11969,94 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_erase(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_erase(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "PlantDataVector_erase", 0, 3, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Lawnmower_erase", 0, 3, argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
     int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       swig::SwigPyIterator *iter = 0;
       int res = SWIG_ConvertPtr(argv[1], SWIG_as_voidptrptr(&iter), swig::SwigPyIterator::descriptor(), 0);
-      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *>(iter) != 0));
+      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< bool >::iterator > *>(iter) != 0));
       if (_v) {
-        return _wrap_PlantDataVector_erase__SWIG_0(self, argc, argv);
+        return _wrap_Lawnmower_erase__SWIG_0(self, argc, argv);
       }
     }
   }
   if (argc == 3) {
     int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       swig::SwigPyIterator *iter = 0;
       int res = SWIG_ConvertPtr(argv[1], SWIG_as_voidptrptr(&iter), swig::SwigPyIterator::descriptor(), 0);
-      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *>(iter) != 0));
+      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< bool >::iterator > *>(iter) != 0));
       if (_v) {
         swig::SwigPyIterator *iter = 0;
         int res = SWIG_ConvertPtr(argv[2], SWIG_as_voidptrptr(&iter), swig::SwigPyIterator::descriptor(), 0);
-        _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *>(iter) != 0));
+        _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< bool >::iterator > *>(iter) != 0));
         if (_v) {
-          return _wrap_PlantDataVector_erase__SWIG_1(self, argc, argv);
+          return _wrap_Lawnmower_erase__SWIG_1(self, argc, argv);
         }
       }
     }
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'PlantDataVector_erase'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Lawnmower_erase'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    std::vector< PlantData >::erase(std::vector< PlantData >::iterator)\n"
-    "    std::vector< PlantData >::erase(std::vector< PlantData >::iterator,std::vector< PlantData >::iterator)\n");
+    "    std::vector< bool >::erase(std::vector< bool >::iterator)\n"
+    "    std::vector< bool >::erase(std::vector< bool >::iterator,std::vector< bool >::iterator)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_new_PlantDataVector__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_Lawnmower__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData >::size_type arg1 ;
-  std::vector< PlantData >::value_type *arg2 = 0 ;
+  std::vector< bool >::size_type arg1 ;
+  std::vector< bool >::value_type arg2 ;
   size_t val1 ;
   int ecode1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  std::vector< PlantData > *result = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  std::vector< bool > *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   ecode1 = SWIG_AsVal_size_t(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_PlantDataVector" "', argument " "1"" of type '" "std::vector< PlantData >::size_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Lawnmower" "', argument " "1"" of type '" "std::vector< bool >::size_type""'");
   } 
-  arg1 = static_cast< std::vector< PlantData >::size_type >(val1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_PlantData,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_PlantDataVector" "', argument " "2"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PlantDataVector" "', argument " "2"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::vector< PlantData >::value_type * >(argp2);
-  result = (std::vector< PlantData > *)new std::vector< PlantData >(arg1,(std::vector< PlantData >::value_type const &)*arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, SWIG_POINTER_NEW |  0 );
+  arg1 = static_cast< std::vector< bool >::size_type >(val1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Lawnmower" "', argument " "2"" of type '" "std::vector< bool >::value_type""'");
+  } 
+  arg2 = static_cast< std::vector< bool >::value_type >(val2);
+  result = (std::vector< bool > *)new std::vector< bool >(arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_new_PlantDataVector(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Lawnmower(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[3] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_PlantDataVector", 0, 2, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_Lawnmower", 0, 2, argv))) SWIG_fail;
   --argc;
   if (argc == 0) {
-    return _wrap_new_PlantDataVector__SWIG_0(self, argc, argv);
+    return _wrap_new_Lawnmower__SWIG_0(self, argc, argv);
   }
   if (argc == 1) {
     int _v;
@@ -12053,15 +12065,15 @@ SWIGINTERN PyObject *_wrap_new_PlantDataVector(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
     }
     if (_v) {
-      return _wrap_new_PlantDataVector__SWIG_2(self, argc, argv);
+      return _wrap_new_Lawnmower__SWIG_2(self, argc, argv);
     }
   }
   if (argc == 1) {
     int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_PlantDataVector__SWIG_1(self, argc, argv);
+      return _wrap_new_Lawnmower__SWIG_1(self, argc, argv);
     }
   }
   if (argc == 2) {
@@ -12071,50 +12083,49 @@ SWIGINTERN PyObject *_wrap_new_PlantDataVector(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
     }
     if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_PlantData, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
       if (_v) {
-        return _wrap_new_PlantDataVector__SWIG_3(self, argc, argv);
+        return _wrap_new_Lawnmower__SWIG_3(self, argc, argv);
       }
     }
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_PlantDataVector'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Lawnmower'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    std::vector< PlantData >::vector()\n"
-    "    std::vector< PlantData >::vector(std::vector< PlantData > const &)\n"
-    "    std::vector< PlantData >::vector(std::vector< PlantData >::size_type)\n"
-    "    std::vector< PlantData >::vector(std::vector< PlantData >::size_type,std::vector< PlantData >::value_type const &)\n");
+    "    std::vector< bool >::vector()\n"
+    "    std::vector< bool >::vector(std::vector< bool > const &)\n"
+    "    std::vector< bool >::vector(std::vector< bool >::size_type)\n"
+    "    std::vector< bool >::vector(std::vector< bool >::size_type,std::vector< bool >::value_type)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_push_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_push_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::value_type *arg2 = 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::value_type arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "PlantDataVector_push_back", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "Lawnmower_push_back", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_push_back" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_push_back" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_PlantData,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PlantDataVector_push_back" "', argument " "2"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PlantDataVector_push_back" "', argument " "2"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::vector< PlantData >::value_type * >(argp2);
-  (arg1)->push_back((std::vector< PlantData >::value_type const &)*arg2);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower_push_back" "', argument " "2"" of type '" "std::vector< bool >::value_type""'");
+  } 
+  arg2 = static_cast< std::vector< bool >::value_type >(val2);
+  (arg1)->push_back(arg2);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -12122,87 +12133,82 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_front(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_front(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< PlantData >::value_type *result = 0 ;
+  std::vector< bool >::value_type result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_front" "', argument " "1"" of type '" "std::vector< PlantData > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_front" "', argument " "1"" of type '" "std::vector< bool > const *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  result = (std::vector< PlantData >::value_type *) &((std::vector< PlantData > const *)arg1)->front();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PlantData, 0 |  0 );
-  (void)swig::container_owner<swig::traits<std::vector< PlantData >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  result = (std::vector< bool >::value_type)((std::vector< bool > const *)arg1)->front();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_back(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< PlantData >::value_type *result = 0 ;
+  std::vector< bool >::value_type result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_back" "', argument " "1"" of type '" "std::vector< PlantData > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_back" "', argument " "1"" of type '" "std::vector< bool > const *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  result = (std::vector< PlantData >::value_type *) &((std::vector< PlantData > const *)arg1)->back();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PlantData, 0 |  0 );
-  (void)swig::container_owner<swig::traits<std::vector< PlantData >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  result = (std::vector< bool >::value_type)((std::vector< bool > const *)arg1)->back();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::size_type arg2 ;
-  std::vector< PlantData >::value_type *arg3 = 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::size_type arg2 ;
+  std::vector< bool >::value_type arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   size_t val2 ;
   int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
   PyObject *swig_obj[3] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "PlantDataVector_assign", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "Lawnmower_assign", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_assign" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_assign" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantDataVector_assign" "', argument " "2"" of type '" "std::vector< PlantData >::size_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower_assign" "', argument " "2"" of type '" "std::vector< bool >::size_type""'");
   } 
-  arg2 = static_cast< std::vector< PlantData >::size_type >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_PlantData,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PlantDataVector_assign" "', argument " "3"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PlantDataVector_assign" "', argument " "3"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  arg3 = reinterpret_cast< std::vector< PlantData >::value_type * >(argp3);
-  (arg1)->assign(arg2,(std::vector< PlantData >::value_type const &)*arg3);
+  arg2 = static_cast< std::vector< bool >::size_type >(val2);
+  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Lawnmower_assign" "', argument " "3"" of type '" "std::vector< bool >::value_type""'");
+  } 
+  arg3 = static_cast< std::vector< bool >::value_type >(val3);
+  (arg1)->assign(arg2,arg3);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -12210,38 +12216,35 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_resize__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower_resize__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::size_type arg2 ;
-  std::vector< PlantData >::value_type *arg3 = 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::size_type arg2 ;
+  std::vector< bool >::value_type arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   size_t val2 ;
   int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_resize" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_resize" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantDataVector_resize" "', argument " "2"" of type '" "std::vector< PlantData >::size_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower_resize" "', argument " "2"" of type '" "std::vector< bool >::size_type""'");
   } 
-  arg2 = static_cast< std::vector< PlantData >::size_type >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_PlantData,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PlantDataVector_resize" "', argument " "3"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PlantDataVector_resize" "', argument " "3"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  arg3 = reinterpret_cast< std::vector< PlantData >::value_type * >(argp3);
-  (arg1)->resize(arg2,(std::vector< PlantData >::value_type const &)*arg3);
+  arg2 = static_cast< std::vector< bool >::size_type >(val2);
+  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Lawnmower_resize" "', argument " "3"" of type '" "std::vector< bool >::value_type""'");
+  } 
+  arg3 = static_cast< std::vector< bool >::value_type >(val3);
+  (arg1)->resize(arg2,arg3);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -12249,17 +12252,17 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_resize(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_resize(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "PlantDataVector_resize", 0, 3, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Lawnmower_resize", 0, 3, argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
     int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -12267,13 +12270,13 @@ SWIGINTERN PyObject *_wrap_PlantDataVector_resize(PyObject *self, PyObject *args
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_PlantDataVector_resize__SWIG_0(self, argc, argv);
+        return _wrap_Lawnmower_resize__SWIG_0(self, argc, argv);
       }
     }
   }
   if (argc == 3) {
     int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -12281,64 +12284,63 @@ SWIGINTERN PyObject *_wrap_PlantDataVector_resize(PyObject *self, PyObject *args
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_PlantData, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
+        {
+          int res = SWIG_AsVal_bool(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
         if (_v) {
-          return _wrap_PlantDataVector_resize__SWIG_1(self, argc, argv);
+          return _wrap_Lawnmower_resize__SWIG_1(self, argc, argv);
         }
       }
     }
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'PlantDataVector_resize'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Lawnmower_resize'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    std::vector< PlantData >::resize(std::vector< PlantData >::size_type)\n"
-    "    std::vector< PlantData >::resize(std::vector< PlantData >::size_type,std::vector< PlantData >::value_type const &)\n");
+    "    std::vector< bool >::resize(std::vector< bool >::size_type)\n"
+    "    std::vector< bool >::resize(std::vector< bool >::size_type,std::vector< bool >::value_type)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_insert__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower_insert__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::iterator arg2 ;
-  std::vector< PlantData >::value_type *arg3 = 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::iterator arg2 ;
+  std::vector< bool >::value_type arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   swig::SwigPyIterator *iter2 = 0 ;
   int res2 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  std::vector< PlantData >::iterator result;
+  bool val3 ;
+  int ecode3 = 0 ;
+  std::vector< bool >::iterator result;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_insert" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_insert" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
   if (!SWIG_IsOK(res2) || !iter2) {
-    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector_insert" "', argument " "2"" of type '" "std::vector< PlantData >::iterator""'");
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower_insert" "', argument " "2"" of type '" "std::vector< bool >::iterator""'");
   } else {
-    swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *>(iter2);
+    swig::SwigPyIterator_T<std::vector< bool >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< bool >::iterator > *>(iter2);
     if (iter_t) {
       arg2 = iter_t->get_current();
     } else {
-      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector_insert" "', argument " "2"" of type '" "std::vector< PlantData >::iterator""'");
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower_insert" "', argument " "2"" of type '" "std::vector< bool >::iterator""'");
     }
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_PlantData,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PlantDataVector_insert" "', argument " "3"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PlantDataVector_insert" "', argument " "3"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  arg3 = reinterpret_cast< std::vector< PlantData >::value_type * >(argp3);
-  result = std_vector_Sl_PlantData_Sg__insert__SWIG_0(arg1,arg2,(PlantData const &)*arg3);
-  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< PlantData >::iterator & >(result)),
+  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Lawnmower_insert" "', argument " "3"" of type '" "std::vector< bool >::value_type""'");
+  } 
+  arg3 = static_cast< std::vector< bool >::value_type >(val3);
+  result = std_vector_Sl_bool_Sg__insert__SWIG_0(arg1,arg2,arg3);
+  resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< bool >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
   return resultobj;
 fail:
@@ -12346,52 +12348,49 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_insert__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Lawnmower_insert__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::iterator arg2 ;
-  std::vector< PlantData >::size_type arg3 ;
-  std::vector< PlantData >::value_type *arg4 = 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::iterator arg2 ;
+  std::vector< bool >::size_type arg3 ;
+  std::vector< bool >::value_type arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   swig::SwigPyIterator *iter2 = 0 ;
   int res2 ;
   size_t val3 ;
   int ecode3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
   
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_insert" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_insert" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], SWIG_as_voidptrptr(&iter2), swig::SwigPyIterator::descriptor(), 0);
   if (!SWIG_IsOK(res2) || !iter2) {
-    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector_insert" "', argument " "2"" of type '" "std::vector< PlantData >::iterator""'");
+    SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower_insert" "', argument " "2"" of type '" "std::vector< bool >::iterator""'");
   } else {
-    swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *>(iter2);
+    swig::SwigPyIterator_T<std::vector< bool >::iterator > *iter_t = dynamic_cast<swig::SwigPyIterator_T<std::vector< bool >::iterator > *>(iter2);
     if (iter_t) {
       arg2 = iter_t->get_current();
     } else {
-      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "PlantDataVector_insert" "', argument " "2"" of type '" "std::vector< PlantData >::iterator""'");
+      SWIG_exception_fail(SWIG_ArgError(SWIG_TypeError), "in method '" "Lawnmower_insert" "', argument " "2"" of type '" "std::vector< bool >::iterator""'");
     }
   }
   ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "PlantDataVector_insert" "', argument " "3"" of type '" "std::vector< PlantData >::size_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Lawnmower_insert" "', argument " "3"" of type '" "std::vector< bool >::size_type""'");
   } 
-  arg3 = static_cast< std::vector< PlantData >::size_type >(val3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_PlantData,  0  | 0);
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "PlantDataVector_insert" "', argument " "4"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PlantDataVector_insert" "', argument " "4"" of type '" "std::vector< PlantData >::value_type const &""'"); 
-  }
-  arg4 = reinterpret_cast< std::vector< PlantData >::value_type * >(argp4);
-  std_vector_Sl_PlantData_Sg__insert__SWIG_1(arg1,arg2,arg3,(PlantData const &)*arg4);
+  arg3 = static_cast< std::vector< bool >::size_type >(val3);
+  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Lawnmower_insert" "', argument " "4"" of type '" "std::vector< bool >::value_type""'");
+  } 
+  arg4 = static_cast< std::vector< bool >::value_type >(val4);
+  std_vector_Sl_bool_Sg__insert__SWIG_1(arg1,arg2,arg3,arg4);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -12399,49 +12398,53 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_insert(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_insert(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[5] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "PlantDataVector_insert", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Lawnmower_insert", 0, 4, argv))) SWIG_fail;
   --argc;
   if (argc == 3) {
     int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       swig::SwigPyIterator *iter = 0;
       int res = SWIG_ConvertPtr(argv[1], SWIG_as_voidptrptr(&iter), swig::SwigPyIterator::descriptor(), 0);
-      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *>(iter) != 0));
+      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< bool >::iterator > *>(iter) != 0));
       if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_PlantData, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
+        {
+          int res = SWIG_AsVal_bool(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
         if (_v) {
-          return _wrap_PlantDataVector_insert__SWIG_0(self, argc, argv);
+          return _wrap_Lawnmower_insert__SWIG_0(self, argc, argv);
         }
       }
     }
   }
   if (argc == 4) {
     int _v;
-    int res = swig::asptr(argv[0], (std::vector< PlantData,std::allocator< PlantData > >**)(0));
+    int res = swig::asptr(argv[0], (std::vector<bool,std::allocator< bool > >**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       swig::SwigPyIterator *iter = 0;
       int res = SWIG_ConvertPtr(argv[1], SWIG_as_voidptrptr(&iter), swig::SwigPyIterator::descriptor(), 0);
-      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< PlantData >::iterator > *>(iter) != 0));
+      _v = (SWIG_IsOK(res) && iter && (dynamic_cast<swig::SwigPyIterator_T<std::vector< bool >::iterator > *>(iter) != 0));
       if (_v) {
         {
           int res = SWIG_AsVal_size_t(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_PlantData, SWIG_POINTER_NO_NULL | 0);
-          _v = SWIG_CheckState(res);
+          {
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
           if (_v) {
-            return _wrap_PlantDataVector_insert__SWIG_1(self, argc, argv);
+            return _wrap_Lawnmower_insert__SWIG_1(self, argc, argv);
           }
         }
       }
@@ -12449,35 +12452,35 @@ SWIGINTERN PyObject *_wrap_PlantDataVector_insert(PyObject *self, PyObject *args
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'PlantDataVector_insert'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Lawnmower_insert'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    std::vector< PlantData >::insert(std::vector< PlantData >::iterator,std::vector< PlantData >::value_type const &)\n"
-    "    std::vector< PlantData >::insert(std::vector< PlantData >::iterator,std::vector< PlantData >::size_type,std::vector< PlantData >::value_type const &)\n");
+    "    std::vector< bool >::insert(std::vector< bool >::iterator,std::vector< bool >::value_type)\n"
+    "    std::vector< bool >::insert(std::vector< bool >::iterator,std::vector< bool >::size_type,std::vector< bool >::value_type)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_reserve(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_reserve(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
-  std::vector< PlantData >::size_type arg2 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
+  std::vector< bool >::size_type arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   size_t val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "PlantDataVector_reserve", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "Lawnmower_reserve", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_reserve" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_reserve" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlantDataVector_reserve" "', argument " "2"" of type '" "std::vector< PlantData >::size_type""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Lawnmower_reserve" "', argument " "2"" of type '" "std::vector< bool >::size_type""'");
   } 
-  arg2 = static_cast< std::vector< PlantData >::size_type >(val2);
+  arg2 = static_cast< std::vector< bool >::size_type >(val2);
   (arg1)->reserve(arg2);
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12486,22 +12489,22 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PlantDataVector_capacity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Lawnmower_capacity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< PlantData >::size_type result;
+  std::vector< bool >::size_type result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlantDataVector_capacity" "', argument " "1"" of type '" "std::vector< PlantData > const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Lawnmower_capacity" "', argument " "1"" of type '" "std::vector< bool > const *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
-  result = ((std::vector< PlantData > const *)arg1)->capacity();
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
+  result = ((std::vector< bool > const *)arg1)->capacity();
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
@@ -12509,20 +12512,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_PlantDataVector(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_Lawnmower(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  std::vector< PlantData > *arg1 = (std::vector< PlantData > *) 0 ;
+  std::vector< bool > *arg1 = (std::vector< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_PlantDataVector" "', argument " "1"" of type '" "std::vector< PlantData > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Lawnmower" "', argument " "1"" of type '" "std::vector< bool > *""'"); 
   }
-  arg1 = reinterpret_cast< std::vector< PlantData > * >(argp1);
+  arg1 = reinterpret_cast< std::vector< bool > * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12531,14 +12534,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *PlantDataVector_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *Lawnmower_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_std__vectorT_bool_std__allocatorT_bool_t_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *PlantDataVector_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *Lawnmower_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -26417,41 +26420,41 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_FreePositions", _wrap_delete_FreePositions, METH_O, NULL},
 	 { "FreePositions_swigregister", FreePositions_swigregister, METH_O, NULL},
 	 { "FreePositions_swiginit", FreePositions_swiginit, METH_VARARGS, NULL},
-	 { "PlantDataVector_iterator", _wrap_PlantDataVector_iterator, METH_O, NULL},
-	 { "PlantDataVector___nonzero__", _wrap_PlantDataVector___nonzero__, METH_O, NULL},
-	 { "PlantDataVector___bool__", _wrap_PlantDataVector___bool__, METH_O, NULL},
-	 { "PlantDataVector___len__", _wrap_PlantDataVector___len__, METH_O, NULL},
-	 { "PlantDataVector___getslice__", _wrap_PlantDataVector___getslice__, METH_VARARGS, NULL},
-	 { "PlantDataVector___setslice__", _wrap_PlantDataVector___setslice__, METH_VARARGS, NULL},
-	 { "PlantDataVector___delslice__", _wrap_PlantDataVector___delslice__, METH_VARARGS, NULL},
-	 { "PlantDataVector___delitem__", _wrap_PlantDataVector___delitem__, METH_VARARGS, NULL},
-	 { "PlantDataVector___getitem__", _wrap_PlantDataVector___getitem__, METH_VARARGS, NULL},
-	 { "PlantDataVector___setitem__", _wrap_PlantDataVector___setitem__, METH_VARARGS, NULL},
-	 { "PlantDataVector_pop", _wrap_PlantDataVector_pop, METH_O, NULL},
-	 { "PlantDataVector_append", _wrap_PlantDataVector_append, METH_VARARGS, NULL},
-	 { "PlantDataVector_empty", _wrap_PlantDataVector_empty, METH_O, NULL},
-	 { "PlantDataVector_size", _wrap_PlantDataVector_size, METH_O, NULL},
-	 { "PlantDataVector_swap", _wrap_PlantDataVector_swap, METH_VARARGS, NULL},
-	 { "PlantDataVector_begin", _wrap_PlantDataVector_begin, METH_O, NULL},
-	 { "PlantDataVector_end", _wrap_PlantDataVector_end, METH_O, NULL},
-	 { "PlantDataVector_rbegin", _wrap_PlantDataVector_rbegin, METH_O, NULL},
-	 { "PlantDataVector_rend", _wrap_PlantDataVector_rend, METH_O, NULL},
-	 { "PlantDataVector_clear", _wrap_PlantDataVector_clear, METH_O, NULL},
-	 { "PlantDataVector_get_allocator", _wrap_PlantDataVector_get_allocator, METH_O, NULL},
-	 { "PlantDataVector_pop_back", _wrap_PlantDataVector_pop_back, METH_O, NULL},
-	 { "PlantDataVector_erase", _wrap_PlantDataVector_erase, METH_VARARGS, NULL},
-	 { "new_PlantDataVector", _wrap_new_PlantDataVector, METH_VARARGS, NULL},
-	 { "PlantDataVector_push_back", _wrap_PlantDataVector_push_back, METH_VARARGS, NULL},
-	 { "PlantDataVector_front", _wrap_PlantDataVector_front, METH_O, NULL},
-	 { "PlantDataVector_back", _wrap_PlantDataVector_back, METH_O, NULL},
-	 { "PlantDataVector_assign", _wrap_PlantDataVector_assign, METH_VARARGS, NULL},
-	 { "PlantDataVector_resize", _wrap_PlantDataVector_resize, METH_VARARGS, NULL},
-	 { "PlantDataVector_insert", _wrap_PlantDataVector_insert, METH_VARARGS, NULL},
-	 { "PlantDataVector_reserve", _wrap_PlantDataVector_reserve, METH_VARARGS, NULL},
-	 { "PlantDataVector_capacity", _wrap_PlantDataVector_capacity, METH_O, NULL},
-	 { "delete_PlantDataVector", _wrap_delete_PlantDataVector, METH_O, NULL},
-	 { "PlantDataVector_swigregister", PlantDataVector_swigregister, METH_O, NULL},
-	 { "PlantDataVector_swiginit", PlantDataVector_swiginit, METH_VARARGS, NULL},
+	 { "Lawnmower_iterator", _wrap_Lawnmower_iterator, METH_O, NULL},
+	 { "Lawnmower___nonzero__", _wrap_Lawnmower___nonzero__, METH_O, NULL},
+	 { "Lawnmower___bool__", _wrap_Lawnmower___bool__, METH_O, NULL},
+	 { "Lawnmower___len__", _wrap_Lawnmower___len__, METH_O, NULL},
+	 { "Lawnmower___getslice__", _wrap_Lawnmower___getslice__, METH_VARARGS, NULL},
+	 { "Lawnmower___setslice__", _wrap_Lawnmower___setslice__, METH_VARARGS, NULL},
+	 { "Lawnmower___delslice__", _wrap_Lawnmower___delslice__, METH_VARARGS, NULL},
+	 { "Lawnmower___delitem__", _wrap_Lawnmower___delitem__, METH_VARARGS, NULL},
+	 { "Lawnmower___getitem__", _wrap_Lawnmower___getitem__, METH_VARARGS, NULL},
+	 { "Lawnmower___setitem__", _wrap_Lawnmower___setitem__, METH_VARARGS, NULL},
+	 { "Lawnmower_pop", _wrap_Lawnmower_pop, METH_O, NULL},
+	 { "Lawnmower_append", _wrap_Lawnmower_append, METH_VARARGS, NULL},
+	 { "Lawnmower_empty", _wrap_Lawnmower_empty, METH_O, NULL},
+	 { "Lawnmower_size", _wrap_Lawnmower_size, METH_O, NULL},
+	 { "Lawnmower_swap", _wrap_Lawnmower_swap, METH_VARARGS, NULL},
+	 { "Lawnmower_begin", _wrap_Lawnmower_begin, METH_O, NULL},
+	 { "Lawnmower_end", _wrap_Lawnmower_end, METH_O, NULL},
+	 { "Lawnmower_rbegin", _wrap_Lawnmower_rbegin, METH_O, NULL},
+	 { "Lawnmower_rend", _wrap_Lawnmower_rend, METH_O, NULL},
+	 { "Lawnmower_clear", _wrap_Lawnmower_clear, METH_O, NULL},
+	 { "Lawnmower_get_allocator", _wrap_Lawnmower_get_allocator, METH_O, NULL},
+	 { "Lawnmower_pop_back", _wrap_Lawnmower_pop_back, METH_O, NULL},
+	 { "Lawnmower_erase", _wrap_Lawnmower_erase, METH_VARARGS, NULL},
+	 { "new_Lawnmower", _wrap_new_Lawnmower, METH_VARARGS, NULL},
+	 { "Lawnmower_push_back", _wrap_Lawnmower_push_back, METH_VARARGS, NULL},
+	 { "Lawnmower_front", _wrap_Lawnmower_front, METH_O, NULL},
+	 { "Lawnmower_back", _wrap_Lawnmower_back, METH_O, NULL},
+	 { "Lawnmower_assign", _wrap_Lawnmower_assign, METH_VARARGS, NULL},
+	 { "Lawnmower_resize", _wrap_Lawnmower_resize, METH_VARARGS, NULL},
+	 { "Lawnmower_insert", _wrap_Lawnmower_insert, METH_VARARGS, NULL},
+	 { "Lawnmower_reserve", _wrap_Lawnmower_reserve, METH_VARARGS, NULL},
+	 { "Lawnmower_capacity", _wrap_Lawnmower_capacity, METH_O, NULL},
+	 { "delete_Lawnmower", _wrap_delete_Lawnmower, METH_O, NULL},
+	 { "Lawnmower_swigregister", Lawnmower_swigregister, METH_O, NULL},
+	 { "Lawnmower_swiginit", Lawnmower_swiginit, METH_VARARGS, NULL},
 	 { "new_position", _wrap_new_position, METH_VARARGS, NULL},
 	 { "position_first_set", _wrap_position_first_set, METH_VARARGS, NULL},
 	 { "position_first_get", _wrap_position_first_get, METH_O, NULL},
@@ -26799,12 +26802,13 @@ static swig_type_info _swigt__p_Action = {"_p_Action", "Action *", 0, 0, (void*)
 static swig_type_info _swigt__p_Cell = {"_p_Cell", "std::vector< Cell >::value_type *|Cell *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CellObservation = {"_p_CellObservation", "CellObservation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Level = {"_p_Level", "Level *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_PlantData = {"_p_PlantData", "std::vector< PlantData >::value_type *|std::array< PlantData,18 >::value_type *|PlantData *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PlantData = {"_p_PlantData", "std::array< PlantData,18 >::value_type *|PlantData *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PlantInfo = {"_p_PlantInfo", "PlantInfo *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ZombieInfo = {"_p_ZombieInfo", "ZombieInfo *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ZombieSpawnTemplate = {"_p_ZombieSpawnTemplate", "std::deque< ZombieSpawnTemplate >::value_type *|ZombieSpawnTemplate *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_const_reference = {"_p_const_reference", "const_reference *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_first_type = {"_p_first_type", "first_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
@@ -26812,8 +26816,8 @@ static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0,
 static swig_type_info _swigt__p_second_type = {"_p_second_type", "second_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_Cell_t = {"_p_std__allocatorT_Cell_t", "std::vector< Cell >::allocator_type *|std::allocator< Cell > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__allocatorT_PlantData_t = {"_p_std__allocatorT_PlantData_t", "std::vector< PlantData >::allocator_type *|std::allocator< PlantData > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_ZombieSpawnTemplate_t = {"_p_std__allocatorT_ZombieSpawnTemplate_t", "std::allocator< ZombieSpawnTemplate > *|std::deque< ZombieSpawnTemplate >::allocator_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__allocatorT_bool_t = {"_p_std__allocatorT_bool_t", "std::vector< bool >::allocator_type *|std::allocator< bool > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_int_t = {"_p_std__allocatorT_int_t", "std::vector< int >::allocator_type *|std::allocator< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t = {"_p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t", "std::vector< std::vector< Cell > >::allocator_type *|std::allocator< std::vector< Cell,std::allocator< Cell > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t = {"_p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t", "std::vector< std::vector< int > >::allocator_type *|std::allocator< std::vector< int,std::allocator< int > > > *", 0, 0, (void*)0, 0};
@@ -26829,9 +26833,8 @@ static swig_type_info _swigt__p_std__listT_Zombie_p_t = {"_p_std__listT_Zombie_p
 static swig_type_info _swigt__p_std__pairT_int_int_t = {"_p_std__pairT_int_int_t", "Pos *|std::pair< int,int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_Action_std__allocatorT_Action_t_t = {"_p_std__vectorT_Action_std__allocatorT_Action_t_t", "std::vector< Action,std::allocator< Action > > *|std::vector< Action > *|vector< Action > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_Cell_std__allocatorT_Cell_t_t = {"_p_std__vectorT_Cell_std__allocatorT_Cell_t_t", "std::vector< Cell,std::allocator< Cell > > *|std::vector< Cell > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t = {"_p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t", "std::vector< PlantData,std::allocator< PlantData > > *|std::vector< PlantData > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_ZombieInfo_std__allocatorT_ZombieInfo_t_t = {"_p_std__vectorT_ZombieInfo_std__allocatorT_ZombieInfo_t_t", "std::vector< ZombieInfo,std::allocator< ZombieInfo > > *|std::vector< ZombieInfo > *|vector< ZombieInfo > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_bool_std__allocatorT_bool_t_t = {"_p_std__vectorT_bool_std__allocatorT_bool_t_t", "std::vector< bool,std::allocator< bool > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_bool_std__allocatorT_bool_t_t = {"_p_std__vectorT_bool_std__allocatorT_bool_t_t", "std::vector< bool,std::allocator< bool > > *|std::vector< bool > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_int_std__allocatorT_int_t_t = {"_p_std__vectorT_int_std__allocatorT_int_t_t", "std::vector< int,std::allocator< int > > *|std::vector< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__pairT_int_int_t_std__allocatorT_std__pairT_int_int_t_t_t = {"_p_std__vectorT_std__pairT_int_int_t_std__allocatorT_std__pairT_int_int_t_t_t", "std::vector< Pos,std::allocator< Pos > > *|std::vector< std::pair< int,int > > *|vector< Pos > *|std::vector< std::pair< int,int >,std::allocator< std::pair< int,int > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t_t = {"_p_std__vectorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t_t", "std::vector< std::vector< Cell > > *|std::vector< std::vector< Cell,std::allocator< Cell > >,std::allocator< std::vector< Cell,std::allocator< Cell > > > > *|std::vector< std::vector< Cell,std::allocator< Cell > > > *|State *", 0, 0, (void*)0, 0};
@@ -26853,6 +26856,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_ZombieSpawnTemplate,
   &_swigt__p_allocator_type,
   &_swigt__p_char,
+  &_swigt__p_const_reference,
   &_swigt__p_difference_type,
   &_swigt__p_first_type,
   &_swigt__p_int,
@@ -26860,8 +26864,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_second_type,
   &_swigt__p_size_type,
   &_swigt__p_std__allocatorT_Cell_t,
-  &_swigt__p_std__allocatorT_PlantData_t,
   &_swigt__p_std__allocatorT_ZombieSpawnTemplate_t,
+  &_swigt__p_std__allocatorT_bool_t,
   &_swigt__p_std__allocatorT_int_t,
   &_swigt__p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t,
   &_swigt__p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t,
@@ -26877,7 +26881,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__pairT_int_int_t,
   &_swigt__p_std__vectorT_Action_std__allocatorT_Action_t_t,
   &_swigt__p_std__vectorT_Cell_std__allocatorT_Cell_t_t,
-  &_swigt__p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t,
   &_swigt__p_std__vectorT_ZombieInfo_std__allocatorT_ZombieInfo_t_t,
   &_swigt__p_std__vectorT_bool_std__allocatorT_bool_t_t,
   &_swigt__p_std__vectorT_int_std__allocatorT_int_t_t,
@@ -26901,6 +26904,7 @@ static swig_cast_info _swigc__p_ZombieInfo[] = {  {&_swigt__p_ZombieInfo, 0, 0, 
 static swig_cast_info _swigc__p_ZombieSpawnTemplate[] = {  {&_swigt__p_ZombieSpawnTemplate, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_const_reference[] = {  {&_swigt__p_const_reference, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_first_type[] = {  {&_swigt__p_first_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -26908,8 +26912,8 @@ static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 
 static swig_cast_info _swigc__p_second_type[] = {  {&_swigt__p_second_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_Cell_t[] = {  {&_swigt__p_std__allocatorT_Cell_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__allocatorT_PlantData_t[] = {  {&_swigt__p_std__allocatorT_PlantData_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_ZombieSpawnTemplate_t[] = {  {&_swigt__p_std__allocatorT_ZombieSpawnTemplate_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__allocatorT_bool_t[] = {  {&_swigt__p_std__allocatorT_bool_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_int_t[] = {  {&_swigt__p_std__allocatorT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t[] = {  {&_swigt__p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t[] = {  {&_swigt__p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -26925,7 +26929,6 @@ static swig_cast_info _swigc__p_std__listT_Zombie_p_t[] = {  {&_swigt__p_std__li
 static swig_cast_info _swigc__p_std__pairT_int_int_t[] = {  {&_swigt__p_std__pairT_int_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_Action_std__allocatorT_Action_t_t[] = {  {&_swigt__p_std__vectorT_Action_std__allocatorT_Action_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_Cell_std__allocatorT_Cell_t_t[] = {  {&_swigt__p_std__vectorT_Cell_std__allocatorT_Cell_t_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t[] = {  {&_swigt__p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_ZombieInfo_std__allocatorT_ZombieInfo_t_t[] = {  {&_swigt__p_std__vectorT_ZombieInfo_std__allocatorT_ZombieInfo_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_bool_std__allocatorT_bool_t_t[] = {  {&_swigt__p_std__vectorT_bool_std__allocatorT_bool_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_int_std__allocatorT_int_t_t[] = {  {&_swigt__p_std__vectorT_int_std__allocatorT_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -26949,6 +26952,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_ZombieSpawnTemplate,
   _swigc__p_allocator_type,
   _swigc__p_char,
+  _swigc__p_const_reference,
   _swigc__p_difference_type,
   _swigc__p_first_type,
   _swigc__p_int,
@@ -26956,8 +26960,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_second_type,
   _swigc__p_size_type,
   _swigc__p_std__allocatorT_Cell_t,
-  _swigc__p_std__allocatorT_PlantData_t,
   _swigc__p_std__allocatorT_ZombieSpawnTemplate_t,
+  _swigc__p_std__allocatorT_bool_t,
   _swigc__p_std__allocatorT_int_t,
   _swigc__p_std__allocatorT_std__vectorT_Cell_std__allocatorT_Cell_t_t_t,
   _swigc__p_std__allocatorT_std__vectorT_int_std__allocatorT_int_t_t_t,
@@ -26973,7 +26977,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__pairT_int_int_t,
   _swigc__p_std__vectorT_Action_std__allocatorT_Action_t_t,
   _swigc__p_std__vectorT_Cell_std__allocatorT_Cell_t_t,
-  _swigc__p_std__vectorT_PlantData_std__allocatorT_PlantData_t_t,
   _swigc__p_std__vectorT_ZombieInfo_std__allocatorT_ZombieInfo_t_t,
   _swigc__p_std__vectorT_bool_std__allocatorT_bool_t_t,
   _swigc__p_std__vectorT_int_std__allocatorT_int_t_t,
