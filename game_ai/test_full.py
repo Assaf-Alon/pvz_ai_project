@@ -400,22 +400,248 @@ class TestZombies(unittest.TestCase):
         self.assertEqual(level.frame, int(DEFAULT_FPS * (30 + 5 + 1 + 7 * 4.7)))
     
     def test_zombie_hp(self):
-        pass
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(20, 0, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER])
+        
+        ZOMBIE_HP = 181
+        ZOMBIE_SPAWN_FRAME = 20 * DEFAULT_FPS
+        PLANT_SHOOT_SPEED = round(1.425 * DEFAULT_FPS)
+        PLANT_DAMAGE = 20
+        
+        while not level.is_action_legal(cpp_level.PEASHOOTER, 0, 0):
+            level.step()
+        level.step(cpp_level.PEASHOOTER, 0, 0)
+        self.assertEqual(level.frame, DEFAULT_FPS * 12 + 3)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.done:
+            level.step()
+        self.assertTrue(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertLessEqual(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED)))   # It should be dead now
+        self.assertGreater(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - 2 - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED))) # It should be alive in the previous frame
     
     def test_conezombie_hp(self):
-        pass
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(20, 0, "conehead"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER])
+        
+        ZOMBIE_HP = 551
+        ZOMBIE_SPAWN_FRAME = 20 * DEFAULT_FPS
+        PLANT_SHOOT_SPEED = round(1.425 * DEFAULT_FPS)
+        PLANT_DAMAGE = 20
+        
+        while not level.is_action_legal(cpp_level.PEASHOOTER, 0, 0):
+            level.step()
+        level.step(cpp_level.PEASHOOTER, 0, 0)
+        self.assertEqual(level.frame, DEFAULT_FPS * 12 + 3)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.done:
+            level.step()
+        self.assertTrue(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertLessEqual(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED)))   # It should be dead now
+        self.assertGreater(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - 2 - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED))) # It should be alive in the previous frame
 
-    def test_bucketzombie_hp(self):
-        pass
+    def test_bucketzombie_hp1(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(30, 0, "buckethead"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER, cpp_level.WALLNUT])
+        
+        ZOMBIE_HP = 1281
+        ZOMBIE_SPAWN_FRAME = 30 * DEFAULT_FPS
+        PLANT_SHOOT_SPEED = round(1.425 * DEFAULT_FPS)
+        PLANT_DAMAGE = 20
+        
+        while not level.is_action_legal(cpp_level.PEASHOOTER, 0, 0):
+            level.step()
+        level.step(cpp_level.PEASHOOTER, 0, 0)
+        self.assertEqual(level.frame, DEFAULT_FPS * 12 + 3)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.is_action_legal(cpp_level.WALLNUT, 0, 5):
+            level.step()
+        self.assertEqual(level.frame, DEFAULT_FPS * 24 + 2)
+        level.step(cpp_level.WALLNUT, 0, 5)
+        
+        while not level.done:
+            level.step()
+            if level.is_action_legal(cpp_level.WALLNUT, 0, 3):
+                level.step(cpp_level.WALLNUT, 0, 3)
+        self.assertTrue(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertLessEqual(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED)))   # It should be dead now
+        self.assertGreater(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - 2 - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED))) # It should be alive in the previous frame
 
-    def test_polezombie_hp(self):
-        pass
+    def test_bucketzombie_hp2(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(30, 0, "buckethead"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER, cpp_level.WALLNUT])
+        
+        while not level.is_action_legal(cpp_level.PEASHOOTER, 0, 0):
+            level.step()
+        level.step(cpp_level.PEASHOOTER, 0, 0)
+        self.assertEqual(level.frame, DEFAULT_FPS * 12 + 3)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.is_action_legal(cpp_level.WALLNUT, 0, 5):
+            level.step()
+        self.assertEqual(level.frame, DEFAULT_FPS * 24 + 2)
+        level.step(cpp_level.WALLNUT, 0, 5)
+        
+        while not level.done:
+            level.step()
+
+        self.assertFalse(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, DEFAULT_FPS * (30 + 40 + 3 + 47))
+
+    
+    def test_polezombie_hp1(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(30, 0, "pole"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER, cpp_level.WALLNUT])
+        
+        ZOMBIE_HP = 335
+        ZOMBIE_SPAWN_FRAME = 30 * DEFAULT_FPS
+        PLANT_SHOOT_SPEED = round(1.425 * DEFAULT_FPS)
+        PLANT_DAMAGE = 20
+        
+        while not level.is_action_legal(cpp_level.PEASHOOTER, 0, 0):
+            level.step()
+        level.step(cpp_level.PEASHOOTER, 0, 0)
+        self.assertEqual(level.frame, DEFAULT_FPS * 12 + 3)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.done:
+            level.step()
+        self.assertTrue(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertLessEqual(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED)))   # It should be dead now
+        self.assertGreater(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - 2 - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED))) # It should be alive in the previous frame
+    
+    def test_polezombie_hp2(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(30, 0, "pole"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER, cpp_level.WALLNUT])
+        
+        ZOMBIE_HP = 335
+        ZOMBIE_SPAWN_FRAME = 30 * DEFAULT_FPS
+        PLANT_SHOOT_SPEED = round(1.425 * DEFAULT_FPS)
+        PLANT_DAMAGE = 20
+        
+        while not level.is_action_legal(cpp_level.PEASHOOTER, 0, 0):
+            level.step()
+        level.step(cpp_level.PEASHOOTER, 0, 0)
+        self.assertEqual(level.frame, DEFAULT_FPS * 12 + 3)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.is_action_legal(cpp_level.WALLNUT, 0, 3):
+            level.step()
+        self.assertEqual(level.frame, DEFAULT_FPS * 24 + 2)
+        level.step(cpp_level.WALLNUT, 0, 3)
+        
+        while not level.done:
+            level.step()
+        self.assertTrue(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertLessEqual(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED)))   # It should be dead now
+        self.assertGreater(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - 2 - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED))) # It should be alive in the previous frame
     
     def test_flagzombie_hp(self):
-        pass
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(30, 0, "flag"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER, cpp_level.WALLNUT])
+        
+        ZOMBIE_HP = 181
+        ZOMBIE_SPAWN_FRAME = 30 * DEFAULT_FPS
+        PLANT_SHOOT_SPEED = round(1.425 * DEFAULT_FPS)
+        PLANT_DAMAGE = 20
+        
+        while not level.is_action_legal(cpp_level.PEASHOOTER, 0, 0):
+            level.step()
+        level.step(cpp_level.PEASHOOTER, 0, 0)
+        self.assertEqual(level.frame, DEFAULT_FPS * 12 + 3)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.done:
+            level.step()
+        self.assertTrue(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertLessEqual(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED)))   # It should be dead now
+        self.assertGreater(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - 2 - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED))) # It should be alive in the previous frame
     
     def test_newspaperzombie_hp(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(30, 0, "pole"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER, cpp_level.WALLNUT])
+        
+        ZOMBIE_HP = 331
+        ZOMBIE_SPAWN_FRAME = 30 * DEFAULT_FPS
+        PLANT_SHOOT_SPEED = round(1.425 * DEFAULT_FPS)
+        PLANT_DAMAGE = 20
+        
+        while not level.is_action_legal(cpp_level.PEASHOOTER, 0, 0):
+            level.step()
+        level.step(cpp_level.PEASHOOTER, 0, 0)
+        self.assertEqual(level.frame, DEFAULT_FPS * 12 + 3)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.done:
+            level.step()
+        self.assertTrue(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertLessEqual(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED)))   # It should be dead now
+        self.assertGreater(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - 2 - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED))) # It should be alive in the previous frame
+    
+class TestPotatoMine(unittest.TestCase):
+    def test_potatoemine1(self):
+        # Basic
         pass
     
+    def test_potatoemine2(self):
+        # Don't give it enough time to arm
+        pass
+    
+    def test_potatoemine3(self):
+        # Multiple zombies at same tile
+        pass
+
+class TestWallnut(unittest.TestCase):
+    def test_wallnut1(self):
+        # Basic
+        pass
+    
+    def test_wallnut2(self):
+        # Lots of zombies at once
+        pass
+    
+class TestCherryBomb(unittest.TestCase):
+    def test_cherrybomb1(self):
+        # one zombie
+        pass
+    
+    def test_cherrybomb2(self):
+        # Lots of zombies at once
+        pass
+
+# TODO
+# Chomper
+# Jalapeno
+# Repeater
+# SnowPea
+# Squash
+# Threepeater
+
 if __name__ == '__main__':
     unittest.main()
