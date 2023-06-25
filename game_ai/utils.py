@@ -1,4 +1,5 @@
 import level
+import mcts
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -6,7 +7,10 @@ from pprint import pprint
 import cProfile
 from time import time
 import json
+import csv
 
+
+CSV_FILENAME = "data/data.csv"
 
 def construct_level_data_from_list(list: list):
     list.sort(key=lambda item: item[0]) # sort by first element of tuple (list[tuple])
@@ -15,53 +19,12 @@ def construct_level_data_from_list(list: list):
         level_data.push_back(level.ZombieSpawnTemplate(item[0], item[1], item[2]))
     return level_data
 
-
-
-# level_data_1_list = [
-#     (10, 1, "normal"),
-#     (11, 1, "normal"),
-#     (12, 1, "normal"),
-#     (20, 3, "normal"),
-#     (20, 2, "buckethead"),
-#     (50, 1, "flag"),
-#     (50, 4, "newspaper"),
-#     (50, 1, "conehead"),
-#     (85, 1, "normal")
-# ]
-# level_data_1 = construct_level_data_from_list(level_data_1_list)
-
-# level_data_2_list = [
-#     (10, 1, "normal"), 
-#     (11, 1, "normal"), 
-#     (12, 1, "normal"), 
-#     (20, 3, "normal"), 
-#     (20, 2, "buckethead"), 
-#     (50, 1, "flag"), 
-#     (50, 4, "newspaper"), 
-#     (50, 1, "conehead"), 
-#     (85, 1, "normal"), 
-#     (85, 2, "normal"), 
-#     (85, 3, "normal")
-# ]
-
-chosen_plants_1 = [level.SUNFLOWER, level.PEASHOOTER, level.POTATOMINE, level.SQUASH, level.SPIKEWEED, level.WALLNUT]
-chosen_plants_basic = [level.SUNFLOWER, level.PEASHOOTER]
-lvl9_legal_plants = [level.SUNFLOWER, level.PEASHOOTER, level.WALLNUT, level.POTATOMINE, level.REPEATERPEA, level.CHERRYBOMB]
-# Actual levels
-with open("data/levels.json", "r") as level_json:
-    levels = json.load(level_json)
-lvl1_data = construct_level_data_from_list(levels["level_1"])
-lvl2_data = construct_level_data_from_list(levels["level_2"])
-lvl3_data = construct_level_data_from_list(levels["level_3"])
-lvl4_data = construct_level_data_from_list(levels["level_4"])
-lvl9_data = construct_level_data_from_list(levels["level_9"])
-
-chosen_plants_lvl1 = [level.PEASHOOTER]
-chosen_plants_lvl2 = [level.PEASHOOTER, level.SUNFLOWER]
-chosen_plants_lvl3 = [level.PEASHOOTER, level.SUNFLOWER, level.CHERRYBOMB]
-chosen_plants_lvl4 = [level.PEASHOOTER, level.SUNFLOWER, level.CHERRYBOMB, level.WALLNUT]
-
-
+def get_level_info(level_num: int):
+    with open("data/levels.json", "r") as level_json:
+        levels = json.load(level_json)
+    level_info = levels[f"level_{level_num}"]
+    zombie_list, plant_list = level_info["zombies"], level_info["plants"]
+    return construct_level_data_from_list(zombie_list), plant_list
 
 def get_numpy_arr_from_level_obs(level: level.Level):
     arr = level.get_observation()
@@ -98,15 +61,6 @@ def get_frame_from_obs(observation: np.ndarray):
                     plant_pixel = [0, 0, intensity]
                 else: # mine/special plants are purple
                     plant_pixel = [intensity, 0, intensity]
-            # else:
-            #     if hp_thirds == 1:
-            #         left_color = [1, 0, 0]  # Red
-            #     elif hp_thirds == 2:
-            #         left_color = [1, 1, 0]  # Yellow
-            #     elif hp_thirds == 3:
-            #         left_color = [0, 1, 0]  # Green
-            #     else:
-            #         left_color = [0, 0, 0]  # Black
 
             # Calculate the color for the right half of the cell based on zombie_danger
             if zombie_danger != 0:
@@ -148,7 +102,7 @@ def animate_observation_buffer(frame_buffer: list):
     plt.show()
 
 def run_animation():
-    level = level.Level(5, 10, 10, lvl1_data, chosen_plants_basic)
+    level = level.Level(5, 10, 10, get_level_info(1))
     frame_list = []
     while not level.done:
         level.step(level.get_random_action())
@@ -177,7 +131,7 @@ def action_to_string(action: level.Action):
     return f"action: plant {plant_to_name[action.plant_name]} at coords: {action.lane}, {action.col}"
     
 def estimate_simulation_speed():
-    level = level.Level(5, 10, 10, lvl1_data, chosen_plants_basic)
+    level = level.Level(5, 10, 10, get_level_info(1))
     num_rollout = 1000000
     start = time()
     level.rollout(14, num_rollout)
@@ -187,7 +141,7 @@ def estimate_simulation_speed():
 def play_level1():
     FPS = 10
     GAMES = 10000
-    env = level.Level(1, 10, FPS, lvl1_data, chosen_plants_lvl1)
+    env = level.Level(1, 10, FPS, get_level_info(1))
     print(f"Level 1 Mode 1: {env.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 1 Mode 2: {env.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 1 Mode 3: {env.rollout(8, GAMES, 3)} / {GAMES}")
@@ -195,7 +149,7 @@ def play_level1():
 def play_level2():
     FPS = 10
     GAMES = 10000
-    env = level.Level(3, 10, FPS, lvl2_data, chosen_plants_lvl2)
+    env = level.Level(3, 10, FPS, get_level_info(2))
     print(f"Level 2 Mode 1: {env.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 2 Mode 2: {env.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 2 Mode 3: {env.rollout(8, GAMES, 3)} / {GAMES}")
@@ -203,7 +157,7 @@ def play_level2():
 def play_level3():
     FPS = 10
     GAMES = 10000
-    env = level.Level(3, 10, FPS, lvl3_data, chosen_plants_lvl3)
+    env = level.Level(3, 10, FPS, get_level_info(3))
     print(f"Level 3 Mode 1: {env.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 3 Mode 2: {env.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 3 Mode 3: {env.rollout(8, GAMES, 3)} / {GAMES}")
@@ -211,10 +165,21 @@ def play_level3():
 def play_level4():
     FPS = 10
     GAMES = 100000
-    env = level.Level(5, 10, FPS, lvl4_data, chosen_plants_lvl4)
+    env = level.Level(5, 10, FPS, get_level_info(4))
     print(f"Level 4 Mode 1: {env.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 4 Mode 2: {env.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 4 Mode 3: {env.rollout(8, GAMES, 3)} / {GAMES}")
+
+def csv_append(new_data: dict, filename=CSV_FILENAME):
+    """
+    CSV columns are:
+    level, time_ms, threads, ucb_const, rollout_mode, win, num_steps
+    NOTE: num_steps is the number of steps needed to achieve a state from which empty steps give a victory!!! set to -1 for losses.
+    """
+    data_csv = open(filename, "a+")
+    data_writer = csv.writer(data_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONE)
+    new_row = [new_data["level"], new_data["time_ms"], new_data["threads"], new_data["ucb_const"], new_data["rollout_mode"], new_data["win"], new_data["num_steps"]]
+    data_writer.writerow(new_row)
 
 if __name__ == "__main__":
     play_level1()

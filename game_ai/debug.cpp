@@ -221,7 +221,7 @@ int main() {
     // estimate_speed(env);
     // std::cout << env.rollout(-1, 20, 4) << std::endl;
     while (!env.done) {
-        Action run_result = run(env, 1700, 1, true, 30);
+        Action run_result = run(env, 1700, 8, true, 1.4, 1);
         while (!env.is_action_legal(run_result) && !(env.done)){
             env.step();
         }
