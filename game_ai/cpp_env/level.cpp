@@ -1,6 +1,6 @@
 #include "level.hpp"
-#include "zombie.h"
-#include "plant.h"
+#include "zombie.hpp"
+#include "plant.hpp"
 #include <algorithm>
 using std::cout;
 using std::endl;

@@ -1,6 +1,6 @@
 #include "level.hpp"
-#include "zombie.h"
-#include "plant.h"
+#include "zombie.hpp"
+#include "plant.hpp"
 
 #include <unistd.h>
 
@@ -22,7 +22,13 @@ Zombie::Zombie(const std::string &type, int lane, const Level &level) : lane(lan
     {
         this->hp = 331;
     }
-    else if (type == "pole") {
+    else if (type == "football")
+    {
+        this->hp = 1581;
+        this->move_interval_seconds = 2.5;
+    }
+    else if (type == "pole")
+    {
         this->can_jump = true;
         this->hp = 335;
         this->move_interval_seconds = 2.5;

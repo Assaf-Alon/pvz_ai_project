@@ -1,6 +1,6 @@
 #include "level.hpp"
-#include "zombie.h"
-#include "plant.h"
+#include "zombie.hpp"
+#include "plant.hpp"
 
 Plant::Plant(int lane, int column, const PlantData& plant_data, int frame, int fps){
     this->hp = plant_data.hp;
@@ -89,12 +89,12 @@ bool cherrybomb_action(Level& level, Plant& plant){
     //explode
     for (int i = -1; i <= 1; i++){
         int target_lane = plant.lane + i;
-        if (target_lane <= 0 || target_lane >= level.lanes){
+        if (target_lane < 0 || target_lane >= level.lanes){
             continue;
         }
         for (int j = -1; j <= 1; j++){
             int target_col = plant.col + j;
-            if(target_col <= 0 || target_col >= level.cols){
+            if(target_col < 0 || target_col >= level.cols){
                 continue;
             }
             std::list<Zombie*> &cell = level.zombie_grid[target_lane][target_col];

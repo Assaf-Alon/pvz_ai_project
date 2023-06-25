@@ -14,7 +14,7 @@
 #include <omp.h>
 #include <utility>
 #include <chrono>
-#include "plant.h"
+#include "plant.hpp"
 using std::vector;
 using std::string;
 using std::pair;
@@ -46,7 +46,7 @@ enum PlantName { NO_PLANT, CHERRYBOMB, CHOMPER,
                  SUNSHROOM, THREEPEATER, WALLNUT,
                  NUM_PLANTS };
 
-// try to move it to plant.h
+// try to move it to plant.hpp
 class PlantData {
     public:
     int hp;
@@ -95,7 +95,7 @@ class ZombieSpawnTemplate {
     ZombieSpawnTemplate(int second, int lane, std::string type): second(second), lane(lane), type(type) {};
 };
 
-// try to move to zombie.h
+// try to move to zombie.hpp
 class ZombieInfo {
     public:
     int hp;
@@ -105,7 +105,7 @@ class ZombieInfo {
     bool frozen;
 };
 
-// try to move to plant.h
+// try to move to plant.hpp
 class PlantInfo {
     public:
     int hp;

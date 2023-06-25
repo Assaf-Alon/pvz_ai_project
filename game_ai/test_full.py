@@ -399,6 +399,19 @@ class TestZombies(unittest.TestCase):
         self.assertFalse(level.win)
         self.assertEqual(level.frame, int(DEFAULT_FPS * (30 + 5 + 1 + 7 * 4.7)))
     
+    def test_football_speed(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(1, 0, "football"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER])
+        
+        while not level.done:
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (10 * 2.5 + 1)))
+    
     def test_zombie_hp(self):
         # Init level
         level_data = cpp_level.ZombieQueue()
@@ -502,7 +515,6 @@ class TestZombies(unittest.TestCase):
         self.assertTrue(level.win)
         self.assertEqual(level.frame, DEFAULT_FPS * (30 + 40 + 3 + 47))
 
-    
     def test_polezombie_hp1(self):
         # Init level
         level_data = cpp_level.ZombieQueue()
@@ -603,37 +615,393 @@ class TestZombies(unittest.TestCase):
         self.assertTrue(level.win)
         self.assertLessEqual(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED)))   # It should be dead now
         self.assertGreater(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - 2 - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED))) # It should be alive in the previous frame
-    
-class TestPotatoMine(unittest.TestCase):
-    def test_potatoemine1(self):
-        # Basic
-        pass
-    
-    def test_potatoemine2(self):
-        # Don't give it enough time to arm
-        pass
-    
-    def test_potatoemine3(self):
-        # Multiple zombies at same tile
-        pass
 
-class TestWallnut(unittest.TestCase):
-    def test_wallnut1(self):
-        # Basic
-        pass
     
+    def test_football_hp1(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(30, 0, "football"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER, cpp_level.WALLNUT])
+        
+        while not level.is_action_legal(cpp_level.PEASHOOTER, 0, 0):
+            level.step()
+        level.step(cpp_level.PEASHOOTER, 0, 0)
+        self.assertEqual(level.frame, DEFAULT_FPS * 12 + 3)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.is_action_legal(cpp_level.WALLNUT, 0, 5):
+            level.step()
+        self.assertEqual(level.frame, DEFAULT_FPS * 24 + 2)
+        level.step(cpp_level.WALLNUT, 0, 5)
+        
+        while not level.done:
+            level.step()
+
+        self.assertFalse(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, DEFAULT_FPS * (30 + 40 + 3 + 25))
+    
+    def test_football_hp2(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(30, 0, "football"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.PEASHOOTER, cpp_level.WALLNUT])
+        
+        ZOMBIE_HP = 1581
+        ZOMBIE_SPAWN_FRAME = 30 * DEFAULT_FPS
+        PLANT_SHOOT_SPEED = round(1.425 * DEFAULT_FPS)
+        PLANT_DAMAGE = 20
+        
+        while not level.is_action_legal(cpp_level.PEASHOOTER, 0, 0):
+            level.step()
+        level.step(cpp_level.PEASHOOTER, 0, 0)
+        self.assertEqual(level.frame, DEFAULT_FPS * 12 + 3)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.is_action_legal(cpp_level.WALLNUT, 0, 5):
+            level.step()
+        self.assertEqual(level.frame, DEFAULT_FPS * 24 + 2)
+        level.step(cpp_level.WALLNUT, 0, 5)
+        
+        while not level.done:
+            level.step()
+            if level.is_action_legal(cpp_level.WALLNUT, 0, 3):
+                level.step(cpp_level.WALLNUT, 0, 3)
+        self.assertTrue(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertLessEqual(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED)))   # It should be dead now
+        self.assertGreater(ZOMBIE_HP, PLANT_DAMAGE * (1 + ((level.frame - 2 - ZOMBIE_SPAWN_FRAME) // PLANT_SHOOT_SPEED))) # It should be alive in the previous frame
+
+
+  
+class TestPotatoMine(unittest.TestCase):
+    # Basic
+    def test_potatoemine1(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(5, 0, "zombie"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.POTATOMINE])
+        
+        self.assertTrue(level.is_action_legal(cpp_level.POTATOMINE, 0, 0))
+        level.step(cpp_level.POTATOMINE, 0, 0)
+        self.assertEqual(level.suns, 25)
+        
+        while not level.done:
+            level.step()
+
+        self.assertTrue(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (5 + 9 * 4.7)))
+
+    # Much HP
+    def test_potatomine2(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(5, 0, "football"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.POTATOMINE])
+        
+        self.assertTrue(level.is_action_legal(cpp_level.POTATOMINE, 0, 0))
+        level.step(cpp_level.POTATOMINE, 0, 0)
+        self.assertEqual(level.suns, 25)
+        
+        while not level.done:
+            level.step()
+
+        self.assertTrue(level.lawnmowers[0])
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (5 + 9 * 2.5)))
+    
+    # Don't give it enough time to arm
+    def test_potatoemine3(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(5, 3, "football"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.POTATOMINE])
+        
+        self.assertTrue(level.is_action_legal(cpp_level.POTATOMINE, 3, 0))
+        level.step(cpp_level.POTATOMINE, 3, 8)
+        self.assertEqual(level.suns, 25)
+        
+        while not level.done:
+            level.step()
+
+        self.assertFalse(level.lawnmowers[3])
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (5 + 3 + 10 * 2.5)))
+    
+    # Multiple zombies at same tile
+    def test_potatoemine4(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(5, 1, "football"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(5, 1, "football"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.POTATOMINE])
+        
+        self.assertTrue(level.is_action_legal(cpp_level.POTATOMINE, 1, 0))
+        level.step(cpp_level.POTATOMINE, 1, 0)
+        self.assertEqual(level.suns, 25)
+        
+        while not level.done:
+            level.step()
+
+        self.assertTrue(level.lawnmowers[1])
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (5 + 9 * 2.5)))
+
+    # Multiple zombies at same tile
+    def test_potatoemine5(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(5, 1, "football"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(6, 1, "football"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.POTATOMINE])
+        
+        self.assertTrue(level.is_action_legal(cpp_level.POTATOMINE, 1, 0))
+        level.step(cpp_level.POTATOMINE, 1, 0)
+        self.assertEqual(level.suns, 25)
+        
+        while not level.done:
+            level.step()
+
+        self.assertFalse(level.lawnmowers[1])
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (6 + 10 * 2.5)))
+    
+class TestWallnut(unittest.TestCase):
+    # Basic
+    def test_wallnut1(self):
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(10, 1, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.WALLNUT])
+        
+        self.assertTrue(level.is_action_legal(cpp_level.WALLNUT, 1, 0))
+        level.step(cpp_level.WALLNUT, 1, 0)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.done:
+            level.step()
+
+        self.assertFalse(level.lawnmowers[1])
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (10 + 40 + 10 * 4.7)))
+    
+    # Lots of zombies at once
     def test_wallnut2(self):
-        # Lots of zombies at once
-        pass
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(10, 1, "normal"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(10, 1, "normal"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(10, 1, "normal"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(10, 1, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.WALLNUT])
+        
+        self.assertTrue(level.is_action_legal(cpp_level.WALLNUT, 1, 0))
+        level.step(cpp_level.WALLNUT, 1, 0)
+        self.assertEqual(level.suns, 0)
+        
+        while not level.done:
+            level.step()
+
+        self.assertFalse(level.lawnmowers[1])
+        self.assertTrue(level.win)
+        self.assertEqual(level.frame, int(DEFAULT_FPS * (10 + 10 + 10 * 4.7)))
     
 class TestCherryBomb(unittest.TestCase):
+    # One zombie
     def test_cherrybomb1(self):
-        # one zombie
-        pass
+        ZOMBIE_SPAWN_SECOND = 10
+        ZOMBIE_SPEED = 4.7
+        TIME_TO_EXPLODE = 1.2
+        
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND, 1, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.CHERRYBOMB])
+        
+        level.suns = 1000
+        
+        # self.assertFalse(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 0))
+        while level.frame < int(DEFAULT_FPS * (10 + ZOMBIE_SPEED * 4) + 1):
+            level.step()
+        
+        self.assertTrue(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 5))
+        level.step(cpp_level.CHERRYBOMB, 1, 4)
+        for i in range(int(DEFAULT_FPS * TIME_TO_EXPLODE)):
+            self.assertFalse(level.done, msg=f"Game is over too soon at frame {level.frame}. Iteration {i} out of {int(DEFAULT_FPS * TIME_TO_EXPLODE + 10)}")
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.lawnmowers[1])
+        self.assertTrue(level.win)
     
     def test_cherrybomb2(self):
-        # Lots of zombies at once
-        pass
+        ZOMBIE_SPAWN_SECOND = 10
+        ZOMBIE_SPEED = 4.7
+        TIME_TO_EXPLODE = 1.2
+        
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND, 1, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.CHERRYBOMB])
+        
+        level.suns = 1000
+        
+        # self.assertFalse(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 0))
+        while level.frame < int(DEFAULT_FPS * (10 + ZOMBIE_SPEED * 4) + 1):
+            level.step()
+        
+        self.assertTrue(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 5))
+        level.step(cpp_level.CHERRYBOMB, 0, 4)
+        for i in range(int(DEFAULT_FPS * TIME_TO_EXPLODE)):
+            self.assertFalse(level.done, msg=f"Game is over too soon at frame {level.frame}. Iteration {i} out of {int(DEFAULT_FPS * TIME_TO_EXPLODE + 10)}")
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.lawnmowers[1])
+        self.assertTrue(level.win)
+    
+    def test_cherrybomb3(self):
+        ZOMBIE_SPAWN_SECOND = 10
+        ZOMBIE_SPEED = 4.7
+        TIME_TO_EXPLODE = 1.2
+        
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND, 1, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.CHERRYBOMB])
+        
+        level.suns = 1000
+        
+        # self.assertFalse(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 0))
+        while level.frame < int(DEFAULT_FPS * (10 + ZOMBIE_SPEED * 4) + 1):
+            level.step()
+        
+        self.assertTrue(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 5))
+        level.step(cpp_level.CHERRYBOMB, 2, 4)
+        for i in range(int(DEFAULT_FPS * TIME_TO_EXPLODE)):
+            self.assertFalse(level.done, msg=f"Game is over too soon at frame {level.frame}. Iteration {i} out of {int(DEFAULT_FPS * TIME_TO_EXPLODE + 10)}")
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.lawnmowers[1])
+        self.assertTrue(level.win)
+    
+    def test_cherrybomb4(self):
+        ZOMBIE_SPAWN_SECOND = 10
+        ZOMBIE_SPEED = 4.7
+        TIME_TO_EXPLODE = 1.2
+        
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND, 1, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.CHERRYBOMB])
+        
+        level.suns = 1000
+        
+        # self.assertFalse(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 0))
+        while level.frame < int(DEFAULT_FPS * (10 + ZOMBIE_SPEED * 4) + 1):
+            level.step()
+        
+        self.assertTrue(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 5))
+        level.step(cpp_level.CHERRYBOMB, 1, 5)
+        for i in range(int(DEFAULT_FPS * TIME_TO_EXPLODE)):
+            self.assertFalse(level.done, msg=f"Game is over too soon at frame {level.frame}. Iteration {i} out of {int(DEFAULT_FPS * TIME_TO_EXPLODE + 10)}")
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.lawnmowers[1])
+        self.assertTrue(level.win)
+        
+    def test_cherrybomb5(self):
+        ZOMBIE_SPAWN_SECOND = 10
+        ZOMBIE_SPEED = 4.7
+        TIME_TO_EXPLODE = 1.2
+        
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND, 1, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.CHERRYBOMB])
+        
+        level.suns = 1000
+        
+        # self.assertFalse(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 0))
+        while level.frame < int(DEFAULT_FPS * (10 + ZOMBIE_SPEED * 4) + 1):
+            level.step()
+        
+        self.assertTrue(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 5))
+        level.step(cpp_level.CHERRYBOMB, 2, 5)
+        for i in range(int(DEFAULT_FPS * TIME_TO_EXPLODE)):
+            self.assertFalse(level.done, msg=f"Game is over too soon at frame {level.frame}. Iteration {i} out of {int(DEFAULT_FPS * TIME_TO_EXPLODE + 10)}")
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.lawnmowers[1])
+        self.assertTrue(level.win)
+    
+    def test_cherrybomb6(self):
+        ZOMBIE_SPAWN_SECOND = 10
+        ZOMBIE_SPEED = 4.7
+        TIME_TO_EXPLODE = 1.2
+        
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND, 1, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.CHERRYBOMB])
+        
+        level.suns = 1000
+        
+        # self.assertFalse(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 0))
+        while level.frame < int(DEFAULT_FPS * (10 + ZOMBIE_SPEED * 4) + 1):
+            level.step()
+        
+        self.assertTrue(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 5))
+        level.step(cpp_level.CHERRYBOMB, 1, 6)
+        for i in range(int(DEFAULT_FPS * TIME_TO_EXPLODE)):
+            self.assertFalse(level.done, msg=f"Game is over too soon at frame {level.frame}. Iteration {i} out of {int(DEFAULT_FPS * TIME_TO_EXPLODE + 10)}")
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.lawnmowers[1])
+
+    def test_cherrybomb7(self):
+        ZOMBIE_SPAWN_SECOND = 10
+        ZOMBIE_SPEED = 4.7
+        TIME_TO_EXPLODE = 1.2
+        
+        # Init level
+        level_data = cpp_level.ZombieQueue()
+        # level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND - 4, 0, "normal"))
+        # level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND - 4, 1, "normal"))
+        # level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND - 4, 2, "normal"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND, 0, "normal"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND, 1, "normal"))
+        level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND, 2, "normal"))
+        # level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND + 5, 0, "normal"))
+        # level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND + 5, 1, "normal"))
+        # level_data.push_back(cpp_level.ZombieSpawnTemplate(ZOMBIE_SPAWN_SECOND + 5, 2, "normal"))
+        level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.CHERRYBOMB])
+        
+        level.suns = 1000
+        
+        # self.assertFalse(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 0))
+        while level.frame < int(DEFAULT_FPS * (10 + ZOMBIE_SPEED * 4) + 5):
+            # expected_tile = 9 - ((level.frame - ZOMBIE_SPAWN_SECOND * DEFAULT_FPS) // int(DEFAULT_FPS * ZOMBIE_SPEED))
+            # print(f"[{level.frame}] Expected zombie tile: {expected_tile}")
+            level.step()
+        
+        self.assertTrue(level.is_action_legal(cpp_level.CHERRYBOMB, 1, 5))
+        level.step(cpp_level.CHERRYBOMB, 1, 5)
+        for i in range(int(DEFAULT_FPS * TIME_TO_EXPLODE)):
+            # expected_tile = 9 - ((level.frame - ZOMBIE_SPAWN_SECOND * DEFAULT_FPS) // int(DEFAULT_FPS * ZOMBIE_SPEED))
+            # print(f"[{level.frame}] * Expected zombie tile: {expected_tile}")
+            self.assertFalse(level.done, msg=f"Game is over too soon at frame {level.frame}. Iteration {i} out of {int(DEFAULT_FPS * TIME_TO_EXPLODE + 10)}")
+            level.step()
+        
+        self.assertTrue(level.done)
+        self.assertTrue(level.lawnmowers[1])
+        self.assertTrue(level.win)
+
 
 # TODO
 # Chomper
