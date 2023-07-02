@@ -141,7 +141,7 @@ def estimate_simulation_speed():
 def play_level1():
     FPS = 10
     GAMES = 10000
-    env = level.Level(1, 10, FPS, get_level_info(1))
+    env = level.Level(1, 10, FPS, *get_level_info(1))
     print(f"Level 1 Mode 1: {env.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 1 Mode 2: {env.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 1 Mode 3: {env.rollout(8, GAMES, 3)} / {GAMES}")
@@ -149,7 +149,7 @@ def play_level1():
 def play_level2():
     FPS = 10
     GAMES = 10000
-    env = level.Level(3, 10, FPS, get_level_info(2))
+    env = level.Level(3, 10, FPS, *get_level_info(2))
     print(f"Level 2 Mode 1: {env.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 2 Mode 2: {env.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 2 Mode 3: {env.rollout(8, GAMES, 3)} / {GAMES}")
@@ -157,18 +157,26 @@ def play_level2():
 def play_level3():
     FPS = 10
     GAMES = 10000
-    env = level.Level(3, 10, FPS, get_level_info(3))
+    env = level.Level(3, 10, FPS, *get_level_info(3))
     print(f"Level 3 Mode 1: {env.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 3 Mode 2: {env.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 3 Mode 3: {env.rollout(8, GAMES, 3)} / {GAMES}")
 
 def play_level4():
     FPS = 10
-    GAMES = 100000
-    env = level.Level(5, 10, FPS, get_level_info(4))
+    GAMES = 10000
+    env = level.Level(5, 10, FPS, *get_level_info(4))
     print(f"Level 4 Mode 1: {env.rollout(8, GAMES, 1)} / {GAMES}")
     print(f"Level 4 Mode 2: {env.rollout(8, GAMES, 2)} / {GAMES}")
     print(f"Level 4 Mode 3: {env.rollout(8, GAMES, 3)} / {GAMES}")
+
+def play_level9():
+    FPS = 10
+    GAMES = 10000
+    env = level.Level(5, 10, FPS, *get_level_info(9))
+    print(f"Level 9 Mode 1: {env.rollout(8, GAMES, 1)} / {GAMES}")
+    print(f"Level 9 Mode 2: {env.rollout(8, GAMES, 2)} / {GAMES}")
+    print(f"Level 9 Mode 3: {env.rollout(8, GAMES, 3)} / {GAMES}")
 
 def csv_append(new_data: dict, filename=CSV_FILENAME):
     """
@@ -189,6 +197,9 @@ if __name__ == "__main__":
     play_level3()
     print()
     play_level4()
+    print()
+    play_level9()
+    print()
     # level = level.Level(5, 10, 10, level_data_1, chosen_plants_1)
     # print(level.rollout(8, 10000, 1))
     # print(level.rollout(8, 10000, 2))

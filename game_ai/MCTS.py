@@ -31,6 +31,11 @@ def perform_experiment(num_level, time_ms, threads, ucb_const, rollout_mode):
         action = mcts.run(env, int(time_ms), int(threads), False, float(ucb_const), int(rollout_mode))
         env.deferred_step(action)
         action_list.append(action)
+        # # To view the choices in each step
+        # print("-------------------------------------")
+        # print(f"[{env.frame}] Action chosen: lane: {action.lane}, col: {action.col}, plant: {utils.plant_to_name[action.plant_name]}")
+        # print(f"lawnmowers: {env.lawnmowers[0]} {env.lawnmowers[1]} {env.lawnmowers[2]} {env.lawnmowers[3]} {env.lawnmowers[4]}")
+        # input("Press enter")
         try_early_finish(env)
     result_dict = {
         "level": num_level,
@@ -52,3 +57,6 @@ if __name__ == "__main__":
         for j in range(1, 10):
             print(f"starting experiment with args: {args}")
             perform_experiment(*args)
+    # args = ["9+", 5000, 8, 1.4, 0]
+    # perform_experiment(*args)
+    
