@@ -216,12 +216,12 @@ void estimate_speed(Level& level) {
     run(level, 5000, 1, true, 1.4);
 }
 int main() {
-    Level env = Level(5, 10, 10, get_level_data_9(), default_chosen_plants);
+    Level env = Level(5, 10, 10, get_level_data_9(), basic_chosen_plants);
     // std::cout << env.rollout(1, 100000, 1) << std::endl;
     // estimate_speed(env);
     // std::cout << env.rollout(-1, 20, 4) << std::endl;
     while (!env.done) {
-        Action run_result = run(env, 1700, 8, true, 1.4, 1);
+        Action run_result = run(env, 2000, 8, true, 1.4, 0);
         while (!env.is_action_legal(run_result) && !(env.done)){
             env.step();
         }

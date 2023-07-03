@@ -30,6 +30,12 @@ inline int get_random_number(const int min, const int max){
     return distribution(generator);
 }
 
+inline double get_normal_sample(const double expected, const double variance) {
+    thread_local std::mt19937 generator(std::random_device{}());
+    std::normal_distribution<double> distribution(expected, variance);
+    return distribution(generator);
+}
+
 class Level;
 class Zombie;
 class ZombieInfo;
@@ -89,10 +95,19 @@ static const std::array<PlantData, NUM_PLANTS> plant_data = {
 class ZombieSpawnTemplate {
     public:
     int second;
+    int frame;
     int lane;
+    int effective_lane;
     std::string type;
     ZombieSpawnTemplate() = default;
-    ZombieSpawnTemplate(int second, int lane, std::string type): second(second), lane(lane), type(type) {};
+    ZombieSpawnTemplate(int second, int lane, std::string type): second(second), lane(lane), type(type) {
+        frame = 0;
+        effective_lane = lane;
+    };
+    bool operator< (const ZombieSpawnTemplate& other) {
+        return this->frame < other.frame;
+        // return this->second < other.second;
+    }
 };
 
 // try to move to zombie.hpp
@@ -175,19 +190,22 @@ public:
     std::deque<ZombieSpawnTemplate> level_data;
     std::vector<int> plant_cooldowns = std::vector<int>(9999, NUM_PLANTS);
     std::vector<Pos> free_spaces;
+    bool randomize;
 
 
     // Constructors, copy, destructors
-    Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants);
-    Level* clone() const;
+    Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants, bool randomize=false);
+    Level* clone(int clone_mode=0) const;
     Level(const Level& other_level);
     ~Level();
+    void randomize_level_data(double variance=1.0);
 
     // Step and step-related
     void step(const Action& action);
     void step(int plant, int row, int col);
     void step();
     void deferred_step(const Action& action);
+    private:
     void do_zombie_actions();
     void do_plant_actions();
     void do_player_action(const Action& action);
@@ -197,6 +215,7 @@ public:
     void plant(const Action& action);
 
     // Action related
+    public:
     bool is_action_legal(const Action& action) const;
     bool is_action_legal(int plant, int row, int col) const;
     const Action get_random_action() const; // guranteed to be legal

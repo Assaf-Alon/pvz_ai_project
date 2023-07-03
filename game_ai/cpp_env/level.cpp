@@ -8,7 +8,8 @@ using std::string;
 using std::vector;
 using std::list;
 
-Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants) : lanes(lanes), cols(columns), fps(fps), level_data(level_data)
+Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> level_data, vector<int> legal_plants, bool randomize) : \
+    lanes(lanes), cols(columns), fps(fps), level_data(level_data), randomize(randomize)
 {
     this->plant_grid = vector<vector<Plant*>>(lanes, vector<Plant*>(cols, nullptr));
     this->zombie_grid = vector<vector<list<Zombie*>>>(lanes, vector<list<Zombie*>>(cols, list<Zombie*>()));
@@ -16,7 +17,6 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> le
     this->sun_interval = this->fps * this->sun_interval_seconds;
     this->chosen_plants = std::vector<int>(legal_plants);
     this->plant_cooldowns = std::vector<int>(NUM_PLANTS, 99999);
-    // this->plant_cooldowns = std::vector<int>(9999, NUM_PLANTS);
     for (auto plant_name : legal_plants){
         this->plant_cooldowns[plant_name] = 0;
     }
@@ -26,10 +26,48 @@ Level::Level(int lanes, int columns, int fps, std::deque<ZombieSpawnTemplate> le
             this->free_spaces.push_back(Pos(lane, col));
         }
     }
+    
+    for(auto& zombie : this->level_data){
+        zombie.frame = zombie.second * fps;
+    }
+    if (randomize){
+        this->randomize_level_data();
+    }
 }
 
-Level* Level::clone() const{
-    return new Level(*this);
+Level* Level::clone(int clone_mode) const{
+    /*
+    clone mode effects:
+    -1: force deterministic
+    0: keep same as original 
+    1: force random
+    defaults to 0.
+    */
+    Level* cloned = new Level(*this);
+    switch (clone_mode){
+        case -1:
+            cloned->randomize = false;
+        break;
+        case 0:
+            if (this->randomize){
+                cloned->randomize_level_data();
+            }
+        break;
+        case 1:
+            cloned->randomize = true;
+            cloned->randomize_level_data();
+        break;
+    }
+    return cloned;
+}
+
+void Level::randomize_level_data(double varience) {
+    // std::cout << "randomizing" << std::endl;
+    for (auto& zombie : this->level_data) {
+        zombie.frame = static_cast<int>(get_normal_sample(zombie.second * this->fps, varience * this->fps));
+        zombie.effective_lane = get_random_number(std::max(zombie.lane - 1, 0), std::min(zombie.lane + 1, this->lanes - 1));
+    }
+    std::sort(this->level_data.begin(), this->level_data.end());
 }
 
 void Level::append_zombie(int second, int lane, std::string type){
@@ -50,6 +88,7 @@ Level::Level(const Level& other_level)
     this->sun_interval = other_level.sun_interval;
     this->fps = other_level.fps;
     this->return_state = other_level.return_state;
+    this->randomize = other_level.randomize;
 
     // Copy lawnmowers
     this->lawnmowers = other_level.lawnmowers;
@@ -91,6 +130,10 @@ Level::Level(const Level& other_level)
 
     // Copy chosen plants
     this->chosen_plants = vector<int>(other_level.chosen_plants);
+
+    // if (this->randomize){
+    //     this->randomize_level_data();
+    // }
 }
 
 
@@ -184,11 +227,11 @@ void Level::do_player_action(const Action &action)
 }
 void Level::spawn_zombies()
 {
-    while (!this->level_data.empty() && this->level_data.front().second * this->fps <= this->frame)
+    while (!this->level_data.empty() && this->level_data.front().frame <= this->frame)
     {
         ZombieSpawnTemplate zombie_template = this->level_data.front();
         this->level_data.pop_front();
-        Zombie *new_zombie = new Zombie(zombie_template.type, zombie_template.lane, *this);
+        Zombie *new_zombie = new Zombie(zombie_template.type, zombie_template.effective_lane, *this);
         this->zombie_list.push_back(new_zombie);
         this->zombie_grid[new_zombie->lane][new_zombie->col].push_back(new_zombie);
         #ifdef DEBUG
@@ -199,7 +242,7 @@ void Level::spawn_zombies()
     }
 }
 void Level::spawn_suns()
-{
+{ 
     if ((this->frame - this->last_sun_generated) >= this->sun_interval)
     {
         this->suns += 25;
@@ -207,7 +250,11 @@ void Level::spawn_suns()
         #ifdef DEBUG
         LOG_FRAME(this->frame, "Generated sun. total: " + std::to_string(this->suns));
         #endif
+        if (this->randomize) {
+            this->last_sun_generated = static_cast<int>(get_normal_sample(this->frame, this->fps));
+        }
     }
+
 }
 bool Level::check_endgame()
 {

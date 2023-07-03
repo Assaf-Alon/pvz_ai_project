@@ -15,47 +15,44 @@ using std::vector;
 extern float ucb_coefficient;
 extern int rollouts_per_leaf;
 static vector<Action> action_space;
-extern int rollout_mode;
+// extern int rollout_mode;
 
 class Node;
 
 class Node {
     public:
-    int num_rollouts;
-    int num_wins;
+    int simulations;
+    int wins;
     bool terminal;
     Level* level;
     Node* parent;
     Action action;
     vector<Node*> children;
     vector<Action> available_actions;
-    void expand();
-    void backpropagate(int wins, int simulations);
-    void rollout();
-    inline double ucb() const {
+    inline double ucb(int rollout_mode) const {
         if (this->level->done) {
-            return 0;
+            return int(this->level->win);
         }
-        if (this->num_rollouts == 0) { // MAX EXPLORE!
+        if (this->simulations == 0) { // MAX EXPLORE!
             std::cout << "reched ucb with 0 rollouts, should this be possible??" << std::endl;
             return 100000;
         }
-        int wins = this->num_wins;
-        int rollouts = this->num_rollouts;
+        int wins = this->wins;
+        int rollouts = this->simulations;
         int parent_rollouts;
         if (this->parent != nullptr) {
-            parent_rollouts = this->parent->num_rollouts;
+            parent_rollouts = this->parent->simulations;
             if (parent_rollouts == 0) {
                 std::cout << "TODO SHOULDN'T GET HERE IMO?!!" << std::endl;
                 return 0;
             }
         }
         else {
-            parent_rollouts = this->num_rollouts;
+            parent_rollouts = this->simulations;
         }
         double ucb;
         if (rollout_mode == 2){
-            ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(log((double)parent_rollouts / rollouts_per_leaf) / (rollouts * rollouts_per_leaf)));
+            ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(log((double)parent_rollouts / rollouts_per_leaf) / (rollouts / rollouts_per_leaf)));
         }
         else {
             ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(log(parent_rollouts) / rollouts));
@@ -64,14 +61,12 @@ class Node {
     };
     Node(Node* parent, Level& level, Action action) : parent(parent), action(action) {
         this->terminal = false;
-        this->num_rollouts = 0;
-        this->num_wins = 0;
+        this->simulations = 0;
+        this->wins = 0;
         this->available_actions = vector<Action>(action_space);
-        this->level = level.clone();
+        this->level = level.clone(1);
         this->children.reserve(this->available_actions.size());
     };
-    // virtual Node* select();
-    // Node* select_with_heuristic();
     ~Node() {
         delete level;
         for (auto node : children) {
@@ -79,54 +74,15 @@ class Node {
         }
     };
 };
-class MicroNode {
-    public:
-    int num_rollouts;
-    int num_wins;
-    bool terminal;
-    MicroNode* parent;
-    vector<Action> action_list;
-    Action action;
-    vector<MicroNode*> children;
-    vector<Action> available_actions;
-    inline float ucb() const {
-        if (this->num_rollouts == 0) { // MAX EXPLORE!
-            return 100000;
-        }
-        int wins = this->num_wins;
-        int rollouts = this->num_rollouts;
-        int parent_rollouts;
-        if (this->parent != nullptr) {
-            parent_rollouts = this->parent->num_rollouts;
-        }
-        else {
-            parent_rollouts = this->num_rollouts;
-        }
-        float ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(log(parent_rollouts) / rollouts));
-        return ucb;
-    };
-    MicroNode(MicroNode* parent, vector<Action> action_list, Action node_action): parent(parent), action_list(action_list), action(node_action) {
-        this->action_list.push_back(node_action);
-        this->available_actions = vector<Action>(action_space);
-        this->num_rollouts = 0;
-        this->num_wins = 0;
-        this->terminal = false;
-    };
-    ~MicroNode() {
-        for (auto child : this->children){
-            delete child;
-        }
-    };
-    void expand(Level& level);
-    void rollout(Level& level);
-    void backpropagate(int win);
-};
-
-Node* select(Node& root);
+Node* select(Node* root, int rollout_mode);
+Node* expand(Node* selected_node);
+void rollout(Node* selected_node, int rollout_mode);
+void backpropagate(Node* selected_node);
 
 // Node& select_node(Node& root);
-Action select_best_action(Node& root);
-Action run(Level& level, int timeout_ms, int games_per_rollout, bool debug=false, float ucb_const=1.4, int mode=0);
+std::pair<Action, int> select_best_action(Node& root);
+Action run(Level& level, int timeout_ms, int games_per_rollout, bool debug=false, float ucb_const=1.4, int rollout_mode=0);
+Action parralel_run(Level& level, int timeout_ms, int parralel_factor, bool debug, float ucb_const);
 // Node* select(Node& root);
 // Action micro_run(Level& level, int timeout_ms, bool debug, float ucb_const=1.4);
 int heuristic1(const Level& level);

@@ -1,8 +1,9 @@
-import level
-import mcts
+from build import level
+from build import mcts
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+from scipy.interpolate import make_interp_spline, CubicSpline, BSpline
 from pprint import pprint
 import cProfile
 from time import time
@@ -11,6 +12,7 @@ import csv
 
 
 CSV_FILENAME = "data/data.csv"
+plant_to_name = ("no_plant","cherrybomb","chomper","hypnoshroom","iceshroom","jalapeno","peashooter","potatomine","puffshroom","repeaterpea","scaredyshroom","snowpea","spikeweed","squash","sunflower","sunshroom","threepeater","wallnut")
 
 def construct_level_data_from_list(list: list):
     list.sort(key=lambda item: item[0]) # sort by first element of tuple (list[tuple])
@@ -37,7 +39,17 @@ def print_level_state(level: level.Level):
         for col in range(state[lane].size()):
             cell = state[lane][col] # type: level.Cell
 
-def get_frame_from_obs(observation: np.ndarray):
+def get_plants_from_observation(observation: np.ndarray):
+    result = []
+    num_rows, num_cols, _ = observation.shape
+    for row in range(num_rows):
+        for col in range(num_cols):
+            plant_type, _, _ = observation[row][col]
+            if plant_type != 0:
+                result.append((plant_to_name[plant_type], row, col))
+    return result
+
+def get_frame_from_observation(observation: np.ndarray):
     num_rows, num_cols, _ = observation.shape
 
     # Create a blank frame
@@ -75,27 +87,35 @@ def get_frame_from_obs(observation: np.ndarray):
 
     return frame
 
-def animate_observation_buffer(frame_buffer: list):
+def animate_observation_buffer(observation_buffer: list):
     fig, ax = plt.subplots()
+    # text_annotation = ax.annotate("Plants", xy=(0.25, 0.95), xycoords="figure fraction", ha="center", va="center", wrap=True, bbox=dict(boxstyle="round", fc="w"))
     # Set up an initial plot with the first frame
-    im = ax.imshow(frame_buffer[0])
+    annotations = [] # type: list[plt.text.Annotation]
+    im = ax.imshow(get_frame_from_observation(observation_buffer[0]))
 
     # Define the update function for the animation
     def update(frame):
         # print(frame)
         # Update the plot with the next frame
-        im.set_array(frame_buffer[frame])
-        return [im]
+        im.set_array(get_frame_from_observation(observation_buffer[frame]))
+        # text_annotation.set_text(f"Plants: {get_plants_from_observation(observation_buffer[frame])}")
+        for annotation in annotations:
+            annotation.remove()
+        annotations.clear()
+        for plant_name, row, col in get_plants_from_observation(observation_buffer[frame]):
+            annotations.append(ax.annotate(plant_name, xy=(col * 2 + 0.5, row), xycoords="data", ha="center", va="center", wrap=True, bbox=dict(boxstyle="round", fc="w")))
+        return im, *annotations
     # Create the animation object using the FuncAnimation class
-    anim = animation.FuncAnimation(fig, update, frames=len(frame_buffer), interval=1, blit=True)
-    num_cols = frame_buffer[0].shape[1] // 2
-    num_rows = frame_buffer[0].shape[0]
-    aspect_ratio = num_cols / frame_buffer[0].shape[0]
+    anim = animation.FuncAnimation(fig, update, frames=len(observation_buffer), interval=1, blit=True)
+    num_cols = observation_buffer[0].shape[1] // 2
+    num_rows = observation_buffer[0].shape[0]
+    aspect_ratio = num_cols / observation_buffer[0].shape[0]
     plt.gca().set_aspect(2)
 
     # Set custom tick positions for half-width columns
     ax.set_xticks(np.arange(num_cols) * 2 + 0.5)
-    ax.set_yticks(np.arange(frame_buffer[0].shape[0]) + 0.5)
+    ax.set_yticks(np.arange(observation_buffer[0].shape[0]) + 0.5)
     ax.set_xticklabels(list(range(num_cols)))
     ax.set_yticklabels(list(range(num_rows)))
     # Show the animation
@@ -107,25 +127,26 @@ def run_animation():
     while not level.done:
         level.step(level.get_random_action())
         obs = get_numpy_arr_from_level_obs(level)
-        frame = get_frame_from_obs(obs)
+        frame = get_frame_from_observation(obs)
         frame_list.append(frame)
     animate_observation_buffer(frame_list)
 
 def simulate_set_game(level: level.Level, action_list: list[level.Action]):
-    frames = []
+    observations = []
     for action in action_list:
         while not level.is_action_legal(action) and not level.done:
             level.step()
-            frames.append(get_frame_from_obs(get_numpy_arr_from_level_obs(level)))
+            observation = np.asarray(level.get_observation())
+            observations.append(observation)
         level.step(action)
-        frames.append(get_frame_from_obs(get_numpy_arr_from_level_obs(level)))
     while not level.done:
         level.step()
-        frames.append(get_frame_from_obs(get_numpy_arr_from_level_obs(level)))
+        observation = np.asarray(level.get_observation())
+        observations.append(observation)
     # print(f"lawnmowers: {level.lawnmowers[0]} {level.lawnmowers[1]} {level.lawnmowers[2]} {level.lawnmowers[3]} {level.lawnmowers[4]}")
-    animate_observation_buffer(frames)
+    animate_observation_buffer(observations)
+    print(f"game eneded with win: {level.win}")
 
-plant_to_name = ("no_plant","cherrybomb","chomper","hypnoshroom","iceshroom","jalapeno","peashooter","potatomine","puffshroom","repeaterpea","scaredyshroom","snowpea","spikeweed","squash","sunflower","sunshroom","threepeater","wallnut")
 
 def action_to_string(action: level.Action):
     return f"action: plant {plant_to_name[action.plant_name]} at coords: {action.lane}, {action.col}"
@@ -181,14 +202,157 @@ def csv_append(new_data: dict, filename=CSV_FILENAME):
     new_row = [new_data["level"], new_data["time_ms"], new_data["threads"], new_data["ucb_const"], new_data["rollout_mode"], new_data["win"], new_data["num_steps"]]
     data_writer.writerow(new_row)
 
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def test_generate_plot(csv_file, x_axis, y_axis, filters, log, graph):
+    # Read the data from CSV
+    data = pd.read_csv(csv_file)
+    avg_func = lambda series: sum(series) / len(series)
+    plt.figure(figsize=(8,8))
+    # Generate graphs for each filter
+    filter_info = ""
+    for idx, filter in enumerate(filters):
+        # Apply the filter
+        filtered_data = data.copy()
+        for key, value in filter.items():
+            filtered_data = filtered_data[filtered_data[key] == value]
+
+        # Group the filtered data by x-axis values and calculate the mean of y-axis values
+        # grouped_data = filtered_data.groupby(x_axis)[y_axis].mean().reset_index()
+        grouped_data = filtered_data.groupby(x_axis)[y_axis].agg(avg_func).reset_index()
+        data_counts = data[x_axis].value_counts().reset_index()
+        # data_counts.columns = [x_axis, 'samples']
+
+        # merged_data = pd.merge(grouped_data, data_counts, on=x_axis)
+
+        mean_sample_num = filtered_data.groupby(x_axis)[y_axis].count().mean()
+
+        # Plot the graph
+        plt.scatter(grouped_data[x_axis], grouped_data[y_axis], label=f'Filter {idx + 1}')
+        if graph:
+            plt.plot(grouped_data[x_axis], grouped_data[y_axis], label=f'Filter {idx + 1}')
+        
+        for x, y, count in zip(grouped_data[x_axis], grouped_data[y_axis], data_counts):
+            plt.annotate(f'samples: {count}', (x, y), textcoords="offset points", xytext=(0,10), ha='center', fontsize=8)
+        x = grouped_data[x_axis]
+        y = grouped_data[y_axis]
+        # spline = CubicSpline(x, y)
+        # spline = make_interp_spline(x, y, k=3)  # type: "BSpline"
+        # x_new = np.linspace(x.min(), x.max(), 300)
+        # smooth_curve = spline(x_new)
+        # window_size = 10  # Adjust the window size as needed
+        # smooth_curve = np.convolve(smooth_curve, np.ones(window_size) / window_size, mode='same')
+        
+        # Plot the smooth curve
+        # plt.plot(x_new, smooth_curve)
+
+        annotation_y_pos = 1 - idx * 0.04  # Adjust vertical position based on filter index
+        annotation_y_pos = 1.05 - (idx * 0.1 / len(filters))  # Adjust vertical position based on filter index and number of filters
+        filter_text = ', '.join([f'{key}: {value}' for key, value in filter.items()])
+        filter_text = f"{filter_text} (Mean samples: {mean_sample_num:.2f})"
+        filter_info = f"{filter_info}Filter {idx + 1}: {filter_text}\n"
+        # plt.annotate(f'Filter {idx+1}: {filter_text}', xy=(0.5, annotation_y_pos), xycoords='axes fraction', xytext=(0, 10),
+        #              textcoords='offset points', ha='center', va='bottom')
+
+    # Display the graph
+    plt.xlabel(x_axis)
+    plt.ylabel(y_axis)
+    # plt.figtext(0.5, 0.05, filter_info, ha="center", fontsize=8)
+    # plt.text(0.5, -0.3, 'Additional Text Below X-axis Label', ha='center', va='top', transform=plt.gca().transAxes)
+    # plt.title(f"Plot of {y_axis} against {x_axis}" + "\n" + filter_info)
+    plt.title(filter_info)
+    if log:
+        plt.xscale('log')
+    # plt.text(0.5, -0.2, f'Filter Information:\n{filter_info}', ha='center', va='top', transform=plt.gca().transAxes)
+    plt.legend()
+    plt.show()
+
+
+def generate_plot(csv_file, filter_criteria, x_axis, y_axis, comparison_dict=None):
+    data = pd.read_csv(csv_file)
+    for key, value in filter_criteria.items():
+        data = data.loc[data[key] == value]
+    
+    if comparison_dict is not None:
+        for key, value in comparison_dict.items():
+            data1 = data.loc[data[comparison_dict[key]] == value]
+    grouped_data = data.groupby(x_axis)[y_axis].mean().reset_index()
+
+    data_counts = data[x_axis].value_counts().reset_index()
+    data_counts.columns = [x_axis, 'samples']
+
+    merged_data = pd.merge(grouped_data, data_counts, on=x_axis)
+    
+
+    plt.scatter(merged_data[x_axis], merged_data[y_axis])
+
+    for x, y, count in zip(merged_data[x_axis], merged_data[y_axis], merged_data['samples']):
+        plt.annotate(f'samples: {count}', (x, y), textcoords="offset points", xytext=(0,10), ha='center', fontsize=8)
+
+    filter_text = ', '.join([f'{key}: {value}' for key, value in filter_criteria.items()])
+    plt.annotate(f'Filter: {filter_text}', xy=(0.5, 1), xycoords='axes fraction', xytext=(0, 10),
+                 textcoords='offset points', ha='center', va='bottom')
+
+    plt.show()
+    # # Read the CSV file into a pandas DataFrame
+    # df = pd.read_csv(csv_file)
+    
+    # # Filter the data based on the given criteria
+    # for key, value in filter_criteria.items():
+    #     df = df.loc[df[key] == value]
+    
+    # # for data points for the same x value, take the mean of the y values
+    # df = df.groupby(x_axis).mean().reset_index()
+
+    # # Generate the plot
+    # plt.scatter(df[x_axis], df[y_axis])
+    # plt.xlabel(x_axis)
+    # plt.ylabel(y_axis)
+    # plt.title(f"Plot of {y_axis} against {x_axis}")
+    # plt.show()
+
+
+
 if __name__ == "__main__":
-    play_level1()
-    print()
-    play_level2()
-    print()
-    play_level3()
-    print()
-    play_level4()
+    """
+    level
+    threads
+    time_ms
+    ucb_const
+    rollout_mode
+    win
+    num_steps
+    """
+    """
+    optimal threads:
+    mode 0: lmao
+    mode 1: 4
+    mode 2: 8
+    mode 3: 8
+    """
+    # filter_criteria = {"level": 9, "threads": 4}
+    filters = [
+        {"level": 9, "threads": 8, "rollout_mode": 1},
+        {"level": 9, "threads": 8, "rollout_mode": 2},
+        {"level": 9, "threads": 8, "rollout_mode": 3}
+    ]
+    x_axis = "ucb_const"
+    y_axis = "win"
+
+    test_generate_plot(CSV_FILENAME, x_axis, y_axis, filters, log=True, graph=True)#, filter_2, filter_3])
+    # generate_plot(CSV_FILENAME, filter_criteria, x_axis, y_axis)
+    # play_level1()
+    # print()
+    # play_level2()
+    # print()
+    # play_level3()
+    # print()
+    # play_level4()
     # level = level.Level(5, 10, 10, level_data_1, chosen_plants_1)
     # print(level.rollout(8, 10000, 1))
     # print(level.rollout(8, 10000, 2))

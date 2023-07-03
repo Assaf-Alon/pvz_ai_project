@@ -17,10 +17,10 @@ MCTS_SWIG_OBJS := $(patsubst $(MCTS_DIR)%.cpp, $(BUILD_DIR)%.o, $(MCTS_SRCS)) \
 MCTS_SWIG_FILE := $(wildcard $(addsuffix *.i, $(MCTS_DIR)))
 MCTS_PY := $(MCTS_DIR)mcts.py
 # ===============================================
-LEVEL_LIB := lib_level.so # name of the swig-less level lib
+LEVEL_LIB := $(BUILD_DIR)lib_level.so # name of the swig-less level lib
 EXEC := ai.out
-LEVEL_SWIG_LIB := _level.so
-MCTS_SWIG_LIB := _mcts.so
+LEVEL_SWIG_LIB := $(BUILD_DIR)_level.so
+MCTS_SWIG_LIB := $(BUILD_DIR)_mcts.so
 PYTHONI := -I/usr/include/python3.11 # change to 3.10 if 3.11 is not installed
 PYTHONL := -Xlinker -export-dynamic
 LIBFLAGS := -L/usr/local/lib -lgmpxx -lgmp -fopenmp
@@ -35,8 +35,9 @@ PROFILE_EXEC := profile_exec.out
 
 # all: $(LEVEL_SWIG_LIB) $(MCTS_SWIG_LIB)
 all: $(LEVEL_SWIG_LIB) $(MCTS_SWIG_LIB) $(LEVEL_SWIG_SRCS) $(MCTS_SWIG_SRCS)
-	cp $(LEVEL_PY) .
-	cp $(MCTS_PY) .
+	cp $(LEVEL_PY) $(BUILD_DIR)
+	cp $(MCTS_PY) $(BUILD_DIR)
+	export LD_LIBRARY_PATH=$(realpath .)
 	@echo "do: 'export LD_LIBRARY_PATH=$(pwd)"
 
 $(BUILD_DIR)%.o: $(LEVEL_DIR)%.cpp
@@ -102,7 +103,7 @@ check:
 .PHONY: clean
 clean:
 	rm -r build/*
-	rm *.so
+	touch build/__init__.py
 
 .SUFFIXES:
 
