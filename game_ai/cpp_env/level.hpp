@@ -162,12 +162,20 @@ typedef vector<vector<vector<int>>> Observation;
 
 class Action {
     public:
-    PlantName plant_name; // plant_name or none
+    int plant_name; // plant_name or none
     int lane;
     int col;
-    Action(PlantName name, int lane, int col) : plant_name(name), lane(lane), col(col) {};
+    Action(int name, int lane, int col) : plant_name(name), lane(lane), col(col) {};
     Action() = default;
+    bool operator==(const Action& other) const {
+        return this->plant_name == other.plant_name && this->lane == other.lane && this->col == other.col;
+    }
     // Action& operator=(Action& action) = default;
+};
+struct ActionHash {
+    std::size_t operator()(const Action& action) const {
+        return std::hash<int>()(action.plant_name) ^ std::hash<int>()(action.lane) ^ std::hash<int>()(action.col);
+    }
 };
 class Level {
 public:
@@ -238,7 +246,7 @@ public:
     int rollout(int num_games=10000, int mode=1) const; // return num_victories
     std::pair<int, int> timed_rollout(int time_limit_ms, int mode = 1) const;
 
-    int count_plant(PlantName plant) const;
+    int count_plant(PlantName target_plant) const;
     int count_lawnmowers() const;
     int count_plant() const;
 };

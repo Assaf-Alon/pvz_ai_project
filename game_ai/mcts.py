@@ -34,6 +34,11 @@ def perform_experiment(num_level, time_ms, threads, ucb_const, rollout_mode):
         action = mcts.run(env, int(time_ms), int(threads), False, float(ucb_const), int(rollout_mode))
         env.deferred_step(action)
         action_list.append(action)
+        # # To view the choices in each step
+        # print("-------------------------------------")
+        # print(f"[{env.frame}] Action chosen: lane: {action.lane}, col: {action.col}, plant: {utils.plant_to_name[action.plant_name]}")
+        # print(f"lawnmowers: {env.lawnmowers[0]} {env.lawnmowers[1]} {env.lawnmowers[2]} {env.lawnmowers[3]} {env.lawnmowers[4]}")
+        # input("Press enter")
         try_early_finish(env)
     end = time.perf_counter()
     result_dict = {
@@ -49,7 +54,7 @@ def perform_experiment(num_level, time_ms, threads, ucb_const, rollout_mode):
     actual_time = end - start
     pprint(result_dict)
     if (actual_time > expected_time * 1.1):
-        print('\033[91m' + f"WARNING: experiment took {actual_time} seconds, expected time: {expected_time}, difference {100 * (actual_time - expected_time) / expected_time}%" + '\033[0m')
+        print('\033[91m' + f"WARNING: experiment took {actual_time} seconds, expected time: {expected_time}, difference {100 * (actual_time - expected_time) / expected_time:.2f}%" + '\033[0m')
     else:
         print(f"experiment took {end - start} seconds, expected time: {expected_time}", flush=True)
     utils.csv_append(result_dict)
@@ -63,12 +68,14 @@ if __name__ == "__main__":
     sim_per_leaf: [2,4,8,12,16,20,30]
     """
     # time_range = range(150, 800, 50)
-    time_range = range(200, 1100, 100)
-    ucb_range = [0, 0.1, 0.2, 0.5, 1.0, 1.4, 3.0, 10, 30, 100]
+    # time_range = range(200, 1100, 100)
+    time_range = [200]
+    # ucb_range = [0, 0.1, 0.2, 0.5, 1.0, 1.4, 3.0, 10, 30, 100]
+    ucb_range = [0.2, 1.4]
     # sim_per_leaf_range = [2,4,8,12,16,20,30]
     # rollot_mode_range = [0,1,2]
-    parallel_parameter_list = list(itertools.product(time_range, [8], ucb_range, [1,2,3]))
-    traditional_parameter_list = list(itertools.product(time_range, [1], ucb_range, [0, 4]))
+    parallel_parameter_list = list(itertools.product(time_range, [8], ucb_range, [mcts.MAX_NODE,mcts.AVG_NODE,mcts.PARALLEL_TREES]))
+    traditional_parameter_list = list(itertools.product(time_range, [1], ucb_range, [mcts.NORMAL_MCTS, mcts.HEURISTIC_MCTS]))
     experiment_parameter_list = parallel_parameter_list + traditional_parameter_list
     ## Full experiment parameter list
     # experiment_parameter_list = list(itertools.product(time_range, sim_per_leaf_range, ucb_range, rollot_mode_range))

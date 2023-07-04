@@ -639,6 +639,7 @@ int Level::rollout(int num_games, int mode) const {
         return play_random_game(*this, mode);
     }
     std::vector<bool> victories(num_games, false);
+    omp_set_num_threads(8);
     #pragma omp parallel for shared(victories)
     for (int i = 0; i < num_games; i++){
         victories[i] = play_random_game(*this, mode);
@@ -684,15 +685,11 @@ std::pair<int, int> Level::timed_rollout(int time_limit_ms, int mode) const {
 }
 
 
-int Level::count_plant(PlantName plant) const{
+int Level::count_plant(PlantName target_plant) const{
     int count = 0;
-    for (int i = 0; i < this->lanes; i++)
-    {
-        for (int j = 0; j < this->cols; j++)
-        {
-            if (this->plant_grid[i][j] != nullptr && (this->plant_grid[i][j])->plant_type == plant) {
-                count++;
-            }
+    for (auto plant : this->plant_list){
+        if (plant->plant_type == (int)target_plant){
+            count++;
         }
     }
     return count;

@@ -5,11 +5,9 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from scipy.interpolate import make_interp_spline, CubicSpline, BSpline
 from pprint import pprint
-import cProfile
 from time import time
 import json
 import csv
-
 
 CSV_FILENAME = "data/data.csv"
 plant_to_name = ("no_plant","cherrybomb","chomper","hypnoshroom","iceshroom","jalapeno","peashooter","potatomine","puffshroom","repeaterpea","scaredyshroom","snowpea","spikeweed","squash","sunflower","sunshroom","threepeater","wallnut")
@@ -210,31 +208,17 @@ def csv_append(new_data: dict, filename=CSV_FILENAME):
     new_row = [new_data["level"], new_data["time_ms"], new_data["threads"], new_data["ucb_const"], new_data["rollout_mode"], new_data["win"], new_data["num_steps"]]
     data_writer.writerow(new_row)
 
-
-import pandas as pd
-import matplotlib.pyplot as plt
-import csv
-
 def test_generate_plot(csv_file, x_axis, y_axis, filters, log, graph):
-    """
-    steps:
-    1. read csv
-    for each filter:
-        2. apply filter
-        3. group by x-axis
-        4. calculate mean of y-axis
-        5. plot graph
-    """
-    # Read the data from CSV
-    # data = pd.read_csv(csv_file)
     plt.figure(figsize=(8,8))
     with open(csv_file, 'r') as csv_file_handle:
         data = list(csv.DictReader(csv_file_handle))
     for filter in filters:
         filtered_data = data.copy()
+        # Filter data using filter dictionary
         for key, value in filter.items():
             filtered_data = [row for row in filtered_data if row[key] == str(value)]
         grouped_data = {}
+        # Group data by x-axis
         for row in filtered_data:
             if row[x_axis] not in grouped_data:
                 grouped_data[row[x_axis]] = []
@@ -242,12 +226,22 @@ def test_generate_plot(csv_file, x_axis, y_axis, filters, log, graph):
                 grouped_data[row[x_axis]].append(bool(row[y_axis] == "True"))
             else:
                 grouped_data[row[x_axis]].append(row[y_axis])
+        # Calculate mean of y-axis
         for key, value in grouped_data.items():
             grouped_data[key] = [sum([int(x) for x in value]) / len(value), len(value)]
-        plt.scatter(list(grouped_data.keys()), [x[0] for x in grouped_data.values()], label=str(filter))
+
+        # Sort data by x-axis
+        sorted_keys = sorted(grouped_data.keys())
+        sorted_data = [grouped_data[x][0] for x in sorted_keys]
+
+        avg_data_points = sum([x[1] for x in grouped_data.values()]) / len(grouped_data.values())
+
+        # Plot graph
+        plt.scatter(sorted_keys, sorted_data, label=f"{str(filter)}, avg data points: {avg_data_points}")
         for x,y in grouped_data.items():
             plt.annotate(f"{y[1]}", (x,y[0]))
-        plt.plot(list(grouped_data.keys()), [x[0] for x in grouped_data.values()])
+        plt.plot(sorted_keys, sorted_data)
+
     if log:
         plt.xscale('log')
     plt.xlabel(x_axis)
@@ -276,15 +270,13 @@ if __name__ == "__main__":
     """
     # filter_criteria = {"level": 9, "threads": 4}
     filters = [
-        {"level": 9, "rollout_mode": 0},
-        {"level": 9, "threads": 8, "rollout_mode": 1},
-        {"level": 9, "threads": 8, "rollout_mode": 2},
-        {"level": 9, "threads": 8, "rollout_mode": 3}
+        {"level": 9, "ucb_const": 0.2},
+        {"level": 9, "ucb_const": 1.4},
     ]
-    x_axis = "time_ms"
+    x_axis = "rollout_mode"
     y_axis = "win"
 
-    test_generate_plot(CSV_FILENAME, x_axis, y_axis, filters, log=True, graph=True)#, filter_2, filter_3])
+    test_generate_plot(CSV_FILENAME, x_axis, y_axis, filters, log=False, graph=True)#, filter_2, filter_3])
     exit()
     # generate_plot(CSV_FILENAME, filter_criteria, x_axis, y_axis)
     # play_level1()

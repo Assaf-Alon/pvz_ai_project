@@ -11,6 +11,14 @@
     1. Choose selection, expension policies
     2. Level copy vs action in each node
     3. Compare tradeoff of accuracy vs speed (lots of low acc rollouts vs less high acc rollouts)
+    4. Paper questions:
+        1. Approaches to calculate relative value of multiple-rollout leaves: max/mean/avg/no normalization (naive)
+            https://arxiv.org/pdf/2003.13741.pdf
+            https://dke.maastrichtuniversity.nl/m.winands/documents/multithreadedMCTS2.pdf
+            https://link.springer.com/article/10.1007/s10462-022-10228-y
+        2. Changes to UCB to account for multiple rollouts
+        3. C value 
+        4. leaf parallelization vs root parallelization
 3. Impement RL, compare to MCTS
     1. high-info large state vs low-info small state
     2. GPU acceleration

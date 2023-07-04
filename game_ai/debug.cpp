@@ -205,10 +205,10 @@ void try_action(Level& level, Action action) {
         level.step();
     }
     std::cout << "[" << level.frame << "] " << "action taken: planted " << plant_data[action.plant_name].plant_name << " at: " << action.lane << ", " << action.col << std::endl;
-    double winrate_percent = 100 * ((float)level.rollout(8, 10000, 1) / 10000);
+    double winrate_percent = 100 * ((float)level.rollout(10000, 1) / 10000);
     std::cout << "winrate before action: " << winrate_percent << "%" << std::endl;
     level.step(action);
-    winrate_percent = 100 * ((float)level.rollout(8, 10000, 1) / 10000);
+    winrate_percent = 100 * ((float)level.rollout(10000, 1) / 10000);
     std::cout << "winrate after action: " << winrate_percent << "%" << std::endl;
 }
 
@@ -221,7 +221,7 @@ int main() {
     // estimate_speed(env);
     // std::cout << env.rollout(-1, 20, 4) << std::endl;
     while (!env.done) {
-        Action run_result = run(env, 2000, 8, true, 1.4, 0);
+        Action run_result = run(env, 2000, 8, true, 1.4, 3);
         while (!env.is_action_legal(run_result) && !(env.done)){
             env.step();
         }
@@ -229,11 +229,11 @@ int main() {
             break;
         }
         std::cout << "[" << env.frame << "] " << "action taken: planted " << plant_data[run_result.plant_name].plant_name << " at: " << run_result.lane << ", " << run_result.col << std::endl;
-        std::pair<int, int> timed_rollout_res = env.timed_rollout(8, 300, 1);
+        std::pair<int, int> timed_rollout_res = env.timed_rollout(300, 1);
         double winrate_percent = 100 * ((float)timed_rollout_res.second / timed_rollout_res.first);
         std::cout << "winrate before action: " << winrate_percent << "%" << std::endl;
         env.step(run_result);
-        timed_rollout_res = env.timed_rollout(8, 300, 1);
+        timed_rollout_res = env.timed_rollout(300, 1);
         winrate_percent = 100 * ((float)timed_rollout_res.second / timed_rollout_res.first);
         std::cout << "winrate after action: " << winrate_percent << "%" << std::endl;
     }
