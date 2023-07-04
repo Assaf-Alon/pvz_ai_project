@@ -63,12 +63,12 @@ if __name__ == "__main__":
     sim_per_leaf: [2,4,8,12,16,20,30]
     """
     # time_range = range(150, 800, 50)
-    time_range = range(200, 900, 100)
-    ucb_range = [0.01, 0.1, 0.2, 0.5, 1.0, 1.4, 3.0, 5.0, 10, 30, 100, 1000]
+    time_range = range(200, 1100, 100)
+    ucb_range = [0, 0.1, 0.2, 0.5, 1.0, 1.4, 3.0, 10, 30, 100]
     # sim_per_leaf_range = [2,4,8,12,16,20,30]
     # rollot_mode_range = [0,1,2]
-    parallel_parameter_list = list(itertools.product(time_range, [6,8,12], ucb_range, [1,2,3]))
-    traditional_parameter_list = list(itertools.product(time_range, [1], ucb_range, [0]))
+    parallel_parameter_list = list(itertools.product(time_range, [8], ucb_range, [1,2,3]))
+    traditional_parameter_list = list(itertools.product(time_range, [1], ucb_range, [0, 4]))
     experiment_parameter_list = parallel_parameter_list + traditional_parameter_list
     ## Full experiment parameter list
     # experiment_parameter_list = list(itertools.product(time_range, sim_per_leaf_range, ucb_range, rollot_mode_range))

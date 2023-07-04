@@ -1,4 +1,5 @@
 #include "mcts.h"
+#include <algorithm>
 
 // int rollout_mode = 0;
 float ucb_coefficient = 1.4;
@@ -26,16 +27,6 @@ Node* expand(Node* selected_node) {
 void rollout(Node* selected_node, int rollout_mode) {
     selected_node->level->deferred_step(selected_node->action);
     switch (rollout_mode){
-        case 0: // no parallelization
-            if (selected_node->level->done){
-                selected_node->available_actions.clear();
-                selected_node->wins = (int)selected_node->level->win;
-                selected_node->simulations = 1;
-                return;
-            }
-            selected_node->wins = selected_node->level->rollout(1, 1, 1);
-            selected_node->simulations = 1;
-        break;
         case 1: // parallelization with max 
             if (selected_node->level->done){
                 selected_node->available_actions.clear();
@@ -43,7 +34,7 @@ void rollout(Node* selected_node, int rollout_mode) {
                 selected_node->simulations = 1;
                 return;
             }
-            selected_node->wins = selected_node->level->rollout(8, rollouts_per_leaf, 1) ? 1 : 0;
+            selected_node->wins = selected_node->level->rollout(rollouts_per_leaf, 1) ? 1 : 0;
             selected_node->simulations = 1;
         break;
         case 2: // parallelization with avg
@@ -53,8 +44,18 @@ void rollout(Node* selected_node, int rollout_mode) {
                 selected_node->simulations = rollouts_per_leaf;
                 return;
             }
-            selected_node->wins = selected_node->level->rollout(8, rollouts_per_leaf, 1);
+            selected_node->wins = selected_node->level->rollout(rollouts_per_leaf, 1);
             selected_node->simulations = rollouts_per_leaf;
+        break;
+        default: // no parallelization
+            if (selected_node->level->done){
+                selected_node->available_actions.clear();
+                selected_node->wins = (int)selected_node->level->win;
+                selected_node->simulations = 1;
+                return;
+            }
+            selected_node->wins = selected_node->level->rollout(1, 1);
+            selected_node->simulations = 1;
         break;
     }
 }
@@ -100,11 +101,43 @@ Node* select(Node* root, int rollout_mode){
     }
 }
 
+Node* select(Node* root, int rollout_mode, heuristic_function func){
+    // if (root->available_actions.size() > 0){
+    //     return root;
+    // }
+    Node* current_node = root;
+    while (true) {
+        if (current_node->level->done){
+            return current_node;
+        }
+        // if (current_node->available_actions.size() > 0){
+        //     return current_node;
+        // }
+        if (current_node->children.size() == 0){
+            return current_node;
+        }
+        float best_score = -1;
+        Node* best_node = nullptr;
+        for (auto node: current_node->children){
+            float score = node->ucb(rollout_mode) + func(*(node->level));
+            if (score > best_score){
+                best_score = score;
+                best_node = node;
+            }
+        }
+        if (best_score < current_node->ucb(rollout_mode) + func(*(current_node->level)) && current_node->available_actions.size() > 0){
+            return current_node;
+        }
+        current_node = best_node;
+    }
+}
+
 std::pair<Action, int> select_best_action(Node& root) {
     Action action = Action();
     int most_rollouts = 0;
     int most_rollouts_wins = 0;
     for (auto node: root.children) {
+        // std::cout << "ucb value: " << node->ucb(0) << ", wins: " << node->wins << ", rollouts: " << node->simulations << std::endl;
         if (node->simulations == most_rollouts && node->wins > most_rollouts_wins) {
             action = node->action;
             most_rollouts_wins = node->wins;
@@ -118,10 +151,14 @@ std::pair<Action, int> select_best_action(Node& root) {
     return std::pair<Action, int>(action, most_rollouts);
 }
 Action run(Level& level, int timeout_ms, int games_per_rollout, bool debug, float ucb_const, int rollout_mode){
+    if (rollouts_per_leaf > 1){
+        omp_set_num_threads(8);
+    }
     ucb_coefficient = ucb_const;
     rollouts_per_leaf = games_per_rollout;
     if (action_space.size() == 0){
         action_space = vector<Action>(level.get_action_space());
+        std::cout << "Action space size: " << action_space.size() << std::endl;
     }
     if (rollout_mode == 3){
         return parralel_run(level, timeout_ms, games_per_rollout, debug, ucb_const);
@@ -130,8 +167,14 @@ Action run(Level& level, int timeout_ms, int games_per_rollout, bool debug, floa
     auto start_time = std::chrono::high_resolution_clock::now();
     auto end_time = start_time + std::chrono::milliseconds(timeout_ms);
     int num_expanded_nodes = 0;
-    while(std::chrono::high_resolution_clock::now() < end_time && root->simulations < 800000) {
-        Node* next_node = select(root, rollout_mode);
+    while(std::chrono::high_resolution_clock::now() < end_time && num_expanded_nodes < 800000) {
+        Node* next_node;
+        if (rollout_mode == 4) {
+            next_node = select(root, rollout_mode, heuristic_basic_sunflowers);
+        }
+        else {
+            next_node = select(root, rollout_mode);
+        }
         Node* new_node = expand(next_node);
         rollout(new_node, rollout_mode);
         backpropagate(new_node);
@@ -181,12 +224,12 @@ Action parralel_run(Level& level, int timeout_ms, int parralel_factor, bool debu
     }
     return chosen_action;
 }
-int heuristic1(const Level& level)
+float heuristic_basic_sunflowers(const Level& level)
 {
-    return (10 * level.count_plant(SUNFLOWER) + 5 * level.count_lawnmowers()) * level.frame;
+    return 0.05 * (std::min(5, level.count_plant(SUNFLOWER)));
 }
 
-int heuristic2(const Level& level)
+float heuristic2(const Level& level)
 {
     return (5 * level.count_plant(SUNFLOWER) + 4 * level.count_lawnmowers() + 2 * level.count_plant()) * level.frame;
 }

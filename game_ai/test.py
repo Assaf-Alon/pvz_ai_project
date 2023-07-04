@@ -6,12 +6,12 @@ from build import level
 import utils
 from pprint import pprint
 
-env = level.Level(5, 10, 10, *utils.get_level_info(9), False)
+env = level.Level(5, 10, 10, *utils.get_level_info("9"), False)
 base_env = env.clone(-1) # base_env has same level as env
 action_list = []
 while not env.done:
     print(f"frame before mcts: {env.frame}")
-    action = mcts.run(level=env, timeout_ms=300, games_per_rollout=8, debug=False, ucb_const=3, rollout_mode=3)
+    action = mcts.run(level=env, timeout_ms=30000, games_per_rollout=1, debug=True, ucb_const=1.4, rollout_mode=0)
     action_list.append(action)
     print(utils.action_to_string(action))
     env.deferred_step(action)

@@ -210,120 +210,51 @@ def csv_append(new_data: dict, filename=CSV_FILENAME):
     new_row = [new_data["level"], new_data["time_ms"], new_data["threads"], new_data["ucb_const"], new_data["rollout_mode"], new_data["win"], new_data["num_steps"]]
     data_writer.writerow(new_row)
 
-import pandas as pd
-import matplotlib.pyplot as plt
-
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import csv
 
 def test_generate_plot(csv_file, x_axis, y_axis, filters, log, graph):
+    """
+    steps:
+    1. read csv
+    for each filter:
+        2. apply filter
+        3. group by x-axis
+        4. calculate mean of y-axis
+        5. plot graph
+    """
     # Read the data from CSV
-    data = pd.read_csv(csv_file)
-    avg_func = lambda series: sum(series) / len(series)
+    # data = pd.read_csv(csv_file)
     plt.figure(figsize=(8,8))
-    # Generate graphs for each filter
-    filter_info = ""
-    for idx, filter in enumerate(filters):
-        # Apply the filter
+    with open(csv_file, 'r') as csv_file_handle:
+        data = list(csv.DictReader(csv_file_handle))
+    for filter in filters:
         filtered_data = data.copy()
         for key, value in filter.items():
-            filtered_data = filtered_data[filtered_data[key] == value]
-
-        # Group the filtered data by x-axis values and calculate the mean of y-axis values
-        # grouped_data = filtered_data.groupby(x_axis)[y_axis].mean().reset_index()
-        grouped_data = filtered_data.groupby(x_axis)[y_axis].agg(avg_func).reset_index()
-        data_counts = data[x_axis].value_counts().reset_index()
-        # data_counts.columns = [x_axis, 'samples']
-
-        # merged_data = pd.merge(grouped_data, data_counts, on=x_axis)
-
-        mean_sample_num = filtered_data.groupby(x_axis)[y_axis].count().mean()
-
-        # Plot the graph
-        plt.scatter(grouped_data[x_axis], grouped_data[y_axis], label=f'Filter {idx + 1}')
-        if graph:
-            plt.plot(grouped_data[x_axis], grouped_data[y_axis], label=f'Filter {idx + 1}')
-        
-        for x, y, count in zip(grouped_data[x_axis], grouped_data[y_axis], data_counts):
-            plt.annotate(f'samples: {count}', (x, y), textcoords="offset points", xytext=(0,10), ha='center', fontsize=8)
-        x = grouped_data[x_axis]
-        y = grouped_data[y_axis]
-        # spline = CubicSpline(x, y)
-        # spline = make_interp_spline(x, y, k=3)  # type: "BSpline"
-        # x_new = np.linspace(x.min(), x.max(), 300)
-        # smooth_curve = spline(x_new)
-        # window_size = 10  # Adjust the window size as needed
-        # smooth_curve = np.convolve(smooth_curve, np.ones(window_size) / window_size, mode='same')
-        
-        # Plot the smooth curve
-        # plt.plot(x_new, smooth_curve)
-
-        annotation_y_pos = 1 - idx * 0.04  # Adjust vertical position based on filter index
-        annotation_y_pos = 1.05 - (idx * 0.1 / len(filters))  # Adjust vertical position based on filter index and number of filters
-        filter_text = ', '.join([f'{key}: {value}' for key, value in filter.items()])
-        filter_text = f"{filter_text} (Mean samples: {mean_sample_num:.2f})"
-        filter_info = f"{filter_info}Filter {idx + 1}: {filter_text}\n"
-        # plt.annotate(f'Filter {idx+1}: {filter_text}', xy=(0.5, annotation_y_pos), xycoords='axes fraction', xytext=(0, 10),
-        #              textcoords='offset points', ha='center', va='bottom')
-
-    # Display the graph
-    plt.xlabel(x_axis)
-    plt.ylabel(y_axis)
-    # plt.figtext(0.5, 0.05, filter_info, ha="center", fontsize=8)
-    # plt.text(0.5, -0.3, 'Additional Text Below X-axis Label', ha='center', va='top', transform=plt.gca().transAxes)
-    # plt.title(f"Plot of {y_axis} against {x_axis}" + "\n" + filter_info)
-    plt.title(filter_info)
+            filtered_data = [row for row in filtered_data if row[key] == str(value)]
+        grouped_data = {}
+        for row in filtered_data:
+            if row[x_axis] not in grouped_data:
+                grouped_data[row[x_axis]] = []
+            if (row[y_axis] == "False" or row[y_axis] == "True"):
+                grouped_data[row[x_axis]].append(bool(row[y_axis] == "True"))
+            else:
+                grouped_data[row[x_axis]].append(row[y_axis])
+        for key, value in grouped_data.items():
+            grouped_data[key] = [sum([int(x) for x in value]) / len(value), len(value)]
+        plt.scatter(list(grouped_data.keys()), [x[0] for x in grouped_data.values()], label=str(filter))
+        for x,y in grouped_data.items():
+            plt.annotate(f"{y[1]}", (x,y[0]))
+        plt.plot(list(grouped_data.keys()), [x[0] for x in grouped_data.values()])
     if log:
         plt.xscale('log')
-    # plt.text(0.5, -0.2, f'Filter Information:\n{filter_info}', ha='center', va='top', transform=plt.gca().transAxes)
+    plt.xlabel(x_axis)
+    plt.ylabel(y_axis)
+    plt.title(f"{y_axis} vs {x_axis}")
     plt.legend()
     plt.show()
-
-
-def generate_plot(csv_file, filter_criteria, x_axis, y_axis, comparison_dict=None):
-    data = pd.read_csv(csv_file)
-    for key, value in filter_criteria.items():
-        data = data.loc[data[key] == value]
-    
-    if comparison_dict is not None:
-        for key, value in comparison_dict.items():
-            data1 = data.loc[data[comparison_dict[key]] == value]
-    grouped_data = data.groupby(x_axis)[y_axis].mean().reset_index()
-
-    data_counts = data[x_axis].value_counts().reset_index()
-    data_counts.columns = [x_axis, 'samples']
-
-    merged_data = pd.merge(grouped_data, data_counts, on=x_axis)
-    
-
-    plt.scatter(merged_data[x_axis], merged_data[y_axis])
-
-    for x, y, count in zip(merged_data[x_axis], merged_data[y_axis], merged_data['samples']):
-        plt.annotate(f'samples: {count}', (x, y), textcoords="offset points", xytext=(0,10), ha='center', fontsize=8)
-
-    filter_text = ', '.join([f'{key}: {value}' for key, value in filter_criteria.items()])
-    plt.annotate(f'Filter: {filter_text}', xy=(0.5, 1), xycoords='axes fraction', xytext=(0, 10),
-                 textcoords='offset points', ha='center', va='bottom')
-
-    plt.show()
-    # # Read the CSV file into a pandas DataFrame
-    # df = pd.read_csv(csv_file)
-    
-    # # Filter the data based on the given criteria
-    # for key, value in filter_criteria.items():
-    #     df = df.loc[df[key] == value]
-    
-    # # for data points for the same x value, take the mean of the y values
-    # df = df.groupby(x_axis).mean().reset_index()
-
-    # # Generate the plot
-    # plt.scatter(df[x_axis], df[y_axis])
-    # plt.xlabel(x_axis)
-    # plt.ylabel(y_axis)
-    # plt.title(f"Plot of {y_axis} against {x_axis}")
-    # plt.show()
-
 
 
 if __name__ == "__main__":
@@ -345,14 +276,16 @@ if __name__ == "__main__":
     """
     # filter_criteria = {"level": 9, "threads": 4}
     filters = [
+        {"level": 9, "rollout_mode": 0},
         {"level": 9, "threads": 8, "rollout_mode": 1},
         {"level": 9, "threads": 8, "rollout_mode": 2},
         {"level": 9, "threads": 8, "rollout_mode": 3}
     ]
-    x_axis = "ucb_const"
+    x_axis = "time_ms"
     y_axis = "win"
 
     test_generate_plot(CSV_FILENAME, x_axis, y_axis, filters, log=True, graph=True)#, filter_2, filter_3])
+    exit()
     # generate_plot(CSV_FILENAME, filter_criteria, x_axis, y_axis)
     # play_level1()
     # print()

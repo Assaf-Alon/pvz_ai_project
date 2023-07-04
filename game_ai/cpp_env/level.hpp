@@ -24,6 +24,9 @@ using std::array;
 #define SLOW 30
 #define VERY_SLOW 50
 
+#define FORCE_RANDOM 1
+#define FORCE_DETERMINISTIC -1
+
 inline int get_random_number(const int min, const int max){ 
     thread_local std::mt19937 generator(std::random_device{}());
     std::uniform_int_distribution<int> distribution(min, max);
@@ -232,14 +235,14 @@ public:
 
     // misc
     void append_zombie(int second, int lane, std::string type);
-    int rollout(int num_cpu, int num_games=10000, int mode=1) const; // return num_victories
-    std::pair<int, int> timed_rollout(int num_cpu, int time_limit_ms, int mode = 1) const;
+    int rollout(int num_games=10000, int mode=1) const; // return num_victories
+    std::pair<int, int> timed_rollout(int time_limit_ms, int mode = 1) const;
 
     int count_plant(PlantName plant) const;
     int count_lawnmowers() const;
     int count_plant() const;
 };
-bool play_random_game(Level env, int randomization_mode);
+bool play_random_game(const Level& env, int randomization_mode);
 bool play_random_heuristic_game(Level env, heuristic_function& func, int mode=1);
 
 #endif // _PVZ_LEVEL

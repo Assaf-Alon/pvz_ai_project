@@ -64,7 +64,7 @@ class Node {
         this->simulations = 0;
         this->wins = 0;
         this->available_actions = vector<Action>(action_space);
-        this->level = level.clone(1);
+        this->level = level.clone(FORCE_RANDOM);
         this->children.reserve(this->available_actions.size());
     };
     ~Node() {
@@ -75,6 +75,7 @@ class Node {
     };
 };
 Node* select(Node* root, int rollout_mode);
+Node* select(Node* root, int rollout_mode, heuristic_function func);
 Node* expand(Node* selected_node);
 void rollout(Node* selected_node, int rollout_mode);
 void backpropagate(Node* selected_node);
@@ -85,8 +86,8 @@ Action run(Level& level, int timeout_ms, int games_per_rollout, bool debug=false
 Action parralel_run(Level& level, int timeout_ms, int parralel_factor, bool debug, float ucb_const);
 // Node* select(Node& root);
 // Action micro_run(Level& level, int timeout_ms, bool debug, float ucb_const=1.4);
-int heuristic1(const Level& level);
-int heuristic2(const Level& level);
+float heuristic_basic_sunflowers(const Level& level);
+float heuristic2(const Level& level);
 // int heuristic3(Level& level);
 // int heuristic4(Level& level);
 

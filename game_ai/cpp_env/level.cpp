@@ -62,7 +62,7 @@ Level* Level::clone(int clone_mode) const{
 }
 
 void Level::randomize_level_data(double varience) {
-    // std::cout << "randomizing" << std::endl;
+    // std::cout << "randomizing" << std::endl;s
     for (auto& zombie : this->level_data) {
         zombie.frame = static_cast<int>(get_normal_sample(zombie.second * this->fps, varience * this->fps));
         zombie.effective_lane = get_random_number(std::max(zombie.lane - 1, 0), std::min(zombie.lane + 1, this->lanes - 1));
@@ -527,14 +527,6 @@ Level::~Level()
     std::cout << "Zombies left on field: " << this->zombie_list.size() << std::endl;
     std::cout << "Zombies left to spawn: " << this->level_data.size() << std::endl;
     #endif
-    // while (this->plant_list.empty() == false)
-    // {
-    //     this->plant_list.front()->get_damaged(9999, *this);
-    // }
-    // while (this->zombie_list.empty() == false)
-    // {
-    //     this->zombie_list.front()->get_damaged(9999, *this);
-    // }
     for (auto plant : this->plant_list) {
         delete plant;
     }
@@ -543,79 +535,59 @@ Level::~Level()
     }
 }
 
-bool play_random_game(Level env, int randomization_mode){
-    switch(randomization_mode){
-        case 1: // for each step, choose a random action available right now
-        while (!env.done) {
-            env.step(env.get_random_action());
-        }
-        return env.win;
-        break;
-        case 2: // select next action, do empty steps until its possible, then do it
-        while(!env.done) {
-            int lane = get_random_number(0, env.lanes - 1);
-            int col = get_random_number(0, env.cols - 1);
-            int plant = env.get_random_plant();
-            Action next_step = Action((PlantName)plant, lane, col);
-            while (!env.is_action_legal(next_step) && !env.done){
-                env.step();
-            }
-            if (env.done) {
-                return env.win;
-            }
-            env.step(next_step);
-        }
-        break;
-        case 3: // select next plant to plant, wait until it's possible, select random empty cell and plant it
-        while(!env.done) {
-            int next_plant = env.get_random_plant();
-            while(!env.is_plantable(next_plant) && !env.done) {
-                env.step();
-            }
-            if (env.done) {
-                return env.win;
-            }
-            int lane, col;
-            while(!env.get_random_position(lane, col) && !env.done) {
-                env.step();
-            }
-            if (env.done) {
-                return env.win;
-            }
-            env.step((PlantName)next_plant, lane, col);
-        }
-        break;
-        case 4:
-        while(!env.done){
-            static const vector<Action> action_space = vector<Action>(env.get_action_space());
-            int most_wins = 0;
-            Action best_action = Action();
-            // omp_set_num_threads(8);
-            #pragma omp parallel for
-            for(int i = 0; i < 22; i++){
-                Action next_action = action_space[get_random_number(0, action_space.size())];
-                Level* cloned = env.clone();
-                cloned->deferred_step(next_action);
-                int wins = 0;
-                if (cloned->done){
-                    wins = cloned->win;
-                }
-                else {
-                    wins = cloned->rollout(-1, 20, 1);
-                }
-                #pragma omp critical
-                {
-                    if(wins > most_wins){
-                        most_wins = wins;
-                        best_action = next_action;
-                    }
-                }
-            }
-            env.deferred_step(best_action);
-        }
-        break;
+bool play_random_game(const Level& base_env, int randomization_mode){
+    Level* env = base_env.clone(FORCE_DETERMINISTIC);
+    while(!env->done) {
+        Action next_step = env->get_random_action();
+        env->step(next_step);
     }
-    return env.win;
+    bool win = env->win;
+    delete env;
+    return win;
+    // switch(randomization_mode){
+    //     case 1: // for each step, choose a random action available right now
+    //     while (!env->done) {
+    //         env->step(env->get_random_action());
+    //     }
+    //     break;
+    //     case 2: // select next action, do empty steps until its possible, then do it
+    //     while(!env->done) {
+    //         int lane = get_random_number(0, env->lanes - 1);
+    //         int col = get_random_number(0, env->cols - 1);
+    //         int plant = env->get_random_plant();
+    //         Action next_step = Action((PlantName)plant, lane, col);
+    //         while (!env->is_action_legal(next_step) && !env->done){
+    //             env->step();
+    //         }
+    //         if (env->done) {
+    //             break;
+    //         }
+    //         env->step(next_step);
+    //     }
+    //     break;
+    //     case 3: // select next plant to plant, wait until it's possible, select random empty cell and plant it
+    //     while(!env->done) {
+    //         int next_plant = env->get_random_plant();
+    //         while(!env->is_plantable(next_plant) && !env->done) {
+    //             env->step();
+    //         }
+    //         if (env->done) {
+    //             break;
+    //         }
+    //         int lane, col;
+    //         while(!env->get_random_position(lane, col) && !env->done) {
+    //             env->step();
+    //         }
+    //         if (env->done) {
+    //             break;
+    //         }
+    //         env->step((PlantName)next_plant, lane, col);
+    //     }
+    //     break;
+    // }
+    // bool win = env->win;
+    // delete env;
+    // return win;
 }
 bool play_random_heuristic_game(Level env, heuristic_function& func, int mode){
     switch (mode){
@@ -662,39 +634,46 @@ bool play_random_heuristic_game(Level env, heuristic_function& func, int mode){
     return env.win;
 }
 
-int Level::rollout(int num_cpu, int num_games, int mode) const {
+int Level::rollout(int num_games, int mode) const {
+    if (num_games == 1){
+        return play_random_game(*this, mode);
+    }
     std::vector<bool> victories(num_games, false);
-    switch (num_cpu){
-        case 1:
-        for (int i = 0; i < num_games; i++){
-            victories[i] = play_random_game(*this, mode);
-        }
-        break;
-        case -1:
-        // omp_set_num_threads(8);
-        omp_set_dynamic(1);
-        #pragma omp parallel for shared(victories)
-        for (int i = 0; i < num_games; i++){
-            victories[i] = play_random_game(*this, mode);
-        }
-        break;
-        default:
-        omp_set_num_threads(num_cpu);
-        #pragma omp parallel for shared(victories)
-        for (int i = 0; i < num_games; i++){
-            victories[i] = play_random_game(*this, mode);
-        }
-        break;
+    #pragma omp parallel for shared(victories)
+    for (int i = 0; i < num_games; i++){
+        victories[i] = play_random_game(*this, mode);
     }
     return std::count(victories.begin(), victories.end(), true);
+    // switch (num_cpu){
+    //     case 1:
+    //     for (int i = 0; i < num_games; i++){
+    //         victories[i] = play_random_game(*this, mode);
+    //     }
+    //     break;
+    //     case -1:
+    //     omp_set_num_threads(8);
+    //     // omp_set_dynamic(1);
+    //     #pragma omp parallel for shared(victories)
+    //     for (int i = 0; i < num_games; i++){
+    //         victories[i] = play_random_game(*this, mode);
+    //     }
+    //     break;
+    //     default:
+    //     omp_set_num_threads(8);
+    //     #pragma omp parallel for shared(victories)
+    //     for (int i = 0; i < num_games; i++){
+    //         victories[i] = play_random_game(*this, mode);
+    //     }
+    //     break;
+    // }
 }
 
 // returns pair(rollouts, victories)
-std::pair<int, int> Level::timed_rollout(int num_cpu, int time_limit_ms, int mode) const {
+std::pair<int, int> Level::timed_rollout(int time_limit_ms, int mode) const {
     int rollouts = 0, victories = 0;
     auto start_time = std::chrono::high_resolution_clock::now();
     auto end_time = start_time + std::chrono::milliseconds(time_limit_ms);
-    omp_set_num_threads(num_cpu);
+    // omp_set_num_threads(num_cpu);
     #pragma omp parallel reduction(+:victories) reduction(+:rollouts)
     while(std::chrono::high_resolution_clock::now() < end_time) {
         int win = play_random_game(*this, mode);
