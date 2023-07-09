@@ -2,6 +2,7 @@ BUILD_DIR := build/
 # ======== level srcs ===========================
 LEVEL_DIR := cpp_env/
 LEVEL_SRCS := $(wildcard $(addsuffix *.cpp, $(LEVEL_DIR)))
+LEVEL_HEADERS := $(wildcard $(addsuffix *.hpp, $(LEVEL_DIR)))
 LEVEL_SWIG_SRCS := $(LEVEL_DIR)level_wrap.cxx
 LEVEL_OBJS := $(patsubst $(LEVEL_DIR)%.cpp, $(BUILD_DIR)%.o, $(LEVEL_SRCS))
 LEVEL_SWIG_OBJS := $(patsubst $(LEVEL_DIR)%.cpp, $(BUILD_DIR)%.o, $(LEVEL_SRCS)) \
@@ -11,6 +12,7 @@ LEVEL_PY := $(LEVEL_DIR)level.py
 # ======== mcts srcs ============================
 MCTS_DIR := cpp_mcts/
 MCTS_SRCS := $(wildcard $(addsuffix *.cpp, $(MCTS_DIR)))
+MCTS_HEADERS := $(wildcard $(addsuffix *.h, $(MCTS_DIR)))
 MCTS_SWIG_SRCS := $(MCTS_DIR)mcts_wrap.cxx
 MCTS_SWIG_OBJS := $(patsubst $(MCTS_DIR)%.cpp, $(BUILD_DIR)%.o, $(MCTS_SRCS)) \
 				  $(patsubst $(MCTS_DIR)%.cxx, $(BUILD_DIR)%.o, $(MCTS_SWIG_SRCS))
@@ -46,7 +48,7 @@ $(BUILD_DIR)%.o: $(LEVEL_DIR)%.cpp
 $(BUILD_DIR)%.o: $(LEVEL_DIR)%.cxx
 	$(CC) $(CFLAGS) $(PYTHONI) -c $< -o $@ -fPIC
 
-$(BUILD_DIR)%.o: $(MCTS_DIR)%.cpp
+$(BUILD_DIR)%.o: $(MCTS_DIR)%.cpp $(MCTS_HEADERS)
 	$(CC) $(CFLAGS) $(PYTHONI) -c $< -o $@ -fPIC
 
 $(BUILD_DIR)%.o: $(MCTS_DIR)%.cxx
@@ -58,7 +60,7 @@ $(LEVEL_LIB): $(LEVEL_OBJS)
 $(LEVEL_SWIG_LIB): $(LEVEL_SWIG_OBJS) $(LEVEL_SWIG_SRCS)
 	$(CC) $(PYTHONL) -flto -shared $(LEVEL_SWIG_OBJS) $(LIBFLAGS) -o $(LEVEL_SWIG_LIB)
 
-$(MCTS_SWIG_LIB): $(MCTS_SWIG_OBJS) $(LEVEL_LIB) $(MCTS_SWIG_SRCS)
+$(MCTS_SWIG_LIB): $(MCTS_SWIG_OBJS) $(LEVEL_LIB) $(MCTS_SWIG_SRCS) 
 	$(CC) $(PYTHONL) -flto -shared -L. -l:$(LEVEL_LIB) $(MCTS_SWIG_OBJS) $(LEVEL_LIB) $(LIBFLAGS) -o $(MCTS_SWIG_LIB)
 
 # .PHONY: $(LEVEL_SWIG_SRCS)

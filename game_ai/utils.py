@@ -208,46 +208,58 @@ def csv_append(new_data: dict, filename=CSV_FILENAME):
     new_row = [new_data["level"], new_data["time_ms"], new_data["threads"], new_data["ucb_const"], new_data["rollout_mode"], new_data["win"], new_data["num_steps"]]
     data_writer.writerow(new_row)
 
-def test_generate_plot(csv_file, x_axis, y_axis, filters, log, graph):
-    plt.figure(figsize=(8,8))
-    with open(csv_file, 'r') as csv_file_handle:
-        data = list(csv.DictReader(csv_file_handle))
-    for filter in filters:
-        filtered_data = data.copy()
-        # Filter data using filter dictionary
-        for key, value in filter.items():
-            filtered_data = [row for row in filtered_data if row[key] == str(value)]
-        grouped_data = {}
-        # Group data by x-axis
-        for row in filtered_data:
-            if row[x_axis] not in grouped_data:
-                grouped_data[row[x_axis]] = []
-            if (row[y_axis] == "False" or row[y_axis] == "True"):
-                grouped_data[row[x_axis]].append(bool(row[y_axis] == "True"))
-            else:
-                grouped_data[row[x_axis]].append(row[y_axis])
-        # Calculate mean of y-axis
-        for key, value in grouped_data.items():
-            grouped_data[key] = [sum([int(x) for x in value]) / len(value), len(value)]
+def test_generate_plot(csv_file, x_axis, y_axis, filter_list, log, graph):
+    for filters in filter_list:
+        plt.figure(figsize=(8,8))
+        with open(csv_file, 'r') as csv_file_handle:
+            data = list(csv.DictReader(csv_file_handle))
+        for filter in filters:
+            filtered_data = data.copy()
+            # Filter data using filter dictionary
+            for key, value in filter.items():
+                filtered_data = [row for row in filtered_data if row[key] == str(value)]
+            grouped_data = {}
+            # Group data by x-axis
+            for row in filtered_data:
+                if row[x_axis] not in grouped_data:
+                    grouped_data[row[x_axis]] = []
+                if (row[y_axis] == "False" or row[y_axis] == "True"):
+                    grouped_data[row[x_axis]].append(bool(row[y_axis] == "True"))
+                else:
+                    grouped_data[row[x_axis]].append(row[y_axis])
+            # Calculate mean of y-axis
+            for key, value in grouped_data.items():
+                grouped_data[key] = [sum([int(x) for x in value]) / len(value), len(value)]
 
-        # Sort data by x-axis
-        sorted_keys = sorted(grouped_data.keys())
-        sorted_data = [grouped_data[x][0] for x in sorted_keys]
+            # Sort data by x-axis
+            sorted_keys = sorted(grouped_data.keys())
+            sorted_data = [grouped_data[x][0] for x in sorted_keys]
+            if (x_axis == "rollout_mode"):
+                mode_to_name = {
+                    "0": "normal",
+                    "1": "parallel max",
+                    "2": "parallel avg",
+                    "3": "parallel trees",
+                    "4": "heuristic"
+                }
+                sorted_keys = [mode_to_name[mode] for mode in sorted_keys]
 
-        avg_data_points = sum([x[1] for x in grouped_data.values()]) / len(grouped_data.values())
+            avg_data_points = sum([x[1] for x in grouped_data.values()]) / len(grouped_data.values())
 
-        # Plot graph
-        plt.scatter(sorted_keys, sorted_data, label=f"{str(filter)}, avg data points: {avg_data_points}")
-        for x,y in grouped_data.items():
-            plt.annotate(f"{y[1]}", (x,y[0]))
-        plt.plot(sorted_keys, sorted_data)
+            # Plot graph
+            plt.scatter(sorted_keys, sorted_data, label=f"{str(filter)}, avg data points: {avg_data_points}")
+            for x,y in grouped_data.items():
+                plt.annotate(f"{y[1]}", (x,y[0]))
+            plt.plot(sorted_keys, sorted_data)
 
-    if log:
-        plt.xscale('log')
-    plt.xlabel(x_axis)
-    plt.ylabel(y_axis)
-    plt.title(f"{y_axis} vs {x_axis}")
-    plt.legend()
+        if y_axis == "win":
+            plt.ylim((0, 1))
+        if log:
+            plt.xscale('log')
+        plt.xlabel(x_axis)
+        plt.ylabel(y_axis)
+        plt.title(f"{y_axis} vs {x_axis}")
+        plt.legend()
     plt.show()
 
 
@@ -270,10 +282,73 @@ if __name__ == "__main__":
     """
     # filter_criteria = {"level": 9, "threads": 4}
     filters = [
-        {"level": 9, "ucb_const": 0.2},
-        {"level": 9, "ucb_const": 1.4},
+        # [
+        #     {"level": "9", "rollout_mode": 2, "ucb_const": 30},
+        #     {"level": "9", "rollout_mode": 0, "ucb_const": 0.2},
+        #     {"level": "9", "rollout_mode": 3, "ucb_const": 1.4},
+        # ]
+        [
+            {"level": "9", "rollout_mode": 0},
+            {"level": "9", "rollout_mode": 1},
+            {"level": "9", "rollout_mode": 2},
+            {"level": "9", "rollout_mode": 3},
+            {"level": "9", "rollout_mode": 4},
+        ],
+        # [
+        #     {"level": "9", "time_ms": 400, "rollout_mode": 0},
+        #     {"level": "9", "time_ms": 400, "rollout_mode": 1},
+        #     {"level": "9", "time_ms": 400, "rollout_mode": 2},
+        #     {"level": "9", "time_ms": 400, "rollout_mode": 3},
+        #     {"level": "9", "time_ms": 400, "rollout_mode": 4},
+        # ],        
+        # [
+        #     {"level": "9", "time_ms": 800, "rollout_mode": 0},
+        #     {"level": "9", "time_ms": 800, "rollout_mode": 1},
+        #     {"level": "9", "time_ms": 800, "rollout_mode": 2},
+        #     {"level": "9", "time_ms": 800, "rollout_mode": 3},
+        #     {"level": "9", "time_ms": 800, "rollout_mode": 4},
+        # ],
+        # [
+        #     {"level": "9+", "ucb_const": 0.2, "rollout_mode": 0},
+        #     {"level": "9+", "ucb_const": 1.4, "rollout_mode": 0},
+        #     {"level": "9+", "ucb_const": 3, "rollout_mode": 0},
+        #     {"level": "9+", "ucb_const": 30, "rollout_mode": 0},
+        # ],
+        # [
+        #     {"level": "9+", "ucb_const": 0.2, "rollout_mode": 1},
+        #     {"level": "9+", "ucb_const": 1.4, "rollout_mode": 1},
+        #     {"level": "9+", "ucb_const": 3, "rollout_mode": 1},
+        #     {"level": "9+", "ucb_const": 30, "rollout_mode": 1},
+        # ],
+        # [
+        #     {"level": "9+", "ucb_const": 0.2, "rollout_mode": 2},
+        #     {"level": "9+", "ucb_const": 1.4, "rollout_mode": 2},
+        #     {"level": "9+", "ucb_const": 3, "rollout_mode": 2},
+        #     {"level": "9+", "ucb_const": 30, "rollout_mode": 2},
+        # ],
+        # [
+        #     {"level": "9+", "ucb_const": 0.2, "rollout_mode": 3},
+        #     {"level": "9+", "ucb_const": 1.4, "rollout_mode": 3},
+        #     {"level": "9+", "ucb_const": 3, "rollout_mode": 3},
+        #     {"level": "9+", "ucb_const": 30, "rollout_mode": 3},
+        # ],
+        # [
+        #     {"level": "9+", "ucb_const": 0.2, "rollout_mode": 4},
+        #     {"level": "9+", "ucb_const": 1.4, "rollout_mode": 4},
+        #     {"level": "9+", "ucb_const": 3, "rollout_mode": 4},
+        #     {"level": "9+", "ucb_const": 30, "rollout_mode": 4},
+        # ],
+        # [
+        #     {"level": "9+", "time_ms": 200, "ucb_const": 0.2},
+        #     {"level": "9+", "time_ms": 200, "ucb_const": 1.4},
+        #     {"level": "9+", "time_ms": 800, "ucb_const": 0.2},
+        #     {"level": "9+", "time_ms": 800, "ucb_const": 1.4},
+        # ]
+        # {"level": "9+", "time_ms": 800, "rollout_mode": 2},
+        # {"level": "9+", "time_ms": 800, "rollout_mode": 3},
+        # {"level": "9+", "time_ms": 800, "rollout_mode": 4},
     ]
-    x_axis = "rollout_mode"
+    x_axis = "time_ms"
     y_axis = "win"
 
     test_generate_plot(CSV_FILENAME, x_axis, y_axis, filters, log=False, graph=True)#, filter_2, filter_3])

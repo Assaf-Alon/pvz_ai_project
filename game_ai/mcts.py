@@ -69,14 +69,19 @@ if __name__ == "__main__":
     """
     # time_range = range(150, 800, 50)
     # time_range = range(200, 1100, 100)
-    time_range = [200]
+    time_range = [200, 400, 800]
     # ucb_range = [0, 0.1, 0.2, 0.5, 1.0, 1.4, 3.0, 10, 30, 100]
-    ucb_range = [0.2, 1.4]
+    # ucb_range = [0.2, 1.4]
+    # ucb_range = [3, 30]
+    # ucb_range = [20, 40] # zeroing in on optimal mode2 ucb
+    ucb_range = [25, 35] # zeroing in on optimal mode2 ucb
+
     # sim_per_leaf_range = [2,4,8,12,16,20,30]
     # rollot_mode_range = [0,1,2]
-    parallel_parameter_list = list(itertools.product(time_range, [8], ucb_range, [mcts.MAX_NODE,mcts.AVG_NODE,mcts.PARALLEL_TREES]))
-    traditional_parameter_list = list(itertools.product(time_range, [1], ucb_range, [mcts.NORMAL_MCTS, mcts.HEURISTIC_MCTS]))
-    experiment_parameter_list = parallel_parameter_list + traditional_parameter_list
+    # parallel_parameter_list = list(itertools.product(["9", "9+"], time_range, [8], ucb_range, [mcts.MAX_NODE,mcts.AVG_NODE,mcts.PARALLEL_TREES]))
+    # traditional_parameter_list = list(itertools.product(["9", "9+"], time_range, [1], ucb_range, [mcts.NORMAL_MCTS, mcts.HEURISTIC_MCTS]))
+    # experiment_parameter_list = parallel_parameter_list + traditional_parameter_list
+    experiment_parameter_list = list(itertools.product(["9"], time_range, [8], ucb_range, [mcts.AVG_NODE]))
     ## Full experiment parameter list
     # experiment_parameter_list = list(itertools.product(time_range, sim_per_leaf_range, ucb_range, rollot_mode_range))
     ## Parallel experiment only, optimize for thread num
@@ -84,7 +89,7 @@ if __name__ == "__main__":
     print(f"Parameter space size: {len(experiment_parameter_list)}")
     while True: ## run experiments until stopped manually
         for experiment_parameters in experiment_parameter_list:
-            args = [9, *experiment_parameters]
-            print(f"starting experiment with args: {args}")
-            perform_experiment(*args)
+            # args = [*experiment_parameters]
+            print(f"starting experiment with args: {experiment_parameters}")
+            perform_experiment(*experiment_parameters)
             print("----------------------------")

@@ -49,7 +49,7 @@ base_env = env.clone(-1) # base_env has same level as env
 action_list = []
 while not env.done:
     print(f"frame before mcts: {env.frame}")
-    action = mcts.run(level=env, timeout_ms=200, simulations_per_leaf=8, debug=False, ucb_const=1.4, mode=mcts.NORMAL_MCTS)
+    action = mcts.run(level=env, timeout_ms=200, simulations_per_leaf=8, debug=True, ucb_const=1.4, mode=mcts.AVG_NODE, heuristic_mode=mcts.HEURISTIC_MCTS)
     action_list.append(action)
     print(utils.action_to_string(action))
     env.deferred_step(action)
