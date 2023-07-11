@@ -3,7 +3,7 @@ from build import mcts
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-from scipy.interpolate import make_interp_spline, CubicSpline, BSpline
+# from scipy.interpolate import make_interp_spline, CubicSpline, BSpline
 from pprint import pprint
 from time import time
 import json
@@ -205,7 +205,7 @@ def csv_append(new_data: dict, filename=CSV_FILENAME):
     """
     data_csv = open(filename, "a+")
     data_writer = csv.writer(data_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONE)
-    new_row = [new_data["level"], new_data["time_ms"], new_data["threads"], new_data["ucb_const"], new_data["rollout_mode"], new_data["win"], new_data["num_steps"]]
+    new_row = [new_data["level"], new_data["time_ms"], new_data["parallel_factor"], new_data["ucb_const"], new_data["rollout_mode"], new_data["heuristic_mode"], new_data["win"], new_data["num_steps"]]
     data_writer.writerow(new_row)
 
 def test_generate_plot(csv_file, x_axis, y_axis, filter_list, log, graph):
@@ -282,71 +282,30 @@ if __name__ == "__main__":
     """
     # filter_criteria = {"level": 9, "threads": 4}
     filters = [
-        # [
-        #     {"level": "9", "rollout_mode": 2, "ucb_const": 30},
-        #     {"level": "9", "rollout_mode": 0, "ucb_const": 0.2},
-        #     {"level": "9", "rollout_mode": 3, "ucb_const": 1.4},
-        # ]
         [
-            {"level": "9", "rollout_mode": 0},
-            {"level": "9", "rollout_mode": 1},
-            {"level": "9", "rollout_mode": 2},
-            {"level": "9", "rollout_mode": 3},
-            {"level": "9", "rollout_mode": 4},
+            {"level": "9+", "rollout_mode": 0, "heuristic_mode": 0},
+            {"level": "9+", "rollout_mode": 0, "heuristic_mode": 1},
+            {"level": "9+", "rollout_mode": 0, "heuristic_mode": 2},
+            {"level": "9+", "rollout_mode": 0, "heuristic_mode": 3},
         ],
-        # [
-        #     {"level": "9", "time_ms": 400, "rollout_mode": 0},
-        #     {"level": "9", "time_ms": 400, "rollout_mode": 1},
-        #     {"level": "9", "time_ms": 400, "rollout_mode": 2},
-        #     {"level": "9", "time_ms": 400, "rollout_mode": 3},
-        #     {"level": "9", "time_ms": 400, "rollout_mode": 4},
-        # ],        
-        # [
-        #     {"level": "9", "time_ms": 800, "rollout_mode": 0},
-        #     {"level": "9", "time_ms": 800, "rollout_mode": 1},
-        #     {"level": "9", "time_ms": 800, "rollout_mode": 2},
-        #     {"level": "9", "time_ms": 800, "rollout_mode": 3},
-        #     {"level": "9", "time_ms": 800, "rollout_mode": 4},
-        # ],
-        # [
-        #     {"level": "9+", "ucb_const": 0.2, "rollout_mode": 0},
-        #     {"level": "9+", "ucb_const": 1.4, "rollout_mode": 0},
-        #     {"level": "9+", "ucb_const": 3, "rollout_mode": 0},
-        #     {"level": "9+", "ucb_const": 30, "rollout_mode": 0},
-        # ],
-        # [
-        #     {"level": "9+", "ucb_const": 0.2, "rollout_mode": 1},
-        #     {"level": "9+", "ucb_const": 1.4, "rollout_mode": 1},
-        #     {"level": "9+", "ucb_const": 3, "rollout_mode": 1},
-        #     {"level": "9+", "ucb_const": 30, "rollout_mode": 1},
-        # ],
-        # [
-        #     {"level": "9+", "ucb_const": 0.2, "rollout_mode": 2},
-        #     {"level": "9+", "ucb_const": 1.4, "rollout_mode": 2},
-        #     {"level": "9+", "ucb_const": 3, "rollout_mode": 2},
-        #     {"level": "9+", "ucb_const": 30, "rollout_mode": 2},
-        # ],
-        # [
-        #     {"level": "9+", "ucb_const": 0.2, "rollout_mode": 3},
-        #     {"level": "9+", "ucb_const": 1.4, "rollout_mode": 3},
-        #     {"level": "9+", "ucb_const": 3, "rollout_mode": 3},
-        #     {"level": "9+", "ucb_const": 30, "rollout_mode": 3},
-        # ],
-        # [
-        #     {"level": "9+", "ucb_const": 0.2, "rollout_mode": 4},
-        #     {"level": "9+", "ucb_const": 1.4, "rollout_mode": 4},
-        #     {"level": "9+", "ucb_const": 3, "rollout_mode": 4},
-        #     {"level": "9+", "ucb_const": 30, "rollout_mode": 4},
-        # ],
-        # [
-        #     {"level": "9+", "time_ms": 200, "ucb_const": 0.2},
-        #     {"level": "9+", "time_ms": 200, "ucb_const": 1.4},
-        #     {"level": "9+", "time_ms": 800, "ucb_const": 0.2},
-        #     {"level": "9+", "time_ms": 800, "ucb_const": 1.4},
-        # ]
-        # {"level": "9+", "time_ms": 800, "rollout_mode": 2},
-        # {"level": "9+", "time_ms": 800, "rollout_mode": 3},
-        # {"level": "9+", "time_ms": 800, "rollout_mode": 4},
+        [
+            {"level": "9+", "rollout_mode": 1, "heuristic_mode": 0},
+            {"level": "9+", "rollout_mode": 1, "heuristic_mode": 1},
+            {"level": "9+", "rollout_mode": 1, "heuristic_mode": 2},
+            {"level": "9+", "rollout_mode": 1, "heuristic_mode": 3},
+        ],
+        [
+            {"level": "9+", "rollout_mode": 2, "heuristic_mode": 0},
+            {"level": "9+", "rollout_mode": 2, "heuristic_mode": 1},
+            {"level": "9+", "rollout_mode": 2, "heuristic_mode": 2},
+            {"level": "9+", "rollout_mode": 2, "heuristic_mode": 3},
+        ],
+        [
+            {"level": "9+", "rollout_mode": 3, "heuristic_mode": 0},
+            {"level": "9+", "rollout_mode": 3, "heuristic_mode": 1},
+            {"level": "9+", "rollout_mode": 3, "heuristic_mode": 2},
+            {"level": "9+", "rollout_mode": 3, "heuristic_mode": 3},
+        ],
     ]
     x_axis = "time_ms"
     y_axis = "win"

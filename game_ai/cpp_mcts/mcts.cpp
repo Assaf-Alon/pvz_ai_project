@@ -96,6 +96,7 @@ Node* expand(Node* selected_node, Level& cloned_level, heuristic_function* h_fun
                 best_h = sample_h;
                 best_index = action_index;
             }
+            delete sample_clone;
         }
         action_index = best_index;
     }
@@ -248,6 +249,7 @@ Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool deb
             rollout(new_node, *cloned_level);
             backpropagate(new_node);
             num_expanded_nodes[tree]++;
+            delete cloned_level;
         }
     }
     std::unordered_map<Action, int, ActionHash> visits; // for each action, how many times it was visited
