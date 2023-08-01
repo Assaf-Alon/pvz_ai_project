@@ -4,10 +4,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 # from scipy.interpolate import make_interp_spline, CubicSpline, BSpline
+import scipy.stats as st
 from pprint import pprint
 from time import time
 import json
 import csv
+
+NORMAL_MCTS = mcts.NORMAL_MCTS
+MAX_NODE = mcts.MAX_NODE
+AVG_NODE = mcts.AVG_NODE
+PARALLEL_TREES = mcts.PARALLEL_TREES
+
+NO_HEURISTIC = mcts.NO_HEURISTIC
+HEURISTIC_MCTS = mcts.HEURISTIC_MCTS
+HEURISTIC_SELECT = mcts.HEURISTIC_SELECT
+HEURISTIC_EXPAND = mcts.HEURISTIC_EXPAND
+
 
 CSV_FILENAME = "data/data.csv"
 plant_to_name = ("no_plant","cherrybomb","chomper","hypnoshroom","iceshroom","jalapeno","peashooter","potatomine","puffshroom","repeaterpea","scaredyshroom","snowpea","spikeweed","squash","sunflower","sunshroom","threepeater","wallnut")
@@ -208,11 +220,54 @@ def csv_append(new_data: dict, filename=CSV_FILENAME):
     new_row = [new_data["level"], new_data["time_ms"], new_data["parallel_factor"], new_data["ucb_const"], new_data["rollout_mode"], new_data["heuristic_mode"], new_data["win"], new_data["num_steps"]]
     data_writer.writerow(new_row)
 
+rollout_mode_to_name = {
+    NORMAL_MCTS: "normal",
+    MAX_NODE: "parallel max",
+    AVG_NODE: "parallel avg",
+    PARALLEL_TREES: "parallel trees",
+}
+heuristic_mode_to_name = {
+    NO_HEURISTIC: "no heuristic",
+    HEURISTIC_MCTS: "full heuristic",
+    HEURISTIC_EXPAND: "expand heuristic",
+    HEURISTIC_SELECT: "select heuristic"
+}
+
+def replace_data_mode_names(data):
+    for index in range(len(data)):
+        for key, value in data[index].items():
+            if key == "rollout_mode":
+                data[index][key] = rollout_mode_to_name[int(value)]
+            elif key == "heuristic_mode":
+                data[index][key] = heuristic_mode_to_name[int(value)]
+    return data
+
+def replace_filter_mode_names(filter_list):
+    for filter_index in range(len(filter_list)):
+        for index in range(len(filter_list[filter_index])):
+            for key, value in filter_list[filter_index][index].items():
+                if key == "rollout_mode":
+                    filter_list[filter_index][index][key] = rollout_mode_to_name[int(value)]
+                elif key == "heuristic_mode":
+                    filter_list[filter_index][index][key] = heuristic_mode_to_name[int(value)]
+    return filter_list
+
 def test_generate_plot(csv_file, x_axis, y_axis, filter_list, log, graph):
-    for filters in filter_list:
-        plt.figure(figsize=(8,8))
-        with open(csv_file, 'r') as csv_file_handle:
-            data = list(csv.DictReader(csv_file_handle))
+    with open(csv_file, 'r') as csv_file_handle:
+        data = list(csv.DictReader(csv_file_handle))
+
+    data = replace_data_mode_names(data)
+    filter_list = replace_filter_mode_names(filter_list)
+    
+    # create subplots by getting the sqrt of the number of filters
+    num_rows = num_cols = int(np.ceil(np.sqrt(len(filter_list))))
+
+    fig, axes = plt.subplots(num_rows, num_cols)
+
+    manager = plt.get_current_fig_manager()
+    manager.window.maximize()
+
+    for fig_num, filters in enumerate(filter_list):
         for filter in filters:
             filtered_data = data.copy()
             # Filter data using filter dictionary
@@ -226,42 +281,62 @@ def test_generate_plot(csv_file, x_axis, y_axis, filter_list, log, graph):
                 if (row[y_axis] == "False" or row[y_axis] == "True"):
                     grouped_data[row[x_axis]].append(bool(row[y_axis] == "True"))
                 else:
-                    grouped_data[row[x_axis]].append(row[y_axis])
+                    grouped_data[row[x_axis]].append(float(row[y_axis]))
+            
             # Calculate mean of y-axis
             for key, value in grouped_data.items():
                 grouped_data[key] = [sum([int(x) for x in value]) / len(value), len(value)]
+                conf_lower, conf_upper = st.norm.interval(0.9, loc=grouped_data[key][0], scale=st.sem(value))
+                print(f"lower bound: {conf_lower}, upper bound: {conf_upper}")
 
             # Sort data by x-axis
             sorted_keys = sorted(grouped_data.keys())
             sorted_data = [grouped_data[x][0] for x in sorted_keys]
+            # lower and upper bounds for each data point, 95% confidence interval
+            # sorted_error = np.array([st.norm.interval(0.95, loc=grouped_data[key][0], scale=st.sem(value)) for key in sorted_keys])
+            # data points with error applied
+            # error_data = np.array([sorted_data - sorted_error[:, 0], sorted_error[:, 1] - sorted_data])
             if (x_axis == "rollout_mode"):
                 mode_to_name = {
                     "0": "normal",
                     "1": "parallel max",
                     "2": "parallel avg",
                     "3": "parallel trees",
-                    "4": "heuristic"
                 }
                 sorted_keys = [mode_to_name[mode] for mode in sorted_keys]
 
             avg_data_points = sum([x[1] for x in grouped_data.values()]) / len(grouped_data.values())
-
-            # Plot graph
-            plt.scatter(sorted_keys, sorted_data, label=f"{str(filter)}, avg data points: {avg_data_points}")
+            # Plot grouped data
+            if (len(filter_list) == 1):
+                axis = axes
+            else:
+                axis = axes[fig_num // num_cols, fig_num % num_cols] # type: plt.Axes
+            axis.plot(sorted_keys, sorted_data)
+            # if error_bars:
+            #     # axis.errorbar(sorted_keys, sorted_data, yerr=[], fmt='o', capsize=5, capthick=2)
+            #     axis.errorbar(sorted_keys, sorted_data, yerr=error_data, fmt='o', capsize=5, capthick=2, label=str(filter))
+            # else:
+            axis.scatter(sorted_keys, sorted_data, label=str(filter))
+            axis.legend()
+            axis.set_xlabel(x_axis)
+            axis.set_ylabel(y_axis)
+            axis.set_title(y_axis + " vs " + x_axis)
             for x,y in grouped_data.items():
-                plt.annotate(f"{y[1]}", (x,y[0]))
-            plt.plot(sorted_keys, sorted_data)
-
-        if y_axis == "win":
-            plt.ylim((0, 1))
-        if log:
-            plt.xscale('log')
-        plt.xlabel(x_axis)
-        plt.ylabel(y_axis)
-        plt.title(f"{y_axis} vs {x_axis}")
-        plt.legend()
+                axis.annotate(f"{y[1]}", (x,y[0]))
+            if y_axis == "win":
+                axis.set_ylim((0, 1))
+    # delete unused subplots
+    for fig_num in range(len(filter_list), num_rows * num_cols):
+        if (len(filter_list) == 1):
+            axis = axes
+        else:
+            axis = axes[fig_num // num_cols, fig_num % num_cols]
+        fig.delaxes(axis)
+    # plt.tight_layout()
+    # if y_axis == "win":
+    #     plt.ylim((0, 1))
     plt.show()
-
+    
 
 if __name__ == "__main__":
     """
@@ -274,38 +349,102 @@ if __name__ == "__main__":
     num_steps
     """
     """
-    optimal threads:
-    mode 0: lmao
-    mode 1: 4
-    mode 2: 8
-    mode 3: 8
+    optimal ucb_const:
+    mode normal: 0.2
+    mode max_node: 0.2
+    mode 2: ~0.2
+    mode 3: 0.2
     """
     # filter_criteria = {"level": 9, "threads": 4}
+    target_level = "9+"
+    r_mode = PARALLEL_TREES
+    ucb = 0.2
     filters = [
+        # [
+        #     {"level": target_level, "rollout_mode": NORMAL_MCTS, "heuristic_mode": 0, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": MAX_NODE, "heuristic_mode": 0, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": AVG_NODE, "heuristic_mode": 0, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": PARALLEL_TREES, "heuristic_mode": 0, "ucb_const": ucb},
+        # ],
+        # [
+        #     {"level": target_level, "rollout_mode": NORMAL_MCTS, "heuristic_mode": HEURISTIC_SELECT, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": MAX_NODE, "heuristic_mode": HEURISTIC_SELECT, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": AVG_NODE, "heuristic_mode": HEURISTIC_SELECT, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": PARALLEL_TREES, "heuristic_mode": HEURISTIC_SELECT, "ucb_const": ucb},
+        # ]
+        # ==============================================================================================================
+        # Compare UCB values for r_mode rollout mode using different heuristic modes
+        # ==============================================================================================================
+        # [
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": NO_HEURISTIC, "ucb_const": 0.1},
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": NO_HEURISTIC, "ucb_const": 0.2},
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": NO_HEURISTIC, "ucb_const": 0.5},
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": NO_HEURISTIC, "ucb_const": 1.0},
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": NO_HEURISTIC, "ucb_const": 1.4},
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": NO_HEURISTIC, "ucb_const": 30},
+        # ],
+        # # [
+        # #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_MCTS, "ucb_const": 0.1},
+        # #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_MCTS, "ucb_const": 0.2},
+        # #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_MCTS, "ucb_const": 0.5},
+        # #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_MCTS, "ucb_const": 1.0},
+        # #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_MCTS, "ucb_const": 1.4},
+        # #     # {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": mcts.HEURISTIC_MCTS, "ucb_const": 30},
+        # # ],
+        # [
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_SELECT, "ucb_const": 0.1},
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_SELECT, "ucb_const": 0.2},
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_SELECT, "ucb_const": 0.5},
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_SELECT, "ucb_const": 1.0},
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_SELECT, "ucb_const": 1.4},
+        #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_SELECT, "ucb_const": 30},
+        # ],
+        # # [
+        # #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_EXPAND, "ucb_const": 0.1},
+        # #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_EXPAND, "ucb_const": 0.2},
+        # #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_EXPAND, "ucb_const": 0.5},
+        # #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_EXPAND, "ucb_const": 1.0},
+        # #     {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": HEURISTIC_EXPAND, "ucb_const": 1.4},
+        # #     # {"level": target_level, "rollout_mode": r_mode, "heuristic_mode": mcts.HEURISTIC_EXPAND, "ucb_const": 30},
+        # # ],
+        # ==============================================================================================================
+        # Compare rollouts with different heuristic modes using a single ucb constant
+        # ==============================================================================================================
+        # [
+        #     {"level": target_level, "rollout_mode": NORMAL_MCTS, "heuristic_mode": 0, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": NORMAL_MCTS, "heuristic_mode": 1, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": NORMAL_MCTS, "heuristic_mode": 2, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": NORMAL_MCTS, "heuristic_mode": 3, "ucb_const": ucb},
+        # ],
+        # [
+        #     {"level": target_level, "rollout_mode": MAX_NODE, "heuristic_mode": 0, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": MAX_NODE, "heuristic_mode": 1, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": MAX_NODE, "heuristic_mode": 2, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": MAX_NODE, "heuristic_mode": 3, "ucb_const": ucb},
+        # ],
+        # [
+        #     {"level": target_level, "rollout_mode": AVG_NODE, "heuristic_mode": 0, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": AVG_NODE, "heuristic_mode": 1, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": AVG_NODE, "heuristic_mode": 2, "ucb_const": ucb},
+        #     {"level": target_level, "rollout_mode": AVG_NODE, "heuristic_mode": 3, "ucb_const": ucb},
+        # ],
         [
-            {"level": "9+", "rollout_mode": 0, "heuristic_mode": 0},
-            {"level": "9+", "rollout_mode": 0, "heuristic_mode": 1},
-            {"level": "9+", "rollout_mode": 0, "heuristic_mode": 2},
-            {"level": "9+", "rollout_mode": 0, "heuristic_mode": 3},
+            {"level": target_level, "rollout_mode": PARALLEL_TREES, "heuristic_mode": 0, "ucb_const": ucb},
+            {"level": target_level, "rollout_mode": PARALLEL_TREES, "heuristic_mode": 2, "ucb_const": ucb},
         ],
-        [
-            {"level": "9+", "rollout_mode": 1, "heuristic_mode": 0},
-            {"level": "9+", "rollout_mode": 1, "heuristic_mode": 1},
-            {"level": "9+", "rollout_mode": 1, "heuristic_mode": 2},
-            {"level": "9+", "rollout_mode": 1, "heuristic_mode": 3},
-        ],
-        [
-            {"level": "9+", "rollout_mode": 2, "heuristic_mode": 0},
-            {"level": "9+", "rollout_mode": 2, "heuristic_mode": 1},
-            {"level": "9+", "rollout_mode": 2, "heuristic_mode": 2},
-            {"level": "9+", "rollout_mode": 2, "heuristic_mode": 3},
-        ],
-        [
-            {"level": "9+", "rollout_mode": 3, "heuristic_mode": 0},
-            {"level": "9+", "rollout_mode": 3, "heuristic_mode": 1},
-            {"level": "9+", "rollout_mode": 3, "heuristic_mode": 2},
-            {"level": "9+", "rollout_mode": 3, "heuristic_mode": 3},
-        ],
+        # ==============================================================================================================
+        # [
+        #     {"level": target_level, "rollout_mode": mcts.PARALLEL_TREES, "heuristic_mode": 0, "ucb_const": 0.2},
+        #     # {"level": target_level, "rollout_mode": mcts.PARALLEL_TREES, "heuristic_mode": 1, "ucb_const": 0.2},
+        #     {"level": target_level, "rollout_mode": mcts.PARALLEL_TREES, "heuristic_mode": 2, "ucb_const": 0.2},
+        #     # {"level": target_level, "rollout_mode": mcts.PARALLEL_TREES, "heuristic_mode": 3, "ucb_const": 0.2},
+        # ],
+        # [
+        #     {"level": "9", "rollout_mode": 1, "heuristic_mode": 0, "time_ms": "200"},
+        #     {"level": "9", "rollout_mode": 1, "heuristic_mode": 1, "time_ms": "200"},
+        #     {"level": "9", "rollout_mode": 1, "heuristic_mode": 2, "time_ms": "200"},
+        #     {"level": "9", "rollout_mode": 1, "heuristic_mode": 3, "time_ms": "200"},
+        # ]
     ]
     x_axis = "time_ms"
     y_axis = "win"

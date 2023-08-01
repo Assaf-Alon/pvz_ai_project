@@ -6,6 +6,7 @@ int rollout_mode = NORMAL_MCTS;
 float ucb_coefficient = 1.4;
 int rollouts_per_leaf = 1;
 int max_depth = 0;
+heuristic_function h_func;
 
 inline void print_action(const Action& action, Level& level){
     std::cout << "chosen action: " << plant_data[action.plant_name].plant_name << " at " << action.lane << ", " << action.col;
@@ -15,6 +16,7 @@ std::pair<Action, int> select_best_action(Node& root) {
     Action action = Action();
     int most_rollouts = 0;
     int most_rollouts_wins = 0;
+    // select the action of the most visited child. Use number of wins as a tie-breaker
     for (auto node: root.children) {
         // std::cout << "ucb value: " << node->ucb() << ", wins: " << node->wins << ", rollouts: " << node->simulations << std::endl;
         if (node->simulations == most_rollouts && node->wins > most_rollouts_wins) {
@@ -30,8 +32,7 @@ std::pair<Action, int> select_best_action(Node& root) {
     return std::pair<Action, int>(action, most_rollouts);
 }
 
-
-Node* select(Node* root, Level& cloned_level, heuristic_function* h_func) {
+Node* select(Node* root, Level& cloned_level, bool use_heuristic) {
     max_depth = 1;
     if (root->available_actions.size() > 0){
         return root;
@@ -39,6 +40,7 @@ Node* select(Node* root, Level& cloned_level, heuristic_function* h_func) {
     Node* current_node = root;
     while (true) {
         if (cloned_level.done){
+            std::cout << "node shouldnt be done ever!" << std::endl;
             return current_node;
         }
         if (current_node->children.size() == 0){
@@ -52,16 +54,10 @@ Node* select(Node* root, Level& cloned_level, heuristic_function* h_func) {
                 best_score = score;
                 best_node = node;
             }
-            if (h_func != nullptr && score == best_score){ // if score is the same, try to compare using the heuristic
-                Level* clone_best = cloned_level.clone(FORCE_DETERMINISTIC);
-                clone_best->deferred_step(best_node->action);
-                Level* clone_node = cloned_level.clone(FORCE_DETERMINISTIC);
-                clone_node->deferred_step(node->action);
-                if ((*h_func)(*clone_node) > (*h_func)(*clone_best)) {
+            if (use_heuristic && score == best_score){ // if score is the same, try to compare using the heuristic
+                if (h_func(cloned_level, node->action) > h_func(cloned_level, best_node->action)) {
                     best_node = node;
                 }
-                delete clone_best;
-                delete clone_node;
             }
         }
         if (best_score < current_node->ucb() && current_node->available_actions.size() > 0){
@@ -72,7 +68,7 @@ Node* select(Node* root, Level& cloned_level, heuristic_function* h_func) {
         max_depth++;
     }
 }
-Node* expand(Node* selected_node, Level& cloned_level, heuristic_function* h_func) {
+Node* expand(Node* selected_node, Level& cloned_level, bool use_heuristic) {
     if (cloned_level.done) {
         return selected_node;
     }
@@ -82,21 +78,16 @@ Node* expand(Node* selected_node, Level& cloned_level, heuristic_function* h_fun
         return selected_node;
     }
     int action_index = 0;
-    if (h_func != nullptr){
-        constexpr int sample_size = 5;
+    if (use_heuristic && selected_node->parent != nullptr){ // dont use heuristic for the root becuase it gets fully expanded anyway
         int best_h = 0;
         int best_index = 0;
-        for (int sample = 0; sample < sample_size; sample++){
-            action_index = get_random_number(0, selected_node->available_actions.size() - 1);
+        for (int action_index = 0; action_index < (int)selected_node->available_actions.size(); action_index++){
             Action action = selected_node->available_actions[action_index];
-            Level* sample_clone = cloned_level.clone(FORCE_DETERMINISTIC);
-            sample_clone->deferred_step(action);
-            double sample_h = (*h_func)(*sample_clone);
+            double sample_h = h_func(cloned_level, action);
             if (sample_h > best_h){
                 best_h = sample_h;
                 best_index = action_index;
             }
-            delete sample_clone;
         }
         action_index = best_index;
     }
@@ -116,6 +107,7 @@ void rollout(Node* selected_node, Level& cloned_level) {
         {
             if (cloned_level.done){
                 // selected_node->available_actions.clear();
+                // Because of randomization each run, its possible to reach this state again with a different outcome
                 selected_node->wins = (int)cloned_level.win;
                 selected_node->simulations = 1;
                 return;
@@ -161,16 +153,19 @@ void backpropagate(Node* start_node) {
     }
 }
 
-double heuristic_basic_sunflowers(const Level& level)
+double heuristic_basic_sunflowers(const Level& level, const Action& action)
 {
-    // float score = 0.05 * (std::min(5, level.count_plant(SUNFLOWER))) * (level.frame < 1000);
-    return 0.05 * (std::min(5, level.count_plant(SUNFLOWER)));// * (level.frame < 1000);
+    /*
+    Counts the number of sunflowers currently planted, adds 1 if the action is "plant sunflower" and returns min(5, num_sunflowers)
+    */
+    int num_sunflowers = level.count_plant(SUNFLOWER) + (action.plant_name == SUNFLOWER);
+    return 0.05 * (std::min(5, num_sunflowers));
 }
 
 
-Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, float ucb_const, int mode, int heurisic_mode){
+Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, float ucb_const, int mode, int heuristic_mode){
     // Setup
-    // omp_set_num_threads(8);
+    omp_set_num_threads(NUM_CPU);
     if (action_space.size() == 0){
         action_space = vector<Action>(level.get_action_space());
         std::cout << "Action space size: " << action_space.size() << std::endl;
@@ -179,7 +174,7 @@ Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, f
     rollouts_per_leaf = simulations_per_leaf;
     rollout_mode = mode;
     if (mode == PARALLEL_TREES){
-        return _parallel_trees_run(level, timeout_ms, simulations_per_leaf, debug, heurisic_mode);
+        return _parallel_trees_run(level, timeout_ms, simulations_per_leaf, debug, heuristic_mode);
     }
     Node root(nullptr, Action());
 
@@ -189,20 +184,17 @@ Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, f
     int num_expanded_nodes = 0;
 
     // Heuristic functions
-    heuristic_function* selection_heuristic = nullptr;
-    heuristic_function* expansion_heuristic = nullptr;
-    if (heurisic_mode == HEURISTIC_MCTS || heurisic_mode == HEURISTIC_SELECT){
-        selection_heuristic = new heuristic_function(heuristic_basic_sunflowers);
+    if (heuristic_mode != NO_HEURISTIC){
+        h_func = heuristic_function(heuristic_basic_sunflowers);
     }
-    if (heurisic_mode == HEURISTIC_MCTS || heurisic_mode == HEURISTIC_EXPAND){
-        expansion_heuristic = new heuristic_function(heuristic_basic_sunflowers);
-    }
+    bool heuristic_select = heuristic_mode == HEURISTIC_SELECT || heuristic_mode == HEURISTIC_MCTS;
+    bool heuristic_expand = heuristic_mode == HEURISTIC_EXPAND || heuristic_mode == HEURISTIC_MCTS;
 
     // Main loop
     while (std::chrono::high_resolution_clock::now() < end_time){
         Level* cloned_level = level.clone(FORCE_RANDOM); // "guess" for how the level is going to look
-        Node* next_node = select(&root, *cloned_level, selection_heuristic); // select node in tree, doing actions along the way
-        Node* new_node = expand(next_node, *cloned_level, expansion_heuristic); // create new child node for selected node
+        Node* next_node = select(&root, *cloned_level, heuristic_select); // select node in tree, doing actions along the way
+        Node* new_node = expand(next_node, *cloned_level, heuristic_expand); // create new child node for selected node
         rollout(new_node, *cloned_level); // simulate game from new node
         backpropagate(new_node); // backpropagate victories, simulations from new node
         num_expanded_nodes++;
@@ -212,16 +204,11 @@ Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, f
     if (debug) {
         std::cout << "total expanded: " << num_expanded_nodes << ", total winrate: " << root.wins << std::endl;
     }
-    if (selection_heuristic != nullptr){
-        delete selection_heuristic;
-    }
-    if (expansion_heuristic != nullptr){
-        delete expansion_heuristic;
-    }
     return chosen_action;
 }
-Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool debug, int heurisic_mode){
-    omp_set_num_threads(8);
+Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool debug, int heuristic_mode){
+    // Note: Parallel trees are not compatible with the expansion heuristic!
+    // omp_set_num_threads(8);
     // std::vector<Node*> roots;
     // for (int i = 0; i < num_trees; i++){
     //     roots.push_back(new Node(nullptr, Action()));
@@ -230,22 +217,19 @@ Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool deb
     auto start_time = std::chrono::high_resolution_clock::now();
     auto end_time = start_time + std::chrono::milliseconds(timeout_ms);
 
-    heuristic_function* selection_heuristic = nullptr;
-    heuristic_function* expansion_heuristic = nullptr;
-    if (heurisic_mode == HEURISTIC_MCTS || heurisic_mode == HEURISTIC_SELECT){
-        selection_heuristic = new heuristic_function(heuristic_basic_sunflowers);
+    if (heuristic_mode != NO_HEURISTIC){
+        h_func = heuristic_function(heuristic_basic_sunflowers);
     }
-    if (heurisic_mode == HEURISTIC_MCTS || heurisic_mode == HEURISTIC_EXPAND){
-        expansion_heuristic = new heuristic_function(heuristic_basic_sunflowers);
-    }
+    bool heuristic_select = heuristic_mode == HEURISTIC_SELECT || heuristic_mode == HEURISTIC_MCTS;
+    bool heuristic_expand = heuristic_mode == HEURISTIC_EXPAND || heuristic_mode == HEURISTIC_MCTS;
 
     std::vector<int> num_expanded_nodes = std::vector<int>(num_trees, 0);
     #pragma omp parallel for shared(roots)
     for (int tree = 0; tree < num_trees; tree++){
         while (std::chrono::high_resolution_clock::now() < end_time) {
             Level* cloned_level = level.clone(FORCE_RANDOM);
-            Node* next_node = select(&roots[tree], *cloned_level, selection_heuristic); // select node in tree, doing actions along the way
-            Node* new_node = expand(next_node, *cloned_level, expansion_heuristic); // create new child node for selected node
+            Node* next_node = select(&roots[tree], *cloned_level, heuristic_select); // select node in tree, doing actions along the way
+            Node* new_node = expand(next_node, *cloned_level, heuristic_expand); // create new child node for selected node
             rollout(new_node, *cloned_level);
             backpropagate(new_node);
             num_expanded_nodes[tree]++;
@@ -275,14 +259,8 @@ Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool deb
         std::cout << "total expanded nodes: " << total_expanded << ", total wins: " << total_wins << std::endl;
     }
     auto iter = std::max_element(visits.begin(), visits.end(), \
-        [](const auto &action_pair_1, const auto &action_pair_2) { 
+        [](const std::pair<Action, int> &action_pair_1, const std::pair<Action, int> &action_pair_2) { 
             return action_pair_1.second < action_pair_2.second;
     });
-    if (selection_heuristic != nullptr){
-        delete selection_heuristic;
-    }
-    if (expansion_heuristic != nullptr){
-        delete expansion_heuristic;
-    }
     return iter->first;
 }

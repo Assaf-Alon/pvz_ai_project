@@ -14,7 +14,7 @@
 #include <omp.h>
 #include <utility>
 #include <chrono>
-#include "plant.hpp"
+#include "plant.hpp" // See if this can be removed to avoid circular imports
 using std::vector;
 using std::string;
 using std::pair;
@@ -26,6 +26,10 @@ using std::array;
 
 #define FORCE_RANDOM 1
 #define FORCE_DETERMINISTIC -1
+
+#ifndef NUM_CPU
+#define NUM_CPU 8
+#endif
 
 inline int get_random_number(const int min, const int max){ 
     thread_local std::mt19937 generator(std::random_device{}());
@@ -44,7 +48,7 @@ class Zombie;
 class ZombieInfo;
 class Plant;
 typedef std::function<bool(Level&, Plant&)> PlantAction;
-typedef std::function<double(const Level&)> heuristic_function;
+// typedef std::function<double(const Level&)> heuristic_function;
 typedef std::pair<int, int> Pos;
 
 enum PlantName { NO_PLANT, CHERRYBOMB, CHOMPER,
@@ -174,7 +178,7 @@ class Action {
 };
 struct ActionHash {
     std::size_t operator()(const Action& action) const {
-        return std::hash<int>()(action.plant_name) ^ std::hash<int>()(action.lane) ^ std::hash<int>()(action.col);
+        return std::hash<int>()(action.plant_name + 100 * action.lane + 10000 * action.col);
     }
 };
 class Level {
@@ -251,6 +255,6 @@ public:
     int count_plant() const;
 };
 bool play_random_game(const Level& env, int randomization_mode);
-bool play_random_heuristic_game(Level env, heuristic_function& func, int mode=1);
+// bool play_random_heuristic_game(Level env, heuristic_function& func, int mode=1);
 
 #endif // _PVZ_LEVEL

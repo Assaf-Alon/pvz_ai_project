@@ -19,13 +19,15 @@ using std::vector;
 #define HEURISTIC_MCTS 1
 #define HEURISTIC_SELECT 2
 #define HEURISTIC_EXPAND 3
+// #define NUM_CPU 8
+typedef std::function<double(const Level&, const Action&)> heuristic_function;
 
 extern float ucb_coefficient;
 extern int rollouts_per_leaf;
 static vector<Action> action_space;
 extern int rollout_mode;
 extern int max_depth;
-
+// extern heuristic_function h_func;
 
 
 class Node;
@@ -84,15 +86,15 @@ class Node {
     };
 };
 
-Node* select(Node* root, Level& cloned_level, heuristic_function* func = nullptr);
-Node* expand(Node* selected_node, Level& cloned_level, heuristic_function* h_func = nullptr);
+Node* select(Node* root, Level& cloned_level, bool use_heuristic=false);
+Node* expand(Node* selected_node, Level& cloned_level, bool use_heuristic=false);
 void rollout(Node* selected_node, Level& cloned_level);
 void backpropagate(Node* start_node);
 
 std::pair<Action, int> select_best_action(Node& root);
 Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug=false, float ucb_const=1.4, int mode=NORMAL_MCTS, int heuristic_mode=NO_HEURISTIC);
 Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool debug, int heurisic_mode);
-double heuristic_basic_sunflowers(const Level& level);
+double heuristic_basic_sunflowers(const Level& level, const Action& action);
 
 inline float heuristic2(const Level& level)
 {

@@ -7,6 +7,12 @@ import utils
 from pprint import pprint
 
 env = level.Level(5, 10, 10, *utils.get_level_info("9"), False)
+mcts.run(env, 800, 8, True, 1.4, mcts.NORMAL_MCTS, mcts.NO_HEURISTIC) # before: ~5080; after ~5000
+mcts.run(env, 800, 8, True, 1.4, mcts.NORMAL_MCTS, mcts.HEURISTIC_MCTS) # before: ~680; after ~3300
+mcts.run(env, 800, 8, True, 1.4, mcts.NORMAL_MCTS, mcts.HEURISTIC_SELECT) # before: ~750; after ~4500
+mcts.run(env, 800, 8, True, 1.4, mcts.NORMAL_MCTS, mcts.HEURISTIC_EXPAND) # before: ~3000; after ~3200
+exit()
+
 # mcts.run(env, 300, 1, False, 1.4, 0)
 # print("====================================", flush=True)
 # print("running in mode 0, ucb = 1.4")

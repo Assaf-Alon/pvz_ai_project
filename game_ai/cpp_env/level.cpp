@@ -589,57 +589,57 @@ bool play_random_game(const Level& base_env, int randomization_mode){
     // delete env;
     // return win;
 }
-bool play_random_heuristic_game(Level env, heuristic_function& func, int mode){
-    switch (mode){
-        case 1:
-        while (!env.done){
-            double best_h_score = 0;
-            Action best_action = Action();
-            #pragma omp parallel for
-            for(int i = 0; i < 50; i++){
-                Action next_action = env.get_random_action();
-                Level* cloned = env.clone();
-                cloned->step(next_action);
-                double score = func(*cloned);
-                #pragma omp critical
-                if (score > best_h_score){
-                    best_h_score = score;
-                    best_action = next_action;
-                }
-            }
-            env.step(best_action);
-        }
-        break;
-        case 2:
-        static const vector<Action> action_space = vector<Action>(env.get_action_space());
-        while(!env.done){
-            double best_h_score = 0;
-            Action best_action = Action();
-            #pragma omp parallel for
-            for(int i = 0; i < 50; i++){
-                Action next_action = action_space[get_random_number(0, action_space.size() - 1)];
-                Level* cloned = env.clone();
-                cloned->deferred_step(next_action);
-                double score = func(*cloned);
-                #pragma omp critical
-                if (score > best_h_score){
-                    best_h_score = score;
-                    best_action = next_action;
-                }
-            }
-            env.deferred_step(best_action);
-        }
-        break;
-    }
-    return env.win;
-}
+// bool play_random_heuristic_game(Level env, heuristic_function& func, int mode){
+//     switch (mode){
+//         case 1:
+//         while (!env.done){
+//             double best_h_score = 0;
+//             Action best_action = Action();
+//             #pragma omp parallel for
+//             for(int i = 0; i < 50; i++){
+//                 Action next_action = env.get_random_action();
+//                 Level* cloned = env.clone();
+//                 cloned->step(next_action);
+//                 double score = func(*cloned);
+//                 #pragma omp critical
+//                 if (score > best_h_score){
+//                     best_h_score = score;
+//                     best_action = next_action;
+//                 }
+//             }
+//             env.step(best_action);
+//         }
+//         break;
+//         case 2:
+//         static const vector<Action> action_space = vector<Action>(env.get_action_space());
+//         while(!env.done){
+//             double best_h_score = 0;
+//             Action best_action = Action();
+//             #pragma omp parallel for
+//             for(int i = 0; i < 50; i++){
+//                 Action next_action = action_space[get_random_number(0, action_space.size() - 1)];
+//                 Level* cloned = env.clone();
+//                 cloned->deferred_step(next_action);
+//                 double score = func(*cloned);
+//                 #pragma omp critical
+//                 if (score > best_h_score){
+//                     best_h_score = score;
+//                     best_action = next_action;
+//                 }
+//             }
+//             env.deferred_step(best_action);
+//         }
+//         break;
+//     }
+//     return env.win;
+// }
 
 int Level::rollout(int num_games, int mode) const {
     if (num_games == 1){
         return play_random_game(*this, mode);
     }
     std::vector<bool> victories(num_games, false);
-    omp_set_num_threads(8);
+    omp_set_num_threads(NUM_CPU);
     #pragma omp parallel for shared(victories)
     for (int i = 0; i < num_games; i++){
         victories[i] = play_random_game(*this, mode);

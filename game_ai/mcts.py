@@ -15,7 +15,7 @@ def try_early_finish(env: level.Level) -> bool:
     """
     Try to finish the game early by doing empty steps, return true if successful
     """
-    empty_step_test_level = env.clone(-1) # type: level.Level
+    empty_step_test_level = env.clone(level.FORCE_DETERMINISTIC) # type: level.Level
     while not empty_step_test_level.done:
         empty_step_test_level.step()
     if empty_step_test_level.win:
@@ -74,7 +74,8 @@ if __name__ == "__main__":
     # time_range = range(150, 800, 50)
     # time_range = range(200, 1100, 100)
     time_range = [200, 400, 800]
-    ucb_range = [0.2, 1.4, 30]
+    # ucb_range = [0.2, 1.4, 30]
+    ucb_range = [0.01, 0.1, 0.2, 0.5, 1.0, 1.4]
     level_range = ["9", "9+"]
     heuristic_modes = [mcts.NO_HEURISTIC, mcts.HEURISTIC_MCTS, mcts.HEURISTIC_EXPAND, mcts.HEURISTIC_SELECT]
     # ucb_range = [0, 0.1, 0.2, 0.5, 1.0, 1.4, 3.0, 10, 30, 100]
@@ -85,9 +86,12 @@ if __name__ == "__main__":
 
     # sim_per_leaf_range = [2,4,8,12,16,20,30]
     # rollot_mode_range = [0,1,2]
-    parallel_parameter_list = list(itertools.product(level_range, time_range, [8], ucb_range, [mcts.MAX_NODE,mcts.AVG_NODE,mcts.PARALLEL_TREES], heuristic_modes))
-    traditional_parameter_list = list(itertools.product(level_range, time_range, [1], ucb_range, [mcts.NORMAL_MCTS], heuristic_modes))
-    experiment_parameter_list = parallel_parameter_list + traditional_parameter_list
+    experiment_parameter_list = \
+        list(itertools.product(level_range, time_range, [8], ucb_range, [mcts.NORMAL_MCTS], heuristic_modes)) + \
+        list(itertools.product(level_range, time_range, [8], ucb_range, [mcts.MAX_NODE, mcts.AVG_NODE, mcts.PARALLEL_TREES], heuristic_modes))
+    # parallel_parameter_list = list(itertools.product(level_range, time_range, [8], ucb_range, [mcts.MAX_NODE,mcts.AVG_NODE,mcts.PARALLEL_TREES], heuristic_modes))
+    # traditional_parameter_list = list(itertools.product(level_range, time_range, [1], ucb_range, [mcts.NORMAL_MCTS], heuristic_modes))
+    # experiment_parameter_list = parallel_parameter_list + traditional_parameter_list
     # experiment_parameter_list = list(itertools.product(["9"], time_range, [8], ucb_range, [mcts.AVG_NODE]))
     ## Full experiment parameter list
     # experiment_parameter_list = list(itertools.product(time_range, sim_per_leaf_range, ucb_range, rollot_mode_range))

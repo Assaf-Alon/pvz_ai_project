@@ -221,7 +221,7 @@ int main() {
     // estimate_speed(env);
     // std::cout << env.rollout(-1, 20, 4) << std::endl;
     while (!env.done) {
-        Action run_result = run(env, 300, 8, true, 1.4, PARALLEL_TREES, HEURISTIC_EXPAND);
+        Action run_result = run(env, 800, 8, true, 1.4, NORMAL_MCTS, HEURISTIC_MCTS);
         while (!env.is_action_legal(run_result) && !(env.done)){
             env.step();
         }
