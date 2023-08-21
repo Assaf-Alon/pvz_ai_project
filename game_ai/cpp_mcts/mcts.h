@@ -11,22 +11,33 @@
 using std::list;
 using std::vector;
 
+// modes
 #define NORMAL_MCTS 0
 #define MAX_NODE 1
 #define AVG_NODE 2
 #define PARALLEL_TREES 3
+
+// heuristic modes
 #define NO_HEURISTIC 0
-#define HEURISTIC_MCTS 1
-#define HEURISTIC_SELECT 2
-#define HEURISTIC_EXPAND 3
-// #define NUM_CPU 8
+#define HEURISTIC_SELECT 1
+
+// selection modes
+#define FULL_EXPAND 0 // fully expand each node before selecting chilrden
+#define SQUARE_RATIO 1 // chance of descent is square of ratio between total actions and available actions
+// #define LINEAR_RATIO 2 // chance of descent is linear of ratio between total actions and available actions
+// #define ROOT_FULL_EXPAND 3 // fully expand root, descent freely later
+
+#define EXPAND_BATCH 8
 typedef std::function<double(const Level&, const Action&)> heuristic_function;
 
 extern float ucb_coefficient;
 extern int rollouts_per_leaf;
 static vector<Action> action_space;
+static int action_space_size;
 extern int rollout_mode;
 extern int max_depth;
+extern int selection_mode;
+extern bool use_loss_heuristic;
 // extern heuristic_function h_func;
 
 
@@ -35,7 +46,7 @@ class Node;
 class Node {
     public:
     int simulations;
-    int wins;
+    double wins;
     bool terminal;
     Node* parent;
     Action action;
@@ -65,7 +76,9 @@ class Node {
         }
         double ucb;
         if (rollout_mode == AVG_NODE){ //
-            ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(log((double)parent_rollouts / rollouts_per_leaf) / (rollouts / rollouts_per_leaf)));
+            static double log_rollouts_per_leaf = log(rollouts_per_leaf);
+            // ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(log((double)parent_rollouts / rollouts_per_leaf) / (rollouts / rollouts_per_leaf)));
+            ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(((log(parent_rollouts) - log_rollouts_per_leaf) * rollouts_per_leaf) / rollouts));
         }
         else {
             ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(log(parent_rollouts) / rollouts));
@@ -87,12 +100,12 @@ class Node {
 };
 
 Node* select(Node* root, Level& cloned_level, bool use_heuristic=false);
-Node* expand(Node* selected_node, Level& cloned_level, bool use_heuristic=false);
+Node* expand(Node* selected_node, Level& cloned_level);
 void rollout(Node* selected_node, Level& cloned_level);
 void backpropagate(Node* start_node);
 
 std::pair<Action, int> select_best_action(Node& root);
-Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug=false, float ucb_const=1.4, int mode=NORMAL_MCTS, int heuristic_mode=NO_HEURISTIC);
+Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug=false, float ucb_const=1.4, int mode=NORMAL_MCTS, int heuristic_mode=NO_HEURISTIC, int selection_type=FULL_EXPAND, bool loss_heuristic=false);
 Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool debug, int heurisic_mode);
 double heuristic_basic_sunflowers(const Level& level, const Action& action);
 

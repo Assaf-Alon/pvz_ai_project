@@ -1,16 +1,28 @@
 #include "mcts.h"
 #include <algorithm>
 #include <unordered_map>
+#include "zombie.hpp"
+#include "plant.hpp"
 
 int rollout_mode = NORMAL_MCTS;
 float ucb_coefficient = 1.4;
 int rollouts_per_leaf = 1;
 int max_depth = 0;
+int selection_mode = FULL_EXPAND;
 heuristic_function h_func;
 
 inline void print_action(const Action& action, Level& level){
     std::cout << "chosen action: " << plant_data[action.plant_name].plant_name << " at " << action.lane << ", " << action.col;
 }
+
+// inline double decent_probability_threshold(int num_children) {
+//     /*
+//     Returns a number between 0 and 1. The threshold is exponential in the ratio between the number of children and the total number of actions.
+//     */
+//     double ratio = num_children / (float) action_space.size();
+//     double threshold = pow(ratio, 4);
+//     return threshold;
+// }
 
 std::pair<Action, int> select_best_action(Node& root) {
     Action action = Action();
@@ -34,17 +46,29 @@ std::pair<Action, int> select_best_action(Node& root) {
 
 Node* select(Node* root, Level& cloned_level, bool use_heuristic) {
     max_depth = 1;
-    if (root->available_actions.size() > 0){
-        return root;
-    }
+    // if (selection_mode == ROOT_FULL_EXPAND && root->available_actions.size() > 0){
+    //     return root;
+    // }
     Node* current_node = root;
     while (true) {
         if (cloned_level.done){
-            std::cout << "node shouldnt be done ever!" << std::endl;
-            return current_node;
+            break;
         }
-        if (current_node->children.size() == 0){
-            return current_node;
+        else if (current_node->children.size() == 0){
+            break;
+        }
+        if (current_node->available_actions.size() > 0) { // if there are still unexplored actions
+            if (selection_mode == FULL_EXPAND){
+                break;
+            }
+            else if (selection_mode == SQUARE_RATIO && get_random_float(0, 1) >= pow(current_node->children.size() / (float)action_space.size(), 2)){
+                // as ratio approaches 1, chance of selecting self approaches 0
+                break;
+            }
+            // else if (selection_mode == LINEAR_RATIO && get_random_float(0, 1) >= current_node->children.size() / (float)action_space.size()){
+            //     // as ratio approaches 1, chance of selecting self approaches 0
+            //     break;
+            // }
         }
         float best_score = -1;
         Node* best_node = nullptr;
@@ -61,14 +85,23 @@ Node* select(Node* root, Level& cloned_level, bool use_heuristic) {
             }
         }
         if (best_score < current_node->ucb() && current_node->available_actions.size() > 0){
-            return current_node;
+            break;
         }
         current_node = best_node;
         cloned_level.deferred_step(current_node->action);
         max_depth++;
     }
+    // for (int i = 0; i < max_depth; i++){
+    //     std::cout << "|--";
+    // }
+    // std::cout << "node: " << current_node->children.size() << " children";
+    // std::cout << ", available actions: " << current_node->available_actions.size();
+    // std::cout << ", depth: " << max_depth;
+    // std::cout << ", simulations: " << current_node->simulations;
+    // std::cout << ", wins: " << current_node->wins << std::endl;
+    return current_node;
 }
-Node* expand(Node* selected_node, Level& cloned_level, bool use_heuristic) {
+Node* expand(Node* selected_node, Level& cloned_level) {
     if (cloned_level.done) {
         return selected_node;
     }
@@ -78,22 +111,23 @@ Node* expand(Node* selected_node, Level& cloned_level, bool use_heuristic) {
         return selected_node;
     }
     int action_index = 0;
-    if (use_heuristic && selected_node->parent != nullptr){ // dont use heuristic for the root becuase it gets fully expanded anyway
-        int best_h = 0;
-        int best_index = 0;
-        for (int action_index = 0; action_index < (int)selected_node->available_actions.size(); action_index++){
-            Action action = selected_node->available_actions[action_index];
-            double sample_h = h_func(cloned_level, action);
-            if (sample_h > best_h){
-                best_h = sample_h;
-                best_index = action_index;
-            }
-        }
-        action_index = best_index;
-    }
-    else {
-        action_index = get_random_number(0, selected_node->available_actions.size() - 1);
-    }
+    // if (use_heuristic && selected_node->parent != nullptr){ // dont use heuristic for the root becuase it gets fully expanded anyway
+    //     int best_h = 0;
+    //     int best_index = 0;
+    //     for (int action_index = 0; action_index < (int)selected_node->available_actions.size(); action_index++){
+    //         Action action = selected_node->available_actions[action_index];
+    //         double sample_h = h_func(cloned_level, action);
+    //         if (sample_h > best_h){
+    //             best_h = sample_h;
+    //             best_index = action_index;
+    //         }
+    //     }
+    //     action_index = best_index;
+    // }
+    // else {
+    //     action_index = get_random_number(0, selected_node->available_actions.size() - 1);
+    // }
+    action_index = get_random_number(0, selected_node->available_actions.size() - 1);
     Action chosen_action = selected_node->available_actions[action_index];
     Node* child = new Node(selected_node, chosen_action);
     selected_node->children.push_back(child);
@@ -106,37 +140,42 @@ void rollout(Node* selected_node, Level& cloned_level) {
         case MAX_NODE: // parallelization with max
         {
             if (cloned_level.done){
-                // selected_node->available_actions.clear();
-                // Because of randomization each run, its possible to reach this state again with a different outcome
                 selected_node->wins = (int)cloned_level.win;
                 selected_node->simulations = 1;
                 return;
             }
-            selected_node->wins = cloned_level.rollout(rollouts_per_leaf, 1) ? 1 : 0;
+            selected_node->wins = (int)(cloned_level.rollout(rollouts_per_leaf, 1) > 0);
+            if (use_loss_heuristic && selected_node->wins == 0){
+                selected_node->wins = 0.5 - 1 / (double)cloned_level.frame;
+            }
             selected_node->simulations = 1;
         }
         break;
         case AVG_NODE: // parallelization with avg
         {
             if (cloned_level.done){
-                // selected_node->available_actions.clear();
                 selected_node->wins = (int)cloned_level.win * rollouts_per_leaf;
                 selected_node->simulations = rollouts_per_leaf;
                 return;
             }
             selected_node->wins = cloned_level.rollout(rollouts_per_leaf, 1);
+            if (use_loss_heuristic && selected_node->wins == 0){
+                selected_node->wins = rollouts_per_leaf * (0.5 - 1 / (double)cloned_level.frame);
+            }
             selected_node->simulations = rollouts_per_leaf;
         }
         break;
         default: // no parallelization
         {
             if (cloned_level.done){
-                // selected_node->available_actions.clear();
                 selected_node->wins = (int)cloned_level.win;
                 selected_node->simulations = 1;
                 return;
             }
             selected_node->wins = cloned_level.rollout(1, 1);
+            if (use_loss_heuristic && selected_node->wins == 0){
+                selected_node->wins = 0.5 - 1 / (double)cloned_level.frame;
+            }
             selected_node->simulations = 1;
         }
         break;
@@ -145,7 +184,10 @@ void rollout(Node* selected_node, Level& cloned_level) {
 void backpropagate(Node* start_node) {
     int new_wins = start_node->wins;
     int new_simulations = start_node->simulations;
-    Node* current_node = start_node;
+    if(start_node->parent == nullptr){
+        return;
+    }
+    Node* current_node = start_node->parent;
     while (current_node != nullptr){
         current_node->wins += new_wins;
         current_node->simulations += new_simulations;
@@ -162,17 +204,42 @@ double heuristic_basic_sunflowers(const Level& level, const Action& action)
     return 0.05 * (std::min(5, num_sunflowers));
 }
 
+double loss_heurisitc_frame(const Level& level){
+    return 0.1 * tanh(level.frame / 5000); // TODO: magic numbers
+}
+double loss_heurisitc_plant_cost(const Level& level){
+    int plant_cost_sum = 0;
+    for (const Plant* plant : level.plant_list){
+        plant_cost_sum += plant->cost;
+    }
+    return 0.1 * tanh(plant_cost_sum / 1000); // TODO: magic numbers
+}
+double loss_heurisitc_zombies_on_board(const Level& level){
+    int zombie_hp = 0;
+    for (const Zombie* zombie : level.zombie_list){
+        zombie_hp += zombie->hp;
+    }
+    return 0.1 * tanh(zombie_hp / 1000); // TODO: magic numbers
+}
+double loss_heuristic_zombies_left_to_spawn(const Level& level){
+    return 0.1 * tanh(-(float)level.level_data.size()); // TODO: magic numbers
+    // TODO: HELP ME
+}
 
-Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, float ucb_const, int mode, int heuristic_mode){
+Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, float ucb_const, int mode, int heuristic_mode, int selection_type, bool loss_heuristic){
     // Setup
     omp_set_num_threads(NUM_CPU);
     if (action_space.size() == 0){
         action_space = vector<Action>(level.get_action_space());
-        std::cout << "Action space size: " << action_space.size() << std::endl;
+        action_space_size = (int)action_space.size();
+        std::cout << "Action space size: " << action_space_size << std::endl;
     }
     ucb_coefficient = ucb_const;
     rollouts_per_leaf = simulations_per_leaf;
     rollout_mode = mode;
+    selection_mode = selection_type;
+    use_loss_heuristic = loss_heuristic;
+    int max_depth_reached = 0;
     if (mode == PARALLEL_TREES){
         return _parallel_trees_run(level, timeout_ms, simulations_per_leaf, debug, heuristic_mode);
     }
@@ -187,22 +254,28 @@ Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, f
     if (heuristic_mode != NO_HEURISTIC){
         h_func = heuristic_function(heuristic_basic_sunflowers);
     }
-    bool heuristic_select = heuristic_mode == HEURISTIC_SELECT || heuristic_mode == HEURISTIC_MCTS;
-    bool heuristic_expand = heuristic_mode == HEURISTIC_EXPAND || heuristic_mode == HEURISTIC_MCTS;
+    bool heuristic_select = heuristic_mode == HEURISTIC_SELECT;
+    // bool heuristic_expand = heuristic_mode == HEURISTIC_EXPAND || heuristic_mode == HEURISTIC_MCTS;
 
     // Main loop
     while (std::chrono::high_resolution_clock::now() < end_time){
         Level* cloned_level = level.clone(FORCE_RANDOM); // "guess" for how the level is going to look
         Node* next_node = select(&root, *cloned_level, heuristic_select); // select node in tree, doing actions along the way
-        Node* new_node = expand(next_node, *cloned_level, heuristic_expand); // create new child node for selected node
+        Node* new_node = expand(next_node, *cloned_level); // create new child node for selected node
         rollout(new_node, *cloned_level); // simulate game from new node
         backpropagate(new_node); // backpropagate victories, simulations from new node
         num_expanded_nodes++;
         delete cloned_level;
+        if (debug){
+            if (max_depth > max_depth_reached){
+                max_depth_reached = max_depth;
+            }
+        }
     }
     Action chosen_action = select_best_action(root).first;
     if (debug) {
-        std::cout << "total expanded: " << num_expanded_nodes << ", total winrate: " << root.wins << std::endl;
+        std::cout << "total expanded: " << num_expanded_nodes << ", total winrate: " << root.wins;
+        std::cout << ", root children expanded: " << root.children.size() << ", total simulations: " << root.simulations << " max depth reached: " << max_depth_reached << std::endl;
     }
     return chosen_action;
 }
@@ -220,8 +293,7 @@ Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool deb
     if (heuristic_mode != NO_HEURISTIC){
         h_func = heuristic_function(heuristic_basic_sunflowers);
     }
-    bool heuristic_select = heuristic_mode == HEURISTIC_SELECT || heuristic_mode == HEURISTIC_MCTS;
-    bool heuristic_expand = heuristic_mode == HEURISTIC_EXPAND || heuristic_mode == HEURISTIC_MCTS;
+    bool heuristic_select = heuristic_mode == HEURISTIC_SELECT;
 
     std::vector<int> num_expanded_nodes = std::vector<int>(num_trees, 0);
     #pragma omp parallel for shared(roots)
@@ -229,10 +301,19 @@ Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool deb
         while (std::chrono::high_resolution_clock::now() < end_time) {
             Level* cloned_level = level.clone(FORCE_RANDOM);
             Node* next_node = select(&roots[tree], *cloned_level, heuristic_select); // select node in tree, doing actions along the way
-            Node* new_node = expand(next_node, *cloned_level, heuristic_expand); // create new child node for selected node
-            rollout(new_node, *cloned_level);
-            backpropagate(new_node);
+            Node* new_node = expand(next_node, *cloned_level); // create new child node for selected node
+            rollout(new_node, *cloned_level); // simulate game from new node
+            backpropagate(new_node); // backpropagate victories, simulations from new node
             num_expanded_nodes[tree]++;
+            // for (int i = 0; i < EXPAND_BATCH; i++){ // expand multiple children at once
+            //     Node* new_node = expand(next_node, *cloned_level); // create new child node for selected node
+            //     rollout(new_node, *cloned_level); // simulate game from new node
+            //     backpropagate(new_node); // backpropagate victories, simulations from new node
+            //     num_expanded_nodes[tree]++;
+            //     if (next_node->available_actions.size() == 0){
+            //         break;
+            //     }
+            // }
             delete cloned_level;
         }
     }
@@ -252,7 +333,8 @@ Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool deb
         int total_expanded = 0;
         int total_wins = 0;
         for (int tree = 0; tree < num_trees; tree++){
-            std::cout << "tree " << tree << ": total expanded: " << num_expanded_nodes[tree] << ", total wins: " << roots[tree].wins << std::endl;
+            std::cout << "tree " << tree << ": total expanded: " << num_expanded_nodes[tree] << ", total wins: " << roots[tree].wins;
+            std::cout << ", num root actions tried: " << roots[tree].children.size() << std::endl;
             total_expanded += num_expanded_nodes[tree];
             total_wins += roots[tree].wins;
         }

@@ -43,6 +43,12 @@ inline double get_normal_sample(const double expected, const double variance) {
     return distribution(generator);
 }
 
+inline double get_random_float(const float min, const float max) {
+    thread_local std::mt19937 generator(std::random_device{}());
+    std::uniform_real_distribution<double> distribution(min, max);
+    return distribution(generator);
+}
+
 class Level;
 class Zombie;
 class ZombieInfo;

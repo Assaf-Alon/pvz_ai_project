@@ -645,28 +645,6 @@ int Level::rollout(int num_games, int mode) const {
         victories[i] = play_random_game(*this, mode);
     }
     return std::count(victories.begin(), victories.end(), true);
-    // switch (num_cpu){
-    //     case 1:
-    //     for (int i = 0; i < num_games; i++){
-    //         victories[i] = play_random_game(*this, mode);
-    //     }
-    //     break;
-    //     case -1:
-    //     omp_set_num_threads(8);
-    //     // omp_set_dynamic(1);
-    //     #pragma omp parallel for shared(victories)
-    //     for (int i = 0; i < num_games; i++){
-    //         victories[i] = play_random_game(*this, mode);
-    //     }
-    //     break;
-    //     default:
-    //     omp_set_num_threads(8);
-    //     #pragma omp parallel for shared(victories)
-    //     for (int i = 0; i < num_games; i++){
-    //         victories[i] = play_random_game(*this, mode);
-    //     }
-    //     break;
-    // }
 }
 
 // returns pair(rollouts, victories)
