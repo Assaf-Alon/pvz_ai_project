@@ -1,8 +1,10 @@
 #include "mcts.h"
 #include <algorithm>
 #include <unordered_map>
-#include "zombie.hpp"
-#include "plant.hpp"
+#include "../cpp_env/zombie.hpp"
+#include "../cpp_env/plant.hpp"
+
+#define LOSS_BOUND 0.1
 
 int rollout_mode = NORMAL_MCTS;
 float ucb_coefficient = 1.4;
@@ -10,6 +12,7 @@ int rollouts_per_leaf = 1;
 int max_depth = 0;
 int selection_mode = FULL_EXPAND;
 heuristic_function h_func;
+LossHeuristic *l_h_func;
 
 inline void print_action(const Action& action, Level& level){
     std::cout << "chosen action: " << plant_data[action.plant_name].plant_name << " at " << action.lane << ", " << action.col;
@@ -111,22 +114,6 @@ Node* expand(Node* selected_node, Level& cloned_level) {
         return selected_node;
     }
     int action_index = 0;
-    // if (use_heuristic && selected_node->parent != nullptr){ // dont use heuristic for the root becuase it gets fully expanded anyway
-    //     int best_h = 0;
-    //     int best_index = 0;
-    //     for (int action_index = 0; action_index < (int)selected_node->available_actions.size(); action_index++){
-    //         Action action = selected_node->available_actions[action_index];
-    //         double sample_h = h_func(cloned_level, action);
-    //         if (sample_h > best_h){
-    //             best_h = sample_h;
-    //             best_index = action_index;
-    //         }
-    //     }
-    //     action_index = best_index;
-    // }
-    // else {
-    //     action_index = get_random_number(0, selected_node->available_actions.size() - 1);
-    // }
     action_index = get_random_number(0, selected_node->available_actions.size() - 1);
     Action chosen_action = selected_node->available_actions[action_index];
     Node* child = new Node(selected_node, chosen_action);
@@ -144,10 +131,8 @@ void rollout(Node* selected_node, Level& cloned_level) {
                 selected_node->simulations = 1;
                 return;
             }
-            selected_node->wins = (int)(cloned_level.rollout(rollouts_per_leaf, 1) > 0);
-            if (use_loss_heuristic && selected_node->wins == 0){
-                selected_node->wins = 0.5 - 1 / (double)cloned_level.frame;
-            }
+            // There's at least one win <==> The result of the rollouts is greater than num_games * <heuristic bound>
+            selected_node->wins = (int)(cloned_level.rollout(rollouts_per_leaf, 1, l_h_func) > rollouts_per_leaf * LOSS_BOUND);
             selected_node->simulations = 1;
         }
         break;
@@ -158,10 +143,7 @@ void rollout(Node* selected_node, Level& cloned_level) {
                 selected_node->simulations = rollouts_per_leaf;
                 return;
             }
-            selected_node->wins = cloned_level.rollout(rollouts_per_leaf, 1);
-            if (use_loss_heuristic && selected_node->wins == 0){
-                selected_node->wins = rollouts_per_leaf * (0.5 - 1 / (double)cloned_level.frame);
-            }
+            selected_node->wins = cloned_level.rollout(rollouts_per_leaf, 1, l_h_func);
             selected_node->simulations = rollouts_per_leaf;
         }
         break;
@@ -172,10 +154,7 @@ void rollout(Node* selected_node, Level& cloned_level) {
                 selected_node->simulations = 1;
                 return;
             }
-            selected_node->wins = cloned_level.rollout(1, 1);
-            if (use_loss_heuristic && selected_node->wins == 0){
-                selected_node->wins = 0.5 - 1 / (double)cloned_level.frame;
-            }
+            selected_node->wins = cloned_level.rollout(1, 1, l_h_func);
             selected_node->simulations = 1;
         }
         break;
@@ -204,29 +183,28 @@ double heuristic_basic_sunflowers(const Level& level, const Action& action)
     return 0.05 * (std::min(5, num_sunflowers));
 }
 
-double loss_heurisitc_frame(const Level& level){
-    return 0.1 * tanh(level.frame / 5000); // TODO: magic numbers
+double loss_heurisitc_frame(const Level& level){ // loss heuristic 1
+    return LOSS_BOUND * tanh(level.frame / 5000);
 }
-double loss_heurisitc_plant_cost(const Level& level){
+double loss_heurisitc_plant_cost(const Level& level){ // loss heuristic 2
     int plant_cost_sum = 0;
     for (const Plant* plant : level.plant_list){
         plant_cost_sum += plant->cost;
     }
-    return 0.1 * tanh(plant_cost_sum / 1000); // TODO: magic numbers
+    return LOSS_BOUND * tanh(plant_cost_sum / 1000);
 }
-double loss_heurisitc_zombies_on_board(const Level& level){
+double loss_heurisitc_zombies_on_board(const Level& level){ // loss heuristic 3
     int zombie_hp = 0;
     for (const Zombie* zombie : level.zombie_list){
         zombie_hp += zombie->hp;
     }
-    return 0.1 * tanh(zombie_hp / 1000); // TODO: magic numbers
+    return LOSS_BOUND * tanh(zombie_hp / 1000);
 }
-double loss_heuristic_zombies_left_to_spawn(const Level& level){
-    return 0.1 * tanh(-(float)level.level_data.size()); // TODO: magic numbers
-    // TODO: HELP ME
+double loss_heuristic_zombies_left_to_spawn(const Level& level){ // loss heuristic 4
+    return LOSS_BOUND * (1 - tanh((float)level.level_data.size() / 50));
 }
 
-Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, float ucb_const, int mode, int heuristic_mode, int selection_type, bool loss_heuristic){
+Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, float ucb_const, int mode, int heuristic_mode, int selection_type, int loss_heuristic){
     // Setup
     omp_set_num_threads(NUM_CPU);
     if (action_space.size() == 0){
@@ -238,7 +216,24 @@ Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, f
     rollouts_per_leaf = simulations_per_leaf;
     rollout_mode = mode;
     selection_mode = selection_type;
-    use_loss_heuristic = loss_heuristic;
+    switch (loss_heuristic)
+    {
+        case NO_HEURISTIC:
+            l_h_func = nullptr;
+        break;
+        case FRAME_HEURISTIC:
+            l_h_func = new LossHeuristic(loss_heurisitc_frame);
+        break;
+        case TOTAL_PLANT_COST_HEURISTIC:
+            l_h_func = new LossHeuristic(loss_heurisitc_plant_cost);
+        break;
+        case TOTAL_ZOMBIE_HP_HEURISTIC:
+            l_h_func = new LossHeuristic(loss_heurisitc_zombies_on_board);
+        break;
+        case ZOMBIES_LEFT_TO_SPAWN_HEURISTIC:
+            l_h_func = new LossHeuristic(loss_heuristic_zombies_left_to_spawn);
+        break;
+    }
     int max_depth_reached = 0;
     if (mode == PARALLEL_TREES){
         return _parallel_trees_run(level, timeout_ms, simulations_per_leaf, debug, heuristic_mode);
@@ -277,6 +272,8 @@ Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug, f
         std::cout << "total expanded: " << num_expanded_nodes << ", total winrate: " << root.wins;
         std::cout << ", root children expanded: " << root.children.size() << ", total simulations: " << root.simulations << " max depth reached: " << max_depth_reached << std::endl;
     }
+    if (l_h_func != nullptr)
+        delete l_h_func;
     return chosen_action;
 }
 Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool debug, int heuristic_mode){
@@ -340,6 +337,8 @@ Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool deb
         }
         std::cout << "total expanded nodes: " << total_expanded << ", total wins: " << total_wins << std::endl;
     }
+    if (l_h_func != nullptr)
+        delete l_h_func;
     auto iter = std::max_element(visits.begin(), visits.end(), \
         [](const std::pair<Action, int> &action_pair_1, const std::pair<Action, int> &action_pair_2) { 
             return action_pair_1.second < action_pair_2.second;

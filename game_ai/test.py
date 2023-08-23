@@ -6,11 +6,12 @@ from build import level
 import utils
 from pprint import pprint
 
-env = level.Level(5, 10, 10, *utils.get_level_info("9"), False)
-mcts.run(env, 800, 8, True, 1.4, mcts.NORMAL_MCTS, mcts.NO_HEURISTIC) # before: ~5080; after ~5000
-mcts.run(env, 800, 8, True, 1.4, mcts.NORMAL_MCTS, mcts.HEURISTIC_MCTS) # before: ~680; after ~3300
-mcts.run(env, 800, 8, True, 1.4, mcts.NORMAL_MCTS, mcts.HEURISTIC_SELECT) # before: ~750; after ~4500
-mcts.run(env, 800, 8, True, 1.4, mcts.NORMAL_MCTS, mcts.HEURISTIC_EXPAND) # before: ~3000; after ~3200
+env = level.Level(5, 10, 10, *utils.get_level_info("9+"), False)
+mcts.run(env, 800, 8, True, 0.01, mcts.NORMAL_MCTS, mcts.HEURISTIC_SELECT, mcts.FULL_EXPAND, mcts.NO_HEURISTIC) # before: ~750; after ~4500
+mcts.run(env, 800, 8, True, 0.01, mcts.NORMAL_MCTS, mcts.HEURISTIC_SELECT, mcts.FULL_EXPAND, mcts.FRAME_HEURISTIC) # before: ~750; after ~4500
+mcts.run(env, 800, 8, True, 0.01, mcts.NORMAL_MCTS, mcts.HEURISTIC_SELECT, mcts.FULL_EXPAND, mcts.TOTAL_PLANT_COST_HEURISTIC) # before: ~750; after ~4500
+mcts.run(env, 800, 8, True, 0.01, mcts.NORMAL_MCTS, mcts.HEURISTIC_SELECT, mcts.FULL_EXPAND, mcts.TOTAL_ZOMBIE_HP_HEURISTIC) # before: ~750; after ~4500
+mcts.run(env, 800, 8, True, 0.01, mcts.NORMAL_MCTS, mcts.HEURISTIC_SELECT, mcts.FULL_EXPAND, mcts.ZOMBIES_LEFT_TO_SPAWN_HEURISTIC) # before: ~750; after ~4500
 exit()
 
 # mcts.run(env, 300, 1, False, 1.4, 0)
@@ -55,7 +56,7 @@ base_env = env.clone(-1) # base_env has same level as env
 action_list = []
 while not env.done:
     print(f"frame before mcts: {env.frame}")
-    action = mcts.run(level=env, timeout_ms=200, simulations_per_leaf=8, debug=True, ucb_const=1.4, mode=mcts.AVG_NODE, heuristic_mode=mcts.HEURISTIC_MCTS)
+    action = mcts.run(level=env, timeout_ms=1300, simulations_per_leaf=8, debug=True, ucb_const=0.2, mode=mcts.PARALLEL_TREES, heuristic_mode=mcts.HEURISTIC_SELECT, selection_type=mcts.LINEAR_RATIO)
     action_list.append(action)
     print(utils.action_to_string(action))
     env.deferred_step(action)

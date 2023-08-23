@@ -54,6 +54,11 @@ class Zombie;
 class ZombieInfo;
 class Plant;
 typedef std::function<bool(Level&, Plant&)> PlantAction;
+// typedef std::function<double(const Level&)> LossHeuristic;
+
+// typedef double (*LossHeuristic)(const Level&);
+typedef std::function<double(const Level&)> LossHeuristic;
+
 // typedef std::function<double(const Level&)> heuristic_function;
 typedef std::pair<int, int> Pos;
 
@@ -253,7 +258,8 @@ public:
 
     // misc
     void append_zombie(int second, int lane, std::string type);
-    int rollout(int num_games=10000, int mode=1) const; // return num_victories
+    // double rollout(int num_games=10000, int mode=1) const; // return num_victories
+    double rollout(int num_games=10000, int mode=1, LossHeuristic *h = nullptr) const; // return num_victories
     std::pair<int, int> timed_rollout(int time_limit_ms, int mode = 1) const;
 
     int count_plant(PlantName target_plant) const;
@@ -261,6 +267,7 @@ public:
     int count_plant() const;
 };
 bool play_random_game(const Level& env, int randomization_mode);
+Level* finish_playing_game(const Level& base_env, int randomization_mode);
 // bool play_random_heuristic_game(Level env, heuristic_function& func, int mode=1);
 
 #endif // _PVZ_LEVEL

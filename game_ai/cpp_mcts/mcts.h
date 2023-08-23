@@ -27,6 +27,14 @@ using std::vector;
 // #define LINEAR_RATIO 2 // chance of descent is linear of ratio between total actions and available actions
 // #define ROOT_FULL_EXPAND 3 // fully expand root, descent freely later
 
+// loss heuristic modes
+#define NO_HEURISTIC 0
+#define FRAME_HEURISTIC 1
+#define TOTAL_PLANT_COST_HEURISTIC 2
+#define TOTAL_ZOMBIE_HP_HEURISTIC 3
+#define ZOMBIES_LEFT_TO_SPAWN_HEURISTIC 4
+
+
 #define EXPAND_BATCH 8
 typedef std::function<double(const Level&, const Action&)> heuristic_function;
 
@@ -37,7 +45,7 @@ static int action_space_size;
 extern int rollout_mode;
 extern int max_depth;
 extern int selection_mode;
-extern bool use_loss_heuristic;
+// extern bool use_loss_heuristic;
 // extern heuristic_function h_func;
 
 
@@ -105,7 +113,7 @@ void rollout(Node* selected_node, Level& cloned_level);
 void backpropagate(Node* start_node);
 
 std::pair<Action, int> select_best_action(Node& root);
-Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug=false, float ucb_const=1.4, int mode=NORMAL_MCTS, int heuristic_mode=NO_HEURISTIC, int selection_type=FULL_EXPAND, bool loss_heuristic=false);
+Action run(Level& level, int timeout_ms, int simulations_per_leaf, bool debug=false, float ucb_const=1.4, int mode=NORMAL_MCTS, int heuristic_mode=NO_HEURISTIC, int selection_type=FULL_EXPAND, int loss_heuristic=NO_HEURISTIC);
 Action _parallel_trees_run(Level& level, int timeout_ms, int num_trees, bool debug, int heurisic_mode);
 double heuristic_basic_sunflowers(const Level& level, const Action& action);
 
