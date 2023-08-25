@@ -570,28 +570,32 @@ Level* finish_playing_game(const Level& base_env, int randomization_mode) {
 // }
 
 double Level::rollout(int num_games, int mode, LossHeuristic *h) const {
-    if (num_games == 1){
+    if (num_games == 1){ // single thread mode
         Level* env = finish_playing_game(*this, mode);
+        double score;
         if (env->win) {
-            delete env;
-            return 1;
+            score = 1;
         }
-        if (h == nullptr) {
-            return 0;
+        else if (h == nullptr) {
+            score = 0;
         }
-        double heuristic_value = (*h)(*env);
+        else {
+            score = (*h)(*env);
+        }
         delete env;
-        return heuristic_value;
+        return score;
     }
+    // multithreaded mode
     std::vector<double> victories(num_games, false);
     omp_set_num_threads(NUM_CPU);
     #pragma omp parallel for shared(victories)
     for (int i = 0; i < num_games; i++){
         Level* env = finish_playing_game(*this, mode);
-        victories[i] = env->win;
-        if (!victories[i] && h != nullptr) {
-            victories[i] = (*h)(*env);
+        double score = env->win;
+        if (score == 0 && h != nullptr) {
+            score = (*h)(*env);
         }
+        victories[i] = score;
         delete env;
     }
     return std::accumulate(victories.begin(), victories.end(), 0);
