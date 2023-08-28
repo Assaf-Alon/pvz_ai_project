@@ -1,3 +1,7 @@
+# Build Singularity image
+sudo singularity build base_img.sif base_img.def
+sudo singularity build pvz.sif pvz.def
+
 # TODO:
 
 ## Interesting:
