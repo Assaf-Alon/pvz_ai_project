@@ -217,7 +217,7 @@ def csv_append(new_data: dict, filename=CSV_FILENAME):
     """
     data_csv = open(filename, "a+")
     data_writer = csv.writer(data_csv, delimiter=',', quotechar='"', quoting=csv.QUOTE_NONE)
-    new_row = [new_data["level"], new_data["time_ms"], new_data["parallel_factor"], new_data["ucb_const"], new_data["rollout_mode"], new_data["heuristic_mode"], new_data["selection_mode"], new_data["win"], new_data["num_steps"]]
+    new_row = [new_data["level"], new_data["time_ms"], new_data["parallel_factor"], new_data["ucb_const"], new_data["rollout_mode"], new_data["heuristic_mode"], new_data["selection_mode"], new_data["loss_heuristic"], new_data["win"], new_data["num_steps"]]
     data_writer.writerow(new_row)
 
 rollout_mode_to_name = {
@@ -438,18 +438,18 @@ if __name__ == "__main__":
         # ==============================================================================================================
         # Comparing selection modes
         # ==============================================================================================================
-        [
-            {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 0.01, "selection_mode": mcts.FULL_EXPAND},
-            {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 0.01, "selection_mode": mcts.SQUARE_RATIO},
-        ],
-        [
-            {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 0.2, "selection_mode": mcts.FULL_EXPAND},
-            {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 0.2, "selection_mode": mcts.SQUARE_RATIO},
-        ],
-        [
-            {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 1.4, "selection_mode": mcts.FULL_EXPAND},
-            {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 1.4, "selection_mode": mcts.SQUARE_RATIO},
-        ]
+        # [
+        #     {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 0.01, "selection_mode": mcts.FULL_EXPAND},
+        #     {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 0.01, "selection_mode": mcts.SQUARE_RATIO},
+        # ],
+        # [
+        #     {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 0.2, "selection_mode": mcts.FULL_EXPAND},
+        #     {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 0.2, "selection_mode": mcts.SQUARE_RATIO},
+        # ],
+        # [
+        #     {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 1.4, "selection_mode": mcts.FULL_EXPAND},
+        #     {"level": target_level, "rollout_mode": rollout_mode, "heuristic_mode": mcts.HEURISTIC_SELECT, "ucb_const": 1.4, "selection_mode": mcts.SQUARE_RATIO},
+        # ]
         # ==============================================================================================================
         # [
         #     {"level": target_level, "rollout_mode": mcts.PARALLEL_TREES, "heuristic_mode": 0, "ucb_const": 0.2},
@@ -463,6 +463,44 @@ if __name__ == "__main__":
         #     {"level": "9", "rollout_mode": 1, "heuristic_mode": 2, "time_ms": "200"},
         #     {"level": "9", "rollout_mode": 1, "heuristic_mode": 3, "time_ms": "200"},
         # ]
+        # experiment_parameter_list = list(itertools.product(\
+        # ["9+"], 
+        # time_range, 
+        # [8],
+        # [0.01, 0.2, 1.0], 
+        # expansion_modes, 
+        # [mcts.HEURISTIC_SELECT], 
+        # [mcts.FULL_EXPAND],
+        # [0,1,2,3,4]
+        # ))
+        [
+            {"level": "9+", "rollout_mode": mcts.NORMAL_MCTS, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 0},
+            # {"level": "9+", "rollout_mode": mcts.NORMAL_MCTS, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 1},
+            {"level": "9+", "rollout_mode": mcts.NORMAL_MCTS, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 2},
+            {"level": "9+", "rollout_mode": mcts.NORMAL_MCTS, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 3},
+            # {"level": "9+", "rollout_mode": mcts.NORMAL_MCTS, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 4}
+        ],
+        [
+            {"level": "9+", "rollout_mode": mcts.AVG_NODE, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 0},
+            # {"level": "9+", "rollout_mode": mcts.AVG_NODE, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 1},
+            {"level": "9+", "rollout_mode": mcts.AVG_NODE, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 2},
+            {"level": "9+", "rollout_mode": mcts.AVG_NODE, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 3},
+            # {"level": "9+", "rollout_mode": mcts.AVG_NODE, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 4}
+        ],
+        [
+            {"level": "9+", "rollout_mode": mcts.MAX_NODE, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 0},
+            # {"level": "9+", "rollout_mode": mcts.MAX_NODE, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 1},
+            {"level": "9+", "rollout_mode": mcts.MAX_NODE, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 2},
+            {"level": "9+", "rollout_mode": mcts.MAX_NODE, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 3},
+            # {"level": "9+", "rollout_mode": mcts.MAX_NODE, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 4}
+        ],
+        [
+            {"level": "9+", "rollout_mode": mcts.PARALLEL_TREES, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 0},
+            # {"level": "9+", "rollout_mode": mcts.PARALLEL_TREES, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 1},
+            {"level": "9+", "rollout_mode": mcts.PARALLEL_TREES, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 2},
+            {"level": "9+", "rollout_mode": mcts.PARALLEL_TREES, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 3},
+            # {"level": "9+", "rollout_mode": mcts.PARALLEL_TREES, "ucb_const": ucb, "heuristic_mode": mcts.HEURISTIC_SELECT, "selection_mode": mcts.FULL_EXPAND, "loss_heuristic": 4}
+        ]
     ]
     x_axis = "time_ms"
     y_axis = "win"

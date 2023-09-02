@@ -9,7 +9,7 @@ from build import level
 from build import mcts
 import utils
 
-timestamped_csv = f"test_data/mcts_experiment_{random.randint(1, 999)}.csv"
+timestamped_csv = f"test_data/mcts_experiment_{random.randint(1, 9999)}.csv"
 
 def try_early_finish(env: level.Level) -> bool:
     """
@@ -73,45 +73,17 @@ if __name__ == "__main__":
     time_ms: >150, 50ms multiples (150,200,250,etc...)
     sim_per_leaf: [2,4,8,12,16,20,30]
     """
-    # time_range = range(150, 800, 50)
-    # time_range = range(200, 1100, 100)
-    time_range = [200, 400, 800]
-    # ucb_range = [0.2, 1.4, 30]
-    # ucb_range = [0.01, 0.1, 0.2, 0.5, 1.0, 1.4]
-    short_ucb_range = [0.01, 0.2, 1.0]
-    level_range = ["9", "9+"]
+    time_range = [100, 200, 300, 400, 500, 600, 700, 800, 1600, 3200]
+    ucb_range = [0.001, 0.002, 0.004, 0.008, 0.016, 0.032, 0.064, 0.128, 0.256, 0.512, 1.024]
+    level_range = ["9", "9+", "9++"]
     expansion_modes = [mcts.NORMAL_MCTS, mcts.AVG_NODE, mcts.MAX_NODE, mcts.PARALLEL_TREES]
     heuristic_modes = [mcts.NO_HEURISTIC, mcts.HEURISTIC_SELECT]
     selection_modes = [mcts.FULL_EXPAND, mcts.SQUARE_RATIO]
-    # ucb_range = [0, 0.1, 0.2, 0.5, 1.0, 1.4, 3.0, 10, 30, 100]
-    # ucb_range = [0.2, 1.4]
-    # ucb_range = [3, 30]
-    # ucb_range = [20, 40] # zeroing in on optimal mode2 ucb
-    # ucb_range = [25, 35] # zeroing in on optimal mode2 ucb
-
-    # sim_per_leaf_range = [2,4,8,12,16,20,30]
-    # rollot_mode_range = [0,1,2]
+    loss_heuristics = [mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC]
     experiment_parameter_list = list(itertools.product(\
-        ["9+"], 
-        time_range, 
-        [8],
-        short_ucb_range, 
-        expansion_modes, 
-        [mcts.HEURISTIC_SELECT], 
-        [mcts.FULL_EXPAND],
-        [0,1,2,3,4]
+        level_range, time_range, [8], ucb_range, expansion_modes, heuristic_modes, selection_modes, loss_heuristics
     ))
-    # experiment_parameter_list = \
-    #     list(itertools.product(level_range, time_range, [8], ucb_range, [mcts.NORMAL_MCTS], heuristic_modes)) + \
-    #     list(itertools.product(level_range, time_range, [8], ucb_range, [mcts.MAX_NODE, mcts.AVG_NODE, mcts.PARALLEL_TREES], heuristic_modes))
-    # parallel_parameter_list = list(itertools.product(level_range, time_range, [8], ucb_range, [mcts.MAX_NODE,mcts.AVG_NODE,mcts.PARALLEL_TREES], heuristic_modes))
-    # traditional_parameter_list = list(itertools.product(level_range, time_range, [1], ucb_range, [mcts.NORMAL_MCTS], heuristic_modes))
-    # experiment_parameter_list = parallel_parameter_list + traditional_parameter_list
-    # experiment_parameter_list = list(itertools.product(["9"], time_range, [8], ucb_range, [mcts.AVG_NODE]))
-    ## Full experiment parameter list
-    # experiment_parameter_list = list(itertools.product(time_range, sim_per_leaf_range, ucb_range, rollot_mode_range))
-    ## Parallel experiment only, optimize for thread num
-    # experiment_parameter_list = list(itertools.product(time_range, sim_per_leaf_range, ucb_range, [1,2]))
+    pprint(experiment_parameter_list)
     print(f"Parameter space size: {len(experiment_parameter_list)}")
     while True: ## run experiments until stopped manually
         for experiment_parameters in experiment_parameter_list:
