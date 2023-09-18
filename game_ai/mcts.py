@@ -73,15 +73,20 @@ if __name__ == "__main__":
     time_ms: >150, 50ms multiples (150,200,250,etc...)
     sim_per_leaf: [2,4,8,12,16,20,30]
     """
-    time_range = [100, 200, 300, 400, 500, 600, 700, 800, 1600, 3200]
-    ucb_range = [0.001, 0.002, 0.004, 0.008, 0.016, 0.032, 0.064, 0.128, 0.256, 0.512, 1.024]
+    time_range = [100, 200, 300, 400, 500, 600, 700, 800, 1600]
+    # ucb_range = [0.001, 0.002, 0.004, 0.008, 0.016, 0.032, 0.064, 0.128, 0.256, 0.512, 1.024]
+    ucb_range = [0.001, 0.004, 0.016, 0.064, 0.256, 1.024]
     level_range = ["9", "9+", "9++"]
-    expansion_modes = [mcts.NORMAL_MCTS, mcts.AVG_NODE, mcts.MAX_NODE, mcts.PARALLEL_TREES]
-    heuristic_modes = [mcts.NO_HEURISTIC, mcts.HEURISTIC_SELECT]
-    selection_modes = [mcts.FULL_EXPAND, mcts.SQUARE_RATIO]
-    loss_heuristics = [mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC]
+    # expansion_modes = [mcts.NORMAL_MCTS, mcts.AVG_NODE, mcts.MAX_NODE, mcts.PARALLEL_TREES]
+    expansion_modes = [mcts.NORMAL_MCTS, mcts.MAX_NODE, mcts.PARALLEL_TREES]
+    # heuristic_modes = [mcts.NO_HEURISTIC, mcts.HEURISTIC_SELECT]
+    heuristic_modes = [mcts.NO_HEURISTIC]
+    # selection_modes = [mcts.FULL_EXPAND, mcts.SQUARE_RATIO]
+    selection_modes = [mcts.FULL_EXPAND]
+    # loss_heuristics = [mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC]
+    loss_heuristic = [mcts.NO_HEURISTIC]
     experiment_parameter_list = list(itertools.product(\
-        level_range, time_range, [8], ucb_range, expansion_modes, heuristic_modes, selection_modes, loss_heuristics
+        level_range, time_range, [8], ucb_range, expansion_modes, heuristic_modes, selection_modes, loss_heuristic
     ))
     pprint(experiment_parameter_list)
     print(f"Parameter space size: {len(experiment_parameter_list)}")
