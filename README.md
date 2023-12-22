@@ -1,55 +1,53 @@
-# Build Singularity image
-sudo singularity build base_img.sif base_img.def
-sudo singularity build pvz.sif pvz.def
+# Plants vs. Zombies AI using MCTS
 
-# TODO:
-
-## Interesting:
-1. Implement Simulated annealing to create level data with specific random victory chance
-    1. Add python proxy object for c++ level_data
-    2. Add get_neighbour() function that finds a random neighbour of current level_data
-    3. Add transition function
-    4. Define restart policy
-    5. Define temp cooldown policy
-2. Implement MCTS to win actual games
-    1. Choose selection, expension policies
-    2. Level copy vs action in each node
-    3. Compare tradeoff of accuracy vs speed (lots of low acc rollouts vs less high acc rollouts)
-    4. Paper questions:
-        1. Approaches to calculate relative value of multiple-rollout leaves: max/mean/avg/no normalization (naive)
-            https://arxiv.org/pdf/2003.13741.pdf
-            https://dke.maastrichtuniversity.nl/m.winands/documents/multithreadedMCTS2.pdf
-            https://link.springer.com/article/10.1007/s10462-022-10228-y
-        2. Changes to UCB to account for multiple rollouts
-        3. C value 
-        4. leaf parallelization vs root parallelization
-3. Impement RL, compare to MCTS
-    1. high-info large state vs low-info small state
-    2. GPU acceleration
+## Introduction
+This project was created as a part of the course "Project in AI" in the Technion.  
+The project focuses on implementing Monte Carlo Tree Search (MCTS) to play the game "Plants vs. Zombies" (PvZ).  
+The codebase consists of a C++ implementations of PvZ and the core MCTS functions (select, expand, rollout, backpropagate).  
+For enhanced accessibility and ease of use, the above implementation can be converted to a Python package using Swig.
 
 
-## Not Interesting:
-0. Add "num_available_actions" to c++
-1. Add state output to c++ (add selector for generating or not generating state)
-2. Finish implementing plants in c++
-3. Add option to clone with different FPS value
-4. Add module to print result graphs (for Shaul)
-5. Make sure plants work correctly, unit tests
-6. Add user-readable print/render to level
-7. Clean up c++ files (private/public, headers, game.hpp???)
-8. makefile delta-based build
-9. Documentation
-10. Add another type of random action (choose next plant to plant, do it when possible isntead of choosing action that's legal now)
-11. Skip actions for frames that have no legal actions
-12. Add remove plant action at low probability
-13. Night levels/ conveyor belt levels
-14. Interface with pygame implementation?
-15. Clean up repo even more
+## Table of Contents
 
-## Notes:
-1. When dealing with RL, grid should look as follows:
-arr(lanes, arr(cols, cell))
-cell is an arr: plant_type, plant_hp, num_zombies, zombie_tier
-zombie_tier is an int that is a function of:
-    1. total hp of zombies in this cell (in hundreds? twenties?)
-    2. avg move speed of zombies in this cell
+- [Installation](#installation)
+- [Usage](#usage)
+
+## Installation
+
+### Prerequisites
+
+1. Install relevant dependencies:
+```bash
+    apt-get update
+    apt-get install -y libpython3-dev
+    apt-get install -y bash wget nano curl make libgmp3-dev libomp-dev tree swig
+    apt-get install -y clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+```
+
+2. Install Python packages:
+```bash
+    pip install numpy pandas matplotlib scipy
+```
+
+### Clone and Build
+
+1. Clone the repository to your local machine:
+
+```bash
+    git clone https://github.com/Assaf-Alon/pvz_ai_project.git
+```
+
+2. Navigate to the project directory and build the project:
+```bash
+    cd pvz_ai_project/game_ai
+    make clean && make -j8
+```
+
+3. Update the `LD_LIBRARY_PATH` environment variable and start running simulations
+```bash
+    export LD_LIBRARY_PATH=/home/game_ai/build:$LD_LIBRARY_PATH
+    python3 mcts.py
+```
+
+## Usage
+Fill me
