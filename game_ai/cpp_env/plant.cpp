@@ -1,25 +1,33 @@
 #include "level.hpp"
+#include "zombie.hpp"
+#include "plant.hpp"
 
-Plant::Plant(int lane, int column, PlantData& plant_data, int frame, int fps){
+Plant::Plant(int lane, int column, const PlantData& plant_data, int frame, int fps){
     this->hp = plant_data.hp;
     this->damage = plant_data.damage;
-    this->action_interval_seconds = plant_data.action_interval_seconds;
-    this->action_interval = plant_data.action_interval;
-    this->recharge_seconds = plant_data.recharge_seconds;
-    this->recharge = plant_data.recharge;
+    // this->action_interval_seconds = plant_data.action_interval_seconds;
+    this->action_interval = plant_data.action_interval_seconds * fps;
+    // this->recharge_seconds = plant_data.recharge_seconds;
+    this->recharge = plant_data.recharge_seconds * fps;
     this->cost = plant_data.cost;
     this->lane = lane;
     this->col = column;
     this->plant_name = std::string(plant_data.plant_name);
     this->action = PlantAction(plant_data.action_func);
+    this->plant_type = plant_data.plant_type;
     
     // TODO - pretty much all plants but the comper should start as-if they just attacked,
     // that is, they should wait before they attack.
     // The string comparation here sucks.
     // Maybe Keep the enum value inside PlantData?
     this->frame_action_available = frame + this->action_interval;
-    if (this->plant_name == "chomper") {
+    if (this->plant_type == CHOMPER) {
         this->frame_action_available = frame;
+    }
+
+    // Sunflower's first sun generated takes about 6 seconds
+    if (this->plant_type == SUNFLOWER) {
+        this->frame_action_available = frame + (6*fps);
     }
 }
 
@@ -39,6 +47,7 @@ void Plant::get_damaged(int damage, Level &level)
     {
         level.plant_list.remove(this);
         level.plant_grid[this->lane][this->col] = nullptr;
+        level.free_spaces.push_back(Pos(this->lane, this->col));
         #ifdef DEBUG
         std::stringstream log_msg;
         log_msg << this->plant_name << " at " << this->lane << ", " << this->col << " died";
@@ -67,17 +76,25 @@ void Plant::do_action(Level& level){
     this->action(level, *this);
     #endif
 }
+PlantInfo Plant::get_info(){
+    PlantInfo plant_info;
+    plant_info.hp = this->hp;
+    plant_info.lane = this->lane;
+    plant_info.col = this->col;
+    plant_info.plant_name = this->plant_name;
+    return plant_info;
+}
 
 bool cherrybomb_action(Level& level, Plant& plant){
     //explode
     for (int i = -1; i <= 1; i++){
         int target_lane = plant.lane + i;
-        if (target_lane <= 0 || target_lane >= level.lanes){
+        if (target_lane < 0 || target_lane >= level.lanes){
             continue;
         }
         for (int j = -1; j <= 1; j++){
             int target_col = plant.col + j;
-            if(target_col <= 0 || target_col >= level.cols){
+            if(target_col < 0 || target_col >= level.cols){
                 continue;
             }
             std::list<Zombie*> &cell = level.zombie_grid[target_lane][target_col];

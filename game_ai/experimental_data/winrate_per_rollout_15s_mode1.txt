@@ -1,0 +1,41 @@
+Generating action space
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+expanding root
+winrate before: 2.794%
+optimizing num rollouts for 15s MCTS
+for 1 rollouts per leaf, got 95962 with 2.902% winrate
+for 2 rollouts per leaf, got 150443 with 2.826% winrate
+for 3 rollouts per leaf, got 184652 with 2.846% winrate
+for 4 rollouts per leaf, got 221402 with 2.866% winrate
+for 5 rollouts per leaf, got 249994 with 2.766% winrate
+for 6 rollouts per leaf, got 279063 with 2.858% winrate
+for 7 rollouts per leaf, got 315022 with 2.82% winrate
+for 8 rollouts per leaf, got 325881 with 2.924% winrate
+for 9 rollouts per leaf, got 341914 with 2.86% winrate
+for 10 rollouts per leaf, got 359231 with 2.8920000000000003% winrate
+for 11 rollouts per leaf, got 371194 with 2.762% winrate
+for 12 rollouts per leaf, got 418014 with 2.8320000000000003% winrate
+for 13 rollouts per leaf, got 416684 with 2.792% winrate
+for 14 rollouts per leaf, got 381876 with 2.928% winrate
+for 15 rollouts per leaf, got 459229 with 2.87% winrate
+for 16 rollouts per leaf, got 417517 with 2.868% winrate
+for 17 rollouts per leaf, got 412480 with 2.82% winrate
+for 18 rollouts per leaf, got 421463 with 2.792% winrate
+for 19 rollouts per leaf, got 439541 with 2.884% winrate

@@ -8,7 +8,10 @@ headless/resources/random*
 .vscode/**
 **/.vscode
 *.o
+*.so
 *.out 
 *.prof*
 *.prettierrc
+*.cxx
+game_ai/build
 game_ai/cpp_env/pvz_ai
