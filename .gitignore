@@ -13,5 +13,5 @@ headless/resources/random*
 *.prof*
 *.prettierrc
 *.cxx
-game_ai/build
 game_ai/cpp_env/pvz_ai
+singularity/**
