@@ -10,11 +10,15 @@ For enhanced accessibility and ease of use, the above implementation can be conv
 ## Table of Contents
 
 - [Installation](#installation)
+- [C++ Environment](#cpp-environment)
+- [Python Environment](#python-environment)
 - [Usage](#usage)
 
 ## Installation
 
 ### Prerequisites
+
+0. Ubuntu Linux / WSL with Python3.11 installed
 
 1. Install relevant dependencies:
 ```bash
@@ -43,11 +47,51 @@ For enhanced accessibility and ease of use, the above implementation can be conv
     make clean && make -j8
 ```
 
+> **_NOTE:_**  If you get the following error: `fatal error: 'Python.h' file not found`, try to install python3.11-dev by running `sudo apt-get install python3.11-dev`.
+
 3. Update the `LD_LIBRARY_PATH` environment variable and start running simulations
 ```bash
     export LD_LIBRARY_PATH=$(realpath ./build):$LD_LIBRARY_PATH
     python3 mcts.py
 ```
 
+## CPP Environment
+The C++ environment reveals an interface needed for the MCTS to run, but isn't limited to MCTS.
+You can use the C++ environment to play a game manually, from C++ if you choose to.
+> **_NOTE:_**  We worked really hard to enable using this library in Python. Instructions can be found below
+
+An example
+```cpp
+#include level.hpp
+
+bool play_easy_game() {
+    std::deque<ZombieSpawnTemplate> level_data;
+    level_data.push_back(ZombieSpawnTemplate(15, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(60, 1, "normal"));
+    level_data.push_back(ZombieSpawnTemplate(95, 1, "normal"));
+    std::vector<int> chosen_plants       = { SUNFLOWER, CHOMPER, PEASHOOTER, POTATOMINE };
+    Action no_action = Action(NO_PLANT, 0,  0);
+
+    //                lanes, columns, fps, level_data
+    Level env = Level(5,     10,      10,  level_data, chosen_plants);
+    while (!env.done) {
+        Action next_action = ...; // Choose action, maybe by input from user
+        if (env.is_action_legal(next_action)) {
+            env.step(next_action);
+        }
+        else {
+            env.step(no_action);
+        }
+    }
+    return env.win;
+}
+```
+
+## Python Environment
+TODO
+
 ## Usage
+TODO
+
+## Run in a Container
 TODO
