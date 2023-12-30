@@ -45,9 +45,9 @@ For enhanced accessibility and ease of use, the above implementation can be conv
 
 3. Update the `LD_LIBRARY_PATH` environment variable and start running simulations
 ```bash
-    export LD_LIBRARY_PATH=/home/game_ai/build:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=$(realpath ./build):$LD_LIBRARY_PATH
     python3 mcts.py
 ```
 
 ## Usage
-Fill me
+TODO
