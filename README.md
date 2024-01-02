@@ -94,4 +94,15 @@ TODO
 TODO
 
 ## Run in a Container
-TODO
+In the root directory there are two [singularity](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html) definition files that define container images.
+> [!NOTE]  
+> Docker can work just fine as well. The main reason we're using Singularity is because we don't have root permission on the runtime environment.
+
+### base_img.def
+Uses the image `python:3.11.4-slim-bookworm` as a base image (baseception?).
+Installs on top of it the relevant dependencies so we won't have to install them on each new build.
+
+### pvz.def
+Uses the image `base_img.sif` (built from base_img.def) as a base image.
+copies the source files to the image, compiles and configure environment.
+On runtime, runs the `mcts.py` script.
