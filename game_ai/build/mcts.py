@@ -154,9 +154,14 @@ MAX_NODE = _mcts.MAX_NODE
 AVG_NODE = _mcts.AVG_NODE
 PARALLEL_TREES = _mcts.PARALLEL_TREES
 NO_HEURISTIC = _mcts.NO_HEURISTIC
-HEURISTIC_MCTS = _mcts.HEURISTIC_MCTS
 HEURISTIC_SELECT = _mcts.HEURISTIC_SELECT
-HEURISTIC_EXPAND = _mcts.HEURISTIC_EXPAND
+FULL_EXPAND = _mcts.FULL_EXPAND
+SQUARE_RATIO = _mcts.SQUARE_RATIO
+FRAME_HEURISTIC = _mcts.FRAME_HEURISTIC
+TOTAL_PLANT_COST_HEURISTIC = _mcts.TOTAL_PLANT_COST_HEURISTIC
+TOTAL_ZOMBIE_HP_HEURISTIC = _mcts.TOTAL_ZOMBIE_HP_HEURISTIC
+ZOMBIES_LEFT_TO_SPAWN_HEURISTIC = _mcts.ZOMBIES_LEFT_TO_SPAWN_HEURISTIC
+EXPAND_BATCH = _mcts.EXPAND_BATCH
 class Node(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
@@ -180,11 +185,11 @@ _mcts.Node_swigregister(Node)
 cvar = _mcts.cvar
 
 
-def select(root, cloned_level, func=None):
-    return _mcts.select(root, cloned_level, func)
+def select(root, cloned_level, use_heuristic=False):
+    return _mcts.select(root, cloned_level, use_heuristic)
 
-def expand(selected_node, cloned_level, h_func=None):
-    return _mcts.expand(selected_node, cloned_level, h_func)
+def expand(selected_node, cloned_level):
+    return _mcts.expand(selected_node, cloned_level)
 
 def rollout(selected_node, cloned_level):
     return _mcts.rollout(selected_node, cloned_level)
@@ -195,14 +200,14 @@ def backpropagate(start_node):
 def select_best_action(root):
     return _mcts.select_best_action(root)
 
-def run(level, timeout_ms, simulations_per_leaf, debug=False, ucb_const=1.4, mode=0, heuristic_mode=0):
-    return _mcts.run(level, timeout_ms, simulations_per_leaf, debug, ucb_const, mode, heuristic_mode)
+def run(level, timeout_ms, simulations_per_leaf, debug=False, ucb_const=1.4, mode=0, heuristic_mode=0, selection_type=0, loss_heuristic=0):
+    return _mcts.run(level, timeout_ms, simulations_per_leaf, debug, ucb_const, mode, heuristic_mode, selection_type, loss_heuristic)
 
 def _parallel_trees_run(level, timeout_ms, num_trees, debug, heurisic_mode):
     return _mcts._parallel_trees_run(level, timeout_ms, num_trees, debug, heurisic_mode)
 
-def heuristic_basic_sunflowers(level):
-    return _mcts.heuristic_basic_sunflowers(level)
+def heuristic_basic_sunflowers(level, action):
+    return _mcts.heuristic_basic_sunflowers(level, action)
 
 def heuristic2(level):
     return _mcts.heuristic2(level)
