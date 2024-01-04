@@ -12,7 +12,8 @@ For enhanced accessibility and ease of use, the above implementation can be conv
 - [Installation](#installation)
 - [C++ Environment](#cpp-environment)
 - [Python Environment](#python-environment)
-- [Usage](#usage)
+- [MCTS](#monte-carlo-tree-search)
+- [Run in a Container](#run-in-a-container)
 
 ## Installation
 
@@ -22,10 +23,10 @@ For enhanced accessibility and ease of use, the above implementation can be conv
 
 1. Install relevant dependencies:
 ```bash
-    apt-get update
-    apt-get install -y libpython3-dev
-    apt-get install -y bash wget nano curl make libgmp3-dev libomp-dev tree swig
-    apt-get install -y clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+    sudo apt-get update
+    sudo apt-get install -y libpython3-dev
+    sudo apt-get install -y bash wget nano curl make libgmp3-dev libomp-dev tree swig
+    sudo apt-get install -y clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
 ```
 
 2. Install Python packages:
@@ -60,7 +61,7 @@ The C++ environment reveals an interface needed for the MCTS to run, but isn't l
 You can use the C++ environment to play a game manually, from C++ if you choose to.
 > **_NOTE:_**  We worked really hard to enable using this library in Python. Instructions can be found below
 
-An example
+An example code snippet:  
 ```cpp
 #include level.hpp
 
@@ -88,21 +89,74 @@ bool play_easy_game() {
 ```
 
 ## Python Environment
-TODO
+The following are examples used in the code that utilize the built library.
+### Creating level data from a list, play that level with random actions
+```python
+    from build import level
 
-## Usage
-TODO
+    def construct_level_data_from_list(list: list):
+        list.sort(key=lambda item: item[0]) # sort by first element of tuple (list[tuple])
+        level_data = level.ZombieQueue()
+        for item in list:
+            level_data.push_back(level.ZombieSpawnTemplate(item[0], item[1], item[2]))
+        return level_data
+
+    def get_level_info(level_num: int):
+        with open("data/levels.json", "r") as level_json:
+            levels = json.load(level_json)
+        level_info = levels[f"level_{level_num}"]
+        zombie_list, plant_list = level_info["zombies"], level_info["plants"]
+        return construct_level_data_from_list(zombie_list), plant_list
+
+    def play_level(level_num: int):
+        FPS = 10
+        GAMES = 10000
+        env = level.Level(1, 10, FPS, *get_level_info(level_num))
+        print(f"Level {level_num} Mode 1: {env.rollout(8, GAMES, 1)} / {GAMES}")
+        print(f"Level {level_num} Mode 2: {env.rollout(8, GAMES, 2)} / {GAMES}")
+        print(f"Level {level_num} Mode 3: {env.rollout(8, GAMES, 3)} / {GAMES}")
+    
+    play_level(1)
+    play_level(2)
+    play_level(3)
+```
+
+## Monte Carlo Tree Search
+Similar to the `level` package built from the cpp code, a package called `mcts` was built as well.  
+The file [mcts.py](/game_ai/mcts.py) is a great reference to understand how to use the package.  
+Specifically the `perform_experiment` function might prove useful.  
+A partial snippet from the file:
+```python
+    level_data, plant_list = utils.get_level_info(num_level)
+    env = level.Level(5, 10, 10, level_data, plant_list, False)
+    action_list = []
+    while not env.done:
+        action = mcts.run(env, int(time_ms), int(parallel_factor), False, float(ucb_const), int(rollout_mode), int(heuristic_mode), int(selection_mode), int(loss_heuristic))
+        env.deferred_step(action)
+        action_list.append(action)
+        print(f"[{env.frame}] Action chosen: lane: {action.lane}, col: {action.col}, plant: {utils.plant_to_name[action.plant_name]}")
+```
 
 ## Run in a Container
+Running in a container can be useful to run MCTS experiments on a dedicated server without needing to install any of the required dependencies.  
 In the root directory there are two [singularity](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html) definition files that define container images.
 > [!NOTE]  
 > Docker can work just fine as well. The main reason we're using Singularity is because we don't have root permission on the runtime environment.
 
 ### base_img.def
-Uses the image `python:3.11.4-slim-bookworm` as a base image (baseception?).
-Installs on top of it the relevant dependencies so we won't have to install them on each new build.
+Uses the image `python:3.11.4-slim-bookworm` as a base image (baseception?).  
+Installs on top of it the relevant dependencies so we won't have to install them on each new build.  
+To build the image from the definition file run:
+```bash
+    sudo singularity build base_img.sif base_img.def
+```
 
 ### pvz.def
-Uses the image `base_img.sif` (built from base_img.def) as a base image.
-copies the source files to the image, compiles and configure environment.
-On runtime, runs the `mcts.py` script.
+Uses the image `base_img.sif` (built from base_img.def) as a base image.  
+copies the source files to the image, compiles and configure environment.  
+On runtime, runs the `mcts.py` script.  
+To build the image from the definition file run:
+```bash
+    sudo singularity build pvz.sif pvz.def
+```
+
