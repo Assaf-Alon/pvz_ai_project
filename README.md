@@ -48,7 +48,8 @@ For enhanced accessibility and ease of use, the above implementation can be conv
     make clean && make -j8
 ```
 
-> **_NOTE:_**  If you get the following error: `fatal error: 'Python.h' file not found`, try to install python3.11-dev by running `sudo apt-get install python3.11-dev`.
+> [!NOTE]  
+> If you get the following error: `fatal error: 'Python.h' file not found`, try to install python3.11-dev by running `sudo apt-get install python3.11-dev`.
 
 3. Update the `LD_LIBRARY_PATH` environment variable and start running simulations
 ```bash
@@ -59,7 +60,8 @@ For enhanced accessibility and ease of use, the above implementation can be conv
 ## CPP Environment
 The C++ environment reveals an interface needed for the MCTS to run, but isn't limited to MCTS.
 You can use the C++ environment to play a game manually, from C++ if you choose to.
-> **_NOTE:_**  We worked really hard to enable using this library in Python. Instructions can be found below
+> [!NOTE]
+> We worked really hard to enable using this library in Python. Instructions can be found below
 
 An example code snippet:  
 ```cpp
