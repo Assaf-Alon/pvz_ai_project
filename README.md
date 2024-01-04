@@ -162,3 +162,9 @@ To build the image from the definition file run:
     sudo singularity build pvz.sif pvz.def
 ```
 
+### Run Container
+To run the singularity container, run the following in the project root directory:
+```bash
+    singularity run --bind data:/home/game_ai/test_data pvz.sif
+```
+The above runs the image, mounting the local path `./data` to the path in the image: `/home/game_ai_test_data`.
