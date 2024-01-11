@@ -8,6 +8,7 @@ The C++ engine's main components are:
 - [The Zombies](#zombie-module)
 - [The Level](#level-module)
 
+
 ## Plant Module
 The plant module defines a Plant class, which contains all properties and methods related to a deployed plant.
 
@@ -55,6 +56,7 @@ The level module contains the main code to manage the gameplay of a level.
 - `PlantData` - Contains constant data related to plants, like their price, initial hp, etc.
 
 
+The file `level.i` defines needed settings for Swig for compiling the code to a Python package.
 
 # Usage
 TODO - update this
