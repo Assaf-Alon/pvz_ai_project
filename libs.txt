@@ -1,0 +1,20 @@
+# libs.txt - External Software Used
+All relevant installation instructions can be found on the main README.md file
+Installation instruction can be found on the main README.md.
+
+## Python Packages
+numpy
+pandas
+matplotlib
+scipy
+
+## Build Related Software
+Clang - a compiler frontend for C, C++ and additional programming languages. It supports most GCC compilation flags and extensions, and it includes additional useful features like code analysis tools.
+      - Installation: sudo apt-get install -y clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+
+Swig - connects programs written in C and C++ with other languages. We used it to run compiled C++ code in Python.
+     - https://www.swig.org/download.html
+
+## Runtime Related Software
+Singularity - used to build and run container images (similar to Docker).
+            - https://docs.sylabs.io/guides/3.0/user-guide/installation.html
