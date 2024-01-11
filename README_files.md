@@ -20,6 +20,9 @@ All these files were written by us.
     - mcts.h - Definition of the MCTS functions, along with the MCTS Node class and more.
     - mcts.i - Defines Swig settings for the MCTS functions.
 
+  - data
+    - levels.json - Defines the used levels - zombie type, lane, and spawn time.
+  
   - games.hpp - Declares and implements common functions for different games.
   - main.cpp - An example of a raw usage of the C++ library.
   - Makefile - Describes different compilation rules.
