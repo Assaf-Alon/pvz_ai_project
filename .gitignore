@@ -15,3 +15,7 @@ headless/resources/random*
 *.cxx
 game_ai/cpp_env/pvz_ai
 singularity/**
+
+# Ignore the build directory, except the __init__.py file
+game_ai/build
+!game_ai/build/__init__.py
