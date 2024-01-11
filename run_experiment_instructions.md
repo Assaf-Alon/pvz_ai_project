@@ -6,7 +6,7 @@ Before building the image pvz.sif, update the file `game_ai/mcts.py` and update 
     time_range = [6400]  # List of numbers
     ucb_range = [0.0001, 0.0005, 0.001, 0.004, 0.006, 0.008, 0.016, 0.064, 0.256]  # List of numbers
     level_range = ["9+", "9++"]  # Must be a valid level from the game_ai/data/levels.json file
-    expansion_modes = [mcts.NORMAL_MCTS, mcts.PARALLEL_TREES]  # Valid types: [mcts.NORMAL_MCTS, mcts.MAX_NODE, mcts.PARALLEL_TREES]
+    expansion_modes = [mcts.NORMAL_MCTS, mcts.PARALLEL_TREES]  # Valid types: [mcts.NORMAL_MCTS, mcts.MAX_NODE, mcts.AVG_NODE, mcts.PARALLEL_TREES]
     heuristic_modes = [mcts.NO_HEURISTIC]  # Valid types: [mcts.NO_HEURISTIC, mcts.HEURISTIC_SELECT]
     selection_modes = [mcts.FULL_EXPAND,]  # Valid types: [mcts.FULL_EXPAND, mcts.SQUARE_RATIO]
     loss_heuristic = [mcts.NO_HEURISTIC]  # Valid types: [mcts.NO_HEURISTIC, mcts.FRAME_HEURISTIC mcts.TOTAL_PLANT_COST_HEURISTIC, mcts.TOTAL_ZOMBIE_HP_HEURISTIC, mcts.ZOMBIES_LEFT_TO_SPAWN_HEURISTIC]
