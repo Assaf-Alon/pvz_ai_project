@@ -132,11 +132,11 @@ def animate_observation_buffer(observation_buffer: list):
     plt.show()
 
 def run_animation():
-    level = level.Level(5, 10, 10, get_level_info(1))
+    level1 = level.Level(5, 10, 10, *get_level_info(1))
     frame_list = []
-    while not level.done:
-        level.step(level.get_random_action())
-        obs = get_numpy_arr_from_level_obs(level)
+    while not level1.done:
+        level1.step(level1.get_random_action())
+        obs = get_numpy_arr_from_level_obs(level1)
         frame = get_frame_from_observation(obs)
         frame_list.append(frame)
     animate_observation_buffer(frame_list)
