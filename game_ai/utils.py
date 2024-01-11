@@ -132,11 +132,11 @@ def animate_observation_buffer(observation_buffer: list):
     plt.show()
 
 def run_animation():
-    level = level.Level(5, 10, 10, get_level_info(1))
+    level1 = level.Level(5, 10, 10, *get_level_info(1))
     frame_list = []
-    while not level.done:
-        level.step(level.get_random_action())
-        obs = get_numpy_arr_from_level_obs(level)
+    while not level1.done:
+        level1.step(level1.get_random_action())
+        obs = get_numpy_arr_from_level_obs(level1)
         frame = get_frame_from_observation(obs)
         frame_list.append(frame)
     animate_observation_buffer(frame_list)
@@ -357,13 +357,15 @@ if __name__ == "__main__":
     mode 3: 0.2
     """
     # filter_criteria = {"level": 9, "threads": 4}
-    target_level = "9+"
+    target_level = "9"
     r_mode = MAX_NODE
     # ucb = 0.001
     rollout_mode = mcts.PARALLEL_TREES
+    # level,time_ms,threads,ucb_const,rollout_mode,heuristic_mode,selection_mode,win,num_steps
+
     filters = [
         [
-            {"level": target_level, "rollout_mode": r_mode, "time_ms": "3200"},
+            {"level": target_level, "time_ms": "400", "rollout_mode": 0, "heuristic_mode": 0, "selection_mode": 0},
         ]
     ]
     x_axis = "ucb_const"

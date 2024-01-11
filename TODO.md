@@ -2,6 +2,20 @@
 sudo singularity build base_img.sif base_img.def
 sudo singularity build pvz.sif pvz.def
 
+
+
+
+# New TODO:
+
+- [ ] Look at old TODO, look if something is still relevant
+- [ ] Remove game_ai/build from git (delete files and add to .gitignore)
+
+
+
+
+
+
+
 # TODO:
 
 ## Interesting:
