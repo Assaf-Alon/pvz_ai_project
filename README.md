@@ -146,6 +146,15 @@ In the root directory there are two [singularity](https://docs.sylabs.io/guides/
 > [!NOTE]  
 > Docker can work just fine as well. The main reason we're using Singularity is because we don't have root permission on the runtime environment.
 
+### Install Singularity
+
+To install Singularity on Ubuntu, you may run the following:
+```bash
+    sudo apt-get install -y singularity-container
+```
+This should work if you're running Ubuntu >18. There are additional installation methods available if you're encountering any issues
+- For more information: [Official Singularity docs](https://docs.sylabs.io/guides/3.0/user-guide/installation.html)
+
 ### base_img.def
 Uses the image `python:3.11.4-slim-bookworm` as a base image (baseception?).  
 Installs on top of it the relevant dependencies so we won't have to install them on each new build.  
