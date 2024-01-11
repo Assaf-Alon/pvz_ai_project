@@ -51,9 +51,10 @@ For enhanced accessibility and ease of use, the above implementation can be conv
 > [!NOTE]  
 > If you get the following error: `fatal error: 'Python.h' file not found`, try to install python3.11-dev by running `sudo apt-get install python3.11-dev`.
 
-3. Update the `LD_LIBRARY_PATH` environment variable and start running simulations
+3. Update the `LD_LIBRARY_PATH` environment variable and start running simulations. If need be, create a directory for the experiment output csv. You can change the path by changing the variable `timestamped_csv` in `mcts.py`
 ```bash
     export LD_LIBRARY_PATH=$(realpath ./build):$LD_LIBRARY_PATH
+    mkdir -p test_data
     python3 mcts.py
 ```
 
