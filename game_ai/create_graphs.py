@@ -45,6 +45,61 @@ plant_to_name = (
     "wallnut",
 )
 
+to_legend = {
+    "heuristic_mode": {mcts.NO_HEURISTIC: "No Heuristic", mcts.HEURISTIC_SELECT: "Selection Heuristic"},
+    "selection_mode": {mcts.FULL_EXPAND: "Full Expand", mcts.SQUARE_RATIO: "Square Ratio"},
+    "loss_heuristic": {
+        mcts.NO_HEURISTIC: "No Heuristic",
+        mcts.FRAME_HEURISTIC: "Frame Heuristic",
+        mcts.TOTAL_PLANT_COST_HEURISTIC: "Plant Cost Heuristic",
+        mcts.TOTAL_ZOMBIE_HP_HEURISTIC: "Total Zombie HP Heuristic",
+        mcts.ZOMBIES_LEFT_TO_SPAWN_HEURISTIC: "Zombies to Spawn Heuristic",
+    },
+    "rollout_mode": {
+        mcts.NORMAL_MCTS: "No Parallelization",
+        mcts.MAX_NODE: "Parallel MAX",
+        mcts.AVG_NODE: "Parallel AVG",
+        mcts.PARALLEL_TREES: "Parallel TREES",
+    },
+}
+
+legend_font_sizes = {
+    "small": {
+        "titlesize": "16",
+        "fontsize": "14",
+    },
+    "medium": {
+        "titlesize": "20",
+        "fontsize": "16",
+    },
+    "large": {
+        "titlesize": "24",
+        "fontsize": "20",
+    },
+}
+
+#     heuristic_modes_filter=[
+#         mcts.NO_HEURISTIC,
+#         # mcts.HEURISTIC_SELECT,
+#     ],
+#     selection_modes_filter=[
+#         mcts.FULL_EXPAND,
+#         # mcts.SQUARE_RATIO,
+#     ],
+#     loss_heuristics_filter=[
+#         mcts.NO_HEURISTIC,
+#         # mcts.FRAME_HEURISTIC,
+#         # mcts.TOTAL_PLANT_COST_HEURISTIC,
+#         # mcts.TOTAL_ZOMBIE_HP_HEURISTIC,
+#         # mcts.ZOMBIES_LEFT_TO_SPAWN_HEURISTIC,
+#     ],
+#     expansion_modes_filter=[
+#         # mcts.NORMAL_MCTS,
+#         # mcts.MAX_NODE,
+#         # mcts.AVG_NODE,
+#         mcts.PARALLEL_TREES
+#     ],
+
 
 rollout_mode_to_name = {
     NORMAL_MCTS: "No Parallelization",
@@ -83,6 +138,7 @@ def filter_and_plot_pvz_data(
     y_axis,
     title=None,
     file_name=None,
+    log_scale=False,
     # Filters
     level=None,
     time_ms_filter=None,
@@ -96,7 +152,8 @@ def filter_and_plot_pvz_data(
     group_graphs_by="level",
     # Legend tuning...
     hue_order=None,
-    legend_location="upper left"
+    legend_location="upper left",
+    legend_size="medium"
     # hue_norm=None,
 ):
     # Read CSV file into a DataFrame
@@ -146,19 +203,39 @@ def filter_and_plot_pvz_data(
         title = f"{x_axis} vs {y_axis}"
 
     plt.title(title, fontsize=20)
-    plt.xlabel(x_axis, fontsize=16)
-    plt.ylabel(y_axis, fontsize=16)
+    plt.xlabel(x_axis, fontsize=14)
+    plt.ylabel(y_axis, fontsize=14)
     plt.xticks(fontsize=14)
     plt.yticks(fontsize=14)
     plt.grid(True)
-    plt.legend(title=to_title[group_graphs_by], title_fontsize="24", fontsize="20", loc=legend_location)
 
+    # Get unique values for the legend based on group_graphs_by
+    unique_legend_values = sorted(filtered_data[group_graphs_by].unique())
+
+    if group_graphs_by in to_legend.keys():
+        # Modify legend labels as needed
+        legend_labels = [to_legend[group_graphs_by][value] for value in unique_legend_values]
+    else:
+        # Keep legend labels as-is
+        legend_labels = unique_legend_values
+
+    plt.legend(
+        title=to_title[group_graphs_by],
+        title_fontsize=legend_font_sizes[legend_size]["titlesize"],
+        fontsize=legend_font_sizes[legend_size]["fontsize"],
+        loc=legend_location,
+        labels=legend_labels,
+    )
     # Annotate each point with the correct sample count
     for line in ax.lines:
         x, y = line.get_xydata().T
         for xi, yi in zip(x, y):
             sample_count = len(filtered_data[(filtered_data[x_axis] == xi)])
             plt.text(xi, yi, sample_count, fontsize=8, ha="center", va="bottom", color="black")
+
+    # Set to log scale if need be
+    if log_scale:
+        plt.xscale("log")
 
     # Save the plot
     plt.tight_layout()
@@ -298,6 +375,9 @@ def filter_and_plot_pvz_data(
 # )
 
 
+############################################
+
+
 # 5.5.1
 filter_and_plot_pvz_data(
     CSV_FILENAME,
@@ -315,6 +395,7 @@ filter_and_plot_pvz_data(
     y_axis="win",
     group_graphs_by="level",
     legend_location="lower right",
+    legend_size="large",
 )
 
 
@@ -369,9 +450,11 @@ filter_and_plot_pvz_data(
     selection_modes_filter=[mcts.FULL_EXPAND],
     loss_heuristics_filter=[mcts.NO_HEURISTIC],
     expansion_modes_filter=[mcts.PARALLEL_TREES],  # <--
-    x_axis="time_ms",
+    x_axis="ucb_const",  # <--
     y_axis="win",
-    group_graphs_by="ucb_const",
+    group_graphs_by="time_ms",  # <--
+    log_scale=True,  # <--
+    legend_location="upper right",
 )
 
 
@@ -391,6 +474,64 @@ filter_and_plot_pvz_data(
     x_axis="time_ms",
     y_axis="win",
     group_graphs_by="ucb_const",
+    legend_location="lower right",
+)
+
+
+# 6.1.1.1
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Normal Agent vs. Parallel-Max on Level 9",
+    file_name="6.1.1.1_level_9_normal_vs_parallel_max",
+    level=["9"],
+    time_ms_filter={"max": 1600},  # <--
+    ucb_filter=[0.004],
+    threads_filter=None,
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE],
+    x_axis="time_ms",
+    y_axis="win",
+    group_graphs_by="rollout_mode",
+    legend_location="lower right",
+)
+
+# 6.1.1.2
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Normal Agent vs. Parallel-Max on Level 9+",
+    file_name="6.1.1.2_level_9+_normal_vs_parallel_max",
+    level=["9+"],
+    time_ms_filter={"max": 1600},  # <--
+    ucb_filter=[0.004],
+    threads_filter=[8],  # <----
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE],
+    x_axis="time_ms",
+    y_axis="win",
+    group_graphs_by="rollout_mode",
+    legend_location="lower right",
+)
+
+# 6.1.1.2 ++
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Varying Threads Parallel-Max on Level 9+",
+    file_name="6.1.1.2_level_9+_parallel_max_threads",
+    level=["9+"],
+    time_ms_filter={"max": 1600},  # <--
+    ucb_filter=[0.004],
+    threads_filter=None,
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    expansion_modes_filter=[mcts.MAX_NODE],
+    x_axis="time_ms",
+    y_axis="win",
+    group_graphs_by="threads",
     legend_location="lower right",
 )
 
