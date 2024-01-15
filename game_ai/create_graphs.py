@@ -47,7 +47,7 @@ plant_to_name = (
 
 to_legend = {
     "heuristic_mode": {mcts.NO_HEURISTIC: "No Heuristic", mcts.HEURISTIC_SELECT: "Selection Heuristic"},
-    "selection_mode": {mcts.FULL_EXPAND: "Full Expand", mcts.SQUARE_RATIO: "Square Ratio"},
+    "selection_mode": {mcts.FULL_EXPAND: "Full Expand (Normal)", mcts.SQUARE_RATIO: "Square Ratio"},
     "loss_heuristic": {
         mcts.NO_HEURISTIC: "No Heuristic",
         mcts.FRAME_HEURISTIC: "Frame Heuristic",
@@ -150,6 +150,7 @@ def filter_and_plot_pvz_data(
     expansion_modes_filter=None,
     # Different graphs by the value below
     group_graphs_by="level",
+    ylim=(0, 1),
     # Legend tuning...
     hue_order=None,
     legend_location="upper left",
@@ -236,6 +237,9 @@ def filter_and_plot_pvz_data(
     # Set to log scale if need be
     if log_scale:
         plt.xscale("log")
+
+    if y_axis == "win" and ylim:
+        plt.ylim(ylim)
 
     # Save the plot
     plt.tight_layout()
@@ -434,6 +438,7 @@ filter_and_plot_pvz_data(
     x_axis="time_ms",
     y_axis="win",
     group_graphs_by="ucb_const",
+    ylim=(0, 0.5),  # <----
 )
 
 
@@ -503,7 +508,7 @@ filter_and_plot_pvz_data(
     title="Normal Agent vs. Parallel-Max on Level 9+",
     file_name="6.1.1.2_level_9+_normal_vs_parallel_max",
     level=["9+"],
-    time_ms_filter={"max": 1600},  # <--
+    time_ms_filter={"max": 1600},
     ucb_filter=[0.004],
     threads_filter=[8],  # <----
     heuristic_modes_filter=[mcts.NO_HEURISTIC],
@@ -513,7 +518,7 @@ filter_and_plot_pvz_data(
     x_axis="time_ms",
     y_axis="win",
     group_graphs_by="rollout_mode",
-    legend_location="lower right",
+    legend_location="upper left",
 )
 
 # 6.1.1.2 ++
@@ -522,7 +527,7 @@ filter_and_plot_pvz_data(
     title="Varying Threads Parallel-Max on Level 9+",
     file_name="6.1.1.2_level_9+_parallel_max_threads",
     level=["9+"],
-    time_ms_filter={"max": 1600},  # <--
+    time_ms_filter={"max": 1600},
     ucb_filter=[0.004],
     threads_filter=None,
     heuristic_modes_filter=[mcts.NO_HEURISTIC],
@@ -533,6 +538,168 @@ filter_and_plot_pvz_data(
     y_axis="win",
     group_graphs_by="threads",
     legend_location="lower right",
+)
+
+
+# 6.1.1.3
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Normal Agent vs. Parallel-Max on Level 9++",
+    file_name="6.1.1.3_level_9++_normal_vs_parallel_max",
+    level=["9++"],
+    time_ms_filter={"max": 1600},  # <--
+    ucb_filter=[0.004],
+    threads_filter=[8],  # <----
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE],
+    x_axis="time_ms",
+    y_axis="win",
+    group_graphs_by="rollout_mode",
+    legend_location="upper left",
+)
+
+# 6.1.2.1
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9",
+    file_name="6.1.2.1_level_9_parallelizations",
+    level=["9"],
+    time_ms_filter={"max": 1600},  # <--
+    ucb_filter=[0.004],
+    threads_filter=[8],  # <----
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE, mcts.PARALLEL_TREES],
+    x_axis="time_ms",
+    y_axis="win",
+    group_graphs_by="rollout_mode",
+    legend_location="lower right",
+    ylim=(0, 1.02),  # Emphasis on 100%
+)
+
+
+# 6.1.2.2
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9+",
+    file_name="6.1.2.2_level_9+_parallelizations",
+    level=["9+"],
+    time_ms_filter={"max": 1600},  # <--
+    ucb_filter=[0.004],
+    threads_filter=[8],
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE, mcts.PARALLEL_TREES],
+    x_axis="time_ms",
+    y_axis="win",
+    group_graphs_by="rollout_mode",
+    legend_location="center right",
+)
+
+
+# 6.1.2.3
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9++",
+    file_name="6.1.2.3_level_9++_parallelizations",
+    level=["9++"],
+    time_ms_filter={"max": 1600},  # <--
+    ucb_filter=[0.004],
+    threads_filter=[8],
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE, mcts.PARALLEL_TREES],
+    x_axis="time_ms",
+    y_axis="win",
+    group_graphs_by="rollout_mode",
+    legend_location="upper left",
+)
+
+
+# 6.1.3
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Parallel Trees With Alternative Selection Policy on Level 9++",
+    file_name="6.1.3_level_9++_selection",
+    level=["9++"],
+    time_ms_filter={"max": 1600},  # <--
+    ucb_filter=[0.004],
+    threads_filter=None,
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND, mcts.SQUARE_RATIO],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    expansion_modes_filter=[mcts.PARALLEL_TREES],
+    x_axis="time_ms",
+    y_axis="win",
+    group_graphs_by="selection_mode",
+    legend_location="upper left",
+)
+
+
+# 6.2.1
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Normal Algent With Selection Heuristic (Tie-Breaker) on Level 9+",
+    file_name="6.2.1_level_9+_selection_heuristic",
+    level=["9+"],
+    time_ms_filter={"max": 1600},  # <--
+    ucb_filter=[0.004],
+    threads_filter=None,
+    heuristic_modes_filter=[mcts.NO_HEURISTIC, mcts.HEURISTIC_SELECT],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    expansion_modes_filter=[mcts.NORMAL_MCTS],
+    x_axis="time_ms",
+    y_axis="win",
+    group_graphs_by="heuristic_mode",
+    legend_location="upper left",
+)
+
+
+# 6.2.2.2
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Normal Algent With Loss Heuristic on Level 9+",
+    file_name="6.2.2.2_level_9+_loss_heuristic",
+    level=["9+"],
+    time_ms_filter={"max": 1600},  # <--
+    ucb_filter=[0.004],
+    threads_filter=None,
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC],
+    expansion_modes_filter=[mcts.NORMAL_MCTS],
+    x_axis="time_ms",
+    y_axis="win",
+    group_graphs_by="loss_heuristic",
+    legend_location="upper left",
+    ylim=(0, 0.5),
+)
+
+
+# 6.2.2.2 +
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Normal Algent With Loss Heuristic on Level 9+",
+    file_name="6.2.2.2_level_9+_loss_heuristic2",
+    level=["9+"],
+    time_ms_filter={"max": 1600},  # <--
+    ucb_filter=[0.004],
+    threads_filter=None,
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=None,
+    expansion_modes_filter=[mcts.NORMAL_MCTS],
+    x_axis="time_ms",
+    y_axis="win",
+    group_graphs_by="loss_heuristic",
+    legend_location="upper left",
+    ylim=(0, 0.5),
 )
 
 
