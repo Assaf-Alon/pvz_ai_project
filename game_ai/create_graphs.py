@@ -148,7 +148,7 @@ def filter_pvz_data(
 def plot_pvz_data(
     filtered_data: str,
     x_axis: str,
-    y_axis: str,
+    y_axis: str = "win",
     title: str = None,
     file_name: str = None,
     log_scale: bool = False,
@@ -227,7 +227,7 @@ def plot_pvz_data(
 def filter_and_plot_pvz_data(
     data_path: str,
     x_axis: str,
-    y_axis: str,
+    y_axis: str = "win",
     title: str = None,
     file_name: str = None,
     log_scale: bool = False,
@@ -299,7 +299,6 @@ data_5_5_1 = filter_pvz_data(
 plot_pvz_data(
     data_5_5_1,
     x_axis="time_ms",
-    y_axis="win",
     title="Wins vs. Time for different Levels",
     file_name="5.5.1_easy_levels",
     group_graphs_by="level",
@@ -314,7 +313,6 @@ data_5_5_2_1 = filter_pvz_data(basic_data, level=["9"], ucb_filter=[0.001, 0.004
 plot_pvz_data(
     data_5_5_2_1,
     x_axis="time_ms",
-    y_axis="win",
     title="Wins vs. Time for different UCBs on Level 9",
     file_name="5.5.2.1_level_9_different_ucb",
     group_graphs_by="ucb_const",
@@ -329,7 +327,6 @@ data_5_5_2_2 = filter_pvz_data(basic_data, level=["9+"], ucb_filter=[0.001, 0.00
 plot_pvz_data(
     data_5_5_2_2,
     x_axis="time_ms",
-    y_axis="win",
     title="Wins vs. Time for different UCBs on Level 9+",
     file_name="5.5.2.2_level_9+_different_ucb",
     group_graphs_by="ucb_const",
@@ -357,7 +354,6 @@ data_5_5_2_4 = filter_pvz_data(data_5_5_2_4, time_ms_filter={"min": 1600})
 plot_pvz_data(
     data_5_5_2_3,
     x_axis="ucb_const",
-    y_axis="win",
     title="Wins vs. UCB for different times on Level 9+",
     file_name="5.5.2.3_level_9+_different_ucb_parallel_trees",
     group_graphs_by="time_ms",
@@ -370,7 +366,6 @@ plot_pvz_data(
 plot_pvz_data(
     data_5_5_2_4,
     x_axis="time_ms",
-    y_axis="win",
     title="Wins vs. Time for different UCBs on Level 9+",
     file_name="5.5.2.4_level_9+_different_ucb_parallel_trees_long_times",
     group_graphs_by="ucb_const",
@@ -395,7 +390,6 @@ data_6_1_1_1 = filter_pvz_data(data_6_1_1, level=["9"], threads_filter=[8])
 plot_pvz_data(
     data_6_1_1_1,
     x_axis="time_ms",
-    y_axis="win",
     title="Normal Agent vs. Parallel-Max on Level 9",
     file_name="6.1.1.1_level_9_normal_vs_parallel_max",
     group_graphs_by="rollout_mode",
@@ -410,7 +404,6 @@ data_6_1_1_2 = filter_pvz_data(data_6_1_1, level=["9+"], threads_filter=[8])
 plot_pvz_data(
     data_6_1_1_2,
     x_axis="time_ms",
-    y_axis="win",
     title="Normal Agent vs. Parallel-Max on Level 9+",
     file_name="6.1.1.2_level_9+_normal_vs_parallel_max",
     group_graphs_by="rollout_mode",
@@ -424,7 +417,6 @@ data_6_1_1_2 = filter_pvz_data(data_6_1_1, level=["9+"], threads_filter=None, ex
 plot_pvz_data(
     data_6_1_1_2,
     x_axis="time_ms",
-    y_axis="win",
     title="Varying Threads Parallel-Max on Level 9+",
     file_name="6.1.1.2_level_9+_parallel_max_threads",
     group_graphs_by="threads",
@@ -438,7 +430,6 @@ data_6_1_1_3 = filter_pvz_data(data_6_1_1, level=["9++"], threads_filter=[8])
 plot_pvz_data(
     data_6_1_1_3,
     x_axis="time_ms",
-    y_axis="win",
     title="Normal Agent vs. Parallel-Max on Level 9++",
     file_name="6.1.1.3_level_9++_normal_vs_parallel_max",
     group_graphs_by="rollout_mode",
@@ -463,7 +454,6 @@ data_6_1_2_1 = filter_pvz_data(data_6_1_2, level=["9"])
 plot_pvz_data(
     data_6_1_2_1,
     x_axis="time_ms",
-    y_axis="win",
     title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9",
     file_name="6.1.2.1_level_9_parallelizations",
     group_graphs_by="rollout_mode",
@@ -477,7 +467,6 @@ data_6_1_2_2 = filter_pvz_data(data_6_1_2, level=["9+"])
 plot_pvz_data(
     data_6_1_2_2,
     x_axis="time_ms",
-    y_axis="win",
     title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9+",
     file_name="6.1.2.2_level_9+_parallelizations",
     group_graphs_by="rollout_mode",
@@ -491,7 +480,6 @@ data_6_1_2_3 = filter_pvz_data(data_6_1_2, level=["9++"])
 plot_pvz_data(
     data_6_1_2_3,
     x_axis="time_ms",
-    y_axis="win",
     title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9++",
     file_name="6.1.2.3_level_9++_parallelizations",
     group_graphs_by="rollout_mode",
@@ -513,7 +501,6 @@ filter_and_plot_pvz_data(
     loss_heuristics_filter=[mcts.NO_HEURISTIC],
     expansion_modes_filter=[mcts.PARALLEL_TREES],
     x_axis="time_ms",
-    y_axis="win",
     group_graphs_by="selection_mode",
     legend_location="upper left",
 )
@@ -533,7 +520,6 @@ filter_and_plot_pvz_data(
     loss_heuristics_filter=[mcts.NO_HEURISTIC],
     expansion_modes_filter=[mcts.NORMAL_MCTS],
     x_axis="time_ms",
-    y_axis="win",
     group_graphs_by="heuristic_mode",
     legend_location="upper left",
 )
@@ -553,7 +539,6 @@ filter_and_plot_pvz_data(
     loss_heuristics_filter=[mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC],
     expansion_modes_filter=[mcts.NORMAL_MCTS],
     x_axis="time_ms",
-    y_axis="win",
     group_graphs_by="loss_heuristic",
     legend_location="upper left",
     ylim=(0, 0.5),
@@ -574,7 +559,6 @@ filter_and_plot_pvz_data(
     loss_heuristics_filter=None,
     expansion_modes_filter=[mcts.NORMAL_MCTS],
     x_axis="time_ms",
-    y_axis="win",
     group_graphs_by="loss_heuristic",
     legend_location="upper left",
     ylim=(0, 0.5),
