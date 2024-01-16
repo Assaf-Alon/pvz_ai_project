@@ -500,23 +500,20 @@ plot_pvz_data(
 
 
 # 6.1.3
-data_6_1_3 = filter_pvz_data(
-    all_data,
+filter_and_plot_pvz_data(
+    CSV_FILENAME,
+    title="Parallel Trees With Alternative Selection Policy on Level 9++",
+    file_name="6.1.3_level_9++_selection",
     level=["9++"],
     time_ms_filter={"max": 1600},  # <--
     ucb_filter=[0.004],
+    threads_filter=None,
     heuristic_modes_filter=[mcts.NO_HEURISTIC],
     selection_modes_filter=[mcts.FULL_EXPAND, mcts.SQUARE_RATIO],
     loss_heuristics_filter=[mcts.NO_HEURISTIC],
     expansion_modes_filter=[mcts.PARALLEL_TREES],
-)
-
-plot_pvz_data(
-    data_6_1_3,
     x_axis="time_ms",
     y_axis="win",
-    title="Parallel Trees With Alternative Selection Policy on Level 9++",
-    file_name="6.1.3_level_9++_selection",
     group_graphs_by="selection_mode",
     legend_location="upper left",
 )
