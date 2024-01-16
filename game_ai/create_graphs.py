@@ -1,26 +1,17 @@
 import math
+from typing import Dict, List, Tuple, Union
 from build import level
 from build import mcts
 import numpy as np
+import pandas as pd
+import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-# from scipy.interpolate import make_interp_spline, CubicSpline, BSpline
-# import scipy.stats as st
 from pprint import pprint
 from time import time
 import json
 import csv
-
-NORMAL_MCTS = mcts.NORMAL_MCTS
-MAX_NODE = mcts.MAX_NODE
-AVG_NODE = mcts.AVG_NODE
-PARALLEL_TREES = mcts.PARALLEL_TREES
-
-NO_HEURISTIC = mcts.NO_HEURISTIC
-# HEURISTIC_MCTS = mcts.HEURISTIC_MCTS
-HEURISTIC_SELECT = mcts.HEURISTIC_SELECT
-# HEURISTIC_EXPAND = mcts.HEURISTIC_EXPAND
 
 
 CSV_FILENAME = "data/all.csv"
@@ -78,6 +69,7 @@ legend_font_sizes = {
     },
 }
 
+## FILTER LEGAL VALUES
 #     heuristic_modes_filter=[
 #         mcts.NO_HEURISTIC,
 #         # mcts.HEURISTIC_SELECT,
@@ -94,30 +86,17 @@ legend_font_sizes = {
 #         # mcts.ZOMBIES_LEFT_TO_SPAWN_HEURISTIC,
 #     ],
 #     expansion_modes_filter=[
-#         # mcts.NORMAL_MCTS,
+#         mcts.NORMAL_MCTS,
 #         # mcts.MAX_NODE,
 #         # mcts.AVG_NODE,
-#         mcts.PARALLEL_TREES
+#         # mcts.PARALLEL_TREES
 #     ],
 
-
-rollout_mode_to_name = {
-    NORMAL_MCTS: "No Parallelization",
-    MAX_NODE: "Parallel MAX",
-    AVG_NODE: "Parallel AVG",
-    PARALLEL_TREES: "Parallel Trees",
-}
-heuristic_mode_to_name = {
-    NO_HEURISTIC: "No Heuristic",
-    # HEURISTIC_MCTS: "full heuristic",
-    # HEURISTIC_EXPAND: "expand heuristic",
-    HEURISTIC_SELECT: "Select Heuristic",
-}
 
 to_title = {
     "level": "Level",
     "time_ms": "Time (ms)",
-    "threads": "Threads Count",
+    "threads": "Thread Count",
     "ucb_const": "UCB Const",
     "rollout_mode": "Parallelization Mode",
     "heuristic_mode": "Heuristic Mode",
@@ -127,39 +106,18 @@ to_title = {
     "num_steps": "Amount of Steps",
 }
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-
-def filter_and_plot_pvz_data(
-    data_path,
-    x_axis,
-    y_axis,
-    title=None,
-    file_name=None,
-    log_scale=False,
-    # Filters
-    level=None,
-    time_ms_filter=None,
-    threads_filter=None,
-    ucb_filter=None,
-    heuristic_modes_filter=None,
-    selection_modes_filter=None,
-    loss_heuristics_filter=None,
-    expansion_modes_filter=None,
-    # Different graphs by the value below
-    group_graphs_by="level",
-    ylim=(0, 1),
-    # Legend tuning...
-    hue_order=None,
-    legend_location="upper left",
-    legend_size="medium"
-    # hue_norm=None,
+def filter_pvz_data(
+    df: pd.DataFrame,
+    level: List[str] = None,
+    time_ms_filter: Dict[str, int] = None,
+    threads_filter: List[int] = None,
+    ucb_filter: List[int] = None,
+    heuristic_modes_filter: List[str] = None,
+    selection_modes_filter: List[str] = None,
+    loss_heuristics_filter: List[str] = None,
+    expansion_modes_filter: List[str] = None,
 ):
-    # Read CSV file into a DataFrame
-    df = pd.read_csv(data_path)
-
     # Define filter conditions
     level_filter = (df["level"].isin(level)) if level else True
     ucb_value_filter = (df["ucb_const"].isin(ucb_filter)) if ucb_filter else True
@@ -184,6 +142,25 @@ def filter_and_plot_pvz_data(
         & expansion_mode_filter
     ]
 
+    return filtered_data
+
+
+def plot_pvz_data(
+    filtered_data: str,
+    x_axis: str,
+    y_axis: str,
+    title: str = None,
+    file_name: str = None,
+    log_scale: bool = False,
+    # Different graphs by the value below
+    group_graphs_by: str = "level",
+    ylim: Tuple[int] = (0, 1),
+    # Legend tuning...
+    hue_order: List[Union[int, str]] = None,
+    legend_location: str = "upper left",
+    legend_size: str = "medium"
+    # hue_norm=None,
+):
     # Create a single plot
     plt.figure(figsize=(10, 6))
 
@@ -247,156 +224,84 @@ def filter_and_plot_pvz_data(
     plt.show()
 
 
-# def filter_data(
-#     df,
-#     level=None,
-#     max_time_ms=None,
-#     threads=None,
-#     ucb_const=None,
-#     heuristic_mode=None,
-#     selection_mode=None,
-#     loss_heuristic=None,
-#     expansion_mode=None,
-# ):
-#     level_filter = (df["level"].isin(level)) if level else True
-#     ucb_value_filter = (df["ucb_const"].isin(ucb_const)) if ucb_const else np.array([True] * len(df["ucb_const"]))
-#     time_ms_filter = (df["time_ms"] <= max_time_ms) if max_time_ms else True
-#     thread_filter = (df["threads"].isin(threads)) if threads else True
-#     heuristic_mode_filter = (df["heuristic_mode"].isin(heuristic_mode)) if heuristic_mode else True
-#     selection_mode_filter = (df["selection_mode"].isin(selection_mode)) if selection_mode else True
-#     loss_heuristic_filter = (df["loss_heuristic"].isin(loss_heuristic)) if loss_heuristic else True
-#     expansion_mode_filter = (df["rollout_mode"].isin(expansion_mode)) if expansion_mode else True
-
-#     return df[
-#         level_filter
-#         & ucb_value_filter
-#         & time_ms_filter
-#         & thread_filter
-#         & heuristic_mode_filter
-#         & selection_mode_filter
-#         & loss_heuristic_filter
-#         & expansion_mode_filter
-#     ]
-
-
-# def group_and_plot_pvz_data(
-#     filtered_data,
-#     x_axis="time_ms",
-#     y_axis="win",
-#     title=None,
-#     file_name=None,
-#     grouping_rules=None,
-#     # Legend tuning...
-#     hue_order=None,
-#     # hue_norm=None,
-# ):
-#     if grouping_rules is None:
-#         raise ValueError("Please provide grouping rules.")
-
-#     plt.figure(figsize=(10, 6))
-
-#     for group_name, group_rules in grouping_rules.items():
-#         group_filtered_data = filtered_data.copy()
-#         if "level" in group_rules:
-#             # Automatically group by all different available levels
-#             group_filtered_data = group_filtered_data[
-#                 group_filtered_data["level"].isin(group_filtered_data["level"].unique())
-#             ]
-#         else:
-#             for rule_name, rule_values in group_rules.items():
-#                 group_filtered_data = filter_data(group_filtered_data, **{rule_name: rule_values})
-
-#         ax = sns.lineplot(
-#             data=group_filtered_data,
-#             x=x_axis,
-#             y=y_axis,
-#             hue="level",
-#             marker="o",
-#             markersize=8,
-#             errorbar=None,
-#             sort=True,
-#             hue_order=hue_order,
-#             palette="colorblind",
-#         )
-
-#         if title is None:
-#             title = f"{x_axis} vs {y_axis}"
-
-#         plt.title(f"{title} - {group_name}", fontsize=20)
-#         plt.xlabel(x_axis, fontsize=16)
-#         plt.ylabel(y_axis, fontsize=16)
-#         plt.xticks(fontsize=14)
-#         plt.yticks(fontsize=14)
-#         plt.grid(True)
-#         plt.legend(title="Level", title_fontsize="24", fontsize="20", loc="lower right")
-
-#         # Annotate each point with the sample count
-#         for line in ax.lines:
-#             x, y = line.get_xydata().T
-#             for xi, yi in zip(x, y):
-#                 sample_count = len(group_filtered_data[group_filtered_data[x_axis] == xi])
-#                 plt.text(xi, yi, sample_count, fontsize=8, ha="center", va="bottom", color="black")
-
-#         # Save the plot
-#         plt.tight_layout()
-#         plt.savefig(f"graphs/{file_name if file_name else title}_{group_name}.png")
-#         plt.show()
+def filter_and_plot_pvz_data(
+    data_path: str,
+    x_axis: str,
+    y_axis: str,
+    title: str = None,
+    file_name: str = None,
+    log_scale: bool = False,
+    # Filters
+    level: List[str] = None,
+    time_ms_filter: Dict[str, int] = None,
+    threads_filter: List[int] = None,
+    ucb_filter: List[int] = None,
+    heuristic_modes_filter: List[str] = None,
+    selection_modes_filter: List[str] = None,
+    loss_heuristics_filter: List[str] = None,
+    expansion_modes_filter: List[str] = None,
+    # Different graphs by the value below
+    group_graphs_by: str = "level",
+    ylim: Tuple[int] = (0, 1),
+    # Legend tuning...
+    hue_order: List[Union[int, str]] = None,
+    legend_location: str = "upper left",
+    legend_size: str = "medium"
+    # hue_norm=None,
+):
+    # Read CSV file into a DataFrame
+    df = pd.read_csv(data_path)
+    filtered_data = filter_pvz_data(
+        df,
+        level,
+        time_ms_filter,
+        threads_filter,
+        ucb_filter,
+        heuristic_modes_filter,
+        selection_modes_filter,
+        loss_heuristics_filter,
+        expansion_modes_filter,
+    )
+    plot_pvz_data(
+        filtered_data,
+        x_axis,
+        y_axis,
+        title,
+        file_name,
+        log_scale,
+        group_graphs_by,
+        ylim,
+        hue_order,
+        legend_location,
+        legend_size,
+    )
 
 
-# all_data = pd.read_csv(CSV_FILENAME)
-
-# basic_filters = {
-#     "max_time_ms": 1600,
-#     "ucb_const": [0.004],
-#     "threads": None,
-#     "heuristic_mode": [mcts.NO_HEURISTIC],
-#     "selection_mode": [mcts.FULL_EXPAND],
-#     "loss_heuristic": [mcts.NO_HEURISTIC],
-#     "expansion_mode": [mcts.NORMAL_MCTS],
-# }
-# # 5.5.1
-# filtered_data_5_5_1 = filter_data(df=all_data, level=["2", "4", "6", "7", "9"], **basic_filters)
-
-# group_and_plot_pvz_data(
-#     filtered_data_5_5_1,
-#     title="Wins vs. Time for different levels",
-#     file_name="5.5.1",
-#     grouping_rules={"easy_levels": {"level": None}},
-#     hue_order=["2", "4", "6", "7", "9"],
-# )
-
-
-# # 5.5.2.1
-# filter_5_5_2_1 = basic_filters.copy()
-# del filter_5_5_2_1["ucb_const"]
-# filtered_data_5_5_2_1 = filter_data(df=all_data, level=["9"], **filter_5_5_2_1)
-
-# group_and_plot_pvz_data(
-#     filtered_data_5_5_2_1,
-#     title="Wins vs. Time for different UCBs on Level 9",
-#     file_name="5.5.2.1_level_9",
-#     grouping_rules={"different_ucb": {"ucb_const": None}},
-# )
-
-
-############################################
-
-
-# 5.5.1
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Wins vs. Time for different UCBs on Level 9",
-    file_name="5.5.1_easy_levels",
-    level=["1", "2", "4", "6", "7", "9"],
+all_data = pd.read_csv(CSV_FILENAME)
+basic_data = filter_pvz_data(
+    all_data,
+    level=None,
     time_ms_filter={"max": 1600},
-    ucb_filter=[0.001, 0.004, 0.016, 0.064, 0.256, 1.024],
     threads_filter=None,
     heuristic_modes_filter=[mcts.NO_HEURISTIC],
     selection_modes_filter=[mcts.FULL_EXPAND],
     loss_heuristics_filter=[mcts.NO_HEURISTIC],
     expansion_modes_filter=[mcts.NORMAL_MCTS],
+)
+
+# 5.5.1
+data_5_5_1 = filter_pvz_data(
+    basic_data,
+    level=["1", "2", "4", "6", "7", "9"],
+    ucb_filter=[0.001, 0.004, 0.016, 0.064, 0.256, 1.024],
+)
+
+plot_pvz_data(
+    data_5_5_1,
     x_axis="time_ms",
     y_axis="win",
+    title="Wins vs. Time for different Levels",
+    file_name="5.5.1_easy_levels",
     group_graphs_by="level",
     legend_location="lower right",
     legend_size="large",
@@ -404,238 +309,214 @@ filter_and_plot_pvz_data(
 
 
 # 5.5.2.1
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
+data_5_5_2_1 = filter_pvz_data(basic_data, level=["9"], ucb_filter=[0.001, 0.004, 0.016, 0.064, 0.256, 1.024])
+
+plot_pvz_data(
+    data_5_5_2_1,
+    x_axis="time_ms",
+    y_axis="win",
     title="Wins vs. Time for different UCBs on Level 9",
     file_name="5.5.2.1_level_9_different_ucb",
-    level=["9"],
-    time_ms_filter={"max": 1600},
-    ucb_filter=[0.001, 0.004, 0.016, 0.064, 0.256, 1.024],
-    threads_filter=None,
-    heuristic_modes_filter=[mcts.NO_HEURISTIC],
-    selection_modes_filter=[mcts.FULL_EXPAND],
-    loss_heuristics_filter=[mcts.NO_HEURISTIC],
-    expansion_modes_filter=[mcts.NORMAL_MCTS],
-    x_axis="time_ms",
-    y_axis="win",
     group_graphs_by="ucb_const",
     legend_location="lower right",
+    ylim=(0, 1.02),
 )
+
 
 # 5.5.2.2
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Wins vs. Time for different UCBs on Level 9+",
-    file_name="5.5.2.2_level_9+_different_ucb",
-    level=["9+"],
-    time_ms_filter={"max": 1600},
-    ucb_filter=[0.001, 0.004, 0.016, 0.064, 0.256, 1.024],
-    threads_filter=None,
-    heuristic_modes_filter=[mcts.NO_HEURISTIC],
-    selection_modes_filter=[mcts.FULL_EXPAND],
-    loss_heuristics_filter=[mcts.NO_HEURISTIC],
-    expansion_modes_filter=[mcts.NORMAL_MCTS],
+data_5_5_2_2 = filter_pvz_data(basic_data, level=["9+"], ucb_filter=[0.001, 0.004, 0.016, 0.064, 0.256, 1.024])
+
+plot_pvz_data(
+    data_5_5_2_2,
     x_axis="time_ms",
     y_axis="win",
+    title="Wins vs. Time for different UCBs on Level 9+",
+    file_name="5.5.2.2_level_9+_different_ucb",
     group_graphs_by="ucb_const",
-    ylim=(0, 0.5),  # <----
+    ylim=(0, 0.5),
+    legend_size="large",
 )
 
 
-# 5.5.2.3
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Wins vs. Time for different UCBs on Level 9+",
-    file_name="5.5.2.3_level_9+_different_ucb_parallel_trees",
+# 5.5.2.3 + 5.5.2.4 data
+data_5_5_2_4 = filter_pvz_data(
+    all_data,
     level=["9+"],
-    time_ms_filter={"max": 1600},
-    ucb_filter=[0.001, 0.004, 0.016, 0.064, 0.256, 1.024],
-    threads_filter=None,
-    heuristic_modes_filter=[mcts.NO_HEURISTIC],
-    selection_modes_filter=[mcts.FULL_EXPAND],
-    loss_heuristics_filter=[mcts.NO_HEURISTIC],
-    expansion_modes_filter=[mcts.PARALLEL_TREES],  # <--
-    x_axis="ucb_const",  # <--
-    y_axis="win",
-    group_graphs_by="time_ms",  # <--
-    log_scale=True,  # <--
-    legend_location="upper right",
-)
-
-
-# 5.5.2.4
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Wins vs. Time for different UCBs on Level 9+",
-    file_name="5.5.2.4_level_9+_different_ucb_parallel_trees_long_times",
-    level=["9+"],
-    time_ms_filter={"min": 1600},  # <--
+    # time_ms_filter={"max": 1600},
     ucb_filter=[0.001, 0.004, 0.016, 0.064, 0.256, 1.024],
     threads_filter=None,
     heuristic_modes_filter=[mcts.NO_HEURISTIC],
     selection_modes_filter=[mcts.FULL_EXPAND],
     loss_heuristics_filter=[mcts.NO_HEURISTIC],
     expansion_modes_filter=[mcts.PARALLEL_TREES],
+)
+data_5_5_2_3 = filter_pvz_data(data_5_5_2_4, time_ms_filter={"max": 1600})
+data_5_5_2_4 = filter_pvz_data(data_5_5_2_4, time_ms_filter={"min": 1600})
+
+# 5.5.2.3
+plot_pvz_data(
+    data_5_5_2_3,
+    x_axis="ucb_const",
+    y_axis="win",
+    title="Wins vs. UCB for different times on Level 9+",
+    file_name="5.5.2.3_level_9+_different_ucb_parallel_trees",
+    group_graphs_by="time_ms",
+    log_scale=True,
+    legend_location="upper right",
+)
+
+
+# 5.5.2.4
+plot_pvz_data(
+    data_5_5_2_4,
     x_axis="time_ms",
     y_axis="win",
+    title="Wins vs. Time for different UCBs on Level 9+",
+    file_name="5.5.2.4_level_9+_different_ucb_parallel_trees_long_times",
     group_graphs_by="ucb_const",
     legend_location="lower right",
 )
 
 
-# 6.1.1.1
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Normal Agent vs. Parallel-Max on Level 9",
-    file_name="6.1.1.1_level_9_normal_vs_parallel_max",
-    level=["9"],
-    time_ms_filter={"max": 1600},  # <--
-    ucb_filter=[0.004],
-    threads_filter=None,
-    heuristic_modes_filter=[mcts.NO_HEURISTIC],
-    selection_modes_filter=[mcts.FULL_EXPAND],
-    loss_heuristics_filter=[mcts.NO_HEURISTIC],
-    expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE],
-    x_axis="time_ms",
-    y_axis="win",
-    group_graphs_by="rollout_mode",
-    legend_location="lower right",
-)
-
-# 6.1.1.2
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Normal Agent vs. Parallel-Max on Level 9+",
-    file_name="6.1.1.2_level_9+_normal_vs_parallel_max",
-    level=["9+"],
+data_6_1_1 = filter_pvz_data(
+    all_data,
+    level=["9", "9+", "9++"],
     time_ms_filter={"max": 1600},
     ucb_filter=[0.004],
-    threads_filter=[8],  # <----
     heuristic_modes_filter=[mcts.NO_HEURISTIC],
     selection_modes_filter=[mcts.FULL_EXPAND],
     loss_heuristics_filter=[mcts.NO_HEURISTIC],
     expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE],
+)
+
+# 6.1.1.1
+data_6_1_1_1 = filter_pvz_data(data_6_1_1, level=["9"], threads_filter=[8])
+
+plot_pvz_data(
+    data_6_1_1_1,
     x_axis="time_ms",
     y_axis="win",
+    title="Normal Agent vs. Parallel-Max on Level 9",
+    file_name="6.1.1.1_level_9_normal_vs_parallel_max",
+    group_graphs_by="rollout_mode",
+    legend_location="lower right",
+    ylim=(0, 1.02),
+)
+
+
+# 6.1.1.2
+data_6_1_1_2 = filter_pvz_data(data_6_1_1, level=["9+"], threads_filter=[8])
+
+plot_pvz_data(
+    data_6_1_1_2,
+    x_axis="time_ms",
+    y_axis="win",
+    title="Normal Agent vs. Parallel-Max on Level 9+",
+    file_name="6.1.1.2_level_9+_normal_vs_parallel_max",
     group_graphs_by="rollout_mode",
     legend_location="upper left",
 )
 
+
 # 6.1.1.2 ++
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Varying Threads Parallel-Max on Level 9+",
-    file_name="6.1.1.2_level_9+_parallel_max_threads",
-    level=["9+"],
-    time_ms_filter={"max": 1600},
-    ucb_filter=[0.004],
-    threads_filter=None,
-    heuristic_modes_filter=[mcts.NO_HEURISTIC],
-    selection_modes_filter=[mcts.FULL_EXPAND],
-    loss_heuristics_filter=[mcts.NO_HEURISTIC],
-    expansion_modes_filter=[mcts.MAX_NODE],
+data_6_1_1_2 = filter_pvz_data(data_6_1_1, level=["9+"], threads_filter=None, expansion_modes_filter=[mcts.MAX_NODE])
+
+plot_pvz_data(
+    data_6_1_1_2,
     x_axis="time_ms",
     y_axis="win",
+    title="Varying Threads Parallel-Max on Level 9+",
+    file_name="6.1.1.2_level_9+_parallel_max_threads",
     group_graphs_by="threads",
     legend_location="lower right",
 )
 
 
 # 6.1.1.3
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Normal Agent vs. Parallel-Max on Level 9++",
-    file_name="6.1.1.3_level_9++_normal_vs_parallel_max",
-    level=["9++"],
-    time_ms_filter={"max": 1600},  # <--
-    ucb_filter=[0.004],
-    threads_filter=[8],  # <----
-    heuristic_modes_filter=[mcts.NO_HEURISTIC],
-    selection_modes_filter=[mcts.FULL_EXPAND],
-    loss_heuristics_filter=[mcts.NO_HEURISTIC],
-    expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE],
+data_6_1_1_3 = filter_pvz_data(data_6_1_1, level=["9++"], threads_filter=[8])
+
+plot_pvz_data(
+    data_6_1_1_3,
     x_axis="time_ms",
     y_axis="win",
+    title="Normal Agent vs. Parallel-Max on Level 9++",
+    file_name="6.1.1.3_level_9++_normal_vs_parallel_max",
     group_graphs_by="rollout_mode",
     legend_location="upper left",
 )
 
 # 6.1.2.1
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9",
-    file_name="6.1.2.1_level_9_parallelizations",
-    level=["9"],
-    time_ms_filter={"max": 1600},  # <--
-    ucb_filter=[0.004],
-    threads_filter=[8],  # <----
-    heuristic_modes_filter=[mcts.NO_HEURISTIC],
-    selection_modes_filter=[mcts.FULL_EXPAND],
-    loss_heuristics_filter=[mcts.NO_HEURISTIC],
-    expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE, mcts.PARALLEL_TREES],
-    x_axis="time_ms",
-    y_axis="win",
-    group_graphs_by="rollout_mode",
-    legend_location="lower right",
-    ylim=(0, 1.02),  # Emphasis on 100%
-)
-
-
-# 6.1.2.2
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9+",
-    file_name="6.1.2.2_level_9+_parallelizations",
-    level=["9+"],
-    time_ms_filter={"max": 1600},  # <--
+data_6_1_2 = filter_pvz_data(
+    all_data,
+    level=["9", "9+", "9++"],
+    time_ms_filter={"max": 1600},
     ucb_filter=[0.004],
     threads_filter=[8],
     heuristic_modes_filter=[mcts.NO_HEURISTIC],
     selection_modes_filter=[mcts.FULL_EXPAND],
     loss_heuristics_filter=[mcts.NO_HEURISTIC],
     expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE, mcts.PARALLEL_TREES],
+)
+
+data_6_1_2_1 = filter_pvz_data(data_6_1_2, level=["9"])
+
+plot_pvz_data(
+    data_6_1_2_1,
     x_axis="time_ms",
     y_axis="win",
+    title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9",
+    file_name="6.1.2.1_level_9_parallelizations",
+    group_graphs_by="rollout_mode",
+    legend_location="lower right",
+    ylim=(0, 1.02),
+)
+
+# 6.1.2.2
+data_6_1_2_2 = filter_pvz_data(data_6_1_2, level=["9+"])
+
+plot_pvz_data(
+    data_6_1_2_2,
+    x_axis="time_ms",
+    y_axis="win",
+    title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9+",
+    file_name="6.1.2.2_level_9+_parallelizations",
     group_graphs_by="rollout_mode",
     legend_location="center right",
 )
 
 
 # 6.1.2.3
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9++",
-    file_name="6.1.2.3_level_9++_parallelizations",
-    level=["9++"],
-    time_ms_filter={"max": 1600},  # <--
-    ucb_filter=[0.004],
-    threads_filter=[8],
-    heuristic_modes_filter=[mcts.NO_HEURISTIC],
-    selection_modes_filter=[mcts.FULL_EXPAND],
-    loss_heuristics_filter=[mcts.NO_HEURISTIC],
-    expansion_modes_filter=[mcts.NORMAL_MCTS, mcts.MAX_NODE, mcts.PARALLEL_TREES],
+data_6_1_2_3 = filter_pvz_data(data_6_1_2, level=["9++"])
+
+plot_pvz_data(
+    data_6_1_2_3,
     x_axis="time_ms",
     y_axis="win",
+    title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9++",
+    file_name="6.1.2.3_level_9++_parallelizations",
     group_graphs_by="rollout_mode",
     legend_location="upper left",
 )
 
 
 # 6.1.3
-filter_and_plot_pvz_data(
-    CSV_FILENAME,
-    title="Parallel Trees With Alternative Selection Policy on Level 9++",
-    file_name="6.1.3_level_9++_selection",
+data_6_1_3 = filter_pvz_data(
+    all_data,
     level=["9++"],
     time_ms_filter={"max": 1600},  # <--
     ucb_filter=[0.004],
-    threads_filter=None,
     heuristic_modes_filter=[mcts.NO_HEURISTIC],
     selection_modes_filter=[mcts.FULL_EXPAND, mcts.SQUARE_RATIO],
     loss_heuristics_filter=[mcts.NO_HEURISTIC],
     expansion_modes_filter=[mcts.PARALLEL_TREES],
+)
+
+plot_pvz_data(
+    data_6_1_3,
     x_axis="time_ms",
     y_axis="win",
+    title="Parallel Trees With Alternative Selection Policy on Level 9++",
+    file_name="6.1.3_level_9++_selection",
     group_graphs_by="selection_mode",
     legend_location="upper left",
 )
@@ -701,36 +582,3 @@ filter_and_plot_pvz_data(
     legend_location="upper left",
     ylim=(0, 0.5),
 )
-
-
-# filter_and_plot_pvz_data(
-#     CSV_FILENAME,
-#     level=["9+", "9++"],
-#     max_time_ms_filter=1600,
-#     ucb_filter=[0.004],
-#     # threads_filter=None,
-#     heuristic_modes_filter=[
-#         mcts.NO_HEURISTIC,
-#         # mcts.HEURISTIC_SELECT,
-#     ],
-#     selection_modes_filter=[
-#         mcts.FULL_EXPAND,
-#         # mcts.SQUARE_RATIO,
-#     ],
-#     loss_heuristics_filter=[
-#         mcts.NO_HEURISTIC,
-#         # mcts.FRAME_HEURISTIC,
-#         # mcts.TOTAL_PLANT_COST_HEURISTIC,
-#         # mcts.TOTAL_ZOMBIE_HP_HEURISTIC,
-#         # mcts.ZOMBIES_LEFT_TO_SPAWN_HEURISTIC,
-#     ],
-#     expansion_modes_filter=[
-#         # mcts.NORMAL_MCTS,
-#         # mcts.MAX_NODE,
-#         # mcts.AVG_NODE,
-#         mcts.PARALLEL_TREES
-#     ],
-#     x_axis="time_ms",
-#     y_axis="win",
-#     group_graphs_by="level"
-# )
