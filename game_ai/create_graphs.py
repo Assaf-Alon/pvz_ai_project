@@ -1,17 +1,10 @@
 import math
 from typing import Dict, List, Tuple, Union
-from build import level
 from build import mcts
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-
-from pprint import pprint
-from time import time
-import json
-import csv
 
 
 CSV_FILENAME = "data/all.csv"
