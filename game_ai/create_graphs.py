@@ -1,3 +1,4 @@
+from collections import defaultdict
 import math
 from typing import Dict, List, Tuple, Union
 from build import mcts
@@ -29,7 +30,7 @@ plant_to_name = (
     "wallnut",
 )
 
-to_legend = {
+to_legend_content = {
     "heuristic_mode": {mcts.NO_HEURISTIC: "No Heuristic", mcts.HEURISTIC_SELECT: "Selection Heuristic"},
     "selection_mode": {mcts.FULL_EXPAND: "Full Expand (Normal)", mcts.SQUARE_RATIO: "Square Ratio"},
     "loss_heuristic": {
@@ -62,6 +63,29 @@ legend_font_sizes = {
     },
 }
 
+
+to_legend_title = defaultdict(lambda: lambda x: str(x))
+to_legend_title.update(
+    {
+        "level": "Level",
+        "time_ms": "Time (ms)",
+        "threads": "Thread Count",
+        "ucb_const": "UCB Const",
+        "rollout_mode": "Parallelization Mode",
+        "heuristic_mode": "Heuristic Mode",
+        "selection_mode": "Selection Mode",
+        "loss_heuristic": "Loss Heuristic",
+        "win": "Win",
+        "num_steps": "Amount of Steps",
+        "name_in_legend": "Agent Description",
+    }
+)
+
+
+def get_legend_title(feature: str):
+    return to_legend_title.get(feature, feature)
+
+
 ## FILTER LEGAL VALUES
 #     heuristic_modes_filter=[
 #         mcts.NO_HEURISTIC,
@@ -84,20 +108,6 @@ legend_font_sizes = {
 #         # mcts.AVG_NODE,
 #         # mcts.PARALLEL_TREES
 #     ],
-
-
-to_title = {
-    "level": "Level",
-    "time_ms": "Time (ms)",
-    "threads": "Thread Count",
-    "ucb_const": "UCB Const",
-    "rollout_mode": "Parallelization Mode",
-    "heuristic_mode": "Heuristic Mode",
-    "selection_mode": "Selection Mode",
-    "loss_heuristic": "Loss Heuristic",
-    "win": "Win",
-    "num_steps": "Amount of Steps",
-}
 
 
 def filter_pvz_data(
@@ -140,7 +150,7 @@ def filter_pvz_data(
 
 def plot_pvz_data(
     filtered_data: str,
-    x_axis: str,
+    x_axis: str = "time_ms",
     y_axis: str = "win",
     title: str = None,
     file_name: str = None,
@@ -151,7 +161,8 @@ def plot_pvz_data(
     # Legend tuning...
     hue_order: List[Union[int, str]] = None,
     legend_location: str = "upper left",
-    legend_size: str = "medium"
+    legend_size: str = "medium",
+    sort_legend=True
     # hue_norm=None,
 ):
     # Create a single plot
@@ -181,17 +192,19 @@ def plot_pvz_data(
     plt.grid(True)
 
     # Get unique values for the legend based on group_graphs_by
-    unique_legend_values = sorted(filtered_data[group_graphs_by].unique())
+    unique_legend_values = filtered_data[group_graphs_by].unique()
+    if sort_legend:
+        unique_legend_values = sorted(unique_legend_values)
 
-    if group_graphs_by in to_legend.keys():
+    if group_graphs_by in to_legend_content.keys():
         # Modify legend labels as needed
-        legend_labels = [to_legend[group_graphs_by][value] for value in unique_legend_values]
+        legend_labels = [to_legend_content[group_graphs_by][value] for value in unique_legend_values]
     else:
         # Keep legend labels as-is
         legend_labels = unique_legend_values
 
     plt.legend(
-        title=to_title[group_graphs_by],
+        title=get_legend_title(group_graphs_by),
         title_fontsize=legend_font_sizes[legend_size]["titlesize"],
         fontsize=legend_font_sizes[legend_size]["fontsize"],
         loc=legend_location,
@@ -219,7 +232,7 @@ def plot_pvz_data(
 
 def filter_and_plot_pvz_data(
     data_path: str,
-    x_axis: str,
+    x_axis: str = "time_ms",
     y_axis: str = "win",
     title: str = None,
     file_name: str = None,
@@ -291,7 +304,6 @@ data_5_5_1 = filter_pvz_data(
 
 plot_pvz_data(
     data_5_5_1,
-    x_axis="time_ms",
     title="Wins vs. Time for different Levels",
     file_name="5.5.1_easy_levels",
     group_graphs_by="level",
@@ -305,7 +317,6 @@ data_5_5_2_1 = filter_pvz_data(basic_data, level=["9"], ucb_filter=[0.001, 0.004
 
 plot_pvz_data(
     data_5_5_2_1,
-    x_axis="time_ms",
     title="Wins vs. Time for different UCBs on Level 9",
     file_name="5.5.2.1_level_9_different_ucb",
     group_graphs_by="ucb_const",
@@ -319,7 +330,6 @@ data_5_5_2_2 = filter_pvz_data(basic_data, level=["9+"], ucb_filter=[0.001, 0.00
 
 plot_pvz_data(
     data_5_5_2_2,
-    x_axis="time_ms",
     title="Wins vs. Time for different UCBs on Level 9+",
     file_name="5.5.2.2_level_9+_different_ucb",
     group_graphs_by="ucb_const",
@@ -358,7 +368,6 @@ plot_pvz_data(
 # 5.5.2.4
 plot_pvz_data(
     data_5_5_2_4,
-    x_axis="time_ms",
     title="Wins vs. Time for different UCBs on Level 9+",
     file_name="5.5.2.4_level_9+_different_ucb_parallel_trees_long_times",
     group_graphs_by="ucb_const",
@@ -382,7 +391,6 @@ data_6_1_1_1 = filter_pvz_data(data_6_1_1, level=["9"], threads_filter=[8])
 
 plot_pvz_data(
     data_6_1_1_1,
-    x_axis="time_ms",
     title="Normal Agent vs. Parallel-Max on Level 9",
     file_name="6.1.1.1_level_9_normal_vs_parallel_max",
     group_graphs_by="rollout_mode",
@@ -396,7 +404,6 @@ data_6_1_1_2 = filter_pvz_data(data_6_1_1, level=["9+"], threads_filter=[8])
 
 plot_pvz_data(
     data_6_1_1_2,
-    x_axis="time_ms",
     title="Normal Agent vs. Parallel-Max on Level 9+",
     file_name="6.1.1.2_level_9+_normal_vs_parallel_max",
     group_graphs_by="rollout_mode",
@@ -409,7 +416,6 @@ data_6_1_1_2 = filter_pvz_data(data_6_1_1, level=["9+"], threads_filter=None, ex
 
 plot_pvz_data(
     data_6_1_1_2,
-    x_axis="time_ms",
     title="Varying Threads Parallel-Max on Level 9+",
     file_name="6.1.1.2_level_9+_parallel_max_threads",
     group_graphs_by="threads",
@@ -422,7 +428,6 @@ data_6_1_1_3 = filter_pvz_data(data_6_1_1, level=["9++"], threads_filter=[8])
 
 plot_pvz_data(
     data_6_1_1_3,
-    x_axis="time_ms",
     title="Normal Agent vs. Parallel-Max on Level 9++",
     file_name="6.1.1.3_level_9++_normal_vs_parallel_max",
     group_graphs_by="rollout_mode",
@@ -446,7 +451,6 @@ data_6_1_2_1 = filter_pvz_data(data_6_1_2, level=["9"])
 
 plot_pvz_data(
     data_6_1_2_1,
-    x_axis="time_ms",
     title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9",
     file_name="6.1.2.1_level_9_parallelizations",
     group_graphs_by="rollout_mode",
@@ -459,7 +463,6 @@ data_6_1_2_2 = filter_pvz_data(data_6_1_2, level=["9+"])
 
 plot_pvz_data(
     data_6_1_2_2,
-    x_axis="time_ms",
     title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9+",
     file_name="6.1.2.2_level_9+_parallelizations",
     group_graphs_by="rollout_mode",
@@ -472,7 +475,6 @@ data_6_1_2_3 = filter_pvz_data(data_6_1_2, level=["9++"])
 
 plot_pvz_data(
     data_6_1_2_3,
-    x_axis="time_ms",
     title="Normal Agent vs. Parallel-Max vs. Parallel-Trees on Level 9++",
     file_name="6.1.2.3_level_9++_parallelizations",
     group_graphs_by="rollout_mode",
@@ -493,7 +495,6 @@ filter_and_plot_pvz_data(
     selection_modes_filter=[mcts.FULL_EXPAND, mcts.SQUARE_RATIO],
     loss_heuristics_filter=[mcts.NO_HEURISTIC],
     expansion_modes_filter=[mcts.PARALLEL_TREES],
-    x_axis="time_ms",
     group_graphs_by="selection_mode",
     legend_location="upper left",
 )
@@ -512,7 +513,6 @@ filter_and_plot_pvz_data(
     selection_modes_filter=[mcts.FULL_EXPAND],
     loss_heuristics_filter=[mcts.NO_HEURISTIC],
     expansion_modes_filter=[mcts.NORMAL_MCTS],
-    x_axis="time_ms",
     group_graphs_by="heuristic_mode",
     legend_location="upper left",
 )
@@ -531,7 +531,6 @@ filter_and_plot_pvz_data(
     selection_modes_filter=[mcts.FULL_EXPAND],
     loss_heuristics_filter=[mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC],
     expansion_modes_filter=[mcts.NORMAL_MCTS],
-    x_axis="time_ms",
     group_graphs_by="loss_heuristic",
     legend_location="upper left",
     ylim=(0, 0.5),
@@ -551,8 +550,60 @@ filter_and_plot_pvz_data(
     selection_modes_filter=[mcts.FULL_EXPAND],
     loss_heuristics_filter=None,
     expansion_modes_filter=[mcts.NORMAL_MCTS],
-    x_axis="time_ms",
     group_graphs_by="loss_heuristic",
     legend_location="upper left",
     ylim=(0, 0.5),
+)
+
+
+# 6.3.1
+data_6_3_1 = filter_pvz_data(
+    all_data,
+    level=["9+"],
+    time_ms_filter={"max": 1600},
+    ucb_filter=[0.004],
+    heuristic_modes_filter=[mcts.NO_HEURISTIC, mcts.HEURISTIC_SELECT],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC],
+    expansion_modes_filter=[mcts.NORMAL_MCTS],
+)
+
+data_6_3_1_0 = filter_pvz_data(
+    data_6_3_1.copy(),
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+)
+data_6_3_1_0["name_in_legend"] = "No Heuristics"
+
+data_6_3_1_1 = filter_pvz_data(
+    data_6_3_1.copy(),
+    heuristic_modes_filter=[mcts.HEURISTIC_SELECT],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+)
+data_6_3_1_1["name_in_legend"] = "Selection Heuristic"
+
+data_6_3_1_2 = filter_pvz_data(
+    data_6_3_1.copy(),
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    loss_heuristics_filter=[mcts.TOTAL_PLANT_COST_HEURISTIC],
+)
+data_6_3_1_2["name_in_legend"] = "Plant Cost Loss Heuristic"
+
+data_6_3_1_3 = filter_pvz_data(
+    data_6_3_1.copy(),
+    heuristic_modes_filter=[mcts.HEURISTIC_SELECT],
+    loss_heuristics_filter=[mcts.TOTAL_PLANT_COST_HEURISTIC],
+)
+data_6_3_1_3["name_in_legend"] = "Both Heuristics"
+
+data_6_3_1 = pd.concat([data_6_3_1_0, data_6_3_1_1, data_6_3_1_2, data_6_3_1_3], ignore_index=True)
+
+plot_pvz_data(
+    data_6_3_1,
+    x_axis="time_ms",
+    title="Combination of Heuristics on Level 9+",
+    file_name="6.3.1_heuristics_combinations",
+    group_graphs_by="name_in_legend",
+    legend_location="upper left",
+    sort_legend=False,
 )
