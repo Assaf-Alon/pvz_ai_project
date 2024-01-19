@@ -23,9 +23,14 @@ All these files were written by us.
   - data
     - levels.json - Defines the used levels - zombie type, lane, and spawn time.
   
+  - graphs
+    - All graphs used in the project.
+
+  - create_graphs.py - Exports the graphs used in the project given sufficient data.
   - games.hpp - Declares and implements common functions for different games.
   - main.cpp - An example of a raw usage of the C++ library.
   - Makefile - Describes different compilation rules.
   - mcts.py - Runs the experiments by the defined parameters.
+  - plot_utils.py - Functions used to export graphs in the create_graphs.py file
   - test_full.py - Unit tests that verify the engine acts as intended.
   - utils.py - Common utilities to run simulations in Python.
