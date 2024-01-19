@@ -211,10 +211,15 @@ def plot_pvz_data(
         labels=legend_labels,
     )
     # Annotate each point with the correct sample count
-    for line in ax.lines:
+    for i in range(len(unique_legend_values)):
+        line = ax.lines[i]
         x, y = line.get_xydata().T
         for xi, yi in zip(x, y):
-            sample_count = len(filtered_data[(filtered_data[x_axis] == xi)])
+            sample_count = len(
+                filtered_data[
+                    (filtered_data[x_axis] == xi) & (filtered_data[group_graphs_by] == unique_legend_values[i])
+                ]
+            )
             plt.text(xi, yi, sample_count, fontsize=8, ha="center", va="bottom", color="black")
 
     # Set to log scale if need be
