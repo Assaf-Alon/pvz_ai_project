@@ -2,6 +2,144 @@ import pandas as pd
 from build import mcts
 from plot_utils import CSV_FILENAME, filter_and_plot_pvz_data, filter_pvz_data, plot_pvz_data
 
+
+def plot_pvz_data_section_6_3(
+    all_data: pd.DataFrame,
+    level: str,
+    rollout_mode: str,
+    file_name: str,
+    title: str,
+    legend_location: str = "upper left",
+):
+    data_combined = filter_pvz_data(
+        all_data,
+        level=[level],
+        time_ms_filter={"max": 1600},
+        ucb_filter=[0.004],
+        # heuristic_modes_filter=[mcts.NO_HEURISTIC, mcts.HEURISTIC_SELECT],
+        # selection_modes_filter=[mcts.FULL_EXPAND, mcts.SQUARE_RATIO],
+        loss_heuristics_filter=[mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC],
+        expansion_modes_filter=[rollout_mode],
+    )
+
+    data_0 = filter_pvz_data(
+        data_combined.copy(),
+        heuristic_modes_filter=[mcts.NO_HEURISTIC],
+        selection_modes_filter=[mcts.FULL_EXPAND],
+        loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    )
+    data_0["name_in_legend"] = "No Heuristics"
+
+    data_1 = filter_pvz_data(
+        data_combined.copy(),
+        heuristic_modes_filter=[mcts.HEURISTIC_SELECT],
+        selection_modes_filter=[mcts.SQUARE_RATIO],
+        loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    )
+    data_1["name_in_legend"] = "Selection Heuristic + Selection Policy"
+
+    data_2 = filter_pvz_data(
+        data_combined.copy(),
+        heuristic_modes_filter=[mcts.HEURISTIC_SELECT],
+        selection_modes_filter=[mcts.FULL_EXPAND],
+        loss_heuristics_filter=[mcts.TOTAL_PLANT_COST_HEURISTIC],
+    )
+    data_2["name_in_legend"] = "Selection Heuristic + Loss Heuristic"
+
+    data_3 = filter_pvz_data(
+        data_combined.copy(),
+        heuristic_modes_filter=[mcts.NO_HEURISTIC],
+        selection_modes_filter=[mcts.SQUARE_RATIO],
+        loss_heuristics_filter=[mcts.TOTAL_PLANT_COST_HEURISTIC],
+    )
+    data_3["name_in_legend"] = "Selection Policy + Loss Heuristic"
+
+    data_4 = filter_pvz_data(
+        data_combined.copy(),
+        heuristic_modes_filter=[mcts.HEURISTIC_SELECT],
+        selection_modes_filter=[mcts.SQUARE_RATIO],
+        loss_heuristics_filter=[mcts.TOTAL_PLANT_COST_HEURISTIC],
+    )
+    data_4["name_in_legend"] = "All Improvements"
+
+    data_combined = pd.concat([data_0, data_1, data_2, data_3, data_4], ignore_index=True)
+
+    plot_pvz_data(
+        data_combined,
+        title=title,
+        file_name=file_name,
+        group_graphs_by="name_in_legend",
+        legend_location=legend_location,
+        sort_legend=False,
+    )
+
+
+def plot_pvz_data_all_improvements(
+    all_data: pd.DataFrame,
+    level: str,
+    file_name: str,
+    title: str,
+    legend_location: str = "upper left",
+):
+    data_6_3_4 = filter_pvz_data(
+        all_data,
+        level=[level],
+        time_ms_filter={"max": 1600},
+        ucb_filter=[0.004],
+        # heuristic_modes_filter=[mcts.NO_HEURISTIC, mcts.HEURISTIC_SELECT],
+        # selection_modes_filter=[mcts.FULL_EXPAND, mcts.SQUARE_RATIO],
+        loss_heuristics_filter=[mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC],
+        # expansion_modes_filter=[rollout_mode],
+    )
+
+    data_6_3_4_0 = filter_pvz_data(
+        data_6_3_4.copy(),
+        heuristic_modes_filter=[mcts.NO_HEURISTIC],
+        selection_modes_filter=[mcts.FULL_EXPAND],
+        loss_heuristics_filter=[mcts.NO_HEURISTIC],
+        expansion_modes_filter=[mcts.NORMAL_MCTS],
+    )
+    data_6_3_4_0["name_in_legend"] = "Basic Agent"
+
+    data_6_3_4_1 = filter_pvz_data(
+        data_6_3_4.copy(),
+        heuristic_modes_filter=[mcts.HEURISTIC_SELECT],
+        selection_modes_filter=[mcts.SQUARE_RATIO],
+        loss_heuristics_filter=[mcts.TOTAL_PLANT_COST_HEURISTIC],
+        expansion_modes_filter=[mcts.NORMAL_MCTS],
+    )
+    data_6_3_4_1["name_in_legend"] = "Full Heuristic Agent"
+
+    data_6_3_4_2 = filter_pvz_data(
+        data_6_3_4.copy(),
+        heuristic_modes_filter=[mcts.HEURISTIC_SELECT],
+        selection_modes_filter=[mcts.SQUARE_RATIO],
+        loss_heuristics_filter=[mcts.TOTAL_PLANT_COST_HEURISTIC],
+        expansion_modes_filter=[mcts.MAX_NODE],
+    )
+    data_6_3_4_2["name_in_legend"] = "Parallel Max + Full Heuristic Agent"
+
+    data_6_3_4_3 = filter_pvz_data(
+        data_6_3_4.copy(),
+        heuristic_modes_filter=[mcts.HEURISTIC_SELECT],
+        selection_modes_filter=[mcts.SQUARE_RATIO],
+        loss_heuristics_filter=[mcts.TOTAL_PLANT_COST_HEURISTIC],
+        expansion_modes_filter=[mcts.PARALLEL_TREES],
+    )
+    data_6_3_4_3["name_in_legend"] = "Parallel Trees + Full Heuristic Agent"
+
+    data_6_3_4 = pd.concat([data_6_3_4_0, data_6_3_4_1, data_6_3_4_2, data_6_3_4_3], ignore_index=True)
+
+    plot_pvz_data(
+        data_6_3_4,
+        title=title,
+        file_name=file_name,
+        group_graphs_by="name_in_legend",
+        legend_location=legend_location,
+        sort_legend=False,
+    )
+
+
 all_data = pd.read_csv(CSV_FILENAME)
 basic_data = filter_pvz_data(
     all_data,
@@ -277,53 +415,35 @@ filter_and_plot_pvz_data(
 
 
 # 6.3.1
-data_6_3_1 = filter_pvz_data(
+plot_pvz_data_section_6_3(
+    all_data, "9+", mcts.NORMAL_MCTS, "6.3.1_heuristics_combinations", "Combination of Heuristics on Level 9+"
+)
+
+# 6.3.2
+plot_pvz_data_section_6_3(
     all_data,
-    level=["9+"],
-    time_ms_filter={"max": 1600},
-    ucb_filter=[0.004],
-    heuristic_modes_filter=[mcts.NO_HEURISTIC, mcts.HEURISTIC_SELECT],
-    selection_modes_filter=[mcts.FULL_EXPAND],
-    loss_heuristics_filter=[mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC],
-    expansion_modes_filter=[mcts.NORMAL_MCTS],
+    "9+",
+    mcts.MAX_NODE,
+    "6.3.2.1_heuristics_combinations",
+    "Parallel MAX and Heuristics on Level 9+",
+    "lower right",
 )
 
-data_6_3_1_0 = filter_pvz_data(
-    data_6_3_1.copy(),
-    heuristic_modes_filter=[mcts.NO_HEURISTIC],
-    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+plot_pvz_data_section_6_3(
+    all_data, "9++", mcts.MAX_NODE, "6.3.2.2_heuristics_combinations", "Parallel MAX and Heuristics on Level 9++"
 )
-data_6_3_1_0["name_in_legend"] = "No Heuristics"
 
-data_6_3_1_1 = filter_pvz_data(
-    data_6_3_1.copy(),
-    heuristic_modes_filter=[mcts.HEURISTIC_SELECT],
-    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+# 6.3.3
+plot_pvz_data_section_6_3(
+    all_data,
+    "9++",
+    mcts.PARALLEL_TREES,
+    "6.3.3_heuristics_combinations",
+    "Parallel Trees and Heuristics on Level 9++",
+    "lower right",
 )
-data_6_3_1_1["name_in_legend"] = "Selection Heuristic"
 
-data_6_3_1_2 = filter_pvz_data(
-    data_6_3_1.copy(),
-    heuristic_modes_filter=[mcts.NO_HEURISTIC],
-    loss_heuristics_filter=[mcts.TOTAL_PLANT_COST_HEURISTIC],
-)
-data_6_3_1_2["name_in_legend"] = "Plant Cost Loss Heuristic"
 
-data_6_3_1_3 = filter_pvz_data(
-    data_6_3_1.copy(),
-    heuristic_modes_filter=[mcts.HEURISTIC_SELECT],
-    loss_heuristics_filter=[mcts.TOTAL_PLANT_COST_HEURISTIC],
-)
-data_6_3_1_3["name_in_legend"] = "Both Heuristics"
-
-data_6_3_1 = pd.concat([data_6_3_1_0, data_6_3_1_1, data_6_3_1_2, data_6_3_1_3], ignore_index=True)
-
-plot_pvz_data(
-    data_6_3_1,
-    x_axis="time_ms",
-    title="Combination of Heuristics on Level 9+",
-    file_name="6.3.1_heuristics_combinations",
-    group_graphs_by="name_in_legend",
-    legend_location="upper left",
-    sort_legend=False,
-)
+# 6.3.4
+plot_pvz_data_all_improvements(all_data, "9+", "6.3.4.1_all_improvements", "Comparing All Improvements on Level 9+")
+plot_pvz_data_all_improvements(all_data, "9++", "6.3.4.2_all_improvements", "Comparing All Improvements on Level 9++")
