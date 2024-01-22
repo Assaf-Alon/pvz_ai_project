@@ -162,7 +162,7 @@ def plot_pvz_data(
     hue_order: List[Union[int, str]] = None,
     legend_location: str = "upper left",
     legend_size: str = "medium",
-    sort_legend=True
+    sort_legend: str = True,
     # hue_norm=None,
 ):
     # Create a single plot

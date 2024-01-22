@@ -195,6 +195,45 @@ plot_pvz_data(
     legend_size="large",
 )
 
+data_5_5_2_2_extra1 = filter_pvz_data(
+    all_data.copy(),
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    expansion_modes_filter=[mcts.NORMAL_MCTS],
+    level=["9"],
+    time_ms_filter={"min": 200, "max": 200},
+)
+data_5_5_2_2_extra1["name_in_legend"] = "Basic Agent on Level 9 with 200ms Limit"
+
+data_5_5_2_2_extra2 = filter_pvz_data(
+    all_data.copy(),
+    heuristic_modes_filter=[mcts.NO_HEURISTIC],
+    selection_modes_filter=[mcts.FULL_EXPAND],
+    loss_heuristics_filter=[mcts.NO_HEURISTIC],
+    expansion_modes_filter=[mcts.PARALLEL_TREES],
+    level=["9+"],
+    time_ms_filter={"min": 300, "max": 300},
+)
+data_5_5_2_2_extra2["name_in_legend"] = "Parallel Trees Agent on Level 9++ with 300ms Limit"
+
+data_5_5_2_2_extra = pd.concat([data_5_5_2_2_extra1, data_5_5_2_2_extra2], ignore_index=True)
+ucbs_x = [0.001, 0.004, 0.016, 0.032]
+ucbs_xi = list(range(len(ucbs_x)))
+
+plot_pvz_data(
+    data_5_5_2_2_extra,
+    title="UCB Comparison For Different Parameters",
+    file_name="5.5.2.2_different_ucbs_general_params",
+    group_graphs_by="name_in_legend",
+    legend_location="upper right",
+    legend_size="medium",
+    sort_legend=False,
+    x_axis="ucb_const",
+    ylim=(0, 1.2),
+    log_scale=True,
+)
+
 
 # 5.5.2.3 + 5.5.2.4 data
 data_5_5_2_4 = filter_pvz_data(
