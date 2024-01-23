@@ -61,12 +61,8 @@ class Node {
     vector<Node*> children;
     vector<Action> available_actions;
     inline double ucb() const {
-        // TODO: check if this is correct
-        // if (level.done) {
-        //     return int(level.win);
-        // }
         if (this->simulations == 0) { // MAX EXPLORE!
-            std::cout << "reched ucb with 0 rollouts, should this be possible??" << std::endl;
+            // std::cout << "reched ucb with 0 rollouts, should this be possible??" << std::endl;
             return 100000;
         }
         int wins = this->wins;
@@ -75,7 +71,7 @@ class Node {
         if (this->parent != nullptr) {
             parent_rollouts = this->parent->simulations;
             if (parent_rollouts == 0) {
-                std::cout << "TODO SHOULDN'T GET HERE IMO?!!" << std::endl;
+                // std::cout << "SHOULDN'T GET HERE IMO?!!" << std::endl;
                 return 0;
             }
         }
@@ -85,7 +81,6 @@ class Node {
         double ucb;
         if (rollout_mode == AVG_NODE){ //
             static double log_rollouts_per_leaf = log(rollouts_per_leaf);
-            // ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(log((double)parent_rollouts / rollouts_per_leaf) / (rollouts / rollouts_per_leaf)));
             ucb = ((double)wins / rollouts) + (ucb_coefficient * sqrt(((log(parent_rollouts) - log_rollouts_per_leaf) * rollouts_per_leaf) / rollouts));
         }
         else {

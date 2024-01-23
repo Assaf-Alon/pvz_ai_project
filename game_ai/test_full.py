@@ -113,7 +113,7 @@ class TestLevel(unittest.TestCase):
         level_data.push_back(cpp_level.ZombieSpawnTemplate(2000, 0, "normal"))
         level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.SUNFLOWER])
 
-        SUN_COOLDOWN = 7.5  # TODO - get this from plant data
+        SUN_COOLDOWN = 7.5
 
         while level.frame <= 15 * DEFAULT_FPS:
             level.step()
@@ -130,7 +130,7 @@ class TestLevel(unittest.TestCase):
         level_data.push_back(cpp_level.ZombieSpawnTemplate(2000, 0, "normal"))
         level = cpp_level.Level(5, 10, DEFAULT_FPS, level_data, [cpp_level.POTATOMINE])
 
-        MINE_COOLDOWN = 30  # TODO - get this from plant data
+        MINE_COOLDOWN = 30
         self.assertTrue(level.is_action_legal(cpp_level.POTATOMINE, 0, 0))
         level.step(cpp_level.POTATOMINE, 0, 0)
         while not level.is_action_legal(cpp_level.POTATOMINE, 0, 1):
@@ -155,7 +155,7 @@ class TestSunflower(unittest.TestCase):
         self.assertEqual(level.frame, 2)
 
         frames_til_sun = int(SUN_INTERVAL * DEFAULT_FPS)
-        frames_til_sunflower = int(24.25 * DEFAULT_FPS)  # TODO - Take this from plant data
+        frames_til_sunflower = int(24.25 * DEFAULT_FPS)
 
         while level.frame < 150 * DEFAULT_FPS:
             gain_from_sky = int((level.frame - 2) // frames_til_sun)
@@ -181,7 +181,7 @@ class TestSunflower(unittest.TestCase):
         self.assertEqual(level.frame, 2)
 
         frames_til_sun = int(SUN_INTERVAL * DEFAULT_FPS)
-        frames_til_sunflower = int(24.25 * DEFAULT_FPS)  # TODO - Take this from plant data
+        frames_til_sunflower = int(24.25 * DEFAULT_FPS)
         SUN_COOLDOWN = int(7.5 * DEFAULT_FPS)
         new_sunflower = cpp_level.Action(cpp_level.SUNFLOWER, 1, 1)
 

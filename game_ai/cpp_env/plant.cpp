@@ -16,10 +16,6 @@ Plant::Plant(int lane, int column, const PlantData& plant_data, int frame, int f
     this->action = PlantAction(plant_data.action_func);
     this->plant_type = plant_data.plant_type;
     
-    // TODO - pretty much all plants but the comper should start as-if they just attacked,
-    // that is, they should wait before they attack.
-    // The string comparation here sucks.
-    // Maybe Keep the enum value inside PlantData?
     this->frame_action_available = frame + this->action_interval;
     if (this->plant_type == CHOMPER) {
         this->frame_action_available = frame;

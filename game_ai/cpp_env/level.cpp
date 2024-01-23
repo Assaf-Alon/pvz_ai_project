@@ -259,7 +259,7 @@ void Level::spawn_suns()
 }
 bool Level::check_endgame()
 {
-    if (this->zombie_in_home_col == false) // TODO - Why do we check this here?
+    if (this->zombie_in_home_col == false)
     {
         if (this->level_data.empty() && this->zombie_list.empty())
         {
@@ -450,7 +450,6 @@ bool Level::is_plantable(int plant) const {
 void Level::step() {
     this->step(this->no_action);
 }
-// TODO - get suns as input?
 PlantName Level::get_random_legal_plant() const {
     #ifdef DEBUG
     LOG_FRAME(frame, "Randomizing plant");
@@ -505,7 +504,6 @@ bool Level::get_random_position(int& lane, int& col) const {
     return true;
 }
 
-// TODO - discuss optimizing this
 const Action Level::get_random_action() const {
     if (this->suns < 50) { // this->suns < this->cheapest_plant_cost?
         return this->no_action;
