@@ -75,7 +75,7 @@ to_legend_title.update(
         "heuristic_mode": "Heuristic Mode",
         "selection_mode": "Selection Mode",
         "loss_heuristic": "Loss Heuristic",
-        "win": "Win",
+        "win": "Win Percentage",
         "num_steps": "Amount of Steps",
         "name_in_legend": "Agent Description",
     }
@@ -185,8 +185,8 @@ def plot_pvz_data(
         title = f"{x_axis} vs {y_axis}"
 
     plt.title(title, fontsize=20)
-    plt.xlabel(x_axis, fontsize=14)
-    plt.ylabel(y_axis, fontsize=14)
+    plt.xlabel(to_legend_title[x_axis], fontsize=16)
+    plt.ylabel(to_legend_title[y_axis], fontsize=16)
     plt.xticks(fontsize=14)
     plt.yticks(fontsize=14)
     plt.grid(True)
