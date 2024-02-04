@@ -51,9 +51,10 @@ For enhanced accessibility and ease of use, the above implementation can be conv
 > [!NOTE]  
 > If you get the following error: `fatal error: 'Python.h' file not found`, try to install python3.11-dev by running `sudo apt-get install python3.11-dev`.
 
-3. Update the `LD_LIBRARY_PATH` environment variable and start running simulations
+3. Update the `LD_LIBRARY_PATH` environment variable and start running simulations. If need be, create a directory for the experiment output csv. You can change the path by changing the variable `timestamped_csv` in `mcts.py`
 ```bash
     export LD_LIBRARY_PATH=$(realpath ./build):$LD_LIBRARY_PATH
+    mkdir -p test_data
     python3 mcts.py
 ```
 
@@ -144,6 +145,15 @@ Running in a container can be useful to run MCTS experiments on a dedicated serv
 In the root directory there are two [singularity](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html) definition files that define container images.
 > [!NOTE]  
 > Docker can work just fine as well. The main reason we're using Singularity is because we don't have root permission on the runtime environment.
+
+### Install Singularity
+
+To install Singularity on Ubuntu, you may run the following:
+```bash
+    sudo apt-get install -y singularity-container
+```
+This should work if you're running Ubuntu >18. There are additional installation methods available if you're encountering any issues
+- For more information: [Official Singularity docs](https://docs.sylabs.io/guides/3.0/user-guide/installation.html)
 
 ### base_img.def
 Uses the image `python:3.11.4-slim-bookworm` as a base image (baseception?).  
