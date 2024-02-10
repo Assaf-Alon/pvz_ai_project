@@ -167,6 +167,7 @@ plot_pvz_data(
     group_graphs_by="level",
     legend_location="lower right",
     legend_size="large",
+    hue_order=["1", "2", "4", "6", "7", "9"],
 )
 
 
