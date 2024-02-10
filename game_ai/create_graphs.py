@@ -197,7 +197,6 @@ plot_pvz_data(
     file_name="5.5.2.2_level_9+_different_ucb",
     group_graphs_by="ucb_const",
     ylim=(0, 0.5),
-    legend_size="large",
 )
 
 data_5_5_2_2_extra1 = filter_pvz_data(
