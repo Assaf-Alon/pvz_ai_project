@@ -232,7 +232,7 @@ def plot_pvz_data(
     # Save the plot
     plt.tight_layout()
     plt.savefig(f"graphs/{file_name if file_name else title}.png")
-    plt.show()
+    # plt.show()
 
 
 def filter_and_plot_pvz_data(
@@ -257,7 +257,7 @@ def filter_and_plot_pvz_data(
     # Legend tuning...
     hue_order: List[Union[int, str]] = None,
     legend_location: str = "upper left",
-    legend_size: str = "medium"
+    legend_size: str = "medium",
     # hue_norm=None,
 ):
     # Read CSV file into a DataFrame
