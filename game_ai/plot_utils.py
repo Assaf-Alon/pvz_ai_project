@@ -147,7 +147,6 @@ def filter_pvz_data(
 
     return filtered_data
 
-
 def plot_pvz_data(
     filtered_data: str,
     x_axis: str = "time_ms",
@@ -203,13 +202,6 @@ def plot_pvz_data(
         # Keep legend labels as-is
         legend_labels = unique_legend_values
 
-    plt.legend(
-        title=get_legend_title(group_graphs_by),
-        title_fontsize=legend_font_sizes[legend_size]["titlesize"],
-        fontsize=legend_font_sizes[legend_size]["fontsize"],
-        loc=legend_location,
-        labels=legend_labels,
-    )
     # Annotate each point with the correct sample count
     for i in range(len(unique_legend_values)):
         line = ax.lines[i]
@@ -221,6 +213,14 @@ def plot_pvz_data(
                 ]
             )
             plt.text(xi, yi, sample_count, fontsize=8, ha="center", va="bottom", color="black")
+    
+    plt.legend(
+        title=get_legend_title(group_graphs_by),
+        title_fontsize=legend_font_sizes[legend_size]["titlesize"],
+        fontsize=legend_font_sizes[legend_size]["fontsize"],
+        loc=legend_location,
+        labels=legend_labels,
+    )
 
     # Set to log scale if need be
     if log_scale:
