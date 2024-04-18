@@ -1,71 +1,80 @@
-import pandas
+import pandas as pd
+from pprint import pprint
+from tabulate import tabulate
+import numpy as np
+import scipy.stats as stats
+from statsmodels.stats.proportion import proportion_confint
+from statsmodels.stats.power import NormalIndPower
 
 
-data = pandas.read_csv("data/all.csv")
+pd.set_option('display.max_rows', None)
 
-
-def filter_data(
-    data,
-    level=None,
-    time_ms_filter={"min": 0, "max": 1000000},
-    threads_filter=8,
-    ucb_filter=None,
-    heuristic_modes_filter=None,
-    selection_modes_filter=None,
-    loss_heuristics_filter=None,
-    expansion_modes_filter=None,
-):
-    filtered_data = data  # type: pandas.DataFrame
-    if level:
-        filtered_data = filtered_data[filtered_data["level"].isin(level)]
-    if time_ms_filter:
-        filtered_data = filtered_data[
-            (filtered_data["time_ms"] >= time_ms_filter["min"])
-            & (filtered_data["time_ms"] <= time_ms_filter["max"])
-        ]
-    if threads_filter:
-        filtered_data = filtered_data[filtered_data["threads"].isin(threads_filter)]
-    if ucb_filter:
-        filtered_data = filtered_data[filtered_data["ucb"].isin(ucb_filter)]
-    if heuristic_modes_filter:
-        filtered_data = filtered_data[
-            filtered_data["heuristic_mode"].isin(heuristic_modes_filter)
-        ]
-    if selection_modes_filter:
-        filtered_data = filtered_data[
-            filtered_data["selection_mode"].isin(selection_modes_filter)
-        ]
-    if loss_heuristics_filter:
-        filtered_data = filtered_data[
-            filtered_data["loss_heuristic"].isin(loss_heuristics_filter)
-        ]
-    if expansion_modes_filter:
-        filtered_data = filtered_data[
-            filtered_data["expansion_mode"].isin(expansion_modes_filter)
-        ]
-    return filtered_data
-
-
-def group_data(data: pandas.DataFrame, group_by):
-    # drop values which contain less than 100 data points
-    data = data.groupby(group_by).filter(lambda x: len(x) > 100)
-    return data.groupby(group_by)
-
+data = pd.read_csv("data/all.csv")
 
 def generate_table():
-    # generate a table which compares:
-    # for each level, using each combination of heuristic, selection, loss, and expansion mode, for each ucb and for each time ms
-    # the win rate, number of games played
-    # generate the table in MD format
-    # rollout_mode,heuristic_mode,selection_mode,loss_heuristic
-    rollout_mode = [...]
-    heuristic_mode = [...]
-    selection_mode = [...]
-    loss_heuristic = [...]
+    """
+    Print statistics for each combination of parameters
+    Separate by levels (for each unique level in the data)
+    """
+    
+    for level in data["level"].unique():
+        print(f"Level {level}")
+        table = data[data["level"] == level].groupby(["rollout_mode", "heuristic_mode", "selection_mode", "loss_heuristic", "ucb_const", "time_ms"]).agg(
+            num_games=("win", "count"),
+            num_wins=("win", "sum")
+        )
+        table["win_rate"] = table["num_wins"] / table["num_games"]
+        table["confidence_interval"] = table.apply(lambda row: proportion_confint(row["num_wins"], row["num_games"], alpha=0.05, method='wilson') if row["num_games"] > 0 else (np.nan, np.nan), axis=1)
+        table["confidence_interval"] = table["confidence_interval"].apply(lambda ci: f"[{ci[0]:.2f}, {ci[1]:.2f}]" if not np.isnan(ci[0]) else "N/A")
+        print(tabulate(table, headers='keys', tablefmt='fancy_grid'))
+        print("\n\n\n")
 
-    table = "| Level | UCB | Time (ms) | Threads | Heuristic Mode | Selection Mode | Loss Heuristic | Expansion Mode | Win Rate | Games Played |\n"
-    table += "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
-    for level in ["1-1", "1-2", "1-3", "1-4", "1-5", "1-6", "1-7", "1-8", "1-9", "1-10"]:
-        for r_mode in 
 
-    print(table)
+def get_sparse_params(min_sample_size: int):
+    table = data.groupby(["level", "rollout_mode", "heuristic_mode", "selection_mode", "loss_heuristic", "ucb_const", "time_ms"]).agg(
+        num_games=("win", "count"),
+        win_rate=("win", "mean")
+    )
+    # for each combination of parameters which has less than 100 games played, save the parameters to a list
+    sparse_params = table[table["num_games"] < min_sample_size].reset_index().values.tolist()
+    # remove the last two columns
+    sparse_params = [x[:-1] for x in sparse_params]
+    # add column for number of games played
+    sparse_params_df = pd.DataFrame(sparse_params)
+    # add header to the csv"
+    sparse_params_df.columns = ["level", "rollout_mode", "heuristic_mode", "selection_mode", "loss_heuristic", "ucb_const", "time_ms", "num_games"]
+    sparse_params_df.to_csv("data/sparse_params.csv", index=False)
+
+
+def get_sample_thershold():
+    effect_size = 0.2  # desired effect size
+    alpha = 0.05  # significance level
+    power = 0.8  # desired power
+
+    # Perform power analysis
+    nobs = NormalIndPower().solve_power(effect_size=effect_size, alpha=alpha, power=power, alternative='two-sided')
+
+    print("Number of observations needed:", round(nobs))
+    return round(nobs)
+
+
+def generate_statistical_csv(sample_size_threshold: int):
+    for level in data["level"].unique():
+        table = data[data["level"] == level].groupby(["rollout_mode", "heuristic_mode", "selection_mode", "loss_heuristic", "ucb_const", "time_ms"]).agg(
+            num_games=("win", "count"),
+            num_wins=("win", "sum")
+        )
+        # filter out rows with less than the sample size threshold
+        table = table[table["num_games"] >= sample_size_threshold]
+        table["win_rate"] = table["num_wins"] / table["num_games"]
+        table["confidence_interval"] = table.apply(lambda row: proportion_confint(row["num_wins"], row["num_games"], alpha=0.05, method='wilson') if row["num_games"] > 0 else (np.nan, np.nan), axis=1)
+        table["confidence_interval"] = table["confidence_interval"].apply(lambda ci: f"[{ci[0]:.2f}, {ci[1]:.2f}]" if not np.isnan(ci[0]) else "N/A")
+        table.reset_index(inplace=True)
+        table["level"] = level
+        table.to_csv(f"data/{level}_statistical.csv", index=False)
+
+if __name__ == "__main__":
+    min_sample_size = get_sample_thershold()
+    get_sparse_params(min_sample_size)
+    generate_statistical_csv(min_sample_size)
+
