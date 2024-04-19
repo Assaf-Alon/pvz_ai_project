@@ -10,7 +10,7 @@ from build import level
 from build import mcts
 import utils
 
-timestamped_csv = f"test_data/mcts_experiment_{random.randint(1, 9999)}.csv"
+timestamped_csv = f"test_data/mcts_experiment_{time.time()}.csv"
 
 def try_early_finish(env: level.Level) -> bool:
     """
