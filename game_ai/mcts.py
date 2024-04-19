@@ -4,6 +4,7 @@ import itertools
 import sys
 import time
 import random
+import pandas as pd
 
 from build import level
 from build import mcts
@@ -95,27 +96,12 @@ if __name__ == "__main__":
     selection_modes = [mcts.FULL_EXPAND, mcts.SQUARE_RATIO]
     loss_heuristic = [mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC]
     """
+    data = pd.read_csv("data/sparse_params.csv")
+    experiment_parameter_list = []
+    for _, row in data.iterrows():
+        params = [str(int(row["level"])), int(row["time_ms"]), 8, row["ucb_const"], int(row["rollout_mode"]), int(row["heuristic_mode"]), int(row["selection_mode"]), int(row["loss_heuristic"])]
+        experiment_parameter_list.append(params)
     
-    #     time_range = [100, 200, 300, 400, 800]
-    # ucb_range = [0.001, 0.004, 0.016]
-    # level_range = ["9", "9+", "9++"]
-    # expansion_modes = [mcts.NORMAL_MCTS, mcts.MAX_NODE, mcts.PARALLEL_TREES]
-    # heuristic_modes = [mcts.NO_HEURISTIC, mcts.HEURISTIC_SELECT]
-    # selection_modes = [mcts.FULL_EXPAND, mcts.SQUARE_RATIO]
-    # loss_heuristic = [mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC]
-    
-    
-    time_range = [6400]
-    # time_range = [800]
-    ucb_range = [0.0001, 0.0005, 0.001, 0.004, 0.006, 0.008, 0.016, 0.064, 0.256]
-    level_range = ["9+", "9++"]
-    expansion_modes = [mcts.NORMAL_MCTS, mcts.PARALLEL_TREES]
-    heuristic_modes = [mcts.NO_HEURISTIC]
-    selection_modes = [mcts.FULL_EXPAND,]
-    loss_heuristic = [mcts.NO_HEURISTIC]
-    experiment_parameter_list = list(itertools.product(\
-        level_range, time_range, [8], ucb_range, expansion_modes, heuristic_modes, selection_modes, loss_heuristic
-    ))
     pprint(experiment_parameter_list)
     print(f"Parameter space size: {len(experiment_parameter_list)}")
     while True: ## run experiments until stopped manually
