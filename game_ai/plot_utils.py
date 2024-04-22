@@ -110,6 +110,21 @@ def get_legend_title(feature: str):
 #     ],
 
 
+def remove_sparse_data_points(data: pd.DataFrame, group_graphs_by: str, x_axis: str, threshold: int = 100) -> pd.DataFrame:
+    new_data = data.copy()
+    unique_legend_values = new_data[group_graphs_by].unique()
+    unique_x_axis_values = new_data[x_axis].unique()
+    for legend_index in range(len(unique_legend_values)):
+        for x_value in unique_x_axis_values:
+            line = new_data[(new_data[group_graphs_by] == unique_legend_values[legend_index]) & (new_data[x_axis] == x_value)]
+            x = line[x_axis]
+            if len(x) < threshold:
+                new_data = new_data.drop(line.index)
+                print(f" [!!!] Removed {len(x)} data points for {group_graphs_by} {unique_legend_values[legend_index]}")
+
+    return new_data
+
+
 def filter_pvz_data(
     df: pd.DataFrame,
     level: List[str] = None,
@@ -147,6 +162,7 @@ def filter_pvz_data(
 
     return filtered_data
 
+
 def plot_pvz_data(
     filtered_data: str,
     x_axis: str = "time_ms",
@@ -164,6 +180,9 @@ def plot_pvz_data(
     sort_legend: str = True,
     # hue_norm=None,
 ):
+
+    filtered_data = remove_sparse_data_points(filtered_data, group_graphs_by, x_axis)
+
     # Create a single plot
     plt.figure(figsize=(10, 6))
 
@@ -207,13 +226,9 @@ def plot_pvz_data(
         line = ax.lines[i]
         x, y = line.get_xydata().T
         for xi, yi in zip(x, y):
-            sample_count = len(
-                filtered_data[
-                    (filtered_data[x_axis] == xi) & (filtered_data[group_graphs_by] == unique_legend_values[i])
-                ]
-            )
+            sample_count = len(filtered_data[(filtered_data[x_axis] == xi) & (filtered_data[group_graphs_by] == unique_legend_values[i])])
             plt.text(xi, yi, sample_count, fontsize=8, ha="center", va="bottom", color="black")
-    
+
     plt.legend(
         title=get_legend_title(group_graphs_by),
         title_fontsize=legend_font_sizes[legend_size]["titlesize"],
