@@ -11,23 +11,37 @@ pd.set_option('display.max_rows', None)
 
 data = pd.read_csv("data/all.csv")
 
+def get_sample_thershold():
+    effect_size = 0.2  # desired effect size
+    alpha = 0.05  # significance level
+    power = 0.8  # desired power
+
+    # Perform power analysis
+    nobs = NormalIndPower().solve_power(effect_size=effect_size, alpha=alpha, power=power, alternative='two-sided')
+
+    print("Number of observations needed:", round(nobs))
+    return round(nobs)
+
+
+min_games = get_sample_thershold()
+
 def generate_table():
     """
     Print statistics for each combination of parameters
     Separate by levels (for each unique level in the data)
     """
-    
-    for level in data["level"].unique():
-        print(f"Level {level}")
-        table = data[data["level"] == level].groupby(["rollout_mode", "heuristic_mode", "selection_mode", "loss_heuristic", "ucb_const", "time_ms"]).agg(
-            num_games=("win", "count"),
-            num_wins=("win", "sum")
-        )
-        table["win_rate"] = table["num_wins"] / table["num_games"]
-        table["confidence_interval"] = table.apply(lambda row: proportion_confint(row["num_wins"], row["num_games"], alpha=0.05, method='wilson') if row["num_games"] > 0 else (np.nan, np.nan), axis=1)
-        table["confidence_interval"] = table["confidence_interval"].apply(lambda ci: f"[{ci[0]:.2f}, {ci[1]:.2f}]" if not np.isnan(ci[0]) else "N/A")
-        print(tabulate(table, headers='keys', tablefmt='fancy_grid'))
-        print("\n\n\n")
+    table = data.groupby(["rollout_mode", "heuristic_mode", "selection_mode", "loss_heuristic", "time_ms"]).agg(
+        num_games=("win", "count"),
+        num_wins=("win", "sum")
+    )
+    table["win_rate"] = table["num_wins"] / table["num_games"]
+    # table = table[table["num_games"] > min_games]
+    table["confidence_interval"] = table.apply(lambda row: proportion_confint(row["num_wins"], row["num_games"], alpha=0.05, method='wilson') if row["num_games"] > 0 else (np.nan, np.nan), axis=1)
+    table["confidence_interval"] = table["confidence_interval"].apply(lambda ci: f"[{ci[0]:.2f}, {ci[1]:.2f}]" if not np.isnan(ci[0]) else "N/A")
+    table.reset_index(inplace=True)
+    print(tabulate(table, headers='keys', tablefmt='github'))
+    print("\n\n\n")
+    return table
 
 
 def get_sparse_params(min_sample_size: int):
@@ -45,19 +59,6 @@ def get_sparse_params(min_sample_size: int):
     sparse_params_df.columns = ["level", "rollout_mode", "heuristic_mode", "selection_mode", "loss_heuristic", "ucb_const", "time_ms", "num_games"]
     sparse_params_df.to_csv("data/sparse_params.csv", index=False)
 
-
-def get_sample_thershold():
-    effect_size = 0.2  # desired effect size
-    alpha = 0.05  # significance level
-    power = 0.8  # desired power
-
-    # Perform power analysis
-    nobs = NormalIndPower().solve_power(effect_size=effect_size, alpha=alpha, power=power, alternative='two-sided')
-
-    print("Number of observations needed:", round(nobs))
-    return round(nobs)
-
-
 def generate_statistical_csv(sample_size_threshold: int):
     for level in data["level"].unique():
         table = data[data["level"] == level].groupby(["rollout_mode", "heuristic_mode", "selection_mode", "loss_heuristic", "ucb_const", "time_ms"]).agg(
@@ -74,7 +75,12 @@ def generate_statistical_csv(sample_size_threshold: int):
         table.to_csv(f"data/{level}_statistical.csv", index=False)
 
 if __name__ == "__main__":
-    min_sample_size = get_sample_thershold()
-    get_sparse_params(min_sample_size)
-    generate_statistical_csv(min_sample_size)
-
+    # min_sample_size = get_sample_thershold()
+    # get_sparse_params(min_sample_size)
+    # generate_statistical_csv(min_sample_size)
+    data = data[data["level"] == "9"]
+    data = data[data["ucb_const"] == 0.004]
+    data = data[data["time_ms"] < 3200]
+    table = generate_table()
+    # print all hyperparams that have less than min_games games played
+    # get_sparse_params(100)
