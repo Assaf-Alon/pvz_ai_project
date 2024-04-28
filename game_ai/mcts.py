@@ -99,11 +99,11 @@ if __name__ == "__main__":
     data = pd.read_csv("data/sparse_params.csv")
     experiment_parameter_list = []
     for _, row in data.iterrows():
-        params = [str(int(row["level"])), int(row["time_ms"]), 8, row["ucb_const"], int(row["rollout_mode"]), int(row["heuristic_mode"]), int(row["selection_mode"]), int(row["loss_heuristic"])]
+        params = [str(row["level"]), int(row["time_ms"]), 8, row["ucb_const"], int(row["rollout_mode"]), int(row["heuristic_mode"]), int(row["selection_mode"]), int(row["loss_heuristic"])]
         experiment_parameter_list.append(params)
     
     pprint(experiment_parameter_list)
-    print(f"Parameter space size: {len(experiment_parameter_list)}")
+    print(f"Parameter space size: {len(experiment_parameter_list)}", flush=True)
     while True: ## run experiments until stopped manually
         for experiment_parameters in experiment_parameter_list:
             # args = [*experiment_parameters]

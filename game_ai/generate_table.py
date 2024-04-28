@@ -51,6 +51,9 @@ def get_sparse_params(min_sample_size: int):
     )
     # for each combination of parameters which has less than 100 games played, save the parameters to a list
     sparse_params = table[table["num_games"] < min_sample_size].reset_index().values.tolist()
+    if len(sparse_params) == 0:
+        print("No sparse parameters found")
+        return
     # remove the last two columns
     sparse_params = [x[:-1] for x in sparse_params]
     # add column for number of games played
@@ -78,9 +81,9 @@ if __name__ == "__main__":
     # min_sample_size = get_sample_thershold()
     # get_sparse_params(min_sample_size)
     # generate_statistical_csv(min_sample_size)
-    data = data[data["level"] == "9"]
+    data = data[data["level"] == "9+"]
     data = data[data["ucb_const"] == 0.004]
     data = data[data["time_ms"] < 3200]
-    table = generate_table()
+    # table = generate_table()
     # print all hyperparams that have less than min_games games played
-    # get_sparse_params(100)
+    get_sparse_params(100)

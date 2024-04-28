@@ -76,7 +76,7 @@ def create_cleaned_csv():
     data["rollout_mode"] = data["rollout_mode"].map(rollout_mode_to_name)
     data["heuristic_mode"] = data["heuristic_mode"].map(heuristic_mode_to_name)
     # aggregate data
-    data = data.groupby(["level", "time_ms", "rollout_mode", "heuristic_mode", "selection_mode", "loss_heuristic", "ucb_const"]).agg(
+    data = data.groupby(["level", "time_ms", "rollout_mode", "heuristic_mode", "selection_mode", "loss_heuristic", "ucb_const", "threads"]).agg(
         num_games=("win", "count"),
         num_wins=("win", "sum")
     )
@@ -90,7 +90,7 @@ def create_cleaned_csv():
 
 
 class Line():
-    def __init__(self, level, rollout_mode = None, heuristic_mode = None, selection_mode = None, loss_heuristic = None, ucb_const = None, time_ms = None):
+    def __init__(self, level, rollout_mode = None, heuristic_mode = None, selection_mode = None, loss_heuristic = None, ucb_const = None, time_ms = None, threads=8):
         self.level = level
         self.rollout_mode = rollout_mode
         self.heuristic_mode = heuristic_mode
@@ -98,6 +98,7 @@ class Line():
         self.loss_heuristic = loss_heuristic
         self.ucb_const = ucb_const
         self.time_ms = time_ms
+        self.threads = threads
 
     def filter_data(self, data: pd.DataFrame):
         data = data.copy()
@@ -114,6 +115,8 @@ class Line():
             data = data[data["ucb_const"] == self.ucb_const]
         if self.time_ms:
             data = data[data["time_ms"] == self.time_ms]
+        if self.threads:
+            data = data[data["threads"] == self.threads]
         return data
     
     def get_legend_dict(self):
@@ -139,16 +142,20 @@ class Line():
         legend = legend[:-1]
         return legend
 
-def create_graph(x_axis, y_axis, line_list: list[Line], title, labels):
-    data = pd.read_csv("data/cleaned.csv")
-    data = data[data["time_ms"] < 3200]
-    data = data[data["num_games"] > 200]
+def create_graph(x_axis, y_axis, line_list: list[Line], title: str, labels, **kwargs):
+    global full_data
+    data = full_data.copy()
+
+    if "time_ms_range" in kwargs:
+        data = data[data["time_ms"].between(kwargs["time_ms_range"][0], kwargs["time_ms_range"][1])]
 
     # plot lines using sns.scatterplot
     sns.set_theme()
+    sns.set_context("paper")
     fig, ax = plt.subplots()
     for line in line_list:
         line_data = line.filter_data(data)
+        line_data.sort_values(by=x_axis, inplace=True)
         line_label = line.get_legend(labels)
         sns.lineplot(data=line_data, x=x_axis, y=y_axis, ax=ax, label=line_label, marker="o")
         ci_lower = line_data["lower_bound"]
@@ -162,23 +169,27 @@ def create_graph(x_axis, y_axis, line_list: list[Line], title, labels):
         plt.xscale("log")
 
     fig.set_size_inches(fig.get_size_inches() * 1.5)
+    plt.tight_layout()
 
-    plt.show()
+    plt.savefig(f"dgershko_graphs/{title.replace(" ", "_")}.png")
 
 
 if __name__ == "__main__":
-    create_cleaned_csv()
+    # create_cleaned_csv()
 
-    # usage examples of create_graph:
-    # graph for 5.5.1
+    full_data = pd.read_csv("data/cleaned.csv")
+    full_data = full_data[full_data["time_ms"] < 3200]
+    full_data = full_data[full_data["num_games"] > 200]
+    
+    # graph for comparing base agent on different levels
     lines = []
     for level in [str(level) for level in range(1, 10)] + ["9+", "9++"]:
         line = Line(level, rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004)
         lines.append(line)
-    title = "5.5.1 - Agent Performence on Different Levels"
+    title = "Base Agent Performence on Different Levels"
     create_graph("time_ms", "win_rate", lines, title, ["level"])
 
-    # graph for 5.5.2
+    # graph for comparing ucb constants in the base agent
     lines = []
     lines.append(Line("9", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", time_ms=200))
     lines.append(Line("9", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", time_ms=800))
@@ -186,6 +197,58 @@ if __name__ == "__main__":
     lines.append(Line("9+", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", time_ms=800))
     lines.append(Line("9++", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", time_ms=200))
     lines.append(Line("9++", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", time_ms=800))
-    title = "5.5.2 - Agent Performence on Different UCB Constants"
+    title = "Agent Performence on Different UCB Constants"
     create_graph("ucb_const", "win_rate", lines, title, ["level", "time_ms"])
 
+    # graphs for comparing rollout strategies
+    lines = []
+    lines.append(Line("9", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9", rollout_mode="parallel max", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9", rollout_mode="parallel trees", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    title = "Comparison of rollout strategies on level 9"
+    create_graph("time_ms", "win_rate", lines, title, ["rollout_mode"], time_ms_range=[100, 700])
+
+    lines = []
+    lines.append(Line("9+", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9+", rollout_mode="parallel max", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9+", rollout_mode="parallel trees", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    title = "Comparison of rollout strategies on level 9+"
+    create_graph("time_ms", "win_rate", lines, title, ["rollout_mode"])
+
+    lines = []
+    lines.append(Line("9++", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9++", rollout_mode="parallel max", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9++", rollout_mode="parallel trees", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    title = "Comparison of rollout strategies on level 9++"
+    create_graph("time_ms", "win_rate", lines, title, ["rollout_mode"])
+
+    # graph for comparing selection strategies in different rollout strategies
+    # level 9
+    lines = []
+    lines.append(Line("9", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="square ratio", loss_heuristic="no heuristic", ucb_const=0.004))
+    title = "Comparison of selection strategies on level 9"
+    create_graph("time_ms", "win_rate", lines, title, ["selection_mode"])
+    # level 9+
+    lines = []
+    lines.append(Line("9+", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9+", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="square ratio", loss_heuristic="no heuristic", ucb_const=0.004))
+    title = "Comparison of selection strategies on level 9+"
+    create_graph("time_ms", "win_rate", lines, title, ["selection_mode"])
+    # level 9++
+    lines = []
+    lines.append(Line("9++", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9++", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="square ratio", loss_heuristic="no heuristic", ucb_const=0.004))
+    title = "Comparison of selection strategies on level 9++"
+    create_graph("time_ms", "win_rate", lines, title, ["selection_mode"])
+
+
+    # graphs for comparing heuristics
+    lines = []
+    lines.append(Line("9+", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9+", rollout_mode="normal", heuristic_mode="select heuristic", selection_mode="full expand", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9+", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="square ratio", loss_heuristic="no heuristic", ucb_const=0.004))
+    lines.append(Line("9+", rollout_mode="normal", heuristic_mode="no heuristic", selection_mode="full expand", loss_heuristic="total plant cost", ucb_const=0.004))
+    lines.append(Line("9+", rollout_mode="normal", heuristic_mode="select heuristic", selection_mode="full expand", loss_heuristic="total plant cost", ucb_const=0.004))
+    title = "Comparison of heuristics on level 9"
+    create_graph("time_ms", "win_rate", lines, title, ["heuristic_mode", "selection_mode", "loss_heuristic"])
