@@ -54,8 +54,7 @@ For enhanced accessibility and ease of use, the above implementation can be conv
 3. Update the `LD_LIBRARY_PATH` environment variable and start running simulations. If need be, create a directory for the experiment output csv. You can change the path by changing the variable `timestamped_csv` in `mcts.py`
 ```bash
     export LD_LIBRARY_PATH=$(realpath ./build):$LD_LIBRARY_PATH
-    mkdir -p test_data
-    python3 mcts.py
+    python3 main.py
 ```
 
 ## CPP Environment

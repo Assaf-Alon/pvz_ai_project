@@ -20,4 +20,4 @@ The experiments that will be ran are all combinations of parameters given.
 For example, the above will run for 6.4 seconds, experiments with ALL the given UCB values, on both level 9+ and 9++.
 If you want to test a specific parameter (In the above example, UCB), it is recommended not to add too many different values to other parameters, as it might increase the runtime exponentially.
 This will create a csv file with the experiment results.
-To create the graphs, run <TODO>
+To create the graphs, run data_analysis.py which uses the all.csv file to generate the graphs, cleaned.csv and graph_params.csv.

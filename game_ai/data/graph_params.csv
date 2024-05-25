@@ -1,0 +1,991 @@
+level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_const,threads,num_games,num_wins,win_rate,lower_bound,upper_bound
+1,100,normal,no heuristic,full expand,no heuristic,0.004,8,169,169,1.0,0.98,1.0
+1,200,normal,no heuristic,full expand,no heuristic,0.004,8,169,169,1.0,0.98,1.0
+1,300,normal,no heuristic,full expand,no heuristic,0.004,8,168,168,1.0,0.98,1.0
+1,400,normal,no heuristic,full expand,no heuristic,0.004,8,168,168,1.0,0.98,1.0
+1,800,normal,no heuristic,full expand,no heuristic,0.004,8,168,168,1.0,0.98,1.0
+1,1600,normal,no heuristic,full expand,no heuristic,0.004,8,168,168,1.0,0.98,1.0
+2,100,normal,no heuristic,full expand,no heuristic,0.004,8,1128,1128,1.0,1.0,1.0
+2,200,normal,no heuristic,full expand,no heuristic,0.004,8,1128,1128,1.0,1.0,1.0
+2,300,normal,no heuristic,full expand,no heuristic,0.004,8,1128,1128,1.0,1.0,1.0
+2,400,normal,no heuristic,full expand,no heuristic,0.004,8,1128,1128,1.0,1.0,1.0
+2,800,normal,no heuristic,full expand,no heuristic,0.004,8,1128,1128,1.0,1.0,1.0
+2,1600,normal,no heuristic,full expand,no heuristic,0.004,8,1127,1127,1.0,1.0,1.0
+3,100,normal,no heuristic,full expand,no heuristic,0.004,8,874,873,0.9988558352402744,0.99,1.0
+3,200,normal,no heuristic,full expand,no heuristic,0.004,8,874,871,0.9965675057208238,0.99,1.0
+3,300,normal,no heuristic,full expand,no heuristic,0.004,8,874,872,0.9977116704805492,0.99,1.0
+3,400,normal,no heuristic,full expand,no heuristic,0.004,8,873,871,0.997709049255441,0.99,1.0
+3,800,normal,no heuristic,full expand,no heuristic,0.004,8,873,872,0.9988545246277204,0.99,1.0
+3,1600,normal,no heuristic,full expand,no heuristic,0.004,8,873,871,0.997709049255441,0.99,1.0
+6,100,normal,no heuristic,full expand,no heuristic,0.004,8,422,412,0.976303317535545,0.96,0.99
+6,200,normal,no heuristic,full expand,no heuristic,0.004,8,422,417,0.9881516587677726,0.97,0.99
+6,300,normal,no heuristic,full expand,no heuristic,0.004,8,422,422,1.0,0.99,1.0
+6,400,normal,no heuristic,full expand,no heuristic,0.004,8,422,422,1.0,0.99,1.0
+6,800,normal,no heuristic,full expand,no heuristic,0.004,8,422,422,1.0,0.99,1.0
+6,1600,normal,no heuristic,full expand,no heuristic,0.004,8,421,420,0.997624703087886,0.99,1.0
+7,100,normal,no heuristic,full expand,no heuristic,0.004,8,1294,376,0.2905718701700154,0.27,0.32
+7,200,normal,no heuristic,full expand,no heuristic,0.004,8,977,842,0.8618219037871033,0.84,0.88
+7,300,normal,no heuristic,full expand,no heuristic,0.004,8,977,919,0.9406345957011258,0.92,0.95
+7,400,normal,no heuristic,full expand,no heuristic,0.004,8,977,957,0.9795291709314228,0.97,0.99
+7,800,normal,no heuristic,full expand,no heuristic,0.004,8,975,969,0.9938461538461538,0.99,1.0
+7,1600,normal,no heuristic,full expand,no heuristic,0.004,8,975,973,0.997948717948718,0.99,1.0
+8,100,normal,no heuristic,full expand,no heuristic,0.004,8,1083,1034,0.9547553093259464,0.94,0.97
+8,200,normal,no heuristic,full expand,no heuristic,0.004,8,1083,1075,0.9926131117266852,0.99,1.0
+8,300,normal,no heuristic,full expand,no heuristic,0.004,8,1083,1079,0.9963065558633426,0.99,1.0
+8,400,normal,no heuristic,full expand,no heuristic,0.004,8,1083,1078,0.9953831948291784,0.99,1.0
+8,800,normal,no heuristic,full expand,no heuristic,0.004,8,1083,1081,0.9981532779316712,0.99,1.0
+8,1600,normal,no heuristic,full expand,no heuristic,0.004,8,1082,1081,0.9990757855822552,0.99,1.0
+9,100,normal,no heuristic,full expand,no heuristic,0.004,8,733,78,0.1064120054570259,0.09,0.13
+9,200,normal,no heuristic,full expand,no heuristic,0.004,8,1363,1034,0.7586206896551724,0.74,0.78
+9,300,normal,no heuristic,full expand,no heuristic,0.004,8,1049,913,0.8703527168732126,0.85,0.89
+9,400,normal,no heuristic,full expand,no heuristic,0.004,8,1350,1273,0.942962962962963,0.93,0.95
+9,500,normal,no heuristic,full expand,no heuristic,0.004,8,526,513,0.9752851711026616,0.96,0.99
+9,600,normal,no heuristic,full expand,no heuristic,0.004,8,526,520,0.988593155893536,0.98,0.99
+9,700,normal,no heuristic,full expand,no heuristic,0.004,8,524,518,0.9885496183206108,0.98,0.99
+9,800,normal,no heuristic,full expand,no heuristic,0.004,8,717,707,0.9860529986052998,0.97,0.99
+9,1600,normal,no heuristic,full expand,no heuristic,0.004,8,789,786,0.9961977186311788,0.99,1.0
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9++,100,normal,no heuristic,full expand,no heuristic,0.004,8,2249,1,0.0004446420631391,0.0,0.0
+9++,200,normal,no heuristic,full expand,no heuristic,0.004,8,2249,13,0.0057803468208092,0.0,0.01
+9++,300,normal,no heuristic,full expand,no heuristic,0.004,8,2249,23,0.0102267674522009,0.01,0.02
+9++,400,normal,no heuristic,full expand,no heuristic,0.004,8,2865,62,0.0216404886561954,0.02,0.03
+9++,500,normal,no heuristic,full expand,no heuristic,0.004,8,2047,60,0.0293111871030776,0.02,0.04
+9++,600,normal,no heuristic,full expand,no heuristic,0.004,8,2045,97,0.0474327628361858,0.04,0.06
+9++,700,normal,no heuristic,full expand,no heuristic,0.004,8,2045,96,0.0469437652811736,0.04,0.06
+9++,800,normal,no heuristic,full expand,no heuristic,0.004,8,2242,131,0.0584299732381801,0.05,0.07
+9++,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2322,212,0.0913006029285099,0.08,0.1
+9,100,normal,no heuristic,full expand,no heuristic,1e-05,8,1310,192,0.1465648854961832,0.13,0.17
+9,100,normal,no heuristic,full expand,no heuristic,5e-05,8,1310,182,0.1389312977099236,0.12,0.16
+9,100,normal,no heuristic,full expand,no heuristic,0.0001,8,798,118,0.1478696741854636,0.12,0.17
+9,100,normal,no heuristic,full expand,no heuristic,0.0005,8,1518,189,0.1245059288537549,0.11,0.14
+9,100,normal,no heuristic,full expand,no heuristic,0.001,8,1316,181,0.1375379939209726,0.12,0.16
+9,100,normal,no heuristic,full expand,no heuristic,0.002,8,1277,148,0.1158966327329679,0.1,0.13
+9,100,normal,no heuristic,full expand,no heuristic,0.004,8,733,78,0.1064120054570259,0.09,0.13
+9,100,normal,no heuristic,full expand,no heuristic,0.008,8,1278,160,0.1251956181533646,0.11,0.14
+9,100,normal,no heuristic,full expand,no heuristic,0.016,8,1048,142,0.1354961832061068,0.12,0.16
+9,100,normal,no heuristic,full expand,no heuristic,0.032,8,557,67,0.1202872531418312,0.1,0.15
+9,100,normal,no heuristic,full expand,no heuristic,0.064,8,1566,182,0.1162196679438058,0.1,0.13
+9,100,normal,no heuristic,full expand,no heuristic,0.128,8,557,48,0.0861759425493716,0.07,0.11
+9,100,normal,no heuristic,full expand,no heuristic,0.256,8,529,46,0.0869565217391304,0.07,0.11
+9,100,normal,no heuristic,full expand,no heuristic,0.512,8,556,44,0.079136690647482,0.06,0.1
+9,100,normal,no heuristic,full expand,no heuristic,1.024,8,844,63,0.0746445497630331,0.06,0.09
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.001,8,1751,974,0.5562535693889206,0.53,0.58
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.002,8,1886,1096,0.5811240721102863,0.56,0.6
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,2093,1192,0.5695174390826565,0.55,0.59
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.008,8,1885,1080,0.5729442970822282,0.55,0.6
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.016,8,1749,968,0.5534591194968553,0.53,0.58
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.032,8,1888,985,0.5217161016949152,0.5,0.54
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.064,8,1550,680,0.4387096774193548,0.41,0.46
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.128,8,1888,614,0.3252118644067797,0.3,0.35
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.256,8,1549,402,0.2595222724338282,0.24,0.28
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.512,8,1165,242,0.207725321888412,0.19,0.23
+9+,400,parallel max,no heuristic,full expand,no heuristic,1.024,8,827,115,0.1390568319226118,0.12,0.16
+9+,400,parallel trees,no heuristic,full expand,no heuristic,1e-05,8,452,11,0.0243362831858407,0.01,0.04
+9+,400,parallel trees,no heuristic,full expand,no heuristic,5e-05,8,452,14,0.0309734513274336,0.02,0.05
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.0001,8,452,11,0.0243362831858407,0.01,0.04
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.0005,8,769,124,0.1612483745123537,0.14,0.19
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.001,8,1482,511,0.344804318488529,0.32,0.37
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.002,8,1887,1015,0.5378908320084791,0.52,0.56
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2093,1289,0.6158623984710941,0.59,0.64
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.008,8,1888,1046,0.5540254237288136,0.53,0.58
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.016,8,1749,865,0.494568324757004,0.47,0.52
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.032,8,1885,742,0.3936339522546419,0.37,0.42
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.064,8,1549,537,0.3466752743705616,0.32,0.37
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.128,8,1885,549,0.2912466843501326,0.27,0.31
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.256,8,1549,329,0.2123950936087798,0.19,0.23
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.512,8,542,49,0.0904059040590405,0.07,0.12
+9+,400,parallel trees,no heuristic,full expand,no heuristic,1.024,8,510,1,0.0019607843137254,0.0,0.01
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.001,8,1744,255,0.1462155963302752,0.13,0.16
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.002,8,542,66,0.1217712177121771,0.1,0.15
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,1051,165,0.1569933396764985,0.14,0.18
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.008,8,1263,181,0.1433095803642121,0.13,0.16
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.016,8,707,107,0.1513437057991513,0.13,0.18
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.032,8,1261,126,0.0999206978588422,0.08,0.12
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.064,8,508,35,0.0688976377952756,0.05,0.09
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.128,8,1261,76,0.0602696272799365,0.05,0.07
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.256,8,508,31,0.0610236220472441,0.04,0.09
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.512,8,541,22,0.0406654343807763,0.03,0.06
+9++,400,parallel max,no heuristic,full expand,no heuristic,1.024,8,507,9,0.0177514792899408,0.01,0.03
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.001,8,708,26,0.0367231638418079,0.03,0.05
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.002,8,539,26,0.0482374768089053,0.03,0.07
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1051,54,0.0513796384395813,0.04,0.07
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.008,8,539,19,0.0352504638218923,0.02,0.05
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.016,8,707,20,0.0282885431400282,0.02,0.04
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.032,8,539,24,0.0445269016697588,0.03,0.07
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.064,8,508,11,0.0216535433070866,0.01,0.04
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.128,8,224,3,0.0133928571428571,0.0,0.04
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.256,8,508,7,0.0137795275590551,0.01,0.03
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.512,8,224,0,0.0,0.0,0.02
+9++,400,parallel trees,no heuristic,full expand,no heuristic,1.024,8,507,1,0.0019723865877712,0.0,0.01
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,17,0.0160984848484848,0.01,0.03
+9+,200,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,231,0.21875,0.19,0.24
+9+,300,parallel max,no heuristic,full expand,no heuristic,0.004,8,1373,630,0.4588492352512746,0.43,0.49
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,2093,1192,0.5695174390826565,0.55,0.59
+9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,1168,778,0.666095890410959,0.64,0.69
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1890,1348,0.7132275132275132,0.69,0.73
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1889,1408,0.745367919534145,0.73,0.76
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,2089,1614,0.7726184777405457,0.75,0.79
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1130,962,0.8513274336283185,0.83,0.87
+9+,100,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1056,6,0.0056818181818181,0.0,0.01
+9+,200,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1372,341,0.2485422740524781,0.23,0.27
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2721,1377,0.5060639470782801,0.49,0.52
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2093,1289,0.6158623984710941,0.59,0.64
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1224,0.6476190476190476,0.63,0.67
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1361,0.7201058201058201,0.7,0.74
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1889,1381,0.7310746426680783,0.71,0.75
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1369,1026,0.7494521548575602,0.73,0.77
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1130,940,0.831858407079646,0.81,0.85
+9++,100,normal,no heuristic,full expand,no heuristic,0.004,8,2249,1,0.0004446420631391,0.0,0.0
+9++,200,normal,no heuristic,full expand,no heuristic,0.004,8,2249,13,0.0057803468208092,0.0,0.01
+9++,300,normal,no heuristic,full expand,no heuristic,0.004,8,2249,23,0.0102267674522009,0.01,0.02
+9++,400,normal,no heuristic,full expand,no heuristic,0.004,8,2865,62,0.0216404886561954,0.02,0.03
+9++,500,normal,no heuristic,full expand,no heuristic,0.004,8,2047,60,0.0293111871030776,0.02,0.04
+9++,600,normal,no heuristic,full expand,no heuristic,0.004,8,2045,97,0.0474327628361858,0.04,0.06
+9++,700,normal,no heuristic,full expand,no heuristic,0.004,8,2045,96,0.0469437652811736,0.04,0.06
+9++,800,normal,no heuristic,full expand,no heuristic,0.004,8,2242,131,0.0584299732381801,0.05,0.07
+9++,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2322,212,0.0913006029285099,0.08,0.1
+9++,100,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,1,0.0009505703422053,0.0,0.01
+9++,200,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,16,0.0152091254752851,0.01,0.02
+9++,300,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,82,0.0779467680608365,0.06,0.1
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,1051,165,0.1569933396764985,0.14,0.18
+9++,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,850,190,0.2235294117647059,0.2,0.25
+9++,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1165,315,0.2703862660944206,0.25,0.3
+9++,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1165,381,0.327038626609442,0.3,0.35
+9++,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,1361,535,0.3930933137398971,0.37,0.42
+9++,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,2161,1355,0.6270245256825544,0.61,0.65
+9++,100,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,0,0.0,0.0,0.0
+9++,200,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,4,0.0038022813688212,0.0,0.01
+9++,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,25,0.023764258555133,0.02,0.03
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1051,54,0.0513796384395813,0.04,0.07
+9++,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,850,100,0.1176470588235294,0.1,0.14
+9++,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1164,302,0.2594501718213058,0.24,0.29
+9++,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1164,542,0.4656357388316151,0.44,0.49
+9++,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2082,1110,0.5331412103746398,0.51,0.55
+9++,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1124,769,0.6841637010676157,0.66,0.71
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,parallel max,no heuristic,full expand,no heuristic,0.004,2,730,2,0.0027397260273972,0.0,0.01
+9+,200,parallel max,no heuristic,full expand,no heuristic,0.004,2,730,38,0.0520547945205479,0.04,0.07
+9+,300,parallel max,no heuristic,full expand,no heuristic,0.004,2,730,72,0.0986301369863013,0.08,0.12
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,2,1047,159,0.1518624641833811,0.13,0.17
+9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,2,1045,207,0.1980861244019138,0.18,0.22
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,2,1764,406,0.2301587301587301,0.21,0.25
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,2,1045,278,0.2660287081339713,0.24,0.29
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,2,1045,316,0.3023923444976076,0.28,0.33
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,2,1766,737,0.4173272933182333,0.39,0.44
+9+,100,parallel max,no heuristic,full expand,no heuristic,0.004,4,730,8,0.010958904109589,0.01,0.02
+9+,200,parallel max,no heuristic,full expand,no heuristic,0.004,4,1045,135,0.1291866028708134,0.11,0.15
+9+,300,parallel max,no heuristic,full expand,no heuristic,0.004,4,1047,277,0.2645654250238777,0.24,0.29
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,4,1046,350,0.3346080305927342,0.31,0.36
+9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,4,1766,721,0.4082672706681767,0.39,0.43
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,4,1767,816,0.4617996604414261,0.44,0.49
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,4,1766,865,0.4898074745186863,0.47,0.51
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,4,1766,940,0.5322763306908267,0.51,0.56
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,4,1764,1165,0.6604308390022676,0.64,0.68
+9+,100,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,17,0.0160984848484848,0.01,0.03
+9+,200,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,231,0.21875,0.19,0.24
+9+,300,parallel max,no heuristic,full expand,no heuristic,0.004,8,1373,630,0.4588492352512746,0.43,0.49
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,2093,1192,0.5695174390826565,0.55,0.59
+9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,1168,778,0.666095890410959,0.64,0.69
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1890,1348,0.7132275132275132,0.69,0.73
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1889,1408,0.745367919534145,0.73,0.76
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,2089,1614,0.7726184777405457,0.75,0.79
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1130,962,0.8513274336283185,0.83,0.87
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,parallel trees,no heuristic,full expand,no heuristic,0.004,2,623,0,0.0,0.0,0.01
+9+,200,parallel trees,no heuristic,full expand,no heuristic,0.004,2,623,25,0.0401284109149277,0.03,0.06
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1660,269,0.1620481927710843,0.15,0.18
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,371,0.2233594220349187,0.2,0.24
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,451,0.271523178807947,0.25,0.29
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,524,0.3154726068633353,0.29,0.34
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1662,612,0.3682310469314079,0.35,0.39
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1663,659,0.3962717979555021,0.37,0.42
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,803,0.4834437086092715,0.46,0.51
+9+,100,parallel trees,no heuristic,full expand,no heuristic,0.004,4,622,0,0.0,0.0,0.01
+9+,200,parallel trees,no heuristic,full expand,no heuristic,0.004,4,938,110,0.1172707889125799,0.1,0.14
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,571,0.3437688139674895,0.32,0.37
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,750,0.4515352197471403,0.43,0.48
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,853,0.5135460565924143,0.49,0.54
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1660,933,0.5620481927710843,0.54,0.59
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1660,975,0.5873493975903614,0.56,0.61
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,1023,0.6158940397350994,0.59,0.64
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1659,1140,0.6871609403254972,0.66,0.71
+9+,100,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1056,6,0.0056818181818181,0.0,0.01
+9+,200,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1372,341,0.2485422740524781,0.23,0.27
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2721,1377,0.5060639470782801,0.49,0.52
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2093,1289,0.6158623984710941,0.59,0.64
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1224,0.6476190476190476,0.63,0.67
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1361,0.7201058201058201,0.7,0.74
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1889,1381,0.7310746426680783,0.71,0.75
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1369,1026,0.7494521548575602,0.73,0.77
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1130,940,0.831858407079646,0.81,0.85
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,parallel max,no heuristic,full expand,no heuristic,0.004,2,730,2,0.0027397260273972,0.0,0.01
+9+,200,parallel max,no heuristic,full expand,no heuristic,0.004,2,730,38,0.0520547945205479,0.04,0.07
+9+,300,parallel max,no heuristic,full expand,no heuristic,0.004,2,730,72,0.0986301369863013,0.08,0.12
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,2,1047,159,0.1518624641833811,0.13,0.17
+9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,2,1045,207,0.1980861244019138,0.18,0.22
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,2,1764,406,0.2301587301587301,0.21,0.25
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,2,1045,278,0.2660287081339713,0.24,0.29
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,2,1045,316,0.3023923444976076,0.28,0.33
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,2,1766,737,0.4173272933182333,0.39,0.44
+9+,100,parallel max,no heuristic,full expand,no heuristic,0.004,4,730,8,0.010958904109589,0.01,0.02
+9+,200,parallel max,no heuristic,full expand,no heuristic,0.004,4,1045,135,0.1291866028708134,0.11,0.15
+9+,300,parallel max,no heuristic,full expand,no heuristic,0.004,4,1047,277,0.2645654250238777,0.24,0.29
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,4,1046,350,0.3346080305927342,0.31,0.36
+9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,4,1766,721,0.4082672706681767,0.39,0.43
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,4,1767,816,0.4617996604414261,0.44,0.49
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,4,1766,865,0.4898074745186863,0.47,0.51
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,4,1766,940,0.5322763306908267,0.51,0.56
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,4,1764,1165,0.6604308390022676,0.64,0.68
+9+,100,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,17,0.0160984848484848,0.01,0.03
+9+,200,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,231,0.21875,0.19,0.24
+9+,300,parallel max,no heuristic,full expand,no heuristic,0.004,8,1373,630,0.4588492352512746,0.43,0.49
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,2093,1192,0.5695174390826565,0.55,0.59
+9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,1168,778,0.666095890410959,0.64,0.69
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1890,1348,0.7132275132275132,0.69,0.73
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1889,1408,0.745367919534145,0.73,0.76
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,2089,1614,0.7726184777405457,0.75,0.79
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1130,962,0.8513274336283185,0.83,0.87
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,parallel trees,no heuristic,full expand,no heuristic,0.004,2,623,0,0.0,0.0,0.01
+9+,200,parallel trees,no heuristic,full expand,no heuristic,0.004,2,623,25,0.0401284109149277,0.03,0.06
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1660,269,0.1620481927710843,0.15,0.18
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,371,0.2233594220349187,0.2,0.24
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,451,0.271523178807947,0.25,0.29
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,524,0.3154726068633353,0.29,0.34
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1662,612,0.3682310469314079,0.35,0.39
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1663,659,0.3962717979555021,0.37,0.42
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,803,0.4834437086092715,0.46,0.51
+9+,100,parallel trees,no heuristic,full expand,no heuristic,0.004,4,622,0,0.0,0.0,0.01
+9+,200,parallel trees,no heuristic,full expand,no heuristic,0.004,4,938,110,0.1172707889125799,0.1,0.14
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,571,0.3437688139674895,0.32,0.37
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,750,0.4515352197471403,0.43,0.48
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,853,0.5135460565924143,0.49,0.54
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1660,933,0.5620481927710843,0.54,0.59
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1660,975,0.5873493975903614,0.56,0.61
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,1023,0.6158940397350994,0.59,0.64
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1659,1140,0.6871609403254972,0.66,0.71
+9+,100,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1056,6,0.0056818181818181,0.0,0.01
+9+,200,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1372,341,0.2485422740524781,0.23,0.27
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2721,1377,0.5060639470782801,0.49,0.52
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2093,1289,0.6158623984710941,0.59,0.64
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1224,0.6476190476190476,0.63,0.67
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1361,0.7201058201058201,0.7,0.74
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1889,1381,0.7310746426680783,0.71,0.75
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1369,1026,0.7494521548575602,0.73,0.77
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1130,940,0.831858407079646,0.81,0.85
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,normal,no heuristic,square ratio,no heuristic,0.004,8,215,0,0.0,0.0,0.02
+9+,200,normal,no heuristic,square ratio,no heuristic,0.004,8,530,17,0.0320754716981132,0.02,0.05
+9+,300,normal,no heuristic,square ratio,no heuristic,0.004,8,532,46,0.0864661654135338,0.07,0.11
+9+,400,normal,no heuristic,square ratio,no heuristic,0.004,8,1252,108,0.0862619808306709,0.07,0.1
+9+,500,normal,no heuristic,square ratio,no heuristic,0.004,8,1002,108,0.1077844311377245,0.09,0.13
+9+,600,normal,no heuristic,square ratio,no heuristic,0.004,8,1002,140,0.1397205588822355,0.12,0.16
+9+,700,normal,no heuristic,square ratio,no heuristic,0.004,8,1002,150,0.1497005988023952,0.13,0.17
+9+,800,normal,no heuristic,square ratio,no heuristic,0.004,8,740,120,0.1621621621621621,0.14,0.19
+9+,1600,normal,no heuristic,square ratio,no heuristic,0.004,8,1329,305,0.2294958615500376,0.21,0.25
+9+,100,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,17,0.0160984848484848,0.01,0.03
+9+,200,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,231,0.21875,0.19,0.24
+9+,300,parallel max,no heuristic,full expand,no heuristic,0.004,8,1373,630,0.4588492352512746,0.43,0.49
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,2093,1192,0.5695174390826565,0.55,0.59
+9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,1168,778,0.666095890410959,0.64,0.69
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1890,1348,0.7132275132275132,0.69,0.73
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1889,1408,0.745367919534145,0.73,0.76
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,2089,1614,0.7726184777405457,0.75,0.79
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1130,962,0.8513274336283185,0.83,0.87
+9+,100,parallel max,no heuristic,square ratio,no heuristic,0.004,8,558,50,0.089605734767025,0.07,0.12
+9+,200,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1597,483,0.3024420788979336,0.28,0.33
+9+,300,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1599,760,0.4752970606629143,0.45,0.5
+9+,400,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1599,944,0.590368980612883,0.57,0.61
+9+,500,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,914,0.6547277936962751,0.63,0.68
+9+,600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,998,0.7148997134670487,0.69,0.74
+9+,700,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,1052,0.7535816618911175,0.73,0.78
+9+,800,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1596,1208,0.7568922305764411,0.74,0.78
+9+,1600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,949,800,0.8429926238145417,0.82,0.86
+9+,100,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1056,6,0.0056818181818181,0.0,0.01
+9+,200,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1372,341,0.2485422740524781,0.23,0.27
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2721,1377,0.5060639470782801,0.49,0.52
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2093,1289,0.6158623984710941,0.59,0.64
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1224,0.6476190476190476,0.63,0.67
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1361,0.7201058201058201,0.7,0.74
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1889,1381,0.7310746426680783,0.71,0.75
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1369,1026,0.7494521548575602,0.73,0.77
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1130,940,0.831858407079646,0.81,0.85
+9+,100,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,558,43,0.0770609318996415,0.06,0.1
+9+,200,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1597,606,0.3794614902943018,0.36,0.4
+9+,300,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1599,844,0.5278298936835523,0.5,0.55
+9+,400,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1598,973,0.6088861076345432,0.58,0.63
+9+,500,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1396,943,0.6755014326647565,0.65,0.7
+9+,600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1396,979,0.7012893982808023,0.68,0.72
+9+,700,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1396,1033,0.7399713467048711,0.72,0.76
+9+,800,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1596,1179,0.7387218045112782,0.72,0.76
+9+,1600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,949,769,0.8103266596417281,0.78,0.83
+9+,100,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,17,0.0160984848484848,0.01,0.03
+9+,200,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,231,0.21875,0.19,0.24
+9+,300,parallel max,no heuristic,full expand,no heuristic,0.004,8,1373,630,0.4588492352512746,0.43,0.49
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,2093,1192,0.5695174390826565,0.55,0.59
+9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,1168,778,0.666095890410959,0.64,0.69
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1890,1348,0.7132275132275132,0.69,0.73
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1889,1408,0.745367919534145,0.73,0.76
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,2089,1614,0.7726184777405457,0.75,0.79
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1130,962,0.8513274336283185,0.83,0.87
+9+,100,parallel max,no heuristic,square ratio,no heuristic,0.004,8,558,50,0.089605734767025,0.07,0.12
+9+,200,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1597,483,0.3024420788979336,0.28,0.33
+9+,300,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1599,760,0.4752970606629143,0.45,0.5
+9+,400,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1599,944,0.590368980612883,0.57,0.61
+9+,500,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,914,0.6547277936962751,0.63,0.68
+9+,600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,998,0.7148997134670487,0.69,0.74
+9+,700,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,1052,0.7535816618911175,0.73,0.78
+9+,800,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1596,1208,0.7568922305764411,0.74,0.78
+9+,1600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,949,800,0.8429926238145417,0.82,0.86
+9+,100,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1056,6,0.0056818181818181,0.0,0.01
+9+,200,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1372,341,0.2485422740524781,0.23,0.27
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2721,1377,0.5060639470782801,0.49,0.52
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2093,1289,0.6158623984710941,0.59,0.64
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1224,0.6476190476190476,0.63,0.67
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1361,0.7201058201058201,0.7,0.74
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1889,1381,0.7310746426680783,0.71,0.75
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1369,1026,0.7494521548575602,0.73,0.77
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1130,940,0.831858407079646,0.81,0.85
+9+,100,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,558,43,0.0770609318996415,0.06,0.1
+9+,200,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1597,606,0.3794614902943018,0.36,0.4
+9+,300,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1599,844,0.5278298936835523,0.5,0.55
+9+,400,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1598,973,0.6088861076345432,0.58,0.63
+9+,500,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1396,943,0.6755014326647565,0.65,0.7
+9+,600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1396,979,0.7012893982808023,0.68,0.72
+9+,700,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1396,1033,0.7399713467048711,0.72,0.76
+9+,800,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1596,1179,0.7387218045112782,0.72,0.76
+9+,1600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,949,769,0.8103266596417281,0.78,0.83
+9++,100,normal,no heuristic,full expand,no heuristic,0.004,8,2249,1,0.0004446420631391,0.0,0.0
+9++,200,normal,no heuristic,full expand,no heuristic,0.004,8,2249,13,0.0057803468208092,0.0,0.01
+9++,300,normal,no heuristic,full expand,no heuristic,0.004,8,2249,23,0.0102267674522009,0.01,0.02
+9++,400,normal,no heuristic,full expand,no heuristic,0.004,8,2865,62,0.0216404886561954,0.02,0.03
+9++,500,normal,no heuristic,full expand,no heuristic,0.004,8,2047,60,0.0293111871030776,0.02,0.04
+9++,600,normal,no heuristic,full expand,no heuristic,0.004,8,2045,97,0.0474327628361858,0.04,0.06
+9++,700,normal,no heuristic,full expand,no heuristic,0.004,8,2045,96,0.0469437652811736,0.04,0.06
+9++,800,normal,no heuristic,full expand,no heuristic,0.004,8,2242,131,0.0584299732381801,0.05,0.07
+9++,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2322,212,0.0913006029285099,0.08,0.1
+9++,100,normal,no heuristic,square ratio,no heuristic,0.004,8,213,1,0.0046948356807511,0.0,0.03
+9++,200,normal,no heuristic,square ratio,no heuristic,0.004,8,213,2,0.0093896713615023,0.0,0.03
+9++,300,normal,no heuristic,square ratio,no heuristic,0.004,8,213,1,0.0046948356807511,0.0,0.03
+9++,400,normal,no heuristic,square ratio,no heuristic,0.004,8,212,3,0.0141509433962264,0.0,0.04
+9++,500,normal,no heuristic,square ratio,no heuristic,0.004,8,1249,38,0.0304243394715772,0.02,0.04
+9++,600,normal,no heuristic,square ratio,no heuristic,0.004,8,1249,47,0.0376301040832666,0.03,0.05
+9++,700,normal,no heuristic,square ratio,no heuristic,0.004,8,1249,39,0.0312249799839871,0.02,0.04
+9++,800,normal,no heuristic,square ratio,no heuristic,0.004,8,525,21,0.04,0.03,0.06
+9++,1600,normal,no heuristic,square ratio,no heuristic,0.004,8,290,17,0.0586206896551724,0.04,0.09
+9++,100,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,1,0.0009505703422053,0.0,0.01
+9++,200,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,16,0.0152091254752851,0.01,0.02
+9++,300,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,82,0.0779467680608365,0.06,0.1
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,1051,165,0.1569933396764985,0.14,0.18
+9++,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,850,190,0.2235294117647059,0.2,0.25
+9++,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1165,315,0.2703862660944206,0.25,0.3
+9++,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1165,381,0.327038626609442,0.3,0.35
+9++,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,1361,535,0.3930933137398971,0.37,0.42
+9++,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,2161,1355,0.6270245256825544,0.61,0.65
+9++,100,parallel max,no heuristic,square ratio,no heuristic,0.004,8,556,4,0.0071942446043165,0.0,0.02
+9++,200,parallel max,no heuristic,square ratio,no heuristic,0.004,8,556,54,0.0971223021582733,0.08,0.12
+9++,300,parallel max,no heuristic,square ratio,no heuristic,0.004,8,871,122,0.140068886337543,0.12,0.16
+9++,400,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1593,358,0.2247332077840552,0.2,0.25
+9++,500,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,385,0.2757879656160458,0.25,0.3
+9++,600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1604,505,0.3148379052369077,0.29,0.34
+9++,700,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,528,0.3782234957020057,0.35,0.4
+9++,800,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1591,649,0.4079195474544311,0.38,0.43
+9++,1600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1671,1040,0.6223818073010173,0.6,0.65
+9++,100,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,0,0.0,0.0,0.0
+9++,200,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,4,0.0038022813688212,0.0,0.01
+9++,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,25,0.023764258555133,0.02,0.03
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1051,54,0.0513796384395813,0.04,0.07
+9++,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,850,100,0.1176470588235294,0.1,0.14
+9++,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1164,302,0.2594501718213058,0.24,0.29
+9++,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1164,542,0.4656357388316151,0.44,0.49
+9++,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2082,1110,0.5331412103746398,0.51,0.55
+9++,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1124,769,0.6841637010676157,0.66,0.71
+9++,100,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,556,2,0.0035971223021582,0.0,0.01
+9++,200,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,556,39,0.0701438848920863,0.05,0.09
+9++,300,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1592,375,0.2355527638190954,0.22,0.26
+9++,400,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1593,510,0.32015065913371,0.3,0.34
+9++,500,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1604,668,0.4164588528678304,0.39,0.44
+9++,600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1607,767,0.477286869943995,0.45,0.5
+9++,700,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1395,711,0.5096774193548387,0.48,0.54
+9++,800,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1593,880,0.5524168236032643,0.53,0.58
+9++,1600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1669,1152,0.6902336728579987,0.67,0.71
+9++,100,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,1,0.0009505703422053,0.0,0.01
+9++,200,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,16,0.0152091254752851,0.01,0.02
+9++,300,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,82,0.0779467680608365,0.06,0.1
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,1051,165,0.1569933396764985,0.14,0.18
+9++,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,850,190,0.2235294117647059,0.2,0.25
+9++,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1165,315,0.2703862660944206,0.25,0.3
+9++,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1165,381,0.327038626609442,0.3,0.35
+9++,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,1361,535,0.3930933137398971,0.37,0.42
+9++,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,2161,1355,0.6270245256825544,0.61,0.65
+9++,100,parallel max,no heuristic,square ratio,no heuristic,0.004,8,556,4,0.0071942446043165,0.0,0.02
+9++,200,parallel max,no heuristic,square ratio,no heuristic,0.004,8,556,54,0.0971223021582733,0.08,0.12
+9++,300,parallel max,no heuristic,square ratio,no heuristic,0.004,8,871,122,0.140068886337543,0.12,0.16
+9++,400,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1593,358,0.2247332077840552,0.2,0.25
+9++,500,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,385,0.2757879656160458,0.25,0.3
+9++,600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1604,505,0.3148379052369077,0.29,0.34
+9++,700,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,528,0.3782234957020057,0.35,0.4
+9++,800,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1591,649,0.4079195474544311,0.38,0.43
+9++,1600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1671,1040,0.6223818073010173,0.6,0.65
+9++,100,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,0,0.0,0.0,0.0
+9++,200,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,4,0.0038022813688212,0.0,0.01
+9++,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,25,0.023764258555133,0.02,0.03
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1051,54,0.0513796384395813,0.04,0.07
+9++,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,850,100,0.1176470588235294,0.1,0.14
+9++,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1164,302,0.2594501718213058,0.24,0.29
+9++,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1164,542,0.4656357388316151,0.44,0.49
+9++,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2082,1110,0.5331412103746398,0.51,0.55
+9++,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1124,769,0.6841637010676157,0.66,0.71
+9++,100,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,556,2,0.0035971223021582,0.0,0.01
+9++,200,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,556,39,0.0701438848920863,0.05,0.09
+9++,300,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1592,375,0.2355527638190954,0.22,0.26
+9++,400,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1593,510,0.32015065913371,0.3,0.34
+9++,500,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1604,668,0.4164588528678304,0.39,0.44
+9++,600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1607,767,0.477286869943995,0.45,0.5
+9++,700,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1395,711,0.5096774193548387,0.48,0.54
+9++,800,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1593,880,0.5524168236032643,0.53,0.58
+9++,1600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1669,1152,0.6902336728579987,0.67,0.71
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,normal,no heuristic,full expand,total zombie hp,0.004,8,1541,29,0.0188189487345879,0.01,0.03
+9+,200,normal,no heuristic,full expand,total zombie hp,0.004,8,1541,71,0.0460739779364049,0.04,0.06
+9+,300,normal,no heuristic,full expand,total zombie hp,0.004,8,1541,144,0.0934458144062297,0.08,0.11
+9+,400,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,208,0.135064935064935,0.12,0.15
+9+,500,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,207,0.1344155844155844,0.12,0.15
+9+,600,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,197,0.1279220779220779,0.11,0.15
+9+,700,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,228,0.148051948051948,0.13,0.17
+9+,800,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,283,0.1837662337662337,0.17,0.2
+9+,1600,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,406,0.2636363636363636,0.24,0.29
+9+,100,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1541,18,0.0116807268007787,0.01,0.02
+9+,200,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1541,88,0.0571057754704737,0.05,0.07
+9+,300,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1541,109,0.0707332900713822,0.06,0.08
+9+,400,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1540,172,0.1116883116883116,0.1,0.13
+9+,500,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1540,190,0.1233766233766233,0.11,0.14
+9+,600,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1540,229,0.1487012987012987,0.13,0.17
+9+,700,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1540,213,0.1383116883116883,0.12,0.16
+9+,800,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1540,266,0.1727272727272727,0.15,0.19
+9+,1600,normal,no heuristic,full expand,zombies left to spawn,0.004,8,2260,561,0.2482300884955752,0.23,0.27
+9+,100,normal,no heuristic,full expand,frame,0.004,8,1541,24,0.0155743024010382,0.01,0.02
+9+,200,normal,no heuristic,full expand,frame,0.004,8,1541,75,0.0486696950032446,0.04,0.06
+9+,300,normal,no heuristic,full expand,frame,0.004,8,1541,110,0.0713822193380921,0.06,0.09
+9+,400,normal,no heuristic,full expand,frame,0.004,8,1540,154,0.1,0.09,0.12
+9+,500,normal,no heuristic,full expand,frame,0.004,8,1540,171,0.111038961038961,0.1,0.13
+9+,600,normal,no heuristic,full expand,frame,0.004,8,1540,209,0.1357142857142857,0.12,0.15
+9+,700,normal,no heuristic,full expand,frame,0.004,8,1540,256,0.1662337662337662,0.15,0.19
+9+,800,normal,no heuristic,full expand,frame,0.004,8,1540,260,0.1688311688311688,0.15,0.19
+9+,1600,normal,no heuristic,full expand,frame,0.004,8,2260,538,0.2380530973451327,0.22,0.26
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,normal,select heuristic,full expand,no heuristic,0.004,8,530,13,0.0245283018867924,0.01,0.04
+9+,200,normal,select heuristic,full expand,no heuristic,0.004,8,1252,122,0.097444089456869,0.08,0.12
+9+,300,normal,select heuristic,full expand,no heuristic,0.004,8,1254,180,0.1435406698564593,0.13,0.16
+9+,400,normal,select heuristic,full expand,no heuristic,0.004,8,1465,262,0.178839590443686,0.16,0.2
+9+,500,normal,select heuristic,full expand,no heuristic,0.004,8,1318,274,0.2078907435508346,0.19,0.23
+9+,600,normal,select heuristic,full expand,no heuristic,0.004,8,1002,222,0.2215568862275449,0.2,0.25
+9+,700,normal,select heuristic,full expand,no heuristic,0.004,8,2038,513,0.2517173699705594,0.23,0.27
+9+,800,normal,select heuristic,full expand,no heuristic,0.004,8,1464,416,0.2841530054644808,0.26,0.31
+9+,1600,normal,select heuristic,full expand,no heuristic,0.004,8,1540,554,0.3597402597402597,0.34,0.38
+9++,100,normal,no heuristic,full expand,no heuristic,0.004,8,2249,1,0.0004446420631391,0.0,0.0
+9++,200,normal,no heuristic,full expand,no heuristic,0.004,8,2249,13,0.0057803468208092,0.0,0.01
+9++,300,normal,no heuristic,full expand,no heuristic,0.004,8,2249,23,0.0102267674522009,0.01,0.02
+9++,400,normal,no heuristic,full expand,no heuristic,0.004,8,2865,62,0.0216404886561954,0.02,0.03
+9++,500,normal,no heuristic,full expand,no heuristic,0.004,8,2047,60,0.0293111871030776,0.02,0.04
+9++,600,normal,no heuristic,full expand,no heuristic,0.004,8,2045,97,0.0474327628361858,0.04,0.06
+9++,700,normal,no heuristic,full expand,no heuristic,0.004,8,2045,96,0.0469437652811736,0.04,0.06
+9++,800,normal,no heuristic,full expand,no heuristic,0.004,8,2242,131,0.0584299732381801,0.05,0.07
+9++,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2322,212,0.0913006029285099,0.08,0.1
+9++,100,normal,select heuristic,full expand,no heuristic,0.004,8,213,1,0.0046948356807511,0.0,0.03
+9++,200,normal,select heuristic,full expand,no heuristic,0.004,8,213,3,0.0140845070422535,0.0,0.04
+9++,300,normal,select heuristic,full expand,no heuristic,0.004,8,529,15,0.0283553875236294,0.02,0.05
+9++,400,normal,select heuristic,full expand,no heuristic,0.004,8,528,30,0.0568181818181818,0.04,0.08
+9++,500,normal,select heuristic,full expand,no heuristic,0.004,8,1249,98,0.0784627702161729,0.06,0.09
+9++,600,normal,select heuristic,full expand,no heuristic,0.004,8,1249,104,0.0832666132906325,0.07,0.1
+9++,700,normal,select heuristic,full expand,no heuristic,0.004,8,1249,124,0.099279423538831,0.08,0.12
+9++,800,normal,select heuristic,full expand,no heuristic,0.004,8,737,80,0.1085481682496607,0.09,0.13
+9++,1600,normal,select heuristic,full expand,no heuristic,0.004,8,1329,244,0.1835966892400301,0.16,0.21
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,normal,no heuristic,full expand,total plant cost,0.004,8,1756,41,0.0233485193621867,0.02,0.03
+9+,200,normal,no heuristic,full expand,total plant cost,0.004,8,1756,126,0.071753986332574,0.06,0.08
+9+,300,normal,no heuristic,full expand,total plant cost,0.004,8,1756,196,0.1116173120728929,0.1,0.13
+9+,400,normal,no heuristic,full expand,total plant cost,0.004,8,1755,253,0.1441595441595441,0.13,0.16
+9+,500,normal,no heuristic,full expand,total plant cost,0.004,8,1552,242,0.1559278350515464,0.14,0.17
+9+,600,normal,no heuristic,full expand,total plant cost,0.004,8,1552,278,0.1791237113402062,0.16,0.2
+9+,700,normal,no heuristic,full expand,total plant cost,0.004,8,1552,307,0.1978092783505154,0.18,0.22
+9+,800,normal,no heuristic,full expand,total plant cost,0.004,8,1753,373,0.2127780946948089,0.19,0.23
+9+,1600,normal,no heuristic,full expand,total plant cost,0.004,8,1830,538,0.2939890710382514,0.27,0.32
+9++,100,normal,no heuristic,full expand,no heuristic,0.004,8,2249,1,0.0004446420631391,0.0,0.0
+9++,200,normal,no heuristic,full expand,no heuristic,0.004,8,2249,13,0.0057803468208092,0.0,0.01
+9++,300,normal,no heuristic,full expand,no heuristic,0.004,8,2249,23,0.0102267674522009,0.01,0.02
+9++,400,normal,no heuristic,full expand,no heuristic,0.004,8,2865,62,0.0216404886561954,0.02,0.03
+9++,500,normal,no heuristic,full expand,no heuristic,0.004,8,2047,60,0.0293111871030776,0.02,0.04
+9++,600,normal,no heuristic,full expand,no heuristic,0.004,8,2045,97,0.0474327628361858,0.04,0.06
+9++,700,normal,no heuristic,full expand,no heuristic,0.004,8,2045,96,0.0469437652811736,0.04,0.06
+9++,800,normal,no heuristic,full expand,no heuristic,0.004,8,2242,131,0.0584299732381801,0.05,0.07
+9++,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2322,212,0.0913006029285099,0.08,0.1
+9++,100,normal,no heuristic,full expand,total plant cost,0.004,8,1753,5,0.0028522532800912,0.0,0.01
+9++,200,normal,no heuristic,full expand,total plant cost,0.004,8,1753,21,0.0119794637763833,0.01,0.02
+9++,300,normal,no heuristic,full expand,total plant cost,0.004,8,1753,34,0.0193953223046206,0.01,0.03
+9++,400,normal,no heuristic,full expand,total plant cost,0.004,8,1752,57,0.0325342465753424,0.03,0.04
+9++,500,normal,no heuristic,full expand,total plant cost,0.004,8,1552,86,0.0554123711340206,0.05,0.07
+9++,600,normal,no heuristic,full expand,total plant cost,0.004,8,1552,88,0.056701030927835,0.05,0.07
+9++,700,normal,no heuristic,full expand,total plant cost,0.004,8,1551,110,0.0709219858156028,0.06,0.08
+9++,800,normal,no heuristic,full expand,total plant cost,0.004,8,1749,142,0.0811892510005717,0.07,0.09
+9++,1600,normal,no heuristic,full expand,total plant cost,0.004,8,1828,234,0.1280087527352297,0.11,0.14
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,normal,no heuristic,full expand,total zombie hp,0.004,8,1541,29,0.0188189487345879,0.01,0.03
+9+,200,normal,no heuristic,full expand,total zombie hp,0.004,8,1541,71,0.0460739779364049,0.04,0.06
+9+,300,normal,no heuristic,full expand,total zombie hp,0.004,8,1541,144,0.0934458144062297,0.08,0.11
+9+,400,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,208,0.135064935064935,0.12,0.15
+9+,500,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,207,0.1344155844155844,0.12,0.15
+9+,600,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,197,0.1279220779220779,0.11,0.15
+9+,700,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,228,0.148051948051948,0.13,0.17
+9+,800,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,283,0.1837662337662337,0.17,0.2
+9+,1600,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,406,0.2636363636363636,0.24,0.29
+9+,100,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1541,18,0.0116807268007787,0.01,0.02
+9+,200,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1541,88,0.0571057754704737,0.05,0.07
+9+,300,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1541,109,0.0707332900713822,0.06,0.08
+9+,400,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1540,172,0.1116883116883116,0.1,0.13
+9+,500,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1540,190,0.1233766233766233,0.11,0.14
+9+,600,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1540,229,0.1487012987012987,0.13,0.17
+9+,700,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1540,213,0.1383116883116883,0.12,0.16
+9+,800,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1540,266,0.1727272727272727,0.15,0.19
+9+,1600,normal,no heuristic,full expand,zombies left to spawn,0.004,8,2260,561,0.2482300884955752,0.23,0.27
+9+,100,normal,no heuristic,full expand,frame,0.004,8,1541,24,0.0155743024010382,0.01,0.02
+9+,200,normal,no heuristic,full expand,frame,0.004,8,1541,75,0.0486696950032446,0.04,0.06
+9+,300,normal,no heuristic,full expand,frame,0.004,8,1541,110,0.0713822193380921,0.06,0.09
+9+,400,normal,no heuristic,full expand,frame,0.004,8,1540,154,0.1,0.09,0.12
+9+,500,normal,no heuristic,full expand,frame,0.004,8,1540,171,0.111038961038961,0.1,0.13
+9+,600,normal,no heuristic,full expand,frame,0.004,8,1540,209,0.1357142857142857,0.12,0.15
+9+,700,normal,no heuristic,full expand,frame,0.004,8,1540,256,0.1662337662337662,0.15,0.19
+9+,800,normal,no heuristic,full expand,frame,0.004,8,1540,260,0.1688311688311688,0.15,0.19
+9+,1600,normal,no heuristic,full expand,frame,0.004,8,2260,538,0.2380530973451327,0.22,0.26
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,normal,select heuristic,full expand,no heuristic,0.004,8,530,13,0.0245283018867924,0.01,0.04
+9+,200,normal,select heuristic,full expand,no heuristic,0.004,8,1252,122,0.097444089456869,0.08,0.12
+9+,300,normal,select heuristic,full expand,no heuristic,0.004,8,1254,180,0.1435406698564593,0.13,0.16
+9+,400,normal,select heuristic,full expand,no heuristic,0.004,8,1465,262,0.178839590443686,0.16,0.2
+9+,500,normal,select heuristic,full expand,no heuristic,0.004,8,1318,274,0.2078907435508346,0.19,0.23
+9+,600,normal,select heuristic,full expand,no heuristic,0.004,8,1002,222,0.2215568862275449,0.2,0.25
+9+,700,normal,select heuristic,full expand,no heuristic,0.004,8,2038,513,0.2517173699705594,0.23,0.27
+9+,800,normal,select heuristic,full expand,no heuristic,0.004,8,1464,416,0.2841530054644808,0.26,0.31
+9+,1600,normal,select heuristic,full expand,no heuristic,0.004,8,1540,554,0.3597402597402597,0.34,0.38
+9++,100,normal,no heuristic,full expand,no heuristic,0.004,8,2249,1,0.0004446420631391,0.0,0.0
+9++,200,normal,no heuristic,full expand,no heuristic,0.004,8,2249,13,0.0057803468208092,0.0,0.01
+9++,300,normal,no heuristic,full expand,no heuristic,0.004,8,2249,23,0.0102267674522009,0.01,0.02
+9++,400,normal,no heuristic,full expand,no heuristic,0.004,8,2865,62,0.0216404886561954,0.02,0.03
+9++,500,normal,no heuristic,full expand,no heuristic,0.004,8,2047,60,0.0293111871030776,0.02,0.04
+9++,600,normal,no heuristic,full expand,no heuristic,0.004,8,2045,97,0.0474327628361858,0.04,0.06
+9++,700,normal,no heuristic,full expand,no heuristic,0.004,8,2045,96,0.0469437652811736,0.04,0.06
+9++,800,normal,no heuristic,full expand,no heuristic,0.004,8,2242,131,0.0584299732381801,0.05,0.07
+9++,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2322,212,0.0913006029285099,0.08,0.1
+9++,100,normal,select heuristic,full expand,no heuristic,0.004,8,213,1,0.0046948356807511,0.0,0.03
+9++,200,normal,select heuristic,full expand,no heuristic,0.004,8,213,3,0.0140845070422535,0.0,0.04
+9++,300,normal,select heuristic,full expand,no heuristic,0.004,8,529,15,0.0283553875236294,0.02,0.05
+9++,400,normal,select heuristic,full expand,no heuristic,0.004,8,528,30,0.0568181818181818,0.04,0.08
+9++,500,normal,select heuristic,full expand,no heuristic,0.004,8,1249,98,0.0784627702161729,0.06,0.09
+9++,600,normal,select heuristic,full expand,no heuristic,0.004,8,1249,104,0.0832666132906325,0.07,0.1
+9++,700,normal,select heuristic,full expand,no heuristic,0.004,8,1249,124,0.099279423538831,0.08,0.12
+9++,800,normal,select heuristic,full expand,no heuristic,0.004,8,737,80,0.1085481682496607,0.09,0.13
+9++,1600,normal,select heuristic,full expand,no heuristic,0.004,8,1329,244,0.1835966892400301,0.16,0.21
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,normal,no heuristic,full expand,total plant cost,0.004,8,1756,41,0.0233485193621867,0.02,0.03
+9+,200,normal,no heuristic,full expand,total plant cost,0.004,8,1756,126,0.071753986332574,0.06,0.08
+9+,300,normal,no heuristic,full expand,total plant cost,0.004,8,1756,196,0.1116173120728929,0.1,0.13
+9+,400,normal,no heuristic,full expand,total plant cost,0.004,8,1755,253,0.1441595441595441,0.13,0.16
+9+,500,normal,no heuristic,full expand,total plant cost,0.004,8,1552,242,0.1559278350515464,0.14,0.17
+9+,600,normal,no heuristic,full expand,total plant cost,0.004,8,1552,278,0.1791237113402062,0.16,0.2
+9+,700,normal,no heuristic,full expand,total plant cost,0.004,8,1552,307,0.1978092783505154,0.18,0.22
+9+,800,normal,no heuristic,full expand,total plant cost,0.004,8,1753,373,0.2127780946948089,0.19,0.23
+9+,1600,normal,no heuristic,full expand,total plant cost,0.004,8,1830,538,0.2939890710382514,0.27,0.32
+9++,100,normal,no heuristic,full expand,no heuristic,0.004,8,2249,1,0.0004446420631391,0.0,0.0
+9++,200,normal,no heuristic,full expand,no heuristic,0.004,8,2249,13,0.0057803468208092,0.0,0.01
+9++,300,normal,no heuristic,full expand,no heuristic,0.004,8,2249,23,0.0102267674522009,0.01,0.02
+9++,400,normal,no heuristic,full expand,no heuristic,0.004,8,2865,62,0.0216404886561954,0.02,0.03
+9++,500,normal,no heuristic,full expand,no heuristic,0.004,8,2047,60,0.0293111871030776,0.02,0.04
+9++,600,normal,no heuristic,full expand,no heuristic,0.004,8,2045,97,0.0474327628361858,0.04,0.06
+9++,700,normal,no heuristic,full expand,no heuristic,0.004,8,2045,96,0.0469437652811736,0.04,0.06
+9++,800,normal,no heuristic,full expand,no heuristic,0.004,8,2242,131,0.0584299732381801,0.05,0.07
+9++,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2322,212,0.0913006029285099,0.08,0.1
+9++,100,normal,no heuristic,full expand,total plant cost,0.004,8,1753,5,0.0028522532800912,0.0,0.01
+9++,200,normal,no heuristic,full expand,total plant cost,0.004,8,1753,21,0.0119794637763833,0.01,0.02
+9++,300,normal,no heuristic,full expand,total plant cost,0.004,8,1753,34,0.0193953223046206,0.01,0.03
+9++,400,normal,no heuristic,full expand,total plant cost,0.004,8,1752,57,0.0325342465753424,0.03,0.04
+9++,500,normal,no heuristic,full expand,total plant cost,0.004,8,1552,86,0.0554123711340206,0.05,0.07
+9++,600,normal,no heuristic,full expand,total plant cost,0.004,8,1552,88,0.056701030927835,0.05,0.07
+9++,700,normal,no heuristic,full expand,total plant cost,0.004,8,1551,110,0.0709219858156028,0.06,0.08
+9++,800,normal,no heuristic,full expand,total plant cost,0.004,8,1749,142,0.0811892510005717,0.07,0.09
+9++,1600,normal,no heuristic,full expand,total plant cost,0.004,8,1828,234,0.1280087527352297,0.11,0.14
+9+,100,normal,no heuristic,full expand,no heuristic,0.004,8,2254,26,0.0115350488021295,0.01,0.02
+9+,200,normal,no heuristic,full expand,no heuristic,0.004,8,2254,95,0.0421472937000887,0.03,0.05
+9+,300,normal,no heuristic,full expand,no heuristic,0.004,8,2254,191,0.0847382431233362,0.07,0.1
+9+,400,normal,no heuristic,full expand,no heuristic,0.004,8,2871,262,0.0912574016022291,0.08,0.1
+9+,500,normal,no heuristic,full expand,no heuristic,0.004,8,2049,229,0.1117618350414836,0.1,0.13
+9+,600,normal,no heuristic,full expand,no heuristic,0.004,8,2049,267,0.130307467057101,0.12,0.15
+9+,700,normal,no heuristic,full expand,no heuristic,0.004,8,2049,320,0.1561737432894094,0.14,0.17
+9+,800,normal,no heuristic,full expand,no heuristic,0.004,8,2250,369,0.164,0.15,0.18
+9+,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2327,578,0.2483884830253545,0.23,0.27
+9+,100,normal,select heuristic,full expand,no heuristic,0.004,8,530,13,0.0245283018867924,0.01,0.04
+9+,200,normal,select heuristic,full expand,no heuristic,0.004,8,1252,122,0.097444089456869,0.08,0.12
+9+,300,normal,select heuristic,full expand,no heuristic,0.004,8,1254,180,0.1435406698564593,0.13,0.16
+9+,400,normal,select heuristic,full expand,no heuristic,0.004,8,1465,262,0.178839590443686,0.16,0.2
+9+,500,normal,select heuristic,full expand,no heuristic,0.004,8,1318,274,0.2078907435508346,0.19,0.23
+9+,600,normal,select heuristic,full expand,no heuristic,0.004,8,1002,222,0.2215568862275449,0.2,0.25
+9+,700,normal,select heuristic,full expand,no heuristic,0.004,8,2038,513,0.2517173699705594,0.23,0.27
+9+,800,normal,select heuristic,full expand,no heuristic,0.004,8,1464,416,0.2841530054644808,0.26,0.31
+9+,1600,normal,select heuristic,full expand,no heuristic,0.004,8,1540,554,0.3597402597402597,0.34,0.38
+9+,100,normal,no heuristic,full expand,total plant cost,0.004,8,1756,41,0.0233485193621867,0.02,0.03
+9+,200,normal,no heuristic,full expand,total plant cost,0.004,8,1756,126,0.071753986332574,0.06,0.08
+9+,300,normal,no heuristic,full expand,total plant cost,0.004,8,1756,196,0.1116173120728929,0.1,0.13
+9+,400,normal,no heuristic,full expand,total plant cost,0.004,8,1755,253,0.1441595441595441,0.13,0.16
+9+,500,normal,no heuristic,full expand,total plant cost,0.004,8,1552,242,0.1559278350515464,0.14,0.17
+9+,600,normal,no heuristic,full expand,total plant cost,0.004,8,1552,278,0.1791237113402062,0.16,0.2
+9+,700,normal,no heuristic,full expand,total plant cost,0.004,8,1552,307,0.1978092783505154,0.18,0.22
+9+,800,normal,no heuristic,full expand,total plant cost,0.004,8,1753,373,0.2127780946948089,0.19,0.23
+9+,1600,normal,no heuristic,full expand,total plant cost,0.004,8,1830,538,0.2939890710382514,0.27,0.32
+9+,100,normal,select heuristic,full expand,total plant cost,0.004,8,1254,142,0.113237639553429,0.1,0.13
+9+,200,normal,select heuristic,full expand,total plant cost,0.004,8,1467,403,0.274710293115201,0.25,0.3
+9+,300,normal,select heuristic,full expand,total plant cost,0.004,8,1468,460,0.3133514986376022,0.29,0.34
+9+,400,normal,select heuristic,full expand,total plant cost,0.004,8,1468,493,0.3358310626702997,0.31,0.36
+9+,500,normal,select heuristic,full expand,total plant cost,0.004,8,2039,692,0.3393820500245218,0.32,0.36
+9+,600,normal,select heuristic,full expand,total plant cost,0.004,8,1317,470,0.3568716780561883,0.33,0.38
+9+,700,normal,select heuristic,full expand,total plant cost,0.004,8,1317,508,0.3857251328777524,0.36,0.41
+9+,800,normal,select heuristic,full expand,total plant cost,0.004,8,1466,593,0.4045020463847203,0.38,0.43
+9+,1600,normal,select heuristic,full expand,total plant cost,0.004,8,1542,754,0.4889753566796368,0.46,0.51
+9++,100,normal,no heuristic,full expand,no heuristic,0.004,8,2249,1,0.0004446420631391,0.0,0.0
+9++,200,normal,no heuristic,full expand,no heuristic,0.004,8,2249,13,0.0057803468208092,0.0,0.01
+9++,300,normal,no heuristic,full expand,no heuristic,0.004,8,2249,23,0.0102267674522009,0.01,0.02
+9++,400,normal,no heuristic,full expand,no heuristic,0.004,8,2865,62,0.0216404886561954,0.02,0.03
+9++,500,normal,no heuristic,full expand,no heuristic,0.004,8,2047,60,0.0293111871030776,0.02,0.04
+9++,600,normal,no heuristic,full expand,no heuristic,0.004,8,2045,97,0.0474327628361858,0.04,0.06
+9++,700,normal,no heuristic,full expand,no heuristic,0.004,8,2045,96,0.0469437652811736,0.04,0.06
+9++,800,normal,no heuristic,full expand,no heuristic,0.004,8,2242,131,0.0584299732381801,0.05,0.07
+9++,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2322,212,0.0913006029285099,0.08,0.1
+9++,100,normal,select heuristic,full expand,no heuristic,0.004,8,213,1,0.0046948356807511,0.0,0.03
+9++,200,normal,select heuristic,full expand,no heuristic,0.004,8,213,3,0.0140845070422535,0.0,0.04
+9++,300,normal,select heuristic,full expand,no heuristic,0.004,8,529,15,0.0283553875236294,0.02,0.05
+9++,400,normal,select heuristic,full expand,no heuristic,0.004,8,528,30,0.0568181818181818,0.04,0.08
+9++,500,normal,select heuristic,full expand,no heuristic,0.004,8,1249,98,0.0784627702161729,0.06,0.09
+9++,600,normal,select heuristic,full expand,no heuristic,0.004,8,1249,104,0.0832666132906325,0.07,0.1
+9++,700,normal,select heuristic,full expand,no heuristic,0.004,8,1249,124,0.099279423538831,0.08,0.12
+9++,800,normal,select heuristic,full expand,no heuristic,0.004,8,737,80,0.1085481682496607,0.09,0.13
+9++,1600,normal,select heuristic,full expand,no heuristic,0.004,8,1329,244,0.1835966892400301,0.16,0.21
+9++,100,normal,no heuristic,full expand,total plant cost,0.004,8,1753,5,0.0028522532800912,0.0,0.01
+9++,200,normal,no heuristic,full expand,total plant cost,0.004,8,1753,21,0.0119794637763833,0.01,0.02
+9++,300,normal,no heuristic,full expand,total plant cost,0.004,8,1753,34,0.0193953223046206,0.01,0.03
+9++,400,normal,no heuristic,full expand,total plant cost,0.004,8,1752,57,0.0325342465753424,0.03,0.04
+9++,500,normal,no heuristic,full expand,total plant cost,0.004,8,1552,86,0.0554123711340206,0.05,0.07
+9++,600,normal,no heuristic,full expand,total plant cost,0.004,8,1552,88,0.056701030927835,0.05,0.07
+9++,700,normal,no heuristic,full expand,total plant cost,0.004,8,1551,110,0.0709219858156028,0.06,0.08
+9++,800,normal,no heuristic,full expand,total plant cost,0.004,8,1749,142,0.0811892510005717,0.07,0.09
+9++,1600,normal,no heuristic,full expand,total plant cost,0.004,8,1828,234,0.1280087527352297,0.11,0.14
+9++,100,normal,select heuristic,full expand,total plant cost,0.004,8,213,2,0.0093896713615023,0.0,0.03
+9++,200,normal,select heuristic,full expand,total plant cost,0.004,8,530,41,0.0773584905660377,0.06,0.1
+9++,300,normal,select heuristic,full expand,total plant cost,0.004,8,531,51,0.096045197740113,0.07,0.12
+9++,400,normal,select heuristic,full expand,total plant cost,0.004,8,1459,206,0.1411925976696367,0.12,0.16
+9++,500,normal,select heuristic,full expand,total plant cost,0.004,8,1249,200,0.1601281024819855,0.14,0.18
+9++,600,normal,select heuristic,full expand,total plant cost,0.004,8,1249,250,0.200160128102482,0.18,0.22
+9++,700,normal,select heuristic,full expand,total plant cost,0.004,8,1249,272,0.2177742193755004,0.2,0.24
+9++,800,normal,select heuristic,full expand,total plant cost,0.004,8,1460,328,0.2246575342465753,0.2,0.25
+9++,1600,normal,select heuristic,full expand,total plant cost,0.004,8,1331,385,0.2892561983471074,0.27,0.31
+9+,100,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,17,0.0160984848484848,0.01,0.03
+9+,200,parallel max,no heuristic,full expand,no heuristic,0.004,8,1056,231,0.21875,0.19,0.24
+9+,300,parallel max,no heuristic,full expand,no heuristic,0.004,8,1373,630,0.4588492352512746,0.43,0.49
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,2093,1192,0.5695174390826565,0.55,0.59
+9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,1168,778,0.666095890410959,0.64,0.69
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1890,1348,0.7132275132275132,0.69,0.73
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1889,1408,0.745367919534145,0.73,0.76
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,2089,1614,0.7726184777405457,0.75,0.79
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1130,962,0.8513274336283185,0.83,0.87
+9+,100,parallel max,select heuristic,full expand,no heuristic,0.004,8,558,18,0.032258064516129,0.02,0.05
+9+,200,parallel max,select heuristic,full expand,no heuristic,0.004,8,1596,458,0.2869674185463659,0.27,0.31
+9+,300,parallel max,select heuristic,full expand,no heuristic,0.004,8,1599,839,0.5247029393370857,0.5,0.55
+9+,400,parallel max,select heuristic,full expand,no heuristic,0.004,8,1599,1038,0.649155722326454,0.63,0.67
+9+,500,parallel max,select heuristic,full expand,no heuristic,0.004,8,1396,1001,0.7170487106017192,0.69,0.74
+9+,600,parallel max,select heuristic,full expand,no heuristic,0.004,8,1395,1102,0.7899641577060932,0.77,0.81
+9+,700,parallel max,select heuristic,full expand,no heuristic,0.004,8,1393,1130,0.8111988513998565,0.79,0.83
+9+,800,parallel max,select heuristic,full expand,no heuristic,0.004,8,872,733,0.8405963302752294,0.81,0.86
+9+,1600,parallel max,select heuristic,full expand,no heuristic,0.004,8,949,845,0.8904109589041096,0.87,0.91
+9+,100,parallel max,no heuristic,full expand,total plant cost,0.004,8,558,12,0.021505376344086,0.01,0.04
+9+,200,parallel max,no heuristic,full expand,total plant cost,0.004,8,1595,331,0.2075235109717868,0.19,0.23
+9+,300,parallel max,no heuristic,full expand,total plant cost,0.004,8,1599,728,0.4552845528455284,0.43,0.48
+9+,400,parallel max,no heuristic,full expand,total plant cost,0.004,8,1598,944,0.590738423028786,0.57,0.61
+9+,500,parallel max,no heuristic,full expand,total plant cost,0.004,8,1396,915,0.6554441260744985,0.63,0.68
+9+,600,parallel max,no heuristic,full expand,total plant cost,0.004,8,1396,1008,0.7220630372492837,0.7,0.74
+9+,700,parallel max,no heuristic,full expand,total plant cost,0.004,8,1396,1025,0.7342406876790831,0.71,0.76
+9+,800,parallel max,no heuristic,full expand,total plant cost,0.004,8,873,698,0.7995418098510882,0.77,0.82
+9+,1600,parallel max,no heuristic,full expand,total plant cost,0.004,8,949,809,0.8524762908324552,0.83,0.87
+9+,100,parallel max,select heuristic,full expand,total plant cost,0.004,8,1751,70,0.039977155910908,0.03,0.05
+9+,200,parallel max,select heuristic,full expand,total plant cost,0.004,8,1751,518,0.2958309537407196,0.27,0.32
+9+,300,parallel max,select heuristic,full expand,total plant cost,0.004,8,2787,1514,0.5432364549695012,0.52,0.56
+9+,400,parallel max,select heuristic,full expand,total plant cost,0.004,8,1751,1173,0.6699029126213593,0.65,0.69
+9+,500,parallel max,select heuristic,full expand,total plant cost,0.004,8,1864,1355,0.726931330472103,0.71,0.75
+9+,600,parallel max,select heuristic,full expand,total plant cost,0.004,8,1548,1195,0.7719638242894057,0.75,0.79
+9+,700,parallel max,select heuristic,full expand,total plant cost,0.004,8,1548,1226,0.7919896640826873,0.77,0.81
+9+,800,parallel max,select heuristic,full expand,total plant cost,0.004,8,1749,1437,0.8216123499142367,0.8,0.84
+9+,1600,parallel max,select heuristic,full expand,total plant cost,0.004,8,1826,1588,0.8696604600219058,0.85,0.88
+9++,100,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,1,0.0009505703422053,0.0,0.01
+9++,200,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,16,0.0152091254752851,0.01,0.02
+9++,300,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,82,0.0779467680608365,0.06,0.1
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,1051,165,0.1569933396764985,0.14,0.18
+9++,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,850,190,0.2235294117647059,0.2,0.25
+9++,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1165,315,0.2703862660944206,0.25,0.3
+9++,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1165,381,0.327038626609442,0.3,0.35
+9++,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,1361,535,0.3930933137398971,0.37,0.42
+9++,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,2161,1355,0.6270245256825544,0.61,0.65
+9++,100,parallel max,select heuristic,full expand,no heuristic,0.004,8,556,1,0.0017985611510791,0.0,0.01
+9++,200,parallel max,select heuristic,full expand,no heuristic,0.004,8,556,14,0.0251798561151079,0.02,0.04
+9++,300,parallel max,select heuristic,full expand,no heuristic,0.004,8,556,52,0.0935251798561151,0.07,0.12
+9++,400,parallel max,select heuristic,full expand,no heuristic,0.004,8,1592,273,0.1714824120603015,0.15,0.19
+9++,500,parallel max,select heuristic,full expand,no heuristic,0.004,8,1396,343,0.245702005730659,0.22,0.27
+9++,600,parallel max,select heuristic,full expand,no heuristic,0.004,8,1396,458,0.328080229226361,0.3,0.35
+9++,700,parallel max,select heuristic,full expand,no heuristic,0.004,8,1607,669,0.4163036714374611,0.39,0.44
+9++,800,parallel max,select heuristic,full expand,no heuristic,0.004,8,1593,737,0.4626490897677338,0.44,0.49
+9++,1600,parallel max,select heuristic,full expand,no heuristic,0.004,8,948,659,0.6951476793248945,0.67,0.72
+9++,100,parallel max,no heuristic,full expand,total plant cost,0.004,8,556,1,0.0017985611510791,0.0,0.01
+9++,200,parallel max,no heuristic,full expand,total plant cost,0.004,8,556,9,0.0161870503597122,0.01,0.03
+9++,300,parallel max,no heuristic,full expand,total plant cost,0.004,8,556,36,0.0647482014388489,0.05,0.09
+9++,400,parallel max,no heuristic,full expand,total plant cost,0.004,8,1592,210,0.1319095477386934,0.12,0.15
+9++,500,parallel max,no heuristic,full expand,total plant cost,0.004,8,1394,287,0.2058823529411764,0.19,0.23
+9++,600,parallel max,no heuristic,full expand,total plant cost,0.004,8,1394,371,0.2661406025824964,0.24,0.29
+9++,700,parallel max,no heuristic,full expand,total plant cost,0.004,8,1396,460,0.329512893982808,0.31,0.35
+9++,800,parallel max,no heuristic,full expand,total plant cost,0.004,8,1591,647,0.4066624764299183,0.38,0.43
+9++,1600,parallel max,no heuristic,full expand,total plant cost,0.004,8,1671,1035,0.6193895870736086,0.6,0.64
+9++,100,parallel max,select heuristic,full expand,total plant cost,0.004,8,1748,8,0.0045766590389016,0.0,0.01
+9++,200,parallel max,select heuristic,full expand,total plant cost,0.004,8,1748,49,0.0280320366132723,0.02,0.04
+9++,300,parallel max,select heuristic,full expand,total plant cost,0.004,8,1748,188,0.1075514874141876,0.09,0.12
+9++,400,parallel max,select heuristic,full expand,total plant cost,0.004,8,1747,321,0.1837435603892387,0.17,0.2
+9++,500,parallel max,select heuristic,full expand,total plant cost,0.004,8,1547,418,0.2702003878474466,0.25,0.29
+9++,600,parallel max,select heuristic,full expand,total plant cost,0.004,8,1547,531,0.3432449903038138,0.32,0.37
+9++,700,parallel max,select heuristic,full expand,total plant cost,0.004,8,1547,639,0.4130575307045895,0.39,0.44
+9++,800,parallel max,select heuristic,full expand,total plant cost,0.004,8,1744,796,0.4564220183486238,0.43,0.48
+9++,1600,parallel max,select heuristic,full expand,total plant cost,0.004,8,1822,1290,0.70801317233809,0.69,0.73
+9+,100,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1056,6,0.0056818181818181,0.0,0.01
+9+,200,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1372,341,0.2485422740524781,0.23,0.27
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2721,1377,0.5060639470782801,0.49,0.52
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2093,1289,0.6158623984710941,0.59,0.64
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1224,0.6476190476190476,0.63,0.67
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1361,0.7201058201058201,0.7,0.74
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1889,1381,0.7310746426680783,0.71,0.75
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1369,1026,0.7494521548575602,0.73,0.77
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1130,940,0.831858407079646,0.81,0.85
+9+,100,parallel trees,select heuristic,full expand,no heuristic,0.004,8,558,6,0.010752688172043,0.0,0.02
+9+,200,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1597,607,0.3800876643706951,0.36,0.4
+9+,300,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1597,1142,0.715090795241077,0.69,0.74
+9+,400,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1596,1262,0.7907268170426065,0.77,0.81
+9+,500,parallel trees,select heuristic,full expand,no heuristic,0.004,8,673,550,0.8172362555720654,0.79,0.84
+9+,600,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1393,1167,0.8377602297200287,0.82,0.86
+9+,700,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1393,1202,0.8628858578607322,0.84,0.88
+9+,800,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1593,1382,0.8675455116133082,0.85,0.88
+9+,1600,parallel trees,select heuristic,full expand,no heuristic,0.004,8,633,582,0.919431279620853,0.9,0.94
+9+,100,parallel trees,no heuristic,full expand,total plant cost,0.004,8,558,1,0.0017921146953405,0.0,0.01
+9+,200,parallel trees,no heuristic,full expand,total plant cost,0.004,8,875,231,0.264,0.24,0.29
+9+,300,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1599,821,0.5134459036898061,0.49,0.54
+9+,400,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1598,931,0.5826032540675845,0.56,0.61
+9+,500,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1396,946,0.6776504297994269,0.65,0.7
+9+,600,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1396,991,0.7098853868194842,0.69,0.73
+9+,700,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1396,1051,0.752865329512894,0.73,0.77
+9+,800,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1593,1229,0.7715003138731952,0.75,0.79
+9+,1600,parallel trees,no heuristic,full expand,total plant cost,0.004,8,949,779,0.8208640674394099,0.8,0.84
+9+,100,parallel trees,select heuristic,full expand,total plant cost,0.004,8,558,9,0.0161290322580645,0.01,0.03
+9+,200,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1597,637,0.3988728866624921,0.38,0.42
+9+,300,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1599,1142,0.7141963727329581,0.69,0.74
+9+,400,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1595,1250,0.7836990595611285,0.76,0.8
+9+,500,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1394,1134,0.8134863701578192,0.79,0.83
+9+,600,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1393,1160,0.832735104091888,0.81,0.85
+9+,700,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1395,1193,0.8551971326164874,0.84,0.87
+9+,800,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1592,1391,0.8737437185929648,0.86,0.89
+9+,1600,parallel trees,select heuristic,full expand,total plant cost,0.004,8,949,853,0.898840885142255,0.88,0.92
+9++,100,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,0,0.0,0.0,0.0
+9++,200,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,4,0.0038022813688212,0.0,0.01
+9++,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,25,0.023764258555133,0.02,0.03
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1051,54,0.0513796384395813,0.04,0.07
+9++,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,850,100,0.1176470588235294,0.1,0.14
+9++,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1164,302,0.2594501718213058,0.24,0.29
+9++,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1164,542,0.4656357388316151,0.44,0.49
+9++,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2082,1110,0.5331412103746398,0.51,0.55
+9++,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1124,769,0.6841637010676157,0.66,0.71
+9++,100,parallel trees,select heuristic,full expand,no heuristic,0.004,8,556,0,0.0,0.0,0.01
+9++,200,parallel trees,select heuristic,full expand,no heuristic,0.004,8,19117,202,0.010566511481927,0.01,0.01
+9++,300,parallel trees,select heuristic,full expand,no heuristic,0.004,8,19116,784,0.0410127641766059,0.04,0.04
+9++,400,parallel trees,select heuristic,full expand,no heuristic,0.004,8,555,43,0.0774774774774774,0.06,0.1
+9++,500,parallel trees,select heuristic,full expand,no heuristic,0.004,8,2075,388,0.1869879518072289,0.17,0.2
+9++,600,parallel trees,select heuristic,full expand,no heuristic,0.004,8,2073,793,0.3825373854317414,0.36,0.4
+9++,700,parallel trees,select heuristic,full expand,no heuristic,0.004,8,2070,1296,0.6260869565217392,0.61,0.65
+9++,800,parallel trees,select heuristic,full expand,no heuristic,0.004,8,19111,13464,0.7045157239286275,0.7,0.71
+9++,1600,parallel trees,select heuristic,full expand,no heuristic,0.004,8,947,780,0.8236536430834214,0.8,0.85
+9++,100,parallel trees,no heuristic,full expand,total plant cost,0.004,8,556,0,0.0,0.0,0.01
+9++,200,parallel trees,no heuristic,full expand,total plant cost,0.004,8,556,3,0.0053956834532374,0.0,0.02
+9++,300,parallel trees,no heuristic,full expand,total plant cost,0.004,8,556,12,0.0215827338129496,0.01,0.04
+9++,400,parallel trees,no heuristic,full expand,total plant cost,0.004,8,555,29,0.0522522522522522,0.04,0.07
+9++,500,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1392,186,0.1336206896551724,0.12,0.15
+9++,600,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1603,435,0.2713661883967561,0.25,0.29
+9++,700,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1604,753,0.4694513715710723,0.45,0.49
+9++,800,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1593,875,0.549278091650973,0.52,0.57
+9++,1600,parallel trees,no heuristic,full expand,total plant cost,0.004,8,948,649,0.6845991561181435,0.65,0.71
+9++,100,parallel trees,select heuristic,full expand,total plant cost,0.004,8,556,0,0.0,0.0,0.01
+9++,200,parallel trees,select heuristic,full expand,total plant cost,0.004,8,556,5,0.0089928057553956,0.0,0.02
+9++,300,parallel trees,select heuristic,full expand,total plant cost,0.004,8,555,24,0.0432432432432432,0.03,0.06
+9++,400,parallel trees,select heuristic,full expand,total plant cost,0.004,8,870,92,0.1057471264367816,0.09,0.13
+9++,500,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1394,249,0.1786226685796269,0.16,0.2
+9++,600,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1607,623,0.387678904791537,0.36,0.41
+9++,700,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1606,992,0.6176836861768369,0.59,0.64
+9++,800,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1589,1092,0.6872246696035242,0.66,0.71
+9++,1600,parallel trees,select heuristic,full expand,total plant cost,0.004,8,946,786,0.8308668076109936,0.81,0.85
+9++,100,normal,no heuristic,full expand,no heuristic,0.004,8,2249,1,0.0004446420631391,0.0,0.0
+9++,200,normal,no heuristic,full expand,no heuristic,0.004,8,2249,13,0.0057803468208092,0.0,0.01
+9++,300,normal,no heuristic,full expand,no heuristic,0.004,8,2249,23,0.0102267674522009,0.01,0.02
+9++,400,normal,no heuristic,full expand,no heuristic,0.004,8,2865,62,0.0216404886561954,0.02,0.03
+9++,500,normal,no heuristic,full expand,no heuristic,0.004,8,2047,60,0.0293111871030776,0.02,0.04
+9++,600,normal,no heuristic,full expand,no heuristic,0.004,8,2045,97,0.0474327628361858,0.04,0.06
+9++,700,normal,no heuristic,full expand,no heuristic,0.004,8,2045,96,0.0469437652811736,0.04,0.06
+9++,800,normal,no heuristic,full expand,no heuristic,0.004,8,2242,131,0.0584299732381801,0.05,0.07
+9++,1600,normal,no heuristic,full expand,no heuristic,0.004,8,2322,212,0.0913006029285099,0.08,0.1
+9++,100,normal,select heuristic,full expand,total plant cost,0.004,8,213,2,0.0093896713615023,0.0,0.03
+9++,200,normal,select heuristic,full expand,total plant cost,0.004,8,530,41,0.0773584905660377,0.06,0.1
+9++,300,normal,select heuristic,full expand,total plant cost,0.004,8,531,51,0.096045197740113,0.07,0.12
+9++,400,normal,select heuristic,full expand,total plant cost,0.004,8,1459,206,0.1411925976696367,0.12,0.16
+9++,500,normal,select heuristic,full expand,total plant cost,0.004,8,1249,200,0.1601281024819855,0.14,0.18
+9++,600,normal,select heuristic,full expand,total plant cost,0.004,8,1249,250,0.200160128102482,0.18,0.22
+9++,700,normal,select heuristic,full expand,total plant cost,0.004,8,1249,272,0.2177742193755004,0.2,0.24
+9++,800,normal,select heuristic,full expand,total plant cost,0.004,8,1460,328,0.2246575342465753,0.2,0.25
+9++,1600,normal,select heuristic,full expand,total plant cost,0.004,8,1331,385,0.2892561983471074,0.27,0.31
+9++,100,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,1,0.0009505703422053,0.0,0.01
+9++,200,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,16,0.0152091254752851,0.01,0.02
+9++,300,parallel max,no heuristic,full expand,no heuristic,0.004,8,1052,82,0.0779467680608365,0.06,0.1
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,1051,165,0.1569933396764985,0.14,0.18
+9++,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,850,190,0.2235294117647059,0.2,0.25
+9++,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1165,315,0.2703862660944206,0.25,0.3
+9++,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1165,381,0.327038626609442,0.3,0.35
+9++,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,1361,535,0.3930933137398971,0.37,0.42
+9++,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,2161,1355,0.6270245256825544,0.61,0.65
+9++,100,parallel max,select heuristic,full expand,total plant cost,0.004,8,1748,8,0.0045766590389016,0.0,0.01
+9++,200,parallel max,select heuristic,full expand,total plant cost,0.004,8,1748,49,0.0280320366132723,0.02,0.04
+9++,300,parallel max,select heuristic,full expand,total plant cost,0.004,8,1748,188,0.1075514874141876,0.09,0.12
+9++,400,parallel max,select heuristic,full expand,total plant cost,0.004,8,1747,321,0.1837435603892387,0.17,0.2
+9++,500,parallel max,select heuristic,full expand,total plant cost,0.004,8,1547,418,0.2702003878474466,0.25,0.29
+9++,600,parallel max,select heuristic,full expand,total plant cost,0.004,8,1547,531,0.3432449903038138,0.32,0.37
+9++,700,parallel max,select heuristic,full expand,total plant cost,0.004,8,1547,639,0.4130575307045895,0.39,0.44
+9++,800,parallel max,select heuristic,full expand,total plant cost,0.004,8,1744,796,0.4564220183486238,0.43,0.48
+9++,1600,parallel max,select heuristic,full expand,total plant cost,0.004,8,1822,1290,0.70801317233809,0.69,0.73
+9++,100,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,0,0.0,0.0,0.0
+9++,200,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,4,0.0038022813688212,0.0,0.01
+9++,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1052,25,0.023764258555133,0.02,0.03
+9++,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1051,54,0.0513796384395813,0.04,0.07
+9++,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,850,100,0.1176470588235294,0.1,0.14
+9++,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1164,302,0.2594501718213058,0.24,0.29
+9++,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1164,542,0.4656357388316151,0.44,0.49
+9++,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2082,1110,0.5331412103746398,0.51,0.55
+9++,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1124,769,0.6841637010676157,0.66,0.71
+9++,100,parallel trees,select heuristic,square ratio,total plant cost,0.004,8,556,4,0.0071942446043165,0.0,0.02
+9++,200,parallel trees,select heuristic,square ratio,total plant cost,0.004,8,19116,3372,0.1763967357187696,0.17,0.18
+9++,300,parallel trees,select heuristic,square ratio,total plant cost,0.004,8,19115,8107,0.4241171854564478,0.42,0.43
+9++,400,parallel trees,select heuristic,square ratio,total plant cost,0.004,8,1596,854,0.5350877192982456,0.51,0.56
+9++,500,parallel trees,select heuristic,square ratio,total plant cost,0.004,8,2062,1234,0.5984481086323957,0.58,0.62
+9++,600,parallel trees,select heuristic,square ratio,total plant cost,0.004,8,2061,1305,0.6331877729257642,0.61,0.65
+9++,700,parallel trees,select heuristic,square ratio,total plant cost,0.004,8,2059,1387,0.6736279747450219,0.65,0.69
+9++,800,parallel trees,select heuristic,square ratio,total plant cost,0.004,8,19109,13378,0.7000889633157151,0.69,0.71
+9++,1600,parallel trees,select heuristic,square ratio,total plant cost,0.004,8,944,774,0.8199152542372882,0.79,0.84

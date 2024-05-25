@@ -3,14 +3,10 @@ from build import mcts
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-# from scipy.interpolate import make_interp_spline, CubicSpline, BSpline
-# import scipy.stats as st
-from pprint import pprint
 from time import time
 import json
 import csv
 import matplotlib.animation as animation
-from PIL import Image
 
 
 NORMAL_MCTS = mcts.NORMAL_MCTS
@@ -101,7 +97,7 @@ def get_frame_from_observation(observation: np.ndarray):
     return frame
 
 def animate_observation_buffer(observation_buffer: list, output_path='animation.mp4'):
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(10, 10))
     annotations = []
 
     im = ax.imshow(get_frame_from_observation(observation_buffer[0]))
@@ -124,46 +120,12 @@ def animate_observation_buffer(observation_buffer: list, output_path='animation.
     ax.set_xticklabels(list(range(num_cols)))
     ax.set_yticklabels(list(range(num_rows)))
 
-    anim = animation.FuncAnimation(fig, update, frames=len(observation_buffer), interval=100, blit=True)
+    anim = animation.FuncAnimation(fig, update, frames=len(observation_buffer), interval=5, blit=True)
 
     # Save the animation as an MP4 file
-    anim.save(output_path, writer='ffmpeg', fps=30)
+    anim.save(output_path, writer='ffmpeg', fps=60)
 
     plt.close(fig)
-
-# def animate_observation_buffer(observation_buffer: list):
-#     fig, ax = plt.subplots()
-#     # text_annotation = ax.annotate("Plants", xy=(0.25, 0.95), xycoords="figure fraction", ha="center", va="center", wrap=True, bbox=dict(boxstyle="round", fc="w"))
-#     # Set up an initial plot with the first frame
-#     annotations = [] # type: list[plt.text.Annotation]
-#     im = ax.imshow(get_frame_from_observation(observation_buffer[0]))
-
-#     # Define the update function for the animation
-#     def update(frame):
-#         # print(frame)
-#         # Update the plot with the next frame
-#         im.set_array(get_frame_from_observation(observation_buffer[frame]))
-#         # text_annotation.set_text(f"Plants: {get_plants_from_observation(observation_buffer[frame])}")
-#         for annotation in annotations:
-#             annotation.remove()
-#         annotations.clear()
-#         for plant_name, row, col in get_plants_from_observation(observation_buffer[frame]):
-#             annotations.append(ax.annotate(plant_name, xy=(col * 2 + 0.5, row), xycoords="data", ha="center", va="center", wrap=True, bbox=dict(boxstyle="round", fc="w")))
-#         return im, *annotations
-#     # Create the animation object using the FuncAnimation class
-#     anim = animation.FuncAnimation(fig, update, frames=len(observation_buffer), interval=1, blit=True)
-#     num_cols = observation_buffer[0].shape[1] // 2
-#     num_rows = observation_buffer[0].shape[0]
-#     aspect_ratio = num_cols / observation_buffer[0].shape[0]
-#     plt.gca().set_aspect(2)
-
-#     # Set custom tick positions for half-width columns
-#     ax.set_xticks(np.arange(num_cols) * 2 + 0.5)
-#     ax.set_yticks(np.arange(observation_buffer[0].shape[0]) + 0.5)
-#     ax.set_xticklabels(list(range(num_cols)))
-#     ax.set_yticklabels(list(range(num_rows)))
-#     # Show the animation
-#     plt.show()
 
 def run_animation():
     level1 = level.Level(5, 10, 10, *get_level_info(1))
@@ -187,10 +149,44 @@ def simulate_set_game(level: level.Level, action_list: list[level.Action]):
         level.step()
         observation = np.asarray(level.get_observation())
         observations.append(observation)
-    # print(f"lawnmowers: {level.lawnmowers[0]} {level.lawnmowers[1]} {level.lawnmowers[2]} {level.lawnmowers[3]} {level.lawnmowers[4]}")
     animate_observation_buffer(observations)
-    print(f"game eneded with win: {level.win}")
 
+# Initialize the figure and axis once
+obs_fig, obs_ax = plt.subplots(figsize=(10, 10))
+annotations = []
+obs_im = None
+
+def draw_observation(observation, frame_num):
+    global annotations
+    global obs_im
+    observation = np.asarray(observation)
+    if obs_im is None:
+        # Initialize the image data
+        obs_im = obs_ax.imshow(get_frame_from_observation(observation))
+    # Update the image data
+    obs_im.set_data(get_frame_from_observation(observation))
+
+    # Remove existing annotations
+    for annotation in annotations:
+        annotation.remove()
+    annotations.clear()
+
+    # Add new annotations
+    for plant_name, row, col in get_plants_from_observation(observation):
+        annotations.append(obs_ax.annotate(plant_name, xy=(col * 2 + 0.5, row), xycoords="data", ha="center", va="center", wrap=True, bbox=dict(boxstyle="round", fc="w")))
+
+    num_cols = observation.shape[1] // 2
+    num_rows = observation.shape[0]
+    obs_ax.set_aspect(2)
+
+    obs_ax.set_xticks(np.arange(num_cols) * 2 + 0.5)
+    obs_ax.set_yticks(np.arange(observation.shape[0]) + 0.5)
+    obs_ax.set_xticklabels(list(range(num_cols)))
+    obs_ax.set_yticklabels(list(range(num_rows)))
+    plt.title(f"Frame {frame_num}")
+
+    plt.draw()
+    plt.pause(0.0001)  # Adjust the pause interval as needed
 
 def action_to_string(action: level.Action):
     return f"action: plant {plant_to_name[action.plant_name]} at coords: {action.lane}, {action.col}"
@@ -266,181 +262,3 @@ heuristic_mode_to_name = {
     # HEURISTIC_EXPAND: "expand heuristic",
     HEURISTIC_SELECT: "select heuristic"
 }
-
-def replace_data_mode_names(data):
-    for index in range(len(data)):
-        for key, value in data[index].items():
-            if key == "rollout_mode":
-                data[index][key] = rollout_mode_to_name[int(value)]
-            elif key == "heuristic_mode":
-                data[index][key] = heuristic_mode_to_name[int(value)]
-    return data
-
-def replace_filter_mode_names(filter_list):
-    for filter_index in range(len(filter_list)):
-        for index in range(len(filter_list[filter_index])):
-            for key, value in filter_list[filter_index][index].items():
-                if key == "rollout_mode":
-                    filter_list[filter_index][index][key] = rollout_mode_to_name[int(value)]
-                elif key == "heuristic_mode":
-                    filter_list[filter_index][index][key] = heuristic_mode_to_name[int(value)]
-    return filter_list
-
-def test_generate_plot(csv_file, x_axis, y_axis, filter_list, log, graph):
-    with open(csv_file, 'r') as csv_file_handle:
-        data = list(csv.DictReader(csv_file_handle))
-
-    data = replace_data_mode_names(data)
-    filter_list = replace_filter_mode_names(filter_list)
-    
-    # create subplots by getting the sqrt of the number of filters
-    num_rows = num_cols = int(np.ceil(np.sqrt(len(filter_list))))
-
-    fig, axes = plt.subplots(num_rows, num_cols)
-
-    manager = plt.get_current_fig_manager()
-    manager.window.maximize()
-
-    for fig_num, filters in enumerate(filter_list):
-        for filter in filters:
-            filtered_data = data.copy()
-            # Filter data using filter dictionary
-            for key, value in filter.items():
-                filtered_data = [row for row in filtered_data if row[key] == str(value)]
-            grouped_data = {}
-            # Group data by x-axis
-            for row in filtered_data:
-                if row[x_axis] not in grouped_data:
-                    grouped_data[row[x_axis]] = []
-                if (row[y_axis] == "False" or row[y_axis] == "True"):
-                    grouped_data[row[x_axis]].append(bool(row[y_axis] == "True"))
-                else:
-                    grouped_data[row[x_axis]].append(float(row[y_axis]))
-            
-            # Calculate mean of y-axis
-            for key, value in grouped_data.items():
-                grouped_data[key] = [sum([int(x) for x in value]) / len(value), len(value)]
-                # conf_lower, conf_upper = st.norm.interval(0.9, loc=grouped_data[key][0], scale=st.sem(value))
-                # print(f"lower bound: {conf_lower}, upper bound: {conf_upper}")
-
-            # Sort data by x-axis
-            # sorted_keys = sorted(grouped_data.keys())
-            sorted_keys = sorted(grouped_data.keys(), key=lambda x: float(x))
-            sorted_data = [grouped_data[x][0] for x in sorted_keys]
-            # lower and upper bounds for each data point, 95% confidence interval
-            # sorted_error = np.array([st.norm.interval(0.95, loc=grouped_data[key][0], scale=st.sem(value)) for key in sorted_keys])
-            # data points with error applied
-            # error_data = np.array([sorted_data - sorted_error[:, 0], sorted_error[:, 1] - sorted_data])
-            if (x_axis == "rollout_mode"):
-                mode_to_name = {
-                    "0": "normal",
-                    "1": "parallel max",
-                    "2": "parallel avg",
-                    "3": "parallel trees",
-                }
-                sorted_keys = [mode_to_name[mode] for mode in sorted_keys]
-
-            avg_data_points = sum([x[1] for x in grouped_data.values()]) / len(grouped_data.values())
-            # Plot grouped data
-            if (len(filter_list) == 1):
-                axis = axes
-            else:
-                axis = axes[fig_num // num_cols, fig_num % num_cols] # type: plt.Axes
-            axis.plot(sorted_keys, sorted_data)
-            # if error_bars:
-            #     # axis.errorbar(sorted_keys, sorted_data, yerr=[], fmt='o', capsize=5, capthick=2)
-            #     axis.errorbar(sorted_keys, sorted_data, yerr=error_data, fmt='o', capsize=5, capthick=2, label=str(filter))
-            # else:
-            axis.scatter(sorted_keys, sorted_data, label=str(filter))
-            axis.legend()
-            axis.set_xlabel(x_axis)
-            axis.set_ylabel(y_axis)
-            axis.set_title(y_axis + " vs " + x_axis)
-            for x,y in grouped_data.items():
-                axis.annotate(f"{y[1]}", (x,y[0]))
-            if y_axis == "win":
-                axis.set_ylim((0, 1))
-    # delete unused subplots
-    for fig_num in range(len(filter_list), num_rows * num_cols):
-        if (len(filter_list) == 1):
-            axis = axes
-        else:
-            axis = axes[fig_num // num_cols, fig_num % num_cols]
-        fig.delaxes(axis)
-    # plt.tight_layout()
-    # if y_axis == "win":
-    #     plt.ylim((0, 1))
-    plt.show()
-    
-
-if __name__ == "__main__":
-    """
-    level
-    threads
-    time_ms
-    ucb_const
-    rollout_mode
-    win
-    num_steps
-    """
-    """
-    optimal ucb_const:
-    mode normal: 0.2
-    mode max_node: 0.2
-    mode 2: ~0.2
-    mode 3: 0.2
-    """
-    # filter_criteria = {"level": 9, "threads": 4}
-    target_level = "9"
-    r_mode = MAX_NODE
-    # ucb = 0.001
-    rollout_mode = mcts.PARALLEL_TREES
-    # level,time_ms,threads,ucb_const,rollout_mode,heuristic_mode,selection_mode,win,num_steps
-
-    filters = [
-        [
-            {"level": target_level, "time_ms": "400", "rollout_mode": 0, "heuristic_mode": 0, "selection_mode": 0},
-        ]
-    ]
-    x_axis = "ucb_const"
-    y_axis = "win"
-
-    test_generate_plot(CSV_FILENAME, x_axis, y_axis, filters, log=False, graph=True)#, filter_2, filter_3])
-    exit()
-    # generate_plot(CSV_FILENAME, filter_criteria, x_axis, y_axis)
-    # play_level1()
-    # print()
-    # play_level2()
-    # print()
-    # play_level3()
-    # print()
-    # play_level4()
-    play_level1()
-    print()
-    play_level2()
-    print()
-    play_level3()
-    print()
-    play_level4()
-    print()
-    play_level9()
-    print()
-    # level = level.Level(5, 10, 10, level_data_1, chosen_plants_1)
-    # print(level.rollout(8, 10000, 1))
-    # print(level.rollout(8, 10000, 2))
-    # print(level.rollout(8, 10000, 3))
-    # print(level.timed_rollout(8, 2000, 1))
-    # print(level.timed_rollout(8, 2000, 2))
-    # print(level.timed_rollout(8, 2000, 3))
-
-    # animate_observation(level)
-    # run_animation()
-    # estimate_simulation_speed()
-    # import pstats
-    # p = pstats.Stats('profile.txt')
-    # p.strip_dirs().sort_stats(pstats.SortKey.CUMULATIVE).print_stats()
-    # cProfile.run('run_animation()')
-    # while not level.done:
-    #     level.step(level.get_random_action())
-    #     obs = get_numpy_arr_from_level_obs(level)
-    #     pprobs)
