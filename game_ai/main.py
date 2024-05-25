@@ -20,18 +20,11 @@ while not env.done:
     actions.append(action)
     while not env.is_action_legal(action):
         env.step()
-        # observations.append(env.get_observation())
         utils.draw_observation(env.get_observation(), env.frame)
     env.step(action)
-    # observations.append(env.get_observation())
     utils.draw_observation(env.get_observation(), env.frame)
     print("-------------------------------------")
     print(f"[{env.frame}] Action chosen: lane: {action.lane}, col: {action.col}, plant: {utils.plant_to_name[action.plant_name]}")
     print(f"lawnmowers: {env.lawnmowers[0]} {env.lawnmowers[1]} {env.lawnmowers[2]} {env.lawnmowers[3]} {env.lawnmowers[4]}")
 
 print(f"Game finished with status: {env.win}, at frame number {env.frame}")
-
-# generate_animation = input("generate animation? warning: this will take a long time (y/n)")
-# if generate_animation == "y":
-#     print("generating animation, saving to animation.mp4")
-#     utils.simulate_set_game(level.Level(5, 10, 10, level_data, plant_list, False), actions)
