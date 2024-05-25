@@ -26,7 +26,7 @@ MCTS_SWIG_LIB := $(BUILD_DIR)_mcts.so
 PYTHONI := -I/usr/include/python3.11 # change to 3.10 if 3.11 is not installed
 PYTHONL := -Xlinker -export-dynamic
 LIBFLAGS := -L/usr/local/lib -lgmpxx -lgmp -fopenmp
-CFLAGS := -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -O2 -flto # -funroll-loops # -mavx # -march=native -ffast-math -fvectorize
+CFLAGS := -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -O2 -flto -Wno-missing-field-initializers # -funroll-loops # -mavx # -march=native -ffast-math -fvectorize
 # available sanitizers: address, undefined, leak, thread. Note: some of these are incompatible with eachother!
 DFLAGS := -fsanitize=address,undefined,leak -g -O1 -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp
 PRINT_DFLAGS := $(DFLAGS) -DDEBUG
@@ -106,6 +106,10 @@ check:
 clean:
 	rm -r build/*
 	touch build/__init__.py
+	rm cpp_env/level_wrap.cxx
+	rm cpp_env/level.py
+	rm cpp_mcts/mcts_wrap.cxx
+	rm cpp_mcts/mcts.py
 
 .SUFFIXES:
 

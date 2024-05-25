@@ -66,6 +66,36 @@ def perform_experiment(num_level, time_ms, parallel_factor, ucb_const, rollout_m
         print(f"experiment took {end - start} seconds, expected time: {expected_time}", flush=True)
     utils.csv_append(result_dict, timestamped_csv)
 
+def validate_experiment_params(param_list):
+    if len(param_list) != 8:
+        print("Invalid number of parameters")
+        return False
+    if param_list[0] not in ["9", "9+", "9++"]:
+        print("Invalid level")
+        return False
+    if param_list[1] not in [100, 200, 300, 400, 500, 600, 700, 800, 1600]:
+        print("Invalid time_ms")
+        return False
+    if param_list[2] not in [2, 4, 6, 8]:
+        print("Invalid threads")
+        return False
+    # if param_list[3] not in [0.001, 0.004, 0.016]:
+    #     print("Invalid ucb_const")
+    #     return False
+    if param_list[4] not in [mcts.NORMAL_MCTS, mcts.MAX_NODE, mcts.PARALLEL_TREES]:
+        print("Invalid rollout_mode")
+        return False
+    if param_list[5] not in [mcts.NO_HEURISTIC, mcts.HEURISTIC_SELECT]:
+        print("Invalid heuristic_mode")
+        return False
+    if param_list[6] not in [mcts.FULL_EXPAND, mcts.SQUARE_RATIO]:
+        print("Invalid selection_mode")
+        return False
+    if param_list[7] not in [mcts.NO_HEURISTIC, mcts.TOTAL_PLANT_COST_HEURISTIC]:
+        print("Invalid loss_heuristic")
+        return False
+    return True
+        
 
 if __name__ == "__main__":
     """
@@ -99,11 +129,12 @@ if __name__ == "__main__":
     data = pd.read_csv("data/sparse_params.csv")
     experiment_parameter_list = []
     for _, row in data.iterrows():
-        params = [str(row["level"]), int(row["time_ms"]), 8, row["ucb_const"], int(row["rollout_mode"]), int(row["heuristic_mode"]), int(row["selection_mode"]), int(row["loss_heuristic"])]
+        params = [str(row["level"]), int(row["time_ms"]), int(row["threads"]), row["ucb_const"], int(row["rollout_mode"]), int(row["heuristic_mode"]), int(row["selection_mode"]), int(row["loss_heuristic"])]
         experiment_parameter_list.append(params)
     
     pprint(experiment_parameter_list)
     print(f"Parameter space size: {len(experiment_parameter_list)}", flush=True)
+    print(f"experiment params valid: {all([validate_experiment_params(x) for x in experiment_parameter_list])}")
     while True: ## run experiments until stopped manually
         for experiment_parameters in experiment_parameter_list:
             # args = [*experiment_parameters]
