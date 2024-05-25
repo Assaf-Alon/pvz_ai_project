@@ -9,6 +9,9 @@ from pprint import pprint
 from time import time
 import json
 import csv
+import matplotlib.animation as animation
+from PIL import Image
+
 
 NORMAL_MCTS = mcts.NORMAL_MCTS
 MAX_NODE = mcts.MAX_NODE
@@ -97,39 +100,70 @@ def get_frame_from_observation(observation: np.ndarray):
 
     return frame
 
-def animate_observation_buffer(observation_buffer: list):
+def animate_observation_buffer(observation_buffer: list, output_path='animation.mp4'):
     fig, ax = plt.subplots()
-    # text_annotation = ax.annotate("Plants", xy=(0.25, 0.95), xycoords="figure fraction", ha="center", va="center", wrap=True, bbox=dict(boxstyle="round", fc="w"))
-    # Set up an initial plot with the first frame
-    annotations = [] # type: list[plt.text.Annotation]
+    annotations = []
+
     im = ax.imshow(get_frame_from_observation(observation_buffer[0]))
 
-    # Define the update function for the animation
     def update(frame):
-        # print(frame)
-        # Update the plot with the next frame
         im.set_array(get_frame_from_observation(observation_buffer[frame]))
-        # text_annotation.set_text(f"Plants: {get_plants_from_observation(observation_buffer[frame])}")
         for annotation in annotations:
             annotation.remove()
         annotations.clear()
         for plant_name, row, col in get_plants_from_observation(observation_buffer[frame]):
             annotations.append(ax.annotate(plant_name, xy=(col * 2 + 0.5, row), xycoords="data", ha="center", va="center", wrap=True, bbox=dict(boxstyle="round", fc="w")))
         return im, *annotations
-    # Create the animation object using the FuncAnimation class
-    anim = animation.FuncAnimation(fig, update, frames=len(observation_buffer), interval=1, blit=True)
+
     num_cols = observation_buffer[0].shape[1] // 2
     num_rows = observation_buffer[0].shape[0]
-    aspect_ratio = num_cols / observation_buffer[0].shape[0]
-    plt.gca().set_aspect(2)
+    ax.set_aspect(2)
 
-    # Set custom tick positions for half-width columns
     ax.set_xticks(np.arange(num_cols) * 2 + 0.5)
     ax.set_yticks(np.arange(observation_buffer[0].shape[0]) + 0.5)
     ax.set_xticklabels(list(range(num_cols)))
     ax.set_yticklabels(list(range(num_rows)))
-    # Show the animation
-    plt.show()
+
+    anim = animation.FuncAnimation(fig, update, frames=len(observation_buffer), interval=100, blit=True)
+
+    # Save the animation as an MP4 file
+    anim.save(output_path, writer='ffmpeg', fps=30)
+
+    plt.close(fig)
+
+# def animate_observation_buffer(observation_buffer: list):
+#     fig, ax = plt.subplots()
+#     # text_annotation = ax.annotate("Plants", xy=(0.25, 0.95), xycoords="figure fraction", ha="center", va="center", wrap=True, bbox=dict(boxstyle="round", fc="w"))
+#     # Set up an initial plot with the first frame
+#     annotations = [] # type: list[plt.text.Annotation]
+#     im = ax.imshow(get_frame_from_observation(observation_buffer[0]))
+
+#     # Define the update function for the animation
+#     def update(frame):
+#         # print(frame)
+#         # Update the plot with the next frame
+#         im.set_array(get_frame_from_observation(observation_buffer[frame]))
+#         # text_annotation.set_text(f"Plants: {get_plants_from_observation(observation_buffer[frame])}")
+#         for annotation in annotations:
+#             annotation.remove()
+#         annotations.clear()
+#         for plant_name, row, col in get_plants_from_observation(observation_buffer[frame]):
+#             annotations.append(ax.annotate(plant_name, xy=(col * 2 + 0.5, row), xycoords="data", ha="center", va="center", wrap=True, bbox=dict(boxstyle="round", fc="w")))
+#         return im, *annotations
+#     # Create the animation object using the FuncAnimation class
+#     anim = animation.FuncAnimation(fig, update, frames=len(observation_buffer), interval=1, blit=True)
+#     num_cols = observation_buffer[0].shape[1] // 2
+#     num_rows = observation_buffer[0].shape[0]
+#     aspect_ratio = num_cols / observation_buffer[0].shape[0]
+#     plt.gca().set_aspect(2)
+
+#     # Set custom tick positions for half-width columns
+#     ax.set_xticks(np.arange(num_cols) * 2 + 0.5)
+#     ax.set_yticks(np.arange(observation_buffer[0].shape[0]) + 0.5)
+#     ax.set_xticklabels(list(range(num_cols)))
+#     ax.set_yticklabels(list(range(num_rows)))
+#     # Show the animation
+#     plt.show()
 
 def run_animation():
     level1 = level.Level(5, 10, 10, *get_level_info(1))
