@@ -1,0 +1,67 @@
+{
+    "5.5.1":
+    {
+        "description": "Wins vs Time per Step for each level",
+        "x": "time_ms",
+        "x_description": "Time (ms)",
+        "y": "win_rate",
+        "y_description": "Win Rate",
+        "color": "level",
+        "color_description": "Level",
+        "ucb_const": "",
+        "expansion_mode": "normal",
+        "heuristic_mode": "normal",
+        "selection_mode": "ucb",
+        "loss_heuristic": "normal",
+        "level": ""
+    },
+    "5.5.2.1":
+    [
+        {
+            "description": "Wins vs Time per Step for differnet UCB values, level 9",
+            "x": "time_ms",
+            "x_description": "Time (ms)",
+            "y": "win_rate",
+            "y_description": "Win Rate",
+            "color": "ucb_const",
+            "color_description": "UCB Constant",
+            "ucb_const": "",
+            "expansion_mode": "normal",
+            "heuristic_mode": "normal",
+            "selection_mode": "ucb",
+            "loss_heuristic": "normal",
+            "level": "9"
+        },
+        {
+            "description": "Wins vs Time per Step for differnet UCB values, level 9+",
+            "x": "time_ms",
+            "x_description": "Time (ms)",
+            "y": "win_rate",
+            "y_description": "Win Rate",
+            "color": "ucb_const",
+            "color_description": "UCB Constant",
+            "ucb_const": "",
+            "expansion_mode": "normal",
+            "heuristic_mode": "normal",
+            "selection_mode": "ucb",
+            "loss_heuristic": "normal",
+            "level": "9+"
+        }
+    ],
+    "5.5.2.3":
+    {
+        "description": "Wins vs UCB Const for parallel trees agent, level 9+",
+        "x": "ucb_const",
+        "x_description": "UCB Constant",
+        "y": "win_rate",
+        "y_description": "Win Rate",
+        "color": "time_ms",
+        "color_description": "Time (ms)",
+        "ucb_const": "",
+        "expansion_mode": "trees",
+        "heuristic_mode": "normal",
+        "selection_mode": "ucb",
+        "loss_heuristic": "normal",
+        "level": "9+"
+    }
+}
