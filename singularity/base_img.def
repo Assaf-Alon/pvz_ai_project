@@ -1,0 +1,10 @@
+Bootstrap: docker
+From: python:3.12.3-slim-bookworm
+
+%post
+    apt-get update
+    apt-get install -y libpython3-dev
+    apt-get install -y bash wget nano curl make libgmp3-dev libomp-dev tree swig
+    apt-get install -y clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+    pip install numpy pandas matplotlib scipy
+

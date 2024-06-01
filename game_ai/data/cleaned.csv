@@ -35,17 +35,17 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 8,400,normal,no heuristic,full expand,no heuristic,0.004,8,1083,1078,0.9953831948291783,0.99,1.0
 8,800,normal,no heuristic,full expand,no heuristic,0.004,8,1083,1081,0.9981532779316713,0.99,1.0
 8,1600,normal,no heuristic,full expand,no heuristic,0.004,8,1082,1081,0.9990757855822551,0.99,1.0
-9,100,normal,no heuristic,full expand,no heuristic,1e-05,8,1318,194,0.1471927162367223,0.13,0.17
-9,100,normal,no heuristic,full expand,no heuristic,5e-05,8,1318,183,0.13884673748103188,0.12,0.16
+9,100,normal,no heuristic,full expand,no heuristic,1e-05,8,1310,192,0.1465648854961832,0.13,0.17
+9,100,normal,no heuristic,full expand,no heuristic,5e-05,8,1310,182,0.13893129770992366,0.12,0.16
 9,100,normal,no heuristic,full expand,no heuristic,0.0001,8,798,118,0.14786967418546365,0.12,0.17
-9,100,normal,no heuristic,full expand,no heuristic,0.0005,8,1527,190,0.12442698100851342,0.11,0.14
+9,100,normal,no heuristic,full expand,no heuristic,0.0005,8,1518,189,0.12450592885375494,0.11,0.14
 9,100,normal,no heuristic,full expand,no heuristic,0.001,8,1316,181,0.13753799392097266,0.12,0.16
-9,100,normal,no heuristic,full expand,no heuristic,0.002,8,1286,148,0.1150855365474339,0.1,0.13
+9,100,normal,no heuristic,full expand,no heuristic,0.002,8,1277,148,0.1158966327329679,0.1,0.13
 9,100,normal,no heuristic,full expand,no heuristic,0.004,8,733,78,0.10641200545702592,0.09,0.13
-9,100,normal,no heuristic,full expand,no heuristic,0.008,8,1286,160,0.12441679626749612,0.11,0.14
+9,100,normal,no heuristic,full expand,no heuristic,0.008,8,1278,160,0.12519561815336464,0.11,0.14
 9,100,normal,no heuristic,full expand,no heuristic,0.016,8,1048,142,0.13549618320610687,0.12,0.16
 9,100,normal,no heuristic,full expand,no heuristic,0.032,8,557,67,0.12028725314183124,0.1,0.15
-9,100,normal,no heuristic,full expand,no heuristic,0.064,8,1575,182,0.11555555555555555,0.1,0.13
+9,100,normal,no heuristic,full expand,no heuristic,0.064,8,1566,182,0.11621966794380588,0.1,0.13
 9,100,normal,no heuristic,full expand,no heuristic,0.128,8,557,48,0.08617594254937164,0.07,0.11
 9,100,normal,no heuristic,full expand,no heuristic,0.256,8,529,46,0.08695652173913043,0.07,0.11
 9,100,normal,no heuristic,full expand,no heuristic,0.512,8,556,44,0.07913669064748201,0.06,0.1
@@ -3741,7 +3741,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,100,normal,select heuristic,full expand,no heuristic,1.024,8,12,0,0.0,0.0,0.24
 9+,100,normal,select heuristic,full expand,total plant cost,0.001,8,215,34,0.15813953488372093,0.12,0.21
 9+,100,normal,select heuristic,full expand,total plant cost,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9+,100,normal,select heuristic,full expand,total plant cost,0.004,8,1262,142,0.11251980982567353,0.1,0.13
+9+,100,normal,select heuristic,full expand,total plant cost,0.004,8,1254,142,0.11323763955342903,0.1,0.13
 9+,100,normal,select heuristic,full expand,total plant cost,0.008,8,12,0,0.0,0.0,0.24
 9+,100,normal,select heuristic,full expand,total plant cost,0.016,8,215,20,0.09302325581395349,0.06,0.14
 9+,100,normal,select heuristic,full expand,total plant cost,0.032,8,12,3,0.25,0.09,0.53
@@ -4098,7 +4098,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,200,normal,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,200,normal,select heuristic,full expand,no heuristic,0.001,8,215,27,0.12558139534883722,0.09,0.18
 9+,200,normal,select heuristic,full expand,no heuristic,0.002,8,12,0,0.0,0.0,0.24
-9+,200,normal,select heuristic,full expand,no heuristic,0.004,8,1261,123,0.09754163362410785,0.08,0.12
+9+,200,normal,select heuristic,full expand,no heuristic,0.004,8,1252,122,0.09744408945686901,0.08,0.12
 9+,200,normal,select heuristic,full expand,no heuristic,0.008,8,12,0,0.0,0.0,0.24
 9+,200,normal,select heuristic,full expand,no heuristic,0.016,8,215,21,0.09767441860465116,0.06,0.14
 9+,200,normal,select heuristic,full expand,no heuristic,0.032,8,12,3,0.25,0.09,0.53
@@ -4109,7 +4109,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,200,normal,select heuristic,full expand,no heuristic,1.024,8,12,0,0.0,0.0,0.24
 9+,200,normal,select heuristic,full expand,total plant cost,0.001,8,215,47,0.2186046511627907,0.17,0.28
 9+,200,normal,select heuristic,full expand,total plant cost,0.002,8,12,4,0.3333333333333333,0.14,0.61
-9+,200,normal,select heuristic,full expand,total plant cost,0.004,8,1475,406,0.2752542372881356,0.25,0.3
+9+,200,normal,select heuristic,full expand,total plant cost,0.004,8,1467,403,0.27471029311520107,0.25,0.3
 9+,200,normal,select heuristic,full expand,total plant cost,0.008,8,12,3,0.25,0.09,0.53
 9+,200,normal,select heuristic,full expand,total plant cost,0.016,8,215,42,0.19534883720930232,0.15,0.25
 9+,200,normal,select heuristic,full expand,total plant cost,0.032,8,12,2,0.16666666666666666,0.05,0.45
@@ -4244,7 +4244,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,200,parallel max,no heuristic,full expand,no heuristic,1.024,8,510,30,0.058823529411764705,0.04,0.08
 9+,200,parallel max,no heuristic,full expand,total plant cost,0.001,8,215,42,0.19534883720930232,0.15,0.25
 9+,200,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,200,parallel max,no heuristic,full expand,total plant cost,0.004,8,1604,333,0.2076059850374065,0.19,0.23
+9+,200,parallel max,no heuristic,full expand,total plant cost,0.004,8,1595,331,0.20752351097178684,0.19,0.23
 9+,200,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,6,0.5,0.25,0.75
 9+,200,parallel max,no heuristic,full expand,total plant cost,0.016,8,215,46,0.21395348837209302,0.16,0.27
 9+,200,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,2,0.16666666666666666,0.05,0.45
@@ -4255,7 +4255,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,200,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,200,parallel max,no heuristic,square ratio,no heuristic,0.001,8,215,78,0.3627906976744186,0.3,0.43
 9+,200,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,200,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1605,484,0.3015576323987539,0.28,0.32
+9+,200,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1597,483,0.3024420788979336,0.28,0.33
 9+,200,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,4,0.3333333333333333,0.14,0.61
 9+,200,parallel max,no heuristic,square ratio,no heuristic,0.016,8,215,70,0.32558139534883723,0.27,0.39
 9+,200,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,6,0.5,0.25,0.75
@@ -4277,7 +4277,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,200,parallel max,no heuristic,square ratio,total plant cost,1.024,8,12,3,0.25,0.09,0.53
 9+,200,parallel max,select heuristic,full expand,no heuristic,0.001,8,215,69,0.3209302325581395,0.26,0.39
 9+,200,parallel max,select heuristic,full expand,no heuristic,0.002,8,12,6,0.5,0.25,0.75
-9+,200,parallel max,select heuristic,full expand,no heuristic,0.004,8,1604,460,0.286783042394015,0.27,0.31
+9+,200,parallel max,select heuristic,full expand,no heuristic,0.004,8,1596,458,0.2869674185463659,0.27,0.31
 9+,200,parallel max,select heuristic,full expand,no heuristic,0.008,8,12,6,0.5,0.25,0.75
 9+,200,parallel max,select heuristic,full expand,no heuristic,0.016,8,215,66,0.30697674418604654,0.25,0.37
 9+,200,parallel max,select heuristic,full expand,no heuristic,0.032,8,12,3,0.25,0.09,0.53
@@ -4349,7 +4349,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,200,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,200,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,215,25,0.11627906976744186,0.08,0.17
 9+,200,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,3,0.25,0.09,0.53
-9+,200,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1605,610,0.38006230529595014,0.36,0.4
+9+,200,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1597,606,0.3794614902943018,0.36,0.4
 9+,200,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,3,0.25,0.09,0.53
 9+,200,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,215,75,0.3488372093023256,0.29,0.41
 9+,200,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,3,0.25,0.09,0.53
@@ -4371,7 +4371,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,200,parallel trees,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,200,parallel trees,select heuristic,full expand,no heuristic,0.001,8,215,41,0.19069767441860466,0.14,0.25
 9+,200,parallel trees,select heuristic,full expand,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,200,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1605,610,0.38006230529595014,0.36,0.4
+9+,200,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1597,607,0.3800876643706951,0.36,0.4
 9+,200,parallel trees,select heuristic,full expand,no heuristic,0.008,8,12,2,0.16666666666666666,0.05,0.45
 9+,200,parallel trees,select heuristic,full expand,no heuristic,0.016,8,215,75,0.3488372093023256,0.29,0.41
 9+,200,parallel trees,select heuristic,full expand,no heuristic,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -4382,7 +4382,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,200,parallel trees,select heuristic,full expand,no heuristic,1.024,8,12,0,0.0,0.0,0.24
 9+,200,parallel trees,select heuristic,full expand,total plant cost,0.001,8,215,25,0.11627906976744186,0.08,0.17
 9+,200,parallel trees,select heuristic,full expand,total plant cost,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9+,200,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1605,640,0.3987538940809969,0.38,0.42
+9+,200,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1597,637,0.39887288666249215,0.38,0.42
 9+,200,parallel trees,select heuristic,full expand,total plant cost,0.008,8,12,5,0.4166666666666667,0.19,0.68
 9+,200,parallel trees,select heuristic,full expand,total plant cost,0.016,8,215,82,0.3813953488372093,0.32,0.45
 9+,200,parallel trees,select heuristic,full expand,total plant cost,0.032,8,12,5,0.4166666666666667,0.19,0.68
@@ -4466,7 +4466,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,300,normal,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,300,normal,select heuristic,full expand,no heuristic,0.001,8,215,22,0.10232558139534884,0.07,0.15
 9+,300,normal,select heuristic,full expand,no heuristic,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9+,300,normal,select heuristic,full expand,no heuristic,0.004,8,1262,181,0.1434231378763867,0.13,0.16
+9+,300,normal,select heuristic,full expand,no heuristic,0.004,8,1254,180,0.14354066985645933,0.13,0.16
 9+,300,normal,select heuristic,full expand,no heuristic,0.008,8,12,1,0.08333333333333333,0.01,0.35
 9+,300,normal,select heuristic,full expand,no heuristic,0.016,8,215,28,0.13023255813953488,0.09,0.18
 9+,300,normal,select heuristic,full expand,no heuristic,0.032,8,12,0,0.0,0.0,0.24
@@ -4477,7 +4477,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,300,normal,select heuristic,full expand,no heuristic,1.024,8,12,0,0.0,0.0,0.24
 9+,300,normal,select heuristic,full expand,total plant cost,0.001,8,215,55,0.2558139534883721,0.2,0.32
 9+,300,normal,select heuristic,full expand,total plant cost,0.002,8,12,3,0.25,0.09,0.53
-9+,300,normal,select heuristic,full expand,total plant cost,0.004,8,1476,464,0.3143631436314363,0.29,0.34
+9+,300,normal,select heuristic,full expand,total plant cost,0.004,8,1468,460,0.3133514986376022,0.29,0.34
 9+,300,normal,select heuristic,full expand,total plant cost,0.008,8,12,5,0.4166666666666667,0.19,0.68
 9+,300,normal,select heuristic,full expand,total plant cost,0.016,8,215,41,0.19069767441860466,0.14,0.25
 9+,300,normal,select heuristic,full expand,total plant cost,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -4612,7 +4612,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,300,parallel max,no heuristic,full expand,no heuristic,1.024,8,510,65,0.12745098039215685,0.1,0.16
 9+,300,parallel max,no heuristic,full expand,total plant cost,0.001,8,215,99,0.4604651162790698,0.4,0.53
 9+,300,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,300,parallel max,no heuristic,full expand,total plant cost,0.004,8,1607,732,0.4555071561916615,0.43,0.48
+9+,300,parallel max,no heuristic,full expand,total plant cost,0.004,8,1599,728,0.45528455284552843,0.43,0.48
 9+,300,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9+,300,parallel max,no heuristic,full expand,total plant cost,0.016,8,215,89,0.413953488372093,0.35,0.48
 9+,300,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,3,0.25,0.09,0.53
@@ -4623,7 +4623,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,300,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,300,parallel max,no heuristic,square ratio,no heuristic,0.001,8,215,100,0.46511627906976744,0.4,0.53
 9+,300,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,6,0.5,0.25,0.75
-9+,300,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1607,765,0.4760423148724331,0.45,0.5
+9+,300,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1599,760,0.47529706066291433,0.45,0.5
 9+,300,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9+,300,parallel max,no heuristic,square ratio,no heuristic,0.016,8,215,113,0.5255813953488372,0.46,0.59
 9+,300,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,7,0.5833333333333334,0.32,0.81
@@ -4645,7 +4645,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,300,parallel max,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,300,parallel max,select heuristic,full expand,no heuristic,0.001,8,215,111,0.5162790697674419,0.45,0.58
 9+,300,parallel max,select heuristic,full expand,no heuristic,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,300,parallel max,select heuristic,full expand,no heuristic,0.004,8,1607,844,0.5252022401991289,0.5,0.55
+9+,300,parallel max,select heuristic,full expand,no heuristic,0.004,8,1599,839,0.5247029393370857,0.5,0.55
 9+,300,parallel max,select heuristic,full expand,no heuristic,0.008,8,12,5,0.4166666666666667,0.19,0.68
 9+,300,parallel max,select heuristic,full expand,no heuristic,0.016,8,215,116,0.5395348837209303,0.47,0.6
 9+,300,parallel max,select heuristic,full expand,no heuristic,0.032,8,12,6,0.5,0.25,0.75
@@ -4656,7 +4656,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,300,parallel max,select heuristic,full expand,no heuristic,1.024,8,12,0,0.0,0.0,0.24
 9+,300,parallel max,select heuristic,full expand,total plant cost,0.001,8,215,102,0.4744186046511628,0.41,0.54
 9+,300,parallel max,select heuristic,full expand,total plant cost,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,300,parallel max,select heuristic,full expand,total plant cost,0.004,8,2796,1520,0.5436337625178826,0.53,0.56
+9+,300,parallel max,select heuristic,full expand,total plant cost,0.004,8,2787,1514,0.5432364549695012,0.52,0.56
 9+,300,parallel max,select heuristic,full expand,total plant cost,0.008,8,12,5,0.4166666666666667,0.19,0.68
 9+,300,parallel max,select heuristic,full expand,total plant cost,0.016,8,215,112,0.5209302325581395,0.45,0.59
 9+,300,parallel max,select heuristic,full expand,total plant cost,0.032,8,12,6,0.5,0.25,0.75
@@ -4697,9 +4697,9 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,300,parallel trees,no heuristic,full expand,no heuristic,0.0025,8,629,317,0.5039745627980922,0.46,0.54
 9+,300,parallel trees,no heuristic,full expand,no heuristic,0.003,8,629,321,0.5103338632750397,0.47,0.55
 9+,300,parallel trees,no heuristic,full expand,no heuristic,0.0035,8,629,309,0.4912559618441971,0.45,0.53
-9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1669,269,0.16117435590173756,0.14,0.18
-9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1669,574,0.3439185140802876,0.32,0.37
-9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2730,1383,0.5065934065934066,0.49,0.53
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1660,269,0.16204819277108434,0.15,0.18
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,571,0.3437688139674895,0.32,0.37
+9+,300,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2721,1377,0.5060639470782801,0.49,0.52
 9+,300,parallel trees,no heuristic,full expand,no heuristic,0.0045,8,629,327,0.519872813990461,0.48,0.56
 9+,300,parallel trees,no heuristic,full expand,no heuristic,0.005,8,629,315,0.5007949125596184,0.46,0.54
 9+,300,parallel trees,no heuristic,full expand,no heuristic,0.0055,8,629,325,0.5166931637519873,0.48,0.56
@@ -4731,7 +4731,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,300,parallel trees,no heuristic,full expand,no heuristic,1.024,8,510,3,0.0058823529411764705,0.0,0.02
 9+,300,parallel trees,no heuristic,full expand,total plant cost,0.001,8,215,43,0.2,0.15,0.26
 9+,300,parallel trees,no heuristic,full expand,total plant cost,0.002,8,12,4,0.3333333333333333,0.14,0.61
-9+,300,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1607,827,0.5146235220908525,0.49,0.54
+9+,300,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1599,821,0.5134459036898061,0.49,0.54
 9+,300,parallel trees,no heuristic,full expand,total plant cost,0.008,8,12,4,0.3333333333333333,0.14,0.61
 9+,300,parallel trees,no heuristic,full expand,total plant cost,0.016,8,215,85,0.3953488372093023,0.33,0.46
 9+,300,parallel trees,no heuristic,full expand,total plant cost,0.032,8,12,5,0.4166666666666667,0.19,0.68
@@ -4742,7 +4742,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,300,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,300,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,215,48,0.22325581395348837,0.17,0.28
 9+,300,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,4,0.3333333333333333,0.14,0.61
-9+,300,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1607,852,0.5301804604853765,0.51,0.55
+9+,300,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1599,844,0.5278298936835523,0.5,0.55
 9+,300,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9+,300,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,215,95,0.4418604651162791,0.38,0.51
 9+,300,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,3,0.25,0.09,0.53
@@ -4764,7 +4764,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,300,parallel trees,no heuristic,square ratio,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,300,parallel trees,select heuristic,full expand,no heuristic,0.001,8,215,74,0.34418604651162793,0.28,0.41
 9+,300,parallel trees,select heuristic,full expand,no heuristic,0.002,8,12,7,0.5833333333333334,0.32,0.81
-9+,300,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1605,1146,0.7140186915887851,0.69,0.74
+9+,300,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1597,1142,0.715090795241077,0.69,0.74
 9+,300,parallel trees,select heuristic,full expand,no heuristic,0.008,8,12,9,0.75,0.47,0.91
 9+,300,parallel trees,select heuristic,full expand,no heuristic,0.016,8,215,161,0.7488372093023256,0.69,0.8
 9+,300,parallel trees,select heuristic,full expand,no heuristic,0.032,8,12,7,0.5833333333333334,0.32,0.81
@@ -4775,7 +4775,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,300,parallel trees,select heuristic,full expand,no heuristic,1.024,8,12,2,0.16666666666666666,0.05,0.45
 9+,300,parallel trees,select heuristic,full expand,total plant cost,0.001,8,215,71,0.3302325581395349,0.27,0.4
 9+,300,parallel trees,select heuristic,full expand,total plant cost,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,300,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1606,1148,0.7148194271481942,0.69,0.74
+9+,300,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1599,1142,0.7141963727329581,0.69,0.74
 9+,300,parallel trees,select heuristic,full expand,total plant cost,0.008,8,12,6,0.5,0.25,0.75
 9+,300,parallel trees,select heuristic,full expand,total plant cost,0.016,8,215,147,0.6837209302325581,0.62,0.74
 9+,300,parallel trees,select heuristic,full expand,total plant cost,0.032,8,12,8,0.6666666666666666,0.39,0.86
@@ -4862,7 +4862,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,400,normal,no heuristic,full expand,zombies left to spawn,0.004,8,1540,172,0.11168831168831168,0.1,0.13
 9+,400,normal,no heuristic,square ratio,no heuristic,0.001,8,215,19,0.08837209302325581,0.06,0.13
 9+,400,normal,no heuristic,square ratio,no heuristic,0.002,8,12,4,0.3333333333333333,0.14,0.61
-9+,400,normal,no heuristic,square ratio,no heuristic,0.004,8,1261,109,0.08643933386201427,0.07,0.1
+9+,400,normal,no heuristic,square ratio,no heuristic,0.004,8,1252,108,0.08626198083067092,0.07,0.1
 9+,400,normal,no heuristic,square ratio,no heuristic,0.008,8,12,1,0.08333333333333333,0.01,0.35
 9+,400,normal,no heuristic,square ratio,no heuristic,0.016,8,213,17,0.07981220657276995,0.05,0.12
 9+,400,normal,no heuristic,square ratio,no heuristic,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -4884,7 +4884,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,400,normal,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,400,normal,select heuristic,full expand,no heuristic,0.001,8,215,27,0.12558139534883722,0.09,0.18
 9+,400,normal,select heuristic,full expand,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,400,normal,select heuristic,full expand,no heuristic,0.004,8,1473,262,0.1778682959945689,0.16,0.2
+9+,400,normal,select heuristic,full expand,no heuristic,0.004,8,1465,262,0.178839590443686,0.16,0.2
 9+,400,normal,select heuristic,full expand,no heuristic,0.008,8,12,2,0.16666666666666666,0.05,0.45
 9+,400,normal,select heuristic,full expand,no heuristic,0.016,8,213,40,0.18779342723004694,0.14,0.25
 9+,400,normal,select heuristic,full expand,no heuristic,0.032,8,12,0,0.0,0.0,0.24
@@ -4895,7 +4895,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,400,normal,select heuristic,full expand,no heuristic,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,400,normal,select heuristic,full expand,total plant cost,0.001,8,215,73,0.3395348837209302,0.28,0.41
 9+,400,normal,select heuristic,full expand,total plant cost,0.002,8,12,3,0.25,0.09,0.53
-9+,400,normal,select heuristic,full expand,total plant cost,0.004,8,1476,497,0.3367208672086721,0.31,0.36
+9+,400,normal,select heuristic,full expand,total plant cost,0.004,8,1468,493,0.3358310626702997,0.31,0.36
 9+,400,normal,select heuristic,full expand,total plant cost,0.008,8,12,4,0.3333333333333333,0.14,0.61
 9+,400,normal,select heuristic,full expand,total plant cost,0.016,8,213,47,0.22065727699530516,0.17,0.28
 9+,400,normal,select heuristic,full expand,total plant cost,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -5014,23 +5014,23 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,400,parallel avg,select heuristic,square ratio,total plant cost,0.256,8,12,4,0.3333333333333333,0.14,0.61
 9+,400,parallel avg,select heuristic,square ratio,total plant cost,0.512,8,12,2,0.16666666666666666,0.05,0.45
 9+,400,parallel avg,select heuristic,square ratio,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
-9+,400,parallel max,no heuristic,full expand,no heuristic,0.001,8,1759,980,0.557134735645253,0.53,0.58
-9+,400,parallel max,no heuristic,full expand,no heuristic,0.002,8,1894,1102,0.5818373812038015,0.56,0.6
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.001,8,1751,974,0.5562535693889206,0.53,0.58
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.002,8,1886,1096,0.5811240721102863,0.56,0.6
 9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,2,1047,159,0.1518624641833811,0.13,0.17
 9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,4,1046,350,0.33460803059273425,0.31,0.36
 9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,6,728,370,0.5082417582417582,0.47,0.54
-9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,2101,1199,0.5706806282722513,0.55,0.59
-9+,400,parallel max,no heuristic,full expand,no heuristic,0.008,8,1893,1087,0.5742208135235076,0.55,0.6
-9+,400,parallel max,no heuristic,full expand,no heuristic,0.016,8,1757,969,0.5515082527034718,0.53,0.57
-9+,400,parallel max,no heuristic,full expand,no heuristic,0.032,8,1897,987,0.5202952029520295,0.5,0.54
-9+,400,parallel max,no heuristic,full expand,no heuristic,0.064,8,1557,685,0.4399486191393706,0.42,0.46
-9+,400,parallel max,no heuristic,full expand,no heuristic,0.128,8,1896,618,0.3259493670886076,0.31,0.35
-9+,400,parallel max,no heuristic,full expand,no heuristic,0.256,8,1557,403,0.2588310854206808,0.24,0.28
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,2093,1192,0.5695174390826565,0.55,0.59
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.008,8,1885,1080,0.5729442970822282,0.55,0.6
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.016,8,1749,968,0.5534591194968553,0.53,0.58
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.032,8,1888,985,0.5217161016949152,0.5,0.54
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.064,8,1550,680,0.43870967741935485,0.41,0.46
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.128,8,1888,614,0.3252118644067797,0.3,0.35
+9+,400,parallel max,no heuristic,full expand,no heuristic,0.256,8,1549,402,0.25952227243382825,0.24,0.28
 9+,400,parallel max,no heuristic,full expand,no heuristic,0.512,8,1165,242,0.20772532188841203,0.19,0.23
 9+,400,parallel max,no heuristic,full expand,no heuristic,1.024,8,827,115,0.13905683192261184,0.12,0.16
 9+,400,parallel max,no heuristic,full expand,total plant cost,0.001,8,215,125,0.5813953488372093,0.51,0.65
 9+,400,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,400,parallel max,no heuristic,full expand,total plant cost,0.004,8,1606,947,0.5896637608966376,0.57,0.61
+9+,400,parallel max,no heuristic,full expand,total plant cost,0.004,8,1598,944,0.590738423028786,0.57,0.61
 9+,400,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,9,0.75,0.47,0.91
 9+,400,parallel max,no heuristic,full expand,total plant cost,0.016,8,213,115,0.539906103286385,0.47,0.61
 9+,400,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,7,0.5833333333333334,0.32,0.81
@@ -5041,7 +5041,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,400,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,3,0.25,0.09,0.53
 9+,400,parallel max,no heuristic,square ratio,no heuristic,0.001,8,215,133,0.6186046511627907,0.55,0.68
 9+,400,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,7,0.5833333333333334,0.32,0.81
-9+,400,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1606,949,0.5909090909090909,0.57,0.61
+9+,400,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1599,944,0.590368980612883,0.57,0.61
 9+,400,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9+,400,parallel max,no heuristic,square ratio,no heuristic,0.016,8,213,118,0.5539906103286385,0.49,0.62
 9+,400,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,6,0.5,0.25,0.75
@@ -5063,7 +5063,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,400,parallel max,no heuristic,square ratio,total plant cost,1.024,8,12,2,0.16666666666666666,0.05,0.45
 9+,400,parallel max,select heuristic,full expand,no heuristic,0.001,8,215,137,0.6372093023255814,0.57,0.7
 9+,400,parallel max,select heuristic,full expand,no heuristic,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,400,parallel max,select heuristic,full expand,no heuristic,0.004,8,1606,1042,0.6488169364881694,0.63,0.67
+9+,400,parallel max,select heuristic,full expand,no heuristic,0.004,8,1599,1038,0.649155722326454,0.63,0.67
 9+,400,parallel max,select heuristic,full expand,no heuristic,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9+,400,parallel max,select heuristic,full expand,no heuristic,0.016,8,213,134,0.6291079812206573,0.56,0.69
 9+,400,parallel max,select heuristic,full expand,no heuristic,0.032,8,12,8,0.6666666666666666,0.39,0.86
@@ -5110,21 +5110,21 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,400,parallel trees,no heuristic,full expand,no heuristic,0.0001,8,452,11,0.024336283185840708,0.01,0.04
 9+,400,parallel trees,no heuristic,full expand,no heuristic,0.0005,8,769,124,0.16124837451235371,0.14,0.19
 9+,400,parallel trees,no heuristic,full expand,no heuristic,0.001,8,1482,511,0.344804318488529,0.32,0.37
-9+,400,parallel trees,no heuristic,full expand,no heuristic,0.002,8,1895,1021,0.5387862796833773,0.52,0.56
-9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1669,374,0.22408627920910726,0.2,0.24
-9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1669,754,0.4517675254643499,0.43,0.48
-9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2102,1294,0.615604186489058,0.59,0.64
-9+,400,parallel trees,no heuristic,full expand,no heuristic,0.008,8,1896,1049,0.5532700421940928,0.53,0.58
-9+,400,parallel trees,no heuristic,full expand,no heuristic,0.016,8,1758,868,0.4937428896473265,0.47,0.52
-9+,400,parallel trees,no heuristic,full expand,no heuristic,0.032,8,1893,745,0.3935552033808769,0.37,0.42
-9+,400,parallel trees,no heuristic,full expand,no heuristic,0.064,8,1557,540,0.3468208092485549,0.32,0.37
-9+,400,parallel trees,no heuristic,full expand,no heuristic,0.128,8,1893,552,0.29160063391442154,0.27,0.31
-9+,400,parallel trees,no heuristic,full expand,no heuristic,0.256,8,1557,329,0.2113037893384714,0.19,0.23
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.002,8,1887,1015,0.5378908320084791,0.52,0.56
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,371,0.22335942203491874,0.2,0.24
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,750,0.4515352197471403,0.43,0.48
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2093,1289,0.6158623984710941,0.59,0.64
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.008,8,1888,1046,0.5540254237288136,0.53,0.58
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.016,8,1749,865,0.494568324757004,0.47,0.52
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.032,8,1885,742,0.39363395225464193,0.37,0.42
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.064,8,1549,537,0.34667527437056167,0.32,0.37
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.128,8,1885,549,0.2912466843501326,0.27,0.31
+9+,400,parallel trees,no heuristic,full expand,no heuristic,0.256,8,1549,329,0.21239509360877987,0.19,0.23
 9+,400,parallel trees,no heuristic,full expand,no heuristic,0.512,8,542,49,0.09040590405904059,0.07,0.12
 9+,400,parallel trees,no heuristic,full expand,no heuristic,1.024,8,510,1,0.00196078431372549,0.0,0.01
 9+,400,parallel trees,no heuristic,full expand,total plant cost,0.001,8,215,73,0.3395348837209302,0.28,0.41
 9+,400,parallel trees,no heuristic,full expand,total plant cost,0.002,8,12,4,0.3333333333333333,0.14,0.61
-9+,400,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1606,936,0.5828144458281445,0.56,0.61
+9+,400,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1598,931,0.5826032540675845,0.56,0.61
 9+,400,parallel trees,no heuristic,full expand,total plant cost,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9+,400,parallel trees,no heuristic,full expand,total plant cost,0.016,8,213,99,0.4647887323943662,0.4,0.53
 9+,400,parallel trees,no heuristic,full expand,total plant cost,0.032,8,12,3,0.25,0.09,0.53
@@ -5135,7 +5135,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,400,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,400,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,215,71,0.3302325581395349,0.27,0.4
 9+,400,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,400,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1606,981,0.6108343711083437,0.59,0.63
+9+,400,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1598,973,0.6088861076345432,0.58,0.63
 9+,400,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9+,400,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,213,90,0.4225352112676056,0.36,0.49
 9+,400,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,5,0.4166666666666667,0.19,0.68
@@ -5157,7 +5157,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,400,parallel trees,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,400,parallel trees,select heuristic,full expand,no heuristic,0.001,8,215,105,0.4883720930232558,0.42,0.55
 9+,400,parallel trees,select heuristic,full expand,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,400,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1604,1268,0.7905236907730673,0.77,0.81
+9+,400,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1596,1262,0.7907268170426065,0.77,0.81
 9+,400,parallel trees,select heuristic,full expand,no heuristic,0.008,8,12,11,0.9166666666666666,0.65,0.99
 9+,400,parallel trees,select heuristic,full expand,no heuristic,0.016,8,213,158,0.7417840375586855,0.68,0.8
 9+,400,parallel trees,select heuristic,full expand,no heuristic,0.032,8,12,10,0.8333333333333334,0.55,0.95
@@ -5168,7 +5168,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,400,parallel trees,select heuristic,full expand,no heuristic,1.024,8,12,2,0.16666666666666666,0.05,0.45
 9+,400,parallel trees,select heuristic,full expand,total plant cost,0.001,8,215,89,0.413953488372093,0.35,0.48
 9+,400,parallel trees,select heuristic,full expand,total plant cost,0.002,8,12,9,0.75,0.47,0.91
-9+,400,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1603,1254,0.7822832189644416,0.76,0.8
+9+,400,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1595,1250,0.7836990595611285,0.76,0.8
 9+,400,parallel trees,select heuristic,full expand,total plant cost,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9+,400,parallel trees,select heuristic,full expand,total plant cost,0.016,8,213,160,0.7511737089201878,0.69,0.8
 9+,400,parallel trees,select heuristic,full expand,total plant cost,0.032,8,12,8,0.6666666666666666,0.39,0.86
@@ -5263,7 +5263,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,500,normal,select heuristic,full expand,no heuristic,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,500,normal,select heuristic,full expand,total plant cost,0.001,8,12,3,0.25,0.09,0.53
 9+,500,normal,select heuristic,full expand,total plant cost,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,500,normal,select heuristic,full expand,total plant cost,0.004,8,2047,693,0.33854421104054716,0.32,0.36
+9+,500,normal,select heuristic,full expand,total plant cost,0.004,8,2039,692,0.3393820500245218,0.32,0.36
 9+,500,normal,select heuristic,full expand,total plant cost,0.008,8,12,5,0.4166666666666667,0.19,0.68
 9+,500,normal,select heuristic,full expand,total plant cost,0.016,8,12,0,0.0,0.0,0.24
 9+,500,normal,select heuristic,full expand,total plant cost,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -5385,7 +5385,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,500,parallel max,no heuristic,full expand,no heuristic,0.001,8,509,314,0.6168958742632613,0.57,0.66
 9+,500,parallel max,no heuristic,full expand,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
 9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,2,1045,207,0.19808612440191387,0.18,0.22
-9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,4,1774,725,0.4086809470124014,0.39,0.43
+9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,4,1766,721,0.4082672706681767,0.39,0.43
 9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,6,728,385,0.5288461538461539,0.49,0.56
 9+,500,parallel max,no heuristic,full expand,no heuristic,0.004,8,1168,778,0.666095890410959,0.64,0.69
 9+,500,parallel max,no heuristic,full expand,no heuristic,0.008,8,12,7,0.5833333333333334,0.32,0.81
@@ -5398,7 +5398,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,500,parallel max,no heuristic,full expand,no heuristic,1.024,8,509,83,0.16306483300589392,0.13,0.2
 9+,500,parallel max,no heuristic,full expand,total plant cost,0.001,8,12,8,0.6666666666666666,0.39,0.86
 9+,500,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,9,0.75,0.47,0.91
-9+,500,parallel max,no heuristic,full expand,total plant cost,0.004,8,1403,918,0.654312188168211,0.63,0.68
+9+,500,parallel max,no heuristic,full expand,total plant cost,0.004,8,1396,915,0.6554441260744985,0.63,0.68
 9+,500,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,11,0.9166666666666666,0.65,0.99
 9+,500,parallel max,no heuristic,full expand,total plant cost,0.016,8,12,9,0.75,0.47,0.91
 9+,500,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,7,0.5833333333333334,0.32,0.81
@@ -5409,7 +5409,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,500,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,500,parallel max,no heuristic,square ratio,no heuristic,0.001,8,12,8,0.6666666666666666,0.39,0.86
 9+,500,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,500,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1403,919,0.6550249465431219,0.63,0.68
+9+,500,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,914,0.6547277936962751,0.63,0.68
 9+,500,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9+,500,parallel max,no heuristic,square ratio,no heuristic,0.016,8,12,10,0.8333333333333334,0.55,0.95
 9+,500,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -5431,7 +5431,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,500,parallel max,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,500,parallel max,select heuristic,full expand,no heuristic,0.001,8,12,10,0.8333333333333334,0.55,0.95
 9+,500,parallel max,select heuristic,full expand,no heuristic,0.002,8,12,7,0.5833333333333334,0.32,0.81
-9+,500,parallel max,select heuristic,full expand,no heuristic,0.004,8,1403,1005,0.7163221667854597,0.69,0.74
+9+,500,parallel max,select heuristic,full expand,no heuristic,0.004,8,1396,1001,0.7170487106017192,0.69,0.74
 9+,500,parallel max,select heuristic,full expand,no heuristic,0.008,8,12,11,0.9166666666666666,0.65,0.99
 9+,500,parallel max,select heuristic,full expand,no heuristic,0.016,8,12,7,0.5833333333333334,0.32,0.81
 9+,500,parallel max,select heuristic,full expand,no heuristic,0.032,8,12,9,0.75,0.47,0.91
@@ -5479,9 +5479,9 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,500,parallel trees,no heuristic,full expand,no heuristic,0.0005,8,452,90,0.19911504424778761,0.16,0.24
 9+,500,parallel trees,no heuristic,full expand,no heuristic,0.001,8,961,381,0.3964620187304891,0.37,0.43
 9+,500,parallel trees,no heuristic,full expand,no heuristic,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1669,454,0.2720191731575794,0.25,0.29
-9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1669,858,0.5140802875973637,0.49,0.54
-9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1898,1231,0.6485774499473129,0.63,0.67
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,451,0.271523178807947,0.25,0.29
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,853,0.5135460565924143,0.49,0.54
+9+,500,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1224,0.6476190476190476,0.63,0.67
 9+,500,parallel trees,no heuristic,full expand,no heuristic,0.008,8,12,10,0.8333333333333334,0.55,0.95
 9+,500,parallel trees,no heuristic,full expand,no heuristic,0.016,8,509,275,0.5402750491159135,0.5,0.58
 9+,500,parallel trees,no heuristic,full expand,no heuristic,0.032,8,12,3,0.25,0.09,0.53
@@ -5492,7 +5492,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,500,parallel trees,no heuristic,full expand,no heuristic,1.024,8,509,6,0.011787819253438114,0.01,0.03
 9+,500,parallel trees,no heuristic,full expand,total plant cost,0.001,8,12,5,0.4166666666666667,0.19,0.68
 9+,500,parallel trees,no heuristic,full expand,total plant cost,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,500,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1403,950,0.67712045616536,0.65,0.7
+9+,500,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1396,946,0.6776504297994269,0.65,0.7
 9+,500,parallel trees,no heuristic,full expand,total plant cost,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9+,500,parallel trees,no heuristic,full expand,total plant cost,0.016,8,12,9,0.75,0.47,0.91
 9+,500,parallel trees,no heuristic,full expand,total plant cost,0.032,8,12,7,0.5833333333333334,0.32,0.81
@@ -5503,7 +5503,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,500,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,500,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,12,6,0.5,0.25,0.75
 9+,500,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,3,0.25,0.09,0.53
-9+,500,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1404,947,0.6745014245014245,0.65,0.7
+9+,500,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1396,943,0.6755014326647565,0.65,0.7
 9+,500,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,9,0.75,0.47,0.91
 9+,500,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,12,4,0.3333333333333333,0.14,0.61
 9+,500,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -5536,7 +5536,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,500,parallel trees,select heuristic,full expand,no heuristic,1.024,8,12,2,0.16666666666666666,0.05,0.45
 9+,500,parallel trees,select heuristic,full expand,total plant cost,0.001,8,12,9,0.75,0.47,0.91
 9+,500,parallel trees,select heuristic,full expand,total plant cost,0.002,8,12,7,0.5833333333333334,0.32,0.81
-9+,500,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1402,1141,0.8138373751783167,0.79,0.83
+9+,500,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1394,1134,0.8134863701578192,0.79,0.83
 9+,500,parallel trees,select heuristic,full expand,total plant cost,0.008,8,12,11,0.9166666666666666,0.65,0.99
 9+,500,parallel trees,select heuristic,full expand,total plant cost,0.016,8,12,10,0.8333333333333334,0.55,0.95
 9+,500,parallel trees,select heuristic,full expand,total plant cost,0.032,8,12,9,0.75,0.47,0.91
@@ -5752,10 +5752,10 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,600,parallel avg,select heuristic,square ratio,total plant cost,1.024,8,12,4,0.3333333333333333,0.14,0.61
 9+,600,parallel max,no heuristic,full expand,no heuristic,0.001,8,509,336,0.6601178781925344,0.62,0.7
 9+,600,parallel max,no heuristic,full expand,no heuristic,0.002,8,12,10,0.8333333333333334,0.55,0.95
-9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,2,1773,408,0.23011844331641285,0.21,0.25
-9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,4,1775,818,0.4608450704225352,0.44,0.48
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,2,1764,406,0.23015873015873015,0.21,0.25
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,4,1767,816,0.4617996604414261,0.44,0.49
 9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,6,728,466,0.6401098901098901,0.6,0.67
-9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1899,1355,0.7135334386519221,0.69,0.73
+9+,600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1890,1348,0.7132275132275132,0.69,0.73
 9+,600,parallel max,no heuristic,full expand,no heuristic,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9+,600,parallel max,no heuristic,full expand,no heuristic,0.016,8,509,365,0.7170923379174853,0.68,0.75
 9+,600,parallel max,no heuristic,full expand,no heuristic,0.032,8,12,8,0.6666666666666666,0.39,0.86
@@ -5766,7 +5766,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,600,parallel max,no heuristic,full expand,no heuristic,1.024,8,509,92,0.1807465618860511,0.15,0.22
 9+,600,parallel max,no heuristic,full expand,total plant cost,0.001,8,12,9,0.75,0.47,0.91
 9+,600,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,7,0.5833333333333334,0.32,0.81
-9+,600,parallel max,no heuristic,full expand,total plant cost,0.004,8,1403,1011,0.7205987170349252,0.7,0.74
+9+,600,parallel max,no heuristic,full expand,total plant cost,0.004,8,1396,1008,0.7220630372492837,0.7,0.74
 9+,600,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9+,600,parallel max,no heuristic,full expand,total plant cost,0.016,8,12,7,0.5833333333333334,0.32,0.81
 9+,600,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,5,0.4166666666666667,0.19,0.68
@@ -5777,7 +5777,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,600,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,3,0.25,0.09,0.53
 9+,600,parallel max,no heuristic,square ratio,no heuristic,0.001,8,12,8,0.6666666666666666,0.39,0.86
 9+,600,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1403,1003,0.714896650035638,0.69,0.74
+9+,600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,998,0.7148997134670487,0.69,0.74
 9+,600,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9+,600,parallel max,no heuristic,square ratio,no heuristic,0.016,8,12,9,0.75,0.47,0.91
 9+,600,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,10,0.8333333333333334,0.55,0.95
@@ -5799,7 +5799,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,600,parallel max,no heuristic,square ratio,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,600,parallel max,select heuristic,full expand,no heuristic,0.001,8,12,9,0.75,0.47,0.91
 9+,600,parallel max,select heuristic,full expand,no heuristic,0.002,8,12,9,0.75,0.47,0.91
-9+,600,parallel max,select heuristic,full expand,no heuristic,0.004,8,1403,1108,0.789736279401283,0.77,0.81
+9+,600,parallel max,select heuristic,full expand,no heuristic,0.004,8,1395,1102,0.7899641577060932,0.77,0.81
 9+,600,parallel max,select heuristic,full expand,no heuristic,0.008,8,12,12,1.0,0.76,1.0
 9+,600,parallel max,select heuristic,full expand,no heuristic,0.016,8,12,10,0.8333333333333334,0.55,0.95
 9+,600,parallel max,select heuristic,full expand,no heuristic,0.032,8,12,12,1.0,0.76,1.0
@@ -5847,9 +5847,9 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,600,parallel trees,no heuristic,full expand,no heuristic,0.0005,8,452,101,0.2234513274336283,0.19,0.26
 9+,600,parallel trees,no heuristic,full expand,no heuristic,0.001,8,961,417,0.4339229968782518,0.4,0.47
 9+,600,parallel trees,no heuristic,full expand,no heuristic,0.002,8,12,4,0.3333333333333333,0.14,0.61
-9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1669,525,0.3145596165368484,0.29,0.34
-9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1668,937,0.5617505995203836,0.54,0.59
-9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1899,1367,0.7198525539757767,0.7,0.74
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,524,0.31547260686333534,0.29,0.34
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1660,933,0.5620481927710843,0.54,0.59
+9+,600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1890,1361,0.7201058201058201,0.7,0.74
 9+,600,parallel trees,no heuristic,full expand,no heuristic,0.008,8,12,5,0.4166666666666667,0.19,0.68
 9+,600,parallel trees,no heuristic,full expand,no heuristic,0.016,8,509,284,0.5579567779960707,0.51,0.6
 9+,600,parallel trees,no heuristic,full expand,no heuristic,0.032,8,12,5,0.4166666666666667,0.19,0.68
@@ -5860,7 +5860,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,600,parallel trees,no heuristic,full expand,no heuristic,1.024,8,509,4,0.007858546168958742,0.0,0.02
 9+,600,parallel trees,no heuristic,full expand,total plant cost,0.001,8,12,4,0.3333333333333333,0.14,0.61
 9+,600,parallel trees,no heuristic,full expand,total plant cost,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,600,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1404,997,0.7101139601139601,0.69,0.73
+9+,600,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1396,991,0.7098853868194842,0.69,0.73
 9+,600,parallel trees,no heuristic,full expand,total plant cost,0.008,8,12,3,0.25,0.09,0.53
 9+,600,parallel trees,no heuristic,full expand,total plant cost,0.016,8,12,7,0.5833333333333334,0.32,0.81
 9+,600,parallel trees,no heuristic,full expand,total plant cost,0.032,8,12,7,0.5833333333333334,0.32,0.81
@@ -5871,7 +5871,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,600,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,600,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,12,7,0.5833333333333334,0.32,0.81
 9+,600,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1404,986,0.7022792022792023,0.68,0.73
+9+,600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1396,979,0.7012893982808023,0.68,0.72
 9+,600,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,10,0.8333333333333334,0.55,0.95
 9+,600,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,12,8,0.6666666666666666,0.39,0.86
 9+,600,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,7,0.5833333333333334,0.32,0.81
@@ -5893,7 +5893,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,600,parallel trees,no heuristic,square ratio,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,600,parallel trees,select heuristic,full expand,no heuristic,0.001,8,12,3,0.25,0.09,0.53
 9+,600,parallel trees,select heuristic,full expand,no heuristic,0.002,8,12,10,0.8333333333333334,0.55,0.95
-9+,600,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1402,1173,0.8366619115549215,0.82,0.86
+9+,600,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1393,1167,0.8377602297200287,0.82,0.86
 9+,600,parallel trees,select heuristic,full expand,no heuristic,0.008,8,12,9,0.75,0.47,0.91
 9+,600,parallel trees,select heuristic,full expand,no heuristic,0.016,8,12,8,0.6666666666666666,0.39,0.86
 9+,600,parallel trees,select heuristic,full expand,no heuristic,0.032,8,12,11,0.9166666666666666,0.65,0.99
@@ -5904,7 +5904,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,600,parallel trees,select heuristic,full expand,no heuristic,1.024,8,12,3,0.25,0.09,0.53
 9+,600,parallel trees,select heuristic,full expand,total plant cost,0.001,8,12,6,0.5,0.25,0.75
 9+,600,parallel trees,select heuristic,full expand,total plant cost,0.002,8,12,10,0.8333333333333334,0.55,0.95
-9+,600,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1401,1164,0.8308351177730193,0.81,0.85
+9+,600,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1393,1160,0.832735104091888,0.81,0.85
 9+,600,parallel trees,select heuristic,full expand,total plant cost,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9+,600,parallel trees,select heuristic,full expand,total plant cost,0.016,8,12,12,1.0,0.76,1.0
 9+,600,parallel trees,select heuristic,full expand,total plant cost,0.032,8,12,7,0.5833333333333334,0.32,0.81
@@ -5988,7 +5988,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,700,normal,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,700,normal,select heuristic,full expand,no heuristic,0.001,8,12,4,0.3333333333333333,0.14,0.61
 9+,700,normal,select heuristic,full expand,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,700,normal,select heuristic,full expand,no heuristic,0.004,8,2047,516,0.252076209086468,0.23,0.27
+9+,700,normal,select heuristic,full expand,no heuristic,0.004,8,2038,513,0.2517173699705594,0.23,0.27
 9+,700,normal,select heuristic,full expand,no heuristic,0.008,8,12,3,0.25,0.09,0.53
 9+,700,normal,select heuristic,full expand,no heuristic,0.016,8,12,2,0.16666666666666666,0.05,0.45
 9+,700,normal,select heuristic,full expand,no heuristic,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -6121,9 +6121,9 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,700,parallel max,no heuristic,full expand,no heuristic,0.001,8,509,365,0.7170923379174853,0.68,0.75
 9+,700,parallel max,no heuristic,full expand,no heuristic,0.002,8,12,8,0.6666666666666666,0.39,0.86
 9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,2,1045,278,0.2660287081339713,0.24,0.29
-9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,4,1774,867,0.4887260428410372,0.47,0.51
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,4,1766,865,0.4898074745186863,0.47,0.51
 9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,6,728,490,0.6730769230769231,0.64,0.71
-9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1898,1416,0.7460484720758693,0.73,0.77
+9+,700,parallel max,no heuristic,full expand,no heuristic,0.004,8,1889,1408,0.745367919534145,0.73,0.76
 9+,700,parallel max,no heuristic,full expand,no heuristic,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9+,700,parallel max,no heuristic,full expand,no heuristic,0.016,8,509,393,0.7721021611001965,0.73,0.81
 9+,700,parallel max,no heuristic,full expand,no heuristic,0.032,8,12,8,0.6666666666666666,0.39,0.86
@@ -6134,7 +6134,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,700,parallel max,no heuristic,full expand,no heuristic,1.024,8,509,104,0.2043222003929273,0.17,0.24
 9+,700,parallel max,no heuristic,full expand,total plant cost,0.001,8,12,7,0.5833333333333334,0.32,0.81
 9+,700,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,700,parallel max,no heuristic,full expand,total plant cost,0.004,8,1403,1030,0.7341411261582323,0.71,0.76
+9+,700,parallel max,no heuristic,full expand,total plant cost,0.004,8,1396,1025,0.7342406876790831,0.71,0.76
 9+,700,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,10,0.8333333333333334,0.55,0.95
 9+,700,parallel max,no heuristic,full expand,total plant cost,0.016,8,12,9,0.75,0.47,0.91
 9+,700,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,8,0.6666666666666666,0.39,0.86
@@ -6145,7 +6145,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,700,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,700,parallel max,no heuristic,square ratio,no heuristic,0.001,8,12,7,0.5833333333333334,0.32,0.81
 9+,700,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,700,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1403,1058,0.7540983606557377,0.73,0.78
+9+,700,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,1052,0.7535816618911175,0.73,0.78
 9+,700,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,10,0.8333333333333334,0.55,0.95
 9+,700,parallel max,no heuristic,square ratio,no heuristic,0.016,8,12,8,0.6666666666666666,0.39,0.86
 9+,700,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,9,0.75,0.47,0.91
@@ -6167,7 +6167,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,700,parallel max,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,700,parallel max,select heuristic,full expand,no heuristic,0.001,8,12,9,0.75,0.47,0.91
 9+,700,parallel max,select heuristic,full expand,no heuristic,0.002,8,12,10,0.8333333333333334,0.55,0.95
-9+,700,parallel max,select heuristic,full expand,no heuristic,0.004,8,1401,1136,0.8108493932905068,0.79,0.83
+9+,700,parallel max,select heuristic,full expand,no heuristic,0.004,8,1393,1130,0.8111988513998565,0.79,0.83
 9+,700,parallel max,select heuristic,full expand,no heuristic,0.008,8,12,10,0.8333333333333334,0.55,0.95
 9+,700,parallel max,select heuristic,full expand,no heuristic,0.016,8,12,9,0.75,0.47,0.91
 9+,700,parallel max,select heuristic,full expand,no heuristic,0.032,8,12,10,0.8333333333333334,0.55,0.95
@@ -6215,9 +6215,9 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,700,parallel trees,no heuristic,full expand,no heuristic,0.0005,8,452,138,0.3053097345132743,0.26,0.35
 9+,700,parallel trees,no heuristic,full expand,no heuristic,0.001,8,961,451,0.46930280957336107,0.44,0.5
 9+,700,parallel trees,no heuristic,full expand,no heuristic,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1670,614,0.36766467065868264,0.34,0.39
-9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1668,980,0.5875299760191847,0.56,0.61
-9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1898,1389,0.731822971548999,0.71,0.75
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1662,612,0.36823104693140796,0.35,0.39
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1660,975,0.5873493975903614,0.56,0.61
+9+,700,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1889,1381,0.7310746426680783,0.71,0.75
 9+,700,parallel trees,no heuristic,full expand,no heuristic,0.008,8,12,10,0.8333333333333334,0.55,0.95
 9+,700,parallel trees,no heuristic,full expand,no heuristic,0.016,8,509,304,0.5972495088408645,0.55,0.64
 9+,700,parallel trees,no heuristic,full expand,no heuristic,0.032,8,12,6,0.5,0.25,0.75
@@ -6228,7 +6228,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,700,parallel trees,no heuristic,full expand,no heuristic,1.024,8,509,4,0.007858546168958742,0.0,0.02
 9+,700,parallel trees,no heuristic,full expand,total plant cost,0.001,8,12,8,0.6666666666666666,0.39,0.86
 9+,700,parallel trees,no heuristic,full expand,total plant cost,0.002,8,12,7,0.5833333333333334,0.32,0.81
-9+,700,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1404,1059,0.7542735042735043,0.73,0.78
+9+,700,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1396,1051,0.752865329512894,0.73,0.77
 9+,700,parallel trees,no heuristic,full expand,total plant cost,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9+,700,parallel trees,no heuristic,full expand,total plant cost,0.016,8,12,11,0.9166666666666666,0.65,0.99
 9+,700,parallel trees,no heuristic,full expand,total plant cost,0.032,8,12,5,0.4166666666666667,0.19,0.68
@@ -6239,7 +6239,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,700,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,700,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,12,6,0.5,0.25,0.75
 9+,700,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,700,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1404,1037,0.7386039886039886,0.71,0.76
+9+,700,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1396,1033,0.7399713467048711,0.72,0.76
 9+,700,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,9,0.75,0.47,0.91
 9+,700,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,12,7,0.5833333333333334,0.32,0.81
 9+,700,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,7,0.5833333333333334,0.32,0.81
@@ -6261,7 +6261,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,700,parallel trees,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,700,parallel trees,select heuristic,full expand,no heuristic,0.001,8,12,7,0.5833333333333334,0.32,0.81
 9+,700,parallel trees,select heuristic,full expand,no heuristic,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,700,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1401,1209,0.8629550321199143,0.84,0.88
+9+,700,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1393,1202,0.8628858578607322,0.84,0.88
 9+,700,parallel trees,select heuristic,full expand,no heuristic,0.008,8,12,11,0.9166666666666666,0.65,0.99
 9+,700,parallel trees,select heuristic,full expand,no heuristic,0.016,8,12,11,0.9166666666666666,0.65,0.99
 9+,700,parallel trees,select heuristic,full expand,no heuristic,0.032,8,12,9,0.75,0.47,0.91
@@ -6272,7 +6272,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,700,parallel trees,select heuristic,full expand,no heuristic,1.024,8,12,2,0.16666666666666666,0.05,0.45
 9+,700,parallel trees,select heuristic,full expand,total plant cost,0.001,8,12,7,0.5833333333333334,0.32,0.81
 9+,700,parallel trees,select heuristic,full expand,total plant cost,0.002,8,12,7,0.5833333333333334,0.32,0.81
-9+,700,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1402,1199,0.855206847360913,0.84,0.87
+9+,700,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1395,1193,0.8551971326164874,0.84,0.87
 9+,700,parallel trees,select heuristic,full expand,total plant cost,0.008,8,12,10,0.8333333333333334,0.55,0.95
 9+,700,parallel trees,select heuristic,full expand,total plant cost,0.016,8,12,8,0.6666666666666666,0.39,0.86
 9+,700,parallel trees,select heuristic,full expand,total plant cost,0.032,8,12,8,0.6666666666666666,0.39,0.86
@@ -6356,7 +6356,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,800,normal,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,800,normal,select heuristic,full expand,no heuristic,0.001,8,213,43,0.20187793427230047,0.15,0.26
 9+,800,normal,select heuristic,full expand,no heuristic,0.002,8,12,1,0.08333333333333333,0.01,0.35
-9+,800,normal,select heuristic,full expand,no heuristic,0.004,8,1472,419,0.28464673913043476,0.26,0.31
+9+,800,normal,select heuristic,full expand,no heuristic,0.004,8,1464,416,0.28415300546448086,0.26,0.31
 9+,800,normal,select heuristic,full expand,no heuristic,0.008,8,12,4,0.3333333333333333,0.14,0.61
 9+,800,normal,select heuristic,full expand,no heuristic,0.016,8,213,41,0.19248826291079812,0.15,0.25
 9+,800,normal,select heuristic,full expand,no heuristic,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -6367,7 +6367,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,800,normal,select heuristic,full expand,no heuristic,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,800,normal,select heuristic,full expand,total plant cost,0.001,8,213,71,0.3333333333333333,0.27,0.4
 9+,800,normal,select heuristic,full expand,total plant cost,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,800,normal,select heuristic,full expand,total plant cost,0.004,8,1474,597,0.4050203527815468,0.38,0.43
+9+,800,normal,select heuristic,full expand,total plant cost,0.004,8,1466,593,0.4045020463847203,0.38,0.43
 9+,800,normal,select heuristic,full expand,total plant cost,0.008,8,12,3,0.25,0.09,0.53
 9+,800,normal,select heuristic,full expand,total plant cost,0.016,8,213,68,0.3192488262910798,0.26,0.38
 9+,800,normal,select heuristic,full expand,total plant cost,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -6489,9 +6489,9 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,800,parallel max,no heuristic,full expand,no heuristic,0.001,8,710,509,0.7169014084507043,0.68,0.75
 9+,800,parallel max,no heuristic,full expand,no heuristic,0.002,8,12,9,0.75,0.47,0.91
 9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,2,1045,316,0.30239234449760766,0.28,0.33
-9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,4,1775,945,0.532394366197183,0.51,0.56
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,4,1766,940,0.5322763306908267,0.51,0.56
 9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,6,728,495,0.679945054945055,0.65,0.71
-9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,2098,1621,0.7726406101048617,0.75,0.79
+9+,800,parallel max,no heuristic,full expand,no heuristic,0.004,8,2089,1614,0.7726184777405457,0.75,0.79
 9+,800,parallel max,no heuristic,full expand,no heuristic,0.008,8,12,10,0.8333333333333334,0.55,0.95
 9+,800,parallel max,no heuristic,full expand,no heuristic,0.016,8,710,564,0.7943661971830986,0.76,0.82
 9+,800,parallel max,no heuristic,full expand,no heuristic,0.032,8,12,9,0.75,0.47,0.91
@@ -6513,7 +6513,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,800,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,2,0.16666666666666666,0.05,0.45
 9+,800,parallel max,no heuristic,square ratio,no heuristic,0.001,8,213,149,0.6995305164319249,0.63,0.76
 9+,800,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,10,0.8333333333333334,0.55,0.95
-9+,800,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1603,1215,0.7579538365564567,0.74,0.78
+9+,800,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1596,1208,0.7568922305764411,0.74,0.78
 9+,800,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9+,800,parallel max,no heuristic,square ratio,no heuristic,0.016,8,213,170,0.7981220657276995,0.74,0.85
 9+,800,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,8,0.6666666666666666,0.39,0.86
@@ -6583,8 +6583,8 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,800,parallel trees,no heuristic,full expand,no heuristic,0.0005,8,452,127,0.2809734513274336,0.24,0.32
 9+,800,parallel trees,no heuristic,full expand,no heuristic,0.001,8,1162,563,0.4845094664371773,0.46,0.51
 9+,800,parallel trees,no heuristic,full expand,no heuristic,0.002,8,12,7,0.5833333333333334,0.32,0.81
-9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1671,663,0.39676840215439857,0.37,0.42
-9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1669,1026,0.6147393648891551,0.59,0.64
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1663,659,0.3962717979555021,0.37,0.42
+9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1661,1023,0.6158940397350994,0.59,0.64
 9+,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1369,1026,0.7494521548575602,0.73,0.77
 9+,800,parallel trees,no heuristic,full expand,no heuristic,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9+,800,parallel trees,no heuristic,full expand,no heuristic,0.016,8,710,453,0.6380281690140845,0.6,0.67
@@ -6596,7 +6596,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,800,parallel trees,no heuristic,full expand,no heuristic,1.024,8,509,10,0.019646365422396856,0.01,0.04
 9+,800,parallel trees,no heuristic,full expand,total plant cost,0.001,8,213,102,0.4788732394366197,0.41,0.55
 9+,800,parallel trees,no heuristic,full expand,total plant cost,0.002,8,12,6,0.5,0.25,0.75
-9+,800,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1602,1235,0.7709113607990012,0.75,0.79
+9+,800,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1593,1229,0.7715003138731952,0.75,0.79
 9+,800,parallel trees,no heuristic,full expand,total plant cost,0.008,8,12,10,0.8333333333333334,0.55,0.95
 9+,800,parallel trees,no heuristic,full expand,total plant cost,0.016,8,213,141,0.6619718309859155,0.6,0.72
 9+,800,parallel trees,no heuristic,full expand,total plant cost,0.032,8,12,6,0.5,0.25,0.75
@@ -6607,7 +6607,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,800,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9+,800,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,213,112,0.5258215962441315,0.46,0.59
 9+,800,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9+,800,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1604,1185,0.7387780548628429,0.72,0.76
+9+,800,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1596,1179,0.7387218045112782,0.72,0.76
 9+,800,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9+,800,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,213,130,0.6103286384976526,0.54,0.67
 9+,800,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,5,0.4166666666666667,0.19,0.68
@@ -6629,7 +6629,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,800,parallel trees,no heuristic,square ratio,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,800,parallel trees,select heuristic,full expand,no heuristic,0.001,8,213,136,0.6384976525821596,0.57,0.7
 9+,800,parallel trees,select heuristic,full expand,no heuristic,0.002,8,12,10,0.8333333333333334,0.55,0.95
-9+,800,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1602,1390,0.867665418227216,0.85,0.88
+9+,800,parallel trees,select heuristic,full expand,no heuristic,0.004,8,1593,1382,0.8675455116133082,0.85,0.88
 9+,800,parallel trees,select heuristic,full expand,no heuristic,0.008,8,12,11,0.9166666666666666,0.65,0.99
 9+,800,parallel trees,select heuristic,full expand,no heuristic,0.016,8,213,176,0.8262910798122066,0.77,0.87
 9+,800,parallel trees,select heuristic,full expand,no heuristic,0.032,8,12,8,0.6666666666666666,0.39,0.86
@@ -6640,7 +6640,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,800,parallel trees,select heuristic,full expand,no heuristic,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,800,parallel trees,select heuristic,full expand,total plant cost,0.001,8,213,124,0.5821596244131455,0.52,0.65
 9+,800,parallel trees,select heuristic,full expand,total plant cost,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9+,800,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1601,1398,0.8732042473454091,0.86,0.89
+9+,800,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1592,1391,0.8737437185929648,0.86,0.89
 9+,800,parallel trees,select heuristic,full expand,total plant cost,0.008,8,12,10,0.8333333333333334,0.55,0.95
 9+,800,parallel trees,select heuristic,full expand,total plant cost,0.016,8,213,172,0.8075117370892019,0.75,0.85
 9+,800,parallel trees,select heuristic,full expand,total plant cost,0.032,8,12,10,0.8333333333333334,0.55,0.95
@@ -6671,7 +6671,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,800,parallel trees,select heuristic,square ratio,total plant cost,0.256,8,12,8,0.6666666666666666,0.39,0.86
 9+,800,parallel trees,select heuristic,square ratio,total plant cost,0.512,8,12,2,0.16666666666666666,0.05,0.45
 9+,800,parallel trees,select heuristic,square ratio,total plant cost,1.024,8,12,3,0.25,0.09,0.53
-9+,1600,normal,no heuristic,full expand,frame,0.004,8,2269,541,0.2384310268840899,0.22,0.26
+9+,1600,normal,no heuristic,full expand,frame,0.004,8,2260,538,0.23805309734513275,0.22,0.26
 9+,1600,normal,no heuristic,full expand,no heuristic,1e-05,8,268,16,0.05970149253731343,0.04,0.09
 9+,1600,normal,no heuristic,full expand,no heuristic,5e-05,8,268,21,0.07835820895522388,0.05,0.12
 9+,1600,normal,no heuristic,full expand,no heuristic,0.0001,8,268,22,0.08208955223880597,0.05,0.12
@@ -6699,10 +6699,10 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,1600,normal,no heuristic,full expand,total plant cost,0.512,8,12,0,0.0,0.0,0.24
 9+,1600,normal,no heuristic,full expand,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,1600,normal,no heuristic,full expand,total zombie hp,0.004,8,1540,406,0.2636363636363636,0.24,0.29
-9+,1600,normal,no heuristic,full expand,zombies left to spawn,0.004,8,2269,565,0.249008373732922,0.23,0.27
+9+,1600,normal,no heuristic,full expand,zombies left to spawn,0.004,8,2260,561,0.2482300884955752,0.23,0.27
 9+,1600,normal,no heuristic,square ratio,no heuristic,0.001,8,12,1,0.08333333333333333,0.01,0.35
 9+,1600,normal,no heuristic,square ratio,no heuristic,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9+,1600,normal,no heuristic,square ratio,no heuristic,0.004,8,1337,307,0.22961854899027673,0.21,0.25
+9+,1600,normal,no heuristic,square ratio,no heuristic,0.004,8,1329,305,0.22949586155003762,0.21,0.25
 9+,1600,normal,no heuristic,square ratio,no heuristic,0.008,8,12,1,0.08333333333333333,0.01,0.35
 9+,1600,normal,no heuristic,square ratio,no heuristic,0.016,8,12,0,0.0,0.0,0.24
 9+,1600,normal,no heuristic,square ratio,no heuristic,0.032,8,12,0,0.0,0.0,0.24
@@ -6724,7 +6724,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,1600,normal,no heuristic,square ratio,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9+,1600,normal,select heuristic,full expand,no heuristic,0.001,8,12,3,0.25,0.09,0.53
 9+,1600,normal,select heuristic,full expand,no heuristic,0.002,8,12,4,0.3333333333333333,0.14,0.61
-9+,1600,normal,select heuristic,full expand,no heuristic,0.004,8,1548,555,0.35852713178294576,0.34,0.38
+9+,1600,normal,select heuristic,full expand,no heuristic,0.004,8,1540,554,0.35974025974025975,0.34,0.38
 9+,1600,normal,select heuristic,full expand,no heuristic,0.008,8,12,2,0.16666666666666666,0.05,0.45
 9+,1600,normal,select heuristic,full expand,no heuristic,0.016,8,12,3,0.25,0.09,0.53
 9+,1600,normal,select heuristic,full expand,no heuristic,0.032,8,12,2,0.16666666666666666,0.05,0.45
@@ -6735,7 +6735,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,1600,normal,select heuristic,full expand,no heuristic,1.024,8,12,0,0.0,0.0,0.24
 9+,1600,normal,select heuristic,full expand,total plant cost,0.001,8,12,7,0.5833333333333334,0.32,0.81
 9+,1600,normal,select heuristic,full expand,total plant cost,0.002,8,12,6,0.5,0.25,0.75
-9+,1600,normal,select heuristic,full expand,total plant cost,0.004,8,1550,758,0.4890322580645161,0.46,0.51
+9+,1600,normal,select heuristic,full expand,total plant cost,0.004,8,1542,754,0.4889753566796368,0.46,0.51
 9+,1600,normal,select heuristic,full expand,total plant cost,0.008,8,12,5,0.4166666666666667,0.19,0.68
 9+,1600,normal,select heuristic,full expand,total plant cost,0.016,8,12,5,0.4166666666666667,0.19,0.68
 9+,1600,normal,select heuristic,full expand,total plant cost,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -6856,8 +6856,8 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,1600,parallel avg,select heuristic,square ratio,total plant cost,1.024,8,12,4,0.3333333333333333,0.14,0.61
 9+,1600,parallel max,no heuristic,full expand,no heuristic,0.001,8,509,395,0.7760314341846758,0.74,0.81
 9+,1600,parallel max,no heuristic,full expand,no heuristic,0.002,8,12,11,0.9166666666666666,0.65,0.99
-9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,2,1774,741,0.4177001127395716,0.39,0.44
-9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,4,1773,1172,0.6610265087422448,0.64,0.68
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,2,1766,737,0.4173272933182333,0.39,0.44
+9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,4,1764,1165,0.6604308390022676,0.64,0.68
 9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,6,727,547,0.7524071526822559,0.72,0.78
 9+,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,1130,962,0.8513274336283185,0.83,0.87
 9+,1600,parallel max,no heuristic,full expand,no heuristic,0.008,8,12,6,0.5,0.25,0.75
@@ -6951,8 +6951,8 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.0005,8,452,175,0.38716814159292035,0.34,0.43
 9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.001,8,961,533,0.554630593132154,0.52,0.59
 9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.002,8,12,10,0.8333333333333334,0.55,0.95
-9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1669,808,0.48412222887956863,0.46,0.51
-9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1667,1146,0.6874625074985004,0.66,0.71
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,2,1661,803,0.48344370860927155,0.46,0.51
+9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,4,1659,1140,0.6871609403254972,0.66,0.71
 9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.004,8,1130,940,0.831858407079646,0.81,0.85
 9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.008,8,12,12,1.0,0.76,1.0
 9+,1600,parallel trees,no heuristic,full expand,no heuristic,0.016,8,508,387,0.7618110236220472,0.72,0.8
@@ -8414,7 +8414,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,300,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,300,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,213,11,0.051643192488262914,0.03,0.09
 9++,300,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,3,0.25,0.09,0.53
-9++,300,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1601,378,0.23610243597751404,0.22,0.26
+9++,300,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1592,375,0.23555276381909548,0.22,0.26
 9++,300,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,3,0.25,0.09,0.53
 9++,300,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,212,40,0.18867924528301888,0.14,0.25
 9++,300,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -8564,7 +8564,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,400,normal,select heuristic,full expand,no heuristic,1.024,8,12,0,0.0,0.0,0.24
 9++,400,normal,select heuristic,full expand,total plant cost,0.001,8,212,25,0.1179245283018868,0.08,0.17
 9++,400,normal,select heuristic,full expand,total plant cost,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9++,400,normal,select heuristic,full expand,total plant cost,0.004,8,1468,209,0.14237057220708446,0.13,0.16
+9++,400,normal,select heuristic,full expand,total plant cost,0.004,8,1459,206,0.14119259766963674,0.12,0.16
 9++,400,normal,select heuristic,full expand,total plant cost,0.008,8,12,2,0.16666666666666666,0.05,0.45
 9++,400,normal,select heuristic,full expand,total plant cost,0.016,8,211,22,0.10426540284360189,0.07,0.15
 9++,400,normal,select heuristic,full expand,total plant cost,0.032,8,12,0,0.0,0.0,0.24
@@ -8683,20 +8683,20 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,400,parallel avg,select heuristic,square ratio,total plant cost,0.256,8,12,0,0.0,0.0,0.24
 9++,400,parallel avg,select heuristic,square ratio,total plant cost,0.512,8,12,0,0.0,0.0,0.24
 9++,400,parallel avg,select heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
-9++,400,parallel max,no heuristic,full expand,no heuristic,0.001,8,1753,255,0.14546491728465488,0.13,0.16
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.001,8,1744,255,0.14621559633027523,0.13,0.16
 9++,400,parallel max,no heuristic,full expand,no heuristic,0.002,8,542,66,0.12177121771217712,0.1,0.15
 9++,400,parallel max,no heuristic,full expand,no heuristic,0.004,8,1051,165,0.15699333967649856,0.14,0.18
-9++,400,parallel max,no heuristic,full expand,no heuristic,0.008,8,1271,184,0.14476789929189615,0.13,0.17
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.008,8,1263,181,0.14330958036421218,0.13,0.16
 9++,400,parallel max,no heuristic,full expand,no heuristic,0.016,8,707,107,0.15134370579915135,0.13,0.18
-9++,400,parallel max,no heuristic,full expand,no heuristic,0.032,8,1270,126,0.09921259842519685,0.08,0.12
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.032,8,1261,126,0.0999206978588422,0.08,0.12
 9++,400,parallel max,no heuristic,full expand,no heuristic,0.064,8,508,35,0.0688976377952756,0.05,0.09
-9++,400,parallel max,no heuristic,full expand,no heuristic,0.128,8,1270,77,0.06062992125984252,0.05,0.08
+9++,400,parallel max,no heuristic,full expand,no heuristic,0.128,8,1261,76,0.06026962727993656,0.05,0.07
 9++,400,parallel max,no heuristic,full expand,no heuristic,0.256,8,508,31,0.0610236220472441,0.04,0.09
 9++,400,parallel max,no heuristic,full expand,no heuristic,0.512,8,541,22,0.04066543438077634,0.03,0.06
 9++,400,parallel max,no heuristic,full expand,no heuristic,1.024,8,507,9,0.01775147928994083,0.01,0.03
 9++,400,parallel max,no heuristic,full expand,total plant cost,0.001,8,212,27,0.12735849056603774,0.09,0.18
 9++,400,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9++,400,parallel max,no heuristic,full expand,total plant cost,0.004,8,1601,211,0.13179262960649593,0.12,0.15
+9++,400,parallel max,no heuristic,full expand,total plant cost,0.004,8,1592,210,0.13190954773869346,0.12,0.15
 9++,400,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,1,0.08333333333333333,0.01,0.35
 9++,400,parallel max,no heuristic,full expand,total plant cost,0.016,8,211,24,0.11374407582938388,0.08,0.16
 9++,400,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,2,0.16666666666666666,0.05,0.45
@@ -8707,7 +8707,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,400,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9++,400,parallel max,no heuristic,square ratio,no heuristic,0.001,8,212,37,0.17452830188679244,0.13,0.23
 9++,400,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,3,0.25,0.09,0.53
-9++,400,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1601,358,0.22361024359775142,0.2,0.24
+9++,400,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1593,358,0.22473320778405526,0.2,0.25
 9++,400,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,1,0.08333333333333333,0.01,0.35
 9++,400,parallel max,no heuristic,square ratio,no heuristic,0.016,8,211,31,0.14691943127962084,0.11,0.2
 9++,400,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,3,0.25,0.09,0.53
@@ -8729,7 +8729,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,400,parallel max,no heuristic,square ratio,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9++,400,parallel max,select heuristic,full expand,no heuristic,0.001,8,212,37,0.17452830188679244,0.13,0.23
 9++,400,parallel max,select heuristic,full expand,no heuristic,0.002,8,12,3,0.25,0.09,0.53
-9++,400,parallel max,select heuristic,full expand,no heuristic,0.004,8,1601,274,0.1711430356027483,0.15,0.19
+9++,400,parallel max,select heuristic,full expand,no heuristic,0.004,8,1592,273,0.17148241206030151,0.15,0.19
 9++,400,parallel max,select heuristic,full expand,no heuristic,0.008,8,12,4,0.3333333333333333,0.14,0.61
 9++,400,parallel max,select heuristic,full expand,no heuristic,0.016,8,211,40,0.1895734597156398,0.14,0.25
 9++,400,parallel max,select heuristic,full expand,no heuristic,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -8795,7 +8795,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,400,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,400,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,212,32,0.1509433962264151,0.11,0.21
 9++,400,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9++,400,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1601,515,0.3216739537788882,0.3,0.34
+9++,400,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1593,510,0.32015065913371,0.3,0.34
 9++,400,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,3,0.25,0.09,0.53
 9++,400,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,211,51,0.24170616113744076,0.19,0.3
 9++,400,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -8850,7 +8850,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,400,parallel trees,select heuristic,square ratio,no heuristic,1.024,8,12,0,0.0,0.0,0.24
 9++,400,parallel trees,select heuristic,square ratio,total plant cost,0.001,8,212,64,0.3018867924528302,0.24,0.37
 9++,400,parallel trees,select heuristic,square ratio,total plant cost,0.002,8,12,6,0.5,0.25,0.75
-9++,400,parallel trees,select heuristic,square ratio,total plant cost,0.004,8,1603,857,0.5346225826575172,0.51,0.56
+9++,400,parallel trees,select heuristic,square ratio,total plant cost,0.004,8,1596,854,0.5350877192982456,0.51,0.56
 9++,400,parallel trees,select heuristic,square ratio,total plant cost,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9++,400,parallel trees,select heuristic,square ratio,total plant cost,0.016,8,211,121,0.5734597156398105,0.51,0.64
 9++,400,parallel trees,select heuristic,square ratio,total plant cost,0.032,8,12,5,0.4166666666666667,0.19,0.68
@@ -9051,7 +9051,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,500,parallel max,no heuristic,full expand,no heuristic,1.024,8,505,22,0.04356435643564356,0.03,0.07
 9++,500,parallel max,no heuristic,full expand,total plant cost,0.001,8,12,2,0.16666666666666666,0.05,0.45
 9++,500,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,1,0.08333333333333333,0.01,0.35
-9++,500,parallel max,no heuristic,full expand,total plant cost,0.004,8,1402,288,0.20542082738944364,0.19,0.23
+9++,500,parallel max,no heuristic,full expand,total plant cost,0.004,8,1394,287,0.20588235294117646,0.19,0.23
 9++,500,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,3,0.25,0.09,0.53
 9++,500,parallel max,no heuristic,full expand,total plant cost,0.016,8,12,5,0.4166666666666667,0.19,0.68
 9++,500,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,0,0.0,0.0,0.24
@@ -9062,7 +9062,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,500,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,500,parallel max,no heuristic,square ratio,no heuristic,0.001,8,12,2,0.16666666666666666,0.05,0.45
 9++,500,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9++,500,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1404,387,0.27564102564102566,0.25,0.3
+9++,500,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,385,0.27578796561604585,0.25,0.3
 9++,500,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,1,0.08333333333333333,0.01,0.35
 9++,500,parallel max,no heuristic,square ratio,no heuristic,0.016,8,12,7,0.5833333333333334,0.32,0.81
 9++,500,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,3,0.25,0.09,0.53
@@ -9084,7 +9084,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,500,parallel max,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,500,parallel max,select heuristic,full expand,no heuristic,0.001,8,12,1,0.08333333333333333,0.01,0.35
 9++,500,parallel max,select heuristic,full expand,no heuristic,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9++,500,parallel max,select heuristic,full expand,no heuristic,0.004,8,1404,345,0.24572649572649571,0.22,0.27
+9++,500,parallel max,select heuristic,full expand,no heuristic,0.004,8,1396,343,0.24570200573065903,0.22,0.27
 9++,500,parallel max,select heuristic,full expand,no heuristic,0.008,8,12,4,0.3333333333333333,0.14,0.61
 9++,500,parallel max,select heuristic,full expand,no heuristic,0.016,8,12,1,0.08333333333333333,0.01,0.35
 9++,500,parallel max,select heuristic,full expand,no heuristic,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -9139,7 +9139,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,500,parallel trees,no heuristic,full expand,no heuristic,1.024,8,505,0,0.0,0.0,0.01
 9++,500,parallel trees,no heuristic,full expand,total plant cost,0.001,8,12,1,0.08333333333333333,0.01,0.35
 9++,500,parallel trees,no heuristic,full expand,total plant cost,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9++,500,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1401,188,0.13418986438258387,0.12,0.15
+9++,500,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1392,186,0.1336206896551724,0.12,0.15
 9++,500,parallel trees,no heuristic,full expand,total plant cost,0.008,8,12,2,0.16666666666666666,0.05,0.45
 9++,500,parallel trees,no heuristic,full expand,total plant cost,0.016,8,12,0,0.0,0.0,0.24
 9++,500,parallel trees,no heuristic,full expand,total plant cost,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -9150,7 +9150,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,500,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,500,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,12,3,0.25,0.09,0.53
 9++,500,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,3,0.25,0.09,0.53
-9++,500,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1612,670,0.41563275434243174,0.39,0.44
+9++,500,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1604,668,0.4164588528678304,0.39,0.44
 9++,500,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,4,0.3333333333333333,0.14,0.61
 9++,500,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,12,3,0.25,0.09,0.53
 9++,500,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,3,0.25,0.09,0.53
@@ -9183,7 +9183,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,500,parallel trees,select heuristic,full expand,no heuristic,1.024,8,12,0,0.0,0.0,0.24
 9++,500,parallel trees,select heuristic,full expand,total plant cost,0.001,8,12,1,0.08333333333333333,0.01,0.35
 9++,500,parallel trees,select heuristic,full expand,total plant cost,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9++,500,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1402,252,0.1797432239657632,0.16,0.2
+9++,500,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1394,249,0.17862266857962697,0.16,0.2
 9++,500,parallel trees,select heuristic,full expand,total plant cost,0.008,8,12,2,0.16666666666666666,0.05,0.45
 9++,500,parallel trees,select heuristic,full expand,total plant cost,0.016,8,12,6,0.5,0.25,0.75
 9++,500,parallel trees,select heuristic,full expand,total plant cost,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -9406,7 +9406,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,600,parallel max,no heuristic,full expand,no heuristic,1.024,8,505,20,0.039603960396039604,0.03,0.06
 9++,600,parallel max,no heuristic,full expand,total plant cost,0.001,8,12,5,0.4166666666666667,0.19,0.68
 9++,600,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,3,0.25,0.09,0.53
-9++,600,parallel max,no heuristic,full expand,total plant cost,0.004,8,1402,371,0.26462196861626247,0.24,0.29
+9++,600,parallel max,no heuristic,full expand,total plant cost,0.004,8,1394,371,0.2661406025824964,0.24,0.29
 9++,600,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,3,0.25,0.09,0.53
 9++,600,parallel max,no heuristic,full expand,total plant cost,0.016,8,12,4,0.3333333333333333,0.14,0.61
 9++,600,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,3,0.25,0.09,0.53
@@ -9417,7 +9417,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,600,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9++,600,parallel max,no heuristic,square ratio,no heuristic,0.001,8,12,4,0.3333333333333333,0.14,0.61
 9++,600,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,3,0.25,0.09,0.53
-9++,600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1612,506,0.31389578163771714,0.29,0.34
+9++,600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1604,505,0.31483790523690774,0.29,0.34
 9++,600,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,4,0.3333333333333333,0.14,0.61
 9++,600,parallel max,no heuristic,square ratio,no heuristic,0.016,8,12,5,0.4166666666666667,0.19,0.68
 9++,600,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,3,0.25,0.09,0.53
@@ -9439,7 +9439,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,600,parallel max,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,600,parallel max,select heuristic,full expand,no heuristic,0.001,8,12,3,0.25,0.09,0.53
 9++,600,parallel max,select heuristic,full expand,no heuristic,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9++,600,parallel max,select heuristic,full expand,no heuristic,0.004,8,1404,461,0.32834757834757833,0.3,0.35
+9++,600,parallel max,select heuristic,full expand,no heuristic,0.004,8,1396,458,0.32808022922636104,0.3,0.35
 9++,600,parallel max,select heuristic,full expand,no heuristic,0.008,8,12,3,0.25,0.09,0.53
 9++,600,parallel max,select heuristic,full expand,no heuristic,0.016,8,12,2,0.16666666666666666,0.05,0.45
 9++,600,parallel max,select heuristic,full expand,no heuristic,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -9494,7 +9494,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,600,parallel trees,no heuristic,full expand,no heuristic,1.024,8,505,0,0.0,0.0,0.01
 9++,600,parallel trees,no heuristic,full expand,total plant cost,0.001,8,12,1,0.08333333333333333,0.01,0.35
 9++,600,parallel trees,no heuristic,full expand,total plant cost,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9++,600,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1611,437,0.271260086902545,0.25,0.29
+9++,600,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1603,435,0.2713661883967561,0.25,0.29
 9++,600,parallel trees,no heuristic,full expand,total plant cost,0.008,8,12,3,0.25,0.09,0.53
 9++,600,parallel trees,no heuristic,full expand,total plant cost,0.016,8,12,4,0.3333333333333333,0.14,0.61
 9++,600,parallel trees,no heuristic,full expand,total plant cost,0.032,8,12,5,0.4166666666666667,0.19,0.68
@@ -9505,7 +9505,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,600,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,600,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,12,3,0.25,0.09,0.53
 9++,600,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,4,0.3333333333333333,0.14,0.61
-9++,600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1615,774,0.4792569659442725,0.45,0.5
+9++,600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1607,767,0.477286869943995,0.45,0.5
 9++,600,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,3,0.25,0.09,0.53
 9++,600,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,12,4,0.3333333333333333,0.14,0.61
 9++,600,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,8,0.6666666666666666,0.39,0.86
@@ -9538,7 +9538,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,600,parallel trees,select heuristic,full expand,no heuristic,1.024,8,12,0,0.0,0.0,0.24
 9++,600,parallel trees,select heuristic,full expand,total plant cost,0.001,8,12,5,0.4166666666666667,0.19,0.68
 9++,600,parallel trees,select heuristic,full expand,total plant cost,0.002,8,12,3,0.25,0.09,0.53
-9++,600,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1615,626,0.3876160990712074,0.36,0.41
+9++,600,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1607,623,0.38767890479153705,0.36,0.41
 9++,600,parallel trees,select heuristic,full expand,total plant cost,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9++,600,parallel trees,select heuristic,full expand,total plant cost,0.016,8,12,6,0.5,0.25,0.75
 9++,600,parallel trees,select heuristic,full expand,total plant cost,0.032,8,12,7,0.5833333333333334,0.32,0.81
@@ -9761,7 +9761,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,700,parallel max,no heuristic,full expand,no heuristic,1.024,8,505,29,0.05742574257425743,0.04,0.08
 9++,700,parallel max,no heuristic,full expand,total plant cost,0.001,8,12,5,0.4166666666666667,0.19,0.68
 9++,700,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9++,700,parallel max,no heuristic,full expand,total plant cost,0.004,8,1404,461,0.32834757834757833,0.3,0.35
+9++,700,parallel max,no heuristic,full expand,total plant cost,0.004,8,1396,460,0.32951289398280803,0.31,0.35
 9++,700,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9++,700,parallel max,no heuristic,full expand,total plant cost,0.016,8,12,1,0.08333333333333333,0.01,0.35
 9++,700,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,5,0.4166666666666667,0.19,0.68
@@ -9772,7 +9772,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,700,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,700,parallel max,no heuristic,square ratio,no heuristic,0.001,8,12,4,0.3333333333333333,0.14,0.61
 9++,700,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9++,700,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1404,531,0.3782051282051282,0.35,0.4
+9++,700,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1396,528,0.37822349570200575,0.35,0.4
 9++,700,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,4,0.3333333333333333,0.14,0.61
 9++,700,parallel max,no heuristic,square ratio,no heuristic,0.016,8,12,4,0.3333333333333333,0.14,0.61
 9++,700,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -9794,7 +9794,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,700,parallel max,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,700,parallel max,select heuristic,full expand,no heuristic,0.001,8,12,7,0.5833333333333334,0.32,0.81
 9++,700,parallel max,select heuristic,full expand,no heuristic,0.002,8,12,3,0.25,0.09,0.53
-9++,700,parallel max,select heuristic,full expand,no heuristic,0.004,8,1615,671,0.4154798761609907,0.39,0.44
+9++,700,parallel max,select heuristic,full expand,no heuristic,0.004,8,1607,669,0.4163036714374611,0.39,0.44
 9++,700,parallel max,select heuristic,full expand,no heuristic,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9++,700,parallel max,select heuristic,full expand,no heuristic,0.016,8,12,7,0.5833333333333334,0.32,0.81
 9++,700,parallel max,select heuristic,full expand,no heuristic,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -9849,7 +9849,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,700,parallel trees,no heuristic,full expand,no heuristic,1.024,8,505,1,0.0019801980198019802,0.0,0.01
 9++,700,parallel trees,no heuristic,full expand,total plant cost,0.001,8,12,6,0.5,0.25,0.75
 9++,700,parallel trees,no heuristic,full expand,total plant cost,0.002,8,12,8,0.6666666666666666,0.39,0.86
-9++,700,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1612,756,0.46898263027295284,0.44,0.49
+9++,700,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1604,753,0.4694513715710723,0.45,0.49
 9++,700,parallel trees,no heuristic,full expand,total plant cost,0.008,8,12,1,0.08333333333333333,0.01,0.35
 9++,700,parallel trees,no heuristic,full expand,total plant cost,0.016,8,12,5,0.4166666666666667,0.19,0.68
 9++,700,parallel trees,no heuristic,full expand,total plant cost,0.032,8,12,0,0.0,0.0,0.24
@@ -9860,7 +9860,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,700,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,700,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,12,4,0.3333333333333333,0.14,0.61
 9++,700,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9++,700,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1403,715,0.5096222380612973,0.48,0.54
+9++,700,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1395,711,0.5096774193548387,0.48,0.54
 9++,700,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,6,0.5,0.25,0.75
 9++,700,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,12,4,0.3333333333333333,0.14,0.61
 9++,700,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,2,0.16666666666666666,0.05,0.45
@@ -9893,7 +9893,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,700,parallel trees,select heuristic,full expand,no heuristic,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9++,700,parallel trees,select heuristic,full expand,total plant cost,0.001,8,12,6,0.5,0.25,0.75
 9++,700,parallel trees,select heuristic,full expand,total plant cost,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9++,700,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1613,995,0.6168629882207067,0.59,0.64
+9++,700,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1606,992,0.6176836861768369,0.59,0.64
 9++,700,parallel trees,select heuristic,full expand,total plant cost,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9++,700,parallel trees,select heuristic,full expand,total plant cost,0.016,8,12,7,0.5833333333333334,0.32,0.81
 9++,700,parallel trees,select heuristic,full expand,total plant cost,0.032,8,12,9,0.75,0.47,0.91
@@ -9984,7 +9984,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,800,normal,select heuristic,full expand,no heuristic,1.024,8,12,0,0.0,0.0,0.24
 9++,800,normal,select heuristic,full expand,total plant cost,0.001,8,210,43,0.20476190476190476,0.16,0.26
 9++,800,normal,select heuristic,full expand,total plant cost,0.002,8,12,2,0.16666666666666666,0.05,0.45
-9++,800,normal,select heuristic,full expand,total plant cost,0.004,8,1468,329,0.22411444141689374,0.2,0.25
+9++,800,normal,select heuristic,full expand,total plant cost,0.004,8,1460,328,0.22465753424657534,0.2,0.25
 9++,800,normal,select heuristic,full expand,total plant cost,0.008,8,12,1,0.08333333333333333,0.01,0.35
 9++,800,normal,select heuristic,full expand,total plant cost,0.016,8,210,41,0.19523809523809524,0.15,0.25
 9++,800,normal,select heuristic,full expand,total plant cost,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -10116,7 +10116,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,800,parallel max,no heuristic,full expand,no heuristic,1.024,8,505,31,0.061386138613861385,0.04,0.09
 9++,800,parallel max,no heuristic,full expand,total plant cost,0.001,8,210,81,0.38571428571428573,0.32,0.45
 9++,800,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,3,0.25,0.09,0.53
-9++,800,parallel max,no heuristic,full expand,total plant cost,0.004,8,1599,653,0.4083802376485303,0.38,0.43
+9++,800,parallel max,no heuristic,full expand,total plant cost,0.004,8,1591,647,0.4066624764299183,0.38,0.43
 9++,800,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,5,0.4166666666666667,0.19,0.68
 9++,800,parallel max,no heuristic,full expand,total plant cost,0.016,8,210,86,0.4095238095238095,0.35,0.48
 9++,800,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,6,0.5,0.25,0.75
@@ -10127,7 +10127,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,800,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,2,0.16666666666666666,0.05,0.45
 9++,800,parallel max,no heuristic,square ratio,no heuristic,0.001,8,210,73,0.3476190476190476,0.29,0.41
 9++,800,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,5,0.4166666666666667,0.19,0.68
-9++,800,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1599,649,0.4058786741713571,0.38,0.43
+9++,800,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1591,649,0.40791954745443115,0.38,0.43
 9++,800,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,6,0.5,0.25,0.75
 9++,800,parallel max,no heuristic,square ratio,no heuristic,0.016,8,210,89,0.4238095238095238,0.36,0.49
 9++,800,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,5,0.4166666666666667,0.19,0.68
@@ -10149,7 +10149,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,800,parallel max,no heuristic,square ratio,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9++,800,parallel max,select heuristic,full expand,no heuristic,0.001,8,210,83,0.3952380952380952,0.33,0.46
 9++,800,parallel max,select heuristic,full expand,no heuristic,0.002,8,12,6,0.5,0.25,0.75
-9++,800,parallel max,select heuristic,full expand,no heuristic,0.004,8,1601,740,0.462211118051218,0.44,0.49
+9++,800,parallel max,select heuristic,full expand,no heuristic,0.004,8,1593,737,0.46264908976773383,0.44,0.49
 9++,800,parallel max,select heuristic,full expand,no heuristic,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9++,800,parallel max,select heuristic,full expand,no heuristic,0.016,8,210,88,0.41904761904761906,0.35,0.49
 9++,800,parallel max,select heuristic,full expand,no heuristic,0.032,8,12,6,0.5,0.25,0.75
@@ -10193,7 +10193,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,800,parallel max,select heuristic,square ratio,total plant cost,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9++,800,parallel trees,no heuristic,full expand,no heuristic,0.001,8,703,239,0.3399715504978663,0.31,0.38
 9++,800,parallel trees,no heuristic,full expand,no heuristic,0.002,8,12,4,0.3333333333333333,0.14,0.61
-9++,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2090,1117,0.5344497607655503,0.51,0.56
+9++,800,parallel trees,no heuristic,full expand,no heuristic,0.004,8,2082,1110,0.5331412103746398,0.51,0.55
 9++,800,parallel trees,no heuristic,full expand,no heuristic,0.008,8,12,6,0.5,0.25,0.75
 9++,800,parallel trees,no heuristic,full expand,no heuristic,0.016,8,703,281,0.39971550497866287,0.36,0.44
 9++,800,parallel trees,no heuristic,full expand,no heuristic,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -10204,7 +10204,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,800,parallel trees,no heuristic,full expand,no heuristic,1.024,8,505,3,0.005940594059405941,0.0,0.02
 9++,800,parallel trees,no heuristic,full expand,total plant cost,0.001,8,210,76,0.3619047619047619,0.3,0.43
 9++,800,parallel trees,no heuristic,full expand,total plant cost,0.002,8,12,4,0.3333333333333333,0.14,0.61
-9++,800,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1600,878,0.54875,0.52,0.57
+9++,800,parallel trees,no heuristic,full expand,total plant cost,0.004,8,1593,875,0.549278091650973,0.52,0.57
 9++,800,parallel trees,no heuristic,full expand,total plant cost,0.008,8,12,3,0.25,0.09,0.53
 9++,800,parallel trees,no heuristic,full expand,total plant cost,0.016,8,210,86,0.4095238095238095,0.35,0.48
 9++,800,parallel trees,no heuristic,full expand,total plant cost,0.032,8,12,4,0.3333333333333333,0.14,0.61
@@ -10215,7 +10215,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,800,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,800,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,210,76,0.3619047619047619,0.3,0.43
 9++,800,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,7,0.5833333333333334,0.32,0.81
-9++,800,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1600,885,0.553125,0.53,0.58
+9++,800,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1593,880,0.5524168236032643,0.53,0.58
 9++,800,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9++,800,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,210,90,0.42857142857142855,0.36,0.5
 9++,800,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,3,0.25,0.09,0.53
@@ -10248,7 +10248,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,800,parallel trees,select heuristic,full expand,no heuristic,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9++,800,parallel trees,select heuristic,full expand,total plant cost,0.001,8,210,101,0.48095238095238096,0.41,0.55
 9++,800,parallel trees,select heuristic,full expand,total plant cost,0.002,8,12,4,0.3333333333333333,0.14,0.61
-9++,800,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1597,1098,0.6875391358797746,0.66,0.71
+9++,800,parallel trees,select heuristic,full expand,total plant cost,0.004,8,1589,1092,0.6872246696035242,0.66,0.71
 9++,800,parallel trees,select heuristic,full expand,total plant cost,0.008,8,12,9,0.75,0.47,0.91
 9++,800,parallel trees,select heuristic,full expand,total plant cost,0.016,8,210,121,0.5761904761904761,0.51,0.64
 9++,800,parallel trees,select heuristic,full expand,total plant cost,0.032,8,12,7,0.5833333333333334,0.32,0.81
@@ -10328,7 +10328,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,1600,normal,no heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,1600,normal,select heuristic,full expand,no heuristic,0.001,8,12,1,0.08333333333333333,0.01,0.35
 9++,1600,normal,select heuristic,full expand,no heuristic,0.002,8,12,1,0.08333333333333333,0.01,0.35
-9++,1600,normal,select heuristic,full expand,no heuristic,0.004,8,1337,247,0.18474195961106957,0.16,0.21
+9++,1600,normal,select heuristic,full expand,no heuristic,0.004,8,1329,244,0.1835966892400301,0.16,0.21
 9++,1600,normal,select heuristic,full expand,no heuristic,0.008,8,12,2,0.16666666666666666,0.05,0.45
 9++,1600,normal,select heuristic,full expand,no heuristic,0.016,8,12,1,0.08333333333333333,0.01,0.35
 9++,1600,normal,select heuristic,full expand,no heuristic,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -10339,7 +10339,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,1600,normal,select heuristic,full expand,no heuristic,1.024,8,12,1,0.08333333333333333,0.01,0.35
 9++,1600,normal,select heuristic,full expand,total plant cost,0.001,8,12,4,0.3333333333333333,0.14,0.61
 9++,1600,normal,select heuristic,full expand,total plant cost,0.002,8,12,3,0.25,0.09,0.53
-9++,1600,normal,select heuristic,full expand,total plant cost,0.004,8,1339,387,0.2890216579536968,0.27,0.31
+9++,1600,normal,select heuristic,full expand,total plant cost,0.004,8,1331,385,0.2892561983471074,0.27,0.31
 9++,1600,normal,select heuristic,full expand,total plant cost,0.008,8,12,5,0.4166666666666667,0.19,0.68
 9++,1600,normal,select heuristic,full expand,total plant cost,0.016,8,12,0,0.0,0.0,0.24
 9++,1600,normal,select heuristic,full expand,total plant cost,0.032,8,12,1,0.08333333333333333,0.01,0.35
@@ -10460,7 +10460,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,1600,parallel avg,select heuristic,square ratio,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,1600,parallel max,no heuristic,full expand,no heuristic,0.001,8,505,276,0.5465346534653466,0.5,0.59
 9++,1600,parallel max,no heuristic,full expand,no heuristic,0.002,8,12,6,0.5,0.25,0.75
-9++,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,2170,1360,0.6267281105990783,0.61,0.65
+9++,1600,parallel max,no heuristic,full expand,no heuristic,0.004,8,2161,1355,0.6270245256825544,0.61,0.65
 9++,1600,parallel max,no heuristic,full expand,no heuristic,0.008,8,12,9,0.75,0.47,0.91
 9++,1600,parallel max,no heuristic,full expand,no heuristic,0.016,8,503,361,0.7176938369781312,0.68,0.76
 9++,1600,parallel max,no heuristic,full expand,no heuristic,0.032,8,12,6,0.5,0.25,0.75
@@ -10471,7 +10471,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,1600,parallel max,no heuristic,full expand,no heuristic,1.024,8,503,60,0.11928429423459244,0.09,0.15
 9++,1600,parallel max,no heuristic,full expand,total plant cost,0.001,8,12,11,0.9166666666666666,0.65,0.99
 9++,1600,parallel max,no heuristic,full expand,total plant cost,0.002,8,12,6,0.5,0.25,0.75
-9++,1600,parallel max,no heuristic,full expand,total plant cost,0.004,8,1679,1039,0.6188207266229899,0.6,0.64
+9++,1600,parallel max,no heuristic,full expand,total plant cost,0.004,8,1671,1035,0.6193895870736086,0.6,0.64
 9++,1600,parallel max,no heuristic,full expand,total plant cost,0.008,8,12,8,0.6666666666666666,0.39,0.86
 9++,1600,parallel max,no heuristic,full expand,total plant cost,0.016,8,12,8,0.6666666666666666,0.39,0.86
 9++,1600,parallel max,no heuristic,full expand,total plant cost,0.032,8,12,9,0.75,0.47,0.91
@@ -10482,7 +10482,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,1600,parallel max,no heuristic,full expand,total plant cost,1.024,8,12,2,0.16666666666666666,0.05,0.45
 9++,1600,parallel max,no heuristic,square ratio,no heuristic,0.001,8,12,4,0.3333333333333333,0.14,0.61
 9++,1600,parallel max,no heuristic,square ratio,no heuristic,0.002,8,12,6,0.5,0.25,0.75
-9++,1600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1679,1046,0.6229898749255509,0.6,0.65
+9++,1600,parallel max,no heuristic,square ratio,no heuristic,0.004,8,1671,1040,0.6223818073010173,0.6,0.65
 9++,1600,parallel max,no heuristic,square ratio,no heuristic,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9++,1600,parallel max,no heuristic,square ratio,no heuristic,0.016,8,12,10,0.8333333333333334,0.55,0.95
 9++,1600,parallel max,no heuristic,square ratio,no heuristic,0.032,8,12,8,0.6666666666666666,0.39,0.86
@@ -10570,7 +10570,7 @@ level,time_ms,rollout_mode,heuristic_mode,selection_mode,loss_heuristic,ucb_cons
 9++,1600,parallel trees,no heuristic,full expand,total plant cost,1.024,8,12,0,0.0,0.0,0.24
 9++,1600,parallel trees,no heuristic,square ratio,no heuristic,0.001,8,12,2,0.16666666666666666,0.05,0.45
 9++,1600,parallel trees,no heuristic,square ratio,no heuristic,0.002,8,12,9,0.75,0.47,0.91
-9++,1600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1677,1156,0.6893261776982708,0.67,0.71
+9++,1600,parallel trees,no heuristic,square ratio,no heuristic,0.004,8,1669,1152,0.6902336728579987,0.67,0.71
 9++,1600,parallel trees,no heuristic,square ratio,no heuristic,0.008,8,12,7,0.5833333333333334,0.32,0.81
 9++,1600,parallel trees,no heuristic,square ratio,no heuristic,0.016,8,12,7,0.5833333333333334,0.32,0.81
 9++,1600,parallel trees,no heuristic,square ratio,no heuristic,0.032,8,12,3,0.25,0.09,0.53
