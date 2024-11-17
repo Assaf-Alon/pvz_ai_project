@@ -13,7 +13,7 @@ headless/resources/random*
 *.prof*
 *.prettierrc
 *.cxx
-game_ai/cpp_env/pvz_ai
+game_ai/game_engine/pvz_ai
 
 # Ignore the build directory, except the __init__.py file
 game_ai/build

@@ -132,64 +132,64 @@ bool play_game_random() {
     return env.win;
 }
 
-bool play_game_random_w_rollouts(int rollotus_per_cycle) {
-    std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
-    Action no_action = Action(NO_PLANT, 0,  0);
-    // std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
-    std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
-    //                lane, columns, fps, level_data, legal_plants
-    Level env = Level(5,    10,      10, level_data,  chosen_plants);
-    int num_rollouts = 0;
-    while (!env.done) {
-        if (env.frame % 100 == 0) {
-            std::cout << "["<< env.frame << "] Rollout: " << env.rollout(8, rollotus_per_cycle, 1) << std::endl;
-            num_rollouts += rollotus_per_cycle;
-        }
-        Action next_action = env.get_random_action();
-        if (env.is_action_legal(next_action)) {
-            env.step(next_action);
-        }
-        else {
-            env.step(no_action);
-        }
-    }
-    std::cout << "number of rollouts: " << num_rollouts << std::endl;
-    return env.win;
-}
+// bool play_game_random_w_rollouts(int rollotus_per_cycle) {
+//     std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
+//     Action no_action = Action(NO_PLANT, 0,  0);
+//     // std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
+//     std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
+//     //                lane, columns, fps, level_data, legal_plants
+//     Level env = Level(5,    10,      10, level_data,  chosen_plants);
+//     int num_rollouts = 0;
+//     while (!env.done) {
+//         if (env.frame % 100 == 0) {
+//             std::cout << "["<< env.frame << "] Rollout: " << env.rollout(8, rollotus_per_cycle, 1) << std::endl;
+//             num_rollouts += rollotus_per_cycle;
+//         }
+//         Action next_action = env.get_random_action();
+//         if (env.is_action_legal(next_action)) {
+//             env.step(next_action);
+//         }
+//         else {
+//             env.step(no_action);
+//         }
+//     }
+//     std::cout << "number of rollouts: " << num_rollouts << std::endl;
+//     return env.win;
+// }
 
-bool play_game_random_w_rollouts_after_action(int rollotus_per_cycle) {
-    std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
-    Action no_action = Action(NO_PLANT, 0,  0);
-    // std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
-    // std::vector<int> chosen_plants = { CHERRYBOMB };
-    // std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
-    std::vector<int> chosen_plants = { CHERRYBOMB };
-    //                lane, columns, fps, level_data, legal_plants
-    Level env = Level(5,    10,      10, level_data,  chosen_plants);
-    ActionVec actions_taken = ActionVec();
-    int num_rollouts = 0;
-    while (!env.done) {
+// bool play_game_random_w_rollouts_after_action(int rollotus_per_cycle) {
+//     std::deque<ZombieSpawnTemplate> level_data = get_level_data3();
+//     Action no_action = Action(NO_PLANT, 0,  0);
+//     // std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
+//     // std::vector<int> chosen_plants = { CHERRYBOMB };
+//     // std::vector<int> chosen_plants = { CHERRYBOMB, CHOMPER, JALAPENO, PEASHOOTER, POTATOMINE, REPEATERPEA, SPIKEWEED, SQUASH, SUNFLOWER, THREEPEATER, WALLNUT};
+//     std::vector<int> chosen_plants = { CHERRYBOMB };
+//     //                lane, columns, fps, level_data, legal_plants
+//     Level env = Level(5,    10,      10, level_data,  chosen_plants);
+//     ActionVec actions_taken = ActionVec();
+//     int num_rollouts = 0;
+//     while (!env.done) {
         
-        Action next_action = env.get_random_action();
-        if (env.is_action_legal(next_action)) {
-            env.step(next_action);
-            if (next_action.plant_name != NO_PLANT) {
-                std::cout << "["<< env.frame << "] Rollout wins: " << env.rollout(8, rollotus_per_cycle) << " / " << rollotus_per_cycle << std::endl;
-                num_rollouts += rollotus_per_cycle;
-                actions_taken.push_back(pair<int, Action>(env.frame, next_action));
-            }
-            continue;
-        }
-        env.step(no_action);
-    }
-    std::cout << "number of rollouts: " << num_rollouts << std::endl;
-    std::cout << "Won? " << env.win << std::endl;
-    std::cout << "Actions taken: " << std::endl;
-    for (auto p : actions_taken) {
-        std::cout << "[" << p.first << "] Plant: " << env.plant_data[p.second.plant_name].plant_name << ", Lane: " << p.second.lane << ", Col: " << p.second.col << std::endl;
-    }
-    return env.win;
-}
+//         Action next_action = env.get_random_action();
+//         if (env.is_action_legal(next_action)) {
+//             env.step(next_action);
+//             if (next_action.plant_name != NO_PLANT) {
+//                 std::cout << "["<< env.frame << "] Rollout wins: " << env.rollout(8, rollotus_per_cycle) << " / " << rollotus_per_cycle << std::endl;
+//                 num_rollouts += rollotus_per_cycle;
+//                 actions_taken.push_back(pair<int, Action>(env.frame, next_action));
+//             }
+//             continue;
+//         }
+//         env.step(no_action);
+//     }
+//     std::cout << "number of rollouts: " << num_rollouts << std::endl;
+//     std::cout << "Won? " << env.win << std::endl;
+//     std::cout << "Actions taken: " << std::endl;
+//     for (auto p : actions_taken) {
+//         std::cout << "[" << p.first << "] Plant: " << env.plant_data[p.second.plant_name].plant_name << ", Lane: " << p.second.lane << ", Col: " << p.second.col << std::endl;
+//     }
+//     return env.win;
+// }
 
 
 

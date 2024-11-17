@@ -1,6 +1,6 @@
 BUILD_DIR := build/
 # ======== level srcs ===========================
-LEVEL_DIR := cpp_env/
+LEVEL_DIR := game_engine/
 LEVEL_SRCS := $(wildcard $(addsuffix *.cpp, $(LEVEL_DIR)))
 LEVEL_HEADERS := $(wildcard $(addsuffix *.hpp, $(LEVEL_DIR)))
 LEVEL_SWIG_SRCS := $(LEVEL_DIR)level_wrap.cxx
@@ -23,7 +23,7 @@ LEVEL_LIB := $(BUILD_DIR)lib_level.so # name of the swig-less level lib
 EXEC := ai.out
 LEVEL_SWIG_LIB := $(BUILD_DIR)_level.so
 MCTS_SWIG_LIB := $(BUILD_DIR)_mcts.so
-PYTHONI := -I/usr/include/python3.11 # change to 3.10 if 3.11 is not installed
+PYTHONI := -I/usr/include/python3.10 # change to 3.10 if 3.11 is not installed
 PYTHONL := -Xlinker -export-dynamic
 LIBFLAGS := -L/usr/local/lib -lgmpxx -lgmp -fopenmp
 CFLAGS := -I. -std=c++20 -Wall -Werror -Wextra -Wno-unused-parameter -fopenmp -O2 -flto -Wno-missing-field-initializers # -funroll-loops # -mavx # -march=native -ffast-math -fvectorize
@@ -106,8 +106,8 @@ check:
 clean:
 	rm -r build/*
 	touch build/__init__.py
-	rm cpp_env/level_wrap.cxx
-	rm cpp_env/level.py
+	rm game_engine/level_wrap.cxx
+	rm game_engine/level.py
 	rm cpp_mcts/mcts_wrap.cxx
 	rm cpp_mcts/mcts.py
 

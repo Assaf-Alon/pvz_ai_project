@@ -1,8 +1,8 @@
 #include "mcts.h"
 #include <algorithm>
 #include <unordered_map>
-#include "../cpp_env/zombie.hpp"
-#include "../cpp_env/plant.hpp"
+#include "../game_engine/zombie.hpp"
+#include "../game_engine/plant.hpp"
 
 #define LOSS_BOUND 0.1
 
