@@ -1,7 +1,7 @@
 # Plants vs. Zombies AI using MCTS
 
 ## Introduction
-This project was created as a part of the course "Project in AI" in the Technion.  
+This project was created as a part of the course "Project in AI" in the Technion Institue of Technology.  
 The project focuses on implementing Monte Carlo Tree Search (MCTS) to play the game "Plants vs. Zombies" (PvZ).  
 The codebase consists of a C++ implementations of PvZ and the core MCTS functions (select, expand, rollout, backpropagate).  
 For enhanced accessibility and ease of use, the above implementation can be converted to a Python package using Swig.
@@ -23,15 +23,15 @@ For enhanced accessibility and ease of use, the above implementation can be conv
 
 1. Install relevant dependencies:
 ```bash
-    sudo apt-get update
-    sudo apt-get install -y libpython3-dev
-    sudo apt-get install -y bash wget nano curl make libgmp3-dev libomp-dev tree swig
-    sudo apt-get install -y clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
+sudo apt-get update
+sudo apt-get install -y libpython3-dev
+sudo apt-get install -y bash wget nano curl make libgmp3-dev libomp-dev tree swig
+sudo apt-get install -y clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python3-clang
 ```
 
 2. Install Python packages:
 ```bash
-    pip install numpy pandas matplotlib scipy
+pip install numpy pandas matplotlib scipy
 ```
 
 ### Clone and Build
@@ -39,22 +39,23 @@ For enhanced accessibility and ease of use, the above implementation can be conv
 1. Clone the repository to your local machine:
 
 ```bash
-    git clone https://github.com/Assaf-Alon/pvz_ai_project.git
+git clone https://github.com/Assaf-Alon/pvz_ai_project.git
 ```
 
 2. Navigate to the project directory and build the project:
 ```bash
-    cd pvz_ai_project/game_ai
-    make clean && make -j8
+cd pvz_ai_project/game_ai
+make clean && make -j8
 ```
 
 > [!NOTE]  
 > If you get the following error: `fatal error: 'Python.h' file not found`, try to install python3.11-dev by running `sudo apt-get install python3.11-dev`.
+> Substitue the version of python with the one you got installed globally, and change line 26 in the Makefile to match.
 
 3. Update the `LD_LIBRARY_PATH` environment variable and start running simulations. If need be, create a directory for the experiment output csv. You can change the path by changing the variable `timestamped_csv` in `mcts.py`
 ```bash
-    export LD_LIBRARY_PATH=$(realpath ./build):$LD_LIBRARY_PATH
-    python3 main.py
+export LD_LIBRARY_PATH=$(realpath ./build):$LD_LIBRARY_PATH
+python3 main.py
 ```
 
 ## CPP Environment
